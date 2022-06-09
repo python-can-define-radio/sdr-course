@@ -1,0 +1,33 @@
+have: Sample rate of 10 samples per second
+want: Sample rate of 30 samples per second
+
+Interpolation: 3
+Decimation:    1  (1 means no decimation)
+
+----------------------------------------------------
+
+have: Sample rate of 20 samples per second
+want: Sample rate of 100 samples per second
+
+Interpolation: 5
+Decimation:    1  (that is, don't decimate)
+
+ALSO VALID:
+Interp: 10
+Decim:  2
+
+Interp: 100
+Decim:  20
+
+-----------------------------------------------------
+
+have: Sample rate of 48000 s.p.s.
+want: Sample rate of 2000000   s.p.s.
+
+Interp:  2000
+Decim:  48
+
+or
+
+Interp:  2000000
+Decim:  48000
