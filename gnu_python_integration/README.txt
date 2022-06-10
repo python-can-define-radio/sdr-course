@@ -1,5 +1,5 @@
-1. Open basic_transmitter_GRCGEN.grc
-2. Compile it (you can run too if you want, requires an SDR)
+1. Open basic_transmitter_GRCGEN.grc in GNU Radio Companion
+2. Generate the Python file, which is "Run -> Generate"
 3. Close GNU Radio Companion
 4. Run python3 control_PYPURE.py  (Requires an SDR)
 
