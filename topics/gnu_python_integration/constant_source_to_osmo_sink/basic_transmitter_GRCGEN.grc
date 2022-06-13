@@ -268,7 +268,7 @@ blocks:
     gain7: '10'
     gain8: '10'
     gain9: '10'
-    if_gain0: '0'
+    if_gain0: '25'
     if_gain1: '20'
     if_gain10: '20'
     if_gain11: '20'
