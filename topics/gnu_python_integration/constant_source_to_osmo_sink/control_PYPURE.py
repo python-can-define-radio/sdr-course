@@ -9,6 +9,9 @@ def dostuff(tb):
     # type: (basic_transmitter_GRCGEN) -> None
 
     time.sleep(3)
+    tb.osmosdr_sink_0.set_center_freq(101e6)
+    
+    time.sleep(3)
     tb.osmosdr_sink_0.set_center_freq(102e6)
 
 
