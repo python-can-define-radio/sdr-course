@@ -5,3 +5,5 @@
 
 Looking under the hood:
 I recommend reading control_PUPYRE.py.
+
+Also, see `python_integration_exercises_1.md`.
