@@ -1,6 +1,0 @@
-- <a href="https://www.youtube.com/watch?v=g8GcMn7K0u4">Transverse wave using slinky</a>
-- <a href="https://www.youtube.com/watch?v=fMJrtheQfZw">Longitudinal wave using slinky</a>
-- <a href="https://www.pinterest.com/pin/295408056785985095/">Close-up photo of a vinyl record</a>
-- <a href="https://en.wikipedia.org/wiki/Radio_jamming#Method">Wikipedia Radio Jamming article</a> regarding Subtle Jamming: "Thanks to the FM capture effect, frequency modulated broadcasts may be jammed, unnoticed, by a simple unmodulated carrier."
-- How to use <a href="https://lists.gnu.org/archive/html/discuss-gnuradio/2015-02/msg00033.html">multiple devices</a> in a single GNU Radio Flowgraph. <b>Summary</b>: in Device Arguments, put hackrf=0 for one of the blocks, and hackrf=1 for the other block.
-- Deep-dive into <a href="https://www.ieee.li/pdf/essay/quadrature_signals.pdf">what an IQ signal is</a> (very mathy)
