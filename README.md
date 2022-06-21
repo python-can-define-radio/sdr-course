@@ -1,3 +1,3 @@
 # sdr-course
 
-- [External Resources](external-resources.md)
+Start on the [Wiki](wiki).
