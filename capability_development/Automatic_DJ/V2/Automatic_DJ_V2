@@ -1,0 +1,138 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+#
+# SPDX-License-Identifier: GPL-3.0
+#
+# GNU Radio Python Flow Graph
+# Title: swappingtestv2
+# GNU Radio version: 3.8.1.0
+
+from gnuradio import analog
+from gnuradio import blocks
+from gnuradio import filter
+from gnuradio.filter import firdes
+from gnuradio import gr
+import sys
+import signal
+from argparse import ArgumentParser
+from gnuradio.eng_arg import eng_float, intx
+from gnuradio import eng_notation
+import osmosdr
+import time
+import contextlib
+import wave
+
+class swappingtestv2(gr.top_block):
+
+    def __init__(self):
+        gr.top_block.__init__(self, "swappingtestv2")
+
+        ##################################################
+        # Variables
+        ##################################################
+        self.samp_rate = samp_rate = 2e6
+
+        ##################################################
+        # Blocks
+        ##################################################
+        self.rational_resampler = filter.rational_resampler_fff(
+                interpolation=int(samp_rate),
+                decimation=22050,
+                taps=None,
+                fractional_bw=None)
+        self.osmo_sink = osmosdr.sink(
+            args="numchan=" + str(1) + " " + ""
+        )
+        self.osmo_sink.set_time_unknown_pps(osmosdr.time_spec_t())
+        self.osmo_sink.set_sample_rate(samp_rate)
+        self.osmo_sink.set_center_freq(102e6, 0)
+        self.osmo_sink.set_freq_corr(0, 0)
+        self.osmo_sink.set_gain(0, 0)
+        self.osmo_sink.set_if_gain(20, 0)
+        self.osmo_sink.set_bb_gain(0, 0)
+        self.osmo_sink.set_antenna('', 0)
+        self.osmo_sink.set_bandwidth(0, 0)
+        
+        self.wavfile_source = blocks.wavfile_source('/home/usacys/Desktop/Paul/Hell’s_Comin_with_me.wav', True)
+        self.WB_Freq_Mod = analog.wfm_tx(
+        	audio_rate=int(samp_rate),
+        	quad_rate=int(samp_rate),
+        	tau=75e-6,
+        	max_dev=75e3,
+        	fh=-1.0,
+        )
+
+
+
+        ##################################################
+        # Connections
+        ##################################################
+        # Steps: Wavfile Source -> Rational Resampler -> Frequency Modulation -> Osmo Sink
+        self.connect((self.wavfile_source, 0), (self.rational_resampler, 0))
+        self.connect((self.rational_resampler, 0), (self.WB_Freq_Mod, 0))
+        self.connect((self.WB_Freq_Mod, 0), (self.osmo_sink, 0))
+
+    def get_samp_rate(self):
+        return self.samp_rate
+
+    def set_samp_rate(self, samp_rate):
+        self.samp_rate = samp_rate
+        self.osmo_sink.set_sample_rate(self.samp_rate)
+
+
+
+def main(top_block_cls=swappingtestv2, options=None):
+    tb = top_block_cls()
+
+    def sig_handler(sig=None, frame=None):
+        tb.stop()
+        tb.wait()
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, sig_handler)
+    signal.signal(signal.SIGTERM, sig_handler)
+
+    tb.start()
+    try:
+        song_list = ['/home/usacys/Desktop/Paul/imperial_march.wav',
+                    '/home/usacys/Desktop/Paul/rebel-theme.wav',
+                    '/home/usacys/Desktop/Paul/what_makes_you_beautiful.wav',
+                    "/home/usacys/Desktop/Paul/Hell’s_Comin_with_me.wav"]
+        for song in song_list:
+
+            # Need to get the correct samp rate for the song and wait time
+            with contextlib.closing(wave.open(song, 'r')) as s:
+                frames = s.getnframes()
+                song_samp_rate = s.getframerate()
+                duration = frames / float(song_samp_rate)
+            tb.lock()
+
+            # Disconnect Wavfile Source and Rational Resampler
+            tb.disconnect(tb.wavfile_source)
+            tb.disconnect(tb.rational_resampler)
+
+            # Reconfigure all settings
+            tb.wavfile_source = blocks.wavfile_source(song, False)
+            tb.rational_resampler = filter.rational_resampler_fff(
+                interpolation=int(tb.samp_rate),
+                decimation=song_samp_rate,
+                taps=None,
+                fractional_bw=None)
+
+            # Steps: Wavfile Source -> Rational Resampler -> Frequency Modulation -> Osmo Sink
+            tb.connect(tb.wavfile_source, tb.rational_resampler)
+            tb.connect(tb.rational_resampler, tb.WB_Freq_Mod)
+            tb.unlock()
+            time.sleep(duration)
+
+        # input to stop program from automatically terminating
+        input('Press Enter to quit')
+    except EOFError:
+        pass
+    tb.stop()
+    tb.wait()
+
+
+if __name__ == '__main__':
+    main()
