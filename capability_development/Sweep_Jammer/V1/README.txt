@@ -1,7 +1,7 @@
-1. Open basic_transmitter.grc
-2. Compile it (you can run too if you want, requires a Hack RF)
+1. Open basic_transmitter.grc in GNU Radio Companion
+2. Generate the Python file, which is "Run -> Generate"
 3. Close GNU Radio Companion
-4. Run  python3 basic_sweep_jammer.py  (Requires a Hack RF)
+4. Run python3 basic_sweep_jammer.py  (Requires an SDR)
 
 Looking under the hood:
 I recommend reading basic_sweep_jammer.py.
