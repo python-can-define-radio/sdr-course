@@ -1,0 +1,6 @@
+- [Close-up photo of a vinyl record](https://www.pinterest.com/pin/295408056785985095/)
+- [How Computers Work: Binary & Data (Useful for showing samples)](https://www.youtube.com/watch?v=USCBCmwMCDA)
+- [How to use multiple devices](https://lists.gnu.org/archive/html/discuss-gnuradio/2015-02/msg00033.html) in a single GNU Radio Flowgraph. **Summary**: in Device Arguments, put `hackrf=0` for one of the blocks, and `hackrf=1` for the other block.
+- Deep-dive into [what an IQ signal is](https://www.ieee.li/pdf/essay/quadrature_signals.pdf) (very mathy)
+- [Federal Government Spectrum Use Reports 225 MHz – 7.125 GHz](https://www.ntia.doc.gov/page/federal-government-spectrum-use-reports-225-mhz-7125-ghz)
+- [SDR Course from the University of Crete](https://www.csd.uoc.gr/~hy330/assignments.php)

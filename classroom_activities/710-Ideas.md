@@ -1,0 +1,6 @@
+- Sending a file direct (wirelessly using SDRs)
+- Activity Detector
+- Sweep jammer
+- FM Transmit using Python (without GNU Radio)
+- Basics of Encryption (how to encrypt files, etc)
+- Demodulate Digital
