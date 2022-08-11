@@ -119,3 +119,11 @@ plt.show()
 ```
 
 #9. Copy and modify the previous example so that it has two signals added.
+
+Hint: Replace `sig = np.sin(3 * 2 * np.pi * times)` with the following:
+
+```python3
+first_sig = something
+second_sig = something_else
+sig = first_sig + second_sig
+```
