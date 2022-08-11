@@ -83,4 +83,5 @@ Osmocom Source  ┬⟶  GUI sink
 
 ## Discussion
 
-The sample rate here is slightly higher than the FM Receiver, so it shows a slightly larger slice of the spectrum.
+- How big of a slice of the spectrum do you see?
+- What does the FFT Size do?
