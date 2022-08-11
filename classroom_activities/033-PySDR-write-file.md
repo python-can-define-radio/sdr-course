@@ -50,3 +50,10 @@ outfile.close()
 
 Change your GNU Radio file to have blue ports (for complex data).
 
+-------------------------
+
+Your goal:
+
+- Create a chunk of data in Python.
+- Transmit it from your SDR using GNU Radio.
+- Receive it. Verify that the data was sent correctly.
