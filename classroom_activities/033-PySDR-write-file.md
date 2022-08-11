@@ -7,13 +7,13 @@ somedata = np.array([64, 20, 30.5, -20.6])
 
 print("Writing to file...")
 outfile = open("mysig.stuff", "wb")
-outfile.write(somedata.astype(np.float32).tobytes())
+outfile.write(np.float32(somedata))
 outfile.close()
 ```
 
 This will create a file. You won't be able to open the file directly (not easily, anyway).
 
-Instead, we're going to use a GNU Radio flowgraph to read it.
+Instead, we're going to use a GNU Radio flowgraph to read it, but not directly. In other words, DON'T try to do "Open with GNU Radio". Instead, you'll do this:
 
 Open a new GNU Radio flowgraph. Name it `filereader.grc` (or similar).
 
