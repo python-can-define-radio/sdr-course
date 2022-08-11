@@ -16,6 +16,10 @@ This will create a file.
 You'll then read that file in GNU Radio:
 
 ```
-File Source  ->  Time Sink
+File Source  ->  Throttle  ->  Time Sink
 ```
+
+### For the File Source:
+
+- File: Pick the file you created.
 
