@@ -35,10 +35,25 @@ plt.show()
 #5. Try this.
 
 ```python
-times = np.linspace(0, 2, 5000)
+## This is NOT a "carrier wave" situation;
+## it's simply two waves added.
+times = np.linspace(0, 1, 5000)
 first_sig = np.sin(2 * 2 * np.pi * times)
 second_sig = np.sin(20 * 2 * np.pi * times)
 combined = first_sig + second_sig
+
+plt.plot(times, combined, '.')
+plt.show()
+```
+
+#6. Try this.
+```python3
+## This is amplitude modulation.
+## The 20 Hz wave is the carrier.
+times = np.linspace(0, 1, 5000)
+first_sig = np.sin(2 * 2 * np.pi * times)
+second_sig = np.sin(20 * 2 * np.pi * times)
+combined = (first_sig + 2) * second_sig
 
 plt.plot(times, combined, '.')
 plt.show()
