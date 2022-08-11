@@ -48,6 +48,7 @@ Osmocom Source  ┬⟶  GUI sink
 ### For the GUI sink:
 
 - FFT Size: `8192`
+- Update Rate: `20`
 
 ### For the Osmocom Source:
 
