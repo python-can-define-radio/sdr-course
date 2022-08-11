@@ -6,18 +6,21 @@ GUI Range
 GUI Range
 
 
-                ⟶  GUI sink                                                
-Osmocom Source  ⟶  Band Pass Filter  ⟶  WBFM Receive  ⟶  Rational Resampler  ⟶  Audio Sink                          
+               
+Osmocom Source  ┬⟶  GUI sink 
+                |
+                └⟶  Band Pass Filter  ⟶  WBFM Receive  ⟶  Rational Resampler  ⟶  Audio Sink                          
+                    (Optional)           (Optional)       (Optional)             (Optional)
 
 ```
 
 - Have a (working) slider to pick the frequency that you're tuning in to. Working means your physical SDR changes frequency when the slider changes
-- Demodulate the sound and play it (i.e., demodulate the center of the spectrum that you're viewing, just like in the FM Radio)
 - Set `samp_rate` to 10000000 (10 Million)
 - Have a GUI sink connected directly from the osmocom source
 - Have the center of the GUI sink set correctly (OR SET TO ZERO)
 - Have the bandwidth of the GUI sink set correctly
 - For the center frequency slider, set the "Stop" to 500 Million, and "Step" to 10000 
+- (Optional) Demodulate the sound and play it (i.e., demodulate the center of the spectrum that you're viewing, just like in the FM Radio)
 
 
 ## How to set the Parameters
@@ -44,7 +47,7 @@ Osmocom Source  ⟶  Band Pass Filter  ⟶  WBFM Receive  ⟶  Rational Resample
 
 ### For the GUI sink:
 
-- Leave all as defaults.
+- FFT Size: `8192`
 
 ### For the Osmocom Source:
 
