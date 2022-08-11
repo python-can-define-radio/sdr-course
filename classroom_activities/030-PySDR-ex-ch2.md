@@ -58,3 +58,18 @@ combined = (first_sig + 2) * second_sig
 plt.plot(times, combined, '.')
 plt.show()
 ```
+
+#7. Try this.
+
+```python3
+times = np.linspace(0, 1, 100)
+sig = np.sin(3 * 2 * np.pi * times)
+freqs = np.fft.fftshift(np.fft.fft(sig))
+posOnly = freqs[50:]
+f = np.linspace(0, 50, 50)
+
+plt.plot(times, sig, '.')
+plt.show()
+plt.plot(f, abs(posOnly), '.')
+plt.show()
+```
