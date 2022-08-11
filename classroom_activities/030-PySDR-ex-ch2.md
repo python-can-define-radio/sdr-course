@@ -26,6 +26,8 @@ plt.show()
 
 4. Copy and modify the previous example so that the wave is 5 Hz. Verify that it worked.
 
+4b. Copy and modify the previous example so that the amount of time is 1 second. Verify that it worked.
+
 5. Try this.
 
 ```python
