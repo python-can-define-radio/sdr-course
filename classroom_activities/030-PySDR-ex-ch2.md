@@ -77,20 +77,20 @@ plt.show()
 
 #8. Try this.
 ```python3
-numMeas = 100 
+number_of_samples = 101
 maxTime = 1    # seconds
 
 ## By definition, sample rate is measurements per time
-samp_rate = numMeas / maxTime
+samp_rate = number_of_samples / maxTime
 
 ## Nyquist says we can't measure anything higher than 
 ## half the sample rate
-maxMeasFreq = samp_rate // 2
+maxMeasFreq = samp_rate / 2
 
 print("Sample rate:", samp_rate)
 print("Highest measurable freq:", maxMeasFreq)
 
-times = np.linspace(0, maxTime, numMeas)
+times = np.linspace(0, maxTime, number_of_samples)
 
 sig = np.sin(3 * 2 * np.pi * times)
 
@@ -99,13 +99,22 @@ freqs = np.fft.fftshift(np.fft.fft(sig))
 ## For now, we're only looking at positive frequencies.
 halfway = len(freqs) // 2
 posFreqsOnly = freqs[halfway:]
-f = np.linspace(0, maxMeasFreq, halfway)
+
+## As a beginner, just pretend that correctedMaxFreq is
+## the same as maxMeasFreq.
+## If you want to go deeper, see "A very minor detail" on https://pysdr.org/content/frequency_domain.html
+correctedMaxFreq = maxMeasFreq - samp_rate / number_of_samples
+
+## Make the proper labels for the frequency domain plot
+f = np.linspace(0, correctedMaxFreq, len(posFreqsOnly))
 
 plt.subplot(2, 1, 1)
 plt.plot(times, sig, '.')
+plt.title("Time Domain")
 
 plt.subplot(2, 1, 2)
 plt.plot(f, abs(posFreqsOnly), '.')
+plt.title("Frequency Domain")
 plt.show()
 ```
 
