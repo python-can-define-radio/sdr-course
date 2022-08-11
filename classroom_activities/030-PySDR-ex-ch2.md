@@ -77,9 +77,18 @@ plt.show()
 
 #8. Try this.
 ```python3
-numMeas = 1000 
-maxTime = 4    # seconds
+numMeas = 100 
+maxTime = 1    # seconds
+
+## By definition, sample rate is measurements per time
 samp_rate = numMeas / maxTime
+
+## Nyquist says we can't measure anything higher than 
+## half the sample rate
+maxMeasFreq = samp_rate // 2
+
+print("Sample rate:", samp_rate)
+print("Highest measurable freq:", maxMeasFreq)
 
 times = np.linspace(0, maxTime, numMeas)
 
@@ -87,16 +96,17 @@ sig = np.sin(3 * 2 * np.pi * times)
 
 freqs = np.fft.fftshift(np.fft.fft(sig))
 
-rightHalf = numMeas // 2
-posOnly = freqs[rightHalf:]
-f = np.linspace(0, samp_rate // 2, rightHalf)
+## For now, we're only looking at positive frequencies.
+halfway = len(freqs) // 2
+posFreqsOnly = freqs[halfway:]
+f = np.linspace(0, maxMeasFreq, halfway)
 
+plt.subplot(2, 1, 1)
 plt.plot(times, sig, '.')
-plt.show()
-plt.plot(f, abs(posOnly), '.')
-plt.show()
 
-
+plt.subplot(2, 1, 2)
+plt.plot(f, abs(posFreqsOnly), '.')
+plt.show()
 ```
 
 #9. Copy and modify the previous example so that it has two signals added.
