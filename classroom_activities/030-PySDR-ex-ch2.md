@@ -73,3 +73,30 @@ plt.show()
 plt.plot(f, abs(posOnly), '.')
 plt.show()
 ```
+
+
+#8. Try this.
+```python3
+numMeas = 1000 
+maxTime = 4    # seconds
+samp_rate = numMeas / maxTime
+
+times = np.linspace(0, maxTime, numMeas)
+
+sig = np.sin(3 * 2 * np.pi * times)
+
+freqs = np.fft.fftshift(np.fft.fft(sig))
+
+rightHalf = numMeas // 2
+posOnly = freqs[rightHalf:]
+f = np.linspace(0, samp_rate // 2, rightHalf)
+
+plt.plot(times, sig, '.')
+plt.show()
+plt.plot(f, abs(posOnly), '.')
+plt.show()
+
+
+```
+
+#9. Copy and modify the previous example so that it has two signals added.
