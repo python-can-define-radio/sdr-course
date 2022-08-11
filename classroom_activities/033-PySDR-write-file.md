@@ -29,3 +29,24 @@ File Source  ->  Throttle  ->  Time Sink
 
 - Change the ports to Orange (float) instead of the default Blue (complex).
 
+
+------------------------
+
+Once you get that working, change `somedata` to be a wave.
+
+------------------------
+
+Then, try this:
+
+```python3
+import numpy as np
+
+somedata = np.array([64 + 50j, 20, 30.5, -20.6])
+
+outfile = open("mysig.stuff", "wb")
+outfile.write(np.complex64(somedata))
+outfile.close()
+```
+
+Change your GNU Radio file to have blue ports (for complex data).
+
