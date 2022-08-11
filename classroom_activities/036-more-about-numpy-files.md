@@ -1,7 +1,8 @@
 ```python3
 import numpy as np
 
-## This is the "Integer 8" type in GNU Radio (Purple color)
+## This is the "Integer 8" type in GNU Radio (Purple color).
+## It's also called UChar.
 outfile = open("mysig.stuff", "wb")
 outfile.write(bytes([65, 66, 70]))
 outfile.close()
