@@ -60,3 +60,16 @@ Osmocom Source  -->  Band Pass Filter  -->  Complex to Mag  -->  Moving Average 
 (Continued from above) --> Rational Resampler  -->  File Sink
                                                -->  Time Sink
 ```
+
+
+- Osmocom Source:
+  - Ch0: Frequency (Hz): _Tune to 250kHz below your transmit freq._
+  - Ch0: Frequency Correction (ppm): `0`
+  - Ch0: RF Gain (dB): `0`
+  - Ch0: IF Gain (dB): `32`
+  - Ch0: BB Gain (dB): `32`
+- Band Pass Filter:
+  - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
+  - Low Cutoff Freq: `200e3`
+  - High Cutoff Freq: `300e3`
+  - Transition Width: `100e3`
