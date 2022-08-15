@@ -13,7 +13,7 @@ f.write(bytes("Put your words here"))
 f.close()
 ```
 
-Second, send it with GNU Radio. Call this 
+Second, send it with GNU Radio. Call this `filesender.grc`.
 
 ```
 File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
