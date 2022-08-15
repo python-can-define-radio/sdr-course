@@ -1,6 +1,6 @@
 # Transmitting side:
 
-First, write the file. Call this `filewriter.py`.
+## First, write the file. Call this `filewriter.py`.
 
 ```python3
 f = open("myfile.txt", "wb")
@@ -13,7 +13,7 @@ f.write(bytes("Put your words here"))
 f.close()
 ```
 
-Second, send it with GNU Radio. Call this `filesender.grc`.
+## Second, send it with GNU Radio. Call this `filesender.grc`.
 
 ```
 File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
@@ -37,4 +37,18 @@ Parameters:
   - Interpolation: `int(samp_rate)`
   - Decimation: 500
 - Osmocom Sink:
-  - 
+  - Sample Rate: `samp_rate`
+  - Ch0: Frequency (Hz): _Pick something_
+  - Ch0: Frequency Correction (ppm): `0`
+  - Ch0: RF Gain (dB): `0`
+  - Ch0: IF Gain (dB): `32`
+  - Ch0: BF Gain (dB): `0`
+
+
+# Receiving Side
+
+## Call this `filereceiver.grc`. You'll need this to be running before you start the file sender.
+
+```
+Osmo
+```
