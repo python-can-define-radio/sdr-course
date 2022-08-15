@@ -9,7 +9,7 @@ f = open("myfile.txt", "wb")
 # 128:    in binary, this is 10000000, which is easy to notice on the receiving end.
 # 32, 32:  this is the ASCII code for "space".
 f.write(bytes([128, 32, 32]))
-f.write(bytes("Put your words here"))
+f.write("Put your words here".encode("ascii"))
 f.close()
 ```
 
