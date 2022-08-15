@@ -1,6 +1,6 @@
 # Transmitting side:
 
-First, write the file:
+First, write the file. Call this `filewriter.py`.
 
 ```python3
 f = open("myfile.txt", "wb")
@@ -13,7 +13,7 @@ f.write(bytes("Put your words here"))
 f.close()
 ```
 
-Second, send it with GNU Radio:
+Second, send it with GNU Radio. Call this 
 
 ```
 File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
