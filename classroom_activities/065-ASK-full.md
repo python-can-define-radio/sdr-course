@@ -47,8 +47,16 @@ Parameters:
 
 # Receiving Side
 
-## Call this `filereceiver.grc`. You'll need this to be running before you start the file sender.
+## Call this `filereceiver.grc`.
+
+You'll need this to be running before you start the file sender so that it receives the entirety of the message.
 
 ```
-Osmo
+                                       -->  Waterfall Sink
+Osmocom Source  -->  Band Pass Filter  -->  Complex to Mag  -->  Moving Average  -->  (Continued below)
+
+                      
+                      
+(Continued from above) --> Rational Resampler  -->  File Sink
+                                               -->  Time Sink
 ```
