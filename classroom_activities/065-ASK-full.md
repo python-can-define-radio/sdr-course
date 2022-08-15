@@ -5,9 +5,12 @@
 ```python3
 f = open("myfile.txt", "wb")
 
-# At the beginning of the file, write three special characters:
-# 128:    in binary, this is 10000000, which is easy to notice on the receiving end.
-# 32, 32:  this is the ASCII code for "space".
+# At the beginning of the file, this code writes three special characters: 128, 32, 32.
+# Here's why:
+#   128:    in binary, this is 10000000, which is chosen because it is
+#           easy to notice on the receiving end.
+#   32:     this is the ASCII code for "space".
+#   32:     this is the ASCII code for "space".
 f.write(bytes([128, 32, 32]))
 f.write("Put your words here".encode("ascii"))
 f.close()
