@@ -23,4 +23,18 @@ File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
 
 ```
 
+Parameters:
 
+- File Source:
+  - File: Pick the `myfile.txt` that you created. Don't just type `myfile.txt`.
+- Unpack K Bits:
+  - K: `8`
+- Repeat:
+  - Interpolation: 500
+- Float to Complex:
+  - _Ensure you have the `re` port connected, not the `im` port.
+- Rational Resampler:
+  - Interpolation: `int(samp_rate)`
+  - Decimation: 500
+- Osmocom Sink:
+  - 
