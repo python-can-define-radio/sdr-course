@@ -16,7 +16,9 @@ f.write("Put your words here".encode("ascii"))
 f.close()
 ```
 
-## Second, send it with GNU Radio. Call this `filesender.grc`.
+Once you have finished making that python file, run it. It will create a text file called `myfile.txt`.
+
+## Second, we'll be using GNU Radio. Call this `filesender.grc`.
 
 ```
 File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
@@ -29,7 +31,7 @@ File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
 Parameters:
 
 - File Source:
-  - File: _Pick the `myfile.txt` that you created. Don't just type `myfile.txt`._
+  - File: _Pick the `myfile.txt` that you created. Don't just type `myfile.txt`. Also, don't pick a `.py` file or a `.grc` file._
 - Unpack K Bits:
   - K: `8`
 - Repeat:
