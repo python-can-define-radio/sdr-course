@@ -31,6 +31,14 @@ Goals:
 ## How to set the Parameters
 Enter the values shown in the bubbles below.  Do not enter the units, e.g., "Hz".  For any parameter not listed, the pre-programmed default value may be used.
 
+### For the First Signal Source:
+
+- Frequency: `freq1`
+
+### For the Second Signal Source:
+
+- Frequency: `freq2`
+
 ### For the `samp_rate` variable (Not pictured above):
 
 - Value: `20e3` = 20,000 Hz  
@@ -48,7 +56,7 @@ Later, try varying this sampling rate and watch the maximum x-value on the GUI F
 ### For the Second GUI Range selector:
 
 - Id: `freq2`
-- Default Value: `50` Hz
+- Default Value: `2000` Hz
 - Start: `0` Hz
 - Stop: `5e3`  = 5,000 Hz
 - Step: `25`  Hz
@@ -72,6 +80,7 @@ Use the defalut values, which are shown here.
 ### For GUI Frequency Sink (Graph):
 
 - Name: `"Frequency Spectrum from the Added Waves"`
+- Spectrum Width: `Half`
 - Y min = `-90` (Note the negative.  This setting crops the lower portion of the data to hide the "noise" in the frequencies)
 - Y min = `10`  (10 = The default)
 - GUI Hint: `(5,0,2,GUI_width)`  (OPTIONAL. This sets the position on the GUI screen, @ row 5, col. 0, width or span. If row 3 or 4 does not exist, the block will fill a position higher than row 5.)
