@@ -31,16 +31,21 @@ Goals:
 ## How to set the Parameters
 Enter the values shown in the bubbles below.  Do not enter the units, e.g., "Hz".  For any parameter not listed, the pre-programmed default value may be used.
 
-### For the First GUI Range:
+### For the `samp_rate` variable (Not pictured above):
+
+- Value: `20e3` = 20,000 Hz  
+Later, try varying this sampling rate and watch the maximum x-value on the GUI Frequency Sink graph.  You will need to stop and restart the GUI.  What is the relationship is between the samp_rate parameter an the max. x-value?  Why did the programers established that relationship?
+
+### For the First GUI Range selector:
 
 - Id: `freq1`
 - Default Value: `50` Hz
 - Start: `0` Hz
-- Stop: `5e3`  = 5,000 Hz
+- Stop: `samp_rate/2` Hz  (What is the motivation for this relationship?)
 - Step: `25`  Hz
-- GUI Hint: `(0,0)`  (OPTIONAL. This sets the position of the Range selector on the GUI screen. 1st number is row. 2nd number is the column.)
+- GUI Hint: `(0,0)`  (OPTIONAL. This sets the position of the Range selector on the GUI screen. 1st number is the row. 2nd number is the column.)
 
-### For the Second GUI Range:
+### For the Second GUI Range selector:
 
 - Id: `freq2`
 - Default Value: `50` Hz
@@ -48,11 +53,6 @@ Enter the values shown in the bubbles below.  Do not enter the units, e.g., "Hz"
 - Stop: `5e3`  = 5,000 Hz
 - Step: `25`  Hz
 - GUI Hint: `(0,1)`  (OPTIONAL. This sets the position of the Range selector on the GUI screen, @ row 0 (1st), col. 1 (2nd))
-
-### For the `samp_rate` variable (Not pictured above):
-
-- Value: `20e3` = 20,000 Hz  
-Later, vary this sampling rate  if you want to see more or less data, but remember the Nyquist criteria. Nyquist requires: samp_rate >= 2 * freq1 AND samp_rate >= 2 * freq2)
 
 ### For the Variable block:
 (OPTIONAL.  May be used for "GUI Hint" of graphing blocks (sinks) to set their width.)
@@ -82,9 +82,17 @@ Use the defalut values, which are shown here.
 - Autoscale: `Yes`
 - Number of Inputs: `3`
 - GUI Hint: `(3,0,2,GUI_width)`  (OPTIONAL)
+
 "Trigger" Tab
 - Trigger Mode: `Auto`  (This will give the graph the appearance of being "frozen" even as data continues to be fed to it.)
 
+"Config" Tab
+- Control Panel: `yes`
+- Line 1 Label: `Signal 1`   (The default value)
+- Line 2 Label: `Signal 2`   (The default value)
+- Line 3 Label: `Sum(Sig1, Sig2)` 
+
 ## Discussion
 
-- _______
+- You may remember, to accruately represent or reproduce a signal (a wave), the Nyquist Criteria requires: sample rate >= 2 * frequency of the signal.  Otherwise, with too few samples per second, the plot or the sound produced by the data will be distorted as compared to the orignal signal. 
+- Try this: In one or more GUI Range selector, change the Stop value to be greater than the Nyquist Criteria allows, e.g., Stop: `samp_rate` Hz.   Then, while the program runs, adjust that frequency to be higher than the previous limit allowed.  What do you observe?
