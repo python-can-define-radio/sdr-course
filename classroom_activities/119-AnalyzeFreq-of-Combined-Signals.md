@@ -6,27 +6,27 @@ Instructions for a GUI-program to implment within GNU Radio Companion.
 ## Summary of the GUI-program
 
 ```
- ******** THE CONTENT BELOW THIS LINE NEEDS TO BE EDITTED. ***********
-GUI Chooser
 
-GUI Range
+GUI Range (1st)
 
-GUI Range
+GUI Range (2nd)
 
-                ┌─⟶  Time sink
-                ├─⟶  Waterfall sink    ┌─⟶  Waterfall sink                                             
-Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  Rational Resampler  ⟶  Audio Sink                          
+Variable  (Optional)
+
+Signal Source (1st) ─┌─⟶  Add  Throttle  QT GUI Frequency Sink 
+
+Signal Source (2nd) ─┴                  QT GUI Time Sink
                                      
 
 ```
+Goals:
+- Produce two signals, a.k.a. "waves" using the 1st & 2nd Signal Sources and make the frequcnecy of each wave adjustable by including two sliders to pick (adjust) the frequencies you're producing.
+- Using the  Multiply block, combine the waves (singals) together to represent a complex waveform that may be received from a piece of local equipment or from broadcast signals.
+- Plot the orignal waves and the combined waveform using the Time Sink. 
+- Using the Frequency Sink, demonstrate the ability of GNU Radio Companion to analyze the combined waveform, which means extracting (disassociating) and ploting the invidual singals waves that produced the combined waveform.
+- (Optional) Use a Variable block to assit with arranging the display blocks on the GUI operation screen.
 
-- Have a (working) slider to pick the frequency that you're tuning in to. Working means your physical SDR changes frequency when the slider changes
-- Demodulate the sound and play it
-- Have two (2) waterfall sinks: one before the Band Pass Filter, and one after
-- Have the centers of the waterfall sinks set correctly (OR SET TO ZERO)
-- Working IF Gain slider (moving the slider changes the IF Gain)
-- Working GUI Chooser to pick a station from a list
-
+ ******** THE CONTENT BELOW THIS LINE NEEDS TO BE EDITTED. ***********
 
 ## How to set the Parameters
 
