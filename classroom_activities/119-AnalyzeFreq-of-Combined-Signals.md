@@ -1,7 +1,5 @@
 ## Analyze Frequency of Combined Signals/Waves
-This is a demonstration of how a singnal comprising multiple waveforms (e.g., multiple sine or cosing waves) may evaluated to determine the frequencies of its individual waves.
-
-Instructions for a GUI-program to implment within GNU Radio Companion.
+This is a demonstration of how GNU Radio Companion can evaluate a "complex" signal comprising multiple waveforms (e.g., multiple sine or cosing waves) to determine the frequencies of the multiple waves.
 
 ## Summary of the GUI-program
 
@@ -13,12 +11,14 @@ GUI Range (2nd)
 
 Variable  (Optional)
 
-Signal Source (1st) ─┌─⟶  Add  Throttle  QT GUI Frequency Sink 
+Signal Source (1st) ─┌─⟶  Add ⟶ Throttle ─┌─⟶ QT GUI Frequency Sink 
 
-Signal Source (2nd) ─┴                  QT GUI Time Sink
+Signal Source (2nd) ─┴                    ┴⟶ QT GUI Time Sink
                                      
 
 ```
+Memo: In addtion to the wiring shown above --- After updating the parameters for QT GUI Time Sink, listed below, wire the 1st and 2nd Signal Sources to separate inputs on the QT GUI Time Sink.
+
 Goals:
 - Produce two signals, a.k.a. "waves" using the 1st & 2nd Signal Sources and make the frequcnecy of each wave adjustable by including two sliders to pick (adjust) the frequencies you're producing.
 - Using the  Multiply block, combine the waves (singals) together to represent a complex waveform that may be received from a piece of local equipment or from broadcast signals.
@@ -26,53 +26,38 @@ Goals:
 - Using the Frequency Sink, demonstrate the ability of GNU Radio Companion to analyze the combined waveform, which means extracting (disassociating) and ploting the invidual singals waves that produced the combined waveform.
 - (Optional) Use a Variable block to assit with arranging the display blocks on the GUI operation screen.
 
- ******** THE CONTENT BELOW THIS LINE NEEDS TO BE EDITTED. ***********
-
 ## How to set the Parameters
-
-### For the GUI Chooser:
-
-- Id: `favorite_stations`
-- Type: `Float`
-- Num Options: `4`## Summary  ``` GUI Chooser  GUI Range  GUI Range                  ┌─⟶  Time sink                 ├─⟶  Waterfall sink    ┌─⟶  Waterfall sink                                              Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  Rational Resampler  ⟶  Audio Sink                                                                  ```  - Have a (working) slider to pick the frequency that you're tuning in to. Working means your physical SDR changes frequency when the slider changes - Demodulate the sound and play it - Have two (2) waterfall sinks: one before the Band Pass Filter, and one after - Have the centers of the waterfall sinks set correctly (OR SET TO ZERO) - Working IF Gain slider (moving the slider changes the IF Gain) - Working GUI Chooser to pick a station from a list   ## How to set the Parameters  ### For the GUI Chooser:  - Id: `favorite_stations` - Type: `Float` - Num Options: `4` - Option 0: `100.3e6` - Label 0: `First radio station (may be real)` - Option 1: `99.7e6` - Label 1: `Second radio station (may be real)` - Option 2: (Leave this unchanged till you get the rest of the radio working, then fill it in after you've located some stations.) - Label 2: (Same) - Option 3: (Same) - Label 3: (Same)   ### For the First GUI Range:  - Id: `if_gain_slider` - Default Value: `24` - Start: `0` - Stop: `40` - Step: `8`  ### For the Second GUI Range:  - Id: `center_freq_slider` - Default Value: `favorite_stations` - Start: `89e6` - Stop: `108e6` - Step: `20e3`  ### For the `samp_rate` variable (Not pictured above):  - Value: `8e6`  ### For the Osmocom Source:  - Ch0: Frequency (Hz): `center_freq_slider` - Ch0: Frequency Correction (ppm): `0` - Ch0: RF Gain (dB): `0` - Ch0: IF Gain (dB): `if_gain_slider` - Ch0: BB Gain (dB): `32`  ### For the Band Pass Filter:  - FIR Type: `Complex -> Complex (Complex Taps) (Decim)` - Low Cutoff Freq: `-100e3` (notice the negative) - High Cutoff Freq: `100e3` - Transition Width: `100e3`  ### For the WBFM Receive:  - Quadrature Rate: `samp_rate` - Audio Decimation: `1`  ### For the Rational Resampler:  - Type: `Float -> Float (Real Taps)` - Interpolation: `int(48e3)` - Decimation: `int(samp_rate)`  ### For the Audio Sink:  - Sample Rate: `48 kHz` (Pick from drop-down menu)  ### For BOTH Waterfall Sinks:  - Leave all as defaults.  ### For the Time Sink:  - Leave all as defaults.   ## Discussion  - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
-- Option 0: `100.3e6`
-- Label 0: `First radio station (may be real)`
-- Option 1: `99.7e6`
-- Label 1: `Second radio station (may be real)`
-- Option 2: (Leave this unchanged till you get the rest of the radio working, then fill it in after you've located some stations.)
-- Label 2: (Same)
-- Option 3: (Same)
-- Label 3: (Same)
-
 
 ### For the First GUI Range:
 
-- Id: `if_gain_slider`
-- Default Value: `24`
-- Start: `0`
-- Stop: `40`
-- Step: `8`
+- Id: `freq1`
+- Default Value: `50` Hz
+- Start: `0` Hz
+- Stop: `5e3`  = 5,000 Hz
+- Step: `25`  Hz
+- GUI Hint: '(0,0)'  (OPTIONAL. This sets the position of the Range selector on the GUI screen. 1st number is row. 2nd number is the column.)
 
 ### For the Second GUI Range:
 
-- Id: `center_freq_slider`
-- Default Value: `favorite_stations`
-- Start: `89e6`
-- Stop: `108e6`
-- Step: `20e3`
+- Id: `freq2`
+- Default Value: `50` Hz
+- Start: `0` Hz
+- Stop: `5e3`  = 5,000 Hz
+- Step: `25`  Hz
+- GUI Hint: '(0,1)'  (OPTIONAL. This sets the position of the Range selector on the GUI screen, @ row 0 (1st), col. 1 (2nd))
 
 ### For the `samp_rate` variable (Not pictured above):
 
-- Value: `8e6`
+- Value: `20e3` = 20,000 Hz
 
-### For the Osmocom Source:
+### For the Variable block:
+(OPTIONAL.  May be used for "GUI Hint" of graphing blocks (sinks) to set their width.)
 
-- Ch0: Frequency (Hz): `center_freq_slider`
-- Ch0: Frequency Correction (ppm): `0`
-- Ch0: RF Gain (dB): `0`
-- Ch0: IF Gain (dB): `if_gain_slider`
-- Ch0: BB Gain (dB): `32`
+- Id: 'GUI_width'
+- Value: 'int(3)'
 
+
+ ******** THE CONTENT BELOW THIS LINE NEEDS TO BE EDITTED. ***********
 ### For the Band Pass Filter:
 
 - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
