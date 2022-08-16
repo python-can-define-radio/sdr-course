@@ -17,7 +17,9 @@ Signal Source (2nd) ─┴                    ┴⟶ QT GUI Time Sink
                                      
 
 ```
-Memo: In addtion to the wiring shown above --- After updating the parameters for QT GUI Time Sink, listed below, wire the 1st and 2nd Signal Sources to separate inputs on the QT GUI Time Sink.
+Memos: 
+- In addtion to the wiring shown above --- After updating the parameters for QT GUI Time Sink, listed below, wire the 1st and 2nd Signal Sources to separate inputs on the QT GUI Time Sink.
+- All ports are be for floating point numbers, i.e., the type "float", which will be orange in color.
 
 Goals:
 - Produce two signals, a.k.a. "waves" using the 1st & 2nd Signal Sources and make the frequcnecy of each wave adjustable by including two sliders to pick (adjust) the frequencies you're producing.
@@ -27,6 +29,7 @@ Goals:
 - (Optional) Use a Variable block to assit with arranging the display blocks on the GUI operation screen.
 
 ## How to set the Parameters
+Enter the values shown in the bubbles below.  Do not enter the units, e.g., "Hz".  For any parameter not listed, the pre-programmed default value may be used.
 
 ### For the First GUI Range:
 
@@ -35,7 +38,7 @@ Goals:
 - Start: `0` Hz
 - Stop: `5e3`  = 5,000 Hz
 - Step: `25`  Hz
-- GUI Hint: '(0,0)'  (OPTIONAL. This sets the position of the Range selector on the GUI screen. 1st number is row. 2nd number is the column.)
+- GUI Hint: `(0,0)`  (OPTIONAL. This sets the position of the Range selector on the GUI screen. 1st number is row. 2nd number is the column.)
 
 ### For the Second GUI Range:
 
@@ -44,45 +47,35 @@ Goals:
 - Start: `0` Hz
 - Stop: `5e3`  = 5,000 Hz
 - Step: `25`  Hz
-- GUI Hint: '(0,1)'  (OPTIONAL. This sets the position of the Range selector on the GUI screen, @ row 0 (1st), col. 1 (2nd))
+- GUI Hint: `(0,1)`  (OPTIONAL. This sets the position of the Range selector on the GUI screen, @ row 0 (1st), col. 1 (2nd))
 
 ### For the `samp_rate` variable (Not pictured above):
 
-- Value: `20e3` = 20,000 Hz
+- Value: `20e3` = 20,000 Hz  
+Later, vary this sampling rate  if you want to see more or less data, but remember the Nyquist criteria. Nyquist requires: samp_rate >= 2 * freq1 AND samp_rate >= 2 * freq2)
 
 ### For the Variable block:
 (OPTIONAL.  May be used for "GUI Hint" of graphing blocks (sinks) to set their width.)
 
-- Id: 'GUI_width'
-- Value: 'int(3)'
+- Id: `GUI_width`
+- Value: `int(3)`
 
 
  ******** THE CONTENT BELOW THIS LINE NEEDS TO BE EDITTED. ***********
-### For the Band Pass Filter:
+### For the Add Block:
+Use the defalut values, which are shown here.
+- IO Type: `Float`
+- Num Inputs: `2`
+- Vec Length: `1`  
 
-- FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
-- Low Cutoff Freq: `-100e3` (notice the negative)
-- High Cutoff Freq: `100e3`
-- Transition Width: `100e3`
+### For the Throttle Block:
+- No adjustment is need, use default parameters.
 
-### For the WBFM Receive:
+### For GUI Frequency Sink (Graph):
 
-- Quadrature Rate: `samp_rate`
-- Audio Decimation: `1`
-
-### For the Rational Resampler:
-
-- Type: `Float -> Float (Real Taps)`
-- Interpolation: `int(48e3)`
-- Decimation: `int(samp_rate)`
-
-### For the Audio Sink:
-
-- Sample Rate: `48 kHz` (Pick from drop-down menu)
-
-### For BOTH Waterfall Sinks:
-
-- Leave all as defaults.
+- Name: `"Frequency Spectrum from Added Waves"`
+- FTT size: `1024`
+- GUI Hint: `(5,0,2,GUI_width)`  (OPTIONAL. This sets the position on the GUI screen, @ row 5, col. 0, width or span. If row 3 or 4 does not exist, the block will fill a position higher than row 5.)
 
 ### For the Time Sink:
 
