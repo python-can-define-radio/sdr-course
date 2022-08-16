@@ -41,7 +41,7 @@ Parameters:
 - Float to Complex:
   - _Ensure you have the `re` port connected, not the `im` port._
 - Rational Resampler:
-  - Interpolation: `int(samp_rate)`
+  - Interpolation: `int(samp_rate/10)`
   - Decimation: `500`
 - Osmocom Sink:
   - Sample Rate: `samp_rate`
@@ -84,7 +84,7 @@ Osmocom Source  -->  Band Pass Filter  -->  Complex to Mag  -->  Moving Average 
   - High Cutoff Freq: `300e3`
   - Transition Width: `100e3`
 - Moving Average:
-  - Length: `600`
+  - Length: `2000`
 - Rational Resampler:
   - Interpolation: `1`
   - Decimation: `100`
@@ -124,10 +124,10 @@ dat = np.fromfile("binaryReceived.data",
 
 # If it's greater than the threshold, make it a 1,
 # else, make it a zero.
-aboveBelow = dat > 30
+aboveBelow = dat > 50
 
 # Grab every nth
-decimated = aboveBelow[::100]
+decimated = aboveBelow[::2000]
 
 intified = decimated.astype(np.int)
 
