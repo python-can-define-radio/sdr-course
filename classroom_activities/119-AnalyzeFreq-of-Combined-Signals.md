@@ -31,14 +31,6 @@ Goals:
 ## How to set the Parameters
 Enter the values shown in the bubbles below.  Do not enter the units, e.g., "Hz".  For any parameter not listed, the pre-programmed default value may be used.
 
-### For the First Signal Source:
-
-- Frequency: `freq1`
-
-### For the Second Signal Source:
-
-- Frequency: `freq2`
-
 ### For the `samp_rate` variable (Not pictured above):
 
 - Value: `20e3` = 20,000 Hz  
@@ -67,6 +59,14 @@ Later, try varying this sampling rate and watch the maximum x-value on the GUI F
 
 - Id: `GUI_width`
 - Value: `int(3)`
+
+### For the First Signal Source:
+
+- Frequency: `freq1`
+
+### For the Second Signal Source:
+
+- Frequency: `freq2`
 
 ### For the Add block:
 Use the defalut values, which are shown here.
