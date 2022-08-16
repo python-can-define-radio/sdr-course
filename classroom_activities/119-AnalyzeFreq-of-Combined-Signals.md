@@ -60,28 +60,31 @@ Later, vary this sampling rate  if you want to see more or less data, but rememb
 - Id: `GUI_width`
 - Value: `int(3)`
 
-
- ******** THE CONTENT BELOW THIS LINE NEEDS TO BE EDITTED. ***********
-### For the Add Block:
+### For the Add block:
 Use the defalut values, which are shown here.
 - IO Type: `Float`
 - Num Inputs: `2`
 - Vec Length: `1`  
 
-### For the Throttle Block:
+### For the Throttle block:
 - No adjustment is need, use default parameters.
 
 ### For GUI Frequency Sink (Graph):
 
-- Name: `"Frequency Spectrum from Added Waves"`
-- FTT size: `1024`
+- Name: `"Frequency Spectrum from the Added Waves"`
+- Y min = `-90` (Note the negative.  This setting crops the lower portion of the data to hide the "noise" in the frequencies)
+- Y min = `10`  (10 = The default)
 - GUI Hint: `(5,0,2,GUI_width)`  (OPTIONAL. This sets the position on the GUI screen, @ row 5, col. 0, width or span. If row 3 or 4 does not exist, the block will fill a position higher than row 5.)
 
 ### For the Time Sink:
 
-- Leave all as defaults.
-
+"General" Tab
+- Autoscale: `Yes`
+- Number of Inputs: `3`
+- GUI Hint: `(3,0,2,GUI_width)`  (OPTIONAL)
+"Trigger" Tab
+- Trigger Mode: `Auto`  (This will give the graph the appearance of being "frozen" even as data continues to be fed to it.)
 
 ## Discussion
 
-- You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
+- _______
