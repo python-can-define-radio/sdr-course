@@ -109,6 +109,12 @@ def withoutLeadingZeros(arry):
 def splitIntoGroups(arry, groupSize):
     return np.array_split(arry, ceil(len(arry) / groupSize))
 
+def verifyFirstGroup(groups):
+    firstGroup = groups[0]
+    boolArray = (firstGroup == [1, 0, 0, 0, 0, 0, 0, 0])
+    if not all(boolArray):
+        raise ValueError("The first byte must be [1, 0, 0, 0, 0, 0, 0, 0], but it wasn't. Ask an instructor for help.")
+
 
 dat = np.fromfile("binaryReceived.data",
                   dtype=np.float32)
@@ -126,6 +132,7 @@ realData = withoutLeadingZeros(intified)
 
 groupsOf8 = splitIntoGroups(realData, 8)
 
+verifyFirstGroup(groupsOf8)
 
 for g8 in groupsOf8:
     packed = np.packbits(g8)
