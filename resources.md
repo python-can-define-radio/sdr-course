@@ -21,3 +21,6 @@
 Other cool stuff:
 - https://www.rtl-sdr.com/creating-a-low-cost-ground-penetrating-radar-with-two-hackrfs/
 - http://www.diva-portal.org/smash/get/diva2:933202/FULLTEXT01.pdf
+- Error checking:
+  - [Two dimensional parity](https://thecsemonk.com/two-dimensional-parity/)
+  - [Hamming code (interesting; more advanced)](https://www.youtube.com/watch?v=X8jsijhllIA)
