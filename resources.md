@@ -24,3 +24,4 @@ Other cool stuff:
 - Error checking:
   - [Two dimensional parity](https://thecsemonk.com/two-dimensional-parity/)
   - [Hamming code (interesting; more advanced)](https://www.youtube.com/watch?v=X8jsijhllIA)
+- [gr-bokehgui: Web based display for GNU Radio](https://github.com/gnuradio/gr-bokehgui)
