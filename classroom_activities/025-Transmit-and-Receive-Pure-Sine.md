@@ -99,5 +99,15 @@ osmocom Source  --->  Time Sink
 3. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
 4. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
 
+# FAQ
+
+- Q: Why are there two waves (blue and red)?  
+  A: This is Complex data, meaning it has a Real part and an Imaginary part. We'll discuss more details later, but for now, you can ignore or turn off one of the parts.
+
 # Exercises
 
+1. For a frequency of `100,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
+2. For a frequency of `200,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
+3. What happens on the receiving end when the transmission power is too high?  _Hint: Look up "Clipping in Signal Procesing"._ 
+4. At what point do you start to see clipping?
+5. Can clipping happen on the transmitter's side? _Hint: Try setting the transmitter's amplitude to a number such as `1.5`. You may need to modify the GUI Range that adjusts amplitude._
