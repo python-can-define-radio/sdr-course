@@ -44,6 +44,16 @@ What kind of signal is carried on the string? On the wire?
 
 (_discuss in small groups._)
 
+### Radios
+
+A radio is almost identical:
+
+```
+--------------                   ----------
+  Transmitter -------- Air ------  Receiver
+--------------                   ----------
+```
+
 ## For more info...
 
 See https://wiki.gnuradio.org/index.php?title=What_Is_GNU_Radio
