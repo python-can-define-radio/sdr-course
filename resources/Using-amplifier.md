@@ -1,0 +1,2 @@
+- As per the [Hack RF FAQ](https://hackrf.readthedocs.io/en/latest/faq.html): "If you connect an external amplifier, you should also use an external bandpass filter for your operating frequency."
+- Here's an [example](http://www.learningaboutelectronics.com/Articles/Passive-bandpass-filter-circuit.php) of how to build an inexpensive band pass filter. THIS MAY NOT BE SUITABLE FOR ALL PURPOSES. PLEASE TEST YOUR SIGNAL USING AN OSCILLOSCOPE BEFORE AMPLIFYING IT! 
