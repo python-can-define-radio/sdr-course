@@ -1,4 +1,4 @@
-At this point, ensure you have completed `033-PySDR-write-file.md`.
+At this point, ensure you have completed `133-PySDR-write-file.md`.
 
 We want to send modulated data, and demodulate it on the receving end.
 
