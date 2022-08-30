@@ -6,6 +6,7 @@
   - Includes some tutorials, but mostly I recommend this for:
     - Inspiration (they post cool news), or
     - To buy a real (non-counterfeit) RTL-SDR.
+- [Ettus SDR Tutorials](https://files.ettus.com/tutorials/)
 - [Wave Walker DSP](https://www.wavewalkerdsp.com/)
   - Many tutorials. Fairly mathy. Some good foundational info too, such as:
     - [Why are Sinusoids used in DSP and RF?](https://www.wavewalkerdsp.com/2021/09/18/why-are-sinusoids-used-in-dsp-and-rf/)
