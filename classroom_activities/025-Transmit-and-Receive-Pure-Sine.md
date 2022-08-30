@@ -111,3 +111,4 @@ osmocom Source  --->  Time Sink
 3. What happens on the receiving end when the transmission power is too high?  _Hint: Look up "Clipping in Signal Procesing"._ 
 4. At what point do you start to see clipping?
 5. Can clipping happen on the transmitter's side? _Hint: Try setting the transmitter's amplitude to a number such as `1.5`. You may need to modify the GUI Range that adjusts amplitude._
+6. How could you communicate data using just these sliders?
