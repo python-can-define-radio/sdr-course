@@ -112,3 +112,4 @@ osmocom Source  --->  Time Sink
 4. At what point do you start to see clipping?
 5. Can clipping happen on the transmitter's side? _Hint: Try setting the transmitter's amplitude to a number such as `1.5`. You may need to modify the GUI Range that adjusts amplitude._
 6. How could you communicate data using just these sliders?
+7. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
