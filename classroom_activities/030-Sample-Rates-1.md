@@ -31,6 +31,7 @@ Signal Source  --->  Throttle  --->  Time Sink
   - Sample Rate: `40000`
 - Time Sink:
   - "General" Tab:
+    - Type: `float`
     - Number of Points: `30`
     - Y min: `-4`
     - Y max: `4`
