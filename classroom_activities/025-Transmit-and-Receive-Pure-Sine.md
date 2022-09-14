@@ -113,3 +113,4 @@ osmocom Source  --->  Time Sink
 5. Can clipping happen on the transmitter's side? _Hint: Try setting the transmitter's amplitude to a number such as `1.5`. You may need to modify the GUI Range that adjusts amplitude._
 6. How could you communicate data using just these sliders?
 7. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
+8. _Advanced:_ Discuss center spike and frequency-non-sameness-between-tx-rx. 
