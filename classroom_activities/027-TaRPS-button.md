@@ -5,6 +5,7 @@ Make the following changes:
 - Delete the `amplitu` GUI Range.
 - Create a QT GUI Chooser. Set the parameters:
   - Id: `amplitu`
+  - Type: _Hint: what type allows for non-whole numbers?_
   - Option 0: `0`
   - Label 0: `Off`
   - Option 1: `0.5`
