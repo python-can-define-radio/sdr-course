@@ -11,6 +11,7 @@
   - Many tutorials. Fairly mathy. Some good foundational info too, such as:
     - [Why are Sinusoids used in DSP and RF?](https://www.wavewalkerdsp.com/2021/09/18/why-are-sinusoids-used-in-dsp-and-rf/)
     - [Signal and Noise: The Vocabulary of RF](https://www.wavewalkerdsp.com/2021/08/31/signal-and-noise-the-vocabulary-of-rf/)
+- [Morse code example](https://github.com/duggabe/gr-morse-code-gen)
 - [FM Reception with the GNU Radio Companion](https://www.nutsvolts.com/magazine/article/fm-reception-with-the-gnu-radio-companion): Great tutorial. Includes:
   - How to listen to FM
   - How to get the digital data (current song name, etc)
