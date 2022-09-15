@@ -18,12 +18,12 @@ Signal Source (2nd) ─┴                    ┴⟶ QT GUI Time Sink
 
 ```
 Memos: 
-- In addtion to the wiring shown above --- After updating the parameters for QT GUI Time Sink, listed below, wire the 1st and 2nd Signal Sources to separate inputs on the QT GUI Time Sink.
-- All ports are be for floating point numbers, i.e., the type "float", which will be orange in color.
+- In addition to the wiring shown above --- After updating the parameters for QT GUI Time Sink, listed below, wire the 1st and 2nd Signal Sources to separate inputs on the QT GUI Time Sink.
+- All ports should be floating point numbers, i.e., the type "float", which will be orange in color.
 
 Goals:
 - Produce two signals, a.k.a. "waves" using the 1st & 2nd Signal Sources and make the frequcnecy of each wave adjustable by including two sliders to pick (adjust) the frequencies you're producing.
-- Using the  Multiply block, combine the waves (singals) together to represent a complex waveform that may be received from a piece of local equipment or from broadcast signals.
+- Using the Add block, combine the waves (signals) together to represent a complex waveform that may be received from a piece of local equipment or from broadcast signals.
 - Plot the orignal waves and the combined waveform using the Time Sink. 
 - Using the Frequency Sink, demonstrate the ability of GNU Radio Companion to analyze the combined waveform, which means extracting (disassociating) and ploting the invidual singals waves that produced the combined waveform.
 - (Optional) Use a Variable block to assit with arranging the display blocks on the GUI operation screen.
@@ -103,5 +103,5 @@ Use the defalut values, which are shown here.
 
 ## Discussion
 
-- You may remember, to accruately represent or reproduce a signal (a wave), the Nyquist Criteria requires: sample rate >= 2 * frequency of the signal.  Otherwise, with too few samples per second, the plot or the sound produced by the data will be distorted as compared to the orignal signal. 
+- You may remember, to accurately represent or reproduce a signal (a wave), the Nyquist Criteria requires: sample rate >= 2 * frequency of the signal.  Otherwise, with too few samples per second, the plot or the sound produced by the data will be distorted as compared to the orignal signal. 
 - Try this: In one or more GUI Range selector, change the Stop value to be greater than the Nyquist Criteria allows, e.g., Stop: `samp_rate` Hz.   Then, while the program runs, adjust that frequency to be higher than the previous limit allowed.  What do you observe?
