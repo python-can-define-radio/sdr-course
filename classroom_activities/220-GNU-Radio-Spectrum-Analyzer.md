@@ -6,11 +6,13 @@ GUI Range
 GUI Range
 
 
-               
-Osmocom Source  ┬⟶  GUI sink 
-                |
-                └⟶  Band Pass Filter  ⟶  WBFM Receive  ⟶  Rational Resampler  ⟶  Audio Sink                          
-                    (Optional)           (Optional)       (Optional)             (Optional)
+            ---->  GUI sink    
+            |
+Osmocom  ---|
+Source      |
+            ---->  Band Pass   ⟶  WBFM      ⟶  Rational   ⟶  Audio 
+                   Filter         Receive      Resampler     Sink
+                   (Optional)     (Optional)   (Optional)    (Optional)          
 
 ```
 
