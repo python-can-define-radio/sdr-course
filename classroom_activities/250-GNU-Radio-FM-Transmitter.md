@@ -53,7 +53,7 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `32`
-- Ch0: BF Gain (dB): `0`
+- Ch0: BB Gain (dB): `0`
 
 ### For the Waterfall Sink:
 
