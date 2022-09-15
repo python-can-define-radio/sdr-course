@@ -10,5 +10,6 @@ Graph a Square wave from `0 seconds` to `2 seconds` that has these attributes:
 
 Graph a Sin wave with a frequency of `4 Hz` across the same time range.
 
+Now, multiply them.
 
 
