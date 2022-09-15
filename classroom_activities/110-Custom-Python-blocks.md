@@ -83,3 +83,60 @@ class blk(gr.sync_block):
             print(self.millions, "millions.", self.groups_proc, "groups", in_zero[:5], "dat")
         return len(in_zero)
 ```
+
+
+Not correct yet: an on-off block
+
+```python3
+import numpy as np
+from gnuradio import gr
+from gnuradio import analog
+from numba import njit
+
+
+@njit
+def numba_work(SAMPLES_TILL_SWITCH, current_sample_count, out_buffer):
+    print(SAMPLES_TILL_SWITCH)
+    currentPosition = 0
+    currentlyOn = False
+    for i in range(len(out_buffer)):
+        if currentlyOn:
+            out_buffer[i] = np.float32(1)
+        else:
+            out_buffer[i] = np.float32(0)
+
+        currentPosition += 1
+
+        if currentPosition == SAMPLES_TILL_SWITCH:
+            currentlyOn = not currentlyOn
+            currentPosition = 0
+        
+
+
+## A hier block is one that has other blocks inside of it
+class blk(gr.sync_block):
+
+    def __init__(self, Sample_Rate=1, period=0.5):
+
+        gr.sync_block.__init__(self, 
+                                "on_off_sig_period",
+                                in_sig=None,
+                                out_sig=[np.float32]
+                                )
+        
+        samples_per_cycle = Sample_Rate * period
+        # We switch twice per period (on, off)
+        samples_till_switch = samples_per_cycle / 2
+        assert samples_till_switch == int(samples_till_switch)
+        self.SAMPLES_TILL_SWITCH = int(samples_till_switch)
+        self.current_sample_count = 0
+
+    def work(self, input_items, output_items):
+        out_zero = output_items[0]
+        
+        numba_work(self.SAMPLES_TILL_SWITCH, self.current_sample_count, out_zero)
+        # TODO update # block_ref.current_sample_count = 
+        return len(out_zero)
+
+
+```
