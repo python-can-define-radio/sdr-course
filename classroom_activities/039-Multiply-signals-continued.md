@@ -43,7 +43,6 @@ So, copy the previous flowgraph into a new file called `square_multiplied_comple
 ```
 Signal Source --> Float to Complex -->  Multiply  -->  Throttle  -->  Time Sink
                     Signal Source  -->
-    
 ```
 
 _Note:_ The Square Signal source should be attached to the `re` port on the Float to Complex block.
@@ -64,4 +63,30 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
 
 
 ----------------------------------
+
+Now that we have the cycling on and off working, we want to hide some of those details. In most of programming, this is done by defining a function. Here, it's done using a Hier Block.
+
+_If you'd like a visual description of Hier Blocks, see [here](https://wiki.gnuradio.org/index.php/Hier_Blocks_and_Parameters)._
+
+We need a folder in our home directory called `.grc_gnuradio`. Open a terminal, and type this:
+
+```
+cd ~
+mkdir .grc_gnuradio
+```
+
+Now that we've created that directory, go back to GNU Radio.
+
+Click File, New, Hier Block.
+
+Open the "Save As" window. You may not be able to see the .grc_gnuradio directory that you created. If you can't, then press Ctrl+H to show hidden files.
+
+Name the file `hier_on_off_cycle.grc`, saved in the .grc_gnuradio directory.
+
+Flowgraph:
+```
+Signal Source --> Float to Complex -->  Multiply  -->  Pad Sink
+                       Pad Source  -->
+```
+
 
