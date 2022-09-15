@@ -31,3 +31,31 @@ Signal Source  -->
   - Number of Points: `int(samp_rate)*4`
 
 Note: When you run this file, it will take about 4 seconds before displaying any data.
+
+----------------------------------
+
+We can't transmit to the osmocom sink unless the data type is blue (complex).
+
+So, copy the previous flowgraph into a new file called `square_multiplied_complex.grc`
+
+```
+Signal Source --> Float to Complex -->  Multiply  -->  Time Sink
+                    Signal Source  -->
+    
+```
+
+_Note:_ The Square Signal source should be attached to the `re` port on the Float to Complex block.
+
+- First Signal Source:
+  - Output Type: `float`
+  - Waveform: `Square`
+  - Frequency: `1`
+- Second Signal Source:
+  - Output Type: `complex`  (**different**)
+  - Waveform: `Sine`
+  - Frequency: `20`
+- Variable samp_rate (Not shown above):
+  - Id: `samp_rate`
+  - Value: `2e6`
+- Time Sink:
+  - Number of Points: `int(samp_rate)*4`
