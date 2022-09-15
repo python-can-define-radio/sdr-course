@@ -98,7 +98,7 @@ Click File, New, Hier Block.
 
 Open the "Save As" window. You may not be able to see the .grc_gnuradio directory that you created. If you can't, then press Ctrl+H to show hidden files.
 
-Name the file `hier_on_off_cycle.grc`, saved in the .grc_gnuradio directory.
+Name the file `on_off_cycle_hier_block.grc`, saved in the .grc_gnuradio directory.
 
 Flowgraph:
 ```
@@ -110,4 +110,25 @@ Source      Complex      |
            Pad Source  --|
 ```
 
+- Signal Source:
+  - Output Type: `float`
+  - Waveform: `Square`
+  - Frequency: `1`
+- Variable samp_rate (Not shown above):
+  - Id: `samp_rate`
+  - Value: `2e6`
+- Options block (Not shown above):
+  - Title: `On Off Cycle Hier Block`
+
+<details><summary>Advanced note:</summary>
+<p>
+  
+------
+  
+Having the sample rate variable inside the Hier Block is bad practice, because we would prefer that the Hier Block use the sample rate from the "parent" flowgraph. If you're interested in doing it right, look at how they use parameters [here](https://wiki.gnuradio.org/index.php/Hier_Blocks_and_Parameters)._
+
+------
+  
+</p>
+</details>
 
