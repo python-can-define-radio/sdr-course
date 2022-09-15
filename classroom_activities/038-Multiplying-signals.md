@@ -13,3 +13,44 @@ Graph a Sin wave with a frequency of `4 Hz` across the same time range.
 Now, multiply them.
 
 
+------------------------
+
+After doing that on paper, implement in GNU Radio:
+
+`square_wave_separate.grc`
+
+```
+Signal Source  -->  Time Sink
+
+Signal Source  -->  Time Sink
+```
+
+- First Signal Source:
+  - Waveform: `Square`
+  - Frequency: `1`
+- Second Signal Source:
+  - Waveform: `Sine`
+  - Frequency: `4`
+- Variable samp_rate (Not shown above):
+  - Id: `samp_rate`
+  - Value: `100`
+
+-----------------------
+
+Now that we've seen the separate waves, let's multiply them:
+
+`square_multiplied.grc`
+```
+Signal Source  -->  Multiply  -->  Time Sink
+Signal Source  -->  
+```
+
+- First Signal Source:
+  - Waveform: `Square`
+  - Frequency: `1`
+- Second Signal Source:
+  - Waveform: `Sine`
+  - Frequency: `4`
+- Variable samp_rate (Not shown above):
+  - Id: `samp_rate`
+  - Value: `100`
