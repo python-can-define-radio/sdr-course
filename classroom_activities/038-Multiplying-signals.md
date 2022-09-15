@@ -26,9 +26,11 @@ Signal Source  -->  Time Sink
 ```
 
 - First Signal Source:
+  - Output Type: `float`
   - Waveform: `Square`
   - Frequency: `1`
 - Second Signal Source:
+  - Output Type: `float`
   - Waveform: `Sine`
   - Frequency: `4`
 - Variable samp_rate (Not shown above):
@@ -46,9 +48,11 @@ Signal Source  -->
 ```
 
 - First Signal Source:
+  - Output Type: `float`
   - Waveform: `Square`
   - Frequency: `1`
 - Second Signal Source:
+  - Output Type: `float`
   - Waveform: `Sine`
   - Frequency: `4`
 - Variable samp_rate (Not shown above):
