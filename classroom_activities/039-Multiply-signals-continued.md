@@ -54,8 +54,12 @@ We can't transmit to the osmocom sink unless the data type is blue (complex).
 So, copy the previous flowgraph into a new file called `square_multiplied_complex.grc`
 
 ```
-Signal Source --> Float to Complex -->  Multiply  -->  Throttle  -->  Time Sink
-                    Signal Source  -->
+Signal  --> Float to  ---|
+Source      Complex      |
+                         -->  Multiply  -->  Throttle  -->  Time Sink 
+                         -->
+                         |
+        Signal Source  --|                    
 ```
 
 _Note:_ The Square Signal source should be attached to the `re` port on the Float to Complex block.
@@ -98,8 +102,12 @@ Name the file `hier_on_off_cycle.grc`, saved in the .grc_gnuradio directory.
 
 Flowgraph:
 ```
-Signal Source --> Float to Complex -->  Multiply  -->  Pad Sink
-                       Pad Source  -->
+Signal  --> Float to  ---|
+Source      Complex      |
+                         -->  Multiply  -->  Pad Sink 
+                         -->
+                         |
+           Pad Source  --|
 ```
 
 
