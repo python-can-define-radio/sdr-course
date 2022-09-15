@@ -82,7 +82,7 @@ Use the defalut values, which are shown here.
 - Name: `"Frequency Spectrum from the Added Waves"`
 - Spectrum Width: `Half`
 - Y min = `-90` (Note the negative.  This setting crops the lower portion of the data to hide the "noise" in the frequencies)
-- Y min = `10`  (10 = The default)
+- Y max = `10`  (10 = The default)
 - GUI Hint: `(5,0,2,GUI_width)`  (OPTIONAL. This sets the position on the GUI screen, @ row 5, col. 0, width or span. If row 3 or 4 does not exist, the block will fill a position higher than row 5.)
 
 ### For the Time Sink:
