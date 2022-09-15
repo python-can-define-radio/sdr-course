@@ -4,6 +4,7 @@ Graph a Square wave from `0 seconds` to `2 seconds` that has these attributes:
 
 - When the wave is high, it is `1`.
 - When the wave is low, it is `0`.
+- Starts low.
 - One full cycle (the **period**) is `1 seconds`.
 - Question: What is the frequency?
 
