@@ -2,9 +2,22 @@ _Prerequisite: `038-Multiplying-signals.md`_
 
 We want to be able to transmit the generated on-off signal to the Hack RF.
 
-To do so, we need to adjust the sample rate, because the Hack RF requires at least 2 million samples per second.
+To do so, we need a higher sample rate than in `038-Multiplying-signals`, because the Hack RF requires at least 2 million samples per second.
 
-We also adjust the number of points displayed in the time sink so that we can still see what is happening. (The default value of `1024` points would show a relatively small chunk of time, since `2000000` points is a single second.)
+We also adjust the number of points displayed in the Time Sink so that we can still see what is happening.
+<details><summary>Details if you're curious:</summary>
+<p>
+  
+------
+  
+Before, we used the default value of `1024` points. That worked when the sample rate was 100 Hz, because `1000` points would be 10 seconds, so `1024` points is a little more than 10 seconds. Now that the sample rate is 2000000, we want to see a larger chunk of time, because 1024 is only about a thousandth of 2000000.
+  
+------
+  
+</p>
+</details>
+
+
 
 Lastly, we add a throttle. This keeps the program from maxing out the CPU.
 
