@@ -47,10 +47,14 @@ Signal Source --┘
   - Id: `samp_rate`
   - Value: `2e6`
 - Time Sink:
-  - Number of Points: `int(samp_rate)*4`
+  - Number of Points: `int(samp_rate) * 4`
   - Update Period: `15`
 
 Note: When you run this file, it will take about 5 seconds before displaying any data.
+
+Question:
+
+- If the number of points is 4 times the sample rate, then how many seconds of data will be displayed?
 
 ----------------------------------
 
