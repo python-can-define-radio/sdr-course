@@ -52,7 +52,7 @@ Signal Source --┘
 
 _Notes:_
 
-- _You'll also need to change the input and output port colors of the blocks to orange._
+- _For each block, change the input and output port colors to orange._
 - _When you run this file, it will take about 5 seconds before displaying any data._
 
 Question:
