@@ -55,11 +55,21 @@ _Notes:_
 - _For each block, change the input and output port colors to orange._
 - _After pressing play, there will be about 5 seconds before any data is displayed._
 
-Question:
+<details><summary>Challenge Question (optional):</summary>
+<p>
 
-- If the number of points is 4 times the sample rate, then how many seconds of data will be displayed?
+- How many seconds of data will be displayed in the Time Sink? 
+  - _Hint: Every second, 2 million data points flow into the Time Sink._  
+    _How many seconds does it take for 8 million data points to arrive?_
+
+</p>
+</details>
+
+Run this to ensure that it works.
 
 ----------------------------------
+
+## Fixing the types
 
 We can't transmit to the osmocom sink unless the data type is blue (complex).
 
