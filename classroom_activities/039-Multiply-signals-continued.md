@@ -26,9 +26,13 @@ The sine wave's frequency is arbitrary. Feel free to adjust it.
 ----------------------------------
 
 Make a new file: `square_multiplied_2.grc`
+
 ```
-Signal Source  -->  Multiply  -->  Throttle  -->  Time Sink
-Signal Source  -->  
+Signal Source --┐ 
+                └->   
+                     Multiply  -->  Throttle  -->  Time Sink
+                ┌->
+Signal Source --┘  
 ```
 
 - First Signal Source:
