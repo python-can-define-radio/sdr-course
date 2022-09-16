@@ -42,7 +42,7 @@ Parameters:
 - Float to Complex:
   - _Ensure you have the `re` port connected, not the `im` port._
 - Rational Resampler:
-  - Interpolation: `int(samp_rate/10)`
+  - Interpolation: `int(samp_rate / 10)`
   - Decimation: `500`
 - Osmocom Sink:
   - Sample Rate: `samp_rate`
