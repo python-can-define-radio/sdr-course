@@ -19,6 +19,11 @@ Signal Source  --->  osmocom Sink
                --->  Frequency Sink
 ```
 
+_Note: the following block names are abbreviated:_
+- _Time Sink: QT GUI Time Sink_
+- _Waterfall Sink: QT GUI Waterfall Sink_
+- _Frequency Sink: QT GUI Frequency Sink_
+
 ### Parameters:
 
 - First GUI Range:
