@@ -43,7 +43,7 @@ Signal Source --┘
   - Output Type: `float`
   - Waveform: `Sine`
   - Frequency: `20`
-- Variable (Already in the flowgraph):
+- Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
 - Time Sink:
