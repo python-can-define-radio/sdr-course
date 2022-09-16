@@ -53,7 +53,7 @@ Signal Source --┘
 _Notes:_
 
 - _For each block, change the input and output port colors to orange._
-- _When you run this file, it will take about 5 seconds before displaying any data._
+- _After pressing play, there will be about 5 seconds before any data is displayed._
 
 Question:
 
