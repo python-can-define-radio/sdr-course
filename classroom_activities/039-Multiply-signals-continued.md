@@ -43,7 +43,7 @@ Signal Source --┘
   - Output Type: `float`
   - Waveform: `Sine`
   - Frequency: `20`
-- Variable samp_rate (Not shown above):
+- Variable samp_rate (Already provided by GNU Radio):
   - Id: `samp_rate`
   - Value: `2e6`
 - Time Sink:
