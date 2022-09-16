@@ -50,9 +50,10 @@ Signal Source --┘
   - Number of Points: `int(samp_rate) * 4`
   - Update Period: `15`
 
-You'll also need to change the types (colors) of the blocks to orange (float).
+_Notes:_
 
-Note: When you run this file, it will take about 5 seconds before displaying any data.
+- _You'll also need to change the input and output port colors of the blocks to orange._
+- _When you run this file, it will take about 5 seconds before displaying any data._
 
 Question:
 
