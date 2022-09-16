@@ -30,7 +30,8 @@ File Source  -->  Unpack K Bits  -->  Repeat  -->  (Continued below)
 
 Parameters:
 
-- Variable `samp_rate` (not shown above):
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
   - Value: `2e6`
 - File Source:
   - File: _Pick the `myfile.txt` that you created. Don't just type `myfile.txt`. Also, don't pick a `.py` file or a `.grc` file._
@@ -70,7 +71,8 @@ Osmocom Source  -->  Band Pass Filter  -->  Complex to Mag  -->  Moving Average 
                                                -->  Time Sink
 ```
 
-- Variable `samp_rate` (not shown above):
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
   - Value: `2e6`
 - Osmocom Source:
   - Ch0: Frequency (Hz): _Tune to 250 kHz below your transmit freq._

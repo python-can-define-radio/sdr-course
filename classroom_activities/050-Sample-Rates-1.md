@@ -20,7 +20,8 @@ Signal Source  --->  Throttle  --->  Time Sink
   - Start: `1`
   - Stop: `5`
   - Step: `1`
-- Variable `samp_rate` (Not pictured above):
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
   - Value: `30`
 - Signal Source:
   - Output Type: `float`

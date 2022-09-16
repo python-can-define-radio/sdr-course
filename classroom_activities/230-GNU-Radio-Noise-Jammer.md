@@ -55,7 +55,7 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
 
 - Leave all as defaults.
 
-### For the `samp_rate` variable (Not pictured above):
+### For the `samp_rate` variable (_already in the flowgraph_):
 
 - Value: `2e6`
 

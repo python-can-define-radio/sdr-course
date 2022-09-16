@@ -94,7 +94,7 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Output Type: `complex`  (**different**)
   - Waveform: `Sine`
   - Frequency: `20`
-- Variable samp_rate (Not shown above):
+- Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
 - Time Sink:
@@ -144,8 +144,8 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Sample Rate: `samp_rate`
   - Waveform: `Square`
   - Frequency: `frequency`
-- Variable samp_rate (Not shown above):
-  - Delete this block. It is automatically created, but in this case, we want to make a Parameter instead.
+- Variable (_already in the flowgraph_) with id `samp_rate`:
+  - Delete this block. It is automatically created, but in this case, we do not want it.
 - First Parameter:
   - Id: `samp_rate`
   - Label: `Sample Rate`
@@ -178,7 +178,7 @@ Signal Source  -->  On Off Cycle Hier Block  -->  Throttle  -->  Time Sink
   - Output Type: `complex`
   - Waveform: `Sine`
   - Frequency: `20`
-- Variable samp_rate (Not shown above):
+- Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
 - On Off Cycle Hier Block:

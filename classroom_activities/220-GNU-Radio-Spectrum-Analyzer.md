@@ -43,7 +43,7 @@ Source      |
 - Stop: `500e6`
 - Step: `10e3`
 
-### For the `samp_rate` variable (Not pictured above):
+### For the `samp_rate` variable (_already in the flowgraph_):
 
 - Value: `10e6`
 

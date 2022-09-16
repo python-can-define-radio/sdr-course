@@ -19,7 +19,7 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 
 ## How to set the Parameters
 
-### For the `samp_rate` variable (Not pictured above):
+### For the `samp_rate` variable (_already in the flowgraph_):
 
 - Value: `2e6`
 

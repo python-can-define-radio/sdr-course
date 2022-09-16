@@ -28,7 +28,7 @@ Constant Source  ⟶  Osmocom sink
 - Output Type: `Complex`
 - Constant: `1`
 
-### For the `samp_rate` variable (Not pictured above):
+### For the `samp_rate` variable (_already in the flowgraph_):
 
 - Value: `2e6`
 

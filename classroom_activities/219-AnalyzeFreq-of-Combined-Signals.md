@@ -31,10 +31,10 @@ Goals:
 ## How to set the Parameters
 Enter the values shown in the bubbles below.  Do not enter the units, e.g., "Hz".  For any parameter not listed, the pre-programmed default value may be used.
 
-### For the `samp_rate` variable (Not pictured above):
+### For the `samp_rate` variable (_already in the flowgraph_):
 
 - Value: `20e3` = 20,000 Hz  
-Later, try varying this sampling rate and watch the maximum x-value on the GUI Frequency Sink graph.  You will need to stop and restart the GUI.  What is the relationship is between the samp_rate parameter an the max. x-value?  Why did the programers established that relationship?
+Later, try varying this sampling rate and watch the maximum x-value on the GUI Frequency Sink graph.  You will need to stop and restart the GUI.  What is the relationship is between the samp_rate parameter an the max. x-value?  Why did the programmers establish that relationship?
 
 ### For the First GUI Range selector:
 

@@ -44,7 +44,8 @@ _Note: the following block names are abbreviated:_
   - Start: `0`
   - Stop: `32`
   - Step: `1`
-- Variable `samp_rate` (Not pictured above):
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
   - Value: `2e6`
 - Signal Source:
   - Frequency: `sigfreq`
@@ -77,7 +78,8 @@ osmocom Source  --->  Time Sink
 
 ### Parameters:
 
-- Variable `samp_rate` (Not pictured above):
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
   - Value: `2e6`
 - osmocom Source:
   - Ch0: Frequency (Hz): `2.4e9`
