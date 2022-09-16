@@ -10,18 +10,18 @@ We also adjust the number of points displayed in the Time Sink so that we can st
   
 ------
   
-Before, we used the default value of `1024` points. That worked when the sample rate was 100 Hz, because `1000` points would be 10 seconds, so `1024` points is a little more than 10 seconds. Now that the sample rate is 2000000, we want to see a larger chunk of time, because 1024 is only about a thousandth of 2000000.
-  
+Before, we used the default value of `1024` points. That worked when the sample rate was 100 Hz, because `1000` points would be 10 seconds, so `1024` points is a little more than 10 seconds. Now that the sample rate is 2000000, we want to see a larger chunk of time, because 1024 is less than a thousandth of 2000000.
+
 ------
   
 </p>
 </details>
 
+We also adjust the Update Period so that the Time Sink only updates every 15 seconds. This number is arbitrary, but it helps avoid maxing out the CPU.
 
+Lastly, we add a throttle. This is another safeguard to avoid maxing out the CPU.
 
-Lastly, we add a throttle. This keeps the program from maxing out the CPU.
-
-Note: The sine wave's frequency is arbitrary. Feel free to adjust it.
+The sine wave's frequency is arbitrary. Feel free to adjust it.
 
 ----------------------------------
 
@@ -44,8 +44,9 @@ Signal Source  -->
   - Value: `2e6`
 - Time Sink:
   - Number of Points: `int(samp_rate)*4`
+  - Update Period: `15`
 
-Note: When you run this file, it will take about 4 seconds before displaying any data.
+Note: When you run this file, it will take about 5 seconds before displaying any data.
 
 ----------------------------------
 
@@ -77,13 +78,13 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Value: `2e6`
 - Time Sink:
   - Number of Points: `int(samp_rate)*4`
-
+  - Update Period: `15`
 
 ----------------------------------
 
 Now that we have the cycling on and off working, we want to hide some of those details. In most of programming, this is done by defining a function. Here, it's done using a Hier Block.
 
-_If you'd like a visual description of Hier Blocks, see [here](https://wiki.gnuradio.org/index.php/Hier_Blocks_and_Parameters)._
+_If you'd like a visual description of how to work with Hier Blocks, see [here](https://wiki.gnuradio.org/index.php/Hier_Blocks_and_Parameters)._
 
 We need a folder in our home directory called `.grc_gnuradio`. Open a terminal, and type this:
 
@@ -96,12 +97,17 @@ Now that we've created that directory, go back to GNU Radio.
 
 Click File, New, Hier Block.
 
-Open the "Save As" window. You may not be able to see the .grc_gnuradio directory that you created. If you can't, then press Ctrl+H to show hidden files.
+Open the "Save As" window. In that window, you may not be able to see the .grc_gnuradio directory that you created. If you can't, then press Ctrl+H to show hidden files.
 
-Name the file `on_off_cycle_hier_block.grc`, saved in the .grc_gnuradio directory.
+Name the file `on_off_cycle_hier_block.grc`, and save it in the .grc_gnuradio directory.
 
 Flowgraph:
 ```
+Parameter
+
+Parameter
+
+
 Signal  --> Float to  ---|
 Source      Complex      |
                          -->  Multiply  -->  Pad Sink 
@@ -110,25 +116,63 @@ Source      Complex      |
            Pad Source  --|
 ```
 
+_Note:_ The Square Signal source should be attached to the `re` port on the Float to Complex block.
+
 - Signal Source:
   - Output Type: `float`
+  - Sample Rate: `samp_rate`
   - Waveform: `Square`
-  - Frequency: `1`
+  - Frequency: `frequency`
 - Variable samp_rate (Not shown above):
+  - Delete this block. It is automatically created, but in this case, we want to make a Parameter instead.
+- First Parameter:
   - Id: `samp_rate`
-  - Value: `2e6`
+  - Label: `Sample Rate`
+  - Type: `Float`
+- Second Parameter:
+  - Id: `frequency`
+  - Label: `Frequency`
+  - Type: `Float`
 - Options block (Not shown above):
   - Title: `On Off Cycle Hier Block`
 
-<details><summary>Advanced note:</summary>
-<p>
-  
-------
-  
-Having the sample rate variable inside the Hier Block is bad practice, because we would prefer that the Hier Block use the sample rate from the "parent" flowgraph. If you're interested in doing it right, look at how they use parameters [here](https://wiki.gnuradio.org/index.php/Hier_Blocks_and_Parameters)._
 
-------
-  
-</p>
-</details>
+Now, save that file, and press the "Generate" button (right next to run). 
 
+Congratulations, you've built your first block! Let's use it in a flowgraph.
+
+---------------------------------
+
+Make a new file called `square_multiplied_complex_2.grc`.
+
+Use Ctrl+F to search for "On Off". You should see the block you created. If you don't, then press the "Reload Blocks" button on the toolbar. (It looks like a "Refresh" button). Then, search again.
+
+Create this flowgraph:
+
+```
+Signal Source  -->  On Off Cycle Hier Block  -->  Throttle  -->  Time Sink 
+```
+
+- Signal Source:
+  - Output Type: `complex`
+  - Waveform: `Sine`
+  - Frequency: `20`
+- Variable samp_rate (Not shown above):
+  - Id: `samp_rate`
+  - Value: `2e6`
+- On Off Cycle Hier Block:
+  - Frequency: `1`
+  - Sample Rate: `samp_rate`
+- Time Sink:
+  - Number of Points: `int(samp_rate)*4`
+  - Update Period: `15`
+
+
+Run that. It should display a wave that pulses on and off, just like the file `square_multiplied_complex.grc` that we created above. The advantage is that we have now hidden the details of the on-off pulsing so that we can focus on the big picture.
+
+In the next activity, we'll connect this to the Hack RF.
+
+Optional Exercises:
+
+- Make the frequency of the Signal Source slidable. 
+- Make the frequency of the On Off Cycle Hier Block slidable.
