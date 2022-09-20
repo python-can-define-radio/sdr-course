@@ -121,9 +121,7 @@ mkdir .grc_gnuradio
 
 ### Creating the Hier block
 
-Now that we've created that directory, go back to GNU Radio.
-
-Click File, New, Hier Block.
+Now that we've created that directory, go back to GNU Radio, and open a new file.
 
 Open the "Save As" window. In that window, you may not be able to see the .grc_gnuradio directory that you created. If you can't see it, then press Ctrl+H to show hidden files.
 
@@ -164,6 +162,7 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Type: `Float`
 - Options block (Not shown above):
   - Title: `On Off Cycle Hier Block`
+  - Generate Options: `Hier Block`
 
 
 Now, save that file, and press the "Generate" button (right next to run).
