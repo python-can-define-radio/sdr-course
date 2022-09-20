@@ -32,7 +32,7 @@ File Source  ⟶  Osmocom Sink
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): Will depend a lot on your situation. Look up the valid numbers for your device, and try to adjust so that the signal you're recording is approximately -0.6 to 0.6 on the Time Sink.
-- Ch0: BF Gain (dB): See note on IF Gain.
+- Ch0: BB Gain (dB): See note on IF Gain.
 
 ### For the File Sink:
 
