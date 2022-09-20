@@ -166,11 +166,13 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Title: `On Off Cycle Hier Block`
 
 
-Now, save that file, and press the "Generate" button (right next to run). 
+Now, save that file, and press the "Generate" button (right next to run).
 
-Congratulations, you've built your first block!
+Generate won't show any messages or evidence of success. To see it work, move on to the next section.
 
 ### Using your custom-built hier block
+
+Congratulations, you've built your first block! Now we're going to use it.
 
 Make a new file called `square_multiplied_complex_2.grc`.
 
