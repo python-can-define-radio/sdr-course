@@ -24,4 +24,4 @@ When doing a pure simulation, GNU radio will run the blocks as quickly as possib
 </details>
 
 
-_Not finished; more coming soon_
+Ask a classmate to receive this signal and see what it looks like.
