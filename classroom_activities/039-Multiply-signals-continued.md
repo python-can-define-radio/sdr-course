@@ -92,10 +92,15 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Output Type: `complex`  (**different from before**)
   - Waveform: `Sine`
   - Frequency: `20`
+- Multiply:
+  - IO Type: `complex`
+- Throttle:
+  - IO Type: `complex`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
 - Time Sink:
+  - Type: `complex`
   - Number of Points: `int(samp_rate * 4)`
   - Update Period: `15`
 
