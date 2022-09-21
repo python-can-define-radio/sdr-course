@@ -23,5 +23,20 @@ When doing a pure simulation, GNU radio will run the blocks as quickly as possib
 </p>
 </details>
 
+Parameters:
+
+- Signal Source:
+  - Output Type: `complex`
+  - Waveform: `Sine`
+  - Frequency: `20`
+- On Off Cycle Hier Block:
+  - Frequency: `1`
+  - Sample Rate: `samp_rate`
+- Osmocom Sink:
+  - Ch0: Frequency (Hz): `2.4e9`
+  - Ch0: Frequency Correction (ppm): `0`
+  - Ch0: RF Gain (dB): `0`
+  - Ch0: IF Gain (dB): `ifgain`
+  - Ch0: BB Gain (dB): `0`
 
 Ask a classmate to receive this signal and see what it looks like.
