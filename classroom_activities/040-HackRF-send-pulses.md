@@ -39,7 +39,7 @@ Parameters:
   - Ch0: Frequency (Hz): `2.4e9`
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
-  - Ch0: IF Gain (dB): `ifgain`
+  - Ch0: IF Gain (dB): `35`
   - Ch0: BB Gain (dB): `0`
 
 Ask a classmate to receive this signal and see what it looks like.
