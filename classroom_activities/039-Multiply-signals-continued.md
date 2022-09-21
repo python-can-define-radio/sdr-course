@@ -160,7 +160,7 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Sample Rate: `samp_rate`
   - Waveform: `Square`
   - Frequency: `frequency`
-- Options block (Not shown above):
+- Options block (_already in the flowgraph_):
   - Title: `On Off Cycle Hier Block`
   - Generate Options: `Hier Block`
 
