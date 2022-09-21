@@ -145,11 +145,6 @@ Source      Complex      |
 
 _Note:_ The Square Signal source should be attached to the `re` port on the Float to Complex block.
 
-- Signal Source:
-  - Output Type: `float`
-  - Sample Rate: `samp_rate`
-  - Waveform: `Square`
-  - Frequency: `frequency`
 - Variable (_already in the flowgraph_) with id `samp_rate`:
   - Delete this block. It is automatically created, but in this case, we do not want it.
 - First Parameter:
@@ -160,6 +155,11 @@ _Note:_ The Square Signal source should be attached to the `re` port on the Floa
   - Id: `frequency`
   - Label: `Frequency`
   - Type: `Float`
+- Signal Source:
+  - Output Type: `float`
+  - Sample Rate: `samp_rate`
+  - Waveform: `Square`
+  - Frequency: `frequency`
 - Options block (Not shown above):
   - Title: `On Off Cycle Hier Block`
   - Generate Options: `Hier Block`
