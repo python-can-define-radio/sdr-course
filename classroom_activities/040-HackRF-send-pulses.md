@@ -25,6 +25,9 @@ When doing a pure simulation, GNU radio will run the blocks as quickly as possib
 
 Parameters:
 
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `2e6`
 - Signal Source:
   - Output Type: `complex`
   - Waveform: `Sine`
