@@ -1,4 +1,4 @@
-Record:
+## Record:
 
 `record-rc-car.grc`
 
@@ -29,7 +29,8 @@ File sink:
 
 
 
-Replay:
+## Replay:
+
 `record-rc-car.grc`
 
 ```
