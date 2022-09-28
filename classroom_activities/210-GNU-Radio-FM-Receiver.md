@@ -29,14 +29,14 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Id: `favorite_stations`
 - Type: `Float`
 - Num Options: `4`
-- Option 0: `100.3e6`
-- Label 0: `First radio station (may be real)`
+- Option 0: `100.3e6`  (_Replace these with actual stations_)
+- Label 0: `Popular country rock jazz`  
 - Option 1: `99.7e6`
-- Label 1: `Second radio station (may be real)`
-- Option 2: (Leave this unchanged till you get the rest of the radio working, then fill it in after you've located some stations.)
-- Label 2: (Same)
-- Option 3: (Same)
-- Label 3: (Same)
+- Label 1: `Baroque heavy metal`
+- Option 2: `99.9e6`
+- Label 2: `Noisy noise`
+- Option 3: `88.7e6`
+- Label 3: `Some other creative station name`
 
 
 ### For the First GUI Range:
