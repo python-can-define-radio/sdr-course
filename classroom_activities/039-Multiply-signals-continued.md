@@ -125,45 +125,45 @@ Now that we've created that directory, go back to GNU Radio, and open a new file
 
 Open the "Save As" window. In that window, you may not be able to see the .grc_gnuradio directory that you created. If you can't see it, then press Ctrl+H to show hidden files.
 
-Name the file `on_off_cycle_hier_block.grc`, and save it in the .grc_gnuradio directory.
+Name the file `mix_sine_wave_hier_block.grc`, and save it in the .grc_gnuradio directory.
 
 Flowgraph:
 ```
 Parameter
 
-Parameter
-
-
-Signal  --> Float to  ---┐
+Pad     --> Float to  ---┐
 Source      Complex      |
                          └->
                               Multiply  -->  Pad Sink 
                          ┌->
                          |
-           Pad Source  --┘
+               Signal  --┘
+               Source
 ```
 
-_Note:_ The Square Signal source should be attached to the `re` port on the Float to Complex block.
+_Notes:_
+
+- The Pad Source should be attached to the `re` port on the Float to Complex block.
+- The `im` port on Float to Complex should not be connected.
+
+Parameters:
 
 - Variable (_already in the flowgraph_) with id `samp_rate`:
   - Delete this block. It is automatically created, but in this case, we do not want it.
-- First Parameter:
+- Parameter:
   - Id: `samp_rate`
   - Label: `Sample Rate`
   - Type: `Float`
-- Second Parameter:
-  - Id: `frequency`
-  - Label: `Frequency`
-  - Type: `Float`
+- Pad Source:
+  - Output type: `Float`
 - Signal Source:
-  - Output Type: `float`
+  - Output Type: `complex`
   - Sample Rate: `samp_rate`
-  - Waveform: `Square`
-  - Frequency: `frequency`
+  - Waveform: `Sine`
+  - Frequency: `20`
 - Options block (_already in the flowgraph_):
-  - Title: `On Off Cycle Hier Block`
+  - Title: `Mix Sine Wave Hier Block`
   - Generate Options: `Hier Block`
-
 
 Now, save that file, and press the "Generate" button (right next to run).
 
@@ -173,30 +173,28 @@ Generate won't show any messages or evidence of success. To see it work, move on
 
 Congratulations, you've built your first block! Now we're going to use it.
 
-Make a new file called `square_multiplied_complex_2.grc`.
+Make a new file called `square_cycle.grc`.
 
-Use Ctrl+F to search for "On Off". You should see the block you created. If you don't, then press the "Reload Blocks" button on the toolbar. (It looks like a "Refresh" button). Then, search again.
+Use Ctrl+F to search for "Mix Sine". You will NOT see the block you created. You need to press the "Reload Blocks" button on the toolbar. (It looks like a "Refresh" button). Then, search again.
 
 Create this flowgraph:
 
 ```
-Signal Source  -->  On Off Cycle Hier Block  -->  Throttle  -->  Time Sink 
+Signal Source  -->  Mix Sine Wave Hier Block  -->  Throttle  -->  Time Sink 
 ```
 
 - Signal Source:
-  - Output Type: `complex`
-  - Waveform: `Sine`
-  - Frequency: `20`
+  - Output Type: `float`
+  - Waveform: `Square`
+  - Frequency: `1`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
-- On Off Cycle Hier Block:
-  - Frequency: `1`
+- Mix Sine Wave Hier Block:
   - Sample Rate: `samp_rate`
 - Time Sink:
   - Number of Points: `int(samp_rate * 4)`
   - Update Period: `15`
-
 
 Run that. It should display a wave that pulses on and off, just like the file `square_multiplied_complex.grc` that we created above. The advantage is that we have now hidden the details of the on-off pulsing so that we can focus on the big picture.
 
