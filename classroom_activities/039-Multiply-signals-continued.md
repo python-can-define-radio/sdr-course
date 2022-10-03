@@ -14,7 +14,7 @@ So, copy the previous flowgraph into a new file called `square_multiplied_comple
 Signal  --> Float to  ---┐
 Source      Complex      |
                          └->  
-                              Multiply  -->  Throttle  -->  Time Sink 
+                              Multiply  -->   Time Sink 
                          ┌->
                          |
         Signal Source  --┘                    
@@ -39,8 +39,6 @@ Parameters:
   - Waveform: `Sine`
   - Frequency: `4`
 - Multiply:
-  - IO Type: `complex`
-- Throttle:
   - IO Type: `complex`
 
 ## Hiding the details
@@ -99,7 +97,7 @@ Parameters:
   - Output Type: `complex`
   - Sample Rate: `samp_rate`
   - Waveform: `Sine`
-  - Frequency: `20`
+  - Frequency: `4`
 - Options block (_already in the flowgraph_):
   - Title: `Mix Sine Wave Hier Block`
   - Generate Options: `Hier Block`
@@ -119,7 +117,7 @@ Use Ctrl+F to search for "Mix Sine". You will NOT see the block you created. You
 Create this flowgraph:
 
 ```
-Signal Source  -->  Mix Sine Wave Hier Block  -->  Throttle  -->  Time Sink 
+Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink 
 ```
 
 - Signal Source:
@@ -128,18 +126,16 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Throttle  -->  Time Sink
   - Frequency: `1`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
-  - Value: `2e6`
+  - Value: `100`
 - Mix Sine Wave Hier Block:
   - Sample Rate: `samp_rate`
-- Time Sink:
-  - Number of Points: `int(samp_rate * 4)`
-  - Update Period: `15`
+
 
 Run that. It should display a wave that pulses on and off, just like the file `square_multiplied_complex.grc` that we created above. The advantage is that we have now hidden the details of the on-off pulsing so that we can focus on the big picture.
 
-In the next activity, we'll connect this to the Hack RF.
+In the next activity, we'll change the sample rate.
 
 Optional Exercises:
 
-- Make the frequency of the Signal Source slidable. 
-- Make the frequency of the On Off Cycle Hier Block slidable.
+- Make the frequency of the Signal Source slidable.
+- Experiment with the Offset of the Signal Source.
