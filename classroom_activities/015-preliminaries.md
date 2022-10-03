@@ -7,3 +7,4 @@ A few practical notes:
 - Know that the list of Common GNU Radio Error messages is in the `resources` folder.
 - Turn on "Show block Comments".
 - Discuss "Null Sink Debugging".
+- Be careful when scrolling to not scroll above the drop-down menus.
