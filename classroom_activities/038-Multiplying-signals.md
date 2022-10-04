@@ -62,4 +62,11 @@ Signal Source  -->
 
 -------------------
 
+Try some other frequencies for the Sine wave to see what they look like. For example, try `10` and `20`. 
+
+-------------------
+
 What should the Square Wave frequency be if you want the signal to turn on for two seconds, and off for two seconds? _Hint: Try `2` and `0.5`. Neither is the correct answer, but those may help you find the anwwer._
+
+-------------------
+
