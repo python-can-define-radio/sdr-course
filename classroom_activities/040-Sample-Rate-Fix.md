@@ -14,39 +14,31 @@ Now that the sample rate is 2000000, a view of 1024 points would only show us le
 
 3. We'll add a throttle. <details><summary>Details:</summary>This is another safeguard to avoid maxing out the CPU. More info [here](https://wiki.gnuradio.org/index.php/Throttle).</details>
 
-4. We'll adjust the sine wave's frequency. This is just to show what other frequencies look like. Feel free to pick a different number.
-
 ### The Flowgraph
 
-Make a new file: `square_multiplied_2.grc`
+Make a new file: `square_cycle_higher_sample_rate.grc`
 
 ```
-Signal Source --┐ 
-                └->   
-                     Multiply  -->  Throttle  -->  Time Sink
-                ┌->
-Signal Source --┘  
+Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink 
 ```
 
-- First Signal Source:
+- Signal Source:
   - Output Type: `float`
   - Waveform: `Square`
   - Frequency: `1`
-- Second Signal Source:
-  - Output Type: `float`
-  - Waveform: `Sine`
-  - Frequency: `20`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
+- Mix Sine Wave Hier Block:
+  - Sample Rate: `samp_rate`
 - Time Sink:
   - Number of Points: `int(samp_rate * 4)`
   - Update Period: `15`
 
 _Notes:_
 
-- _For each block, change the input and output port colors to orange._
-- _After pressing play, there will be about 5 seconds before any data is displayed._
+- After pressing play, there will be about 5 seconds before any data is displayed.
+- I recommend closing the window in less than 30 seconds to avoid causing the computer to freeze.
 
 <details><summary>Challenge Question (optional):</summary>
 <p>
@@ -58,4 +50,8 @@ _Notes:_
 </p>
 </details>
 
-Run this to ensure that it works.
+## Looking at less data
+
+As useful as it is to see that much data in the Time Sink, it's also quite useful to have a computer that isn't on the brink of freezing. 
+
+So, change the `Number of Points` in the Time Sink to a lower number of your choice.
