@@ -7,14 +7,18 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink
                                               -->  Osmocom Sink
 ```
 
-<details><summary> <i>Why no Throttle?</i> </summary>
+<details><summary> ℹ️ <i>Why no Throttle?</i> </summary>
 
-> You always use a Throttle if you're doing a pure simulation (as we were doing before), but you should never use a Throttle if you are working with audio hardware or SDR hardware (as we are doing now).  
->   
+> ```
+> You always use a Throttle if you're doing a pure simulation (as we were doing before),
+> but you should never use a Throttle if you are working with audio hardware or SDR hardware (as we are doing now).  
+> 
 > When working with hardware, the hardware provides the needed throttling to avoid maxing out the CPU.   
->   
-> When doing a pure simulation, GNU radio will run the blocks as quickly as possible unless it is told to slow down (hence the need for a Throttle).
-  
+> 
+> When doing a pure simulation, GNU radio will run the blocks as quickly as possible unless
+> it is told to slow down (hence the need for a Throttle).
+> ```
+
 </details>
 
 Parameters:
