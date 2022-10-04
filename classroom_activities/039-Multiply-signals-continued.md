@@ -37,9 +37,21 @@ Parameters:
 - Second Signal Source:
   - Output Type: `complex`  (**different from before**)
   - Waveform: `Sine`
-  - Frequency: `4`
+  - Frequency: `20`  (**different from before**)
 - Multiply:
   - IO Type: `complex`
+
+
+<details>
+<summary>
+  <i>Why change the Frequency?</i>
+</summary>
+  In the previous exercise, we used `4 Hz` as the frequency because it was easier to draw on paper.
+  
+  Here, we use `20 Hz` because it looks prettier in the author's opinion to have more cycles.
+  
+  Either will produce a similar result when the Hack RF transmits it. We'll discuss the details of why in a later section, but the short answer is that the difference between 4 Hz and 20 Hz is insignificant compared to the size of the carrier frequency (1 Million Hertz or higher).
+</details>
 
 ## Hiding the details
 
@@ -97,7 +109,7 @@ Parameters:
   - Output Type: `complex`
   - Sample Rate: `samp_rate`
   - Waveform: `Sine`
-  - Frequency: `4`
+  - Frequency: `20`
 - Options block (_already in the flowgraph_):
   - Title: `Mix Sine Wave Hier Block`
   - Generate Options: `Hier Block`
