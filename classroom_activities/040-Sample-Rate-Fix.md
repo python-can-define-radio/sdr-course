@@ -19,7 +19,7 @@ Now that the sample rate is 2000000, a view of 1024 points would only show us le
 Make a new file: `square_cycle_higher_sample_rate.grc`
 
 ```
-Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink 
+Signal Source  -->  Mix Sine Wave Hier Block  -->  Throttle  -->  Time Sink 
 ```
 
 - Signal Source:
