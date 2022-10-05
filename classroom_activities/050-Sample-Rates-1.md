@@ -48,10 +48,6 @@ Let's imagine that you did one sample every two hours, or 12 samples per day. It
 10 pm   57 °F
 ```
 
-### Need for speed
-
-Now, imagine <unfinished>
-
 Let's graph this in Python. For simplicity, I'm omitting the times.
 
 Filename: `temperature_graph_1.py`
@@ -91,6 +87,27 @@ Parameters:
 Notes:
 - The zeros at the end of the data in the Vector Source are unfortunately necessary because of a quirk in GNU Radio. My guess is that it requires the chunks of data to have some minimum length before moving the data to from block to block.
 - We put a sample rate of 0.5 samples per second. It should actually be 0.5 samples per hour (meaning 1 sample every two hours), but GNU Radio is quirky with low sample rates. Pretend that the x-axis label says "hours" instead of "seconds".
+
+
+# Part
+
+# Below
+
+# Will
+
+# Soon
+
+# Be
+
+# Moved
+
+# To 
+
+# A
+
+# New
+
+# File
 
 # The Flowgraph:
 
