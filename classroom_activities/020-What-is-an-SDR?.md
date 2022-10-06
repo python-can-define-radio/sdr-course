@@ -49,24 +49,27 @@ What kind of signal is carried on the string? On the wire?
 A radio is almost identical:
 
 ```
---------------        --------------                 ----------
-  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver
---------------        --------------                 ----------
+                         <Radio 1>                    <Radio 2>
+--------------        --------------                 ----------              -----------
+  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver --- Wire ------ Speaker
+--------------        --------------                 ----------              -----------
 ```
-The transmitter of a traditional radio is composed of hardware, i.e. electronics without software.
+A traditional radio transmitter (Radio 1) is composed of electronics hardware without software.
+So too, a traditional radio receiver (Radio 2) is composed of electronics hardware without software.
 
 ### Software Defined Radio (SDR)
-In and SDR the transmitter functionality is divided into hardware and software:
+In an SDR the transmitter and/or receiver functionality is divided into hardware and software:
 
 ```
---------------        --------------                 ----------
-  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver
-                        [software]
-                       +[hardware] 
---------------        --------------                 ----------
+                         <SDR 1>                      <Radio 2>
+--------------        --------------                 ------------          ----------
+  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver  --- Wire --- Speaker
+--------------          [software]                    [software]           ----------
+                       +[hardware]                   +[hardware] 
+                      --------------                 ------------
 ```
 
-The hardware and software of the transmitter may be housed in separate packaging, e.g., a computer and an SDR device, or may be housed in a single package or unit, e.g., a hand-held digital radio.
+The hardware and software of the transmitter may be housed in a single package or unit, e.g., a hand-held digital radio or a digital car radio, or may be housed in separate packaging, e.g., a computer and an SDR device.  The SDR device may be called the "transmitter," but, as stated above, some of the funcionality of transmission is allocated to a separte computing device.
 
 (Of course, in some SDR systems, the microphone may be connected to the transmitter via a wireless communication technology.)
 
