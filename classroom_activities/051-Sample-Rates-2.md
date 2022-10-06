@@ -70,5 +70,5 @@ Parameters:
 
 Run that to visualize your data. Make sure it matches the Python-generated graph.
 
-Notice the x-axis on the GNU Radio-generated graph. How much time is there between data points? 
+Notice the x-axis on the GNU Radio-generated graph. How much time is there between data points? Is it what you expected?
 
