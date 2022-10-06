@@ -74,12 +74,10 @@ The hardware and software of the software defined radio (SDR) may be housed in a
  
 * The diagram above shows two separate SDR's, one designated as the transmitter and the other as the receiver.  Either SDR may, optionally, communiate with a tranditional radio as well.  
 * Most SDR devices can be operated in both a transmission mode and reception mode.
-* Depending on its mode of operation, an SDR device may be called the "transmitter", the "reciever", or the "transciever", but, as stated above, some of the funcionality of transmission or reception is allocated to a separte computing device.
+* Depending on its mode of operation, an SDR device may be called the "transmitter", the "reciever", or the "transciever", but, as stated above, some of the functionality of transmission or reception is allocated to a separate computing device.
 * In current discussion, the term "computer" may refer to a desktop computer, a laptop computer, a tablet computer, or a mobile smart telephone, as examples.
 * Although wires are shown in the diagram, in some SDR systems, the microphone may be connected to the SDR via a wireless communication technology.
 
 </details>
 
-## For more info...
-
-See https://wiki.gnuradio.org/index.php?title=What_Is_GNU_Radio
+_Further reading: https://wiki.gnuradio.org/index.php?title=What_Is_GNU_Radio_
