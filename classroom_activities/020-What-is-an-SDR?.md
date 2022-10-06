@@ -33,9 +33,9 @@ Let's talk about the classic [string-between-two-cans](https://duckduckgo.com/?q
 Let's imagine a new, similar setup:
 
 ```
---------------                   ----------
-  Microphone -------- Wire ------  Speaker
---------------                   ----------
+--------------        -------------               -----------
+  Microphone ---Wire--- Amplifier ----- Wire ------ Speaker
+--------------        -------------               -----------
 ```
 
 What's the difference between this and the string+cans setup?
@@ -49,10 +49,27 @@ What kind of signal is carried on the string? On the wire?
 A radio is almost identical:
 
 ```
---------------                   ----------
-  Transmitter -------- Air ------  Receiver
---------------                   ----------
+--------------        --------------                 ----------
+  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver
+--------------        --------------                 ----------
 ```
+The transmitter of a traditional radio is composed of hardware, i.e. electronics without software.
+
+### Software Defined Radio (SDR)
+In and SDR the transmitter functionality is divided into hardware and software:
+
+```
+--------------        --------------                 ----------
+  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver
+                        [software]
+                       +[hardware] 
+--------------        --------------                 ----------
+```
+
+The hardware and software of the transmitter may be housed in separate packaging, e.g., a computer and an SDR device, or may be housed in a single package or unit, e.g., a hand-held digital radio.
+
+(Of course, in some SDR systems, the microphone may be connected to the transmitter via a wireless communication technology.)
+
 
 ## For more info...
 
