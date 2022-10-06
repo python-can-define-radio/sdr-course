@@ -26,7 +26,7 @@ Let's talk about the classic [string-between-two-cans](https://duckduckgo.com/?q
 2. What's waving?
 3. Is it a longitudinal wave or a transverse wave?
 
-(_discuss in small groups. For more info, [see this video](https://www.khanacademy.org/science/physics/mechanical-waves-and-sound/sound-topic/v/sound-properties-amplitude-period-frequency-wavelength)._)
+(_discuss in small groups. For more info, [see this video](https://www.khanacademy.org/science/physics/mechanical-waves-and-sound/sound-topicur personal das/v/sound-properties-amplitude-period-frequency-wavelength)._)
 
 ### Microphones
 
@@ -58,21 +58,27 @@ A traditional radio transmitter (Radio 1) is composed of electronics hardware wi
 So too, a traditional radio receiver (Radio 2) is composed of electronics hardware without software.
 
 ### Software Defined Radio (SDR)
-In an SDR the transmitter and/or receiver functionality is divided into hardware and software:
+In an SDR, the transmitter and/or receiver functionality is divided into hardware and software:
 
 ```
-                         <SDR 1>                      <Radio 2>
---------------        --------------                 ------------          ----------
+                         <SDR 1>                      <SDR 2>
+--------------        --------------                -------------          ----------
   Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver  --- Wire --- Speaker
 --------------          [software]                    [software]           ----------
                        +[hardware]                   +[hardware] 
-                      --------------                 ------------
+                      --------------                -------------
 ```
 
-The hardware and software of the transmitter may be housed in a single package or unit, e.g., a hand-held digital radio or a digital car radio, or may be housed in separate packaging, e.g., a computer and an SDR device.  The SDR device may be called the "transmitter," but, as stated above, some of the funcionality of transmission is allocated to a separte computing device.
+The hardware and software of the software defined radio (SDR) may be housed in a single package or unit, e.g., a two-way hand-held digital radio or a digital car radio receiver, or may be housed in separate packaging, e.g., a computer and an SDR device.
+<details> <summary> ℹ️ Expand for further explanation </summary>
+ 
+* The diagram above shows two separate SDR's, one designated as the transmitter and the other as the receiver.  Either SDR may, optionally, communiate with a tranditional radio as well.  
+* Most SDR devices can be operated in both a transmission mode and reception mode.
+* Depending on its mode of operation, an SDR device may be called the "transmitter", the "reciever", or the "transciever", but, as stated above, some of the funcionality of transmission or reception is allocated to a separte computing device.
+* In current discussion, the term "computer" may refer to a desktop computer, a laptop computer, a tablet computer, or a mobile smart telephone, as examples.
+* Although wires are shown in the diagram, in some SDR systems, the microphone may be connected to the SDR via a wireless communication technology.
 
-(Of course, in some SDR systems, the microphone may be connected to the transmitter via a wireless communication technology.)
-
+</details>
 
 ## For more info...
 
