@@ -27,10 +27,14 @@ We can take measurements using Python:
 import time
 
 outputFileName = "myTempReadings.txt"
+
+# If this doesn't work, try changing it to thermal_zone0, thermal_zone1, thermal_zone3, etc
+inputFileName = "/sys/class/thermal/thermal_zone2/temp"
+
 f_out = open(outputFileName, "w")
 
 while True:
-    f_temp = open("/sys/class/thermal/thermal_zone2/temp")
+    f_temp = open(inputFileName, "r")
     contents = f_temp.read().strip()
     print(contents)
     f_out.write(contents + "\n")
@@ -44,3 +48,6 @@ while True:
 > However, if you ever need a more precise sample rate for something outside of this class, you would want to use a different approach. See [here](https://stackoverflow.com/a/67930185) and [here](https://mail.python.org/pipermail/python-list/2000-November/060154.html). Fair warning that both links go fairly deeply into the topic.
 
 </details>
+
+When you run that Python file, it will start writing to a file called `myTempReadings.txt`. After a few seconds of data have been recorded, press <kbd>Ctrl C</kbd> to exit the program.
+
