@@ -30,6 +30,19 @@ Your tasks:
 4. 0.5 seconds
 5. 1 cycle
 6. 2 cycles per second, or, equivalently, 2 Hz. If the sample rate = 40 sps, then the data given is half a second. Our given wave completes one full cycle in this time, and would therefore complete two cycles in a full second.
-7. (The answer is graphical. If you're in class, ask an instructor or another student.)  
+7. There's more than one possible answer. If you're in class, ask an instructor or another student.  
+   One of many valid answers would be this:  
+   `[0.0, 4.64, 8.82, 12.14, 14.27, 15.0, 14.27, 12.14, 8.82, 4.64, 0.0, -4.64, -8.82, -12.14, -14.27, -15.0, -14.27, -12.14, -8.82, -4.64]`  
+   &nbsp;  
+   For those who are curious, that list was generated using this code:
+   ```python3
+   dat = 15*np.sin(np.linspace(0, 2 * np.pi, 20, endpoint=False))
+
+    def roundtwo(x):
+        return round(x, 2)
+    
+    datRounded = list(map(roundtwo, dat))
+    print(datRounded)
+   ```
   
 </details>
