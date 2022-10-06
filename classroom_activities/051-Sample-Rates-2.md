@@ -62,10 +62,13 @@ Parameters:
   - Id: `samp_rate`
   - Value: `5`
 - Vector Source:
-  - Vector: _your data goes here_
+  - Vector: _Your data goes here. You'll need to append some zeros at the end just as we did before._
 - Time Sink:
-  - Number of Points: _approximately 15. Depends how much data you recorded._
-  - Y min: 0
-  - Y max: 100000
+  - General Tab:
+    - Number of Points: _Approximately 15. Should be the same as the number of data points that you recorded._
+    - Y max: 100000
 
-Run that to visualize your data.
+Run that to visualize your data. Make sure it matches the Python-generated graph.
+
+Notice the x-axis on the GNU Radio-generated graph. How much time is there between data points? 
+
