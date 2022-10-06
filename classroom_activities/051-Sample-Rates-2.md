@@ -1,6 +1,6 @@
-### Need for speed
+## Need for speed
 
-Now, imagine a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this:
+In `050`, we measured every 2 hours. That works for weather, but now, imagine you're dealing with a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this:
 
 ```
 watch -n 0.2 -- cat /sys/class/thermal/thermal_zone*/temp
@@ -10,18 +10,18 @@ This means to check the temperature reading every 0.2 seconds, which is a sample
 
 The units are thousandths of a degree Celsius, so `27800` means 27.8 °C.
 
-Now, let's make the temperature go up by running a useless (but processor-intensive) Python program:
+Is 5 times per second a good measurement frequency? Let's make the temperature go up by running a useless (but processor-intensive) Python program:
 
 ```python3
 for x in range(1000000000000):
     y = x
 ```
 
-Incredibly, the temperature jumps up by about 13 °C within a fifth of a second. (At least, it did on my computer.)
+Incredibly, the temperature jumps up by about 13 °C within a fifth of a second. (At least, it did on my computer.) So, if you were setting up an automatic throttle (limit) for the processor, it would probably need to sample even more frequently than 5 samples per second (5 Hz).
 
-We can take measurements using Python:
+## Recording the data
 
-`temp_measure.py`
+We can take measurements using Python. Name this file `temp_measure.py`:
 
 ```python3
 import time
@@ -37,7 +37,7 @@ while True:
     f_temp = open(inputFileName, "r")
     contents = f_temp.read().strip()
     print(contents)
-    f_out.write(contents + "\n")
+    f_out.write(contents + ", ")
     time.sleep(0.2)
 ```
 
@@ -51,3 +51,21 @@ while True:
 
 When you run that Python file, it will start writing to a file called `myTempReadings.txt`. After a few seconds of data have been recorded, press <kbd>Ctrl C</kbd> to exit the program.
 
+## Visualizing the data
+
+Reopen your file `temperature_graph_1.py` from `050`. Replace the `temps` variable with the measured processor temperatures that are in `myTempReadings.txt`. Run that to graph the data.
+
+Also, reopen your file `temperature_graph_2.grc` from `050`. Make the following changes:
+
+Parameters:  
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `5`
+- Vector Source:
+  - Vector: _your data goes here_
+- Time Sink:
+  - Number of Points: _approximately 15. Depends how much data you recorded._
+  - Y min: 0
+  - Y max: 100000
+
+Run that to visualize your data.
