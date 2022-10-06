@@ -79,10 +79,14 @@ Parameters:
   - Vector: `[52, 50, 48, 48, 46, 58, 63, 64, 67, 66, 63, 57, 0, 0, 0]`
   - Repeat: `No`
 - Time Sink:
-  - Type: `float`
-  - Number of Points: 12
-  - Y min: 0
-  - Y max: 100
+  - General tab:
+    - Type: `float`
+    - Number of Points: `12`
+    - Y min: `0`
+    - Y max: `100`
+  - Config tab:
+    - Line 1 Style: `0`
+    - Line 1 Marker: `Circle`
 
 Notes:
 - The zeros at the end of the data in the Vector Source are unfortunately necessary because of a quirk in GNU Radio. My guess is that it requires the chunks of data to have some minimum length before moving the data to from block to block.
