@@ -1,6 +1,8 @@
-## Sample rate GNU Radio practice
+# Sample rates: GNU Radio practice
 
-Make this flowgraph:
+## Practice problem set A
+
+Make this flowgraph. Name it `messy_sine_vector_source.grc`.
 
 ```
 Vector Source  -->  Time Sink
@@ -34,3 +36,21 @@ Exercises:
 Answers:
 
 TODO
+
+## Practice problem set B
+
+Copy and modify the previous flowgraph. Save the new copy as `square_vector_source.grc`.
+
+1. Change the `Vector` in the Vector Source so that it outputs a square wave. It should look like this:
+
+```
+     •••••     •••••     •••••
+
+•••••     •••••     •••••     
+```
+
+(Since the Vector Source repeats, you only need to type the Vector for a single cycle.)
+
+2. Change the square wave so that it has a frequency of 2 Hz.
+3. For this square wave with a frequency of 2 Hz, how many seconds does it take to complete a full cycle?
+4. Given that the sample rate is 40 sps (samples per second), then how many **samples** does this 2 Hz square wave require to complete a full cycle?
