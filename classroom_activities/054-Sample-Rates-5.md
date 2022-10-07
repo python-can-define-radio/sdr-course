@@ -55,6 +55,6 @@ Hints:
 - If you're stuck, start trying random numbers until it looks square.
 
 2. Change your data points so that the square wave  has a frequency of 2 Hz.
-3. For this square wave with a frequency of 2 Hz, how many seconds does it take to complete a full cycle?
+3. For this square wave with a frequency of 2 Hz, how many seconds does it take to complete a full cycle? (The time for one full cycle is called the **period**.)
 4. The wave cycles between "high" and "low". What percent of the cycle does it spend "high"? How many seconds is that?
 5. Given that the sample rate is 40 sps (samples per second), how many **samples** does this 2 Hz square wave require to complete a full cycle?
