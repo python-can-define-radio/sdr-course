@@ -40,3 +40,5 @@ Parameters:
   - Ch0: BB Gain (dB): `0`
 
 Ask a classmate to receive this signal and see what it looks like. Once you've confirmed that you see pulsing, and that it's you (not someone else) transmitting, move to the next exercise.
+
+Note: The received frequency may vary slightly from the transmitted frequency. We'll discuss this later; stay tuned!
