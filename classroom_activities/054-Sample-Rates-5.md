@@ -49,8 +49,12 @@ Copy and modify the previous flowgraph. Save the new copy as `square_vector_sour
 •••••     •••••     •••••     
 ```
 
-(Since the Vector Source repeats, you only need to type the Vector for a single cycle.)
+Hints:
 
-2. Change the square wave so that it has a frequency of 2 Hz.
+- Since the Vector Source repeats, you only need to put a single cycle of data points in the Vector.
+- If you're stuck, start trying random numbers until it looks square.
+
+2. Change your data points so that the square wave  has a frequency of 2 Hz.
 3. For this square wave with a frequency of 2 Hz, how many seconds does it take to complete a full cycle?
-4. Given that the sample rate is 40 sps (samples per second), then how many **samples** does this 2 Hz square wave require to complete a full cycle?
+4. The wave cycles between "high" and "low". What percent of the cycle does it spend "high"? How many seconds is that?
+5. Given that the sample rate is 40 sps (samples per second), how many **samples** does this 2 Hz square wave require to complete a full cycle?
