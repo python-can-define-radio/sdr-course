@@ -36,4 +36,4 @@ Reopen the flowgraph `transmit_pure_sine.grc` from exercise `030`. Make the foll
 
 Try sliding the `sigfreq` slider to 200 thousand. You'll see that the frequency you receive is the sum of the two frequencies: `100e6 + 200e3 = 100.2e6`.
 
-Try a few different combinations of frequencies to make sure you feel solid about the concept.
+This is a fairly significant concept. Try a few different combinations of frequencies to make sure you feel comfortable with it.
