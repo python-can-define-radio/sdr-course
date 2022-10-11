@@ -67,3 +67,45 @@ Now, set the sample rate to 20. (This should only require changing the `samp_rat
    1. 1 Hz?
    2. 0.5 Hz?
    3. 2 Hz?
+
+Now, let's significantly raise the sample rate. As mentioned in `040`, there are two changes that help lower the chance of freezing the flowgraph:
+- Add a throttle
+- Increase the time between updates (the Update Period) on the Time Sink
+
+Copy and paste your previous flowgraph. Name it `repeat_demo_2.grc`. Add a throttle as shown.
+
+```
+Vector Source  -->  Repeat  -->  Throttle  -->  Time Sink
+```
+
+Parameters:  
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `1e6`
+- Vector Source:
+  - Output Type: _same as above_
+  - Vector: _same as above_
+  - Repeat: _same as above_
+- Repeat:
+  - Type: _same as above_
+  - Interpolation: `10`
+- Time Sink:
+  - General tab:
+    - Type: _same as above_
+    - Number of Points: `40`
+    - Y min: _same as above_
+    - Y max: _same as above_
+    - Update Period: `15`
+  - Config tab:
+    - Line 1 Style: _same as above_
+    - Line 1 Marker: _same as above_
+
+8. In this new flowgraph, how much time is shown in the Time sink?
+9. What is the period of the square wave? 
+10. If we want the period to be 100 microseconds, what should the Interpolation be? 
+11. Set the Interpolation to 200. What is the period? What Number of Points should you pick so you can se the entire cycle of the square wave?
+12. If we want the frequency to be 2 Hz, what should the period be? What should the Interpolation be? What should the Number of Points be?  
+
+With a significantly larger Number of Points, the window may become unresponsive. You may need to lower the Number of Points to avoid freezing. Unfortunately, as a result, you may not be able to see the entirety of the square wave.
+
+13. Why would we want to set the sample rate so high?
