@@ -8,15 +8,15 @@ You can actually do this without GNU Radio. In the terminal, type
 osmocom_siggen_nogui --const --tx-freq=100.2e6 --gain=0
 ```
 
-Ask a classmate to receive this signal to verify that it is indeed transmitting.
-
-To see the full list of options, type
+To verify that it is indeed transmitting, ask a classmate to receive this signal using the method of their choice. One way to recieve the signal is using this:
 
 ```
-man osmocom_siggen_nogui
+osmocom_fft -W
 ```
 
-This will open the manual for the osmocom signal generator. Press `q` to quit.
+You'll need to tune the receiver to near the transmitter's frequency. Make sure to tune a little bit above or below the transmit frequency due to the DC spike that is always in the center of the spectrum. (We'll discuss that more later.)
+
+ℹ️ Sidenote: To see the full list of options for either of these commands, type `man osmocom_siggen_nogui` or `man osmocom_fft`. This will open the manual. Press `q` to quit.
 
 ## In GNU Radio
 
@@ -36,4 +36,4 @@ Reopen the flowgraph `transmit_pure_sine.grc` from exercise `030`. Make the foll
 
 Try sliding the `sigfreq` slider to 200 thousand. You'll see that the frequency you receive is the sum of the two frequencies: `100e6 + 200e3 = 100.2e6`.
 
-This is a fairly significant concept. Try a few different combinations of frequencies to make sure you feel comfortable with it.
+This is a fairly significant concept. Try a few different combinations of frequencies to make sure you feel comfortable with it. Make sure that in every case, the signal is received at the expected frequency.
