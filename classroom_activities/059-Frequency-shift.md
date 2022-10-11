@@ -29,6 +29,11 @@ Two questions arise:
 
 It's tempting to set both to `100.2e6`, but that actually won't work. Let's do some experiments to see why.
 
-Reopen the flowgraph `transmit_pure_sine.grc` from exercise `030`.
+Reopen the flowgraph `transmit_pure_sine.grc` from exercise `030`. Make the following change:
 
-(unfinished)
+- osmocom Sink:
+  - Ch0: Frequency (Hz): `100e6`
+
+Try sliding the `sigfreq` slider to 200 thousand. You'll see that the frequency you receive is the sum of the two frequencies: `100e6 + 200e3 = 100.2e6`.
+
+Try a few different combinations of frequencies to make sure you feel solid about the concept.
