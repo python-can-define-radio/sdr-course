@@ -53,3 +53,5 @@ On a different device, transmit a pure sine wave at 100.2e6 using `osmocom_sigge
 Again, this is important. The frequency that is received by the computer is _far lower_ than the waves that were actually in the air. The HackRF (or any other similar device) does _downconversion_ using a _mixer_. We'll get into that more later.
 
 Your task: Practice using different transmit and receive frequency combinations to see what happens.
+
+_Note:_ Unfortunately, you may see more than one spike. Ask an instructor which one is the one you should see.
