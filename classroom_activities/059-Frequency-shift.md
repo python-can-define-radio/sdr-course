@@ -18,7 +18,7 @@ You'll need to tune the receiver to near the transmitter's frequency. Make sure 
 
 ℹ️ Sidenote: To see the full list of options for either of these commands, type `man osmocom_siggen_nogui` or `man osmocom_fft`. This will open the manual. Press `q` to quit.
 
-## In GNU Radio
+## Transmitting in GNU Radio
 
 Now, let's do this in GNU Radio. We know that we'll be sending some sort of **signal** to the Hack RF. We also know that the **osmocom Sink** is used to tell the Hack RF to transmit. So, it would make sense to do  `Signal Source  -->  osmocom Sink`.
 
@@ -36,4 +36,20 @@ Reopen the flowgraph `transmit_pure_sine.grc` from exercise `030`. Make the foll
 
 Try sliding the `sigfreq` slider to 200 thousand. You'll see that the frequency you receive is the sum of the two frequencies: `100e6 + 200e3 = 100.2e6`.
 
-This is a fairly significant concept. Try a few different combinations of frequencies to make sure you feel comfortable with it. Make sure that in every case, the signal is received at the expected frequency.
+This is a fairly important concept. Try a few different combinations of frequencies to make sure you feel comfortable with it. Make sure that in every case, the signal is received at the expected frequency.
+
+## Receiving in GNU Radio
+
+Reopen the flowgraph `receiver.grc` from exercise `030`. Make the following changes:
+
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `8e6`
+- osmocom Source:
+  - Ch0: Frequency (Hz): `100e6`
+  
+On a different device, transmit a pure sine wave at 100.2e6 using `osmocom_siggen_nogui`. At what frequency is the wave received? You'll see that it's `0.2e6`, or, equivalently, `200e3`.
+
+Again, this is important. The frequency that is received by the computer is _far lower_ than the waves that were actually in the air. The HackRF (or any other similar device) does _downconversion_ using a _mixer_. We'll get into that more later.
+
+Your task: Practice using different transmit and receive frequency combinations to see what happens.
