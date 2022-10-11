@@ -1,4 +1,4 @@
-## Transmitting a pure sine wave
+## Transmitting a pure sine wave (again)
 
 Let's say you wanted to transmit a pure frequency (that is, a pure sine wave) of `100.2 MHz`.
 
