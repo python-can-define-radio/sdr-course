@@ -21,7 +21,7 @@ f.close()
 print(contents)
 ```
 
-This works.
+This reads the file.
 
 However, we'll see later that when GNU Radio reads the file, it's going to produce numbers instead of letters. Where do the numbers come from?
 
