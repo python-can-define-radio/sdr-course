@@ -86,20 +86,21 @@ _Note: It will display 01000001 as 0b1000001. Ask an instructor if you'd like he
 
 To prepare for what we'll see in GNU Radio, let's plot some data in Python.
 
-Name this `python_plot_from_file_1.py`.
+Name this `python_plot_basic_3.py`.
 
 ```python3
 import matplotlib.pyplot as plt
 
 datapoints = [20, 30, 40, 10, 50, 60, 80]
 
-plt.plot(datapoints, "o")    #  the "o" means to use circles as markers of the points
+plt.plot(datapoints, "o")
 
 plt.show()
 ```
 
 That example doesn't read from a file. Let's make it do that:
 
+`python_plot_from_file_1.py`
 ```python3
 import matplotlib.pyplot as plt
 
@@ -108,13 +109,53 @@ contents = f.read()
 f.close()
 datapoints = list(map(int, contents))
 
-plt.plot(datapoints, "o")    #  the "o" means to use circles as markers of the points
+plt.plot(datapoints, "o")
 
 plt.show()
 ```
 
+You should see four data points (one each for the characters ABCD).
+
+Let's make the file a little bit longer. This will help when we get to the GNU Radio part.
+
+Run this to write the longer file:
+
+`create_text_file_2.py`
+```python3
+f = open("my_text_file.txt", "w")
+f.write("ABC ABC ABC ABC THERE ARE WORDS IN THIS FILE")
+f.close()
+```
+
+Then re-run your python plotting program (`python_plot_from_file_1.py` above). See if you can spot the ABC ABC ABC ABC in the plot.
+
 ### Plotting in GNU Radio
 
-We're going to do the same thing in GNU Radio, with a few changes:
+We're going to do the same thing in GNU Radio.
 
+Name this `file_source_time_sink_1.grc`
+```
+File Source  -->  UChar to Float  -->  Time Sink
+```
 
+<details><summary> :information_source: What's <kbd>UChar to Float</kbd>? (Click to expand) </summary>
+
+We want to read the File Source using the purple type, a.k.a. Integer 8. That type tells GNU Radio to interpret the file data in the way described above. However, the Time Sink expects Float data instead of Integer data, so we must convert the values using <kbd>UChar to Float</kbd>.
+
+</details>
+
+Parameters:
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `1`
+- File Source:
+  - File: _Click the "..." button, and then pick the text file that you created earlier using Python (`my_text_file.txt`)._
+  - Output Type: `byte`
+  - Repeat: `No`
+- Time Sink:
+  - Type: `Float`
+  - Number of Points: `40`
+  - Y min: `0`
+  - Y max: `100`
+
+You should see a graph that looks very similar to the one we saw in Python.
