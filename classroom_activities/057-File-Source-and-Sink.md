@@ -1,1 +1,120 @@
-Todo - make a "easy" source and sink block
+# Reading from Files
+
+We've used a Vector Source block to provide data. Now, let's try a File Source. First, we're going to build the concepts in Python.
+
+Let's create a file. Name this `create_text_file_1.py`.
+
+```python3
+f = open("my_text_file.txt", "w")
+f.write("ABCD")
+f.close()
+```
+
+When you run this, it won't display any output in the terminal; it only creates a text file. Open that text file in the editor of your choice to verify that it contains ABCD.
+
+Now, let's read the file in Python. Name this `read_text_file_basic.py`.
+
+```python3
+f = open("my_text_file.txt", "r")
+contents = f.read()
+f.close()
+print(contents)
+```
+
+This works.
+
+However, we'll see later that when GNU Radio reads the file, it's going to produce numbers instead of letters. Where do the numbers come from?
+
+## Encoding
+
+All data on a computer is stored as binary (0s and 1s). So when we asked Python to write "ABCD", behind the scenes, it converted each letter to a sequence of zeros and ones. This is called _encoding_ the data.
+
+The most common way to encode text is Unicode. Here are a few characters in Unicode:
+
+| Letter | Decimal | Hexadecimal | Binary   |
+|--------|---------|-------------|----------|
+| A      | 65      | 41          | 01000001 |
+| B      | 66      | 42          | 01000010 |
+| C      | 67      | 43          | 01000011 |
+
+<details><summary>:information_source: Note:</summary>
+  
+If you look up a [Unicode table](https://unicode-table.com/en/#0041), you'll often see the hexadecimal representation.
+
+</details>
+
+So, when we asked Python to write "ABCD", it wrote this:
+
+```
+01000001  01000010  01000011  01000100
+```
+
+<details><summary>:information_source: Note:</summary>
+  
+The spaces between binary numbers are not actually written to the file. They are there for ease of reading.
+
+</details>
+
+We usually don't see the binary because most tools that open the file will interpret the numbers as text. But we can ask Python to interpret it as numbers:
+
+Filename: `read_text_file_integers.py`
+
+```python3
+f = open("my_text_file.txt", "rb")
+contents = f.read()
+f.close()
+contents_as_numbers = list(map(int, contents))
+print(contents_as_numbers)
+```
+
+This will print the decimal representations: [65, 66, 67, 68], which corresponds to ABCD.
+
+<details><summary>:information_source: If you want to see it as binary:</summary>
+  
+We can ask Python to display the numbers as binary:
+
+```python3
+contents_as_binary = list(map(bin, contents_as_numbers))
+print(contents_as_binary)
+```
+
+_Note: It will display 01000001 as 0b1000001. Ask an instructor if you'd like help interpreting these._
+
+</details>
+
+### Plotting in Python
+
+To prepare for what we'll see in GNU Radio, let's plot some data in Python.
+
+Name this `python_plot_from_file_1.py`.
+
+```python3
+import matplotlib.pyplot as plt
+
+datapoints = [20, 30, 40, 10, 50, 60, 80]
+
+plt.plot(datapoints, "o")    #  the "o" means to use circles as markers of the points
+
+plt.show()
+```
+
+That example doesn't read from a file. Let's make it do that:
+
+```python3
+import matplotlib.pyplot as plt
+
+f = open("my_text_file.txt", "rb")
+contents = f.read()
+f.close()
+datapoints = list(map(int, contents))
+
+plt.plot(datapoints, "o")    #  the "o" means to use circles as markers of the points
+
+plt.show()
+```
+
+### Plotting in GNU Radio
+
+We're going to do the same thing in GNU Radio, with a few changes:
+
+
