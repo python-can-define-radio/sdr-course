@@ -1,3 +1,5 @@
+_Note: This exercise isn't finished. Feel free to skip for now._
+
 First, we're going to simulate receiving a perfect signal.
 
 `OOK_receive_simulation_1.grc`
@@ -52,9 +54,3 @@ Parameters:
 - Time Sink:
   - Number of Points: `2000`
   - Sample Rate: `samp_rate / N_for_keeper_block`
-
-
-Eventually:
-- `File sink` AFTER the `Keep 1 in N`
-
-Once you've tested this, change the signal Source to Osmocom source with adjustable IF and BB gains.
