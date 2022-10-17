@@ -29,5 +29,6 @@ Parameters:
     - Line 1 Style: `0`
     - Line 1 Marker: `Circle`
 
+## Transmitting to the Hack RF
 
-Challenge: Can you send these pulses to the Hack RF?
+One way to transmit this is using the `Mix Sine Wave Hier Block` that we created. Try it!
