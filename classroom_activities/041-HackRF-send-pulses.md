@@ -1,3 +1,5 @@
+## Transmitting the pulses
+
 _Prerequisites: `038`, `039`, `040`_
 
 We're going to send the pulses that we created to the Hack RF. 
@@ -39,6 +41,12 @@ Parameters:
   - Ch0: IF Gain (dB): `35`
   - Ch0: BB Gain (dB): `0`
 
-Ask a classmate to receive this signal and see what it looks like. Once you've confirmed that you see pulsing, and that it's you (not someone else) transmitting, move to the next exercise.
+## Receiving the pulses
+
+To ensure that this indeed transmits pulses, let's receive the signal. For example, you can ise the flowgraph `receiver.grc` from the second half of `030`. Remember that the Hack RF is half-duplex, so you'll need a separate Hack RF (or some other device) to receive the signal.
+
+If you have trouble finding the pulses, try setting the Ch0 Frequency to 2.4001 on either the transmitter or the receiver (but not both). We'll discuss why this offset is useful in a future lesson.
+
+Once you've confirmed that you see pulsing, and that it's you (not someone else) transmitting, move to the next exercise.
 
 Note: The received frequency may vary slightly from the transmitted frequency. We'll discuss this later; stay tuned!
