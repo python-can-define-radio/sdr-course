@@ -12,7 +12,7 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink
 <details><summary> ℹ️ <i>Why no Throttle?</i> </summary>
 
 > ```
-> You always use a Throttle if you're doing a pure simulation (as we were doing before),
+> You should usually use a Throttle if you're doing a pure simulation (as we were doing before),
 > but you should never use a Throttle if you are working with audio hardware or SDR hardware (as we are doing now).  
 > 
 > When working with hardware, the hardware provides the needed throttling to avoid maxing out the CPU.   
