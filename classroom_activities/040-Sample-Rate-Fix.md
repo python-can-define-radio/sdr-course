@@ -2,6 +2,8 @@
 
 In the previous two exercises (038 and 039), we used a sample rate of 100 samples per second for demonstration purposes. Now, we must raise it to  [the Hack RF's required minimum](https://hackrf.readthedocs.io/en/latest/hackrf_one.html): 2 million samples per second.
 
+_Note: We'll talk more about the meaning of sample rates soon, so feel free to come back to these explanations after doing the Sample Rate exercises._
+
 This necessitates a few other changes:
 
 1. We'll raise the number of points displayed in the Time Sink so that we can still see what is happening. <details><summary>Details if you're curious:</summary>
@@ -31,6 +33,7 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Throttle  -->  Time Sink
   - Value: `2e6`
 - Mix Sine Wave Hier Block:
   - Sample Rate: `samp_rate`
+  - Frequency: `20`
 - Time Sink:
   - Number of Points: `int(samp_rate * 4)`
   - Update Period: `15`
