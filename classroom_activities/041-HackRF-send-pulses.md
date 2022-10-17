@@ -34,6 +34,7 @@ Parameters:
   - Frequency: `1`
 - Mix Sine Wave Hier Block:
   - Sample Rate: `samp_rate`
+  - Frequency: `100e3`
 - Osmocom Sink:
   - Ch0: Frequency (Hz): `2.4e9`
   - Ch0: Frequency Correction (ppm): `0`
@@ -41,11 +42,13 @@ Parameters:
   - Ch0: IF Gain (dB): `35`
   - Ch0: BB Gain (dB): `0`
 
+<details><summary> ℹ️ <i>Why `100e3`?</i> </summary>
+  To answer this question, try different numbers between `0` and `900e3`. You'll see that small frequencies are difficult to distinguish from the DC spike. Ask an instructor if this isn't clear.
+</details>
+
 ## Receiving the pulses
 
-To ensure that this indeed transmits pulses, let's receive the signal. For example, you can ise the flowgraph `receiver.grc` from the second half of `030`. Remember that the Hack RF is half-duplex, so you'll need a separate Hack RF (or some other device) to receive the signal.
-
-If you have trouble finding the pulses, try setting the Ch0 Frequency to 2.4001 on either the transmitter or the receiver (but not both). We'll discuss why this offset is useful in a future lesson.
+To ensure that this indeed transmits pulses, let's receive the signal. For example, you can use the flowgraph `receiver.grc` from the second half of `030`. Remember that the Hack RF is half-duplex, so you'll need a separate Hack RF (or some other device) to receive the signal.
 
 Once you've confirmed that you see pulsing, and that it's you (not someone else) transmitting, move to the next exercise.
 
