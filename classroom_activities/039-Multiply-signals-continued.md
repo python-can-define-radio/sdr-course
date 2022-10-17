@@ -8,9 +8,14 @@ To do so, we need to make a few changes.
 
 We can't transmit to the osmocom sink unless the data type is blue (complex).
 
-So, copy the previous flowgraph into a new file called `square_multiplied_complex.grc`
+We're also going to include a slider (a.k.a. GUI Range) as recommended in `038`.
+
+Create a file called `square_multiplied_complex.grc`:
 
 ```
+GUI Range
+
+
 Signal  --> Float to  ---┐
 Source      Complex      |
                          └->  
@@ -30,14 +35,20 @@ Parameters:
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `100`
+- GUI Range:
+  - Id: `frequency`
+  - Default Value: `20`
+  - Start: `2`
+  - Stop: `20`
+  - Step: `1`
 - First Signal Source:
   - Output Type: `float`
   - Waveform: `Square`
   - Frequency: `1`
 - Second Signal Source:
-  - Output Type: `complex`  (**different from before**)
+  - Output Type: `complex`
   - Waveform: `Sine`
-  - Frequency: `20`  (**different from before**)
+  - Frequency: `frequency`
 - Multiply:
   - IO Type: `complex`
 
@@ -48,9 +59,9 @@ Parameters:
 </summary>
   In the previous exercise, we used `4 Hz` as the frequency because it was easier to draw on paper.
   
-  Here, we use `20 Hz` because it looks prettier in the author's opinion to have more cycles.
+  Here, we use `20 Hz` to practice seeing different frequencies.
   
-  Either will produce a similar result when the Hack RF transmits it. We'll discuss the details of why in a later section, but the short answer is that the difference between 4 Hz and 20 Hz is insignificant compared to the size of the carrier frequency (1 Million Hertz or higher).
+  When we transmit this to the Hack RF, we'll use a much higher frequency. We'll discuss the details of why in a later section.
 </details>
 
 ## Hiding the details
@@ -80,6 +91,9 @@ Flowgraph:
 ```
 Parameter
 
+Parameter
+
+
 Pad     --> Float to  ---┐
 Source      Complex      |
                          └->
@@ -99,9 +113,15 @@ Parameters:
 
 - Variable (_already in the flowgraph_) with id `samp_rate`:
   - Delete this block. It is automatically created, but in this case, we do not want it.
-- Parameter:
+- First Parameter:
   - Id: `samp_rate`
   - Label: `Sample Rate`
+  - Value: `0`
+  - Type: `Float`
+- Second Parameter:
+  - Id: `frequency`
+  - Label: `Frequency`
+  - Value: `20`
   - Type: `Float`
 - Pad Source:
   - Output type: `Float`
@@ -109,10 +129,12 @@ Parameters:
   - Output Type: `complex`
   - Sample Rate: `samp_rate`
   - Waveform: `Sine`
-  - Frequency: `20`
+  - Frequency: `frequency`
 - Options block (_already in the flowgraph_):
   - Title: `Mix Sine Wave Hier Block`
   - Generate Options: `Hier Block`
+
+_Note_: We set the sample rate to 0 because GNU Radio requires us to pick a default value for all parameters. The sample rate won't actually be zero; we'll set it when we use our custom block.
 
 Now, save that file, and press the "Generate" button (right next to run).
 
@@ -129,9 +151,18 @@ Use Ctrl+F to search for "Mix Sine". You will NOT see the block you created. You
 Create this flowgraph:
 
 ```
+GUI Range
+
+
 Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink 
 ```
 
+- GUI Range:
+  - Id: `frequency`
+  - Default Value: `20`
+  - Start: `2`
+  - Stop: `20`
+  - Step: `1`
 - Signal Source:
   - Output Type: `float`
   - Waveform: `Square`
@@ -141,6 +172,7 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink
   - Value: `100`
 - Mix Sine Wave Hier Block:
   - Sample Rate: `samp_rate`
+  - Frequency: `frequency`
 
 
 Run that. It should display a wave that pulses on and off, just like the file `square_multiplied_complex.grc` that we created above. The advantage is that we have now hidden the details of the on-off pulsing so that we can focus on the big picture.
@@ -149,5 +181,5 @@ In the next activity, we'll change the sample rate.
 
 Optional Exercises:
 
-- Make the frequency of the Signal Source slidable.
+- Make the frequency of the Square Signal Source slidable.
 - Experiment with the Offset of the Signal Source.
