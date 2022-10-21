@@ -166,10 +166,12 @@ Signal Source  --->  Throttle  --->  Time Sink
 # FAQ
 
 - Q: What does the Throttle do?  
-  A: It keeps the processor from maxing-out. GNU Radio tries to run the simulation as quickly as possible, that is, as quickly as the computer is capable. The Throttle tells it to slow down. Feel free to try raising or lowering the Sample Rate in the Throttle. You'll see that for lower rates (say, `200`), the slider is less responsive.
+  A: It keeps the processor from maxing-out. GNU Radio tries to run the simulation as quickly as possible, that is, as quickly as the computer is capable. The Throttle tells it to slow down. Feel free to try raising or lowering the Sample Rate in the Throttle. You'll see that for lower rates (say, `200`), the graphical display updates less frequently. The ideal Throttle setting is one that ...  
+    (a) is high enough to see display updates frequently, and  
+    (b) is low enough that the processor is able to handle the workload.
 - Q: What is the difference between `Float` and `Complex`?  
   A: We'll discuss more later, but for now, know this:  
-   -  Float has only one part (the real part), while Complex has two parts (real and imaginary). That means that in a Time Sink, Float will show one curve, while Complex will show two.
+   -  Float has only one part (the real part), while Complex has two parts (real and imaginary). That means that in a Time Sink, Float shows one curve, while Complex would show two.
 
 # Exercises
 
