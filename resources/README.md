@@ -1,6 +1,7 @@
 # Resources
 
 - https://greatscottgadgets.com/sdr/ : Hack RF course by Michael Ossmann of Great Scott Gadgets.
+- https://gallicchio.github.io/learnSDR/ : Harvey Mudd College's SDR course.
 - [Tutorials on the GNU Radio Wiki](https://wiki.gnuradio.org/index.php/Tutorials)
 - [PySDR](https://pysdr.org/): A Guide to SDR and DSP using Python
 - [Software Defined Radio Academy](youtube.com/c/SoftwareDefinedRadioAcademy) youtube channel
