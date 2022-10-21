@@ -33,15 +33,14 @@ inputFileName = "/sys/class/thermal/thermal_zone2/temp"
 
 f_out = open(outputFileName, "w")
 
-i = 0   # Initialize a counter, which will be used to limit size of data set.
-while i<13:
+for i in range(1, 12+1):    # Take a specified number of temperature readings
     f_temp = open(inputFileName, "r")
     contents = f_temp.read().strip()
     T = int(contents)/1000   # Convert T from millidegrees to deg. Celcius.
     print(T)
     f_out.write(str(T) + ", ")
     time.sleep(0.2)
-    i = i+1
+
 f_out.close()
 f_temp.close()
 
@@ -55,7 +54,7 @@ f_temp.close()
 
 </details>
 
-When you run that Python file, it will start writing to a file called `myTempReadings.txt`. After a few seconds of data have been recorded, press <kbd>Ctrl C</kbd> to exit the program.
+When you run that Python file, it will write to a file called `myTempReadings.txt`.
 
 ## Visualizing the data
 
