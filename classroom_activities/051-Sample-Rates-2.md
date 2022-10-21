@@ -33,12 +33,18 @@ inputFileName = "/sys/class/thermal/thermal_zone2/temp"
 
 f_out = open(outputFileName, "w")
 
-while True:
+i = 0   # Initialize a counter, which will be used to limit size of data set.
+while i<13:
     f_temp = open(inputFileName, "r")
     contents = f_temp.read().strip()
-    print(contents)
-    f_out.write(contents + ", ")
+    T = int(contents)/1000   # Convert T from millidegrees to deg. Celcius.
+    print(T)
+    f_out.write(str(T) + ", ")
     time.sleep(0.2)
+    i = i+1
+f_out.close()
+f_temp.close()
+
 ```
 
 <details><summary><i>Note: This will take a measurement <b>approximately</b> five times per second. Click for more info.</i></summary>
