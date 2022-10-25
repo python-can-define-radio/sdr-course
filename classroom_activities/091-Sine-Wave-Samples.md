@@ -1,4 +1,4 @@
-# The Flowgraph:
+_Note: This exercise isn't finished, but it is still useful._
 
 ## sample_rates_one.grc
 

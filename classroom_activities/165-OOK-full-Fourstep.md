@@ -1,3 +1,5 @@
+_Note: This exersise is fairly complicated. Feel free to skip it._
+
 # Transmitting side:
 
 ## First, write the file. Call this `filewriter.py`.

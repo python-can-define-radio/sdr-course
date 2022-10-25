@@ -1,3 +1,5 @@
+_Note: This exercise isn't finished. Feel free to skip for now._
+
 
 ```
 Sample rate     Wave freq     Did we capture?

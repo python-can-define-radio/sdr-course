@@ -1,3 +1,4 @@
+_Note: This file isn't finished, but it has some useful parts._
 
 #1. Try this. What is the frequency of the wave?
 

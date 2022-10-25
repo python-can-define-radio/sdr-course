@@ -1,3 +1,5 @@
+_Note: This exercise isn't finished, but it has some useful parts._
+
 ```python3
 import numpy as np
 

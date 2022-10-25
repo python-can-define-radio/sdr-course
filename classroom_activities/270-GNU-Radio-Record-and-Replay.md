@@ -6,14 +6,14 @@ Many uses of this are illegal. Stay legal, ethical, moral, honorable, and kind.
 
 This involves two flowgraphs.
 
-First flowgraph (for recording):
+First flowgraph: `record_iq_data.grc`:
 ```
 Osmocom Source ⟶  DC Blocker  ⟶  File Sink
                               ⟶  Waterfall Sink
                               ⟶  Time Sink
 ```
 
-Second flowgraph (for replaying):
+Second flowgraph: `replay_iq_data.grc`:
 ```
 File Source  ⟶  Osmocom Sink
              ⟶  Waterfall Sink

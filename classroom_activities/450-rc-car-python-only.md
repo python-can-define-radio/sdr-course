@@ -1,3 +1,5 @@
+This is synthesizes a signal that can be used to control a particular RC car. It functions, but is not production-quality code.
+
 ```python3
 ## Somewhat manually written. GNU Radio version: 3.8.1.0
 

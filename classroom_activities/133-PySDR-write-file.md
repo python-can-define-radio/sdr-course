@@ -1,3 +1,5 @@
+_Note: This exercise isn't finished, but it has some useful parts._
+
 In Python:
 
 ```python3

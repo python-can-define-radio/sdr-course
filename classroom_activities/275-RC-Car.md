@@ -1,3 +1,5 @@
+_Note: This overlaps significantly with exercise 270. We plan to merge the two, but for now, we recommend reading both._
+
 ## Record:
 
 `record-rc-car.grc`
@@ -31,7 +33,7 @@ File sink:
 
 ## Replay:
 
-`record-rc-car.grc`
+`replay-rc-car.grc`
 
 ```
 File Source  -->  osmocom sink

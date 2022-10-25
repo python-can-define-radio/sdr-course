@@ -1,3 +1,9 @@
+_Note: This exercise isn't finished, but it is still useful._
+
+The goal of a filter is to remove something.
+
+In this class, the goal is to remove unwanted frequencies. This can, for example, help to make the audio quality clearer.
+
 Make a copy of the **receiver** from `025-Transmit-and-Receive-Pure-Sine.md`.
 
 Modify it like so:

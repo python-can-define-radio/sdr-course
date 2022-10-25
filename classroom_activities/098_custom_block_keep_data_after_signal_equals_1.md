@@ -1,3 +1,5 @@
+_Note: This exercise isn't finished, but it is still useful._
+
 This is a custom block. Ctrl+F "Python Block" and copy paste.
 
 

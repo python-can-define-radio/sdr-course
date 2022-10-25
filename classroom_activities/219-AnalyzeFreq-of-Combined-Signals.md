@@ -1,5 +1,5 @@
 ## Analyze Frequency of Combined Signals/Waves
-This is a demonstration of how GNU Radio Companion can evaluate a "complex" signal comprising multiple waveforms (e.g., multiple sine or cosing waves) to determine the frequencies of the multiple waves.
+This is a demonstration of how GNU Radio Companion can evaluate a "complex" signal comprising multiple waveforms (e.g., multiple sine or cosine waves) to determine the frequencies of the multiple waves.
 
 ## Summary of the GUI-program
 
