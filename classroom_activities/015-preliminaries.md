@@ -8,3 +8,5 @@ A few practical notes:
 - Turn on "Show block Comments".
 - Discuss "Null Sink Debugging".
 - Be careful when scrolling to not scroll above the drop-down menus.
+- Ctrl+F
+- "Apply"
