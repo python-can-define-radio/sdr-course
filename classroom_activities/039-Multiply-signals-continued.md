@@ -131,6 +131,7 @@ Parameters:
   - Waveform: `Sine`
   - Frequency: `frequency`
 - Options block (_already in the flowgraph_):
+  - Id: `mix_sine_wave_hier_block`
   - Title: `Mix Sine Wave Hier Block`
   - Generate Options: `Hier Block`
 
