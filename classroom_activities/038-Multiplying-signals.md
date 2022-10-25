@@ -34,6 +34,8 @@ Signal Source  -->  Time Sink
   - Output Type: `float`
   - Waveform: `Sine`
   - Frequency: `4`
+- Time Sink (both):
+  - Type: `Float`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `100`
@@ -56,6 +58,8 @@ Signal Source  -->
   - Output Type: `float`
   - Waveform: `Sine`
   - Frequency: `4`
+- Time Sink:
+  - Type: `Float`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `100`
