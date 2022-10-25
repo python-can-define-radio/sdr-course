@@ -1,3 +1,20 @@
+## Expression None is invalid
+
+```
+Expression None is invalid for type 'real'.
+```
+
+Most often, this means you have a typo in your variable name.
+
+## Expression ... is invalid
+
+```
+Expression 200.0 is invalid for type 'int'.
+```
+
+If you're using `2e6`, for example, you may need to type `int(2e6)`.
+
+
 ## Can't open file
 
 ```
