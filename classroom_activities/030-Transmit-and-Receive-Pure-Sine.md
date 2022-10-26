@@ -115,11 +115,13 @@ osmocom Source  --->  Time Sink
 
 1. For a frequency of `100,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
 2. For a frequency of `200,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
-3. What happens on the receiving end when the transmission power is too high?  _Hint: Look up "Clipping in Signal Procesing"._ 
-4. At what point do you start to see clipping?
-5. Can clipping happen on the transmitter's side?  
-   _Hint: Try setting the transmitter's amplitude to a number such as `1.5`. You may need to modify the GUI Range that adjusts amplitude._  
-   _Note: It can be very difficult to demonstrate clipping on the transmitter side._
+3. When you change the amplitude, are the changes reflected on the transmission side, the receiving side, or both?
+4. When you change the IF gain, are the changes reflected on the transmission side, the receiving side, or both?
+5. What happens on the receiving end when too much power is received?  _Hint: Look up "Clipping in Signal Procesing"._ 
+6. At what point do you start to see clipping?
+7. Can clipping happen on the transmitter's side?  
+   _Hint: Try setting the transmitter's amplitude to a number such as `3`. You may need to modify the GUI Range that adjusts amplitude._  
+   _Note: Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped. If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink should be between 1 and -1._
 7. How could you communicate data using just these sliders?
 8. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
 9. _Advanced:_ Discuss center spike and frequency-non-sameness-between-tx-rx. 
