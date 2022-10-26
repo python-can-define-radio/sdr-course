@@ -17,7 +17,7 @@ for x in range(1000000000000):
     y = x
 ```
 
-Incredibly, the temperature jumps up by about 13 °C within a fifth of a second. (At least, it did on my computer.) So, if you were setting up an automatic throttle (limit) for the processor, it would probably need to sample even more frequently than 5 samples per second (5 Hz).
+Incredibly, the temperature jumps up by about 13 °C within a fifth of a second. (At least, it did on my computer.) So, if you were setting up an automatic throttle (limit) for the processor, it would probably need to sample even more frequently than 5 samples per second (5 Hz). (In fact, it takes approx 0.1 seconds to go up 13 degrees Celsius. If you take out the delay in the python script below, you can try this yourself! Feel free to ask for instructor help.)
 
 ## Recording the data
 
