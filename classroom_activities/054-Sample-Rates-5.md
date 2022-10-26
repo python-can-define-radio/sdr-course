@@ -32,6 +32,7 @@ Exercises:
 1. Change the Number of Points to 40. Then try 160.
 2. What should the Number of Points be to show only one cycle of the wave?
 3. How much time does a full cycle take?
+4. Try changing the `samp_rate` to see how the Time Sink x-axis labeling changes.
 
 Answers:
 
