@@ -34,9 +34,16 @@ Exercises:
 3. How much time does a full cycle take?
 4. Try changing the `samp_rate` to see how the Time Sink x-axis labeling changes.
 
-Answers:
 
-TODO
+<details>
+<summary>Answers:</summary>
+
+1. N/A
+2. 20 points
+3. Half a second
+4. Try it
+
+</details>
 
 ## Practice problem set B
 
