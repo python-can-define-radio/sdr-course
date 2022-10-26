@@ -43,7 +43,6 @@ Source                    Hier Block
 Parameters:
 
 - GUI Range:
-- GUI Range:
   - Id: `sigfreq`
   - Default: `70e3`
   - Start: `-300e3`
