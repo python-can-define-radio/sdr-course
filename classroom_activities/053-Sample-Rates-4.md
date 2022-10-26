@@ -36,6 +36,8 @@ Your tasks:
    &nbsp;  
    For those who are curious, that list was generated using this code:
    ```python3
+   import numpy as np
+  
    dat = 15*np.sin(np.linspace(0, 2 * np.pi, 20, endpoint=False))
 
     def roundtwo(x):
