@@ -24,7 +24,7 @@ Parameters:
     - Y max: `20`
   - Config tab:
     - Line 1 Style: `0`
-    - Line 1 Marker: `Circle`
+    - Line 1 Marker: `Circle`       [NOTE: If "X-Cross" or "9" is chosen, the graph may not display data.]
 
 You'll see the same messy sine wave from the previous exercise, but repeated four times.
 
