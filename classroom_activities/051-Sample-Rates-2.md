@@ -1,6 +1,6 @@
 ## Need for speed
 
-In `050`, we measured every 2 hours. That works for weather, but now, imagine you're dealing with a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this:
+In `050`, we measured every 2 hours. That works for weather, but now, imagine you're dealing with a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this in the terminal:
 
 ```
 watch -n 0.2 -- cat /sys/class/thermal/thermal_zone*/temp
