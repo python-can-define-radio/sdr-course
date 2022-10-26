@@ -71,7 +71,7 @@ Parameters:
 - Time Sink:
   - General Tab:
     - Number of Points: _Approximately 15. Should be the same as the number of data points that you recorded._
-    - Y max: 100000
+    - Y max: `100`
 
 Run that to visualize your data. Make sure it matches the Python-generated graph.
 
