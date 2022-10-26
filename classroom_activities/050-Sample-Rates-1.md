@@ -89,6 +89,6 @@ Parameters:
     - Line 1 Marker: `Circle`
 
 Notes:
-- The zeros at the end of the data in the Vector Source are unfortunately necessary because of a quirk in GNU Radio. My guess is that it requires the chunks of data to have some minimum length before moving the data to from block to block.
+- The zeros at the end of the data in the Vector Source are unfortunately necessary because of a quirk in GNU Radio: the Time Sink won't display _any_ data unless you add a few extra data points. (The value of zero is not special; any extra data works.) My guess is that it requires the chunks of data to have some minimum length before moving the data from block to block. Also, I believe those chunks must be longer than the number of points that you are viewing in the Time Sink. 
 - We put a sample rate of 0.5 samples per second. It should actually be 0.5 samples per hour (meaning 1 sample every two hours), but GNU Radio is quirky with low sample rates. Pretend that the x-axis label says "hours" instead of "seconds".
 
