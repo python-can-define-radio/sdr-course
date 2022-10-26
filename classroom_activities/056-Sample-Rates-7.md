@@ -31,4 +31,4 @@ Parameters:
 
 ## Transmitting to the Hack RF
 
-One way to transmit this is using the `Mix Sine Wave Hier Block` that we created. Try it!
+One way to transmit this is using the `Mix Sine Wave Hier Block` that we created. You'll use what you created in `041`, but with the Vector Source and Repeat block instead of a Signal Source. Try it!
