@@ -40,11 +40,11 @@ Your tasks:
   
    dat = 15*np.sin(np.linspace(0, 2 * np.pi, 20, endpoint=False))
 
-    def roundtwo(x):
-        return round(x, 2)
+   def roundtwo(x):
+       return round(x, 2)
     
-    datRounded = list(map(roundtwo, dat))
-    print(datRounded)
+   datRounded = list(map(roundtwo, dat))
+   print(datRounded)
    ```
   
 </details>
