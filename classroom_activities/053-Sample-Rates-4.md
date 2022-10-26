@@ -1,6 +1,6 @@
 ## Sample Rate practice problems
 
-Run this. You'll see that it plots a very rough sine wave.
+Run this. Name it `rough_sine_wave.py`. You'll see that it plots a very rough sine wave.
 
 ```python3
 import matplotlib.pyplot as plt
