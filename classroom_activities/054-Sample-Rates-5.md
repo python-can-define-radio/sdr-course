@@ -66,3 +66,16 @@ Hints:
 3. For this square wave with a frequency of 2 Hz, how many seconds does it take to complete a full cycle? (The time for one full cycle is called the **period**.)
 4. The wave cycles between "high" and "low". What percent of the cycle does it spend "high"? How many seconds is that?
 5. Given that the sample rate is 40 sps (samples per second), how many **samples** does this 2 Hz square wave require to complete a full cycle?
+
+Answers:
+
+<details>
+<summary>Answers:</summary>
+
+1. Try it
+2. Try it
+3. Half a second
+4. 50%, A quarter of a second
+5. 20 samples
+
+</details>
