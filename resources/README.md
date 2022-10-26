@@ -20,6 +20,7 @@
   - How to get the digital data (current song name, etc)
 - [Gnuradio Mini Projects](https://udel.edu/~mm/gr/): A variety of projects.
 - [DSP Illustrations](https://dspillustrations.com/): DSP using Python. 
+- ["But what is a Fourier series? From heat flow to drawing with circles | DE4"](https://www.youtube.com/watch?v=r6sGWTCMz2k) Has cool animations. Pretty heavy math. 
 
 ------------------------------
 
