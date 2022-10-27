@@ -8,9 +8,14 @@ import numpy as np
 from gnuradio import gr
 
 class keep_first_stream_where_second_is_1(gr.basic_block):
+    """Example:
+    if the first stream (in0) is 7.0, 2.0, -3.0, 5.0, -8.0
+    and the second stread is 1,  1,  0,  0,  1
+    the output will be 7.0, 2.0, -8.0."""
+    
     def __init__(self):
         gr.basic_block.__init__(self,
-            name="keep_first_stream_where_second_is_1",
+            name="Keep first stream where second is 1",
             in_sig=[np.float32, np.uint8],
             out_sig=[np.float32])
 
