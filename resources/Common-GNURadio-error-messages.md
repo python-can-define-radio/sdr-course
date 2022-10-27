@@ -14,6 +14,13 @@ Expression 200.0 is invalid for type 'int'.
 
 If you're using `2e6`, for example, you may need to type `int(2e6)`.
 
+## NameError
+
+```
+NameError: name '...' is not defined
+```
+
+Also usually a typo.
 
 ## Can't open file
 
