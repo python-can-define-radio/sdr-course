@@ -1,5 +1,38 @@
 _Note: This file isn't finished, but it has some useful parts._
 
+```python3
+import numpy as np
+from gnuradio import gr
+
+class output_1_forever_once_input_equals_1(gr.sync_block):
+    """Example:
+    if the input stream is 0, 0, 1, 0, 0
+    the output will be 0, 0, 1, 1, 1.
+    """
+
+    def __init__(self):
+        gr.sync_block.__init__(self,
+            name="Output 1 forever once input equals 1",
+            in_sig=[np.uint8],
+            out_sig=[np.uint8])
+        self.reachedOne = False
+
+    def work(self, input_items, output_items):
+        inBuf = input_items[0]
+        outBuf = output_items[0]
+        if self.reachedOne:
+            outBuf[:] = 1
+        else: 
+            for idx, item in enumerate(inBuf):
+                justAfterOneLoc = idx + 1
+                if item == 1:                
+                    self.reachedOne = True
+                    break
+            outBuf[:justAfterOneLoc] = 0
+            outBuf[justAfterOneLoc:] = 1
+        
+        return len(outBuf)
+```
 
 Keep first stream where second is 1
 
