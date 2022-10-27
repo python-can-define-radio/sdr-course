@@ -1,5 +1,38 @@
 _Note: This file isn't finished, but it has some useful parts._
 
+
+Keep first input where second input is 
+
+```python3
+import numpy as np
+from gnuradio import gr
+
+class my_basic_adder_block(gr.basic_block):
+    def __init__(self):
+        gr.basic_block.__init__(self,
+            name="another_adder_block",
+            in_sig=[np.float32, np.float32],
+            out_sig=[np.float32])
+
+    def general_work(self, input_items, output_items):
+        #buffer references
+        in0 = input_items[0][:len(output_items[0])]
+        in1 = input_items[1][:len(output_items[0])]
+        outBuffer = output_items[0]
+
+        #process data
+        outData = in0[in1 >= 0]
+        outBuffer[:len(outData)] = outData
+
+        #consume the inputs
+        self.consume(0, len(in0)) #consume port 0 input
+        self.consume(1, len(in1)) #consume port 1 input
+
+        #return produced
+        return len(outData)
+```
+
+
 Multiply by 2 block
 
 ```python3
