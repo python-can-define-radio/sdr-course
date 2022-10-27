@@ -11,13 +11,21 @@ class keep_first_stream_where_second_is_1(gr.basic_block):
     """Example:
     if the first stream (in0) is 7.0, 2.0, -3.0, 5.0, -8.0
     and the second stread is 1,  1,  0,  0,  1
-    the output will be 7.0, 2.0, -8.0."""
+    the output will be 7.0, 2.0, -8.0.
     
+    Feel free to modify the `copy_type` variable inside the block definition
+    according to your needs -- `np.float32`, `np.uint8`, etc
+    """
+
     def __init__(self):
+        
+        # Feel free to change this according to the type you need to copy.
+        copy_type = np.float32
+        
         gr.basic_block.__init__(self,
             name="Keep first stream where second is 1",
-            in_sig=[np.float32, np.uint8],
-            out_sig=[np.float32])
+            in_sig=[copy_type, np.uint8],
+            out_sig=[copy_type])
 
     def general_work(self, input_items, output_items):
         #buffer references
