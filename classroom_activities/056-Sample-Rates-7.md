@@ -33,6 +33,8 @@ Parameters:
 
 One way to transmit this is using the `Mix Sine Wave Hier Block` that we created. You'll use what you created in `041`, but with the Vector Source and Repeat block instead of a Signal Source. Try it first, and then if needed, refer to the directions below.
 
+`Vec_Sine_Osmocomsink.grc`
+
 ```
 GUI Range
                                           -->  Time Sink
