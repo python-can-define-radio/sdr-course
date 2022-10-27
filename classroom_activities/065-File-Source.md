@@ -153,9 +153,13 @@ Parameters:
   - Output Type: `byte`
   - Repeat: `No`
 - Time Sink:
-  - Type: `Float`
-  - Number of Points: `40`
-  - Y min: `0`
-  - Y max: `100`
+  - General Tab:
+    - Type: `Float`
+    - Number of Points: `40`
+    - Y min: `0`
+    - Y max: `100`
+  - Config Tab:
+    - Line 1 Style: `0`
+    - Line 1 Marker: `Circle`
 
 You should see a graph that looks very similar to the one we saw in Python.
