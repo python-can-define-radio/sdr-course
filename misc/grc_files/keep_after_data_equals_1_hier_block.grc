@@ -1,0 +1,171 @@
+options:
+  parameters:
+    author: usacys
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: hb
+    hier_block_src_path: '.:'
+    id: keep_after_data_equals_1
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Keep after data equals 1
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: blocks_float_to_uchar_0
+  id: blocks_float_to_uchar
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [207, 276]
+    rotation: 0
+    state: true
+- name: epy_block_keep_first_stream_where_second_is_1
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nfrom gnuradio import gr\n\nclass keep_first_stream_where_second_is_1(gr.basic_block):\n\
+      \    \"\"\"Example:\n    if the first stream (in0) is 7.0, 2.0, -3.0, 5.0, -8.0\n\
+      \    and the second stread is 1,  1,  0,  0,  1\n    the output will be 7.0,\
+      \ 2.0, -8.0.\n    \"\"\"\n\n    def __init__(self):\n\n        gr.basic_block.__init__(self,\n\
+      \            name=\"Keep first stream where second is 1\",\n            in_sig=[np.float32,\
+      \ np.uint8],\n            out_sig=[np.float32])\n\n    def general_work(self,\
+      \ input_items, output_items):\n        #buffer references\n        in0 = input_items[0][:len(output_items[0])]\n\
+      \        in1 = input_items[1][:len(output_items[0])]\n        outBuffer = output_items[0]\n\
+      \        #process data\n        outData = in0[in1 == 1]\n        outBuffer[:len(outData)]\
+      \ = outData\n\n        #consume the inputs\n        self.consume(0, len(in0))\
+      \ #consume port 0 input\n        self.consume(1, len(in1)) #consume port 1 input\n\
+      \n        #return produced\n        return len(outData)\n\n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Keep first stream where second is 1', 'keep_first_stream_where_second_is_1',
+      [], [('0', 'float', 1), ('1', 'byte', 1)], [('0', 'float', 1)], 'Example:\n    if
+      the first stream (in0) is 7.0, 2.0, -3.0, 5.0, -8.0\n    and the second stread
+      is 1,  1,  0,  0,  1\n    the output will be 7.0, 2.0, -8.0.\n    ', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [425, 176]
+    rotation: 0
+    state: enabled
+- name: epy_block_output_1_forever_once_input_equals_1
+  id: epy_block
+  parameters:
+    _source_code: "import numpy as np\nfrom gnuradio import gr\n\nclass output_1_forever_once_input_equals_1(gr.sync_block):\n\
+      \    \"\"\"Example:\n    if the input stream is 0, 0, 1, 0, 0\n    the output\
+      \ will be 0, 0, 1, 1, 1.\n    \"\"\"\n\n    def __init__(self):\n        gr.sync_block.__init__(self,\n\
+      \            name=\"Output 1 forever once input equals 1\",\n            in_sig=[np.uint8],\n\
+      \            out_sig=[np.uint8])\n        self.reachedOne = False\n\n    def\
+      \ work(self, input_items, output_items):\n        inBuf = input_items[0]\n \
+      \       outBuf = output_items[0]\n        if self.reachedOne:\n            outBuf[:]\
+      \ = 1.0\n        else:\n            oneLoc = len(inBuf)\n            for idx,\
+      \ item in enumerate(inBuf):\n                if item == 1.0:               \
+      \ \n                    self.reachedOne = True\n                    oneLoc =\
+      \ idx\n                    break\n            outBuf[:oneLoc] = 0.0\n      \
+      \      outBuf[oneLoc:] = 1.0\n        \n        return len(outBuf)\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Output 1 forever once input equals 1', 'output_1_forever_once_input_equals_1',
+      [], [('0', 'byte', 1)], [('0', 'byte', 1)], 'Example:\n    if the input stream
+      is 0, 0, 1, 0, 0\n    the output will be 0, 0, 1, 1, 1.\n    ', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [349, 329]
+    rotation: 0
+    state: enabled
+- name: pad_sink_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [749, 243]
+    rotation: 0
+    state: true
+- name: pad_source_0
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: in
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [90, 221]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_float_to_uchar_0, '0', epy_block_output_1_forever_once_input_equals_1, '0']
+- [epy_block_keep_first_stream_where_second_is_1, '0', pad_sink_0, '0']
+- [epy_block_output_1_forever_once_input_equals_1, '0', epy_block_keep_first_stream_where_second_is_1,
+  '1']
+- [pad_source_0, '0', blocks_float_to_uchar_0, '0']
+- [pad_source_0, '0', epy_block_keep_first_stream_where_second_is_1, '0']
+
+metadata:
+  file_format: 1
