@@ -56,7 +56,22 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [207, 276]
+    coordinate: [729, 206]
+    rotation: 0
+    state: true
+- name: blocks_uchar_to_float_0
+  id: blocks_uchar_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [248, 172]
     rotation: 0
     state: true
 - name: epy_block_keep_first_stream_where_second_is_1
@@ -87,7 +102,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [425, 176]
+    coordinate: [436, 172]
     rotation: 0
     state: enabled
 - name: epy_block_output_1_forever_once_input_equals_1
@@ -117,7 +132,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [349, 329]
+    coordinate: [222, 266]
     rotation: 0
     state: enabled
 - name: pad_sink_0
@@ -129,13 +144,13 @@ blocks:
     label: out
     num_streams: '1'
     optional: 'False'
-    type: float
+    type: byte
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [749, 243]
+    coordinate: [804, 296]
     rotation: 0
     state: true
 - name: pad_source_0
@@ -149,7 +164,7 @@ blocks:
     minoutbuf: '0'
     num_streams: '1'
     optional: 'False'
-    type: float
+    type: byte
     vlen: '1'
   states:
     bus_sink: false
@@ -160,12 +175,13 @@ blocks:
     state: true
 
 connections:
-- [blocks_float_to_uchar_0, '0', epy_block_output_1_forever_once_input_equals_1, '0']
-- [epy_block_keep_first_stream_where_second_is_1, '0', pad_sink_0, '0']
+- [blocks_float_to_uchar_0, '0', pad_sink_0, '0']
+- [blocks_uchar_to_float_0, '0', epy_block_keep_first_stream_where_second_is_1, '0']
+- [epy_block_keep_first_stream_where_second_is_1, '0', blocks_float_to_uchar_0, '0']
 - [epy_block_output_1_forever_once_input_equals_1, '0', epy_block_keep_first_stream_where_second_is_1,
   '1']
-- [pad_source_0, '0', blocks_float_to_uchar_0, '0']
-- [pad_source_0, '0', epy_block_keep_first_stream_where_second_is_1, '0']
+- [pad_source_0, '0', blocks_uchar_to_float_0, '0']
+- [pad_source_0, '0', epy_block_output_1_forever_once_input_equals_1, '0']
 
 metadata:
   file_format: 1
