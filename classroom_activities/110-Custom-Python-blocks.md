@@ -1,17 +1,17 @@
 _Note: This file isn't finished, but it has some useful parts._
 
 
-Keep first input where second input is 
+Keep first stream where second is 1
 
 ```python3
 import numpy as np
 from gnuradio import gr
 
-class my_basic_adder_block(gr.basic_block):
+class keep_first_stream_where_second_is_1(gr.basic_block):
     def __init__(self):
         gr.basic_block.__init__(self,
-            name="another_adder_block",
-            in_sig=[np.float32, np.float32],
+            name="keep_first_stream_where_second_is_1",
+            in_sig=[np.float32, np.uint8],
             out_sig=[np.float32])
 
     def general_work(self, input_items, output_items):
@@ -21,7 +21,7 @@ class my_basic_adder_block(gr.basic_block):
         outBuffer = output_items[0]
 
         #process data
-        outData = in0[in1 >= 0]
+        outData = in0[in1 == 1]
         outBuffer[:len(outData)] = outData
 
         #consume the inputs
