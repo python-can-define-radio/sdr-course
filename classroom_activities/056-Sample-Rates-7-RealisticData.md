@@ -1,4 +1,4 @@
-## Sending more interesting data
+## Sending more interesting (and realistic) data
 
 We've seen how to create a square wave using the Vector Source. Now, let's send a more interesting signal.
 
