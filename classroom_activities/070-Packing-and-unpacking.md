@@ -1,10 +1,10 @@
 Filename: `OOK_file_source.grc`
 
 ```
-File  -->  Unpack K  ---->  OOK Mod  -->  osmocom Sink
-Source     Bits       |
-                      |
-                      --->  UChar to Float  -->  Time Sink
+File  -->  Unpack K  -->  UChar to  --->  OOK Mod  -->  osmocom Sink
+Source     Bits           Float      |
+                                     |
+                                     -->  Time Sink
 ```
 
 Parameters:
