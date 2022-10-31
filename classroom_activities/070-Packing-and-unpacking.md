@@ -1,3 +1,5 @@
+## Transmitting
+
 Filename: `OOK_file_source.grc`
 
 ```
@@ -25,16 +27,24 @@ Parameters:
   - IF Gain: `30`
   - BB Gain: `0`
 
+<details><summary> another way to test</summary>
+ Vector source: `[170] + list(map(ord, "abcd"))` 
+  TODO: explain this more
+  </details>
 
+## Receiving
 
+```
+          -->  Time Sink
+          |
+          -->  Waterfall sink
+          |
+osmocom  --->  OOK Demod  --> Keep after data      --->  Pack K Bits  -->  File Sink
+Source                        equals 1 Hier Block   |
+                                                    --> UChar to Float  -->  Time Sink
+```
 
+Note: You'll need the `Keep after data equals 1 Hier Block` block from [here](https://github.com/python-can-define-radio/sdr-course/blob/main/misc/grc_files/keep_after_data_equals_1_hier_block.grc)
 
-
-
-Ignore this part for now: 
-
-Other notes:
-
-Vector source: `[170] + list(map(ord, "abcd"))`
-
-Unpack K bits 8
+Parameters:
+- 
