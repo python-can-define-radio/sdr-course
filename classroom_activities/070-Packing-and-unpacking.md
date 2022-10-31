@@ -63,5 +63,6 @@ Parameters:
   - Unbuffered: `on`
 
 
-At the beginning of your file, make sure you have a Non Breaking Space (NBSP).
-You can copy paste this one: " "
+At the beginning of your file, make sure you have a character that starts with a 1 in binary.
+You can copy paste this one: "¡"
+
