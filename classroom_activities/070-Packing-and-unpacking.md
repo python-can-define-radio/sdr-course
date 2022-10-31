@@ -49,7 +49,7 @@ Note: You'll need the `Keep after data equals 1 Hier Block` block from [here](ht
 
 Parameters:
 - osmocom Source:
-  - _pick things_
+  - _use the same parameters as an osmocom source from a previous flowgraph_
 - OOK Demod:
   - Symbol Length: `int(1e6)`
   - Threshold: _make a slider between 0 and 1_
