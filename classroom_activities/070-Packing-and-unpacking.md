@@ -61,3 +61,7 @@ Parameters:
 - File Sink:
   - File: _pick a NON-EXISTENT file_
   - Unbuffered: `on`
+
+
+At the beginning of your file, make sure you have a Non Breaking Space (NBSP).
+You can copy paste this one: " "
