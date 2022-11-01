@@ -1,4 +1,11 @@
-_Note: This overlaps significantly with exercise 270. We plan to merge the two, but for now, we recommend reading both._
+_Note: This overlaps significantly with exercise 270. We plan to merge the two, but for now, we recommend reading both.
+       To work here, you can copy, modify, and use the record and replay .grc files created in exercise 270._
+## Summary
+This project requires the user to have a functional remote-controled (RC) vehicle and its remote controller.  Optionaly, you may use another remote controlled device and an appropriate remote control sending unit.  Other devices that may be used include a television and remote controlled light(s), as examples.  Of course, Both must be tuned to the same communication frequency.
+
+This involves building two flowgraphs.  One program to record data from the remote control.  A second to transmit the data to the vehicle (or other device).  You can copy and modify the record and replay .grc files created in exercise 270.
+
+It is necessary to know the frequency of your devices.  You might find the frequency written on your device, in the documentation for your device, or you may perform a web-search using the name and model number of your device.  Otherwise, you can look for it using **GNU Radio Companion** or **GQRX Radio software** Finding the frequency is not discussed any further in this exercise/lesson.
 
 ## Record:
 
