@@ -123,3 +123,75 @@ def general_work(self, inp, out):
     self.consume(0, 1)
     return 0
 ```
+
+
+------------------
+
+```python3
+import numpy as np
+from gnuradio import gr
+import queue
+from typing import Callable, Iterable
+
+
+
+__chunk_length = 3   # type: int
+
+
+def __easy_work_helper():
+    # type: () -> Callable
+    # data_container = {}
+
+    def easy_work(chunk):
+        # type: (list[int]) -> Iterable[int]
+        """the length of `chunk` is `chunk_length`."""
+        resu = []
+        for item in chunk:
+            resu.append(item * 2)
+        return resu
+
+    return easy_work
+
+
+## GNU Radio Companion renames stuff, so we have to do this
+_blk__easy_work_helper = __easy_work_helper
+
+
+class blk(gr.basic_block):
+
+    def __init__(self):
+        gr.basic_block.__init__(
+            self,
+            name='Embedded Python Block',   # will show up in GRC
+            in_sig=[np.float32],
+            out_sig=[np.float32]
+        )
+
+        self.in_accumulator = []
+        self.out_queue = queue.SimpleQueue()
+        self.easy_work = __easy_work_helper(self.queue_in, self.queue_out)
+
+
+    def general_work(self, inp, out):
+        
+        ## If there's any data available to push out, do that.
+        try:
+            item = self.out_queue.get_no_wait()
+            out[0][0] = item
+            return 1
+        except queue.Empty:
+            pass
+        
+        ## Process accumulated data if there's enough.
+        if len(self.in_accumulator) == __chunk_length:
+            result = easy_work(self.in_accumulator)
+            for elem in result:
+                self.out_queue.put(elem)
+            self.in_accumulator = []
+            return 0
+        
+        ## Accumulate more data for processing later.
+        self.in_accumulator.append(inp[0][0])
+        self.consume(0, 1)
+        return 0
+```
