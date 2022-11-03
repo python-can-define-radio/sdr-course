@@ -18,7 +18,7 @@ GUI Range
 
 GUI Range
 
-osmocom source  -->  DC Blocker  -->  Time Sink
+osmocom source  -->  Band pass filter  -->  Time Sink
                                  -->  File Sink
 ```
 
