@@ -44,6 +44,11 @@ Parameters:
 - GUI Range (Second):
   - Id: `BBGain`
   - 0 to 62, steps of 2
+- Band pass filter:
+  - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
+  - Low Cut: _Try it_
+  - High Cut: _Try it_
+  - Transition Width: `50e3`
 - File sink:
   - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`.
 
