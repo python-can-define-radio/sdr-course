@@ -19,7 +19,7 @@ GUI Range
 GUI Range
 
 osmocom source  -->  Band pass filter  -->  Time Sink
-                                 -->  File Sink
+                                       -->  File Sink
 ```
 
 Parameters:
