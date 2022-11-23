@@ -33,3 +33,4 @@ Other cool stuff:
   - [Hamming code (interesting; more advanced)](https://www.youtube.com/watch?v=X8jsijhllIA)
 - [gr-bokehgui: Web based display for GNU Radio](https://github.com/gnuradio/gr-bokehgui)
 - Air-Gap Covert Channels demos: https://cyber.bgu.ac.il/advanced-cyber/airgap
+- Cool video: lightning, fire, etc: https://www.youtube.com/watch?v=Q3oItpVa9fs
