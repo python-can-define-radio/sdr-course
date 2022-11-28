@@ -1,5 +1,33 @@
 _Note: This file isn't finished, but it has some useful parts._
 
+Print block. Useful for debugging.
+
+```python3
+import numpy as np
+from gnuradio import gr
+import time
+
+
+class blk(gr.sync_block):
+
+    def __init__(self, sleep_seconds=0.5):
+        gr.sync_block.__init__(
+            self,
+            name='Printer',
+            in_sig=[np.float32],
+            out_sig=[]
+        )
+        self.sleep_seconds = sleep_seconds
+        
+    def work(self, input_items, output_items):
+        singleDataPoint = input_items[0][0]
+        
+        time.sleep(self.sleep_seconds)
+        print("{:.3f}".format(singleDataPoint))
+
+        return 1
+```
+
 ```python3
 import numpy as np
 from gnuradio import gr
