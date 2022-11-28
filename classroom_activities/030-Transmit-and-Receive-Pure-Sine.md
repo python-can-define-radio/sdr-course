@@ -99,12 +99,13 @@ osmocom Source  --->  Time Sink
   - Y Min: `-110`
 
 
-# Directions
+# Notes
 
 1. A single HackRF One is half-duplex. So, if you want to transmit and receive, you'll have to have two HackRFs. I recommend working with another student.
 2. You should be able to see the transmitted wave on the receiving end. If you don't, ask for assistance.
-3. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
-4. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
+3. Instead of `2.4e9` you can try `2.41e9`, `2.42e9`, or similar. This will make it easier to see just your transmission (rather than everyone's).
+4. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
+5. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
 
 # FAQ
 
@@ -122,6 +123,20 @@ osmocom Source  --->  Time Sink
 7. Can clipping happen on the transmitter's side?  
    _Hint: Try setting the transmitter's amplitude to a number such as `3`. You may need to modify the GUI Range that adjusts amplitude._  
    _Note: Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped. If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink should be between 1 and -1._
-7. How could you communicate data using just these sliders?
-8. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
-9. _Advanced:_ Discuss center spike and frequency-non-sameness-between-tx-rx. 
+8. How could you communicate data using just these sliders?
+9. Modify your receiver to have slidable IF and BB gains. Use proper start, stop, step from [the HackRF docs](https://hackrf.readthedocs.io/). 
+10. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
+11. _Advanced:_ Discuss center spike and frequency-non-sameness-between-tx-rx. 
+
+# Instructor check
+
+The instructor will most likely use this exercise to check your transmitter:
+
+Set your osmocom sink Frequency to ...  
+2.401e9 if you are computer #1,  
+2.402e9 if you are computer #2,  
+2.403e9 if you are computer #3,  
+...  
+2.410e9 if you are computer #10,  
+2.411e9 if you are computer #11,...
+
