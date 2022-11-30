@@ -26,6 +26,7 @@ GUI Range
 
 osmocom source  -->  Band pass filter  -->  Time Sink
                                        -->  File Sink
+                                       -->  Waterfall Sink
 ```
 
 Parameters:
@@ -61,6 +62,7 @@ GUI Range
 
 File Source  -->  osmocom sink
              -->  Time sink
+             -->  Waterfall Sink
 ```
 
 Parameters:
