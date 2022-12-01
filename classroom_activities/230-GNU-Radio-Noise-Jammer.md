@@ -44,7 +44,7 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
 - Default Value: `98.5e6`
 - Start: `89e6`
 - Stop: `108e6`
-- Step: `1e3`
+- Step: `10e3`
 
 ### For the Low Pass Filter:
 
@@ -54,6 +54,7 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
 ### For the Noise Source:
 
 - Noise Type: `Uniform`
+- Amplitude: `5`
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
