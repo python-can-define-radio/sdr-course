@@ -46,6 +46,24 @@ Most often, this means that you left a parameter blank that should not be blank.
 - Open the .py file that is mentioned.
 - Look at (or above) the mentioned line to figure out which block is the issue.
 
+## "Done"
+
+```
+>>> Done (return code -11)
+```
+
+Usually your HackRF is not plugged in.
+
+## Resource Busy
+
+```
+Device or resource busy.
+```
+
+Usually you have another program open that is using the HackRF, such as GQRX or another GNU Radio program.
+
+If you don't see anything else open, then press the "Reset" button on the HackRF.
+
 ## Firdes check
 
 ```
