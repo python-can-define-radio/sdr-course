@@ -74,6 +74,18 @@ There are two common causes for this error:
 1. Wrong FIR Type (usually in the Band Pass Filter block)
 2. Violating Nyquist theorem (usually in one of the Filter blocks)
 
+## <=
+
+```
+Assertion "start <= value <= stop" failed.
+```
+
+In GUI Ranges, the Start and Stop are the left and right limits of the slider. The Default Value is where the slide-piece is placed when the flowgraph runs. 
+
+- The left limit (the "Start") must be the lowest value. 
+- The right limit (the "Stop") must be the highest value. 
+- The Default Value must be somewhere in between.
+
 ## ID `default` is blacklisted
 
 How to fix: Open the `Options` block, and set the Id to something other than default
