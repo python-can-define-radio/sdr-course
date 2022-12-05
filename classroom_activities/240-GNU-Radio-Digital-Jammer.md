@@ -29,7 +29,7 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 - Default Value: `98.5e6`
 - Start: `89e6`
 - Stop: `108e6`
-- Step: `1e3`
+- Step: `10e3`
 
 ### For the Constellation Object:
 
