@@ -56,3 +56,8 @@ if __name__ == "__main__":
 </body>
 </html>
 ```
+
+in the activity_records dir:
+
+name: 2022_12_14_16:19:03
+content: 123.456 MHz
