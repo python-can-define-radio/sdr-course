@@ -31,3 +31,28 @@ def home():
 if __name__ == "__main__":
     app.run()
 ```
+
+`home.html`
+
+```html
+<html>
+<head>
+    <meta http-equiv="refresh" content="1" >
+
+</head>
+<body>
+<table>
+    <tr>
+        <th>Timestamp</th>
+        <th>Activity Frequency</th>
+    </tr>
+    {% for f in files %}
+    <tr>
+        <td>{{ f.name }}</td>
+        <td>{{ f.content }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+```
