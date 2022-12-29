@@ -11,3 +11,9 @@ A few practical notes:
 - Ctrl+F, Esc to avoid accidental
 - "Apply" broken
 - Ubuntu's GNOME desktop environment: "Save" dialog search quirk
+
+Keyboard shortcuts:
+
+- Ctrl + F : Find blocks
+- D : Disable
+- E : Enable
