@@ -65,7 +65,7 @@ Source      |
 - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
 - Low Cutoff Freq: `-100e3` (notice the negative)
 - High Cutoff Freq: `100e3`
-- Transition Width: `100e3`
+- Transition Width: `50e3`
 
 ### For the WBFM Receive:
 
