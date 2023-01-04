@@ -17,11 +17,17 @@ for x in range(1000000000000):
     y = x
 ```
 
-Incredibly, the temperature jumps up by about 13 °C within a fifth of a second. (At least, it did on my computer.) So, if you were setting up an automatic throttle (limit) for the processor, it would probably need to sample even more frequently than 5 samples per second (5 Hz). (In fact, it takes approx 0.1 seconds to go up 13 degrees Celsius. If you take out the delay in the python script below, you can try this yourself! Feel free to ask for instructor help.)
+Incredibly, the temperature jumps up by about 13 °C in less than a fifth of a second. (At least, it did on my computer.) So, if you were setting up an automatic throttle (limit) for the processor, it would probably need to take samples even more frequently than 5 samples per second (5 Hz). 
+
+<details><summary> <i>In fact, we tried it...</i></summary>
+...on our classroom computers, it takes approx 0.1 seconds to go up 13 degrees Celsius. That's fast!
+
+If you take out the delay in the python script below, you can try this yourself! Feel free to ask for instructor help.
+</details>
 
 ## Recording the data
 
-We can take measurements using Python. Name this file `temp_measure.py`:
+The terminal command above works well for viewing the temperature live. Now, let's take measurements using Python. Name this file `temp_measure.py`:
 
 ```python3
 import time
