@@ -1,6 +1,6 @@
 ## Sending more interesting (and realistic) data
 
-We've seen how to create a square wave using the Vector Source. Now, let's send a more interesting signal.
+We've seen how to create a square wave using the Vector Source. Now, let's simulate a more interesting signal.
 
 Create this flowgraph. Name it `repeat_demo_3.grc`.
 
