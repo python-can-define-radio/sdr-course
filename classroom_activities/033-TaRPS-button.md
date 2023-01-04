@@ -1,4 +1,4 @@
-Copy and paste your Transmitting flowgraph from `025-Transmit-and-Receive-Pure-Sine.md`.
+Copy and paste your Transmitting flowgraph from `030-Transmit-and-Receive-Pure-Sine.md`.
 
 Make the following changes:
 
