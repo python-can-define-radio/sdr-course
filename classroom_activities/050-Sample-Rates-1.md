@@ -1,23 +1,35 @@
 ## Introduction
 
-_Prerequisites: `038`, `039`, `040`, `041`_
+At this point, you've used various Graphical User Interface (GUI) features to manually adjust the amplitude and the frequency of a pure sine wave. Human-powered modulation is certainly useful, as thousands of telegraph operators could tell you.
 
-We've successfully transmitted evenly-spaced pulses using the Hack RF. The next goal is to transmit something more interesting, such as this:
+But as we know, the telegraph has fallen out of style. Why? Because we now have computers that can do the moduation for us.
+
+### What is Modulation?
+
+Strictly speaking, to "modulate" something simply means to change it. But in the context of communications, modulation refers to making a change in something (amplitude, frequency, etc) for the purpose of communicating information.
+
+Imagine you want to communicate the following binary data using a flashlight.
 
 ```
-   ___   ___   ______   ___      ___
-___   ___   ___      ___   ______   ___
+0   1   0   1   0   1   1   0   1   0   0   1   0
 ```
 
-If we interpreted this as binary, it might look like this:
+You may choose to alternate between turning the light on and off:
 
 ```
-   ___   ___   ______   ___      ___
-___   ___   ___      ___   ______   ___
-0  1  0  1  0  1  1  0  1  0  0  1  0
+off on  off on  off on  on  off on  off off on  off
+0   1   0   1   0   1   1   0   1   0   0   1   0
 ```
 
-So, can we simply swap out the Square Wave Signal Source that we saw in `041`? Yes and no. Before answering that question, we must explore how sample rates work.
+If you were to look at a graph of the brightness over time, it would look like this:
+
+```
+    ____    ____    ________    ____        ____
+____    ____    ____        ____    ________    ____
+0   1   0   1   0   1   1   0   1   0   0   1   0
+```
+
+So, can we simply send a sequence of zeros and ones to the Hack RF? Yes and no. To answer that question, we'll first explore how sample rates work.
 
 ## What is a Sample Rate?
 
