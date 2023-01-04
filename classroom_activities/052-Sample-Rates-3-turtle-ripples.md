@@ -180,7 +180,7 @@ _(Exactly the same figure as above, but with a turtle instead of an electron. Th
 
 </details>
 
-### Where's the antenna?
+### Sidenote: where's the antenna?
 
 The antenna is what provides the path for the electron to move. So if the electron is moving vertically, then the antenna must also be pointed vertically.
 
