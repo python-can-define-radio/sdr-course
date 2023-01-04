@@ -41,14 +41,14 @@ f_out = open(outputFileName, "w")
 
 for i in range(1, 12+1):    # Take a specified number of temperature readings
     f_temp = open(inputFileName, "r")
-    contents = f_temp.read().strip()
-    T = int(contents)/1000   # Convert T from millidegrees to deg. Celcius.
+    contents = f_temp.read()
+    f_temp.close()
+    T = int(contents)/1000   # Convert T from millidegrees to deg. Celsius.
     print(T)
     f_out.write(str(T) + ", ")
     time.sleep(0.2)
 
 f_out.close()
-f_temp.close()
 
 ```
 
