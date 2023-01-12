@@ -95,9 +95,10 @@ How to fix: Open the `Options` block, and set the Id to something other than def
 How to fix: Open the `Options` block, and set the Id to something that satisfies the criteria described.  
 For example:
 
-- "my cool flowgraph" won't work because it has spaces. You could change it to "my_cool_flowgraph" or "mycoolflowgraph" or similar.
-- "my-cool-flowgraph" won't work because of the hyphens.
-- "030_flowgraph" won't work because it starts with a number. You could change it to "exercise_030_flowgraph" or "my030" or similar.
-- "my_flowgraph " won't work because it ends with a space. Those are especially hard to see!
+- `my cool flowgraph` won't work because it has spaces. You could change it to `my_cool_flowgraph` or `mycoolflowgraph` or similar.
+- `my-cool-flowgraph` won't work because of the hyphens.
+- `030_flowgraph` won't work because it starts with a number. You could change it to `exercise_030_flowgraph` or `my030` or similar.
+- `my_flowgraph ` won't work because it ends with a space. Those are especially hard to see!
+- `my_flowgraph.grc` won't work because it has a period in it. Simply remove the ".grc" part in the Id.
 
 If you're having trouble finding the culprit characters, you can always erase the Id entirely and type a new Id.
