@@ -114,7 +114,8 @@ osmocom Source  --->  Time Sink
 
 # Exercises
 
-1. For a frequency of `100,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
+1. For a frequency of `100,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.  
+   _Note: The period is conventionally represented with a capital T._ 
 2. For a frequency of `200,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
 3. When you change the amplitude, are the changes reflected on the transmission side, the receiving side, or both?
 4. When you change the IF gain, are the changes reflected on the transmission side, the receiving side, or both?
