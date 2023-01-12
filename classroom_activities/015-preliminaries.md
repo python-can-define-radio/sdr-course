@@ -6,7 +6,6 @@ A few practical notes:
 - See also the [python preliminaries](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/ex_0_preliminaries.md).
 - Know that the list of Common GNU Radio Error messages is in the `resources` folder.
 - Turn on "Show block Comments".
-- Discuss "Null Sink Debugging".
 - Be careful when scrolling to not scroll above the drop-down menus.
 - Ctrl+F, Esc to avoid accidental
 - "Apply" broken
