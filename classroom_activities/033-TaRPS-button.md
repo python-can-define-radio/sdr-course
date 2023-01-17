@@ -3,7 +3,7 @@ Copy and paste your Transmitting flowgraph from `030-Transmit-and-Receive-Pure-S
 Make the following changes:
 
 - Delete the `amplitu` GUI Range.
-- Create a QT GUI Button. Set the parameters:
+- Create a QT GUI Push Button. Set the parameters:
   - Id: `amplitu`
   - Type: _Hint: what type allows for non-whole numbers?_
   - Default Value: `0`
