@@ -72,7 +72,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
 - Low Cutoff Freq: `-100e3` (notice the negative)
 - High Cutoff Freq: `100e3`
-- Transition Width: `50e3`
+- Transition Width: `90e3`
 
 ### For the WBFM Receive:
 
