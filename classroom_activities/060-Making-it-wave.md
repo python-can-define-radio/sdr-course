@@ -31,3 +31,6 @@ Here's the Python code to graph it. Name this `square_and_sine_1.py`.
 ```python3
 TODO
 ```
+
+
+After doing the Python, we'll use GNU Radio Companion to make it a wave. That'll come a few exercises from now.
