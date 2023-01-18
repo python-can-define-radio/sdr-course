@@ -94,8 +94,24 @@ def convert_to_morse_ish(datapoint):
 Here's how we'll test it:
 
 ```
-Vector Source  ->  Modulate Morse-ish  ->  Vector to Stream  ->  Repeat  ->  UChar to Float  -> Time Sink
+Vector 
+Source  ->  Modulate 
+            Morse-ish  ->  Vector to
+                           Stream    ->  Repeat ->  UChar to 
+                                                    Float  -> Time 
+                                                              Sink
+                                               
 ```
+
+- Vector source:
+  - Vector: [0, 0, 1]
+  - Repeat: Yes
+- Vector to stream:
+  - 4, 1
+- Repeat:
+  - 1
+- Time Sink:
+  - Number of points: 30 
 
 Then, we'll make the receiver.
 
