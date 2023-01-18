@@ -42,4 +42,11 @@ plt.plot(x_axis_label, wavey, "o")
 plt.show()
 ```
 
+Then, let's look at the two multiplied:
+
+```python3
+plt.plot(x_axis_label, sqr * wavey, "o")
+plt.show()
+```
+
 After doing the Python, we'll use GNU Radio Companion to make it a wave. That'll come a few exercises from now.
