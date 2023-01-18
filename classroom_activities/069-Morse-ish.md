@@ -26,8 +26,8 @@ ____            ____________
 A   s           B           s   
 ```
 
-Before, we did off = zero and on = one.  
-Now, we're doing short-on = zero, long-on = one, and off = nothing (a separator).
+Before, we did off = A and on = B.  
+Now, we're doing short-on = A, long-on = B, and off = nothing (a separator).
 
 To discuss:
 
