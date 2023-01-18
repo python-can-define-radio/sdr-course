@@ -46,26 +46,26 @@ In that flowgraph, create a Python Block. Put this in the contents.
 import numpy as np
 from gnuradio import gr
 
-class blk(gr.sync_block):
 
-    def __init__(self, func_to_use="my_gnuradio_custom_python_helpers.convert_to_morse_ish"):
+class blk(gr.sync_block):
+    def __init__(self, func_to_use=""):
         gr.sync_block.__init__(
             self,
-            name='Modulate Morse-ish',
-            in_sig=[np.uint8],
+            name='Run Python Function v4',
+            in_sig=[(np.uint8, 1)],
             out_sig=[(np.uint8, 4)]
         )
         self.use_func_str = func_to_use
+        self.state_container = {}
 
     def start(self, *args, **kwargs):
         import my_gnuradio_custom_python_helpers
-        # self.my_gnuradio_custom_python_helpers = my_gnuradio_custom_python_helpers
         self.use_func = eval(self.use_func_str)
         return super().start(*args, **kwargs)
 
     def work(self, input_items, output_items):
         inOneP = input_items[0][0]
-        outval = self.use_func(inOneP)
+        outval = self.use_func(inOneP, self.state_container)
         if outval == None:
             return 0
         else:
@@ -75,14 +75,14 @@ class blk(gr.sync_block):
             return 1
 ```
 
-In the Func_To_Use blank, put "my_gnuradio_custom_python_helpers.convert_to_morse_ish" WITH QUOTES.
+In the Func_To_Use blank, put "my_gnuradio_custom_python_helpers.modulate_morseish" WITH QUOTES.
 
 Then, create a python file in the same directory named `my_gnuradio_custom_python_helpers.py`. It must be named to match the name in the code you just copy/pasted.
 
 In `my_gnuradio_custom_python_helpers.py`, put this:
 
 ```python3
-def convert_to_morse_ish(datapoint):
+def modulate_morseish(datapoint, state_container):
     if datapoint == 0:
         return [1, 0, 0, 0]
     elif datapoint == 1:
@@ -95,8 +95,8 @@ Here's how we'll test it:
 
 ```
 Vector 
-Source  ->  Modulate 
-            Morse-ish  ->  Vector to
+Source  ->  Run Python  
+            Function v4  ->  Vector to
                            Stream    ->  Repeat ->  UChar to 
                                                     Float  -> Time 
                                                               Sink
@@ -106,6 +106,9 @@ Source  ->  Modulate
 - Vector source:
   - Vector: [0, 0, 1]
   - Repeat: Yes
+- Run Python Function v4
+  - Func_to_use: "my_gnuradio_custom_python_helpers.modulate_morseish"  
+     _with quotes_
 - Vector to stream:
   - 4, 1
 - Repeat:
@@ -120,13 +123,84 @@ Then, we'll make the receiver.
 Discuss: How to demod? Describe algorithm, then discuss Python.
 
 ```
-Demod Morse-ish  ->  Throttle  ->  File Sink
+Run Python Function v4  ->  Throttle  ->  File Sink
 ```
+
+- Run Python Function v4
+  - Func_to_use: "my_gnuradio_custom_python_helpers.demod_morseish"  
+     _with quotes_
+
+
+In the same helper file:
+
+```python3
+def demod_morseish(chunk, state_container):
+    if all(chunk == [1, 0, 0, 0]):
+        return 0
+    elif all(chunk == [1, 1, 1, 0]):
+        return 1
+    else:
+        print("ERROR")
+```
+
+### Keep after first 1
+
+_TODO - details_
+
+```python3
+def keep_after_first_1(datapoint, state_container):
+    if state_container.get("seen_1") == True:
+        return datapoint
+    elif datapoint == 0:
+        return None
+    elif datapoint == 1:
+        state_container["seen_1"] = True
+        return datapoint
+    else:
+        print("ERROR")
+```
+
+### Average and slice
+
+```python3
+def average_and_slice(chunk, state_container):
+    avg = np.average(chunk)
+    
+    # will need to experiment with this number after experimenting with the AGC
+    if avg > 0.3:  
+        return 1
+    else:
+        return 0
+```
+
+### Improved demod given fuzzy symbol length
+
+```python3
+def demod_morseish(chunk, state_container):
+    numberOfOnes = chunk.tolist().count(1)
+    ## The threshold probably won't be 9. We'll have to experiment.
+    if numberOfOnes > 9:
+        return 1
+    elif numberOfOnes > 0:
+        return 0
+    else:
+        print("ERROR")
+```
+
+### Band pass filter
+
+Useful
+
+### Complex to Mag
+
+Will need this
+
+### AGC
+
+Very useful, but let's get the pure simulation and basic real transmission working first.
+
+Experiment with the rate parameter: try numbers between 0.00001 and 1. As far as I can tell, we want the amplitude variation during a single symbol to be no more than about 20% (but let's experiment to make sure that makes sense).
 
 ### Exercises:
 
 Later, after making it wavey, try changing the Repeat amount to see how it impacts the bandwidth (i.e. the width of the required space on the spectrum).
-
-### Also
-
-Do average of fourths-of-a-chip.
