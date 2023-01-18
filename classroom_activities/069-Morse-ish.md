@@ -7,6 +7,15 @@ ____    ____    ____        ____    ________    ____
 0   1   0   1   0   1   1   0   1   0   0   1   0
 ```
 
+This is equivalent to any two-letter alphabet, such as
+
+```
+    ____    ____    ________    ____        ____
+____    ____    ____        ____    ________    ____
+A   B   A   B   A   B   B   A   B   A   A   B   A
+```
+
+
 For our implementation with the Hack RF, we're going to explore a different approach, which is similar to Morse Code.
 
 _Note: the "s" stands for "separator". It's not a standard abbreviation as far as I know._
@@ -14,7 +23,7 @@ _Note: the "s" stands for "separator". It's not a standard abbreviation as far a
 ```
 ____            ____________    
     ____________            ____
-0   s           1           s   
+A   s           B           s   
 ```
 
 Before, we did off = zero and on = one.  
