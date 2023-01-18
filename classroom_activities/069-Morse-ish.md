@@ -101,3 +101,7 @@ Demod Morse-ish  ->  Throttle  ->  File Sink
 ### Exercises:
 
 Later, after making it wavey, try changing the Repeat amount to see how it impacts the bandwidth (i.e. the width of the required space on the spectrum).
+
+### Also
+
+Do average of fourths-of-a-chip.
