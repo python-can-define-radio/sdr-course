@@ -6,5 +6,10 @@
 Vector Source  -->  Throttle  -->  File Sink
 ```
 
-- Unbuffered yes
-- Vector: [70, 73, 65], repeat yes
+- Vector: [70, 73, 65], repeat yes, type byte
+- Throttle type byte
+- File Sink: 
+  - Type: byte
+  - File: "~/Desktop/myfilesinkoutputfile.txt"
+  - Unbuffered: yes
+
