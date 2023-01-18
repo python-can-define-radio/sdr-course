@@ -29,8 +29,17 @@ We'll also graph a Sin wave with a frequency of `4 Hz` across the same time rang
 Here's the Python code to graph it. Name this `square_and_sine_1.py`.
 
 ```python3
-TODO
-```
+import matplotlib.pyplot as plt
+import numpy as np
 
+x_axis_label = np.linspace(0, 1.99, 200)
+sqr = np.concatenate([np.zeros(50), np.ones(50), np.zeros(50), np.ones(50)])
+wavey = np.sin(x_axis_label * 4 * 2 * np.pi)
+
+plt.plot(x_axis_label, sqr, "o")
+plt.plot(x_axis_label, wavey, "o")
+
+plt.show()
+```
 
 After doing the Python, we'll use GNU Radio Companion to make it a wave. That'll come a few exercises from now.
