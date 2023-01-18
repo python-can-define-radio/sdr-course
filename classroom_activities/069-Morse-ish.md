@@ -48,7 +48,7 @@ from gnuradio import gr
 
 
 class blk(gr.sync_block):
-    def __init__(self, func_to_use=""):
+    def __init__(self, func_to_use="", state_var_1=0.0, state_var_2=0.0, state_var_3=0.0):
         gr.sync_block.__init__(
             self,
             name='Run Python Function v4',
@@ -56,6 +56,9 @@ class blk(gr.sync_block):
             out_sig=[(np.uint8, 4)]
         )
         self.use_func_str = func_to_use
+        self.state_var_1 = state_var_1
+        self.state_var_2 = state_var_2
+        self.state_var_3 = state_var_3
         self.state_container = {}
 
     def start(self, *args, **kwargs):
@@ -65,7 +68,13 @@ class blk(gr.sync_block):
 
     def work(self, input_items, output_items):
         inOneP = input_items[0][0]
+        self.state_container["state_var_1"] = self.state_var_1
+        self.state_container["state_var_2"] = self.state_var_2
+        self.state_container["state_var_3"] = self.state_var_3
         outval = self.use_func(inOneP, self.state_container)
+        self.state_var_1 = self.state_container["state_var_1"]
+        self.state_var_2 = self.state_container["state_var_2"]
+        self.state_var_3 = self.state_container["state_var_3"]
         if outval == None:
             return 0
         else:
@@ -166,8 +175,9 @@ def keep_after_first_1(datapoint, state_container):
 def average_and_slice(chunk, state_container):
     avg = np.average(chunk)
     
-    # will need to experiment with this number after experimenting with the AGC
-    if avg > 0.3:  
+    # will need to experiment with the threshold after experimenting with the AGC
+    thresh = state_container["state_var_1"]
+    if avg > thresh:  
         return 1
     else:
         return 0
@@ -178,10 +188,12 @@ def average_and_slice(chunk, state_container):
 ```python3
 def demod_morseish(chunk, state_container):
     numberOfOnes = chunk.tolist().count(1)
-    ## The threshold probably won't be 9. We'll have to experiment.
-    if numberOfOnes > 9:
+    
+    ## We'll have to experiment with this too.
+    thresh = state_container["state_var_1"]
+    if numberOfOnes > thresh:
         return 1
-    elif numberOfOnes > 0:
+    elif numberOfOnes > thresh / 3:
         return 0
     else:
         print("ERROR")
