@@ -74,12 +74,11 @@ This will print the decimal representations: [65, 66, 67, 68], which corresponds
 We can ask Python to display the numbers as binary:
 
 ```python3
-contents_as_binary = list(map(bin, contents_as_numbers))
+def binformat(x):
+    return f"{x:08b}"
+contents_as_binary = list(map(binformat, contents_as_numbers))
 print(contents_as_binary)
 ```
-
-_Note: It will display 01000001 as 0b1000001. Ask an instructor if you'd like help interpreting these._
-
 </details>
 
 ### Plotting in Python
