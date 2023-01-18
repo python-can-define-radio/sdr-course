@@ -5,3 +5,6 @@
 ```
 Vector Source  -->  Throttle  -->  File Sink
 ```
+
+- Unbuffered yes
+- Vector: [70, 73, 65], repeat yes
