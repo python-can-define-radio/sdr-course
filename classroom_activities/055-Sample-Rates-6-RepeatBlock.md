@@ -70,7 +70,7 @@ Now, set the sample rate to 20. (This should only require changing the `samp_rat
    2. 0.5 Hz?
    3. 2 Hz?
 
-Now, let's significantly raise the sample rate. As mentioned in `040`, there are two changes that help lower the chance of freezing the flowgraph:
+Now, let's significantly raise the sample rate. There are two changes that help lower the chance of freezing the flowgraph:
 - Add a throttle
 - Increase the time between updates (the Update Period) on the Time Sink
 
