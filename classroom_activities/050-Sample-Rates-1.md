@@ -29,7 +29,9 @@ ____    ____    ____        ____    ________    ____
 0   1   0   1   0   1   1   0   1   0   0   1   0
 ```
 
-So, can we simply send a sequence of zeros and ones to the Hack RF? Yes and no. To answer that question, we'll first explore how sample rates work.
+The name for this modulation scheme is "On Off Keying".  The website _Open Learn_ has a [great figure for visualizing On Off Keying](https://www.open.edu/openlearn/science-maths-technology/exploring-communications-technology/content-section-1.4)
+
+So, how do we make the Hack RF transmit and receive OOK modulated data? To answer that question, we'll be taking a long detour to explore how sample rates work.
 
 ## What is a Sample Rate?
 
