@@ -10,7 +10,8 @@ Vector Source  -->  Throttle  -->  File Sink
 - Throttle type byte
 - File Sink: 
   - Type: byte
-  - File: "~/Desktop/myfilesinkoutputfile.txt"
+  - File: "/home/yourusername/Desktop/myfilesinkoutputfile.txt"  
+         _Note: make sure to type your username instead of "yourusername". For example, "/home/bob/Desktop/myfilesinkoutputfile.txt"
   - Unbuffered: yes
 
 ### In a normal text editor...
