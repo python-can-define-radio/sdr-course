@@ -107,10 +107,10 @@ Here's how we'll test it:
 ```
 Vector 
 Source  ->  Run Python  
-            Function v4  ->  Vector to
-                           Stream    ->  Repeat ->  UChar to 
-                                                    Float  -> Time 
-                                                              Sink
+            Function v4  ->  Vector to   ->  Virtual Sink
+                           Stream        ->  Repeat ->  UChar to 
+                                                        Float  -> Time 
+                                                                 Sink
                                                
 ```
 
@@ -144,13 +144,39 @@ Then, we'll make the receiver.
 Discuss: How to demod? Describe algorithm, then discuss Python.
 
 ```
-Run Python Function v4  ->  Throttle  ->  File Sink
+{ This part is from before }
+Vector 
+Source  ->  Run Python  
+            Function v4  ->  Vector to
+                           Stream    ->  Virtual Sink
+
+{ This part is new }
+Virtual Source -> Run Python Function v4  ->  Throttle  ->  File Sink
 ```
 
-- Run Python Function v4
+- Virtual sink:
+  - Id: pretend_tx_rx
+- Virtual source:
+  - Id: pretend_tx_rx
+- Run Python Function v4 (the first one)
+  - No change from before.
+- Run Python Function v4 (the second one)
   - Func_to_use: "my_gnuradio_custom_python_helpers.demod_morseish"  
      _with quotes_
 
+You'll also have to open the code on the second Run Python Function block, and (carefully) swap the in sig and out sig:  
+
+```python3
+## Before:
+name='Run Python Function v4',
+in_sig=[(np.uint8, 1)],
+out_sig=[(np.uint8, 4)]
+
+## After:
+name='Run Python Function v4',
+in_sig=[(np.uint8, 4)],
+out_sig=[(np.uint8, 1)]
+```
 
 In the aforementioned python file (`my_gnuradio_custom_python_helpers.py`):
 
@@ -164,6 +190,8 @@ def demod_morseish(chunk, state_container):
         print("Invalid sequence detected. Treating as no data.")
         return None
 ```
+
+Finally, I recommend changing the names of the custom python blocks to "Python: modulate_morseish" and "Python: demod_morseish".
 
 ### Keep after first 1
 
