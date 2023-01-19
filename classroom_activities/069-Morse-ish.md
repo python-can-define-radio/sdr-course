@@ -180,7 +180,7 @@ in_sig=[(np.uint8, 4)],
 out_sig=[(np.uint8, 1)]
 ```
 
-In the aforementioned python file (`my_gnuradio_custom_python_helpers.py`):
+In the aforementioned python file (`my_gnuradio_custom_python_helpers.py`), add this (keep your other function too):
 
 ```python3
 def demod_morseish(chunk, state_container):
