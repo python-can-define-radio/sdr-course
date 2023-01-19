@@ -41,50 +41,7 @@ We're going to use this Python code. It's not production-ready, but it's great f
 
 Make a new directory called `ex_069`. Create a new flowgraph, and save it in there with the name `morse_demo_1.grc`.
 
-In that flowgraph, create a Python Block. Put this in the contents.
-
-```python3
-import numpy as np
-from gnuradio import gr
-
-
-class blk(gr.basic_block):
-    def __init__(self, func_to_use="", state_var_1=0.0, state_var_2=0.0, state_var_3=0.0):
-        gr.basic_block.__init__(
-            self,
-            name='Run Python Function v4',
-            in_sig=[(np.uint8, 1)],
-            out_sig=[(np.uint8, 4)]
-        )
-        self.use_func_str = func_to_use
-        self.state_var_1 = state_var_1
-        self.state_var_2 = state_var_2
-        self.state_var_3 = state_var_3
-        self.state_container = {}
-
-    def start(self, *args, **kwargs):
-        import my_gnuradio_custom_python_helpers
-        self.use_func = eval(self.use_func_str)
-        return super().start(*args, **kwargs)
-
-    def general_work(self, input_items, output_items):
-        inOneP = input_items[0][0]
-        self.consume(0, 1)
-        self.state_container["state_var_1"] = self.state_var_1
-        self.state_container["state_var_2"] = self.state_var_2
-        self.state_container["state_var_3"] = self.state_var_3
-        outval = self.use_func(inOneP, self.state_container)
-        self.state_var_1 = self.state_container["state_var_1"]
-        self.state_var_2 = self.state_container["state_var_2"]
-        self.state_var_3 = self.state_container["state_var_3"]
-        if outval == None:
-            return 0
-        else:
-            dt = output_items[0][0].dtype
-            npified = np.array(outval, dtype=dt)
-            output_items[0][0] = npified
-            return 1
-```
+In that flowgraph, create a Python Block using the v4 method described in an earlier exercise.
 
 In the Func_To_Use blank, put "my_gnuradio_custom_python_helpers.modulate_morseish" WITH QUOTES.
 
