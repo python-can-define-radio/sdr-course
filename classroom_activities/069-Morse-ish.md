@@ -27,7 +27,8 @@ A   s           B           s
 ```
 
 Before, we did off = A and on = B.  
-Now, we're doing short-on = A, long-on = B, and off = nothing (a separator).
+Now, we're doing short-on = A, long-on = B, and off = nothing (a separator).  
+_Incidentally, this could be thought of as sending E (a "dit" in Morse) and T (a "dah" in Morse)._
 
 To discuss:
 
