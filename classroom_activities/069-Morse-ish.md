@@ -82,10 +82,7 @@ class blk(gr.basic_block):
         else:
             dt = output_items[0][0].dtype
             npified = np.array(outval, dtype=dt)
-            try:  # This is super klugy; fix eventually
-                output_items[0][0][:] = npified
-            except TypeError:
-                output_items[0][0] = outval
+            output_items[0][0] = npified
             return 1
 ```
 
