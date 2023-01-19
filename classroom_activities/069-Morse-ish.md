@@ -200,7 +200,7 @@ def demod_morseish(chunk, state_container):
         return None
 ```
 
-Finally, I recommend changing the names of the custom python blocks to "Python: modulate_morseish" and "Python: demod_morseish".
+Finally, I recommend changing the names of the custom python blocks to "Run Python: modulate_morseish" and "Run Python: demod_morseish".  To do this, double click on each block to open its Properties window.  In the Code field, press "Open in Editor" again.  Locate the line that starts as, "name=" and replace the current name with the suggested name.
 
 ### Keep after first 1
 
