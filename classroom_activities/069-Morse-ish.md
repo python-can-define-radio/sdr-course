@@ -121,7 +121,7 @@ Source  ->  Run Python
   - Func_to_use: "my_gnuradio_custom_python_helpers.modulate_morseish"  
      _with quotes_
 - Vector to stream:
-  - IO Type: Float
+  - IO Type: Byte
   - Num Items: 4
   - Vec Length: 1
 - Repeat:
