@@ -128,7 +128,7 @@ Source  ->  Run Python
   - Num Items: 4
   - Vec Length: 1
 - Repeat:
-  - Interp: 1
+  - Interp: 10
 - Time Sink:
   - Number of points: 30 
 
