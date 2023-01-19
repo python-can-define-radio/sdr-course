@@ -115,6 +115,7 @@ Source  ->  Run Python
 ```
 
 - Vector source:
+  - Output type: byte
   - Vector: [0, 0, 1]
   - Repeat: Yes
 - Run Python Function v4
@@ -124,12 +125,14 @@ Source  ->  Run Python
   - State Var 2: 0
   - State Var 3: 0
 - Vector to stream:
-  - IO Type: Byte
+  - IO Type: byte
   - Num Items: 4
   - Vec Length: 1
 - Repeat:
+  - Type: byte
   - Interp: 10
 - Time Sink:
+  - Type: Float
   - Number of points: 30 
 
 We're going to try varying the irepeat interpolation.
