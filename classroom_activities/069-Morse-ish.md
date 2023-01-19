@@ -133,7 +133,7 @@ Source  ->  Run Python
   - Interp: 10
 - Time Sink:
   - Type: Float
-  - Number of points: 30 
+  - Number of points: 200 
 
 We're going to try varying the irepeat interpolation.
 
