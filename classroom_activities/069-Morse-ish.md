@@ -120,11 +120,15 @@ Source  ->  Run Python
   - Func_to_use: "my_gnuradio_custom_python_helpers.modulate_morseish"  
      _with quotes_
 - Vector to stream:
-  - 4, 1
+  - IO Type: Float
+  - Num Items: 4
+  - Vec Length: 1
 - Repeat:
-  - 1
+  - Interp: 1
 - Time Sink:
   - Number of points: 30 
+
+We're going to try varying the irepeat interpolation.
 
 Then, we'll make the receiver.
 
@@ -141,16 +145,17 @@ Run Python Function v4  ->  Throttle  ->  File Sink
      _with quotes_
 
 
-In the same helper file:
+In the aforementioned python file (`my_gnuradio_custom_python_helpers.py`):
 
 ```python3
 def demod_morseish(chunk, state_container):
-    if all(chunk == [1, 0, 0, 0]):
+    if chunk.tolist() == [1, 0, 0, 0]:
         return 0
-    elif all(chunk == [1, 1, 1, 0]):
+    elif chunk.tolist() == [1, 1, 1, 0]:
         return 1
     else:
-        print("ERROR")
+        print("Invalid sequence detected. Treating as no data.")
+        return None
 ```
 
 ### Keep after first 1
@@ -188,13 +193,14 @@ def average_and_slice(chunk, state_container):
 
 ```python3
 def demod_morseish(chunk, state_container):
-    numberOfOnes = chunk.tolist().count(1)
+    s = sum(chunk)
     
     ## We'll have to experiment with this too.
     thresh = state_container["state_var_1"]
-    if numberOfOnes > thresh:
+    
+    if s > thresh:
         return 1
-    elif numberOfOnes > thresh / 3:
+    elif s > thresh / 3:
         return 0
     else:
         print("ERROR")
