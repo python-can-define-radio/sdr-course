@@ -120,6 +120,9 @@ Source  ->  Run Python
 - Run Python Function v4
   - Func_to_use: "my_gnuradio_custom_python_helpers.modulate_morseish"  
      _with quotes_
+  - State Var 1: 0
+  - State Var 2: 0
+  - State Var 3: 0
 - Vector to stream:
   - IO Type: Byte
   - Num Items: 4
