@@ -14,9 +14,7 @@ Step 5: Erase all of the code that is there.
 
 Step 6: Paste the code shown below, SAVE, and close the editor.
 
-Step 7: You should now see four text fields: Func_To_Use, State_Var_1, State_Var_2, State_Var_3. Unless otherwise directed, type 0 in each of the State_Var fields.
-
-Here's the code you will paste in Step 6:
+Here's the code you will paste:
 
 ```python3
 import numpy as np
@@ -66,9 +64,36 @@ class blk(gr.basic_block):
             return 1
 ```
 
-In future exercises, we'll abreviate these steps like so: "Create a Python Block using the v4 method."
+Step 7: Back in GNU Radio...
+- Verify that the block's name is now "Python Block: Run Function v4".
+- Verify that you see four text fields: Func_To_Use, State_Var_1, State_Var_2, State_Var_3.
+- Type 0 in each of the State_Var fields.
+- For Func_To_Use, type "my_gnuradio_custom_python_helpers.add_one" INCLUDING THE QUOTES.
 
-Practice exercise about how to change name and types, and how to use with `vec to stream` and `stream to vec` blocks. (_work in progress_)
+Step 8: Create a python file in the same directory. Name it `my_gnuradio_custom_python_helpers.py`. It must be named that to match what you copied in Step 6.
 
+Step 9: In that new python file, copy this:
 
+```python3
+def add_one(datapoint, state_container):
+    return datapoint + 1
+```
 
+Step 10: Save that Python file.
+
+Step 11: Your block is ready to use. Now, wire this flowgraph to test it:
+
+```
+Vector source  ->  Python Block: Run Function v4  ->  Time Sink
+```
+
+- Vector Source:
+  - Vector: [0.3, -0.9, -1.5]
+- Python Block: Run Function v4:
+  - Use the specs from above
+
+You should see a zig-zag pattern that touches 1.3, 0.1, and -0.5.
+
+In future exercises, we'll abreviate these steps by simply saying "Create a Python Block using the v4 method".
+
+_Practice exercise about how to change name and types, and how to use with `vec to stream` and `stream to vec` blocks. (work in progress)_

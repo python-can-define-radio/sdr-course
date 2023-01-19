@@ -35,39 +35,19 @@ To discuss:
 - How does the new approach affect our data transmission rate?
 - Does the new approach require an indication of begin-transmission or end-transmission?
 
-## Custom Python block
+## Setup
 
-We're going to use this Python code. It's not production-ready, but it's great for proof-of-concept.
+Make a new directory called `ex_069`. You'll want this because we'll be creating a few files.
 
-Make a new directory called `ex_069`. Create a new flowgraph, and save it in there with the name `morse_demo_1.grc`.
+Create a new flowgraph, and save it in that directory with the name `morse_demo_1.grc`.
 
-In that flowgraph, create a Python Block using the v4 method described in an earlier exercise.
-
-In the Func_To_Use blank, put "my_gnuradio_custom_python_helpers.modulate_morseish" WITH QUOTES.
-
-Then, create a python file in the same directory named `my_gnuradio_custom_python_helpers.py`. It must be named to match the name in the code you just copy/pasted.
-
-In `my_gnuradio_custom_python_helpers.py`, put this:
-
-```python3
-def modulate_morseish(datapoint, state_container):
-    if datapoint == 0:
-        return [1, 0, 0, 0]
-    elif datapoint == 1:
-        return [1, 1, 1, 0]
-    else:
-        print("ERROR")
-```
-
-Here's how we'll test it:
-
+Create this flowgraph:
 ```
 Vector 
-Source  ->  Run Python  
-            Function v4  ->  Vector to   ->  Virtual Sink
-                           Stream        ->  Repeat ->  UChar to 
-                                                        Float  -> Time 
-                                                                 Sink
+Source  ->  Python Block  ->  Vector to   ->  Virtual Sink
+                              Stream      ->  Repeat ->  UChar to 
+                                                         Float  -> Time 
+                                                                   Sink
                                                
 ```
 
@@ -75,7 +55,8 @@ Source  ->  Run Python
   - Output type: byte
   - Vector: [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0]
   - Repeat: Yes
-- Run Python Function v4
+- Python block:
+  - _First, you'll need to do the v4 method setup described in an earlier exercise. Then, type the following in the blanks:_
   - Func_to_use: "my_gnuradio_custom_python_helpers.modulate_morseish"  
      _with quotes_
   - State Var 1: 0
@@ -92,7 +73,19 @@ Source  ->  Run Python
   - Type: Float
   - Number of points: 200 
 
-We're going to try varying the irepeat interpolation.
+Also, in `my_gnuradio_custom_python_helpers.py` (which you created in an earlier exercise), put this:
+
+```python3
+def modulate_morseish(datapoint, state_container):
+    if datapoint == 0:
+        return [1, 0, 0, 0]
+    elif datapoint == 1:
+        return [1, 1, 1, 0]
+    else:
+        print("ERROR")
+``` 
+
+We're going to try varying the repeat interpolation.
 
 Then, we'll make the receiver.
 
