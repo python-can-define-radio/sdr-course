@@ -119,7 +119,7 @@ Source  ->  Run Python
 
 - Vector source:
   - Output type: byte
-  - Vector: [0, 0, 1]
+  - Vector: [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0]
   - Repeat: Yes
 - Run Python Function v4
   - Func_to_use: "my_gnuradio_custom_python_helpers.modulate_morseish"  
@@ -154,7 +154,7 @@ Source  ->  Run Python
                            Stream    ->  Virtual Sink
 
 { This part is new }
-Virtual Source -> Stream to Vec -> Run Python Function v4  ->  Throttle  ->  File Sink
+Virtual Source -> Stream to Vec -> Run Python Function v4  ->  Throttle  -> Pack K bits -> File Sink
 ```
 
 - Virtual sink:
@@ -162,12 +162,16 @@ Virtual Source -> Stream to Vec -> Run Python Function v4  ->  Throttle  ->  Fil
 - Virtual source:
   - Id: pretend_tx_rx
 - Stream to Vec:
-  - Byte, 4, 1
+  - Byte
+  - 4
+  - 1
 - Run Python Function v4 (the first one)
   - No change from before.
 - Run Python Function v4 (the second one)
   - Func_to_use: "my_gnuradio_custom_python_helpers.demod_morseish"  
      _with quotes_
+- Pack K Bits:
+  - K: 8
 
 You'll also have to open the code on the second Run Python Function block, and (carefully) swap the in sig and out sig:  
 
