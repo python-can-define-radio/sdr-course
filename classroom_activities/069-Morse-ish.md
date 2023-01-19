@@ -47,9 +47,9 @@ import numpy as np
 from gnuradio import gr
 
 
-class blk(gr.sync_block):
+class blk(gr.basic_block):
     def __init__(self, func_to_use="", state_var_1=0.0, state_var_2=0.0, state_var_3=0.0):
-        gr.sync_block.__init__(
+        gr.basic_block.__init__(
             self,
             name='Run Python Function v4',
             in_sig=[(np.uint8, 1)],
@@ -66,8 +66,9 @@ class blk(gr.sync_block):
         self.use_func = eval(self.use_func_str)
         return super().start(*args, **kwargs)
 
-    def work(self, input_items, output_items):
+    def general_work(self, input_items, output_items):
         inOneP = input_items[0][0]
+        self.consume(0, 1)
         self.state_container["state_var_1"] = self.state_var_1
         self.state_container["state_var_2"] = self.state_var_2
         self.state_container["state_var_3"] = self.state_var_3
