@@ -149,6 +149,27 @@ def demod_morseish(chunk, state_container):
 
 Finally, I recommend changing the names of the custom python blocks to "Run Python: modulate_morseish" and "Run Python: demod_morseish".  To do this, double click on each block to open its Properties window.  In the Code field, press "Open in Editor" again.  Locate the line that starts as, "name=" and replace the current name with the suggested name.
 
+
+### Average 
+
+```python3
+def my_average(chunk, state_container):
+    return np.average(chunk)
+```
+
+### Slice
+
+```python3
+def my_binary_slice(chunk, state_container):
+    # will need to experiment with the threshold
+    # after experimenting with the AGC
+    thresh = state_container["state_var_1"]
+    if avg > thresh:  
+        return 1
+    else:
+        return 0
+```
+
 ### Keep after first 1
 
 _TODO - details_
@@ -164,20 +185,6 @@ def keep_after_first_1(datapoint, state_container):
         return datapoint
     else:
         print("ERROR")
-```
-
-### Average and slice
-
-```python3
-def average_and_slice(chunk, state_container):
-    avg = np.average(chunk)
-    
-    # will need to experiment with the threshold after experimenting with the AGC
-    thresh = state_container["state_var_1"]
-    if avg > thresh:  
-        return 1
-    else:
-        return 0
 ```
 
 ### Improved demod given fuzzy symbol length
