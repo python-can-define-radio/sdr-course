@@ -151,13 +151,15 @@ Source  ->  Run Python
                            Stream    ->  Virtual Sink
 
 { This part is new }
-Virtual Source -> Run Python Function v4  ->  Throttle  ->  File Sink
+Virtual Source -> Stream to Vec -> Run Python Function v4  ->  Throttle  ->  File Sink
 ```
 
 - Virtual sink:
   - Id: pretend_tx_rx
 - Virtual source:
   - Id: pretend_tx_rx
+- Stream to Vec:
+  - Byte, 4, 1
 - Run Python Function v4 (the first one)
   - No change from before.
 - Run Python Function v4 (the second one)
