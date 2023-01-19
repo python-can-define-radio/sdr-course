@@ -20,30 +20,33 @@ Here's the code you will paste:
 import numpy as np
 from gnuradio import gr
 
+name = "Python Block: Run Function v4"
+in_sig_port_0 = np.float32
+out_sig_port_0 = np.uint8
 
-name = 'Python Block: Run Function v4'
-in_sig = np.float32
-out_sig = np.float32
+
+def use_func(datum, state_container):
+    return datum + 1
+
 
 
 class blk(gr.basic_block):
-    def __init__(self, func_to_use="", state_var_1=0.0, state_var_2=0.0, state_var_3=0.0):
+
+    def __init__(self, state_var_1=0.0, state_var_2=0.0, state_var_3=0.0):
         gr.basic_block.__init__(
             self,
             name=name,
-            in_sig=[in_sig],
-            out_sig=[out_sig]
+            in_sig=[in_sig_port_0],
+            out_sig=[out_sig_port_0]
         )
-        self.use_func_str = func_to_use
+        
+        self.use_func = use_func
+        
         self.state_var_1 = state_var_1
         self.state_var_2 = state_var_2
         self.state_var_3 = state_var_3
         self.state_container = {}
 
-    def start(self, *args, **kwargs):
-        import my_gnuradio_custom_python_helpers
-        self.use_func = eval(self.use_func_str)
-        return super().start(*args, **kwargs)
 
     def general_work(self, input_items, output_items):
         inOneP = input_items[0][0]
@@ -65,31 +68,26 @@ class blk(gr.basic_block):
 ```
 
 Step 7: Back in GNU Radio...
-- Verify that the block's name is now "Python Block: Run Function v4".
-- Verify that you see four text fields: Func_To_Use, State_Var_1, State_Var_2, State_Var_3.
+- Verify that you see three text fields: State_Var_1, State_Var_2, State_Var_3.
 - Type 0 in each of the State_Var fields.
-- For Func_To_Use, type "my_gnuradio_custom_python_helpers.add_one" INCLUDING THE QUOTES.
+- Press OK.
 
-Step 8: Create a python file in the same directory. Name it `my_gnuradio_custom_python_helpers.py`. It must be named that to match what you copied in Step 6.
+Step 8: In the flowgraph, verify that the block's name is now "Python Block: Run Function v4".
 
-Step 9: In that new python file, copy this:
+Step 9: Let's rename the block:  
+Reopen the code using the "Open in Editor" button.  
+On the line that says `name = "Python Block: Run Function v4"`, change it to `name = "Python Block: Add 1"`.  
+Save.
 
-```python3
-def add_one(datapoint, state_container):
-    return datapoint + 1
-```
-
-Step 10: Save that Python file.
-
-Step 11: Your block is ready to use. Now, wire this flowgraph to test it:
+Step 8: Your block is ready to use. Now, make this flowgraph to test it:
 
 ```
-Vector source  ->  Python Block: Run Function v4  ->  Time Sink
+Vector source  ->  Python Block: Add 1  ->  Time Sink
 ```
 
 - Vector Source:
   - Vector: [0.3, -0.9, -1.5]
-- Python Block: Run Function v4:
+- Python Block: Add 1:
   - Use the specs from above
 
 You should see a zig-zag pattern that touches 1.3, 0.1, and -0.5.
