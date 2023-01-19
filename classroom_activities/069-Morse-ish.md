@@ -152,6 +152,21 @@ Finally, I recommend changing the names of the custom python blocks to "Run Pyth
 
 ### Average 
 
+Adding fake noise:
+
+```
+        (original)            (new)             (new)    (original)
+... ->  Vector to Stream  -> UChar to Float ->  Add  ->  Virtual Sink
+                             Noise Source   ->
+                             (new)
+             
+
+(original)          (new)              (new)            (new)        (original)
+Virtual Source  ->  Moving Average  -> Keep 1 in N  -> Binary Slicer -> Stream to Vec 
+```
+
+
+
 ```python3
 def my_average(chunk, state_container):
     return np.average(chunk)
