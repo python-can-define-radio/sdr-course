@@ -34,7 +34,7 @@ Parameters:
   - Id: `samp_rate`
   - Value: `2e6` _(You may need more depending on whether the signal fits in the waterfall.)_
 - osmocom Source:
-  - Ch0: Frequency (Hz): For the in-class example, `49.5e6`. In general, you'll have to figure this out based on the device you're working with. I highly recommend tuning off-center from the signal that you are intending to record. Whatever frequency you pick for recording should match the frequency you pick for replaying.
+  - Ch0: Frequency (Hz): For the in-class example, `60e6`. In general, you'll have to figure this out based on the device you're working with. I highly recommend tuning off-center from the signal that you are intending to record. Whatever frequency you pick for recording should match the frequency you pick for replaying.
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): Will depend on your situation. Try to adjust so that the signal you're recording is approximately -0.6 to 0.6 on the Time Sink.
@@ -47,8 +47,8 @@ Parameters:
   - 0 to 62, steps of 2
 - Band pass filter:
   - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
-  - Low Cut: _Try it_
-  - High Cut: _Try it_
+  - Low Cut: `-300e3`
+  - High Cut: -50e3`
   - Transition Width: `50e3`
 - File sink:
   - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`.
