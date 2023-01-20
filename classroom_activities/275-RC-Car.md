@@ -34,7 +34,7 @@ Parameters:
   - Id: `samp_rate`
   - Value: `2e6` _(You may need more depending on whether the signal fits in the waterfall.)_
 - osmocom Source:
-  - Ch0: Frequency (Hz): For the in-class example, `60e6`. In general, you'll have to figure this out based on the device you're working with. I highly recommend tuning off-center from the signal that you are intending to record. Whatever frequency you pick for recording should match the frequency you pick for replaying.
+  - Ch0: Frequency (Hz): For the in-class example, `50e6`. In general, you'll have to figure this out based on the device you're working with. I highly recommend tuning off-center from the signal that you are intending to record. Whatever frequency you pick for recording should match the frequency you pick for replaying.
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): Will depend on your situation. Try to adjust so that the signal you're recording is approximately -0.6 to 0.6 on the Time Sink.
