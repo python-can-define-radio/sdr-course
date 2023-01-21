@@ -1,11 +1,6 @@
-## Multiplying on paper
-
-Together as a class:
-
+Now that we've seen square waves and sine waves plotted on paper and in Python using Matplotlib, let's graph them in GNU Radio.
 
 ## GNU Radio: Separate waves
-
-After doing that on paper, implement in GNU Radio:
 
 `square_wave_separate.grc`
 

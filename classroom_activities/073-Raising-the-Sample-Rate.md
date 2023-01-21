@@ -1,8 +1,6 @@
 ## Meeting the Hack RF's Sample Rate Requirements
 
-In the previous two exercises (038 and 039), we used a sample rate of 100 samples per second for demonstration purposes. Now, we must raise it to  [the Hack RF's required minimum](https://hackrf.readthedocs.io/en/latest/hackrf_one.html): 2 million samples per second.
-
-_Note: We'll talk more about the meaning of sample rates soon, so feel free to come back to these explanations after doing the Sample Rate exercises._
+In the previous two exercises (038 and 039), we used a sample rate of 100 samples per second for demonstration purposes. Now, we're going to raise it to  [the Hack RF's required minimum](https://hackrf.readthedocs.io/en/latest/hackrf_one.html): 2 million samples per second.
 
 This necessitates a few other changes:
 
@@ -43,13 +41,14 @@ _Notes:_
 - After pressing play, there will be about 5 seconds before any data is displayed.
 - I recommend closing the window in less than 30 seconds to avoid causing the computer to freeze.
 
-<details><summary>Challenge Question (optional):</summary>
+<details><summary>Review Question:</summary>
 <p>
 
 - How many seconds of data will be displayed in the Time Sink? 
   - _Hint: Every second, 2 million data points flow into the Time Sink._  
     _How many seconds does it take for 8 million data points to arrive?_
 
+Answer: 4 seconds.
 </p>
 </details>
 
@@ -57,4 +56,4 @@ _Notes:_
 
 As useful as it is to see that much data in the Time Sink, it's also quite useful to have a computer that isn't on the brink of freezing. 
 
-So, change the `Number of Points` in the Time Sink to a lower number of your choice.
+So, change the `Number of Points` in the Time Sink to a lower number of your choice, such as the default `1024`.

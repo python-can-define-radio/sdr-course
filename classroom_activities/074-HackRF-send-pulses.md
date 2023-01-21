@@ -1,7 +1,5 @@
 ## Transmitting the pulses
 
-_Prerequisites: `038`, `039`, `040`_
-
 We're going to send the pulses that we created to the Hack RF. 
 
 ```
@@ -13,7 +11,7 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink
 
 > ```
 > You should usually use a Throttle if you're doing a pure simulation (as we were doing before),
-> but you should never use a Throttle if you are working with audio hardware or SDR hardware (as we are doing now).  
+> but you usually don't use a Throttle if you are working with audio hardware or SDR hardware (as we are doing now).  
 > 
 > When working with hardware, the hardware provides the needed throttling to avoid maxing out the CPU.   
 > 
@@ -48,7 +46,7 @@ Parameters:
 
 ## Receiving the pulses
 
-To ensure that this indeed transmits pulses, let's receive the signal. For example, you can use the flowgraph `receiver.grc` from the second half of `030`. Remember that the Hack RF is half-duplex, so you'll need a separate Hack RF (or some other device) to receive the signal.
+To ensure that this indeed transmits pulses, let's receive the signal. For example, you can use the flowgraph `receiver.grc` from an earlier exercise. Remember that the Hack RF is half-duplex, so you'll need a separate Hack RF (or some other device) to receive the signal.
 
 Once you've confirmed that you see pulsing, and that it's you (not someone else) transmitting, move to the next exercise.
 

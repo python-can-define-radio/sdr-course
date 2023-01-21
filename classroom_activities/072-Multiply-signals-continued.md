@@ -1,5 +1,3 @@
-_Prerequisite: `038-Multiplying-signals.md`_
-
 We want to be able to transmit the generated on-off signal to the Hack RF.
 
 To do so, we need to make a few changes.
@@ -8,7 +6,7 @@ To do so, we need to make a few changes.
 
 We can't transmit to the osmocom sink unless the data type is blue (complex).
 
-We're also going to include a slider (a.k.a. GUI Range) as recommended in `038`.
+We're also going to include a slider (a.k.a. GUI Range).
 
 Create a file called `square_multiplied_complex.grc`:
 
@@ -59,7 +57,7 @@ Parameters:
 </summary>
   In the previous exercise, we used `4 Hz` as the frequency because it was easier to draw on paper.
   
-  Here, we use `20 Hz` to practice seeing different frequencies.
+  Here, we make the frequency slidable to practice seeing different frequencies.
   
   When we transmit this to the Hack RF, we'll use a much higher frequency. We'll discuss the details of why in a later section.
 </details>
@@ -70,22 +68,10 @@ Now that we have the cycling on and off working, we want to hide some of those d
 
 _If you'd like a visual description of how to work with Hier Blocks, see [here](https://wiki.gnuradio.org/index.php/Hier_Blocks_and_Parameters)._
 
-### The setup
-
-We need a folder in our home directory called `.grc_gnuradio`. Open a terminal, and type this:
-
-```
-cd ~
-mkdir .grc_gnuradio
-```
 
 ### Creating the Hier block
 
-Now that we've created that directory, go back to GNU Radio, and open a new file.
-
-Open the "Save As" window. In that window, you may not be able to see the .grc_gnuradio directory that you created. If you can't see it, then press Ctrl+H to show hidden files.
-
-Name the file `mix_sine_wave_hier_block.grc`, and save it in the .grc_gnuradio directory.
+Create a new file in GNU Radio Companion. Name the file `mix_sine_wave_hier_block.grc`.
 
 Flowgraph:
 ```
@@ -178,9 +164,19 @@ Signal Source  -->  Mix Sine Wave Hier Block  -->  Time Sink
 
 Run that. It should display a wave that pulses on and off, just like the file `square_multiplied_complex.grc` that we created above. The advantage is that we have now hidden the details of the on-off pulsing so that we can focus on the big picture.
 
-In the next activity, we'll change the sample rate.
-
 Optional Exercises:
 
 - Make the frequency of the Square Signal Source slidable.
 - Experiment with the Offset of the Signal Source.
+
+### The background info
+
+_Optional to read_
+
+You'll notice that we set the Generate Options to `Hier Block`. GNU Radio Companion generates the hier blocks in `~/.grc_gnuradio`. You can see them if you run this in a terminal:
+
+```
+cd ~
+cd .grc_gnuradio
+ls
+```

@@ -1,12 +1,10 @@
-_This is unfinished, but has some useful info._
-
-## Transmitting to the Hack RF
-
-One way to transmit this is using the `Mix Sine Wave Hier Block` that we created. You'll use what you created in `041`, but with the Vector Source and Repeat block instead of a Signal Source. Try it first, and then if needed, refer to the directions below.
+If we want to transmit more interesting data, we can use the `Mix Sine Wave Hier Block` that we created with a Vector Source. We also use the Repeat block as discussed to make the pulses longer.
 
 `Vec_Sine_Osmocomsink.grc`
 
 ```
+GUI Range
+
 GUI Range
                                           -->  Time Sink
 Vector  -->  Repeat  -->  Mix Sine Wave   -->  Osmocom Sink 
@@ -21,6 +19,13 @@ Parameters:
   - Start: `-300e3`
   - Stop: `300e3`
   - Step: `1e3`
+- GUI Range:
+  - Id: `pulse_length_in_samples`
+  - Type: `int`
+  - Default: `5000000`
+  - Start: `100`
+  - Stop: `1000000`
+  - Step: `100`
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `2e6`
@@ -30,7 +35,7 @@ Parameters:
   - Repeat: `Yes`
 - Repeat:
   - Type: `float`
-  - Interpolation: `int(2e6)`
+  - Interpolation: `pulse_length_in_samples`
 - Mix Sine Wave Hier Block:
   - Sample Rate: `samp_rate`
   - Frequency: `sigfreq`
@@ -41,6 +46,4 @@ Parameters:
   - Ch0: IF Gain (dB): `35`
   - Ch0: BB Gain (dB): `0`
 
-This should produce on-off pulses that are 1 second each. (Why 1 second? Try changing the Interpolation on the Repeat block.)
-
-_Note: The GUI Range is not strictly necessary, but is useful in a classroom setting for easily changing frequencies._
+This should produce on-off pulses that are, by default, half a second second each. (Why half a second? What is controlled by the `pulse_length_in_samples` slider?)

@@ -1,3 +1,5 @@
+You can also write files using GNU Radio. The concepts are the same as we've just discussed. Here's an example flowgraph.
+
 # File Sink
 
 `File_Sink_Demo_1.grc`
@@ -6,8 +8,15 @@
 Vector Source  -->  Throttle  -->  File Sink
 ```
 
-- Vector: [70, 73, 65], repeat yes, type byte
-- Throttle type byte
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `10`
+- Vector Source:
+  - Type: `byte`
+  - Vector: `[70, 73, 65]`
+  - Repeat: `yes`
+- Throttle:
+  - Type: byte
 - File Sink: 
   - Type: byte
   - File: "/home/yourusername/Desktop/myfilesinkoutputfile.txt"  
