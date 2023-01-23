@@ -30,3 +30,5 @@ Parameters:
     - Line 1 Marker: `Circle`
 
 
+Things to try:
+- Use the Print block at different points in the flowgraph. Does it print what you expect?

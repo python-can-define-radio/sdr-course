@@ -23,6 +23,8 @@ Vector Source  -->  Throttle  -->  File Sink
          _Note: make sure to type your username instead of "yourusername". For example, "/home/bob/Desktop/myfilesinkoutputfile.txt"
   - Unbuffered: yes
 
+Also, try adding the print block to see if it displays what you expect. You'll need to either change the type of the print block, or use a `UChar to Float` block.
+
 ### In a normal text editor...
 
 Try opening that text file in a normal text editor before you open it using Python. Does it contain what you expect?

@@ -166,3 +166,6 @@ Parameters:
     - Line 1 Marker: `Circle`
 
 You should see a graph that looks very similar to the one we saw in Python.
+
+Things to try:
+- Use the Print block in addition to the Time Sink. Does it print what you expect?
