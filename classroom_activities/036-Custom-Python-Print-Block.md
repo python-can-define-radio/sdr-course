@@ -1,6 +1,8 @@
 People sometimes ask "where's the 'print' command in GNU Radio Companion?"
 
-I hypothesize that a "print" block was omitted because the GUI Sinks are most often the best way to view the data, but here's a print block in case you ever find it useful:
+I hypothesize that a "print" block was omitted because the GUI Sinks are most often the best way to view the data, but here's a print block in case you ever find it useful.
+
+How to use: Follow steps 1 through 6 in the "Custom Python Method" exercise.
 
 ```python3
 import numpy as np
