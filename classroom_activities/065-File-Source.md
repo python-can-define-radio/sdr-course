@@ -43,6 +43,8 @@ The most common way to encode text is Unicode. Here are a few characters in Unic
   
 If you look up a [Unicode table](https://unicode-table.com/en/#0041), you'll often see the hexadecimal representation.
 
+Also, we've generally found that more people have heard of ASCII than Unicode. Unicode and ASCII are the same for the Basic Latin characters (A through Z, a through z), so for the purpose of this class, you can think of them as synonymous. 
+
 </details>
 
 So, when we asked Python to write "ABCD", it wrote this:

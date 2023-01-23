@@ -27,7 +27,7 @@ Vector Source  -->  Throttle  -->  File Sink
 
 Try opening that text file in a normal text editor before you open it using Python. Does it contain what you expect?
 
-### In Python...
+### Reading the numbers
 
 To read that in Python, we can copy from an earlier exercise. Name this `read_text_file_integers_2.py`
 
@@ -38,3 +38,10 @@ f.close()
 contents_as_numbers = list(map(int, contents))
 print(contents_as_numbers)
 ```
+
+You can also view it in a single command on the GNU/Linux terminal:
+
+```
+od --format=u1 myfilesinkoutputfile.txt
+```
+
