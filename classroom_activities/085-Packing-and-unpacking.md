@@ -58,15 +58,30 @@ In binary, 11111111. In decimal, that's 255.
 Use multiple bytes to express the number. That's outside the scope of this lesson, but an amusing example of using not enough bytes to express a number happened when a certain video on a certain website exceeded the max view count of 2,147,483,647. The view count overflowed and became a negative number. The website hosting the video adjusted to use more bytes, and the problem was resolved.
 </details>
 
+## Working with letters
+
+Let's say we want to transmit the string "YES" using binary.
+
+We would first convert the letters to decimal numbers (using the Unicode standard), then to binary:
+
+```
+       Y        E        S
+      89       69       83
+01011001 01000101 01010011
+```
+
 ## Making the computer do the work
 
-Let's say we have that binary string, and we want to convert it back to the original list of ages in a human-readable format.
+Let's say we have received that binary string, and we want to convert it back to the original message.
 
-First, let's make sure that we can write numbers to a file. We're going to use different numbers; you'll see why in a moment.
+We'll convert the binary back to decimal numbers, and then the numbers back to letters. 
+
+As you may remember, the numbers-to-letters part is taken care of already. To prove it, try this flowgraph:
 
 `number_writer_3.grc`
 
 ```
+               -->  Python Block: Print
 Vector source  -->  File sink
 ```
 
@@ -79,17 +94,58 @@ Vector source  -->  File sink
      _Change yourusername to your actual username_
   - Type: byte
   - Unbuffered: on
+- Python Block: Print
+  - _Note_: You'll create this block using the method described in an earlier exercise (036 at time of writing).
 
 Run that GRC file, and open the text file that it produced. You'll see that you don't see any numbers, rather, it says "LETTERS". 
 
-Depending on our goal, this might be a good thing. If we want to see the aforementioned ages as numbers, then perhaps not.
-
-We can view the "behind the scenes" numbers using this command in the terminal:
+We can view the "behind the scenes" numbers to make sure it worked using this command in the terminal:
 
 ```
 od --format=u1 myfilesinkoutputfile.txt
 ```
 
-### Looking again at the original data
+### Packing the bits
 
-TODO
+Now, we've reached one of the key steps: packing the bits.
+
+We are imagining having received the following data:
+
+```
+01011001 01000101 01010011
+```
+
+In GNU Radio, this would be represented like so:
+
+```
+[0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1]
+```
+
+If you simply sent that to a file sink, it would not produce the string "YES"; it would produce a sequence of non-printable characters. (Feel free to try it; different text editors will display it differently, but none of them will display "YES".)
+
+How do we tell GNU Radio to treat each group of 8 as a single number? The Pack Bits block.
+
+`number_writer_4.grc`
+
+```
+                             -->  Python Block: Print
+Vector source  --> Pack Bits -->  File sink
+```
+
+- Vector source:
+  - Type: byte 
+  - Vector: `[0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1]`
+  - Repeat: No
+- Pack Bits:
+  - K: `8`
+- File sink:
+  - File: `/home/yourusername/Desktop/numberwrite_outputfile.txt`  
+     _Change yourusername to your actual username_
+  - Type: byte
+  - Unbuffered: on
+- Python Block: Print
+  - _Note_: You'll create this block using the method described in an earlier exercise (036 at time of writing).
+
+This should write a file that contains "YES". Success!
+
+Recommended: Use a Time Sink to look at the data before and after packing. Note that the data after packing is far larger than 1, so you'll want to adjust the Y-Max in the Time Sink.
