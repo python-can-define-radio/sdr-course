@@ -66,3 +66,10 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
   - For example, if someone were to use this Digital Jammer to jam an FM radio station, it would probably be negligibly different from a noise jammer.
   - But if someone were transmitting data using BPSK (which is a modulation technique that is used in cell phones, for example), then a BPSK jammer _with matching parameters_ would be able to jam more effectively and/or with less power than a simple noise jammer.
     - What parameters must match? Perhaps the most important would be the number of symbols sent every second. The goal of a digital jammer is to closely imitate a real transmission, so that the receiver has trouble distinguishing the real data from the fake random data that the jammer is sending.
+
+## Exercise:
+
+- Sender: Whistle short pulses and long pulses to represent zeros and ones.
+- Receiver: Announce what you're receiving.
+- Rest of class: Make a "psshhhhh" noise. That's noise jamming.
+- Now, rest of class, whistle similarly. That's digital jamming. Notice how much more effective it is.
