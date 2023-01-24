@@ -7,6 +7,8 @@ GUI Range
 
 GUI Range
 
+GUI Check Box
+
                 ┌─⟶  Time sink
                 ├─⟶  Waterfall sink    ┌─⟶  Waterfall sink                                             
 Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  Rational Resampler  ⟶  Audio Sink                          
@@ -55,6 +57,13 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Stop: `108e6`
 - Step: `20e3`
 
+### For the GUI Check Box:
+
+- Id: `filteron`
+- Default Value: `0`
+- True: `1`
+- False: `0`
+
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
 - Value: `8e6`
@@ -66,6 +75,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `if_gain_slider`
 - Ch0: BB Gain (dB): `32`
+- Ch0: Bandwidth (Hz): `filteron * 2.75e6`
 
 ### For the Band Pass Filter:
 
@@ -101,4 +111,6 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 ## Discussion
 
 - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
+
+- In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
 
