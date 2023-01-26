@@ -69,6 +69,8 @@ Now, set the sample rate to 20. (This should only require changing the `samp_rat
    1. 1 Hz?
    2. 0.5 Hz?
    3. 2 Hz?
+8. What Number of Points should you pick to view 1 second of data?
+9. How much time would you be able to see if you set the Number of Points to `60`?
 
 Now, let's significantly raise the sample rate. There are two changes that help lower the chance of freezing the flowgraph:
 - Add a throttle
@@ -102,12 +104,12 @@ Parameters:
     - Line 1 Style: _same as above_
     - Line 1 Marker: _same as above_
 
-8. In this new flowgraph, how much time is shown in the Time sink?
-9. What is the period of the square wave? 
-10. If we want the period to be 100 microseconds, what should the Interpolation be? 
-11. Set the Interpolation to 200. What is the period? What Number of Points should you pick so you can se the entire cycle of the square wave?
-12. If we want the frequency to be 2 Hz, what should the period be? What should the Interpolation be? What should the Number of Points be?  
+10. In this new flowgraph, how much time is shown in the Time sink?
+11. What is the period of the square wave? 
+12. If we want the period to be 100 microseconds, what should the Interpolation be? 
+13. Set the Interpolation to 200. What is the period? What Number of Points should you pick so you can se the entire cycle of the square wave?
+14. If we want the frequency to be 2 Hz, what should the period be? What should the Interpolation be? What should the Number of Points be?  
 
 With a significantly larger Number of Points, the window may become unresponsive. You may need to lower the Number of Points to avoid freezing. Unfortunately, as a result, you may not be able to see the entirety of the square wave.
 
-13. Why would we want to set the sample rate so high? (Hint: what is the minimum sample rate of the Hack RF?)
+15. Why would we want to set the sample rate so high? (Hint: what is the minimum sample rate of the Hack RF?)
