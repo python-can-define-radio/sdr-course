@@ -23,7 +23,9 @@ Note: this code is not meant to be readable. Rather, the goal of this exercise i
 Name: Mystery Signal 1
 Type: No input, output = complex 64
 
+a wave that does 
 on Off on off off repeat
+
 TODO
 ```
 </details>

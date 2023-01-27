@@ -49,4 +49,4 @@ plt.plot(x_axis_label, sqr * wavey, "o")
 plt.show()
 ```
 
-After doing the Python, we'll use GNU Radio Companion to make it a wave. That'll come a few exercises from now.
+In the next exercise, we'll use GNU Radio Companion to do the same thing.
