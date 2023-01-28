@@ -24,7 +24,8 @@ Name: Mystery Signal 1
 Type: No input, output = complex 64
 
 a wave that does 
-on Off on off off repeat
+on Off on off off
+No Repeat
 
 TODO
 ```

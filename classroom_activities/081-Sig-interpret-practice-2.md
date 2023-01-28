@@ -19,7 +19,7 @@ on off on off on off on off
 binary for Y
 off off off off off off off off
 off off off off off off off off
-repeat
+NO repeat
 TODO
 ```
 </details>
@@ -41,10 +41,13 @@ Questions:
 4. How wide is a single pulse (samples?)
 5. If you were to guess, what modulation scheme do you think this is? Choices: FSK, OOK, PSK
 
-A collaborator suggests that this communication may be the letter Y or N in Unicode. You point out that there seem to be 16 bits of information rather than 8. The collaborator says that this might be an 8-bit preamble followed by a single Unicode character. In other words, the first 8 bits are not conveying information, they are just intended to mark the start of the message.
+A collaborator suggests that this communication may be the letter Y or N in Unicode. You point out that there seem to be 16 bits of information rather than 8. The collaborator says that this might be an 8-bit preamble* followed by a single Unicode character. In other words, the first 8 bits are not conveying information, they are just intended to mark the start of the message. 
 
 Questions continued:
 
 6. What is the bit sequence of the 8-bit preamble? (Hint: It starts with 1 0).
 7. What is the bit sequence of the 8-bits of actual data?
 8. Assuming a Unicode interpretation, was the data a "Y" or an "N"?
+
+
+*Incidentally, Ethernet frames have a preamble that is similar to the one shown above. The Ethernet preamble is longer (approx 60 bits long, depending how you count), but the 101010... pattern at the beginning is the same.
