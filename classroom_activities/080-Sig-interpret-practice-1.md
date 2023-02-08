@@ -2,7 +2,7 @@
 
 ```
 Python Block  -->  Time Sink
-              -->  Waterfall Sink
+              -->  Frequency Sink
 ```
 
 <details><summary>A review of how to use the Python Block: (<i>click to expand</i>)</summary>
@@ -17,7 +17,7 @@ Python Block  -->  Time Sink
 
 <details><summary>The code for the Python block: (<i>click to expand</i>)</summary>
 
-Note: this code is not meant to be readable. Rather, the goal of this exercise is to explore the mystery signal using the Time Sink, Waterfall sink, etc.
+Note: this code is not meant to be readable. Rather, the goal of this exercise is to explore the mystery signal using the Time Sink, Frequency Sink, etc.
 
 ```python3
 import numpy as np
