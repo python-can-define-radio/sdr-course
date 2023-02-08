@@ -10,6 +10,7 @@ A few practical notes:
 - Ctrl+F, Esc to avoid accidental
 - "Apply" broken
 - Ubuntu's GNOME desktop environment: "Save" dialog search quirk
+- We recommend that you create a directory per exercise number to keep things organized. This is especially helpful given that Embedded Python Blocks cause extra files to be created.
 
 Keyboard shortcuts:
 
