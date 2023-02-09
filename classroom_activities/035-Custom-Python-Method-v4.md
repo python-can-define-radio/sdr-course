@@ -78,7 +78,8 @@ Step 8: In the flowgraph, verify that the block's name is now "Python Block: Run
 
 Step 9: Let's rename the block:  
 Reopen the code using the "Open in Editor" button.  
-On the line that says `name = "Python Block: Run Function v4"`, change it to `name = "Python Block: Add 1"`.  
+- On the line that says `name = "Python Block: Run Function v4"`, change it to `name = "Python Block: Add 1"`.
+- On the line that says `out_sig_port_0 = np.uint8`, change it to `out_sig_port_0 = np.float32`.
 Save.
 
 Step 8: Your block is ready to use. Now, make this flowgraph to test it:
@@ -88,9 +89,12 @@ Vector source  ->  Python Block: Add 1  ->  Time Sink
 ```
 
 - Vector Source:
+  - Type: `Float`
   - Vector: [0.3, -0.9, -1.5]
 - Python Block: Add 1:
   - Use the specs from above
+- Time Sink:
+  - Type: `Float`
 
 You should see a zig-zag pattern that touches 1.3, 0.1, and -0.5.
 
