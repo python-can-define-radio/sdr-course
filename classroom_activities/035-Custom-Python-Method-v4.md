@@ -2,6 +2,8 @@ There may be times when you want to add some custom Python code to your flowgrap
 
 The way to do this in GNU Radio Companion is somewhat tricky, so we've made an approach that is slightly easier.
 
+In a new flowgraph, do this:
+
 Step 1: Ctrl F, Python Block.
 
 Step 2: Double click the Python Block that you just created.
