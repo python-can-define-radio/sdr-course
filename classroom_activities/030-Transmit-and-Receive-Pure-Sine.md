@@ -61,10 +61,7 @@ _Note: the following block names are abbreviated:_
     - _No changes._
   - "Trigger" Tab:
     -  Trigger Mode: `Normal`
-- Waterfall Sink:
-  - FFT Size: `8192`
 - Frequency Sink:
-  - FFT Size: `8192`
   - Y Min: `-110`
 
 
@@ -92,10 +89,7 @@ osmocom Source  --->  Time Sink
     - _No changes._
   - "Trigger" Tab:
     -  Trigger Mode: `Normal`
-- Waterfall Sink:
-  - FFT Size: `8192`
 - Frequency Sink:
-  - FFT Size: `8192`
   - Y Min: `-110`
 
 
