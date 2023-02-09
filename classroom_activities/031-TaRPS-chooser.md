@@ -1,3 +1,5 @@
+So far, we've seen GUI Ranges (a.k.a. sliders). This exercise demonstrates how to use a chooser (a.k.a. drop-down menu) to control a parameter.
+
 Copy and paste your Transmitting flowgraph from `030-Transmit-and-Receive-Pure-Sine.md`.
 
 Make the following changes:
