@@ -6,7 +6,8 @@ How to use: Follow steps 1 through 6 in the "Custom Python Method" exercise.
 
 <details><summary>Use this code: (click to view code) </summary>
 
-<code>
+```python3
+    
 import numpy as np
 from gnuradio import gr
 import time
@@ -34,7 +35,7 @@ class blk(gr.sync_block):
         time.sleep(self.sleep_seconds)
 
         return 1
-</code>
+```
 
 </details>
     
