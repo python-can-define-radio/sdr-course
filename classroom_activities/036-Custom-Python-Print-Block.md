@@ -4,6 +4,11 @@ I hypothesize that a "print" block was omitted because the GUI Sinks are most of
 
 How to use: Follow steps 1 through 6 in the "Custom Python Method" exercise.
 
+Once you've created the block,
+
+- Put `0.5` in the Sleep_seconds blank
+- Use a vector source (as in the previous exercise) to test that the print block works.
+
 ```python3
 import numpy as np
 from gnuradio import gr
