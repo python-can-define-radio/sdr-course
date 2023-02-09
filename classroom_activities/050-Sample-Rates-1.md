@@ -64,6 +64,8 @@ Let's imagine that you did one sample every two hours, or 12 samples per day. It
 
 Let's graph this in Python. For simplicity, I'm omitting the times.
 
+Open your editor of choice (for example, VS Code). Open your directory on the Desktop inside of VS Code. Create this file:
+
 Filename: `temperature_graph_1.py`
 
 ```python3
