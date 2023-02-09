@@ -9,6 +9,8 @@ Once you've created the block,
 - Put `0.5` in the Sleep_seconds blank
 - Use a vector source (as in the previous exercise) to test that the print block works.
 
+You'll see that when it runs, the window is empty. The print block only outputs in the built-in GNU Radio "terminal". Ask if you need help finding it.
+
 ```python3
 import numpy as np
 from gnuradio import gr
