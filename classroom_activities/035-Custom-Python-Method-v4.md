@@ -94,9 +94,13 @@ Vector source  ->  Python Block: Add 1  ->  Time Sink
 - Python Block: Add 1:
   - Use the specs from above
 - Time Sink:
-  - Type: `Float`
+  - General tab:
+    - Type: `Float`
+    - Number of Points: `30`
+  - Config tab:
+    - Line 1 Marker: `Circle`
 
-You should see a zig-zag pattern that touches 1.3, 0.1, and -0.5.
+You should see a zig-zag pattern that touches 1.3, 0.1, and -0.5. 
 
 In future exercises, we'll abreviate these steps by simply saying "Create a Python Block using the v4 method".
 
