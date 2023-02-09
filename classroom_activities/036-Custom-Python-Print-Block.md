@@ -4,14 +4,9 @@ I hypothesize that a "print" block was omitted because the GUI Sinks are most of
 
 How to use: Follow steps 1 through 6 in the "Custom Python Method" exercise.
 
-Once you've created the block,
+<details><summary>Use this code: (click to view code) </summary>
 
-- Put `0.5` in the Sleep_seconds blank
-- Use a vector source (as in the previous exercise) to test that the print block works.
-
-You'll see that when it runs, the window is empty. The print block only outputs in the built-in GNU Radio "terminal". Ask if you need help finding it.
-
-```python3
+<code>
 import numpy as np
 from gnuradio import gr
 import time
@@ -39,4 +34,14 @@ class blk(gr.sync_block):
         time.sleep(self.sleep_seconds)
 
         return 1
-```
+</code>
+
+</details>
+    
+Once you've created the block with that code, save and close the editor.
+
+You'll see that there's a blank "Sleep_Seconds" field in the GNU Radio GUI. `0.5` in that Sleep_seconds.
+
+Then, use a vector source (as in the previous exercise) to test that the print block works.
+
+You'll see that when it runs, the window is empty. The print block only outputs in the built-in GNU Radio "terminal". Ask if you need help finding it.
