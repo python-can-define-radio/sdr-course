@@ -25,7 +25,8 @@ Configuration for the rest of the flowgraph:
   - Id: `samp_rate`
   - Value: `10`
 - Time Sink:
-  - It's up to you (again)! I recommend turning on the markers for the points.
+  - Number of Points: `200` (You may need more, but remember -- if you set it too high, GNU Radio won't display ANY data.)
+  - I recommend turning on the markers for the points.
 
 ---
 
