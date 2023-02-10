@@ -35,19 +35,20 @@ Configuration for the rest of the flowgraph:
 
 Questions:
 
-1. What is the frequency of the wave?
-2. Would you describe the signal as pulsing on and off, or continuously varying in amplitude? Based on that answer, is the modulation technique most likely analog or digital?
-3. How wide is a single pulse (time?)
-4. How wide is a single pulse (samples?)
-5. If you were to guess, what modulation scheme do you think this is? Choices: FSK, OOK, PSK
+1. What is the period of the wave (approx)?
+2. What is the frequency of the wave (approx)?
+3. Would you describe the signal as pulsing on and off, or continuously varying in amplitude? Based on that answer, is the modulation technique most likely analog or digital?
+4. How wide is a single pulse (time, approx)?
+5. How wide is a single pulse (samples, approx)? _Hint: Use the time and the sample rate to determine this rather than counting samples._
+6. If you were to guess, what modulation scheme do you think this is? Choices: FSK, OOK, PSK
 
 A collaborator suggests that this communication may be the letter Y or N in Unicode. You point out that there seem to be 16 bits of information rather than 8. The collaborator says that this might be an 8-bit preamble* followed by a single Unicode character. In other words, the first 8 bits are not conveying information, they are just intended to mark the start of the message. 
 
 Questions continued:
 
-6. What is the bit sequence of the 8-bit preamble? (Hint: It starts with 1 0).
-7. What is the bit sequence of the 8-bits of actual data?
-8. Assuming a Unicode interpretation, was the data a "Y" or an "N"?
+7. What is the bit sequence of the 8-bit preamble? (Hint: It starts with 1 0).
+8. What is the bit sequence of the 8-bits of actual data?
+9. Assuming a Unicode interpretation, was the data a "Y" or an "N"?
 
 
 *Incidentally, Ethernet frames have a preamble that is similar to the one shown above. The Ethernet preamble is longer (approx 60 bits long, depending how you count), but the 101010... pattern at the beginning is the same.
