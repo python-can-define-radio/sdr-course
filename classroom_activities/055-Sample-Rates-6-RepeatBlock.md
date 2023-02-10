@@ -150,6 +150,8 @@ With a significantly larger Number of Points, the window may become unresponsive
      Points = At least 500000 to see one cycle
               Note: 500000 could be written as int(500e3) or int(5e5)
 #15: Points = 1 Million = int(1e6) to see a full second of data
-#16: The Hack RF has a minimum sample rate of 2 Million samples per second, so it’s helpful to practice working with large sample rates in order to build an intuition with scientific notation, microseconds, etc.
+#16: The Hack RF has a minimum sample rate of 2 Million samples per second,
+     so it’s helpful to practice working with large sample rates in order to 
+     build an intuition with scientific notation, microseconds, etc.
 </pre>
 </details>
