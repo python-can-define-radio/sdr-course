@@ -22,7 +22,7 @@ Parameters:
 - GUI Range:
   - Id: `pulse_length_in_samples`
   - Type: `int`
-  - Default: `5000000`
+  - Default: `500000`
   - Start: `100`
   - Stop: `1000000`
   - Step: `100`
