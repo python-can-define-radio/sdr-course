@@ -10,17 +10,54 @@ Python Block  -->  Time Sink
 Note: this code is not meant to be readable. Rather, the goal of this exercise is to explore the mystery signal using the Time Sink, Waterfall sink, etc.
 
 ```python3
-Name: Mystery Signal 2
-Type: No input, output = complex 64
+import numpy as np
+from gnuradio import gr
 
-do different carrier freq and symbol length from previous
 
-on off on off on off on off
-binary for Y
-off off off off off off off off
-off off off off off off off off
-NO repeat
-TODO
+name = "Mystery Signal 2"
+out_sig_port_0 = np.complex64
+
+
+def use_func(state_container):
+    idx = state_container["count"] // 200
+    content = state_container["content"]
+    if idx >= len(content):
+        return None
+    curOutput = content[idx]
+    retval = curOutput *  np.exp(0.1j * state_container["count"])
+    state_container["count"] += 1
+    return retval
+
+
+class blk(gr.basic_block):
+
+    def __init__(self):
+        gr.basic_block.__init__(
+            self,
+            name=name,
+            in_sig=[],
+            out_sig=[out_sig_port_0]
+        )
+        
+        self.use_func = use_func
+        self.state_container = {
+            "count": 0,
+            "content": ([
+                1, 0, 1, 0, 1, 0, 1, 0,
+                0, 1, 0, 1, 1, 0, 0, 1,
+            ] + [0] * 16)
+        }
+
+
+    def general_work(self, input_items, output_items):
+        outval = self.use_func(self.state_container)
+        if outval == None:
+            return 0
+        else:
+            dt = output_items[0][0].dtype
+            npified = np.array(outval, dtype=dt)
+            output_items[0][0] = npified
+            return 1
 ```
 </details>
 
@@ -29,7 +66,7 @@ Configuration for the rest of the flowgraph:
   - Id: `samp_rate`
   - Value: `2e6`
 - Time Sink:
-  - It's up to you (again)!
+  - Number of Points: `4000`
 
 ---
 
