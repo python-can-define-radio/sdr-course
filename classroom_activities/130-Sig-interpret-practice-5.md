@@ -70,8 +70,6 @@ class blk(gr.basic_block):
             output_items[0][0] = npified
             return 1
 
-
-
 ```
 </details>
 
@@ -80,7 +78,7 @@ Configuration for the rest of the flowgraph:
   - Id: `samp_rate`
   - Value: `60`
 - Time Sink:
-  - It's up to you (again)! I recommend turning on the markers for the points.
+  - You may not see the data at first. Adjust the Y min and Y max till you find the data.
 
 ---
 

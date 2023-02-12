@@ -67,6 +67,7 @@ Configuration for the rest of the flowgraph:
   - Value: `2e6`
 - Time Sink:
   - Number of Points: `4000`
+  - _You may wish to make other adjustments._
 
 ---
 

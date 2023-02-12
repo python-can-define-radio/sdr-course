@@ -77,7 +77,7 @@ Configuration for the rest of the flowgraph:
   - Id: `samp_rate`
   - Value: `80`
 - Time Sink:
-  - It's up to you (again)! I recommend turning on the markers for the points.
+  - Turn on the markers and adjust anything else as necessary.
 
 ---
 
