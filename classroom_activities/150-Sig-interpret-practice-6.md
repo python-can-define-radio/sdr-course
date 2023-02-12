@@ -9,17 +9,70 @@ Python Block  -->  Time Sink
 Note: this code is not meant to be readable. Rather, the goal of this exercise is to explore the mystery signal using the Time Sink, Waterfall sink, etc.
 
 ```python3
+import numpy as np
+from gnuradio import gr
+from functools import reduce
+from operator import concat
+import random
 
-Name: Mystery Signal 6
-Type: No input, output = complex
 
-Noisy wave that is either 1 ish and 5 ish in amplitude; make sure noise is small enough to not require filtering beyond the binary slice
-200 samples per bit
 
-Preamble = 10101010
-No cyclical repeat in vec;
-Binary for "WE LIKE BUTTER ON OUR TOAST.       " (with the spaces)
-TODO
+name = "Mystery Signal 6"
+out_sig_port_0 = np.complex64
+
+
+
+def use_func(state_container):
+    idx = state_container["count"] // 200
+    content = state_container["content"]
+    if idx >= len(content):
+        return None
+    # since the noise is bounded, it won't require filtering beyond the binary slice
+    noise = random.random() * 0.5  
+    retval = content[idx] * 3 * np.exp(0.5j * state_container["count"]) + noise
+    state_container["count"] += 1
+    return retval
+
+
+def unpackOne(x):
+    return list(map(int, f"{x:b}".zfill(8)))
+
+
+def unpackbits(x):
+    return reduce(concat, map(unpackOne, x))
+
+
+class blk(gr.basic_block):
+
+    def __init__(self):
+        gr.basic_block.__init__(
+            self,
+            name=name,
+            in_sig=[],
+            out_sig=[out_sig_port_0]
+        )
+        
+        self.use_func = use_func
+        content_packed = [170, 87, 69, 32, 76, 73, 75, 69, 32, 66, 85, 84, 84, 69, 82, 32, 79, 78, 32, 79, 85, 82, 32, 84, 79, 65, 83, 84, 46, 32, 32, 32, 32, 32, 32, 32]
+        
+        self.state_container = {
+            "count": 0,
+            "content": unpackbits(content_packed)
+        }
+
+
+    def general_work(self, input_items, output_items):
+        outval = self.use_func(self.state_container)
+        if outval == None:
+            return 0
+        else:
+            dt = output_items[0][0].dtype
+            npified = np.array(outval, dtype=dt)
+            output_items[0][0] = npified
+            return 1
+
+
+
 ```
 </details>
 
@@ -28,7 +81,7 @@ Configuration for the rest of the flowgraph:
   - Id: `samp_rate`
   - Value: `1000`
 - Time Sink:
-  - It's up to you (again)! I recommend turning on the markers for the points.
+  - You may wish to increase the Number of Points. Remember that GNU Radio sometimes takes a few seconds to display data when the Number of Points is large, and that it will (unfortunately) display no data if the Number of Points is too large.
 
 ---
 
