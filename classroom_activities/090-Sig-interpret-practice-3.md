@@ -87,4 +87,4 @@ Questions:
 3. How many seconds of data are needed to express one byte?
 4. What is the decimal number that corresponds to the first byte?
 5. What is the character that corresponds to the first byte?
-6. Using whatever blocks necessary, decode the message. Assume that each group of 8 bits represents a single Unicode-encoded character.
+6. Using whatever blocks necessary, decode the message. Assume that each group of 8 bits represents a single Unicode-encoded character. _Note: This should not require manually counting zeros and ones._
