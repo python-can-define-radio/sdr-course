@@ -9,27 +9,69 @@ Python Block  -->  Time Sink
 Note: this code is not meant to be readable. Rather, the goal of this exercise is to explore the mystery signal using the Time Sink, Waterfall sink, etc.
 
 ```python3
+import numpy as np
+from gnuradio import gr
+from functools import reduce
+from operator import concat
+import random
 
-Name: Mystery Signal 5
-Type: No input, output = float
 
 
-5  |                                 
-   |                               
-4  |                •         • •     
-   |            • •• •      •• • •         
-3  |             •                  
-   |                               
-2  |                               
-   |      •   •       • ••••             
-1  |     • •••         •                
-   |                                 
-0  ------------------------------------
+name = "Mystery Signal 5"
+out_sig_port_0 = np.float32
 
-Preamble = 10101010
-No cyclical repeat in vec;
-Binary for "THE TEA IS READY TO DRINK.       " (with the spaces)
-TODO
+
+
+def use_func(state_container):
+    idx = state_container["count"] // 6
+    content = state_container["content"]
+    if idx >= len(content):
+        return None
+    noise = random.random() * 0.5
+    retval = content[idx] * 3 + 1 + noise
+    state_container["count"] += 1
+    return retval
+
+
+def unpackOne(x):
+    return list(map(int, f"{x:b}".zfill(8)))
+
+
+def unpackbits(x):
+    return reduce(concat, map(unpackOne, x))
+
+
+class blk(gr.basic_block):
+
+    def __init__(self):
+        gr.basic_block.__init__(
+            self,
+            name=name,
+            in_sig=[],
+            out_sig=[out_sig_port_0]
+        )
+        
+        self.use_func = use_func
+        content_packed = [170, 84, 72, 69, 32, 84, 69, 65, 32, 73, 83, 32, 82, 69, 65, 68, 89, 32, 84, 79, 32, 68, 82, 73, 78, 75, 46, 32, 32, 32, 32, 32, 32, 32]
+        
+        self.state_container = {
+            "count": 0,
+            "content": unpackbits(content_packed)
+        }
+
+
+    def general_work(self, input_items, output_items):
+        outval = self.use_func(self.state_container)
+        if outval == None:
+            return 0
+        else:
+            dt = output_items[0][0].dtype
+            npified = np.array(outval, dtype=dt)
+            output_items[0][0] = npified
+            return 1
+
+
+
 ```
 </details>
 
