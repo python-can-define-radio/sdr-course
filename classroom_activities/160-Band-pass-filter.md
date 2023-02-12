@@ -1,4 +1,4 @@
-Often, there are signals that we want to remove from the data we're working with. The unwanted signals may be random electrical noise or radio stations that are near our station of interest, but in either case, filtering out these unwanted signals is very useful to know how to do.
+Often, there are signals that we want to remove from the data we're working with. The unwanted signals may be random electrical noise or radio stations that are near our station of interest, but in either case, filtering out these unwanted signals is a very useful skill.
 
 `filter_exploration_2.grc`
 ```
@@ -28,6 +28,10 @@ Watch what happens when you run that flowgraph. Then, insert a band pass filter 
   - High Cutoff Freq: `high_cut`
   - Transition Width: `samp_rate/20`
 
-Make two GUI Ranges: one for `low_cut` and one for `high_cut`. Make them both range from `-samp_rate/2` to `samp_rate/2` and make the defaults anything you want (but the `low_cut` should have a lower default than the `high_cut`).
+Make two GUI Ranges: one for `low_cut` and one for `high_cut`.
 
-Try sliding the sliders and see if you can filter one or the other of the signals.
+- `low_cut`: from `-samp_rate/2` to `0`; you pick default and step
+- `high_cut`: from `0` to `samp_rate/2`; you pick default and step
+
+Try sliding the sliders to see if you can filter one signal or the other. If you find that the sliders aren't able to reach where you want them to reach, then adjust the Start and Stop of the sliders. However, GNU Radio will behave unpredictably if you ever break the rule that `low_cut < high_cut`.
+
