@@ -90,9 +90,7 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
 
 Briefly, the cutoff and transition width both control how wide of a band is being jammed.
 
-We'll discuss more in class.
-
-For more info, see the page on [Filtering](https://github.com/python-can-define-radio/sdr-course/wiki/180-Filtering).
+For more info, see the exercise about the Band Pass Filter (at time of writing, numbered  #160).
 
 
 
