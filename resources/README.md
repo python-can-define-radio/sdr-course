@@ -36,6 +36,7 @@ Other cool stuff:
 - [gr-bokehgui: Web based display for GNU Radio](https://github.com/gnuradio/gr-bokehgui)
 - Air-Gap Covert Channels demos: https://cyber.bgu.ac.il/advanced-cyber/airgap
 - Keyfob security: 
+  - This has good pictures: https://www.andrewmohawk.com/2016/02/05/bypassing-rolling-code-systems/
   - [RTL-SDR blog regarding Hondas](https://www.rtl-sdr.com/?s=honda)
   - ["How Do Key Fobs Work?"](https://www.theifod.com/how-do-key-fobs-work/)
 - Cool video: lightning, fire, etc: https://www.youtube.com/watch?v=Q3oItpVa9fs
