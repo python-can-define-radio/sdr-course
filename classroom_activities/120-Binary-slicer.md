@@ -27,7 +27,7 @@ As per the [documentation](https://wiki.gnuradio.org/index.php/Binary_Slicer), t
 Let's try it:
 
 ```
-Vector source  -->  Binary Slicer --> Print block
+Vector source  -->  Binary Slicer --> UChar to Float --> Print block
 ```
 
 Try various vectors (without repeat) and see what happens.
