@@ -81,8 +81,9 @@ As you may remember, the numbers-to-letters part is taken care of already. To pr
 `number_writer_3.grc`
 
 ```
-               -->  Python Block: Print
-Vector source  -->  File sink
+                 |--->  UChar to Float --> Python Block: Print
+Vector source  --|
+                 |-->  File sink
 ```
 
 - Vector source:
@@ -128,8 +129,9 @@ How do we tell GNU Radio to treat each group of 8 as a single number? The Pack B
 `number_writer_4.grc`
 
 ```
-                             -->  Python Block: Print
-Vector source  --> Pack Bits -->  File sink
+                               |-->  UChar to Float -->  Python Block: Print
+Vector source  --> Pack Bits --|
+                               |-->  File sink
 ```
 
 - Vector source:
