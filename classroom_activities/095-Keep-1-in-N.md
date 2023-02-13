@@ -19,7 +19,7 @@ Here's the first flowgraph to start exploring:
 `keep_1_in_n_explore.grc`
 
 ```
-Vector source  -->  Print block
+Vector source  -->  Python Block: Print
                -->  Time sink
 ```
 
