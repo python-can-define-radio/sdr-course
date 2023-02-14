@@ -94,12 +94,12 @@ Watch what happens when you run that flowgraph. Then, insert a band pass filter 
   - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
   - Low Cutoff Freq: `low_cut`
   - High Cutoff Freq: `high_cut`
-  - Transition Width: `samp_rate/20`
+  - Transition Width: `samp_rate/50`
 
 Make two GUI Ranges: one for `low_cut` and one for `high_cut`.
 
-- `low_cut`: from `-samp_rate/2` to `0`; you pick default and step
-- `high_cut`: from `0` to `samp_rate/2`; you pick default and step
+- `low_cut`: from `-samp_rate/2` to `0`. Default: Pick anything within the slider's range except zero. Step: 1
+- `high_cut`: from `0` to `samp_rate/2`. Default: Pick anything within the slider's range except zero. Step: 1
 
 Try sliding the sliders to see if you can filter one signal or the other. If you find that the sliders aren't able to reach where you want them to reach, then adjust the Start and Stop of the sliders. However, GNU Radio will behave unpredictably if you ever break the rule that `low_cut < high_cut`.
 
