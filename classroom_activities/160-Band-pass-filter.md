@@ -10,12 +10,80 @@ Python Block -->  Throttle  -->  Time Sink
 <details><summary>The code for the Python block: (<i>click to expand</i>)</summary>
 
 ```
-Name: Learning Signal for band pass
-Type: No input, output = complex
+import numpy as np
+from gnuradio import gr
+from functools import reduce
+from operator import concat
+import random
 
-complex output.
-TODO: Two signals at two freqs. One turns on and off once per 2 seconds, and the other turns on and off once per 3 seconds. Similar amplitude. Add a little noise (just a tiny bit). The two freqs should both be positive and should be far enough away to easily distinguish the waves in the time sink.
-Repeat cyclicly.
+
+
+name = "Learning Signal for band pass"
+out_sig_port_0 = np.complex64
+
+
+
+def sigOne(state_container):
+    cou = state_container["count"]
+    content = [1, 0, 1, 0, 1, 1, 0, 1, 0, 0]
+    idx = (cou // 20000) % len(content)
+    return content[idx] * np.exp(0.2j * cou)
+
+
+def sigTwo(state_container):
+    cou = state_container["count"]
+    content = [1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0]
+    idx = (cou // 50000) % len(content)
+    return content[idx] * np.exp(1.2j * cou)
+
+
+def use_func(state_container):
+    noise = (random.random() - 0.5) * 0.25 + (random.random() - 0.5) * 0.25j
+    summ = sigOne(state_container) + sigTwo(state_container) + noise    
+    state_container["count"] += 1
+    # Note: the count will grow unbounded. Python has arbitrary size integers, so 
+    # that should be ok since this isn't a tight-performance situation
+    return summ
+
+
+def unpackOne(x):
+    return list(map(int, f"{x:b}".zfill(8)))
+
+
+def unpackbits(x):
+    return reduce(concat, map(unpackOne, x))
+
+
+class blk(gr.basic_block):
+
+    def __init__(self):
+        gr.basic_block.__init__(
+            self,
+            name=name,
+            in_sig=[],
+            out_sig=[out_sig_port_0]
+        )
+        
+        self.use_func = use_func
+        content_packed = [170, 87, 69, 32, 76, 73, 75, 69, 32, 66, 85, 84, 84, 69, 82, 32, 79, 78, 32, 79, 85, 82, 32, 84, 79, 65, 83, 84, 46, 32, 32, 32, 32, 32, 32, 32]
+        
+        self.state_container = {
+            "count": 0,
+            "content": unpackbits(content_packed)
+        }
+
+
+    def general_work(self, input_items, output_items):
+        outval = self.use_func(self.state_container)
+        if outval == None:
+            return 0
+        else:
+            dt = output_items[0][0].dtype
+            npified = np.array(outval, dtype=dt)
+            output_items[0][0] = npified
+            return 1
+
+
 ```
 
 </details>
