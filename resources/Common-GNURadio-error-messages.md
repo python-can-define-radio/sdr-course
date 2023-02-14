@@ -74,7 +74,7 @@ There are two common causes for this error:
 1. Wrong FIR Type (usually in the Band Pass Filter block)
 2. Violating Nyquist theorem (usually in one of the Filter blocks)
 
-## <=
+## Assertion...
 
 ```
 Assertion "start <= value <= stop" failed.
