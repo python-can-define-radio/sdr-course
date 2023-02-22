@@ -12,12 +12,7 @@ Configuration:
 - Time Sink:
   - It's up to you! I recommend adjusting the `Number of Points` and the `Line 1 Marker`.
 - Python Block:
-  - Follow these steps:
-    1. Click "Open in Editor". If the computer becomes unresponsive, press Esc a few times, and go back to step 2.
-    2. Click "Use Default".
-    3. Erase all of the code that is there.
-    4. Paste the code given below.
-    5. Save, and close the editor.
+  - Follow the steps described in an earlier exercise to fill in the code below:
 
 <details><summary>The code for the Python block: (<i>click to expand</i>)</summary>
 
