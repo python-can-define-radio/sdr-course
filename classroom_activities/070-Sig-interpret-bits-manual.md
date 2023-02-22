@@ -56,4 +56,12 @@ Questions:
 1. Would you say each sample represents one bit or one byte?
 2. How many bits are in a byte?
 3. How many bytes long is the messsage?
-4. Assuming that each byte is a Unicode (or ASCII) character, what is the message?
+4. Assuming that each byte is a Unicode (or ASCII) character, what is the message? Note: You may find the following python code helpful.
+
+```python3
+x = 0b01010010
+print("Python will now display this number in decimal:")
+print(x)
+print("Python can also convert it back to a character")
+print(chr(x))
+```
