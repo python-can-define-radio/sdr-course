@@ -1,7 +1,25 @@
 **Disclaimer**: Broadcasting without a license is illegal in many countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
 
+# Transmitting and receiving a pure sine wave
 
-# The Flowgraphs:
+Now that we've seen the basics of GNU Radio Companion, we're going to start using the Hack RFs.
+
+Since the Hack RF is half-duplex, you'll need two flowgraphs to do this activity: one for transmit, and one for receive.
+
+Coordinate with the other students in your row so that one student transmits, and the others receive. Then rotate roles.
+
+You'lll also notice that the osmocom frequencies are unspecified. The instructor will assign frequency bands by rows:
+
+- Row 0: `2.40e9`
+- Row 1: `2.41e9`
+- Row 2: `2.42e9`
+- Row 3: `2.43e9`
+- Row 4: `2.44e9`
+- Row 5: `2.45e9`
+- Row 6: `2.46e9`
+- Row 7: `2.47e9`
+- Row 8: `2.48e9`
+- Row 9: `2.49e9`
 
 ## Flowgraph #1: transmit_pure_sine.grc
 
@@ -51,7 +69,7 @@ _Note: the following block names are abbreviated:_
   - Frequency: `sigfreq`
   - Amplitude: `amplitu`
 - osmocom Sink:
-  - Ch0: Frequency (Hz): `2.4e9`
+  - Ch0: Frequency (Hz): `ASK_THE_INSTRUCTOR`
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `ifgain`
@@ -79,7 +97,7 @@ osmocom Source  --->  Time Sink
   - Id: `samp_rate`
   - Value: `2e6`
 - osmocom Source:
-  - Ch0: Frequency (Hz): `2.4e9`
+  - Ch0: Frequency (Hz): `ASK_THE_INSTRUCTOR`
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `32`
@@ -95,11 +113,9 @@ osmocom Source  --->  Time Sink
 
 # Notes
 
-1. A single HackRF One is half-duplex. So, if you want to transmit and receive, you'll have to have two HackRFs. I recommend working with another student.
-2. You should be able to see the transmitted wave on the receiving end. If you don't, ask for assistance.
-3. Instead of `2.4e9` you can try `2.41e9`, `2.42e9`, or similar. This will make it easier to see just your transmission (rather than everyone's).
-4. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
-5. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
+1. You should be able to see the transmitted wave on the receiving end. If you don't, ask for assistance.
+2. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
+3. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
 
 # FAQ
 
