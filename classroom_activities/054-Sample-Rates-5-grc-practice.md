@@ -13,9 +13,15 @@ Parameters:
   - Id: `samp_rate`
   - Value: `40`
 - Vector Source:
-  - Output Type: `float`
-  - Vector: `[0.0, 2.3, 5, 10.3, 12.2, 12.5, 13.5, 15, 14, 4, 0, -9, -11, -12.5, -15, -16, -14.2, -12.5, -10, -5]`
-  - Repeat: `Yes`
+  - General tab:
+    - Output Type: `float`
+    - Vector: `[0.0, 2.3, 5, 10.3, 12.2, 12.5, 13.5, 15, 14, 4, 0, -9, -11, -12.5, -15, -16, -14.2, -12.5, -10, -5]`
+    - Repeat: `Yes`
+  - Advanced tab:
+    - Comment: 
+      ```
+      A simulated messy sine wave
+      ```
 - Time Sink:
   - General tab:
     - Type: `float`
@@ -27,6 +33,8 @@ Parameters:
     - Line 1 Marker: `Circle`       [NOTE: If "X-Cross" or "9" is chosen, the graph may not display data.]
 
 You'll see the same messy sine wave from the previous exercise, but repeated four times.
+
+In the "View" menu, ensure that "Show block Comments" is checked. This will allow you to see the comment "A simulated messy sine wave" below the block.
 
 Exercises:
 1. Change the Number of Points to 40. Then try 160.

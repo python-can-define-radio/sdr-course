@@ -139,7 +139,14 @@ Vector source  --> Pack Bits --|
   - Vector: `[0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1]`
   - Repeat: No
 - Pack Bits:
-  - K: `8`
+  - General tab:
+    - K: `8`
+  - Advanced tab:
+    - Comment: 
+      ```
+      Takes groups of 8 bits and 
+      "packs" them into a single byte.
+      ```
 - File sink:
   - File: `/home/yourusername/Desktop/numberwrite_outputfile.txt`  
      _Change yourusername to your actual username_
