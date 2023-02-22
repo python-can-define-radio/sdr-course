@@ -1,4 +1,4 @@
-This exercise demonstrates how to use a checkbox to control a parameter.
+This exercise demonstrates how to use a checkbox to control a parameter. For example, this checkbox is used in the FM Receiver (exercise 210) to enable/disable a filter.
 
 Copy and paste your Transmitting flowgraph from `030-Transmit-and-Receive-Pure-Sine.md`.
 
