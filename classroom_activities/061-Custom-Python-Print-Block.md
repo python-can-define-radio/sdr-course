@@ -2,9 +2,7 @@ People sometimes ask "where's the 'print' command in GNU Radio Companion?"
 
 I hypothesize that a "print" block was omitted because the GUI Sinks are most often the best way to view the data, but there are cases in which a print block can help with exploring data.
 
-Here's the code which you'll use in other flowgraphs.
-
-<details><summary>Code: (click to view code) </summary>
+<details><summary>Here's the code which you'll use to create the print block. (Click to view code) </summary>
 
 ```python3
     
