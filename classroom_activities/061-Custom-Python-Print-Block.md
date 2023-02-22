@@ -47,9 +47,11 @@ Vector Source  -->  Python Block
 
 Parameters:
 - Vector Source:
-  - Vector: 
+  - Output Type: `float`
+  - Vector: `[2, 1.3, 3.0008888]`
+  - Tags: `[]`
 - Python Block:
-  - <i>Follow the steps described in the previous exercise to edit the Python Block code. Copy the code given above. After saving and closig the editor, you'll see the Sleep_Seconds field.</i>
+  - <i>Follow the steps described in the previous exercise to edit the Python Block code. Copy the code given above. After saving and closing the editor, you'll see the Sleep_Seconds field.</i>
   - Sleep_Seconds: `0.5`
 
-You'll see that when it runs, the window is empty. The print block only outputs in the built-in GNU Radio "terminal". Ask if you need help finding it.
+You'll see that when the flowgraph runs, the window is empty. The print block only displays output in the built-in GNU Radio "terminal". Ask if you need help finding it.
