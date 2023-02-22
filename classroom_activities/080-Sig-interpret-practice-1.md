@@ -5,15 +5,19 @@ Python Block  -->  Time Sink
               -->  Frequency Sink
 ```
 
-<details><summary>A review of how to use the Python Block: (<i>click to expand</i>)</summary>
-
-1. Double click the Python Block that you just created.
-2. Click "Open in Editor". If the computer becomes unresponsive, press Esc a few times, and go back to step 2.
-3. Click "Use Default Editor".
-4. Erase all of the code that is there.
-5. Paste the given code.
-
-</details>
+Configuration:
+- Variable (_already in the flowgraph_):
+  - Id: `samp_rate`
+  - Value: `2e6`
+- Time Sink:
+  - It's up to you! I recommend adjusting the `Number of Points` and the `Line 1 Marker`.
+- Python Block:
+  - Follow these steps:
+    1. Click "Open in Editor". If the computer becomes unresponsive, press Esc a few times, and go back to step 2.
+    2. Click "Use Default".
+    3. Erase all of the code that is there.
+    4. Paste the code given below.
+    5. Save, and close the editor.
 
 <details><summary>The code for the Python block: (<i>click to expand</i>)</summary>
 
@@ -65,13 +69,6 @@ class blk(gr.basic_block):
 ```
 </details>
 
-Configuration for the rest of the flowgraph:
-- Variable (_already in the flowgraph_):
-  - Id: `samp_rate`
-  - Value: `2e6`
-- Time Sink:
-  - It's up to you! I recommend adjusting the `Number of Points` and the `Line 1 Marker`.
-
 ---
 
 Questions:
@@ -82,5 +79,3 @@ Questions:
 4. How wide is a single pulse (time, approx)?
 5. How wide is a single pulse (samples)?
 6. If you were to guess, what modulation scheme do you think this is? Choices: FSK, OOK, PSK
-
-
