@@ -132,22 +132,10 @@ osmocom Source  --->  Time Sink
 5. What happens on the receiving end when too much power is received?  _Hint: Look up "Clipping in Signal Procesing"._ 
 6. At what point do you start to see clipping?
 7. Can clipping happen on the transmitter's side?  
-   _Hint: Try setting the transmitter's amplitude to a number such as `3`. You may need to modify the GUI Range that adjusts amplitude._  
-   _Note: Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped. If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink should be between 1 and -1._
+   _Hint: Try setting the transmitter's amplitude to a number such as `5`. You may need to modify the GUI Range that adjusts amplitude._  
+   _Note: Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped. If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink will be distorted if it higher than 1 or lower than -1._
 8. How could you communicate data using just these sliders?
 9. Modify your receiver to have slidable IF and BB gains. Use proper start, stop, step from [the HackRF docs](https://hackrf.readthedocs.io/). 
 10. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
-11. _Advanced:_ Discuss center spike and frequency-non-sameness-between-tx-rx. 
-
-# Instructor check
-
-The instructor will most likely use this exercise to check your transmitter:
-
-Set your osmocom sink Frequency to ...  
-2.401e9 if you are computer #1,  
-2.402e9 if you are computer #2,  
-2.403e9 if you are computer #3,  
-...  
-2.410e9 if you are computer #10,  
-2.411e9 if you are computer #11,...
-
+11. You'll notice the receiver has a spike in the center of the received spectrum. This is called the "DC Spike" -- it is produced by the Hack RF. We often choose to tune to a frequency slightly offset from our desired frequency to avoid interference caused by this spike.
+12. You may or may not see a difference between the transmitted frequency and the received frequency. This is due to variations in equipment.
