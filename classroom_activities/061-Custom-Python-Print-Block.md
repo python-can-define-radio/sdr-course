@@ -1,10 +1,10 @@
 People sometimes ask "where's the 'print' command in GNU Radio Companion?"
 
-I hypothesize that a "print" block was omitted because the GUI Sinks are most often the best way to view the data, but here's a print block in case you ever find it useful.
+I hypothesize that a "print" block was omitted because the GUI Sinks are most often the best way to view the data, but there are cases in which a print block can help with exploring data.
 
-How to use: Follow steps 1 through 6 in the "Custom Python Method" exercise.
+Here's the code which you'll use in other flowgraphs.
 
-<details><summary>Use this code: (click to view code) </summary>
+<details><summary>Code: (click to view code) </summary>
 
 ```python3
     
@@ -38,11 +38,20 @@ class blk(gr.sync_block):
 ```
 
 </details>
-    
-Once you've created the block with that code, save and close the editor.
 
-You'll see that there's a blank "Sleep_Seconds" field in the GNU Radio GUI. `0.5` in that Sleep_seconds.
+Here's a flowgraph to test the code.
 
-Then, use a vector source (as in the previous exercise) to test that the print block works.
+`print_block_testing.grc`
+
+```
+Vector Source  -->  Python Block
+```
+
+Parameters:
+- Vector Source:
+  - Vector: 
+- Python Block:
+  - <i>Follow the steps described in the previous exercise to edit the Python Block code. Copy the code given above. After saving and closig the editor, you'll see the Sleep_Seconds field.</i>
+  - Sleep_Seconds: `0.5`
 
 You'll see that when it runs, the window is empty. The print block only outputs in the built-in GNU Radio "terminal". Ask if you need help finding it.
