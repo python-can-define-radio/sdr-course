@@ -1,4 +1,4 @@
-This exercise demonstrates how to use a button to control a parameter.
+This exercise demonstrates how to use a button to control a parameter. You could, for example, use this for transmitting Morse Code.
 
 Copy and paste your Transmitting flowgraph from `030-Transmit-and-Receive-Pure-Sine.md`.
 
