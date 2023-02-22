@@ -1,4 +1,4 @@
-You can also write files using GNU Radio. The concepts are the same as we've just discussed. Here's an example flowgraph.
+You can also write files using GNU Radio. The concepts are the same as we've just discussed in the previous exercise. Here's an example flowgraph.
 
 # File Sink
 
@@ -20,7 +20,7 @@ Vector Source  -->  Throttle  -->  File Sink
 - File Sink: 
   - Type: byte
   - File: "/home/yourusername/Desktop/myfilesinkoutputfile.txt"  
-         _Note: make sure to type your username instead of "yourusername". For example, "/home/bob/Desktop/myfilesinkoutputfile.txt"
+         _Note: make sure to type your username instead of "yourusername". For example, "/home/bob/Desktop/myfilesinkoutputfile.txt". You can use the `pwd` command in the terminal to see an example._
   - Unbuffered: yes
 
 Also, try adding the print block to see if it displays what you expect. You'll need to either change the type of the print block, or use a `UChar to Float` block.
