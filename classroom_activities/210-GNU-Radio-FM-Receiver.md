@@ -110,6 +110,8 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ## Discussion
 
+- If you have any errors, remember to look at the list of Common GNU Radio Error messages in the `resources` folder.
+
 - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
