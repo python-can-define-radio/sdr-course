@@ -2,21 +2,7 @@ There may be times when you want to add some custom Python code to your flowgrap
 
 The way to do this in GNU Radio Companion is somewhat tricky, so we've made an approach that is slightly easier.
 
-In a new flowgraph, do this:
-
-Step 1: Ctrl F, Python Block.
-
-Step 2: Double click the Python Block that you just created.
-
-Step 3: Click "Open in Editor". If the computer becomes unresponsive, press Esc a few times, and go back to step 2.
-
-Step 4: Click "Use Default Editor".
-
-Step 5: Erase all of the code that is there.
-
-Step 6: Paste the code shown below, SAVE, and close the editor.
-
-Here's the code you will paste:
+Step 1: Create a custom Python block, and paste this code:
 
 ```python3
 import numpy as np
@@ -69,20 +55,20 @@ class blk(gr.basic_block):
             return 1
 ```
 
-Step 7: Back in GNU Radio...
+Step 2: Back in GNU Radio...
 - Verify that you see three text fields: State_Var_1, State_Var_2, State_Var_3.
 - Type 0 in each of the State_Var fields.
 - Press OK.
 
-Step 8: In the flowgraph, verify that the block's name is now "Python Block: Run Function v4".
+Step 3: In the flowgraph, verify that the block's name is now "Python Block: Run Function v4".
 
-Step 9: Let's rename the block:  
+Step 4: Let's rename the block:  
 Reopen the code using the "Open in Editor" button.  
 - On the line that says `name = "Python Block: Run Function v4"`, change it to `name = "Python Block: Add 1"`.
 - On the line that says `out_sig_port_0 = np.uint8`, change it to `out_sig_port_0 = np.float32`.
 Save.
 
-Step 8: Your block is ready to use. Now, make this flowgraph to test it:
+Step 5: Your block is ready to use. Now, make this flowgraph to test it:
 
 ```
 Vector source  ->  Python Block: Add 1  ->  Time Sink
