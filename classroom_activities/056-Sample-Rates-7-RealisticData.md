@@ -28,7 +28,3 @@ Parameters:
   - Config tab:
     - Line 1 Style: `0`
     - Line 1 Marker: `Circle`
-
-
-Things to try:
-- Use the Print block at different points in the flowgraph. Does it print what you expect?
