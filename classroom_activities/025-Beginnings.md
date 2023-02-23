@@ -4,7 +4,7 @@ Before starting:
 
 Go to [this page](https://wiki.gnuradio.org/index.php?title=Tutorials).
 
-Work through the "Your First Flowgraph" tutorial together as a class. 
+Work through the "3. Your First Flowgraph" tutorial (in upper-left) together as a class. 
 
 There are a few common pitfalls that the instructor will demonstrate:
 
@@ -13,14 +13,15 @@ There are a few common pitfalls that the instructor will demonstrate:
 - When you are searching for blocks, there are odd behaviors if you have a block selected.
   - Solution: Be extra careful to deselect blocks before searching.
   - Solution (alternate): always press Ctrl+F before typing.
-- When you scroll, you may accidentally scroll above the arrow of a drop-down menu, which changes the contents.
-  - Solution: Scroll with your cursor on the left side of the window.
-- Apply is buggy: it will sometimes NOT apply the changes, such as if you use it twice in a row.
-  - Solution: Don't use the "Apply" button. Press "Ok" instead.
+- When editting the "Properties" of a block (Access these by double-clicking or right-clicking the block):
+  - When you scroll, you may accidentally scroll above the arrow of a drop-down menu, which changes the contents.
+    - Solution: Scroll with your cursor on the left side of the window.
+  - The `Apply` button is buggy: it will sometimes NOT apply the changes, such as if you use it twice in a row.
+    - Solution: Don't use the "Apply" button. Press "Ok" instead.
 
 ------
 
-Once you have finished "Your First Flowgraph", follow these tutorials from the same page:
+Once you have finished "Your First Flowgraph", follow these tutorials from the same page (mid-left side):
 
 - Python Variables in GRC
 - Variables in Flowgraphs
