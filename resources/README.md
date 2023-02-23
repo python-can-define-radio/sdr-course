@@ -40,3 +40,8 @@ Other cool stuff:
   - [RTL-SDR blog regarding Hondas](https://www.rtl-sdr.com/?s=honda)
   - ["How Do Key Fobs Work?"](https://www.theifod.com/how-do-key-fobs-work/)
 - Cool video: lightning, fire, etc: https://www.youtube.com/watch?v=Q3oItpVa9fs
+
+-----------------------------
+
+Not as cool, but worth saving for other reasons:
+- [Behind the Veil: A Peek at GNU Radio’s Buffer Architecture](https://www.gnuradio.org/blog/2017-01-05-buffers/) -- This explains why the size of a chunk-of-data-provided-to-a-block varies.
