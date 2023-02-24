@@ -176,13 +176,15 @@ Now, imagine you have an electron instead of a turtle. And imagine that instead 
 
 <details><summary>It would look like this <i>(click to expand)</i>:</summary>
 
-_(Exactly the same figure as above, but with a turtle instead of an electron. There's no electron emoji.)_
+_(Exactly the same figure as above, but with an electron instead of a turtle. There's no electron emoji.)_
 
 </details>
 
 ### Sidenote: where's the antenna?
 
-The antenna is what provides the path for the electron to move. So if the electron is moving vertically, then the antenna must also be pointed vertically.
+(We will continue to use a turtle to represent an electron.  We will show one dimension of an electromagnetic wave.)
+
+When an electromagnetic wave of an appropriate frequency passes through an antenna (or any metal object), it causes electrons in the antenna to move in an oscillating manner.  Consider a single electron in the antenna.  The antenna provides a path for the electron to move.  Greatest movement is possible along the length-wise axis of the antenna.  When the wave's amplitude is oscillating vertially, and the antenna is oriented vertially, then the electron will oscillate vertically, i.e., move up and down repeatedly, within the antenna.  The electron will not move in the forward direction of the wave (to the right in this example) because the electon is contrained, being a member of the antenna.
 
 ```
                                                                    ----
