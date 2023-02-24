@@ -184,7 +184,7 @@ _(Exactly the same figure as above, but with an electron instead of a turtle. Th
 
 (We will continue to use a turtle to represent an electron.  We will show one dimension of an electromagnetic wave.)
 
-When an electromagnetic wave of an appropriate frequency passes through an antenna (or any metal object), it causes electrons in the antenna to move in an oscillating manner.  Consider a single electron in the antenna.  The antenna provides a path for the electron to move.  Greatest movement is possible along the length-wise axis of the antenna.  When the wave's amplitude is oscillating vertially, and the antenna is oriented vertially, then the electron will oscillate vertically, i.e., move up and down repeatedly, within the antenna.  The electron will not move in the forward direction of the wave (to the right in this example) because the electon is contrained, being a member of the antenna.
+When an electromagnetic wave of an appropriate frequency passes through an antenna (or any metal object), it causes electrons in the antenna to move in an oscillating manner.  Consider a single electron in the antenna.  The antenna provides a path for the electron to move.  Greatest movement is possible along the length-wise axis of the antenna.  When the wave's amplitude is oscillating vertially, and the antenna is oriented vertially, then the electron will oscillate vertically, i.e., move up and down repeatedly, within the antenna.  The electron will not move in the forward direction of the wave (to the right in this example) because the electon is constrained, being a member of the antenna.
 
 ```
                                                                    ----
