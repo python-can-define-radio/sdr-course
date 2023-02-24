@@ -1,6 +1,6 @@
 It is sometimes useful to create a Python Block. This exercise will present the process which will be used in later exercises.
 
-Create a flowgraph named `python_block_intro.grc`.
+In the "GNU Radio Companion" computer program, create a flowgraph named `python_block_intro.grc`.
 
 ```
 Python Block  -->  Time Sink
@@ -9,10 +9,12 @@ Python Block  -->  Time Sink
 - Follow these steps:
   1. Double click the Python Block.
   2. Click "Open in Editor". If the computer becomes unresponsive, press Esc a few times, and go back to step 2.
-  3. Click "Use Default".
+  3. Click "Use Default" editor program.
   4. Erase all of the code that is there.
   5. Paste the code given below.
-  6. Save, and close the editor.
+  6. Save (press button or {ctrl}{s})
+  7. Close the editor.
+     > When closing, the editor may give a warning that asks, "Save changes... before closing?"  You may choose "**Close without Saving**", so long as you "saved" (step 6) prior to attempting to close (step 7).  Step 6 saves the python code within the *.grc file, but not as a seperate file on the physical drive (hard drive) of the computer.
 
 Given code:
 
@@ -42,4 +44,4 @@ class blk(gr.basic_block):
         return 1
 ```
 
-You should see random noise in the Time Sink.
+When you run the *.grc file in GNU Radio Companion, you should see random noise in the Time Sink.
