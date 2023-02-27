@@ -81,3 +81,5 @@ The hardware and software of the software defined radio (SDR) may be housed in a
 </details>
 
 _Further reading: https://wiki.gnuradio.org/index.php?title=What_Is_GNU_Radio_
+
+_Preview of upcoming topics: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
