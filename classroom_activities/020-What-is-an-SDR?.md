@@ -26,7 +26,7 @@ Let's talk about the classic [string-between-two-cans](https://duckduckgo.com/?q
 2. What's waving?
 3. Is it a longitudinal wave or a transverse wave?
 
-(_discuss in small groups. For more info, [see this video](https://www.khanacademy.org/science/physics/mechanical-waves-and-sound/sound-topic/v/sound-properties-amplitude-period-frequency-wavelength)._)
+(_discuss in small groups. For more info about waves, [see this video](https://www.khanacademy.org/science/physics/mechanical-waves-and-sound/sound-topic/v/sound-properties-amplitude-period-frequency-wavelength). See also [a speaker in slow motion](https://www.youtube.com/watch?v=J2BUvWRCBGM)._ )
 
 ### Microphones
 
