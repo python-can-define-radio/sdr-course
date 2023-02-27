@@ -28,3 +28,10 @@ Once you have finished "Your First Flowgraph", follow these tutorials from the s
 - Runtime Updating Variables
 - Signal Data Types
 - Converting Data Types
+
+-------
+
+Some useful keyboard shortcuts in GNU Radio Companion:
+  - Ctrl + F : Find blocks
+  - D : Disable a block
+  - E : Enable a block

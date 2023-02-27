@@ -21,6 +21,8 @@ You'lll also notice that the osmocom frequencies are unspecified. The instructor
 - Row 8: `2.48e9`
 - Row 9: `2.49e9`
 
+_Practical note:_ When retracting the antenna, please push gently in the center of the antenna. Pushing at the top causes the antenna to bend.
+
 ## Flowgraph #1: transmit_pure_sine.grc
 
 ```
