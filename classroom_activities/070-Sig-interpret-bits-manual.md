@@ -46,7 +46,7 @@ class blk(gr.basic_block):
 Parameters:
 - Time Sink:
   - Type: _Decide based on the color of the ports._
-  - Number of Points: `24`
+  - Number of Points: _Strangely, you should set this to `23`, run the program, then set it to `24`, and run the program again.
   - I recommend turning on the markers for the points.
 
 ---
