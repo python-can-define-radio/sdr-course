@@ -72,7 +72,8 @@ RuntimeError: firdes check failed: 0 < fa <= sampling_freq / 2
 
 There are two common causes for this error:
 1. Wrong FIR Type (usually in the Band Pass Filter block)
-2. Violating Nyquist theorem (usually in one of the Filter blocks)
+2. Violating Nyquist theorem (usually in one of the Filter blocks).  
+   Example: If you have the `samp_rate` set too low, or if you have the `low_cut` or `high_cut` set outside of the allowed boundaries.
 
 ## Assertion...
 
