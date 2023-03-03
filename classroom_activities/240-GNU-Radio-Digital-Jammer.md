@@ -73,3 +73,7 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 - Receiver: Announce what you're receiving.
 - Rest of class: Make a "psshhhhh" noise. That's noise jamming.
 - Now, rest of class, whistle similarly. That's digital jamming. Notice how much more effective it is.
+
+### See also...
+
+- https://itecnotes.com/electrical/electrical-question-about-digital-modulation/
