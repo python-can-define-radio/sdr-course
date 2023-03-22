@@ -1,4 +1,4 @@
-# Software-Define Radio (SDR) Course
+# Software-Defined Radio (SDR) Course
 
 ## Where to start:
 
