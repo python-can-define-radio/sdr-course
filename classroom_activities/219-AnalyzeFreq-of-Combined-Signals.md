@@ -77,7 +77,7 @@ Use the defalut values, which are shown here.
 ### For GUI Frequency Sink (Graph):
 
 - Name: `"Frequency Spectrum from the Added Waves"`
-- Spectrum Width: `Half`
+- Spectrum Width: `Half` (The Spectrum Width option only appears after you've changed the ports to Orange as indicated in the Memos section above.)
 - Y min = `-90` (Note the negative.  This setting crops the lower portion of the data to hide the "noise" in the frequencies)
 - Y max = `10`
 - GUI Hint: `(5, 0, 2, GUI_width)`  (This sets the position on the GUI screen, @ row 5, col. 0, width or span. If row 3 or 4 does not exist, the block will fill a position higher than row 5.)
