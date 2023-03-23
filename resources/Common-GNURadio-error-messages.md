@@ -103,3 +103,13 @@ For example:
 - `my_flowgraph.grc` won't work because it has a period in it. Simply remove the ".grc" part in the Id.
 
 If you're having trouble finding the culprit characters, you can always erase the Id entirely and type a new Id.
+
+## Topology
+
+```
+RuntimeError: check topology failed on time_sink_f(1) using ninputs=1, noutputs=0
+```
+
+This means the Time Sink has more available inputs than incoming data. For example, this error will occur if your time sink has three input ports, but only one is connected.
+
+On our exercises, we used text-based diagrams to express the flowgraphs due to time constraints, so in some cases, we couldn't express all of the connecting arrows. We indicated any missing connection-arrows in the "Memos" section of each exercise.
