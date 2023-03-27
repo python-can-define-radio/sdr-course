@@ -9,7 +9,7 @@ Many uses of this are illegal. Stay legal, ethical, moral, honorable, and kind.
 
 This project requires the user to have a functional remote-controled (RC) vehicle and its remote controller.  Optionaly, you may use another remote controlled device and an appropriate remote control sending unit.  Other devices that might work include a television and remote controlled light(s), as examples.  Of course, both must be tuned to the same communication frequency.
 
-This involves building two .grc flowgraph programs in **GNU Radio Companion** software.  One program records data from the remote control sending unit.  A second program transmits the data to the vehicle (or other device) to command it.  You can copy and modify the record and replay .grc files created in Exercise 270.  As an option, a method for removing unwanted portions of the recorded data is suggested, at least for Linux-OS users.
+This involves building two .grc fl owgraph programs in **GNU Radio Companion** software.  One program records data from the remote control sending unit.  A second program transmits the data to the vehicle (or other device) to command it.  You can copy and modify the record and replay .grc files created in Exercise 270.  As an option, a method for removing unwanted portions of the recorded data is suggested, at least for Linux-OS users.
 
 This excercise assumes the data is exchanged between the remote control and the vehicle using a fixed communication frequency, without encryption.  The method of frequency hopping spread-sectrum (FHSS) is not addressed.
 
@@ -17,7 +17,7 @@ It is necessary to know the frequency of your devices.  You might find the frequ
 
 ## Record:
 
-`record-rc-car.grc`
+`rc_car_record.grc`
 
 ```
 GUI Range
@@ -48,14 +48,14 @@ Parameters:
 - Band pass filter:
   - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
   - Low Cut: `-300e3`
-  - High Cut: -50e3`
+  - High Cut: `-50e3`        (Note: the pass-through region will be off-set from the center frequency)
   - Transition Width: `50e3`
 - File sink:
   - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`.
 
 ## Replay:
 
-`replay-rc-car.grc`
+`rc_car_replay.grc`
 
 ```
 GUI Range
