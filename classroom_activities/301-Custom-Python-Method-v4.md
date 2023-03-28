@@ -8,16 +8,18 @@ Step 1: Create a custom Python block, and paste this code:
 import numpy as np
 from gnuradio import gr
 
+
 name = "Python Block: Run Function v4"
 in_sig_port_0 = np.float32
 out_sig_port_0 = np.uint8
 
 
+### THIS IS THE PART THAT DOES THE ACTUAL MATH.
 def use_func(datum, state_container):
     return datum + 1
 
 
-
+### EVERYTHING BELOW THIS LINE IS "BOILERPLATE CODE".
 class blk(gr.basic_block):
 
     def __init__(self, state_var_1=0.0, state_var_2=0.0, state_var_3=0.0):
