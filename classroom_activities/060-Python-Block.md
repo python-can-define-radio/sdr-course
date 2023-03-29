@@ -14,7 +14,6 @@ Python Block  -->  Time Sink
   5. Paste the code given below.
   6. Save (press button or {ctrl}{s})
   7. Close the editor.
-     > When closing, the editor may give a warning that asks, "Save changes... before closing?"  You may choose "**Close without Saving**", so long as you "saved" (step 6) prior to attempting to close (step 7).  Step 6 saves the python code within the *.grc file, but not as a seperate file on the physical drive (hard drive) of the computer.
 
 Given code:
 
