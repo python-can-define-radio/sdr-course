@@ -16,3 +16,9 @@ import random
 nums = list(range(1, 11+1))
 print(random.sample(nums, k=len(nums)))
 ```
+
+Reminder of how to run a local server in the Linux Terminal:
+
+```
+python3 -m http.server
+```
