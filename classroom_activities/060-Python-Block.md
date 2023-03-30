@@ -27,10 +27,10 @@ name = "Practice Signal"
 out_sig_port_0 = np.complex64
 
 
-class blk(gr.basic_block):
+class blk(gr.sync_block):
 
     def __init__(self):
-        gr.basic_block.__init__(
+        gr.sync_block.__init__(
             self,
             name=name,
             in_sig=[],
@@ -38,7 +38,7 @@ class blk(gr.basic_block):
         )
 
 
-    def general_work(self, input_items, output_items):
+    def work(self, input_items, output_items):
         output_items[0][0] = random.random() + random.random()*1j 
         return 1
 ```
