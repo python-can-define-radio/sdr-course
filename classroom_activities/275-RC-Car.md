@@ -51,7 +51,12 @@ Parameters:
   - High Cut: `-50e3`        (Note: the pass-through region will be off-set from the center frequency)
   - Transition Width: `50e3`
 - File sink:
-  - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`.
+  - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`. Do NOT pick a `.grc` file. <details><summary>Details if you're curious:</summary> When faced with a file-picking dialog, beginners will often navigate to the current `.grc` file. This is definitely not what you want -- as soon as you run the flowgraph, it will overwrite the saved flowgraph file with the data that you're recording.
+       
+       Instead, I recommend picking a directory for your file, and naming it `my_gnu_recording.iqdata`. The file extension can be anything you want (GNU Radio will treat it the same regardless), but `.iqdata` seems somewhat common in the SDR community.  
+        A good example may look like this:  
+        `/home/yourusername/Desktop/my_gnu_recording.iq`
+</details>
 
 ## Replay:
 
@@ -78,9 +83,9 @@ Parameters:
   - Id: `IFGain`
   - 0 to 47, steps of 1
 - File Source:
-  - Pick your file (must make the recording first).
+  - Pick your `.iqdata` file (must make the recording first).
   
-Optionally add a selector in the middle.
+Optionally, you can add a selector in the middle on to allow choosing from multiple recordings.
 
 ## To edit the data file prior to replay (Optional)
 Linux OS users might find and use **"inspectrum"** software to edit the data file(s) recorded from the RC vehicled remote control unit.  The software may be available on github.com or another source.  Other software might be found having suitable capabilitiees.  The student or end-user will need to determine the suitability and appropriateness of any software he or she loads.
