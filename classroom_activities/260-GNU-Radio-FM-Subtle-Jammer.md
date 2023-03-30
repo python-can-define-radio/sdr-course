@@ -46,4 +46,6 @@ Constant Source  ⟶  Osmocom sink
 
 ## Discussion
 
-- [Wikipedia Radio Jamming article](https://en.wikipedia.org/wiki/Radio_jamming#Method) regarding Subtle Jamming: "Thanks to the FM capture effect, frequency modulated broadcasts may be jammed, unnoticed, by a simple unmodulated carrier."
+The [Wikipedia Radio Jamming article](https://en.wikipedia.org/wiki/Radio_jamming#Method) says this regarding subtle jamming: "Thanks to the FM capture effect, frequency modulated broadcasts may be jammed, unnoticed, by a simple unmodulated carrier."
+
+It may seem strange that a "Constant Source" block is used to accomplish this. The reason this works is because behind the scenes, the Hack RF combines (using multiplication) the given signal with the specified carrier frequency. That means that the transmission that goes to the antenna is actually a pure sinusoidal wave of frequency 98.5 MHz.
