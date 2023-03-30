@@ -1,6 +1,3 @@
-_Note: This overlaps significantly with Exercise 270. We plan to merge the two, but for now, we recommend reading both.
-       To work here, you can copy, modify, and use the record and replay .grc files created in Exercise 270._
-       
 ## Disclaimer
 
 Many uses of this are illegal. Stay legal, ethical, moral, honorable, and kind.
