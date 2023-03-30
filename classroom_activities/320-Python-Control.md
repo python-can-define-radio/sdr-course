@@ -12,4 +12,4 @@ To start, we'll use a flowgraph that just transmits a pure sine wave.
 Constant Source  -->  osmocom Sink
 ```
 
-(Todo: incorporate from https://github.com/python-can-define-radio/sdr-course/tree/main/misc/gnu_python_integration/constant_source_to_osmo_sink )
+(Rest of steps are described here: https://github.com/python-can-define-radio/sdr-course/tree/main/misc/gnu_python_integration/constant_source_to_osmo_sink )
