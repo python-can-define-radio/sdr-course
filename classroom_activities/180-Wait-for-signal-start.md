@@ -1,12 +1,13 @@
-TODO: Write an explanation
+## Waiting for the start of the signal
 
-Also, requires `pip install numba`
+Usually, the receiver will be listening before the transmission starts. The recevier needs to know whether or not there is data being transmitted so it knows whether to save the data or discard it (assuming that nothing is being transmitted).
+
+This block keeps a given number of data points after a threshold is surpassed. Try various vector sources to see if you can determine how it works.
 
 ```python3
 import numpy as np
 from gnuradio import gr
 from typing import Optional, Type
-from numba import njit
 import time
 
 
@@ -16,7 +17,6 @@ out_sig_port_0 = np.float32
 
 
 
-@njit
 def use_func(datum, block_self):
     # type: (Type[in_sig_port_0], blk) -> Optional[Type[out_sig_port_0]]
 
@@ -55,7 +55,6 @@ class blk(gr.basic_block):
         self.points_to_keep = points_to_keep
         self.keep_counter = 0
 
-    @njit
     def general_work(self, input_items, output_items):
         inOneP = input_items[0][0]
         self.consume(0, 1)
