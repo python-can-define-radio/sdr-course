@@ -116,3 +116,6 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
 
+## Questions
+
+- Why did we pick the given `Start` and `Stop` for the `center_freq_slider`? Does this range include all Commercial FM stations in the United States? If not, how should you adjust it to include any missing frequencies?
