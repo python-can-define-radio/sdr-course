@@ -6,23 +6,16 @@ GUI Range
 GUI Range
 
 
-            ---->  GUI sink    
-            |
-Osmocom  ---|
-Source      |
-            ---->  Band Pass   ⟶  WBFM      ⟶  Rational   ⟶  Audio 
-                   Filter         Receive      Resampler     Sink
-                   (Optional)     (Optional)   (Optional)    (Optional)          
-
+Osmocom  --->  GUI sink
+Source      
 ```
 
 - Have a (working) slider to pick the frequency that you're tuning in to. Working means your physical SDR changes frequency when the slider changes
-- Set `samp_rate` to 10000000 (10 Million)
+- Set `samp_rate` to 20000000 (20 Million)
 - Have a GUI sink connected directly from the osmocom source
 - Have the center of the GUI sink set correctly (OR SET TO ZERO)
 - Have the bandwidth of the GUI sink set correctly
 - For the center frequency slider, set the "Stop" to 500 Million, and "Step" to 10000 
-- (Optional) Demodulate the sound and play it (i.e., demodulate the center of the spectrum that you're viewing, just like in the FM Radio)
 
 
 ## How to set the Parameters
@@ -45,7 +38,7 @@ Source      |
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
-- Value: `10e6`
+- Value: `20e6`
 
 ### For the GUI sink:
 
@@ -60,30 +53,7 @@ Source      |
 - Ch0: IF Gain (dB): `if_gain_slider`
 - Ch0: BB Gain (dB): `32`
 
-### For the Band Pass Filter:
-
-- FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
-- Low Cutoff Freq: `-100e3` (notice the negative)
-- High Cutoff Freq: `100e3`
-- Transition Width: `90e3`
-
-### For the WBFM Receive:
-
-- Quadrature Rate: `samp_rate`
-- Audio Decimation: `1`
-
-### For the Rational Resampler:
-
-- Type: `Float -> Float (Real Taps)`
-- Interpolation: `int(48e3)`
-- Decimation: `int(samp_rate)`
-
-### For the Audio Sink:
-
-- Sample Rate: `48 kHz` (Pick from drop-down menu)
-
-
 ## Discussion
 
 - How big of a slice of the spectrum do you see?
-- What does the FFT Size do?
+- While running, in the Frequency Display tab, try raising the Average in the bottom right corner. Does it help make signals more visible?
