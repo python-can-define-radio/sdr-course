@@ -1,14 +1,28 @@
 Source: https://www.gkbrk.com/2021/02/spectrum-drawing/
 
-Our modified version (with some cruft
+Our modified version is below. 
+
+After running the program, you'll have a file named `waterpaint.iqdata`. You can use GNU Radio to transmit the file using a flowgraph containing `File Source --> osmocom Sink`.
+
 
 ```python3
 from PIL import Image
 import math
 import numpy as np
 
-# dsp = os.fdopen(1, "wb")
-outfile = open("waterpaint.iqdata", "wb")
+
+in_filename = "hi.jpeg"
+out_filename = "waterpaint.iqdata"
+
+RATE = 2000000  # sample rate
+TRANSMIT_TIME = 5  # Seconds
+FREQ_DEV = 1000000  # Hz
+
+parameters_info = f"""
+Sample rate: {RATE} samples per second
+Time for one full picture transmission: {TRANSMIT_TIME} seconds
+Bandwidth of transmission: {FREQ_DEV} Hz
+"""
 
 
 def write(i, q):
@@ -21,18 +35,14 @@ def write(i, q):
     outfile.write(np.complex64(q + 1j*i).tobytes())
 
 
-RATE = 2000000  # sample rate
-TRANSMIT_TIME = 5  # Seconds
-FREQ_DEV = 1000000  # Hz
-
-im_raw = Image.open("hi.jpeg")
-# im = Image.open(sys.argv[1])
+outfile = open(out_filename, "wb")
+im_raw = Image.open(in_filename)
 im = im_raw.convert("1")  # 1 means 1-bit image
 
-# for x in range(100, 110):
-#     for y in range(100, 110):
-#         print(im.getpixel((x, y)), end=" ")
-#     print()
+
+print(f"Generating '{out_filename}' with these parameters:")
+print(parameters_info)
+print("Progress countdown starting now.")
 
 t = 0
 
@@ -56,4 +66,8 @@ for y in range(im.height)[::-1]:
             q += math.sin(2 * math.pi * offs * t) * 0.01
         write(i, q)
         t += 1.0 / RATE
+
+print(f"File '{out_filename}' is ready. You can now transmit the iqdata file using GNU Radio.")
+print("Reminder of parameters:")
+print(parameters_info)
 ```
