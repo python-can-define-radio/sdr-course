@@ -40,6 +40,7 @@ Other cool stuff:
   - [RTL-SDR blog regarding Hondas](https://www.rtl-sdr.com/?s=honda)
   - ["How Do Key Fobs Work?"](https://www.theifod.com/how-do-key-fobs-work/)
 - Cool video: lightning, fire, etc: https://www.youtube.com/watch?v=Q3oItpVa9fs
+- Veritasium's video: [The Remarkable Story Behind The Most Important Algorithm Of All Time](https://www.youtube.com/watch?v=nmgFG7PUHfo) (i.e., the Fast Fourier Transform)
 
 -----------------------------
 
