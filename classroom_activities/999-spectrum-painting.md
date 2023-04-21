@@ -2,7 +2,7 @@ Source: https://www.gkbrk.com/2021/02/spectrum-drawing/
 
 Our modified version is below. 
 
-After running the program, you'll have a file named `waterpaint.iqdata`. You can use GNU Radio to transmit the file using a flowgraph containing `File Source --> osmocom Sink`.
+After running the program, you'll have a file in your working directory named `waterpaint.iqdata`. You can use GNU Radio to transmit the file using a flowgraph containing `File Source --> osmocom Sink`.
 
 
 ```python3
