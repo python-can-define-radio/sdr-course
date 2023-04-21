@@ -23,6 +23,9 @@
 - [DSP Illustrations](https://dspillustrations.com/): DSP using Python. 
 - ["But what is a Fourier series? From heat flow to drawing with circles | DE4"](https://www.youtube.com/watch?v=r6sGWTCMz2k) Has cool animations. Pretty heavy math. 
 - [SDR Peripheral Comparison table](https://1.bp.blogspot.com/-tFTzeEj9VK8/XHlhJJYnCnI/AAAAAAAAK7c/vIIP_1-L2M4kdItgoCZ3rF44AJG8qYKywCLcBGAs/s1600/sdr%2Bcomparison_201902.jpg) (source: [someone's blog](https://bv3ue.blogspot.com/))
+- Nyquist-Shannon theorem:
+  - NE204 BU's video: https://www.youtube.com/watch?v=sgYkOkrlQ_E
+  - Another, that goes into many other facets: https://www.youtube.com/watch?v=pWjdWCePgvA
 
 ------------------------------
 
