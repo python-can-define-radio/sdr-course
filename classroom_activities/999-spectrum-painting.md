@@ -1,14 +1,30 @@
+## Frequency Spectrum Painting using Python & Software-Defined Radio (SDR).
+See Python program, below, for description.
+Page updated April 25, 2023.
+
+### Resources required for full functionality:
+```
+- Software to run a Python program, 
+- "GNU Radio Companion" or equivalent software, 
+- One SDR device to transmit (TX), and 
+- A second SDR device to receive (RX) signals.  
+Optionally, a single SDR device running in TX+RX duplex mode.
+```
+
 Source: https://www.gkbrk.com/2021/02/spectrum-drawing/
 
 Our modified version is below. 
 
 After running the program, you'll have a file in your working directory named `waterpaint.iqdata`. You can use GNU Radio Companion to transmit the file using a flowgraph containing `File Source --> osmocom Sink`.
 
-
+### Python program to create a broadcast-capable data file for spectrum painting:
 ```python3
-""" This program reads a black and white .jpg or .jpeg image file and converts it to
-an "iqdata" file, for broadcast through an SDR device such as a HackRF.
-A separte program is required to perform the broadcast.
+"""
+This Python3 program reads a black and white .jpg or .jpeg image file and converts it to
+   an "iqdata" file, for broadcast (TX) through an SDR such as a HackRF device + GNU Radio Companion (GRC).
+   A separte program is required to perform the broadcast in GRC. 
+The painted image will be visible on a second SDR in the receiving (RX) mode (or one SDR with duplex TX/RX) 
+   with a GRC program having a waterfall display for vieiwing a freqeuncy spectrum.
 
 source: https://github.com/python-can-define-radio/sdr-course/edit/main/classroom_activities/999-spectrum-painting.md
 based on https://www.gkbrk.com/2021/02/spectrum-drawing/
@@ -60,7 +76,7 @@ for y in range(im.height)[::-1]:
     print(y)
     target = t + TRANSMIT_TIME / im.height
 
-    # Read the line backwards to paint forwards, by including [::-1] 
+    # Read the line backwards to paint forwards, by including: [::-1] 
     line = [im.getpixel((x, y)) for x in range(im.width)[::-1]]
     while t < target:
         i = 0
