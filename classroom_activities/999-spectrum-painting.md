@@ -2,21 +2,29 @@ Source: https://www.gkbrk.com/2021/02/spectrum-drawing/
 
 Our modified version is below. 
 
-After running the program, you'll have a file in your working directory named `waterpaint.iqdata`. You can use GNU Radio to transmit the file using a flowgraph containing `File Source --> osmocom Sink`.
+After running the program, you'll have a file in your working directory named `waterpaint.iqdata`. You can use GNU Radio Companion to transmit the file using a flowgraph containing `File Source --> osmocom Sink`.
 
 
 ```python3
+""" This program reads a black and white .jpg or .jpeg image file and converts it to
+an "iqdata" file, for broadcast through an SDR device such as a HackRF.
+A separte program is required to perform the broadcast.
+
+source: https://github.com/python-can-define-radio/sdr-course/edit/main/classroom_activities/999-spectrum-painting.md
+based on https://www.gkbrk.com/2021/02/spectrum-drawing/
+"""
+
 from PIL import Image
 import math
 import numpy as np
 
 
-in_filename = "hi.jpeg"
+in_filename = "hi.jpeg"   # Update this to point to a B&W image stored in JPG or JPEG format.
 out_filename = "waterpaint.iqdata"
 
 RATE = 2000000  # sample rate
 TRANSMIT_TIME = 5  # Seconds
-FREQ_DEV = 1000000  # Hz
+FREQ_DEV = 1000000  # Hz  The image will extend this many HZ lower than your broadcast's tuned or center frequency.
 
 parameters_info = f"""
 Sample rate: {RATE} samples per second
@@ -52,7 +60,8 @@ for y in range(im.height)[::-1]:
     print(y)
     target = t + TRANSMIT_TIME / im.height
 
-    line = [im.getpixel((x, y)) for x in range(im.width)]
+    # Read the line backwards to paint forwards, by including [::-1] 
+    line = [im.getpixel((x, y)) for x in range(im.width)[::-1]]
     while t < target:
         i = 0
         q = 0
@@ -67,7 +76,7 @@ for y in range(im.height)[::-1]:
         write(i, q)
         t += 1.0 / RATE
 
-print(f"File '{out_filename}' is ready. You can now transmit the iqdata file using GNU Radio.")
+print(f"File '{out_filename}' is ready. You can now transmit the iqdata file using GNU Radio Companion.")
 print("Reminder of parameters:")
 print(parameters_info)
 ```
