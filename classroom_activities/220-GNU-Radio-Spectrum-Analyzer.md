@@ -51,7 +51,7 @@ Source
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `if_gain_slider`
-- Ch0: BB Gain (dB): `32`
+- Ch0: BB Gain (dB): `50`
 
 ## Discussion
 

@@ -74,7 +74,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `if_gain_slider`
-- Ch0: BB Gain (dB): `32`
+- Ch0: BB Gain (dB): `50`
 - Ch0: Bandwidth (Hz): `filteron * 2.75e6`
 
 ### For the Band Pass Filter:
