@@ -53,7 +53,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 - Id: `center_freq_slider`
 - Default Value: `favorite_stations`
-- Start: `89e6`
+- Start: `88e6`
 - Stop: `108e6`
 - Step: `20e3`
 

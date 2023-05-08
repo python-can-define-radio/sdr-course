@@ -32,7 +32,7 @@ Source
 
 - Id: `center_freq_slider`
 - Default Value: `107.9e6`
-- Start: `89e6`
+- Start: `40e6`
 - Stop: `500e6`
 - Step: `10e3`
 

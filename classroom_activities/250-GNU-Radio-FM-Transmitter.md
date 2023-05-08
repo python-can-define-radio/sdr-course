@@ -25,9 +25,9 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 
 - Id: `center_freq_slider`
 - Default Value: `98.5e6`
-- Start: `89e6`
+- Start: `88e6`
 - Stop: `108e6`
-- Step: `1e3`
+- Step: `10e3`
 
 ### For the Wav File Source:
 
