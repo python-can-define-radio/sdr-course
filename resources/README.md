@@ -44,6 +44,8 @@ Other cool stuff:
   - ["How Do Key Fobs Work?"](https://www.theifod.com/how-do-key-fobs-work/)
 - Cool video: lightning, fire, etc: https://www.youtube.com/watch?v=Q3oItpVa9fs
 - Veritasium's video: [The Remarkable Story Behind The Most Important Algorithm Of All Time](https://www.youtube.com/watch?v=nmgFG7PUHfo) (i.e., the Fast Fourier Transform or FFT)
+- Vinyl LP Record - Electron microscope slow-motion video -  https://www.youtube.com/watch?v=GuCdsyCWmt8
+  - When GNU Radio Companion is tuned to a radio station, graph ("sink") shows similiarity to the groove on the record? 
 
 -----------------------------
 
