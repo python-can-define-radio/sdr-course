@@ -87,6 +87,13 @@ In GUI Ranges, the Start and Stop are the left and right limits of the slider. T
 - The right limit (the "Stop") must be the highest value. 
 - The Default Value must be somewhere in between.
 
+One common cause is forgetting the `e3`, `e6`, etc. For example:
+
+This is incorrect: Start: `88e6`, Stop: `108e6`, Default Value: `95`  
+_Notice: 95 is not between the given start and stop values_  
+This is correct: Start: `88e6`, Stop: `108e6`, Default Value: `95e6`
+
+
 ## ID `default` is blacklisted
 
 How to fix: Open the `Options` block, and set the Id to something other than default
