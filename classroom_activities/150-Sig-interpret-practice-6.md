@@ -96,7 +96,7 @@ A collaborator suggests that this communication most likely has an 8 bit preambl
 4. How many samples long is the preamble?
 5. What block would be useful for skipping the preamble?
 6. What block would be useful for removing the duplicate samples that are being used to express a single bit?
-7. What block would be useful for "converting" the complex wave into a real amplitude?
+7. What block (that you have already used) would be useful for "converting" the complex wave into a magnitude?
 8. What block(s) would be useful for slicing the data into zeros and ones? At what height should you slice it?
 9. After stripping the 8-bit preamble, what is the decimal number that corresponds to the first byte?
 10. What is the character that corresponds to the first byte?
