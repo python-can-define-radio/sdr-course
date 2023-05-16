@@ -65,11 +65,11 @@ class blk(gr.basic_block):
         )
         
         self.use_func = use_func
-        content_packed = [170, 87, 69, 32, 76, 73, 75, 69, 32, 66, 85, 84, 84, 69, 82, 32, 79, 78, 32, 79, 85, 82, 32, 84, 79, 65, 83, 84, 46, 32, 32, 32, 32, 32, 32, 32]
+        
         
         self.state_container = {
             "count": 0,
-            "content": unpackbits(content_packed)
+           
         }
 
 
