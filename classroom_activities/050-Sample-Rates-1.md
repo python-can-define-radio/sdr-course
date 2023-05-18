@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Sep 15: 050-Sample-Rates-1.md
+2022 Aug 30: 030-Sample-Rates-1.md
+</pre>
+</details>
+
 ## Introduction
 
 At this point, you've used various Graphical User Interface (GUI) features to manually adjust the amplitude and the frequency of a pure sine wave. Human-powered modulation is certainly useful, as thousands of telegraph operators could tell you.
