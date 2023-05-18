@@ -51,3 +51,4 @@ Other cool stuff:
 
 Not as cool, but worth saving for other reasons:
 - [Behind the Veil: A Peek at GNU Radio’s Buffer Architecture](https://www.gnuradio.org/blog/2017-01-05-buffers/) -- This explains why the size of a chunk-of-data-provided-to-a-block varies.
+- https://www.rtl-sdr.com/lessons-learned-using-sdr-in-the-classroom/
