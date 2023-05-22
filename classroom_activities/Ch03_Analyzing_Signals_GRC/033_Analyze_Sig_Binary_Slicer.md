@@ -1,3 +1,12 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Aug 11: 033-PySDR-write-file.md
+2022 Aug 30: 133-PySDR-write-file.md
+2023 Jan 28: 130-Sig-interpret-practice-5.md
+2023 May 22: 033_Analyze_Sig_Binary_Slicer.md
+</pre>
+</details>
+
 ## Digital data interpretation exercise #5
 
 ```
