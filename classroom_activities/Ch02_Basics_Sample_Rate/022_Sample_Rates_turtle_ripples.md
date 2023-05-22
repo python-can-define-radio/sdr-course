@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 06: 052-Sample-Rates-3.md
+2023 Jan 04: 052-Sample-Rates-3-turtle-ripples.md
+2023 May 22: 022_Sample_Rates_turtle_ripples.md
+</pre>
+</details>
+
 ## Ripples and turtle-meters
 
 Let's imagine some [ripples in water](https://www.youtube.com/watch?v=FeXP7SxCKKE).
