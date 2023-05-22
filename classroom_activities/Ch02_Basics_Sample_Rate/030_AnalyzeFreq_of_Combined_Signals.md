@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Aug 12: 119-AnalyzeFreq-of-Combined-Signals.md
+2022 Aug 30: 219-AnalyzeFreq-of-Combined-Signals.md
+2023 May 22: 030_AnalyzeFreq_of_Combined_Signals.md
+</pre>
+</details>
+
 ## Analyze Frequency of Combined Signals/Waves
 This is a demonstration of how GNU Radio Companion can evaluate a signal comprising multiple waveforms (e.g., multiple sine or cosine waves) to determine the frequencies of the individual waves.
 
