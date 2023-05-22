@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2023 Apr 21: 999-aliasing-demo-gqrx.md
+2023 May 22: 030_Aliasing_demo_gqrx.md
+</pre>
+</details>
+
 ## Aliasing
 
 Aliasing in signal processing happens when you measure a signal that is outside of what your sample rate allows.

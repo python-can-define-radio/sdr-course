@@ -1,3 +1,14 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Aug 08: 050-Nyquist.md
+2022 Aug 30: 090-Nyquist.md 
+2023 Jan 04: 082-Nyquist.md 
+2023 Jan 23: 082LATER-Nyquist.md 
+2023 Jan 28: 999-Nyquist.md
+2023 May 22: 040_Nyquist.md
+</pre>
+</details>
+
 _Note: This exercise isn't finished. Feel free to skip for now._
 
 
