@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Aug 08: 020_What_is_an_SDR.md
+2023 May 22: 010_What_is_an_SDR.md
+</pre>
+</details>
+
 Well, it's a Software Defined Radio. But you're probably looking for a more in-depth answer than that.
 
 So, let's look at what a radio is. Even before that, we'll start with what a wave is.
