@@ -1,3 +1,12 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 17: 058-OOK.md 
+2023 Jan 17: 115-OOK.md 
+2023 Jan 28: 110-Sig-interpret-practice-4.md
+2023 May 22: 032_Analyze_Sig_Keep_1_in_N.md
+</pre>
+</details>
+
 ## Digital data interpretation exercise #4
 
 ```
