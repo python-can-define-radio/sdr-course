@@ -1,6 +1,7 @@
 <details><summary><i>Naming history (click to expand)</i></summary>
 <pre>
-2022 Oct 05: 051-Sample-Rates-2-CPU-temps.md
+2022 Oct 05: 051-Sample-Rates-2.md
+2023 Jan 04: 051-Sample-Rates-2-CPU-temps.md
 2023 May 22: 021_Sample_Rates_CPU_temps.md
 </pre>
 </details>
