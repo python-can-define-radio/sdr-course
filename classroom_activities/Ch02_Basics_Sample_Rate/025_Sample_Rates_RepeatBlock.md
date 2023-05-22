@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 07: 055-Sample-Rates-6.md
+2022 Oct 27: 055-Sample-Rates-6-RepeatBlock.md
+2023 May 22: 025_Sample_Rates_RepeatBlock.md
+</pre>
+</details>
+
 # Sample rates: the Repeat Block
 
 In `054`, we created a square wave using a Vector Source block.
