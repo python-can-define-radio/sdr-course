@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 06: 054-Sample-Rates-5.md
+2023 Jan 04: 054-Sample-Rates-5-grc-practice.md
+2023 May 22: 024_Sample_Rates_grc_practice.md
+</pre>
+</details>
+
 # Sample rates: GNU Radio practice
 
 ## Practice problem set A
