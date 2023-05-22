@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2023 Feb 22: 070-Sig-interpret-bits-manual.md
+2023 May 22: 030_Analyze_Sig_manual.md
+</pre>
+</details>
+
 ## Signal interpretation: manually decoding a sequence of bits
 
 Filename: `Sig_interp_bits_manual.grc`
