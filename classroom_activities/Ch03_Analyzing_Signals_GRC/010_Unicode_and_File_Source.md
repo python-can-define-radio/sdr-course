@@ -1,3 +1,12 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 12: 057-File-Source.md
+2022 Oct 17: 065-File-Source.md
+2023 Feb 22: 065-Unicode-and-File-Source.md
+2023 May 22: 010_Unicode_and_File_Source.md
+</pre>
+</details>
+
 We've talked about sending pulses to represent binary. However, most "real life"  data is more interesting than simply zeros and ones (even if it is stored as zeros and ones on the hard drive). We're going to talk about how text is stored as binary, and how to work with text in both GNU Radio and Python.
 
 # Reading from Files
