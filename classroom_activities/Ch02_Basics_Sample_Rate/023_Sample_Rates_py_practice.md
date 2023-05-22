@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 06: 053-Sample-Rates-4.md
+2023 Jan 04: 053-Sample-Rates-4-py-practice.md
+2023 May 22: 023_Sample_Rates_py_practice.md
+</pre>
+</details>
+
 ## Sample Rate practice problems
 
 Run this. Name it `rough_sine_wave.py`. You'll see that it plots a very rough sine wave.
