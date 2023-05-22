@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2023 Mar 07: 999-spectrum-painting.md
+2023 May 22: 040_Spectrum_Painting.md
+</pre>
+</details>
+
 ## Frequency Spectrum Painting using Python & Software-Defined Radio (SDR).
 See Python program, below, for description.
 Page updated April 25, 2023.

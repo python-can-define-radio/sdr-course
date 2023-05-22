@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2023 Mar 01: 245-Improved-Digital-Jammer.md
+2023 May 22: 022_Improved_Digital_Jammer.md
+</pre>
+</details>
+
 This digital jammer is more effective than the original because it can match the symbol rate of the target.
 
 ```

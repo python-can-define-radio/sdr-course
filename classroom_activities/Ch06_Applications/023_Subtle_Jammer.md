@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Aug 08: 160-GNU-Radio-FM-Subtle-Jammer.md
+2022 Aug 30: 260-GNU-Radio-FM-Subtle-Jammer.md
+2023 May 22: 023_Subtle_Jammer.md
+</pre>
+</details>
+
 ## Disclaimer
 
 Intentionally disrupting someone's wireless connection (i.e., using a jammer) is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
