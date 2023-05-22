@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 05: 051-Sample-Rates-2-CPU-temps.md
+2023 May 22: 021_Sample_Rates_CPU_temps.md
+</pre>
+</details>
+
 ## Need for speed
 
 In `050`, we measured every 2 hours. That works for weather, but now, imagine you're dealing with a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this in the terminal:
