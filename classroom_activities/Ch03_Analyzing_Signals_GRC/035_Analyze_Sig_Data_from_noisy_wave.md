@@ -1,3 +1,13 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Aug 15: 065-ASK-full.md
+2022 Aug 30: 165-ASK-full.md
+2022 Oct 25: 165-OOK-full-Fourstep.md
+2023 Jan 28: 150-Sig-interpret-practice-6.md
+2023 May 22: 035_Analyze_Sig_Data_from_noisy_wave.md
+</pre>
+</details>
+
 ## Digital data interpretation exercise #6
 
 ```

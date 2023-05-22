@@ -1,3 +1,12 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Jan 21: 081-Sig-interpret-practice-2.md
+2022 Feb 22: 145-81-Sig-interpret-practice-2.md
+2023 Apr 14: 145b-Sig-interpret-practice.md
+2023 May 22: 034_Analyze_Sig_Data_from_analog_wave.md
+</pre>
+</details>
+
 ## Digital data interpretation exercise #2
 
 ```
