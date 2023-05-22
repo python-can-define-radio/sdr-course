@@ -1,3 +1,10 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2023 Jan 23: 090-Sig-interpret-practice-3.md
+2023 May 22: 031_Analyze_Sig_Packbits.md
+</pre>
+</details>
+
 ## Digital data interpretation exercise #3
 
 ```
