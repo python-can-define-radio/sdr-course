@@ -1,3 +1,11 @@
+<details><summary><i>Naming history (click to expand)</i></summary>
+<pre>
+2022 Oct 11: 056-Sample-Rates-7.md
+2022 Oct 27: 056-Sample-Rates-7-RealisticData.md
+2023 May 22: 026_Sample_Rates_RealisticData.md
+</pre>
+</details>
+
 ## Sending more interesting (and realistic) data
 
 We've seen how to create a square wave using the Vector Source. Now, let's simulate a more interesting signal.
