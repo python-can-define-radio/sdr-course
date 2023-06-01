@@ -101,9 +101,6 @@ num_samples = len(contents)
 max_time = num_samples / samp_rate
 timestamps = createTimestamps(max_time, num_samples)
 contents_as_numbers = list(map(float, contents))
-plt.subplot(2, 1, 1)
-plt.plot(timestamps, contents_as_numbers, "-*", markersize=10)
-plt.subplot(2, 1, 2)
-plt.plot(timestamps, contents_as_numbers, "-*r", markersize=10)
+plt.plot(timestamps, contents_as_numbers, "*", markersize=10)
 plt.show()
 ```
