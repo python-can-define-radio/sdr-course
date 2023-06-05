@@ -9,8 +9,7 @@
 </pre>
 </details>
 
-_Note: This exercise isn't finished. Feel free to skip for now._
-
+The instructor will do demonstrations using the notes below.
 
 ```
 Sample rate     Wave freq     Did we capture?
