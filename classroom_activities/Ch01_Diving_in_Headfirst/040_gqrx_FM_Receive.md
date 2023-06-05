@@ -4,5 +4,5 @@
 </pre>
 </details>
 
-We'll be following this tutorial: https://gqrx.dk/doc/practical-tricks-and-tips#more-229
+We'll be following this tutorial: https://gqrx.dk/doc/practical-tricks-and-tips#more-229  
 Gqrx is already installed so skip forward to the "starting gqrx" step.
