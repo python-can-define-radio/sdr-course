@@ -3,3 +3,5 @@
 2023 May 22: 040_gqrx_FM_Receive.md
 </pre>
 </details>
+
+We'll be following this tutorial: https://gqrx.dk/doc/practical-tricks-and-tips#more-229
