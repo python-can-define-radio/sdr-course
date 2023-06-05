@@ -4,10 +4,10 @@
 </pre>
 </details>
 
-# gqrx FM Receive #
+# gqrx FM Receive  
 
 ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
-## Initial setup ##  
+## Initial setup    
 - Open a terminal (CLI) window on your 🖥️ computer.  
 - The first time you launch gqrx you may want to reset to its default settings using the terminal command below.  
   
@@ -22,7 +22,7 @@
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
-## Settings ##   
+## Settings     
 ⚠️ **Do not adjust the RF gain.** ⚠️ 
 - **Frequency**  
   - Tune your frequency to 98.000.000 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) 
@@ -41,4 +41,9 @@
   - Also remember antenna placement is very important.
   - Other than the RF gain feel free to play around with the settings you can always reset to default configuration with the gqrx -r terminal command.  
  
-⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**
+⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
+
+### ℹ️ Some useful resources for gqrx and HackRF One:
+(Suggestion: When using a web-link, Right-Click with your mouse and select "open in new tab" or new window and then go to that tab/window.)
+- https://gqrx.dk/
+- https://hackrf.readthedocs.io/en/latest/index.html
