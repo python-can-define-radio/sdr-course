@@ -100,7 +100,7 @@ Parameters:
   - Value: `0.5`
 - Vector Source:
   - Output Type: `float`
-  - Vector: `[52, 50, 48, 48, 46, 58, 63, 64, 67, 66, 63, 57, 0, 0, 0]`
+  - Vector: `(52, 50, 48, 48, 46, 58, 63, 64, 67, 66, 63, 57, 0, 0, 0)`
   - Repeat: `No`
 - Time Sink:
   - General tab:
