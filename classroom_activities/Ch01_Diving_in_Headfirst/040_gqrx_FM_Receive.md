@@ -8,24 +8,26 @@
 
 ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
 ## Initial setup    
-- Open a terminal (CLI) window on your 🖥️ computer.  
+- Attach an SDR device, e.g. a HackRF One, to your computer
+- Open a terminal (command line interface or CLI) window on your 🖥️ computer.  
 - The first time you launch gqrx you may want to reset to its default settings using the terminal command below.  
   `$ gqrx -r`    
 - On the Configure I/O devices window select the "device" dropdown menu.
-- Choose the first HackRF entry which should look something like this:  
+  - Choose the first HackRF entry which should look something like this:  
   - HackRF HackRF One `123456f` (the numbers are a partial serial number of the device) 
-- Change the input rate to `20000000`.
-- Maximize your gqrx window. 
+- Change the input rate to `20000000`, and press the "OK" button at the bottom.
+- Maximize your gqrx window.
+- Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
 - Click the ▶️ Play button in the top left under "File".  
 - You should see some noise and spikes in the spectrum display.
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
 ## Settings     
-⚠️ **Do not adjust the RF gain.** ⚠️ 
+⚠️ **Keep the RF gain at zero.** ⚠️ 
 - **Frequency**  
-  - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) 
-  - gqrx can be tuned either in the spectrum view or in the Receiver Options pane (on the right).
+  - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
+  - gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (on the right).
   - In the spectrum view, clicking on the top of the numbers increases, and clicking on the bottom of the numbers decreases the frequency.  
   - In the Frequency box of the Receiver Options pane, it would be `98000.000 kHz`.
 - **Squelch**  
@@ -36,7 +38,7 @@
   - Using the dropdown menu next to "Mode", select Wideband Frequency Modulation (WFM), either mono or stereo.  
 - **Experiment**
   - Click around on different spikes in the spectrum view (some of them will be radio stations).
-  - Again you may have to adjust the 🖥️ computer audio settings and/or the gain slider in gqrx for optimal sound quality.  
+  - Again you may have to adjust the 🖥️ computer audio settings and/or the audio gain slider in gqrx for optimal sound quality.  
   - Also remember antenna placement is very important.
   - Other than the RF gain, feel free to play around with the settings. You can always reset to default configuration with the `$ gqrx -r` terminal command.  
  
