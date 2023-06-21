@@ -15,7 +15,7 @@
 - On the Configure I/O devices window select the "device" dropdown menu.
   - Choose the first HackRF entry which should look something like this:  
   - HackRF HackRF One `123456f` (the numbers are a partial serial number of the device) 
-- Change the input rate to `20000000`, and press the "OK" button at the bottom.
+  - Change the input rate to `20000000`, and press the "OK" button at the bottom.
 - Maximize your gqrx window.
 - Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
 - Click the ▶️ Play button in the top left under "File".  
