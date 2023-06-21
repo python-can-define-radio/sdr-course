@@ -42,7 +42,7 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 ### For the Constellation Object:
 
 - ID: `myconstell`
-- Constellation Type: Pick one of these: `BPSK`, `QPSK`, `8PSK`, or `16QAM`.
+- Constellation Type: `BPSK`. _Also, try these: `QPSK`, `8PSK`, `DQPSK`, `16QAM`_
 - Leave all other attributes as defaults.
 
 ### For the Random Source:
