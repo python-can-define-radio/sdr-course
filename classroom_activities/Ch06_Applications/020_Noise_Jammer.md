@@ -62,7 +62,7 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
 ### For the Noise Source:
 
 - Noise Type: `Uniform`
-- Amplitude: `5`
+- Amplitude: `50`
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
