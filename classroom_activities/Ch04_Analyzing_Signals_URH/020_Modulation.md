@@ -4,4 +4,15 @@
 </pre>
 </details>
 
-The instructor will demonstrate different modulation schemes (ASK, FSK, and PSK) in Universal Radio Hacker.
+You may remember that we introduced the idea of [Modulation](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/020_Sample_Rates_Intro.md#what-is-modulation). 
+
+In this section, we'll will visually show you what those modulation techniques look like.
+
+
+# Demonstrate Modulation
+
+## Initial setup   
+
+### ℹ️ Some useful resources for urh:
+
+- https://github.com/jopohl/urh
