@@ -32,7 +32,7 @@
   - In the Frequency box of the Receiver Options pane, it would be `98000.000 kHz`.
 - **Squelch**  
   - With your mouse, click anywhere on the spectrum where there is no spike present.
-  - In the receiver options pane (on the right), click the 🅰️ button next to "Squelch".
+  - In the receiver options pane (on the right), click the <kbd>A</kbd> button (short for automatic) next to "Squelch".
   - This will readjust the noise floor dB level from `-150` dB to somewhere between `-60` dB and `-80` dB depending on the amount of "noise" present, and the speakers should go silent.  
 - **Mode**
   - Using the dropdown menu next to "Mode", select Wideband Frequency Modulation (WFM), either mono or stereo.  
