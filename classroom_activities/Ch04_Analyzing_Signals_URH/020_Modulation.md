@@ -11,8 +11,6 @@ In this section, we'll will visually show you what those modulation techniques l
 
 # Demonstrate Modulation
 
-## Initial setup   
-
 ### ℹ️ Some useful resources for urh:
 
 - https://github.com/jopohl/urh
