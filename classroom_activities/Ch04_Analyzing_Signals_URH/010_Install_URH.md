@@ -28,7 +28,7 @@
 
 - To the right of `Choose a path` at the top of the urh popup window, select the three dots and navigate to where you want your project folder to be saved.
 
-- At the end of the path add something like this `/urh_project`.
+- At the end of the path add something like this `/urh_project` and hit `ok`.
 
 ### ℹ️ Some useful resources for urh:
 
