@@ -95,7 +95,7 @@ In this section, we'll will visually show you what those modulation techniques l
 
 - In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
 
-- This simple example is known as Bi-Phase Shift Keying or BPSK.
+- This simple example is known as Binary Phase Shift Keying or BPSK.
     - Other examples of PSK
         - QPSK
         - OQPSK
