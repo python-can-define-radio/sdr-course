@@ -34,7 +34,7 @@
 
 - Click the Generate file button at the bottom and navigate to your project folder and save the file.
 
-- Now changes tabs to the Interpretation tab.
+- Now change tabs to the Interpretation tab.
     - If the generated signal is not already showing click and drag the file `generated.complex` to the grey space on the right.
  
 ![generated_file.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_file.png?raw=true) 
