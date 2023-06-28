@@ -69,7 +69,7 @@
  
 ![generated_file.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_file.png?raw=true) 
 
-- Now all you have to do is change the `Show data as` dropdown menu to `ASCII` and you should see your message in the window.
+- Now ensure your settings match the picture above and change the  `Show data as` dropdown menu to `ASCII` and you should see your message in the window.
     - In the next lesson we will learn how to do the same thing without already knowing all the settings.
 
 ### ℹ️ Some useful resources for urh:
