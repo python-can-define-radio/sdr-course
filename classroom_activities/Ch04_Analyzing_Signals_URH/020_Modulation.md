@@ -102,7 +102,7 @@ In this section, we'll will visually show you what those modulation techniques l
         - QPSK (2 bits per symbol)
         - 8PSK (3 bits per symbol)
         - 16QAM (4 bits per symbol)
-          - ℹ️ Note: 16QAM involves modulating both the phase and the amplitude. This is outside of urh's capability (to our knowledge).
+          - ℹ️ Note: 16QAM involves modulating both the phase and the amplitude. This is currently outside of urh's capability.
 
 ### ℹ️ Some useful resources for urh:
 
