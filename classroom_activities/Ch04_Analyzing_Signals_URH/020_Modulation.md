@@ -16,7 +16,11 @@ In this section, we'll will visually show you what those modulation techniques l
     - Frequency Shift Keying (FSK)
     - Phase Shift Keying (PSK)
 
-- First select the Generator tab at the top of urh window.
+- Open a terminal window.
+  
+- Type `urh` to launch the program.
+  
+- Select the Generator tab at the top of urh window.
 
 - Then select `Edit` at the bottom of the urh window.
 
