@@ -11,6 +11,11 @@ In this section, we'll will visually show you what those modulation techniques l
 
 # Demonstrate Modulation
 
+- There are 3 basic types of modulation we will demonstrate.
+    - Amplitude Shift Keying (ASK)
+    - Frequency Shift Keying (FSK)
+    - Phase Shift Keying (PSK)
+
 - First select the Generator tab at the top of urh window.
 
 - Then select `Edit` at the bottom of the urh window.
@@ -18,20 +23,22 @@ In this section, we'll will visually show you what those modulation techniques l
 - This opens a popup showing a carrier signal, some raw data, and what the signal would look like combined with the data.
 
 - Set it up something like this to start:
-
-    ### `Carrier`
-    - Frequency: 10.0K
-    - Phase: 0.000°  
-    ### `Data (raw bits)`
-    - Data: 1010110010101100
-    - Samples per Symbol: 200
-    - Sample Rate (Sps): 2.0M
-    ### `Modulation`
-    - Amplitude Shift Keying (ASK)
-    - Bits per Symbol: 1
-    - Amplitudes in %: 0/100
+  |Setting|Value|
+  |-------|-----|
+  |    `Carrier`    |
+  |Frequency:| 10.0K|
+  |Phase:| 0.000°|  
+  |    `Data (raw bits)`    |
+  |Data:| 1010110010101100|
+  |Samples per Symbol:| 200|
+  |Sample Rate (Sps):| 2.0M|
+  |    `Modulation`    |
+  |dropdown menu ▾|Amplitude Shift Keying (ASK)|
+  |Bits per Symbol:| 1|
+  |Amplitudes in %:| 0/100|
 
 - It should look something like this:
+    - ASK should be pretty easy determining the difference between a 1 and a 0.
    
 ![ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/ASK_modulated_signal.png?raw=true)
 
@@ -46,14 +53,41 @@ In this section, we'll will visually show you what those modulation techniques l
 
 - Try changing the modulation.
 
-    ### `Modulation`
-    - Frequency Shift Keying (FSK)
-    - Bits per Symbol: 1
-    - Frequencies in Hz: 20k/200k
- 
+  |Setting|Value|
+  |-------|-----|
+  |    `Modulation`    |
+  |dropdown menu ▾|Frequency Shift Keying (FSK)|
+  |Bits per Symbol:| 1|
+  |Frequencies in Hz:|20k/200k|
+  
 - What do you see different?
 
 ![fsk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/fsk_modulation.png?raw=true)
+
+- The last thing we are going to look at is Phase Shift Keying (PSK).
+
+- Try this:
+
+  |Setting|Value|
+  |-------|-----|
+  |    `Modulation`    |
+  |dropdown menu ▾|Phase Shift Keying (PSK)|
+  |Bits per Symbol:| 1|
+  |Phases in degree:|0/180 or 180/0|
+  
+- It should look something like this:
+  
+![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/psk_modulation.png?raw=true)
+
+- In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
+
+- This simple example is known as Bi-Phase Shift Keying or BPSK.
+    - Other examples of PSK
+        - QPSK
+        - OQPSK
+        - DPSK
+        - 8PSK
+        - 16QAM
 
 ### ℹ️ Some useful resources for urh:
 
