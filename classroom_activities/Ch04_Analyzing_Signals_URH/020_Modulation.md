@@ -99,11 +99,10 @@ In this section, we'll will visually show you what those modulation techniques l
 
 - This simple example is known as Binary Phase Shift Keying or BPSK.
     - Other examples of PSK
-        - QPSK
-        - OQPSK
-        - DPSK
-        - 8PSK
-        - 16QAM
+        - QPSK (2 bits per symbol)
+        - 8PSK (3 bits per symbol)
+        - 16QAM (4 bits per symbol)
+          - ℹ️ Note: 16QAM involves modulating both the phase and the amplitude. This is outside of urh's capability (to our knowledge).
 
 ### ℹ️ Some useful resources for urh:
 
