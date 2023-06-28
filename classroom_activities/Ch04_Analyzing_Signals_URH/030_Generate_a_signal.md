@@ -8,6 +8,31 @@
 
 - Click on the Generator tab at the top of the urh window.
 
+- Make sure your defaults are set by clicking the `Edit` button and using the following information:  
+
+### Carrier section:  
+
+  | | |
+  |-------|-----|
+  |Frequency:| 10.0|
+  |Phase:| 0.000°|  
+
+### Data (raw bits) section:
+
+  | | |
+  |-------|-----|
+  |Data:| 1010110010101100|
+  |Samples per Symbol:| 200000|
+  |Sample Rate (Sps):| 2.0M| 
+
+### Modulation section:
+
+  | | |
+  |-------|-----|
+  |dropdown menu ▾|Amplitude Shift Keying (ASK)|
+  |Bits per Symbol:| 1|
+  |Amplitudes in %:| 0/100|
+
 - On the right side under "Generated Data" in the white space right-click and select `add empty message`.
 
 - Type in 32 and hit `ok`.
@@ -17,7 +42,6 @@
 - This is what your generated data window should now look like.
 
 ![generated_data.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_data.png?raw=true) 
-
 
 - Notice that the 32 bit message we selected is now showing up as 4 bytes in the generated data window.
 
@@ -31,6 +55,12 @@
 - It should now look like this
 
 ![catscreenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/catscreenshot.png?raw=true) 
+
+- Select the Pauses tab as shown.
+
+![pauses.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/pauses.png?raw=true) 
+
+- Right click and select Edit on the pause in the window, change the Pause Length to 0 and hit ok.
 
 - Click the Generate file button at the bottom and navigate to your project folder and save the file.
 
