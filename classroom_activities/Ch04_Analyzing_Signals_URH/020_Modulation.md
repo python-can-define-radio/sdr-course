@@ -67,9 +67,10 @@ In this section, we'll will visually show you what those modulation techniques l
 
 - Try changing the modulation.
 
-  |Setting|Value|
+  ### Modulation section:
+
+  | | |
   |-------|-----|
-  |    `Modulation`    |
   |dropdown menu ▾|Frequency Shift Keying (FSK)|
   |Bits per Symbol:| 1|
   |Frequencies in Hz:|20k/200k|
@@ -82,9 +83,10 @@ In this section, we'll will visually show you what those modulation techniques l
 
 - Try this:
 
-  |Setting|Value|
+  ### Modulation section:
+
+  | | |
   |-------|-----|
-  |    `Modulation`    |
   |dropdown menu ▾|Phase Shift Keying (PSK)|
   |Bits per Symbol:| 1|
   |Phases in degree:|0/180 or 180/0|
