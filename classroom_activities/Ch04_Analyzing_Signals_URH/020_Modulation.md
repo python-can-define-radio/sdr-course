@@ -27,16 +27,26 @@ In this section, we'll will visually show you what those modulation techniques l
 - This opens a popup showing a carrier signal, some raw data, and what the signal would look like combined with the data.
 
 - Set it up something like this to start:
-  |Setting|Value|
+
+### Carrier section:
+
+  | | |
   |-------|-----|
-  |    `Carrier`    |
   |Frequency:| 10.0K|
   |Phase:| 0.000°|  
-  |    `Data (raw bits)`    |
+
+### Data (raw bits) section:
+
+  | | |
+  |-------|-----|
   |Data:| 1010110010101100|
   |Samples per Symbol:| 200|
-  |Sample Rate (Sps):| 2.0M|
-  |    `Modulation`    |
+  |Sample Rate (Sps):| 2.0M| 
+
+### Modulation section:
+
+  | | |
+  |-------|-----|
   |dropdown menu ▾|Amplitude Shift Keying (ASK)|
   |Bits per Symbol:| 1|
   |Amplitudes in %:| 0/100|
