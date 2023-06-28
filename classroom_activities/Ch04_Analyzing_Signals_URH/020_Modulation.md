@@ -32,7 +32,7 @@ In this section, we'll will visually show you what those modulation techniques l
 
   | | |
   |-------|-----|
-  |Frequency:| 10.0K|
+  |Frequency:| 10.0|
   |Phase:| 0.000°|  
 
 ### Data (raw bits) section:
@@ -40,7 +40,7 @@ In this section, we'll will visually show you what those modulation techniques l
   | | |
   |-------|-----|
   |Data:| 1010110010101100|
-  |Samples per Symbol:| 200|
+  |Samples per Symbol:| 200000|
   |Sample Rate (Sps):| 2.0M| 
 
 ### Modulation section:
@@ -73,7 +73,7 @@ In this section, we'll will visually show you what those modulation techniques l
   |-------|-----|
   |dropdown menu ▾|Frequency Shift Keying (FSK)|
   |Bits per Symbol:| 1|
-  |Frequencies in Hz:|20k/200k|
+  |Frequencies in Hz:|20/200|
   
 - What do you see different?
 
