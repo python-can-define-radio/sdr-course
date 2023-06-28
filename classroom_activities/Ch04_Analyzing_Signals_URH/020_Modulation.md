@@ -31,13 +31,29 @@ In this section, we'll will visually show you what those modulation techniques l
     - Bits per Symbol: 1
     - Amplitudes in %: 0/100
 
-- It should look something like this:  
-[ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/ASK_modulated_signal.png?raw=true)
+- It should look something like this:
+   
+![ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/ASK_modulated_signal.png?raw=true)
 
 - Now on the modulated signal click and drag to try to highlight a single bit (1 or 0).
     - Notice the Samples selected should be around 200 which lines up with our Samples per Symbol setting above.
 
+![singlebithighlighted.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/singlebithighlighted.png?raw=true)
+
 - You can also adjust the Amplitudes in % value which essentially changes the value/height/amplitude of a "0".
+
+![amplitude25%.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/amplitude25%25.png?raw=true)
+
+- Try changing the modulation.
+
+    ### `Modulation`
+    - Frequency Shift Keying (FSK)
+    - Bits per Symbol: 1
+    - Frequencies in Hz: 20k/200k
+ 
+- What do you see different?
+
+![fsk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/fsk_modulation.png?raw=true)
 
 ### ℹ️ Some useful resources for urh:
 
