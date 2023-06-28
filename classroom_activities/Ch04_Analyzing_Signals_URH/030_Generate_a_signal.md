@@ -24,12 +24,23 @@
 - Now add the « character which will serve as a preamble of 10101011 in the first slot so we will know when our useful data begins.
     - The Ubuntu keyboard shortcut for this symbol would be Ctl + Shift + u then release and type 00ab then press enter.
     - The Windows keyboard shortcut if your interested would be Alt + 0171 then release.
+    - Or you can just copy and paste the character above.
  
 - The next step would be to add a simple 3 letter word in the remaining slots.
 
 - It should now look like this
 
 ![catscreenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/catscreenshot.png?raw=true) 
+
+- Click the Generate file button at the bottom and navigate to your project folder and save the file.
+
+- Now changes tabs to the Interpretation tab.
+    - If the generated signal is not already showing click and drag the file `generated.complex` to the grey space on the right.
+ 
+![generated_file.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_file.png?raw=true) 
+
+- Now all you have to do is change the `Show data as` dropdown menu to `ASCII` and you should see your message in the window.
+    - In the next lesson we will learn how to do the same thing without already knowing all the settings.
 
 ### ℹ️ Some useful resources for urh:
 
