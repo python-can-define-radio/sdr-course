@@ -33,11 +33,15 @@
 - When you highlight a portion of the signal urh will tell you how many samples you have selected like in the above image it says right below the highlighted portion "50 selected".
 
 - If you actually highlighted a single 1 or 0 then we can now change our settings to 50 Samples/Symbol and 1 Bit(s)/Symbol.
-    - ℹ️ Your signal may be different than this example.
-
-![generated_data.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_data.png?raw=true) 
+    - ⚠️ Your signal may be different than this example.
 
 - Now ensure your settings match:
+
+![final_settings.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_settings.png?raw=true) 
+
+- If you did everything correctly you should now see your secret message.
+
+![final_message.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_message.png?raw=true) 
 
 ### ℹ️ Some useful resources for urh:
 
