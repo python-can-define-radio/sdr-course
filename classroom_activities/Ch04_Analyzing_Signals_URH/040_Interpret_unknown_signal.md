@@ -11,7 +11,9 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- You should receive a file from your instructor, put it in your urh project folder.
+- Download the following file (link provided) from github ![unknown_signal_1.complex](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_URH/unknown_signal_1.complex).
+
+- Put it in your urh project folder.
 
 - It should now look something like this:
     - You may have other files showing than the ones you see here.
@@ -39,7 +41,7 @@
 
 ![final_settings.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_settings.png?raw=true) 
 
-- If you did everything correctly you should now see your secret message.
+- If you did everything correctly you should now see your secret message (it will be different than the message shown below).
 
 ![final_message.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_message.png?raw=true) 
 
