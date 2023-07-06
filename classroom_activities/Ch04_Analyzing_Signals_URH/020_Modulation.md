@@ -4,10 +4,9 @@
 </pre>
 </details>
 
-You may remember that we introduced the idea of [Modulation](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/020_Sample_Rates_Intro.md#what-is-modulation). 
+You may remember that we introduced the idea of [Modulation](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/020_Sample_Rates_Intro.md#what-is-modulation) in a previous lesson. 
 
-In this section, we'll will visually show you what those modulation techniques look like using urh.
-
+In this section, we will visually show you what those modulation techniques look like using urh.
 
 # Demonstrate Modulation
 
