@@ -14,9 +14,9 @@ You'll prob want the np.concatenate
 
 THEN
 Using a for loop (or your mechnaism of cohice)
-- Take groups of 4096 smaples
-- Do an FFT
-- Check if there is activity surpassing a certain (arbitrary) threshold on an arbitrary frequency (ex: 3 Hz)
+- Take groups of 4096 smaples.  Each group will pertain to a unique time period.
+- Do an FFT on each group of samples
+- Check whether there is activity surpassing a certain (arbitrary) threshold on an arbitrary frequency (ex: 3 Hz) within each group.
 
 
 
