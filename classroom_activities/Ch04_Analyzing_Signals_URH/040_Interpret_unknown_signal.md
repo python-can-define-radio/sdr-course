@@ -26,6 +26,8 @@
 
 ![unknown_signal_1_interpret.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_1_interpret.png?raw=true) 
 
+- Looking at the signal try to determine whether it is ASK, FSK, or PSK modulation.
+
 - Looking at the signal try to identify a single `0` or `1` and highlight it.
     - You may need to zoom into the signal to see it more clearly.
     - It is actually easier to select just a single `0` or `1` in the bottom window but this may be inaccurate because your Samples/Symbol setting may not be correct. 
