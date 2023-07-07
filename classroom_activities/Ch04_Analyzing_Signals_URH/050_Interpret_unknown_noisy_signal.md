@@ -15,35 +15,42 @@
 
 - Put it in your urh project folder.
 
-- It should now look something like this:
-    - You may have other files showing than the ones you see here.
+- The first thing we need to do is clean up the `noisy` signal by adding a filter.
 
-![unknown_signal_1.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_1.png?raw=true) 
+- Change the Signal View to `Spectrogram`. (You should see something like this)
 
-- On the left side you should see the signal you received.
+![unknown_signal_2_spectrogram.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_spectrogram.png?raw=true) 
 
-- Click and drag it to the grey space on the right to begin interpretation.
+- Now highlight the signal vertically as shown.
 
-![unknown_signal_2.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2.png?raw=true) 
+![unknown_signal_2_spectrogram_highlight.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_spectrogram_highlight.png?raw=true)
 
-- Looking at the signal try to identify a single `0` or `1` and highlight it.
-    - You may need to zoom into the signal to see it more clearly.
-    - It is actually easier to select just a single `0` or `1` in the bottom window but this may be inaccurate because your Samples/Symbol setting may not be correct. 
+- Now somewhere in the reddish area right-click and select `Apply bandpass filter (filter bw=0.08)`.
 
-![unknown_signal_3.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_3.png?raw=true)
+- Now you should see both signals in the window like this.
 
-- When you highlight a portion of the signal urh will tell you how many samples you have selected like in the above image it says right below the highlighted portion "50 selected".
+![unknown_signal_2_with_filtered.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_with_filtered.png?raw=true)
 
-- If you actually highlighted a single 1 or 0 then we can now change our settings to 50 Samples/Symbol and 1 Bit(s)/Symbol.
-    - ⚠️ Your signal may be different than this example.
+- Now you can close the first unfiltered signal by clicking the red ✖️ on the top signal.
 
-- Now ensure your settings match:
+- Its probably a good idea to save this new filtered signal but give it a new name like `unknown_signal_2_filtered.complex` do not save over your original signal in case you need to start over for any reason.
 
-![final_settings.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_settings.png?raw=true) 
+- Now we need to adjust the `Center` setting initially lets just set it to `0` if it isn't already then change the Signal View to `Demodulated`.
 
-- If you did everything correctly you should now see your secret message (it will be different than the message shown below).
+- It should look something like this.
 
-![final_message.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_message.png?raw=true) 
+![unknown_signal_2_demodulated.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_demodulated.png?raw=true)
+
+- You can click and drag the line (between the two colors purple and green) so that it rests somewhere between your high `1` and your low `0` like this.
+
+![unknown_signal_2_centerset.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_centerset.png?raw=true)
+
+- Go back to Signal View `Analog` and determine signals modulation type as in previous lesson.
+
+- Determine signals Samples/Symbol as in previous lesson.
+
+- Check all your settings and reveal your message.
+
 
 ### ℹ️ Some useful resources for urh:
 
