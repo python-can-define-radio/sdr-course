@@ -24,13 +24,13 @@
 
 - Click and drag it to the grey space on the right to begin interpretation.
 
-![unknown_signal_2.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2.png?raw=true) 
+![unknown_signal_1_interpret.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_1_interpret.png?raw=true) 
 
 - Looking at the signal try to identify a single `0` or `1` and highlight it.
     - You may need to zoom into the signal to see it more clearly.
     - It is actually easier to select just a single `0` or `1` in the bottom window but this may be inaccurate because your Samples/Symbol setting may not be correct. 
 
-![unknown_signal_3.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_3.png?raw=true)
+![unknown_signal_1_determine_samplerate.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_1_determine_samplerate.png?raw=true)
 
 - When you highlight a portion of the signal urh will tell you how many samples you have selected like in the above image it says right below the highlighted portion "50 selected".
 
