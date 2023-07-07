@@ -15,6 +15,8 @@ dat = np.fromfile(infilename, dtype=np.complex64)
 noise_real = np.random.normal(0, .5, len(dat))
 noise_imag = np.random.normal(0, .5, len(dat))
 
-noisydat = scale_factor * np.complex64(dat + noise_real + 1j*noise_imag)
+noisydat = dat + noise_real + 1j*noise_imag
+scaled = scale_factor * noisydat
+propertype = np.complex64(scaled)
 
-noisydat.tofile(outfilename)
+propertype.tofile(outfilename)
