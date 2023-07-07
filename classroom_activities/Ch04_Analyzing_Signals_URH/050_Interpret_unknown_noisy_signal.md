@@ -35,7 +35,7 @@
 
 - Its probably a good idea to save this new filtered signal but give it a new name like `unknown_signal_2_filtered.complex` do not save over your original signal in case you need to start over for any reason.
 
-- Now we need to adjust the `Center` setting initially lets just set it to `0` if it isn't already then change the Signal View to `Demodulated`.
+- Now we need to adjust the `Center` setting. Initially lets just set it to `0` if it isn't already, then change the Signal View to `Demodulated`.
 
 - It should look something like this.
 
