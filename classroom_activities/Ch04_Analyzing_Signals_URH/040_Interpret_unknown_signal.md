@@ -39,7 +39,8 @@
 - If you actually highlighted a single 1 or 0 then we can now change our settings to 50 Samples/Symbol and 1 Bit(s)/Symbol.
     - ⚠️ Your signal may be different than this example.
 
-- Now ensure your settings match:
+- Now ensure your settings are correct:
+    - ⚠️ Your settings may be different than this example.
 
 ![final_settings.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_settings.png?raw=true) 
 
