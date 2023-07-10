@@ -1,6 +1,7 @@
 <details><summary><i>Naming history (click to expand)</i></summary>
 <pre>
 2023 May 22: 060_Interpret_multiple_noisy_signals.md
+2023 July 10: 070_Interpret_multiple_noisy_signals.md
 </pre>
 </details>
 
@@ -23,6 +24,8 @@
 - Go back to Signal View `Analog` and determine signals `modulation` type as in previous lesson.
 
 - Determine signals `Samples/Symbol` as in previous lesson.
+
+- Crop your signal to eliminate leading zeros.
 
 - Check all your settings and reveal your message.
 
