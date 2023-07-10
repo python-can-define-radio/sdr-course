@@ -41,7 +41,8 @@
 
 ![unknown_signal_2_demodulated.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_demodulated.png?raw=true)
 
-- You can click and drag the line (between the two colors purple and green) so that it rests somewhere between your high `1` and your low `0` like this.
+- You can click and drag the line (between purple and green) so that it rests somewhere between your high `1` and your low `0` like this.
+    - If the signal is "weak" you may need to adjust the Y-Scale, with the slider on the right, to get a better look at the signal in order to set the Center.
 
 ![unknown_signal_2_centerset.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_centerset.png?raw=true)
 
