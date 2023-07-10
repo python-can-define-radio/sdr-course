@@ -56,7 +56,7 @@ In this section, we will visually show you what those modulation techniques look
 ![ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/ASK_modulated_signal.png?raw=true)
 
 - Now on the modulated signal click and drag to try to highlight a single bit (1 or 0).
-    - Notice the Samples selected should be around 200 which lines up with our Samples per Symbol setting above.
+    - Notice the Samples selected should be around 200000 which lines up with our Samples per Symbol setting above.
 
 ![singlebithighlighted.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/singlebithighlighted.png?raw=true)
 
