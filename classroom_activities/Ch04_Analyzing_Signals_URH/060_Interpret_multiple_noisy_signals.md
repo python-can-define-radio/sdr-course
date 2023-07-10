@@ -20,9 +20,9 @@
 
 - The next thing we need to do is set the `Center` like the previous lesson.
 
-- Go back to Signal View `Analog` and determine signals modulation type as in previous lesson.
+- Go back to Signal View `Analog` and determine signals `modulation` type as in previous lesson.
 
-- Determine signals Samples/Symbol as in previous lesson.
+- Determine signals `Samples/Symbol` as in previous lesson.
 
 - Check all your settings and reveal your message.
 
