@@ -33,6 +33,8 @@
   |Bits per Symbol:| 1|
   |Amplitudes in %:| 0/100|
 
+- Close the `Edit` window.
+
 - On the right side under "Generated Data" in the white space right-click and select `add empty message`.
 
 - Type in 32 and hit `ok`.
@@ -45,7 +47,8 @@
 
 - Notice that the 32 bit message we selected is now showing up as 4 bytes in the generated data window.
 
-- Now add the « character which will serve as a preamble of 10101011 in the first slot so we will know when our useful data begins.
+- Now add the « character which will serve as a preamble of 10101011 in the first slot so we will know when our useful data begins.  
+  Here's How:
     - The Ubuntu keyboard shortcut for this symbol would be Ctl + Shift + u then release and type 00ab then press enter.
     - The Windows keyboard shortcut if your interested would be Alt + 0171 then release.
     - Or you can just copy and paste the character above.
@@ -63,9 +66,10 @@
 - Right click and select Edit on the pause in the window, change the Pause Length to 0 and hit ok.
 
 - Click the Generate file button at the bottom and navigate to your project folder and save the file.
+    - It is not necessary to rename the file, if you do ensure it is still a `.complex` file.
 
 - Now change tabs to the Interpretation tab.
-    - If the generated signal is not already showing click and drag the file `generated.complex` to the grey space on the right.
+    - Click and drag the file `generated.complex` (or whatever you renamed it) to the grey space on the right.
  
 ![generated_file.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_file.png?raw=true) 
 
