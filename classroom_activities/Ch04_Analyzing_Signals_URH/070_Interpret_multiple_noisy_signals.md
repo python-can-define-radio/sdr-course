@@ -27,7 +27,7 @@
 
 - Crop your signal to eliminate leading zeros.
 
-- Check all your settings and reveal your message.
+- Set Show data as to `ASCII` and verify all settings to reveal your message.
 
 
 ### ℹ️ Some useful resources for urh:
