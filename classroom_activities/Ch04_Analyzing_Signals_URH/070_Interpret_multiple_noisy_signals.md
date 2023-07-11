@@ -11,7 +11,7 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file (link provided) from github ![unknown_signal_3.complex]().
+- Download the following file (link provided) from github ![unknown_signal_4.complex]().
 
 - Put it in your urh project folder.
 
