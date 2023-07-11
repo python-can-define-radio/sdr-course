@@ -33,3 +33,13 @@
 ### ℹ️ Some useful resources for urh:
 
 - https://github.com/jopohl/urh
+
+### General order of operations for analyzing an ASK signal:
+|    | Step |
+|-----|-----------|
+|1|  Apply a bandpass filter to eliminate unwanted signal (noise).|
+|2|  Determine the signal's modulation scheme.|
+|3|  Determine and set the "Center" between a `1` and a `0`.|
+|4|  Determine the signal's Sample per Symbol.|
+|5|  Crop the signal to eliminate the portion without data.|
+|6|  Verify all settings.|
