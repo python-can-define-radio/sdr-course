@@ -78,6 +78,11 @@ In this section, we will visually show you what those modulation techniques look
 
 ![fsk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/fsk_modulation.png?raw=true)
 
+- To determine Samples per Symbol of FSK highlight the smallest section of a single frequency that you can find.
+    - This becomes harder and harder the closer the frequencies are to each other.
+
+![fsk_highlight.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/fsk_highlight.png?raw=true)
+
 - The last thing we are going to look at is Phase Shift Keying (PSK).
 
 - Try this:
@@ -93,6 +98,10 @@ In this section, we will visually show you what those modulation techniques look
 - It should look something like this:
   
 ![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/psk_modulation.png?raw=true)
+
+- To determine Samples per Symbol of PSK highlight the smallest portion of the signal between phase changes that you can find.
+
+![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/psk_highlight.png?raw=true)
 
 - In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
 
