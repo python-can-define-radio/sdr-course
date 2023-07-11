@@ -11,7 +11,7 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file (link provided) from github ![unknown_signal_4.complex](classroom_activities/Ch04_Analyzing_Signals_URH/unknown_signal_4.complex).
+- Download the following file (link provided) from github ![unknown_signal_4.complex](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_URH/unknown_signal_4.complex).
 
 - Put it in your urh project folder.
 
@@ -19,9 +19,9 @@
 
 - The second thing we need to do is clean up each `noisy` signal by adding a filter like in the previous lesson
 
-- The next thing we need to do is set the `Center` like the previous lesson.
-
 - Go back to Signal View `Analog` and determine signals `modulation` type as in previous lesson.
+
+- The next thing we need to do is set the `Center` like the previous lesson.
 
 - Determine signals `Samples/Symbol` as in previous lesson.
 
