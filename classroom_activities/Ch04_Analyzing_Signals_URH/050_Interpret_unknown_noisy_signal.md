@@ -39,6 +39,8 @@
 
 - Give it a new name like `unknown_signal_2_filtered.complex` do not save over your original signal in case you need to start over for any reason.
 
+- Go back to Signal View `Analog` and determine signals `Modulation` type as in previous lesson.
+
 - Now we need to adjust the `Center` setting.
 
 - Initially set your `Noise` and your `Center` settings to `0` if it isn't already.
@@ -55,11 +57,9 @@
 
 ![unknown_signal_2_centerset.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/unknown_signal_2_centerset.png?raw=true)
 
-- Go back to Signal View `Analog` and determine signals `Modulation` type as in previous lesson.
-
 - Determine signals `Samples/Symbol` as in previous lesson.
 
-- Check all your settings and reveal your message.
+- Set Show data as to `ASCII` and verify all settings to reveal your message.
 
 
 ### ℹ️ Some useful resources for urh:
