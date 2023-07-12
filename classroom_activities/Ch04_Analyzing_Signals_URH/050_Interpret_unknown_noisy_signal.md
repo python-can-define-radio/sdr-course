@@ -5,7 +5,7 @@
 </pre>
 </details>
 
-# Interpret a signal using URH
+# Interpret a signal using URH 📻
 
 - Launch urh and open your project folder.
 
