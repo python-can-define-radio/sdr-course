@@ -4,7 +4,7 @@
 </pre>
 </details>
 
-# Interpret signals using URH
+# Interpret signals using URH 📻
 
 - So far all we have evaluated are ASK signals lets change that up.
 
