@@ -4,7 +4,7 @@
 </pre>
 </details>
 
-# Generate a signal using URH 
+# Generate a signal using URH 📻
 
 - Click on the Generator tab at the top of the urh window.
 
