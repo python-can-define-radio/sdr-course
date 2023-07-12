@@ -18,7 +18,9 @@
 
 - The first thing we need to do is seperate and save each signal.
 
-- The second thing we need to do is clean up each `noisy` signal by adding a filter like in the previous lesson
+- The second thing we need to do is clean up each `noisy` signal by adding a filter like in the previous lesson.
+    - In this case before adding a filter to each signal right-click and select `Configure filter bandwidth` and select `Narrow` at 0.01Hz.
+    - The closer your signals are to each other the narrower your filter bandwidth should be.
 
 - Go back to Signal View `Analog` and determine signals `modulation` type as in previous lesson.
 
