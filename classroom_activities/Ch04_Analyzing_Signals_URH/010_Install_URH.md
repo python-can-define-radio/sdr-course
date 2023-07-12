@@ -24,7 +24,7 @@
 
 ![urh_screenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/urh_screenshot.png?raw=true)  
 
-- In the bottom left of urh select `new project`.
+- In the bottom left of urh select `New Project`.
 
 - To the right of `Choose a path` at the top of the urh popup window, select the three dots and navigate to where you want your project folder to be saved.
 
