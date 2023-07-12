@@ -8,7 +8,7 @@ You may remember that we introduced the idea of [Modulation](https://github.com/
 
 In this section, we will visually show you what those modulation techniques look like using urh.
 
-# Demonstrate Modulation
+# Demonstrate Modulation using URH 📻
 
 - There are 3 basic types of modulation we will demonstrate.
     - Amplitude Shift Keying (ASK)
