@@ -10,7 +10,7 @@ Before starting:
   - We recommend that you create a directory for each exercise number to keep things organized. This is especially helpful when you reach the exercises that use Embedded Python Blocks, as they generate helper files.
 - Change the TMOUT as you did in the python course.
 
-Go to [this page](https://wiki.gnuradio.org/index.php?title=Tutorials).
+Go to [this tutorial page at GNUradio.org](https://wiki.gnuradio.org/index.php?title=Tutorials) (https://wiki.gnuradio.org/index.php?title=Tutorials).
 
 Work through the "3. Your First Flowgraph" tutorial (in upper-left) together as a class. 
 
