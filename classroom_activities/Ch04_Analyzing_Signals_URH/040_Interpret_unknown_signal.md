@@ -11,7 +11,7 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file (link provided) from github ![unknown_signal_1.complex](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_URH/unknown_signal_1.complex).
+- Download the following file (link provided) from github ![unknown_signal_1.complex](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_URH/unknown_signal_1.complex). (click to go to the linked page, and download from there.)
 
 - Put it in your urh project folder.
 
