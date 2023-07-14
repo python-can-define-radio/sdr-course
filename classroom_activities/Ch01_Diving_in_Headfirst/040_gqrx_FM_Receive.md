@@ -11,7 +11,7 @@
 - Attach an SDR device, e.g. a HackRF One, to your computer
 - Open a terminal (command line interface or CLI) window on your 🖥️ computer.  
 - The first time you launch gqrx you may want to reset to its default settings using the terminal command below.  
-  `$ gqrx -r`    
+  `$ gqrx -r`  (Note: "$" represents your command prompt.  Do not type it.)
 - On the Configure I/O devices window select the "device" dropdown menu.
   - Choose the first HackRF entry which should look something like this:  
   - HackRF HackRF One `123456f` (the numbers are a partial serial number of the device) 
@@ -19,7 +19,7 @@
 - Maximize your gqrx window.
 - Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
 - Click the ▶️ Play button in the top left under "File".  
-- You should see some noise and spikes in the spectrum display.
+- You should see some static (noise) and spikes in the spectrum display.
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
