@@ -1,11 +1,23 @@
+"""
+A collection of misc functions
+and such for this class.
+
+Try this to start: wave_gen_prompts()
+"""
+
+
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 
 def createTimestamps(amount_of_time, num_samples):
-    return np.linspace(start=0,
+    return np.linspace(
+            start=0,
             stop=amount_of_time,
             num=int(num_samples),
-            endpoint=False)
+            endpoint=False
+        )
 
 
 def writeRealCSV(filename, data_to_write):
@@ -49,7 +61,7 @@ def waveAndWrite(basename, timestamps, freq, complex_or_real):
         raise ValueError("Must enter c or r to specify if real or complex is wanted.")
 
 
-def main():
+def wave_gen_prompts():
     print()
     print("This will create a simulated wave, and write it to two files:")
     print(" - A CSV file (for easy viewing in text editors and spreadsheet programs)")
@@ -76,5 +88,14 @@ def main():
     print("Done writing files.")
 
 
-if __name__ == "__main__":
-    main()
+def plot_from_file():
+    with open("generated_data.csv") as f:
+        contents = f.read().splitlines()
+
+    samp_rate = float(input("What is the sample rate? "))
+    num_samples = len(contents)
+    max_time = num_samples / samp_rate
+    timestamps = createTimestamps(max_time, num_samples)
+    contents_as_numbers = list(map(float, contents))
+    plt.plot(timestamps, contents_as_numbers, "*", markersize=10)
+    plt.show()
