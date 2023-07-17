@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 
 
 def createTimestamps(amount_of_time, num_samples):
+    # type: (float, int) -> np.ndarray
     return np.linspace(
             start=0,
             stop=amount_of_time,
@@ -70,13 +71,17 @@ def wave_gen_prompts():
 
     samp_rate = float(input("Pick a sample rate (samples per second): "))
     max_time = float(input("How many seconds of data would you like to generate? "))
-    num_samples = samp_rate * max_time
+    num_samples_original = samp_rate * max_time
+    num_samples = int(num_samples_original)
 
-    if int(num_samples) != num_samples:
-        raise ValueError(f"The number of samples would be {num_samples}, but a partial sample is meaningless.\nPlease pick a sample rate and an amount of time whose product is an integer.")
+    if num_samples != num_samples_original:
+        raise ValueError(f"The number of samples would be {num_samples_original}, but a partial sample is meaningless.\nPlease pick a sample rate and an amount of time whose product is an integer.")
 
     freq = float(input("What frequency wave would you like to generate (Hz)? "))
-    complex_or_real = input("Complex or Real wave? Enter c or r: ")
+    complex_or_real = input("Complex or Real wave? Enter c or r. ")
+    filename = input("Filename? (Press enter to choose the default name, 'generated_data'.) ")
+    if filename.strip() == "":
+        filename = "generated_data"
 
     timestamps = createTimestamps(max_time, num_samples)
     print("------------------")
@@ -84,18 +89,44 @@ def wave_gen_prompts():
     print("Simulated samples were taken at these times (units are seconds):")
     print(timestamps)
 
-    waveAndWrite("generated_data", timestamps, freq, complex_or_real)
+    waveAndWrite(filename, timestamps, freq, complex_or_real)
     print("Done writing files.")
 
 
-def plot_from_file():
-    with open("generated_data.csv") as f:
-        contents = f.read().splitlines()
+def wave_gen(samp_rate, max_time, freq, complex_or_real, filename='generated_data'):
+    # type: (float, float, float, str, str) -> None
+    """Units:
+    samp_rate: samples per sec
+    max_time: seconds
+    freq: Hz
+    complex_or_real: 'c' or 'r'
+    """
+    
+    num_samples = samp_rate * max_time
 
-    samp_rate = float(input("What is the sample rate? "))
+    if int(num_samples) != num_samples:
+        raise ValueError(f"The number of samples would be {num_samples}, but a partial sample is meaningless.\nPlease pick a sample rate and an amount of time whose product is an integer.")
+
+    timestamps = createTimestamps(max_time, num_samples)
+
+    waveAndWrite(filename, timestamps, freq, complex_or_real)
+
+
+def parse_csv(filename_csv, samp_rate):
+    # type: (str, float) -> tuple
+    with open(filename_csv) as f:
+        contents = f.read().splitlines()
+    
     num_samples = len(contents)
     max_time = num_samples / samp_rate
     timestamps = createTimestamps(max_time, num_samples)
     contents_as_numbers = list(map(float, contents))
-    plt.plot(timestamps, contents_as_numbers, "*", markersize=10)
+    return timestamps, contents_as_numbers
+
+
+def plot_from_csv(filename_csv, samp_rate):
+    # type: (str, float) -> None
+
+    timestamps, y_vals = parse_csv(filename_csv, samp_rate)
+    plt.plot(timestamps, y_vals, "*", markersize=10)
     plt.show()
