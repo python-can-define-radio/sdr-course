@@ -72,9 +72,9 @@ When you run that Python file, it will write to a file called `myTempReadings.tx
 
 ## Visualizing the data
 
-Reopen your file `temperature_graph_1.py` from `050`. Replace the `temps` variable with the measured processor temperatures that are in `myTempReadings.txt`. Run that to graph the data.
+Reopen your file `temperature_graph_1.py` from `020_Sample_Rates_Intro.md`. Replace the `temps` variable with the measured processor temperatures that are in `myTempReadings.txt`. Run that to graph the data.
 
-Also, reopen your file `temperature_graph_2.grc` from `050`. Make the following changes:
+Also, reopen your file `temperature_graph_2.grc` from `020_Sample_Rates_Intro.md`. Make the following changes:
 
 Parameters:  
 - Variable (_already in the flowgraph_):
