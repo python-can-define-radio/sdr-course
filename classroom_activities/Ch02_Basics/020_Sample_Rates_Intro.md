@@ -109,6 +109,8 @@ Parameters:
 - Time Sink:
   - General tab:
     - Type: `float`
+    - Y Axis Label: `Temperature`
+    - Y Axis Unit: `Deg F`
     - Number of Points: `12`
     - Y min: `0`
     - Y max: `100`
