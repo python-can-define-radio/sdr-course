@@ -79,9 +79,13 @@ Filename: `temperature_graph_1.py`
 ```python3
 import matplotlib.pyplot as plt
 
+times = [ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22]
 temps = [52, 50, 48, 48, 46, 58, 63, 64, 67, 66, 63, 57]
 
-plt.plot(temps, "o")    #  the "o" means to use circles as markers of the points
+plt.xlabel("Military Time")
+plt.ylabel("Temperature")
+
+plt.plot(times, temps, "o")    #  the "o" means to use circles as markers of the points
 
 plt.show()
 ```
