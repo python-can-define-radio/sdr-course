@@ -8,7 +8,7 @@
 
 # Sample rates: the Repeat Block
 
-In `054`, we created a square wave using a Vector Source block.
+In `024_Sample_Rates_grc_practice.md`, we created a square wave using a Vector Source block.
 
 Let's imagine we want to make a square wave with a frequency of 2 Hz, and a sample rate of 1 Msps (Million samples per second).
 
@@ -22,7 +22,7 @@ One second of data would look the same as before...
 
 ... but it would be represented using MANY more samples.
 
-As we discussed in `054`, the period of a 2 Hz signal is half a second, and consequently, it spends a quarter second "high", and a quarter second "low".
+As we discussed in `024_Sample_Rates_grc_practice.md`, the period of a 2 Hz signal is half a second, and consequently, it spends a quarter second "high", and a quarter second "low".
 
 <details><summary>Question: With a sample rate of 1 Msps, how many samples are in half a second? How many are in a quarter second? (Click for answer)</summary>
 
