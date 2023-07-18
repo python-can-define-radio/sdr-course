@@ -4,7 +4,10 @@
 Expression None is invalid for type 'real'.
 ```
 
-Most often, this means you have a typo in your variable name.
+Most often, this means...
+
+- You have a typo in your variable name.
+- You used a keyword, such as `if`, as a variable. Variables must not be keywords (`if`, `else`, `while`, etc)
 
 ## Expression ... is invalid
 
