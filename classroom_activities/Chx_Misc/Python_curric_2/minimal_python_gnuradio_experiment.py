@@ -19,70 +19,76 @@ from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 import osmosdr
 import time
+import queue
 
+class __print_blk(gr.sync_block):
 
+    def __init__(self, sleep_seconds=0.5):
+        gr.sync_block.__init__(
+            self,
+            name="Python Block: Print",
+            in_sig=[(np.complex64, 1024)],
+            out_sig=[]
+        )
+        self.sleep_seconds = sleep_seconds
+        
+    def work(self, input_items, output_items):
+        singleDataPoint = input_items[0][0]
 
-class blk(gr.sync_block):
+        print(singleDataPoint)
+        # print("{:.3f}".format(singleDataPoint))
+        time.sleep(self.sleep_seconds)
+
+        return 1
+
+class __data_queue_source(gr.sync_block):
 
     def __init__(self):
         gr.sync_block.__init__(
             self,
-            name='Python Block: Gen Rand Data',   # will show up in GRC
+            name='Python Block: do something',
             in_sig=[],
-            out_sig=[np.complex64]
+            out_sig=[(np.complex64, 1024)]
         )
+        self.data_queue = queue.SimpleQueue()
 
     def work(self, input_items, output_items):
-        """example: multiply with constant"""
-        the_only_output_port = output_items[0]
-        leng = len(the_only_output_port)  # pretend this is 4
-        randdat = np.random.uniform(0, 1, leng)
-        ######################################
-        ## Don't do this
-        the_only_output_port = randdat
-
-        ## Do this
-        the_only_output_port[:] = randdat
-
-        print("Finished running work; sleeping 3 seconds.")
-        time.sleep(3)
-        return leng
+        output_items[0][0] = self.data_queue.get()
+        return 1
+    
+    def queue_put(self, data):
+        if len(data) != 1024:
+            raise ValueError("Data must be 1024 items long")
+        self.data_queue.put(data)
 
 
-class my_top_block(gr.top_block):
-
-    def __init__(self):
-        gr.top_block.__init__(self, "Not titled yet")
-
-        ##################################################
-        # Variables
-        ##################################################
-        self.samp_rate = samp_rate = 2e6
-
-        ##################################################
-        # Blocks
-        ##################################################
-        self.epy_block = blk()
-
-        # self.osmosdr_sink = osmosdr.sink()
-        # self.osmosdr_sink.set_sample_rate(samp_rate)
-        # self.osmosdr_sink.set_center_freq(101e6)
-        # self.osmosdr_sink.set_gain(0)
-        # self.osmosdr_sink.set_if_gain(24)
-        # self.osmosdr_sink.set_bb_gain(32)
-
-        ## can use this null sink instead of the osmocom for debugging
-        self.null_sink = blocks.null_sink(gr.sizeof_gr_complex*1)
-
-        ##################################################
-        # Connections
-        ##################################################
-        self.connect(self.epy_block, self.null_sink)
+## Bizarre GNU Radio variable-rename issues
+_my_top_block__data_queue_source = __data_queue_source
 
 
+class __my_top_block(gr.top_block):
 
-def main():
-    tb = my_top_block()
+    def __init__(self, center_freq):
+        gr.top_block.__init__(self, "Top block")
+
+        self.samp_rate = samp_rate = 8e6
+        
+        self.data_queue_source = __data_queue_source()
+
+        self.osmosdr_sink = osmosdr.sink()
+        self.osmosdr_sink.set_sample_rate(samp_rate)
+        self.osmosdr_sink.set_center_freq(center_freq)
+        self.osmosdr_sink.set_gain(0)
+        self.osmosdr_sink.set_if_gain(24)
+        self.osmosdr_sink.set_bb_gain(32)
+    
+        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, 1024)
+
+        self.connect(self.data_queue_source, self.vector_to_stream, self.osmosdr_sink)
+
+
+def send_data(dat, center_freq, seconds_to_wait_till_finished=1.0):
+    tb = __my_top_block(center_freq)
 
     def sig_handler(sig=None, frame=None):
         tb.stop()
@@ -93,13 +99,15 @@ def main():
     signal.signal(signal.SIGTERM, sig_handler)
 
     tb.start()
-    try:
-        input('Press Enter to quit: ')
-    except EOFError:
-        pass
+    for datpiece in dat:
+        tb.data_queue_source.queue_put(datpiece)
+    time.sleep(seconds_to_wait_till_finished)
     tb.stop()
     tb.wait()
 
 
 if __name__ == '__main__':
-    main()
+    dat = np.ones(1024)
+    dat[0] = 0.3
+    send_data(dat, 101e6)
+    
