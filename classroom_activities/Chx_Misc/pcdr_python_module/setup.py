@@ -1,9 +1,12 @@
-#!/usr/bin/env python3
+from setuptools import setup, find_packages
 
-import setuptools
-
-if __name__ == "__main__":
-    setuptools.setup()
+setup(
+    name='pcdr',
+    version='0.1.0',
+    description='python-can-define-radio SDR class functionality.',
+    packages=find_packages(),    
+    install_requires=['numpy >= 1.0', 'matplotlib >= 1.0'],
+)
 
 
 # [project]
