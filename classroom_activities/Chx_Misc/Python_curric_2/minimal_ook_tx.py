@@ -1,5 +1,10 @@
 import something_probably_pcdr as stg
 
+
+## TODO:
+## - center frequency should be a required kwarg.
+##   - Match the name with gnu radio behind-the-scenes (just as we matched samp_rate).
+
 ## 1
 ## Try this. Have a neighbor receive the signal in 
 ##  a spectrum analyzer program such as GQRX,
@@ -22,12 +27,11 @@ sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 ##   tb = instantiate a top block that can .get() from my externally-provided queue
 ##   tb.start()
 ##
-##   ## Check the queue till it's empty.
+##   ## Wait the "right" amount of time.
+##   time.sleep(1.1 * len(original_data_variable) * bit_length/samp_rate)
      ## This is NOT ideal -- would be better to detect done-ness from
      ##  inside the flowgraph if possible, so that I can use .wait() for its
      ## intended purpose.
-##   while not q.isempty:
-##       time.sleep(0.1)
 ## 
 ##   ## TODO: confirm this is correct order of functions (stop then wait)
 ##   tb.stop()
