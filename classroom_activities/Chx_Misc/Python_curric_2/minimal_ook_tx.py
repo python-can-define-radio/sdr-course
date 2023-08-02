@@ -37,7 +37,34 @@ sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 ##   tb.stop()
 ##   tb.wait()  
 ##   
+-------------------wolverine attempt 1-------------------
+import pydash
+import numpy as np
 
+
+samp_rate = 2e6
+bit_length = 1000
+bit_length = int(bit_length)
+original_data = [1, 0, 1, 0, 1, 0, 0, 1]
+acceptable = [1, 0]
+padding = 0
+chunk = 1024
+
+for num in original_data:   
+    if type(num) != int:
+        raise TypeError("Only integers are allowed")
+    if num not in acceptable:
+        raise ValueError("All data must be binary 1 or 0")
+
+repeated_data = [item for item in original_data for i in range(bit_length)]
+
+while len(repeated_data)%1024 != 0:
+    repeated_data.append(padding)
+
+chunked = pydash.chunk(repeated_data, size=1024)
+# print(chunked[0])
+np_arrys = list(map(np.array, chunked))
+-------------------end wolverine attempt 1-------------------
 
 ## 2
 ## Copy and modify the previous example to send a different pattern of bits.
