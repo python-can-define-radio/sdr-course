@@ -1,6 +1,12 @@
 ## TODO
-import pcdr as stg
+from pcdr.osmocom_ook_sender import osmocom_ook_sender
 
+
+sender = osmocom_ook_sender(center_freq=104.3e6, samp_rate=5e3, bit_length=1000)
+sender.send([1, 0, 1, 0, 1, 0, 0, 1], output_to="outputfile56.txt")
+
+import sys
+sys.exit()
 
 ## TODO:
 ## - center frequency should be a required kwarg.
@@ -11,61 +17,10 @@ import pcdr as stg
 ##  a spectrum analyzer program such as GQRX,
 ##  and then in URH.
 ## How many seconds long is each bit?
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
 sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 
-## (This part is not for the students)
-## Behind the scenes, .send() will...
-##   if any are not in [0, 1]: raise ValueError 
-##   convert bit_length to an int
-##   repeated_bits = pydash flatmap: repeat each item bit_length times 
-##   padded_rb = pad repeated_bits with zeros to nearest multiple of 1024
-##   chunked = pydash.chunk padded_rb, size=1024
-##   np_arrys = list(map(np.array, chunked))
-##   q = simplequeue()
-##   for item in chunked:
-##       q.put(item)
-##   tb = instantiate a top block that can .get() from my externally-provided queue
-##   tb.start()
-##
-##   ## Wait the "right" amount of time.
-##   time.sleep(1.1 * len(original_data_variable) * bit_length/samp_rate)
-     ## This is NOT ideal -- would be better to detect done-ness from
-     ##  inside the flowgraph if possible, so that I can use .wait() for its
-     ## intended purpose.
-## 
-##   ## TODO: confirm this is correct order of functions (stop then wait)
-##   tb.stop()
-##   tb.wait()  
-##   
--------------------wolverine attempt 1-------------------
-import pydash
-import numpy as np
 
-
-samp_rate = 2e6
-bit_length = 1000
-bit_length = int(bit_length)
-original_data = [1, 0, 1, 0, 1, 0, 0, 1]
-acceptable = [1, 0]
-padding = 0
-chunk = 1024
-
-for num in original_data:   
-    if type(num) != int:
-        raise TypeError("Only integers are allowed")
-    if num not in acceptable:
-        raise ValueError("All data must be binary 1 or 0")
-
-repeated_data = [item for item in original_data for i in range(bit_length)]
-
-while len(repeated_data)%1024 != 0:
-    repeated_data.append(padding)
-
-chunked = pydash.chunk(repeated_data, size=1024)
-# print(chunked[0])
-np_arrys = list(map(np.array, chunked))
--------------------end wolverine attempt 1-------------------
 
 ## 2
 ## Copy and modify the previous example to send a different pattern of bits.
@@ -74,7 +29,7 @@ np_arrys = list(map(np.array, chunked))
 ## 3
 ## Try this.
 ## How many seconds long is each bit?
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=2e6)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=2e6)
 sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 
 
@@ -83,7 +38,7 @@ sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 ## How many seconds long is each bit?
 ## How many milliseconds is that?
 ## How many bits per second are you sending?
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=200e3)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=200e3)
 sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 
 
@@ -93,7 +48,7 @@ sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 ## Since a byte is 8 bits, let's write that with a leading zero: 01000011.
 ## Let's try to send it, and receive it using URH.
 ## You may run into an issue, which we'll discuss in the exercise below.
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
 sender.send([0, 1, 0, 0, 0, 0, 1, 1])
 
 
@@ -102,7 +57,7 @@ sender.send([0, 1, 0, 0, 0, 0, 1, 1])
 ## using On-Off Keying (OOK), it's not obvious where the transmission starts.
 ## Because of that, URH may have trouble converting this to ASCII.
 ## So, let's begin our transmission with a preamble.
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
 sender.send([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1])
 
 
@@ -135,7 +90,7 @@ print(list_of_bits)
 ## Now that we can use str_to_bin_list, it's much easier to send messages.
 ## Try this:
 list_of_bits = str_to_bin_list("Hi")
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
 sender.send(list_of_bits)
 
 
@@ -147,7 +102,7 @@ sender.send(list_of_bits)
 ##  - it alternates between 1 and 0 often, which makes it recognizable
 ## Let's send a message with that preamble, and interpret it with URH.
 list_of_bits = str_to_bin_list("«Hi")
-sender = stg.osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
+sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
 sender.send(list_of_bits)
 
 
