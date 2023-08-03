@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import pcdr
+import pcdr.wavegen as wavegen
 
 ## 1
 # pcdr.wave_gen_prompts()
@@ -9,8 +9,8 @@ import pcdr
 
 
 ## 2
-pcdr.wave_gen(100, 3, 2, "r", "generated_data")
-pcdr.plot_from_csv("generated_data.csv", 100)
+wavegen.wave_gen(100, 3, 2, "r", "generated_data")
+wavegen.plot_from_csv("generated_data.csv", 100)
 
 
 ## 3

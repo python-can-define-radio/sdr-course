@@ -1,4 +1,4 @@
-from minimal_python_gnuradio_experiment import send_data
+from pcdr.osmocom_queued_tx_flowgraph import send_data
 
 import numpy as np
 
