@@ -1,24 +1,18 @@
-## TODO
-from pcdr.osmocom_ook_sender import osmocom_ook_sender
+## Introduction to OOK Transmitting using Python
 
+One of the biggest advantages of defining radios using software is being able to transmit using arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
 
-sender = osmocom_ook_sender(center_freq=104.3e6, samp_rate=5e3, bit_length=1000)
-sender.send([1, 0, 1, 0, 1, 0, 0, 1], output_to="outputfile56.txt")
+```python3
+from pcdr.gnuradio_sender import gnuradio_send, ook_modulate
 
-import sys
-sys.exit()
-
-## TODO:
-## - center frequency should be a required kwarg.
-##   - Match the name with gnu radio behind-the-scenes (just as we matched samp_rate).
 
 ## 1
 ## Try this. Have a neighbor receive the signal in 
 ##  a spectrum analyzer program such as GQRX,
 ##  and then in URH.
 ## How many seconds long is each bit?
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
-sender.send([1, 0, 1, 0, 1, 0, 0, 1])
+modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 
@@ -29,8 +23,8 @@ sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 ## 3
 ## Try this.
 ## How many seconds long is each bit?
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=2e6)
-sender.send([1, 0, 1, 0, 1, 0, 0, 1])
+modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(2e6))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 4
@@ -38,18 +32,20 @@ sender.send([1, 0, 1, 0, 1, 0, 0, 1])
 ## How many seconds long is each bit?
 ## How many milliseconds is that?
 ## How many bits per second are you sending?
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=200e3)
-sender.send([1, 0, 1, 0, 1, 0, 0, 1])
+modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(200e3))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 5
 ## The ASCII (or Unicode) value for the letter C is 67.
-## In binary, that's 1000011.
-## Since a byte is 8 bits, let's write that with a leading zero: 01000011.
+## In binary, that's 1000011, which is 7 bits long.
+## Since computers expect bytes to be 8 bits long,
+## we need to "pad" with a leading zero so that we
+## have a full byte of information: 01000011.
 ## Let's try to send it, and receive it using URH.
 ## You may run into an issue, which we'll discuss in the exercise below.
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
-sender.send([0, 1, 0, 0, 0, 0, 1, 1])
+modulated = ook_modulate([0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 6
@@ -57,13 +53,16 @@ sender.send([0, 1, 0, 0, 0, 0, 1, 1])
 ## using On-Off Keying (OOK), it's not obvious where the transmission starts.
 ## Because of that, URH may have trouble converting this to ASCII.
 ## So, let's begin our transmission with a preamble.
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
-sender.send([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1])
+modulated = ook_modulate([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 7a
 ## Writing the binary explicitly is getting somewhat tedious.
 ## Here's a function that converts a string to binary.
+## Like any function, it is only useful if you "call" it
+## (in other words, run the function), which you'll see below.
+##
 ## Interested readers may wish to look up "list comprehensions 
 ##   in Python", but we can use this function without fully 
 ##   understanding the implementation details.
@@ -90,8 +89,8 @@ print(list_of_bits)
 ## Now that we can use str_to_bin_list, it's much easier to send messages.
 ## Try this:
 list_of_bits = str_to_bin_list("Hi")
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
-sender.send(list_of_bits)
+modulated = ook_modulate(list_of_bits, bit_length=int(1e6))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 10
@@ -102,8 +101,8 @@ sender.send(list_of_bits)
 ##  - it alternates between 1 and 0 often, which makes it recognizable
 ## Let's send a message with that preamble, and interpret it with URH.
 list_of_bits = str_to_bin_list("«Hi")
-sender = osmocom_ook_sender(samp_rate=2e6, bit_length=1e6)
-sender.send(list_of_bits)
+modulated = ook_modulate(list_of_bits, bit_length=int(1e6))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 11
@@ -118,6 +117,4 @@ sender.send(list_of_bits)
 ##  - a string to send
 ##  - the bit length
 ## As before, include a preamble.
-
-
-
+```

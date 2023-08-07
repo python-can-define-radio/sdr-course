@@ -19,7 +19,10 @@ from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 import osmosdr
 import time
-import queue
+from queue import SimpleQueue
+from typing import Optional
+
+
 
 class __print_blk(gr.sync_block):
 
@@ -63,25 +66,23 @@ class __string_file_sink(gr.sync_block):
 
 class __data_queue_source(gr.sync_block):
 
-    def __init__(self, external_queue):
+    def __init__(self, external_queue: SimpleQueue, chunk_size: int):
         gr.sync_block.__init__(
             self,
             name='Python Block: Data Queue Source',
             in_sig=[],
-            out_sig=[(np.complex64, 1024)]
+            out_sig=[(np.complex64, chunk_size)]
         )
-        if external_queue == None:
-            self.__data_queue = queue.SimpleQueue()
-        else:
-            self.__data_queue = external_queue
+        self.__data_queue = external_queue
+        self._chunk_size = chunk_size
 
     def work(self, input_items, output_items):
         output_items[0][0] = self.__data_queue.get()
         return 1
     
     def queue_put(self, data):
-        if len(data) != 1024:
-            raise ValueError("Data must be 1024 items long")
+        if len(data) != self._chunk_size:
+            raise ValueError(f"Data must be {self._chunk_size} items long")
         self.__data_queue.put(data)
 
 
@@ -95,14 +96,20 @@ _queue_to__print_blk__print_blk = __print_blk
 
 class queue_to__osmocom_sink(gr.top_block):
 
-    def __init__(self, center_freq, samp_rate, if_gain=24, external_queue=None):
+    def __init__(self,
+                 center_freq: float,
+                 samp_rate: float,
+                 chunk_size: int,
+                 if_gain: int,
+                 external_queue: SimpleQueue):
+        
         gr.top_block.__init__(self, "Top block")
 
         self.samp_rate = samp_rate
         
         self.data_queue_source = __data_queue_source(external_queue)
 
-        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, 1024)
+        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
 
         self.osmosdr_sink = osmosdr.sink()
         self.osmosdr_sink.set_sample_rate(samp_rate)
@@ -116,20 +123,20 @@ class queue_to__osmocom_sink(gr.top_block):
 
 class queue_to__print_blk(gr.top_block):
 
-    def __init__(self, print_delay=0.5, external_queue=None):
+    def __init__(self, print_delay: float, external_queue: SimpleQueue, chunk_size: int):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = __data_queue_source(external_queue)
-        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, 1024)
+        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
         self.print_blk = __print_blk(print_delay)
         self.connect(self.data_queue_source, self.vector_to_stream, self.print_blk)
 
 
 class queue_to__string_file_sink(gr.top_block):
 
-    def __init__(self, filename, external_queue=None):
+    def __init__(self, filename: str, external_queue: SimpleQueue, chunk_size: int):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = __data_queue_source(external_queue)
-        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, 1024)
+        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
         self.string_file_sink = __string_file_sink(filename)
         self.connect(self.data_queue_source, self.vector_to_stream, self.string_file_sink)
 
@@ -149,21 +156,12 @@ class top_block_manager():
     def start(self):
         self.tb.start()    
     
-    def start_and_keep_open(self, seconds):
+    def start_and_keep_open(self, seconds: float):
         self.start()
         time.sleep(seconds)
 
 
-def send_data(dat, center_freq, seconds_to_wait_till_finished=1.0):
-    
-    tb = queue_to__osmocom_sink(center_freq)
-    for datpiece in dat:
-        tb.data_queue_source.queue_put(datpiece)
-    tbm = top_block_manager(tb)
-    tbm.start_and_keep_open(seconds=seconds_to_wait_till_finished)
-    
-    tb.stop()
-    tb.wait()
+
 
 
 if __name__ == '__main__':
