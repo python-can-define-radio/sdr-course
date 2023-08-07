@@ -3,7 +3,8 @@
 One of the biggest advantages of defining radios using software is being able to transmit using arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
 
 ```python3
-from pcdr.gnuradio_sender import gnuradio_send, ook_modulate
+from pcdr.gnuradio_sender import gnuradio_send
+from pcdr.modulators import ook_modulate
 
 
 ## 1

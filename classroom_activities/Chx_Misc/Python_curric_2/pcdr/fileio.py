@@ -1,6 +1,5 @@
 from typing import Iterable, Callable
 from typeguard import typechecked
-from pcdr.wavegen import createTimestamps
 
 
 
@@ -29,6 +28,10 @@ def writeRaw(filename, data_to_write):
 
 @typechecked
 def __readCSV(filename_csv: str, samp_rate: float, type_: Callable) -> tuple:
+    
+    ## This import must be here to avoid circular imports.
+    from pcdr.wavegen import createTimestamps
+
     with open(filename_csv) as f:
         contents = f.read().splitlines()
     

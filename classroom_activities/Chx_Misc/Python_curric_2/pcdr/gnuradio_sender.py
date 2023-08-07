@@ -9,23 +9,6 @@ from pcdr.osmocom_queued_tx_flowgraph import queue_to__string_file_sink
 from pcdr.osmocom_queued_tx_flowgraph import top_block_manager
 
 
-@deal.example(lambda: __repeat_each_item([1, 3], 2) == [1, 1, 3, 3])
-def __repeat_each_item(original: List[int], numtimes: int) -> List[int]:
-    """Example:
-    ```
-    original = [1, 0]  
-    numtimes = 3  
-    result = [1, 1, 1, 0, 0, 0]
-    ```
-    """
-    def repeat(item):
-        return [item] * numtimes
-    return pydash.flat_map(original, repeat)
-
-
-def __is_binary(x: int) -> bool:
-    return x in [1, 0]
-
 
 def __queue_to_list(q: SimpleQueue) -> list:
     retval = []
@@ -57,15 +40,6 @@ def pad_chunk_queue(data: List[int], chunk_size: int) -> SimpleQueue:
     return q
 
 
-@deal.pre(lambda data: all(map(__is_binary, data)))
-def ook_modulate(data: List[int], bit_length: int) -> List[int]:
-    return __repeat_each_item(data, bit_length)
-    
-
-def frequency_shift(TODO):
-    TODO
-    
-
 def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain: int = 24, output_to: Optional[str] = None, print_delay=0.5, chunk_size: int = 1024):
     """`output_to` can be one of these:
         - None (default): send to osmocom sink.
@@ -96,5 +70,3 @@ def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain
     ##   ## TODO: Do we need this? Or is it taking care of itself?
     ##   tb.stop()
     ##   tb.wait() 
-
-

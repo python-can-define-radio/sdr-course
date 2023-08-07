@@ -15,23 +15,23 @@ from pcdr.fileio import writeRealCSV, writeRaw, writeComplexCSV
 
 
 @typechecked
-def createTimestamps(amount_of_time: float, num_samples: int) -> np.ndarray:
+def createTimestamps(seconds: float, num_samples: int) -> np.ndarray:
     return np.linspace(
             start=0,
-            stop=amount_of_time,
+            stop=seconds,
             num=num_samples,
             endpoint=False
         )
 
 
 @typechecked
-def makeRealWave(timePoints: np.ndarray, freq):
-    return np.float32(np.cos(freq * 2 * np.pi * timePoints))
+def makeRealWave(timestamps: np.ndarray, freq):
+    return np.float32(np.sin(freq * 2 * np.pi * timestamps))
 
 
 @typechecked
-def makeComplexWave(timePoints, freq):
-    return np.complex64(np.exp(1j * freq * 2 * np.pi * timePoints))
+def makeComplexWave(timestamps, freq):
+    return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 
 
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
@@ -47,7 +47,7 @@ def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
         writeRaw(basename + ".complex64", data)
 
 
-def wave_gen_prompts():
+def wave_file_gen_prompts():
     print()
     print("This will create a simulated wave, and write it to two files:")
     print(" - A CSV file (for easy viewing in text editors and spreadsheet programs)")
@@ -80,7 +80,7 @@ def wave_gen_prompts():
 
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 @typechecked
-def wave_gen(samp_rate: float, max_time: float, freq: float, complex_or_real: str, filename: str = 'generated_data'):
+def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_real: str, filename: str = 'generated_data'):
     """Units:
     samp_rate: samples per sec
     max_time: seconds
@@ -96,4 +96,3 @@ def wave_gen(samp_rate: float, max_time: float, freq: float, complex_or_real: st
     timestamps = createTimestamps(max_time, num_samples)
 
     waveAndWrite(filename, timestamps, freq, complex_or_real)
-
