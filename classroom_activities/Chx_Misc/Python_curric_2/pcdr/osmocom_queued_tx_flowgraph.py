@@ -159,13 +159,3 @@ class top_block_manager():
     def start_and_keep_open(self, seconds: float):
         self.start()
         time.sleep(seconds)
-
-
-
-
-
-if __name__ == '__main__':
-    dat = np.ones(1024)
-    dat[0] = 0.3
-    send_data(dat, 101e6)
-    

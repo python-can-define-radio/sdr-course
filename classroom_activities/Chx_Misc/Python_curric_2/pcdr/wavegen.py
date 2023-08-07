@@ -8,48 +8,35 @@ Try this to start: wave_gen_prompts()
 
 import numpy as np
 import matplotlib.pyplot as plt
+import deal
+from typeguard import typechecked
+
+from pcdr.fileio import writeRealCSV, writeRaw, writeComplexCSV
 
 
-
-def createTimestamps(amount_of_time, num_samples):
-    # type: (float, int) -> np.ndarray
+@typechecked
+def createTimestamps(amount_of_time: float, num_samples: int) -> np.ndarray:
     return np.linspace(
             start=0,
             stop=amount_of_time,
-            num=int(num_samples),
+            num=num_samples,
             endpoint=False
         )
 
 
-def writeRealCSV(filename, data_to_write):
-    with open(filename, "w") as outfile:
-        for item in data_to_write:
-            outfile.write(f"{item}\n")
-
-
-def writeComplexCSV(filename, data_to_write):
-    with open(filename, "w") as outfile:
-        for item in data_to_write:
-            inphase = item.real
-            quad = item.imag
-            outfile.write(f"{inphase},{quad}\n")
-
-
-def writeRaw(filename, data_to_write):
-    with open(filename, "wb") as outfile:
-        outfile.write(data_to_write)
-        outfile.close()
-
-
-def makeRealWave(timePoints, freq):
+@typechecked
+def makeRealWave(timePoints: np.ndarray, freq):
     return np.float32(np.cos(freq * 2 * np.pi * timePoints))
 
 
+@typechecked
 def makeComplexWave(timePoints, freq):
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timePoints))
 
 
-def waveAndWrite(basename, timestamps, freq, complex_or_real):
+@deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
+@typechecked
+def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
         data = makeRealWave(timestamps, freq)
         writeRealCSV(basename + ".csv", data)
@@ -58,8 +45,6 @@ def waveAndWrite(basename, timestamps, freq, complex_or_real):
         data = makeComplexWave(timestamps, freq)
         writeComplexCSV(basename + ".csv", data)
         writeRaw(basename + ".complex64", data)
-    else:
-        raise ValueError("Must enter c or r to specify if real or complex is wanted.")
 
 
 def wave_gen_prompts():
@@ -93,8 +78,9 @@ def wave_gen_prompts():
     print("Done writing files.")
 
 
-def wave_gen(samp_rate, max_time, freq, complex_or_real, filename='generated_data'):
-    # type: (float, float, float, str, str) -> None
+@deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
+@typechecked
+def wave_gen(samp_rate: float, max_time: float, freq: float, complex_or_real: str, filename: str = 'generated_data'):
     """Units:
     samp_rate: samples per sec
     max_time: seconds
@@ -111,22 +97,3 @@ def wave_gen(samp_rate, max_time, freq, complex_or_real, filename='generated_dat
 
     waveAndWrite(filename, timestamps, freq, complex_or_real)
 
-
-def parse_csv(filename_csv, samp_rate):
-    # type: (str, float) -> tuple
-    with open(filename_csv) as f:
-        contents = f.read().splitlines()
-    
-    num_samples = len(contents)
-    max_time = num_samples / samp_rate
-    timestamps = createTimestamps(max_time, num_samples)
-    contents_as_numbers = list(map(float, contents))
-    return timestamps, contents_as_numbers
-
-
-def plot_from_csv(filename_csv, samp_rate):
-    # type: (str, float) -> None
-
-    timestamps, y_vals = parse_csv(filename_csv, samp_rate)
-    plt.plot(timestamps, y_vals, "*", markersize=10)
-    plt.show()

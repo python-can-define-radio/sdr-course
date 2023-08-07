@@ -1,5 +1,4 @@
 from typing import List, Optional
-from numbers import Number
 import deal
 import pydash
 import numpy as np
@@ -10,7 +9,7 @@ from pcdr.osmocom_queued_tx_flowgraph import queue_to__string_file_sink
 from pcdr.osmocom_queued_tx_flowgraph import top_block_manager
 
 
- 
+@deal.example(lambda: __repeat_each_item([1, 3], 2) == [1, 1, 3, 3])
 def __repeat_each_item(original: List[int], numtimes: int) -> List[int]:
     """Example:
     ```
@@ -22,8 +21,6 @@ def __repeat_each_item(original: List[int], numtimes: int) -> List[int]:
     def repeat(item):
         return [item] * numtimes
     return pydash.flat_map(original, repeat)
-
-assert __repeat_each_item([1, 3], 2) == [1, 1, 3, 3]
 
 
 def __is_binary(x: int) -> bool:
@@ -39,6 +36,8 @@ def __queue_to_list(q: SimpleQueue) -> list:
             return retval
 
 
+@deal.example(lambda: __queue_to_list(pad_chunk_queue([1, 2, 3], 5)) == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)])
+@deal.example(lambda: __queue_to_list(pad_chunk_queue([1, 2, 3], 2)) == [np.array([1, 2], dtype=np.complex64), np.array([3, 0], dtype=np.complex64)]) 
 def pad_chunk_queue(data: List[int], chunk_size: int) -> SimpleQueue:
     """
     - Pad `data` to a multiple of `chunk_size`
@@ -56,10 +55,6 @@ def pad_chunk_queue(data: List[int], chunk_size: int) -> SimpleQueue:
     for item in map(makenumpy, chunked):
         q.put(item)
     return q
-
-
-assert __queue_to_list(pad_chunk_queue([1, 2, 3], 5)) == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)]
-assert __queue_to_list(pad_chunk_queue([1, 2, 3], 2)) == [np.array([1, 2], dtype=np.complex64), np.array([3, 0], dtype=np.complex64)]
 
 
 @deal.pre(lambda data: all(map(__is_binary, data)))
