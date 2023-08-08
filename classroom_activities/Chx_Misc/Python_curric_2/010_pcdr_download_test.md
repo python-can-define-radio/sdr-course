@@ -2,7 +2,7 @@ FOR NOW, YOU'LL NEED TO MANUALLY DOWNLOAD EACH FILE IN THIS FOLDER:
 
 https://github.com/python-can-define-radio/sdr-course/tree/main/classroom_activities/Chx_Misc/Python_curric_2/pcdr
 
-STRUCTURE IT LIKE THIS:
+In a folder on a local computer, ARRANGE THE FILES FOR THIS PROJECT AS SHOWN HERE:
 
 ```
 .
