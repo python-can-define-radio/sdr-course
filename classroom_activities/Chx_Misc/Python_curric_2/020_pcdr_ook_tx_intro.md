@@ -17,7 +17,7 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ## NOTE: If you don't have a SDR peripheral, use this modified version:
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="PRINT")
 
-"""NOTE TO M-PCDR: THERE'S A FIX YOU'LL NEED TO DO FOR THE ERROR `TypeError: __init__() missing 1 required positional argument: 'chunk_size'`"""
+
 
 ## 2
 ## Copy and modify the previous example to send a different pattern of bits.
