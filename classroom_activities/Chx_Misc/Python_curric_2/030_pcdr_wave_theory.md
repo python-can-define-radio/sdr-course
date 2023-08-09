@@ -62,7 +62,7 @@ from pcdr.wavegen import createTimestamps, makeRealWave
 from pcdr.modulators import ook_modulate
 
 timestamps = createTimestamps(seconds=1.0, num_samples=100)
-wave = makeRealWave(timestamps, freq=4)
+wave = makeRealWave(timestamps, freq=8)
 modded = ook_modulate(data=[1, 0, 1, 0], bit_length=25)
 fully_modded = modded * wave
 plt.plot(timestamps, fully_modded, "*-", markersize=20)
@@ -71,10 +71,33 @@ plt.show()
 
 Notice that the data more closely resembles the classic OOK picture: wave turns on, wave turns off.
 
+<details><summary>The math: <i>click...</i></summary>
+
 The key line is `fully_modded = modded * wave`. This multiplies each point in `wave` by each point in `modded`. Remember that `wave` is an array of only ones and zeros. Multiplying by one does not change a number, and multiplying by zero results in zero.
+
+</details>
+
+Also notice that there are two cycles of the wave for a single bit. In the next example, we'll see four cycles per bit.
 
 ```python3
 ## 8
+## Copy and modify the previous example. Change the freq to 16.
+## Is the 1010 pattern still distinguishable?
+
+
+## 9
+## Copy and modify the previous example. Change the freq to 5.
+## Is the 1010 pattern still distinguishable?
+```
+
+As you can see from the previous examples, the number of cycles-per-bit is arbitrary. In fact, it does not need to be a whole number! The information is communicated by the wave being "turned on" or "turned off".
+
+That being said, in "real life", there are other people transmitting on nearby frequencies. That means that the chosen frequency needs to be known by both transmitter and receiver so that the receiver can filter out unwanted transmissions.
+
+Now, let's try adjusting the data.
+
+```python3
+## 10
 ## Copy and modify the previous example. Change the data to [1, 0, 1, 1, 0].
 ## You'll also need to adjust num_samples. To decide how, think about how long your
 ## data is after running ook_modulate.
@@ -83,17 +106,17 @@ The key line is `fully_modded = modded * wave`. This multiplies each point in `w
 In the most recent exercise, you needed to update `num_samples` based on the length of your data. We can ask the computer to do that for us by setting `num_samples` to the length of `modded`:
 
 ```python3
-## 9
+## 11
 ## Try this.
 modded = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
 timestamps = createTimestamps(seconds=1.0, num_samples=len(modded))
-wave = makeRealWave(timestamps, freq=4)
+wave = makeRealWave(timestamps, freq=8)
 fully_modded = modded * wave
 plt.plot(timestamps, fully_modded, "*-", markersize=20)
 plt.show()
 
 
-## 10
+## 12
 ## Using the function str_to_bin_list from the previous exercise set, 
 ## - Ask the user for a string
 ## - Convert the string to a list of bits
@@ -101,23 +124,30 @@ plt.show()
 ## - Plot the result 
 ```
 
+### Sample Rates
+
+Up to this point, we've been using a fixed amount of time: 1 second. However, we eventually want to transmit this data to the Hack RF, and in that context, we will have a fixed **sample rate**, not a fixed amount of time.
+
+Here's how we handle that:
 
 ```python3
-## Unfinished exercise
-import matplotlib.pyplot as plt
-from pcdr.wavegen import createTimestamps, makeRealWave, makeComplexWave
-from pcdr.modulators import ook_modulate
-from pcdr.gnuradio_sender import gnuradio_send
-
-
-
-timestamps = createTimestamps(seconds=1.0, num_samples=int(2e6))
-wave = makeComplexWave(timestamps, freq=4)
-modded = ook_modulate(data=[1, 0, 1, 0], bit_length=int(500e3))
+## 13
+## Try this.
+samp_rate = 50
+modded = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
+t = len(modded) / samp_rate
+timestamps = createTimestamps(seconds=t, num_samples=len(modded))
+wave = makeRealWave(timestamps, freq=4)
 fully_modded = modded * wave
-gnuradio_send(fully_modded, center_freq=100e6, samp_rate=2e6)
-
-## Actual transmission frequency: 100,000,004 Hz = 100.0000004 MHz
 plt.plot(timestamps, fully_modded, "*-", markersize=20)
 plt.show()
+```
+
+Notice that `seconds` is now set to `len(modded) / samp_rate`, which in this case equals `150 / 50`, or `3`. As a result, in the graph, there are 3 seconds of data. Reason: there are 6 bits, each of which is 25 samples long. That's 150 samples. We are working with 50 samples per second (chosen arbitrarily). Each group of 50 samples takes 1 second, so 150 samples takes 3 seconds.
+
+```python3
+## 14
+## Copy and modify the previous example.
+## Make the bit length 50, and make the data [1, 0, 1, 0, 1].
+## How many seconds of data is this?
 ```
