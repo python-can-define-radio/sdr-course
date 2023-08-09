@@ -34,8 +34,8 @@ def makeComplexWave(timestamps, freq):
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 
 
-@deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 @typechecked
+@deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
         data = makeRealWave(timestamps, freq)
@@ -78,8 +78,8 @@ def wave_file_gen_prompts():
     print("Done writing files.")
 
 
-@deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 @typechecked
+@deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_real: str, filename: str = 'generated_data'):
     """Units:
     samp_rate: samples per sec
