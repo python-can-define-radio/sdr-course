@@ -8,7 +8,7 @@ We'll start by simply graphing a wave.
 ## 1
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr.wavegen import createTimestamps, makeRealWave
+from pcdr import createTimestamps, makeRealWave
 
 timestamps = createTimestamps(seconds=1.0, num_samples=100)
 wave = makeRealWave(timestamps, freq=3)
@@ -39,7 +39,7 @@ Now that we've plotted a wave, let's look back at our `ook_modulate` function.
 ## 5
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr.modulators import ook_modulate
+from pcdr import ook_modulate
 
 modded = ook_modulate(data=[1, 0, 1, 0], bit_length=4)
 plt.plot(modded, "*-", markersize=20)
@@ -58,8 +58,7 @@ There are cases in which we would like to impose the data on a carrier wave in s
 ## 7
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr.wavegen import createTimestamps, makeRealWave
-from pcdr.modulators import ook_modulate
+from pcdr import createTimestamps, makeRealWave, ook_modulate
 
 timestamps = createTimestamps(seconds=1.0, num_samples=100)
 wave = makeRealWave(timestamps, freq=8)
