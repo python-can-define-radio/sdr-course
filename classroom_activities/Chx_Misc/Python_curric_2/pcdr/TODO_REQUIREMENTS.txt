@@ -1,6 +1,0 @@
-deal
-pydash
-numpy
-typeguard
-matplotlib
-## I don't think this can be pip installed:  gnuradio
