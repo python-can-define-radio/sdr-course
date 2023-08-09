@@ -10,6 +10,15 @@ from .modulators import (
     ook_modulate
 )
 
+from .wavegen import (
+    createTimestamps,
+    makeRealWave,
+    makeComplexWave,
+    waveAndWrite,
+    wave_file_gen_prompts,
+    wave_file_gen,
+)
+
 try:
     from .gnuradio_misc import (
         configure_graceful_exit,
