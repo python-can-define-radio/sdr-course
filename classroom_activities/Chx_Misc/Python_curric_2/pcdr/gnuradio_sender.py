@@ -40,7 +40,7 @@ def pad_chunk_queue(data: List[int], chunk_size: int) -> SimpleQueue:
     return q
 
 
-def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain: int = 24, output_to: Optional[str] = None, print_delay=0.5, chunk_size: int = 1024):
+def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain: int = 24, output_to: Optional[str] = None, print_delay=0.5, chunk_size: int = 1024, device_args: str = ""):
     """`output_to` can be one of these:
         - None (default): send to osmocom sink.
         - "PRINT": print to stdout (usually the terminal).
@@ -53,7 +53,7 @@ def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain
     
     ## Set up and run flowgraph with the data queue we've prepared above
     if output_to == None:
-        tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q)
+        tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
     elif output_to == "PRINT":
         tb = queue_to__print_blk(print_delay, q, chunk_size)
     else:

@@ -101,7 +101,8 @@ class queue_to__osmocom_sink(gr.top_block):
                  samp_rate: float,
                  chunk_size: int,
                  if_gain: int,
-                 external_queue: SimpleQueue):
+                 external_queue: SimpleQueue,
+                 device_args: str):
         
         gr.top_block.__init__(self, "Top block")
 
@@ -111,7 +112,7 @@ class queue_to__osmocom_sink(gr.top_block):
 
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
 
-        self.osmosdr_sink = osmosdr.sink()
+        self.osmosdr_sink = osmosdr.sink(args=device_args)
         self.osmosdr_sink.set_sample_rate(samp_rate)
         self.osmosdr_sink.set_center_freq(center_freq)
         self.osmosdr_sink.set_gain(0)
