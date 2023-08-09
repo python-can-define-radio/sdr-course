@@ -10,7 +10,7 @@ We'll start by simply graphing a wave.
 import matplotlib.pyplot as plt
 from pcdr.wavegen import createTimestamps, makeRealWave
 
-timestamps = createTimestamps(seconds=1.0, num_samples=60)
+timestamps = createTimestamps(seconds=1.0, num_samples=100)
 wave = makeRealWave(timestamps, freq=3)
 plt.plot(timestamps, wave, "*", markersize=10)
 plt.show()
@@ -50,9 +50,9 @@ plt.show()
 ## Copy and modify the above example so that each bit is 10 samples long.
 ```
 
-You may be surprised that the `ook_modulate` function doesn't produce a wave. Why were we able to send this data to the Hack RF when it doesn't seem to have a carrier wave? You may remember that when working with the Hack RF, we specify a center frequency (or "Ch0 Frequency"). For any data that you ask it to send, the Hack RF first shifts the data to the specified center frequency. This is known as **upconversion**.
+You may be surprised that the `ook_modulate` function doesn't produce a wave. Why were we able to send this data to the Hack RF when it doesn't seem to have a carrier wave? Remember that when working with the Hack RF in GNU Radio Companion, we specify a center frequency (or "Ch0 Frequency"). For any data that you ask it to send, the Hack RF first shifts the data to the specified center frequency. This is known as **upconversion**.
 
-There are cases in which we would like to impose the data on a carrier wave before the Hack RF shifts it. Let's try it:
+There are cases in which we would like to impose the data on a carrier wave in software before the Hack RF does its own shift. Let's try it:
 
 ```python3
 ## 7
@@ -61,15 +61,48 @@ import matplotlib.pyplot as plt
 from pcdr.wavegen import createTimestamps, makeRealWave
 from pcdr.modulators import ook_modulate
 
-timestamps = createTimestamps(seconds=1.0, num_samples=60)
+timestamps = createTimestamps(seconds=1.0, num_samples=100)
 wave = makeRealWave(timestamps, freq=4)
-modded = ook_modulate(data=[1, 0, 1, 0], bit_length=15)
+modded = ook_modulate(data=[1, 0, 1, 0], bit_length=25)
+fully_modded = modded * wave
+plt.plot(timestamps, fully_modded, "*-", markersize=20)
+plt.show()
+```
+
+Notice that the data more closely resembles the classic OOK picture: wave turns on, wave turns off.
+
+The key line is `fully_modded = modded * wave`. This multiplies each point in `wave` by each point in `modded`. Remember that `wave` is an array of only ones and zeros. Multiplying by one does not change a number, and multiplying by zero results in zero.
+
+```python3
+## 8
+## Copy and modify the previous example. Change the data to [1, 0, 1, 1, 0].
+## You'll also need to adjust num_samples. To decide how, think about how long your
+## data is after running ook_modulate.
+```
+
+In the most recent exercise, you needed to update `num_samples` based on the length of your data. We can ask the computer to do that for us by setting `num_samples` to the length of `modded`:
+
+```python3
+## 9
+## Try this.
+modded = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
+timestamps = createTimestamps(seconds=1.0, num_samples=len(modded))
+wave = makeRealWave(timestamps, freq=4)
 fully_modded = modded * wave
 plt.plot(timestamps, fully_modded, "*-", markersize=20)
 plt.show()
 
 
-## 8
+## 10
+## Using the function str_to_bin_list from the previous exercise set, 
+## - Ask the user for a string
+## - Convert the string to a list of bits
+## - OOK modulate the bits
+## - Plot the result 
+```
+
+
+```python3
 ## Unfinished exercise
 import matplotlib.pyplot as plt
 from pcdr.wavegen import createTimestamps, makeRealWave, makeComplexWave
@@ -87,49 +120,4 @@ gnuradio_send(fully_modded, center_freq=100e6, samp_rate=2e6)
 ## Actual transmission frequency: 100,000,004 Hz = 100.0000004 MHz
 plt.plot(timestamps, fully_modded, "*-", markersize=20)
 plt.show()
-```
-
-
-
-```python3
-timestamps, y_vals = parse_csv(filename_csv, samp_rate)
-plt.plot(timestamps, y_vals, "*", markersize=10)
-plt.show()
-```
-
-
-```python3
-import numpy as np
-import matplotlib.pyplot as plt
-
-import pcdr.wavegen as wavegen
-
-## 1
-# pcdr.wave_gen_prompts()
-```
-
-```python3
-# pcdr.plot_from_csv("generated_data.csv", 100)
-
-
-## 2
-wavegen.wave_gen(100, 3, 2, "r", "generated_data")
-wavegen.plot_from_csv("generated_data.csv", 100)
-
-
-## 3
-# pcdr.wave_gen(100, 3, 2, "r", "generated_data")
-# timestamps, y_vals = pcdr.parse_csv("generated_data.csv", 100)
-# plt.plot(timestamps, y_vals, "*", markersize=10)
-# plt.show()
-
-
-## 4  (challenge)
-# pcdr.wave_gen(100, 3, 2, "r", "generated_data_part_a")
-# pcdr.wave_gen(100, 1, 4, "r", "generated_data_part_b")
-# times_a, part_a = pcdr.parse_csv("generated_data_part_a.csv", 100)
-# times_b, part_b = pcdr.parse_csv("generated_data_part_b.csv", 100)
-# data_together = np.concatenate([part_a, part_b])
-# plt.plot(data_together, "*", markersize=10)
-# plt.show()
 ```
