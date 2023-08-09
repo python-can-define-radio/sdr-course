@@ -25,6 +25,6 @@ def __is_binary(x: int) -> bool:
 
 
 @typechecked
-@deal.pre(lambda _: all(map(__is_binary, _.data)))
+@deal.pre(lambda _: all(map(__is_binary, _.data)), message="ook_modulate expects data to be a list of only 0 and 1")
 def ook_modulate(data: List[int], bit_length: int) -> List[int]:
     return __repeat_each_item(data, bit_length)

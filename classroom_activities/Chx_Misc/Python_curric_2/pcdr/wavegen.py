@@ -30,7 +30,7 @@ def makeRealWave(timestamps: np.ndarray, freq):
 
 
 @typechecked
-def makeComplexWave(timestamps, freq):
+def makeComplexWave(timestamps: np.ndarray, freq):
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 
 
