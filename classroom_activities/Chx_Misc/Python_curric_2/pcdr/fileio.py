@@ -19,7 +19,6 @@ def writeComplexCSV(filename: str, data_to_write: Iterable):
             outfile.write(f"{inphase},{quad}\n")
 
 
-@typechecked
 def writeRaw(filename, data_to_write):
     with open(filename, "wb") as outfile:
         outfile.write(data_to_write)
