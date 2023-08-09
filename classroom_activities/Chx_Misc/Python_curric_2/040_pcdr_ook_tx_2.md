@@ -1,6 +1,6 @@
 ## OOK Transmitting using Python: Lesson 2
 
-Now that we've seen some wave theory
+Now that we've seen some wave theory, let's prepare to transmit to the Hack RF.
 
 ```python3
 ## Unfinished exercise
@@ -18,6 +18,7 @@ fully_modded = modded * wave
 gnuradio_send(fully_modded, center_freq=100e6, samp_rate=2e6)
 
 ## Actual transmission frequency: 100,000,004 Hz = 100.0000004 MHz
-plt.plot(timestamps, fully_modded, "*-", markersize=20)
+## TODO: decide what to do with imaginary part
+plt.plot(timestamps, fully_modded.real, "*-", markersize=20)
 plt.show()
 ```
