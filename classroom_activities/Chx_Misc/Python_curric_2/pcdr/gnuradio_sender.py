@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Sequence
 import deal
 import pydash
 import numpy as np
@@ -20,27 +20,29 @@ def __queue_to_list(q: SimpleQueue) -> list:
 
 @deal.example(lambda: __queue_to_list(pad_chunk_queue([1, 2, 3], 5)) == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)])
 @deal.example(lambda: __queue_to_list(pad_chunk_queue([1, 2, 3], 2)) == [np.array([1, 2], dtype=np.complex64), np.array([3, 0], dtype=np.complex64)]) 
-def pad_chunk_queue(data: List[int], chunk_size: int) -> SimpleQueue:
+def pad_chunk_queue(data: Sequence[int], chunk_size: int) -> SimpleQueue:
     """
+    - numpy-ify
     - Pad `data` to a multiple of `chunk_size`
     - Split into chunks of that size
     - Convert to a queue of numpy arrays for gnuradio use"""
 
-    ## Pad to next full chunk size, then chunk
-    while len(data)%chunk_size != 0:
-        data.append(0)
-    chunked = pydash.chunk(data, size=chunk_size)
+    npdata = np.array(data, dtype=np.complex64)
 
-    def makenumpy(thelist):
-        return np.array(thelist, dtype=np.complex64)
+    ## Pad to next full chunk size, then chunk
+    padlen = chunk_size - (len(npdata) % chunk_size)
+    if padlen != chunk_size:
+        npdata = np.concatenate([npdata, np.zeros(padlen)])
+    chunked = np.split(npdata, len(npdata)/chunk_size)
+
     q = SimpleQueue()
-    for item in map(makenumpy, chunked):
+    for item in chunked:
         q.put(item)
     return q
 
 
 @deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print"])
-def gnuradio_send(data: List[int],
+def gnuradio_send(data: Sequence[int],
                   center_freq: float,
                   samp_rate: float,
                   if_gain: int = 16,
@@ -70,6 +72,6 @@ def gnuradio_send(data: List[int],
     else:
         raise ValueError("Shouldn't be possible if deal contracts worked.")
     
-    configure_graceful_exit(tb)    
+    configure_graceful_exit(tb)
     tb.start()
     tb.wait()
