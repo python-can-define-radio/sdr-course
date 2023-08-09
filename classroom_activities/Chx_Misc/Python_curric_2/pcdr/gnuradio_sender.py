@@ -3,10 +3,9 @@ import deal
 import pydash
 import numpy as np
 from queue import SimpleQueue, Empty
-from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink
-from pcdr.osmocom_queued_tx_flowgraph import queue_to__print_blk
-from pcdr.osmocom_queued_tx_flowgraph import queue_to__string_file_sink
-from pcdr.osmocom_queued_tx_flowgraph import top_block_manager
+from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__print_blk, queue_to__string_file_sink
+from pcdr.gnuradio_misc import configure_graceful_exit
+
 
 
 
@@ -40,11 +39,19 @@ def pad_chunk_queue(data: List[int], chunk_size: int) -> SimpleQueue:
     return q
 
 
-def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain: int = 24, output_to: Optional[str] = None, print_delay=0.5, chunk_size: int = 1024, device_args: str = ""):
+@deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print"])
+def gnuradio_send(data: List[int],
+                  center_freq: float,
+                  samp_rate: float,
+                  if_gain: int = 16,
+                  output_to: str = "hackrf",
+                  print_delay=0.5,
+                  chunk_size: int = 1024,
+                  device_args: str = "hackrf=0"):
     """`output_to` can be one of these:
-        - None (default): send to osmocom sink.
-        - "PRINT": print to stdout (usually the terminal).
-        - any other string: interpret `output_to` as a filename. Write output data to that file.
+        - "hackrf" (default): send to osmocom sink.
+        - "print": print to stdout (usually the terminal).
+        - "fn=abc.txt": write output data to a file named 'abc.txt'.
 
         `print_delay` is only used if printing to stdout.
         """
@@ -52,21 +59,17 @@ def gnuradio_send(data: List[int], center_freq: float, samp_rate: float, if_gain
     q = pad_chunk_queue(data, chunk_size)
     
     ## Set up and run flowgraph with the data queue we've prepared above
-    if output_to == None:
+    print(f"Using {output_to}.")
+    if output_to == "hackrf":
         tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
-    elif output_to == "PRINT":
+    elif output_to == "print":
         tb = queue_to__print_blk(print_delay, q, chunk_size)
+    elif output_to.startswith("fn="):
+        filename = output_to[3:]  # the part after the "fn="
+        tb = queue_to__string_file_sink(filename, q, chunk_size)
     else:
-        tb = queue_to__string_file_sink(output_to, q, chunk_size)
+        raise ValueError("Shouldn't be possible if deal contracts worked.")
     
-    tbm = top_block_manager(tb)
-
-    ## TODO: This is NOT ideal -- would be better to detect done-ness from
-    ##  inside the flowgraph if possible, so that I can use .wait() for its
-    ## intended purpose.
-    waittime = 1.1 * len(data)/samp_rate
-    tbm.start_and_keep_open(waittime)
-    
-    ##   ## TODO: Do we need this? Or is it taking care of itself?
-    ##   tb.stop()
-    ##   tb.wait() 
+    configure_graceful_exit(tb)    
+    tb.start()
+    tb.wait()

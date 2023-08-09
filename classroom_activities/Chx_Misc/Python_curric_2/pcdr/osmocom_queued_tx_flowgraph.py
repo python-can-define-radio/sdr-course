@@ -10,17 +10,11 @@
 
 import numpy as np
 from gnuradio import gr
-from gnuradio.filter import firdes
 from gnuradio import blocks
-import sys
-import signal
-from argparse import ArgumentParser
-from gnuradio.eng_arg import eng_float, intx
-from gnuradio import eng_notation
 import osmosdr
 import time
-from queue import SimpleQueue
-from typing import Optional
+from queue import SimpleQueue, Empty
+import deal
 
 
 
@@ -76,13 +70,17 @@ class __data_queue_source(gr.sync_block):
         self.__data_queue = external_queue
         self._chunk_size = chunk_size
 
+
     def work(self, input_items, output_items):
-        output_items[0][0] = self.__data_queue.get()
-        return 1
+        try:
+            output_items[0][0] = self.__data_queue.get_nowait()
+            return 1
+        except Empty:
+            return -1  # Block is done
     
+    
+    @deal.pre(lambda _: len(_.data) == _.self._chunk_size)
     def queue_put(self, data):
-        if len(data) != self._chunk_size:
-            raise ValueError(f"Data must be {self._chunk_size} items long")
         self.__data_queue.put(data)
 
 
@@ -96,6 +94,9 @@ _queue_to__print_blk__print_blk = __print_blk
 
 class queue_to__osmocom_sink(gr.top_block):
 
+    @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
+    @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
+    @deal.pre(lambda _: 0 <= _.if_gain <= 47)
     def __init__(self,
                  center_freq: float,
                  samp_rate: float,
@@ -116,7 +117,7 @@ class queue_to__osmocom_sink(gr.top_block):
         self.osmosdr_sink.set_sample_rate(samp_rate)
         self.osmosdr_sink.set_center_freq(center_freq)
         self.osmosdr_sink.set_gain(0)
-        self.osmosdr_sink.set_if_gain(if_gain)
+        self.osmosdr_sink.set_if_gain(if_gain, 0)
         self.osmosdr_sink.set_bb_gain(0)
 
         self.connect(self.data_queue_source, self.vector_to_stream, self.osmosdr_sink)
@@ -140,23 +141,3 @@ class queue_to__string_file_sink(gr.top_block):
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
         self.string_file_sink = __string_file_sink(filename)
         self.connect(self.data_queue_source, self.vector_to_stream, self.string_file_sink)
-
-
-class top_block_manager():
-
-    def __init__(self, tb):
-        self.tb = tb
-        def sig_handler(sig=None, frame=None):
-            tb.stop()
-            tb.wait()
-            sys.exit(0)
-
-        signal.signal(signal.SIGINT, sig_handler)
-        signal.signal(signal.SIGTERM, sig_handler)
-
-    def start(self):
-        self.tb.start()    
-    
-    def start_and_keep_open(self, seconds: float):
-        self.start()
-        time.sleep(seconds)
