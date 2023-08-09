@@ -1,4 +1,8 @@
 ## Introduction to OOK Transmitting using Python
+Prerequisits:  [THIS SECTION COULD BE A POP-DOWN WINDOW]
+1.  You must first download the files listed in the previous lesson "010_pcdr_download_test.md".  If you have not, go there: <HTML>https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Python_curric_2/010_pcdr_download_test.md<HTML>
+2. One of those files is "gnuradio_sender.py".  If "gnuradio_sender.py" gives a runtime error, You may need to install some of the modules it uses.  E.g., in a Linux Terminal window, type `pip3 install deal'
+
 
 One of the biggest advantages of defining radios using software is being able to transmit using arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
 
