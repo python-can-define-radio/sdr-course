@@ -126,7 +126,8 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 13
-## Open a text file. Modulate and send the contents.
+## Open a text file using f = open(...).
+## Modulate and send the contents using the above examples.
 
 
 ## 14
