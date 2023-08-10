@@ -1,17 +1,22 @@
-from typing import Iterable, Callable
-from typeguard import typechecked
+from __future__ import annotations
+
+from typing import Iterable, Callable, Any
+
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from _typeshed import FileDescriptorOrPath
 
 
 
-@typechecked
-def writeRealCSV(filename: str, data_to_write: Iterable):
+def writeRealCSV(filename, data_to_write):
+    # type: (FileDescriptorOrPath, Iterable) -> None
     with open(filename, "w") as outfile:
         for item in data_to_write:
             outfile.write(f"{item}\n")
 
 
-@typechecked
-def writeComplexCSV(filename: str, data_to_write: Iterable):
+def writeComplexCSV(filename, data_to_write):
+    # type: (FileDescriptorOrPath, Iterable[complex]) -> None
     with open(filename, "w") as outfile:
         for item in data_to_write:
             inphase = item.real
@@ -20,12 +25,12 @@ def writeComplexCSV(filename: str, data_to_write: Iterable):
 
 
 def writeRaw(filename, data_to_write):
+    # type: (FileDescriptorOrPath, Any) -> None
     with open(filename, "wb") as outfile:
         outfile.write(data_to_write)
         outfile.close()
 
 
-@typechecked
 def __readCSV(filename_csv: str, samp_rate: float, type_: Callable) -> tuple:
     
     ## This import must be here to avoid circular imports.
@@ -41,11 +46,9 @@ def __readCSV(filename_csv: str, samp_rate: float, type_: Callable) -> tuple:
     return timestamps, contents_as_numbers
 
 
-@typechecked        
 def readRealCSV(filename_csv: str, samp_rate: float) -> tuple:
     __readCSV(filename_csv, samp_rate, float)
 
 
-@typechecked        
 def readComplexCSV(filename_csv: str, samp_rate: float) -> tuple:
     __readCSV(filename_csv, samp_rate, complex)

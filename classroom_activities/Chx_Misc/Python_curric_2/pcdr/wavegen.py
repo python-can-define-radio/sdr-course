@@ -9,12 +9,11 @@ Try this to start: wave_gen_prompts()
 import numpy as np
 import matplotlib.pyplot as plt
 import deal
-from typeguard import typechecked
 
 from pcdr.fileio import writeRealCSV, writeRaw, writeComplexCSV
 
 
-@typechecked
+
 def createTimestamps(seconds: float, num_samples: int) -> np.ndarray:
     return np.linspace(
             start=0,
@@ -24,17 +23,14 @@ def createTimestamps(seconds: float, num_samples: int) -> np.ndarray:
         )
 
 
-@typechecked
 def makeRealWave(timestamps: np.ndarray, freq):
     return np.float32(np.sin(freq * 2 * np.pi * timestamps))
 
 
-@typechecked
 def makeComplexWave(timestamps: np.ndarray, freq):
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 
 
-@typechecked
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
@@ -78,7 +74,6 @@ def wave_file_gen_prompts():
     print("Done writing files.")
 
 
-@typechecked
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_real: str, filename: str = 'generated_data'):
     """Units:
