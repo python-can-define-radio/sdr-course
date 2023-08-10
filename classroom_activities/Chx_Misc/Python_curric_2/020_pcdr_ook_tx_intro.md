@@ -123,4 +123,12 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ##  - a string to send
 ##  - the bit length
 ## As before, include a preamble.
+
+
+## 13
+## Open a text file. Modulate and send the contents.
+
+
+## 14
+## Use a loop to send data more than once.
 ```
