@@ -73,7 +73,7 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ##   in Python", but we can use this function without fully 
 ##   understanding the implementation details.
 def str_to_bin_list(mystr):
-     bitstrs = [f"{x:08b}" for x in mystr.encode("utf")]
+     bitstrs = [f"{ord(x):08b}" for x in mystr]
      joined = "".join(bitstrs)
      return list(map(int, joined))
 
