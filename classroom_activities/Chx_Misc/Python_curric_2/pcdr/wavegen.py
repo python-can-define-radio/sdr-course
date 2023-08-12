@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import deal
 
-from pcdr.fileio import writeRealCSV, writeRaw, writeComplexCSV
+from pcdr.fileio import writeRealCSV, writeComplexCSV
 
 
 
@@ -36,11 +36,11 @@ def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
         data = makeRealWave(timestamps, freq)
         writeRealCSV(basename + ".csv", data)
-        writeRaw(basename + ".float32", data)
+        data.tofile(basename + ".float32")
     elif complex_or_real == "c":
         data = makeComplexWave(timestamps, freq)
         writeComplexCSV(basename + ".csv", data)
-        writeRaw(basename + ".complex64", data)
+        data.tofile(basename + ".complex64")
 
 
 def wave_file_gen_prompts():

@@ -1,7 +1,6 @@
 from .fileio import (
     writeRealCSV,
     writeComplexCSV,
-    writeRaw,
     readRealCSV,
     readComplexCSV,
 )

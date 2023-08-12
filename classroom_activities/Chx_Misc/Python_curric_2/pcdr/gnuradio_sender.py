@@ -1,15 +1,19 @@
-from typing import List, Optional, Sequence
+from __future__ import annotations
+from typing import List, Optional, Sequence, TypeVar
 import deal
 import pydash
 import numpy as np
 from queue import SimpleQueue, Empty
 from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__print_blk, queue_to__string_file_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
+from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
 
 
+T = TypeVar('T')
 
 
-def __queue_to_list(q: SimpleQueue) -> list:
+@deal.pure
+def __queue_to_list(q: SimpleQueue[T]) -> List[T]:
     retval = []
     while True:
         try:
@@ -18,9 +22,20 @@ def __queue_to_list(q: SimpleQueue) -> list:
             return retval
 
 
-@deal.example(lambda: __queue_to_list(pad_chunk_queue([1, 2, 3], 5)) == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)])
-@deal.example(lambda: __queue_to_list(pad_chunk_queue([1, 2, 3], 2)) == [np.array([1, 2], dtype=np.complex64), np.array([3, 0], dtype=np.complex64)]) 
-def pad_chunk_queue(data: Sequence[int], chunk_size: int) -> SimpleQueue:
+@deal.example(lambda:  \
+        __queue_to_list(pad_chunk_queue([1, 2, 3], 5))  \
+        == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)]
+)
+@deal.example(lambda:  \
+        __queue_to_list(pad_chunk_queue([1, 2, 3], 2))  \
+        == [
+            np.array([1, 2], dtype=np.complex64),
+            np.array([3, 0], dtype=np.complex64)
+            ]
+) 
+@deal.pre(lambda _: _.chunk_size > 0)
+@deal.has()
+def pad_chunk_queue(data: Sequence[TRealOrComplexNum], chunk_size: int) -> SimpleQueue[np.ndarray]:
     """
     - numpy-ify
     - Pad `data` to a multiple of `chunk_size`
@@ -42,12 +57,12 @@ def pad_chunk_queue(data: Sequence[int], chunk_size: int) -> SimpleQueue:
 
 
 @deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print"])
-def gnuradio_send(data: Sequence[int],
+def gnuradio_send(data: Sequence[TRealOrComplexNum],
                   center_freq: float,
                   samp_rate: float,
                   if_gain: int = 16,
                   output_to: str = "hackrf",
-                  print_delay=0.5,
+                  print_delay: float = 0.5,
                   chunk_size: int = 1024,
                   device_args: str = "hackrf=0"):
     """`output_to` can be one of these:
