@@ -15,13 +15,15 @@ from pcdr import gnuradio_send, ook_modulate
 ## How many seconds long is each bit?
 modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
+```
 
+Note: if you don't have a SDR peripheral, or if you don't want to actually transmit, use this modified version, which will print the data instead of transmitting it. You may wish to use a shorter bit length, for example, `bit_length=4`. 
 
-## NOTE: If you don't have a SDR peripheral, use this modified version:
+```python3
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="print")
+```
 
-
-
+```python3
 ## 2
 ## Copy and modify the previous example to send a different pattern of bits.
 
