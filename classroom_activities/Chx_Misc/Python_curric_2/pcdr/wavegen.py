@@ -14,19 +14,24 @@ from pcdr.fileio import writeRealCSV, writeComplexCSV
 
 
 
-def createTimestamps(seconds: float, num_samples: int) -> np.ndarray:
+@deal.has()
+@deal.ensures(lambda _: _.result.dtype == _.dtype)
+def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> "np.ndarray":
     return np.linspace(
             start=0,
             stop=seconds,
             num=num_samples,
-            endpoint=False
+            endpoint=False,
+            dtype=dtype
         )
 
 
-def makeRealWave(timestamps: np.ndarray, freq):
+@deal.has()
+def makeRealWave(timestamps: np.ndarray, freq: float):
     return np.float32(np.sin(freq * 2 * np.pi * timestamps))
 
 
+@deal.has()
 def makeComplexWave(timestamps: np.ndarray, freq):
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 

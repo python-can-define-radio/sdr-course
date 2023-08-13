@@ -31,9 +31,17 @@ def __queue_to_list(q: SimpleQueue[T]) -> List[T]:
         == [
             np.array([1, 2], dtype=np.complex64),
             np.array([3, 0], dtype=np.complex64)
-            ]
-) 
-@deal.pre(lambda _: _.chunk_size > 0)
+           ]
+)
+@deal.ensure(lambda _:  \
+        __queue_to_list(_.result) == [] if len(_.data) == 0 else True,
+        message="If data is empty, then the result is an empty queue"
+)
+@deal.ensure(lambda _:  \
+        __queue_to_list(_.result) == [] if _.chunk_size == 0 else True,
+        message="If chunk_size is zero, then the result is an empty queue"
+)
+@deal.pre(lambda _: _.chunk_size >= 0)
 @deal.has()
 def pad_chunk_queue(data: Sequence[TRealOrComplexNum], chunk_size: int) -> SimpleQueue[np.ndarray]:
     """
