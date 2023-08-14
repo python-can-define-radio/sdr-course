@@ -7,38 +7,30 @@ from queue import SimpleQueue, Empty
 from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__print_blk, queue_to__string_file_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
+from pcdr.helpers import queue_to_list
+
 
 
 T = TypeVar('T')
 
 
-@deal.pure
-def __queue_to_list(q: SimpleQueue[T]) -> List[T]:
-    retval = []
-    while True:
-        try:
-            retval.append(q.get_nowait())
-        except Empty:
-            return retval
-
-
 @deal.example(lambda:  \
-        __queue_to_list(pad_chunk_queue([1, 2, 3], 5))  \
+        queue_to_list(pad_chunk_queue([1, 2, 3], 5))  \
         == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)]
 )
 @deal.example(lambda:  \
-        __queue_to_list(pad_chunk_queue([1, 2, 3], 2))  \
+        queue_to_list(pad_chunk_queue([1, 2, 3], 2))  \
         == [
             np.array([1, 2], dtype=np.complex64),
             np.array([3, 0], dtype=np.complex64)
            ]
 )
 @deal.ensure(lambda _:  \
-        __queue_to_list(_.result) == [] if len(_.data) == 0 else True,
+        queue_to_list(_.result) == [] if len(_.data) == 0 else True,
         message="If data is empty, then the result is an empty queue"
 )
 @deal.ensure(lambda _:  \
-        __queue_to_list(_.result) == [] if _.chunk_size == 0 else True,
+        queue_to_list(_.result) == [] if _.chunk_size == 0 else True,
         message="If chunk_size is zero, then the result is an empty queue"
 )
 @deal.pre(lambda _: _.chunk_size >= 0)

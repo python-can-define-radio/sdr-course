@@ -15,7 +15,7 @@ from pcdr.fileio import writeRealCSV, writeComplexCSV
 
 
 @deal.has()
-@deal.ensures(lambda _: _.result.dtype == _.dtype)
+@deal.ensure(lambda _: _.result.dtype == _.dtype)
 def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> "np.ndarray":
     return np.linspace(
             start=0,

@@ -28,7 +28,7 @@ def __is_binary(x: int) -> bool:
 
 
 @deal.pre(lambda _: all(map(__is_binary, _.data)), message="ook_modulate expects `data` to only contain 0 and 1")
-@deal.ensures(lambda _: _.result.dtype == _.dtype)
+@deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.has()
 def ook_modulate(data: Iterable[int], bit_length: int, dtype=np.uint8) -> np.ndarray:
     return np.array(__repeat_each_item(data, bit_length), dtype=dtype)
