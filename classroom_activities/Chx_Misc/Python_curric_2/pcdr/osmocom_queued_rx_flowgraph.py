@@ -60,7 +60,7 @@ class osmocom_source_to_queue(gr.top_block):
     def __init__(self, center_freq: float, samp_rate: float, chunk_size: int, device_args: str, if_gain: int = 32, bb_gain: int = 42):
         gr.top_block.__init__(self, "Top block")
 
-        self.chunk_size = chunk_size
+        self.__chunk_size = chunk_size
 
         self.osmosdr_source = osmosdr.source(args=device_args)
         self.osmosdr_source.set_sample_rate(samp_rate)
@@ -76,7 +76,7 @@ class osmocom_source_to_queue(gr.top_block):
         self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.data_queue_sink)
 
 
-    @deal.ensure(lambda _: len(_.result) == _.self.chunk_size)
+    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
     def get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
         return self.data_queue_sink.queue_get()
