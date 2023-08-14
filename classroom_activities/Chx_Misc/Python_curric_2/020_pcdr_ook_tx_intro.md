@@ -89,6 +89,7 @@ print(list_of_bits)
 
 ## 8
 ## Try this. Verify that it prints the expected sequence of 16 bits.
+## (You can use an online ASCII-to-binary converter to verify.)
 list_of_bits = str_to_bin_list("Hi")
 print(list_of_bits)
 

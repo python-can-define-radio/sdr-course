@@ -8,7 +8,7 @@ There are at least three challenges that arise on the receiving end:
 - Received signal strength varies
 - Timing
 
-We'll address each of these in more detail, but first, here's a minimal working receiver.
+We'll address each of these in more detail, but first, here's a minimal receiver.
 
 ```python3
 TODO: receiver = something

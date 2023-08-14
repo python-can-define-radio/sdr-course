@@ -103,7 +103,7 @@ class queue_to__osmocom_sink(gr.top_block):
                  chunk_size: int,
                  if_gain: int,
                  external_queue: SimpleQueue[np.ndarray],
-                 device_args: str):
+                 device_args: str = "hackrf=0"):
         
         gr.top_block.__init__(self, "Top block")
         
