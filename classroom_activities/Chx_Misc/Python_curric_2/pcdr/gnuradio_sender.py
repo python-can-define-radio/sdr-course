@@ -14,26 +14,21 @@ from pcdr.helpers import queue_to_list
 T = TypeVar('T')
 
 
-@deal.example(lambda:  \
-        queue_to_list(pad_chunk_queue([1, 2, 3], 5))  \
-        == [np.array([1, 2, 3, 0, 0], dtype=np.complex64)]
+@deal.example(lambda: (
+           np.array(queue_to_list(pad_chunk_queue([1, 2, 3], 5)))
+        == np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
+        ).all()
 )
-@deal.example(lambda:  \
-        queue_to_list(pad_chunk_queue([1, 2, 3], 2))  \
-        == [
-            np.array([1, 2], dtype=np.complex64),
-            np.array([3, 0], dtype=np.complex64)
-           ]
+@deal.example(lambda: (
+            np.array(queue_to_list(pad_chunk_queue([1, 2, 3], 2))) 
+         == np.array([[1, 2], [3, 0]], dtype=np.complex64)
+        ).all()  
 )
 @deal.ensure(lambda _:  \
         queue_to_list(_.result) == [] if len(_.data) == 0 else True,
         message="If data is empty, then the result is an empty queue"
 )
-@deal.ensure(lambda _:  \
-        queue_to_list(_.result) == [] if _.chunk_size == 0 else True,
-        message="If chunk_size is zero, then the result is an empty queue"
-)
-@deal.pre(lambda _: _.chunk_size >= 0)
+@deal.pre(lambda _: _.chunk_size > 0)
 @deal.has()
 def pad_chunk_queue(data: Sequence[TRealOrComplexNum], chunk_size: int) -> SimpleQueue[np.ndarray]:
     """

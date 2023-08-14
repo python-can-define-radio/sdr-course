@@ -1,3 +1,4 @@
+from __future__ import annotations
 from gnuradio import gr, blocks
 import numpy as np
 import time
@@ -35,10 +36,11 @@ class __data_queue_sink(gr.sync_block):
 
 
     @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
-    def queue_get(self) -> "np.ndarray":
+    def queue_get(self) -> np.ndarray:
+        """Get a chunk from the queue of accumulated received data."""
         return self.__data_queue.get()
 
-    def queue_get_all(self) -> "list[np.ndarray]":
+    def queue_get_all(self) -> list[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return queue_to_list(self.__data_queue)
         
@@ -75,9 +77,13 @@ class osmocom_source_to_queue(gr.top_block):
 
 
     @deal.ensure(lambda _: len(_.result) == _.self.chunk_size)
-    def get(self) -> "np.ndarray":
+    def get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
         return self.data_queue_sink.queue_get()
+    
+    def get_all(self) -> list[np.ndarray]:
+        """Warning: this may or may not work while the flowgraph is running."""
+        return self.data_queue_sink.queue_get_all()
 
 
 class simulated_data_to_queue(gr.top_block):
@@ -91,7 +97,7 @@ class simulated_data_to_queue(gr.top_block):
             [np.zeros(random.randint(100, 500)), fully_modded]
         )
         noisy = including_initial_empty + np.random.normal(len(including_initial_empty))
-        TODO = "TODO"
+        # TODO:
+        # fakeQueue = pad_chunk_queue(TODO, arbitrary_size)
         raise NotImplementedError()
-        if TODO:
-            fakeQueue = pad_chunk_queue(TODO, arbitrary_size)
+        

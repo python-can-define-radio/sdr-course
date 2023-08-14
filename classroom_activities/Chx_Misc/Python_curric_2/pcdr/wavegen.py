@@ -4,7 +4,7 @@ and such for this class.
 
 Try this to start: wave_gen_prompts()
 """
-
+from __future__ import annotations
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,7 +16,7 @@ from pcdr.fileio import writeRealCSV, writeComplexCSV
 
 @deal.has()
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
-def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> "np.ndarray":
+def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> np.ndarray:
     return np.linspace(
             start=0,
             stop=seconds,

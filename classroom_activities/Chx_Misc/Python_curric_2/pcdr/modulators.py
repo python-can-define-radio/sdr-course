@@ -1,3 +1,4 @@
+from __future__ import annotations
 import deal
 from typing import List, Iterable, TypeVar
 import pydash
