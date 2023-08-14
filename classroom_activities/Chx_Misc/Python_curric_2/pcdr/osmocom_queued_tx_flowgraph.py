@@ -60,7 +60,7 @@ class __string_file_sink(gr.sync_block):
 
 class __data_queue_source(gr.sync_block):
 
-    def __init__(self, external_queue: SimpleQueue[np.ndarray], chunk_size: int):
+    def __init__(self, external_queue: "SimpleQueue[np.ndarray]", chunk_size: int):
         gr.sync_block.__init__(
             self,
             name='Python Block: Data Queue Source',
@@ -68,7 +68,7 @@ class __data_queue_source(gr.sync_block):
             out_sig=[(np.complex64, chunk_size)]
         )
         self.__data_queue = external_queue
-        self._chunk_size = chunk_size
+        self.__chunk_size = chunk_size
 
 
     def work(self, input_items, output_items):
@@ -79,7 +79,7 @@ class __data_queue_source(gr.sync_block):
             return -1  # Block is done
     
     
-    @deal.pre(lambda _: len(_.data) == _.self._chunk_size)
+    @deal.pre(lambda _: len(_.data) == _.self.__chunk_size)
     def queue_put(self, data):
         self.__data_queue.put(data)
 
@@ -102,7 +102,7 @@ class queue_to__osmocom_sink(gr.top_block):
                  samp_rate: float,
                  chunk_size: int,
                  if_gain: int,
-                 external_queue: SimpleQueue[np.ndarray],
+                 external_queue: "SimpleQueue[np.ndarray]",
                  device_args: str = "hackrf=0"):
         
         gr.top_block.__init__(self, "Top block")
@@ -123,7 +123,7 @@ class queue_to__osmocom_sink(gr.top_block):
 
 class queue_to__print_blk(gr.top_block):
 
-    def __init__(self, print_delay: float, external_queue: SimpleQueue[np.ndarray], chunk_size: int):
+    def __init__(self, print_delay: float, external_queue: "SimpleQueue[np.ndarray]", chunk_size: int):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = __data_queue_source(external_queue, chunk_size)
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
@@ -133,7 +133,7 @@ class queue_to__print_blk(gr.top_block):
 
 class queue_to__string_file_sink(gr.top_block):
 
-    def __init__(self, filename: str, external_queue: SimpleQueue[np.ndarray], chunk_size: int):
+    def __init__(self, filename: str, external_queue: "SimpleQueue[np.ndarray]", chunk_size: int):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = __data_queue_source(external_queue, chunk_size)
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)

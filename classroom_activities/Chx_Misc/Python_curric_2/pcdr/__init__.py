@@ -18,6 +18,10 @@ from .wavegen import (
     wave_file_gen,
 )
 
+from .helpers import (
+    queue_to_list
+)
+
 try:
     from .gnuradio_misc import (
         configure_graceful_exit,
@@ -29,7 +33,7 @@ try:
     )
 
     from .gnuradio_receiver import (
-        gnuradio_receive
+        Gnuradio_receiver
     )
 
     from .osmocom_queued_tx_flowgraph import (
