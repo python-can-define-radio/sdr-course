@@ -28,6 +28,10 @@ try:
         gnuradio_send,
     )
 
+    from .gnuradio_receiver import (
+        gnuradio_receive
+    )
+
     from .osmocom_queued_tx_flowgraph import (
         queue_to__osmocom_sink,
         queue_to__print_blk,
