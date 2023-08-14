@@ -1,18 +1,23 @@
 from queue import SimpleQueue
 import numpy as np
-from pcdr import pad_chunk_queue, ook_modulate, createTimestamps, makeRealWave
+import time
+import matplotlib.pyplot as plt
+from pcdr import Gnuradio_receiver
 
 
-samp_rate = 50
-modded = ook_modulate(data=[1, 0, 1, 0, 1, 0, 1, 1], bit_length=25)
-t = len(modded) / samp_rate
-timestamps = createTimestamps(seconds=t, num_samples=len(modded))
-wave = makeRealWave(timestamps, freq=4)
-fully_modded = modded * wave
-noisy = TODO
-random_amount_of_no_signal_at_beginning = TODO
 
-fakeQueue = pad_chunk_queue(TODO, arbitrary_size)
+receiver = Gnuradio_receiver(center_freq=98e6, samp_rate=20e6, chunk_size=2**20)
+receiver.start()
+time.sleep(240)
+receiver.stop()
+receiver.wait()
+listy = receiver.tb.data_queue_sink.queue_get_all()
+print(len(listy) * len(listy[0]) / 20e6)
+# import ipdb; ipdb.set_trace()
+# receiver.stop()
+# data = receiver.get()
+# abs(np.fft.fftshift(np.fft.fft(data)))
 
-print("TODO: demodulate the signal")
+
+
 
