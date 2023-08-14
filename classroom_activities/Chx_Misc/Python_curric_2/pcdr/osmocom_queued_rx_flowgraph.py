@@ -28,7 +28,7 @@ class __data_queue_sink(gr.sync_block):
 
     def work(self, input_items, output_items):
         try:
-            datacopy = input_items[0][0][:]
+            datacopy = input_items[0][0].copy()
             self.__data_queue.put(datacopy)
             return 1
         except Full:
