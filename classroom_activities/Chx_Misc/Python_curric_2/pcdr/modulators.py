@@ -10,7 +10,7 @@ T = TypeVar('T')
 
 @deal.example(lambda: __repeat_each_item([1, 3], 2) == [1, 1, 3, 3])
 @deal.pre(lambda _: _.numtimes >= 0)
-@deal.ensure(lambda _: len(_.result) == len(_.original) * len(_.numtimes))
+@deal.ensure(lambda _: len(_.result) == len(_.original) * _.numtimes)
 @deal.has()
 def __repeat_each_item(original: Iterable[T], numtimes: int) -> List[T]:
     """Example:
@@ -28,7 +28,8 @@ def __is_binary(x: int) -> bool:
     return x in [1, 0]
 
 
-@deal.pre(lambda _: all(map(__is_binary, _.data)), message="ook_modulate expects `data` to only contain 0 and 1")
+@deal.pre(lambda _: all(map(__is_binary, _.data)),
+          message='ook_modulate expects `data` to be of type Iterable[int], and all of those integers must be either 0 or 1. It cannot be a string, such as "1010".')
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.has()
 def ook_modulate(data: Iterable[int], bit_length: int, dtype=np.uint8) -> np.ndarray:
