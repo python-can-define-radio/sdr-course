@@ -33,7 +33,7 @@ RuntimeError: can't open file
 
 Most often, this means you omitted the `File` in the `File Source` block.
 
-## Syntax error involing a comma
+## Syntax error involving a comma
 
 ```
 File "/..../stuff.py", line 9999
