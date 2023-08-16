@@ -63,26 +63,15 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ## So, let's begin our transmission with a preamble.
 modulated = ook_modulate([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
+```
 
+Writing the binary explicitly is getting somewhat tedious. The pcdr module includes a `str_to_bin_list` function that converts a string to binary. Let's try it:
 
-## 7a
-## Writing the binary explicitly is getting somewhat tedious.
-## Here's a function that converts a string to binary.
-## Like any function, it is only useful if you "call" it
-## (in other words, run the function), which you'll see below.
-##
-## Interested readers may wish to look up "list comprehensions 
-##   in Python", but we can use this function without fully 
-##   understanding the implementation details.
-def str_to_bin_list(mystr):
-     bitstrs = [f"{ord(x):08b}" for x in mystr]
-     joined = "".join(bitstrs)
-     return list(map(int, joined))
-
-
-## 7b
-## Let's try it. This should print the same list we saw earlier,
+```python3
+## 7
+## Try this. It should print the same list we saw earlier,
 ## specifically, [0, 1, 0, 0, 0, 0, 1, 1].
+from pcdr import str_to_bin_list
 list_of_bits = str_to_bin_list("C")
 print(list_of_bits)
 
