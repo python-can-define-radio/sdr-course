@@ -19,7 +19,8 @@ from .wavegen import (
 )
 
 from .helpers import (
-    queue_to_list
+    queue_to_list,
+    str_to_bin_list,
 )
 
 try:
