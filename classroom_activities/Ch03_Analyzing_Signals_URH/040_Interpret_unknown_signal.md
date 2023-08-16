@@ -51,3 +51,5 @@
 ### ℹ️ Some useful resources for urh:
 
 - https://github.com/jopohl/urh
+
+## <p align="center">[Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md)</p>
