@@ -16,3 +16,10 @@ def queue_to_list(q: SimpleQueue[T]) -> List[T]:
             retval.append(q.get_nowait())
         except Empty:
             return retval
+
+
+@deal.example(lambda _: str_to_bin_list("C") == [0, 1, 1, 0, 0, 1, 0, 1])
+def str_to_bin_list(message: str):
+    bitstrs = [f"{ord(x):08b}" for x in message]
+    joined = "".join(bitstrs)
+    return list(map(int, joined))
