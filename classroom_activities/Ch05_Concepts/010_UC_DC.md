@@ -38,7 +38,9 @@ This is a fairly important concept. Try a few different combinations of frequenc
 
 ## Receiving in GNU Radio
 
-Reopen the flowgraph `receiver.grc` from exercise `030`. Make the following changes:
+Reopen the flowgraph `receiver.grc` from `Ch01_Diving_in_Headfirst` exercise  `020_GNU_Radio_FM_Receiver`.   
+
+Make the following changes:
 
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
@@ -46,7 +48,8 @@ Reopen the flowgraph `receiver.grc` from exercise `030`. Make the following chan
 - osmocom Source:
   - Ch0: Frequency (Hz): `100e6`
   
-On a different device, transmit a pure sine wave at 100.2e6 using `osmocom_siggen_nogui`. At what frequency is the wave received? You'll see that it's `0.2e6`, or, equivalently, `200e3`.
+On a different device, transmit a pure sine wave at 100.2e6 using `osmocom_siggen_nogui`. 
+At what frequency is the wave received? You'll see that it's `0.2e6`, or, equivalently, `200e3`.
 
 Again, this is important. The frequency that is received by the computer is _far lower_ than the waves that were actually in the air. The HackRF (or any other similar device) does _downconversion_ using a _mixer_. We'll be discussing this as a class.
 
