@@ -47,3 +47,5 @@
 |5|  Determine the signal's Sample per Symbol.|
 |6|  Crop the signal to eliminate the portion without data.|
 |7|  Verify all settings.|
+
+## <p align="center">[Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/090_Record_a_real_signal.md)</p>
