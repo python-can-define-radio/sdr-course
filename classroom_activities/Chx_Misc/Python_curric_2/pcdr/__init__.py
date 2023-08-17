@@ -16,6 +16,7 @@ from .wavegen import (
     waveAndWrite,
     wave_file_gen_prompts,
     wave_file_gen,
+    generate_ook_modulated_example_file,
 )
 
 from .helpers import (
