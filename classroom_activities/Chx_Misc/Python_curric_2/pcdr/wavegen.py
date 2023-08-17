@@ -96,3 +96,35 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
     timestamps = createTimestamps(max_time, num_samples)
 
     waveAndWrite(filename, timestamps, freq, complex_or_real)
+
+
+
+def generate_ook_modulated_example_file(output_filename: str, noise: bool = False, message_delay: bool = False, text_source_filename: str = None):
+    """
+    if `noise` is True, random noise will be added to the generated signal.
+    if `message_delay` is True, there will be a pause before the meaningful data starts.
+    """
+    
+    message = "This is an example message."
+    if text_source_filename == None:
+        print(f"No text source file specified, so all generated files will contain the message '{message}'")
+    else:
+        # Open text_source_filename
+        # reading it, 
+        # and setting the message to an arbtrary slice of the content string
+        raise NotImplemented("")
+        
+    samp_rate = random.randrange(100, 700, 100)
+    bit_length = random.randrange(50, 3000, 10)
+    freq = random.randrange(10, samp_rate // 5)
+    
+    modded = ook_modulate(str_to_bin_list(message), bit_length)
+    t = len(modded) / samp_rate
+    timestamps = createTimestamps(seconds=t, num_samples=len(modded))
+    wave = makeComplexWave(timestamps, freq)
+    fully_modded = modded * wave
+    if message_delay:
+    	fully_modded = np.concatenate([np.zeros(random.randint(100, 1500)), fully_modded])
+    if noise:
+        fully_modded = fully_modded + np.random.normal(len(fully_modded))
+    fully_modded.tofile(output_filename)
