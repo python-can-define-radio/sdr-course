@@ -48,6 +48,17 @@
 
 ![final_message.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/final_message.png?raw=true) 
 
+### Additional practice
+
+For additional practice, you can generate a file using this Python code:
+
+```python3
+from pcdr import generate_ook_modulated_example_file
+generate_ook_modulated_example_file("my_example_ook_file.complex")
+```
+
+If you copy and run that, it will create a file named `my_example_ook_file.complex` in your current working directory. You can then try demodulating the message in that file for extra practice. It picks random parameters, so feel free to run it as many times as you like.
+
 ### ℹ️ Some useful resources for urh:
 
 - https://github.com/jopohl/urh
