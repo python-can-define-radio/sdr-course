@@ -9,8 +9,12 @@ from __future__ import annotations
 import numpy as np
 import matplotlib.pyplot as plt
 import deal
+import random
+from typing import Optional
 
 from pcdr.fileio import writeRealCSV, writeComplexCSV
+from pcdr.modulators import ook_modulate
+from pcdr.helpers import str_to_bin_list
 
 
 
@@ -98,21 +102,27 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
     waveAndWrite(filename, timestamps, freq, complex_or_real)
 
 
-
-def generate_ook_modulated_example_file(output_filename: str, noise: bool = False, message_delay: bool = False, text_source_filename: str = None):
+@deal.post(lambda result: result.dtype == np.complex64)
+def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None) -> np.ndarray:
     """
+    Generate a file with the given `output_filename`.
+
     if `noise` is True, random noise will be added to the generated signal.
     if `message_delay` is True, there will be a pause before the meaningful data starts.
-    """
+    if `text_source` is any string, a random sentence from it will be used as the message.
     
+    Example usage:
+
+    text_content = "These are some words, and more words. There are many words in a row in these sentences."
+    generate_ook_modulated_example_data(text_source=text_content)
+    """
     message = "This is an example message."
-    if text_source_filename == None:
+    if text_source == None:
         print(f"No text source file specified, so all generated files will contain the message '{message}'")
     else:
-        # Open text_source_filename
-        # reading it, 
-        # and setting the message to an arbtrary slice of the content string
-        raise NotImplemented("")
+        sentences = text_source.split(".")
+        message = random.choice(sentences) + "."
+        
         
     samp_rate = random.randrange(100, 700, 100)
     bit_length = random.randrange(50, 3000, 10)
@@ -123,8 +133,31 @@ def generate_ook_modulated_example_file(output_filename: str, noise: bool = Fals
     timestamps = createTimestamps(seconds=t, num_samples=len(modded))
     wave = makeComplexWave(timestamps, freq)
     fully_modded = modded * wave
+    assert fully_modded.dtype == np.complex64
     if message_delay:
-    	fully_modded = np.concatenate([np.zeros(random.randint(100, 1500)), fully_modded])
+        fully_modded = np.concatenate([
+            np.zeros(random.randint(100, 1500), dtype=np.complex64),
+            fully_modded
+        ])
     if noise:
-        fully_modded = fully_modded + np.random.normal(len(fully_modded))
-    fully_modded.tofile(output_filename)
+        fully_modded = fully_modded + np.random.normal(len(fully_modded), dtype=np.complex64)
+    
+    return fully_modded
+
+
+def generate_ook_modulated_example_file(output_filename: str, noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None):
+    """
+    Generate a file with the given `output_filename`.
+
+    if `noise` is True, random noise will be added to the generated signal.
+    if `message_delay` is True, there will be a pause before the meaningful data starts.
+    if `text_source` is any string, a random sentence from it will be used as the message.
+    
+    Example usage:
+
+    text_content = "These are some words, and more words. There are many words in a row in these sentences."
+    generate_ook_modulated_example_file("generated_example_file.complex", text_source=text_content)
+    """
+    
+    data = generate_ook_modulated_example_data(output_filename, noise, message_delay, text_source)
+    data.tofile(output_filename)
