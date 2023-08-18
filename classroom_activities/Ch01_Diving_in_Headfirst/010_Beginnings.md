@@ -5,6 +5,8 @@
 </pre>
 </details>
 
+# Beginnings
+
 Before starting:
 - Create a folder for yourself with your name (and no spaces) on the Desktop.
   - We recommend that you create a directory for each exercise number to keep things organized. This is especially helpful when you reach the exercises that use Embedded Python Blocks, as they generate helper files.
