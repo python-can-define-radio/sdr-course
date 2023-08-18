@@ -116,22 +116,20 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ## Discussion
 
-- 
-
 - If you have any errors, remember to look at the list of Common GNU Radio Error messages in the `resources` folder.
 
 - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
 
-## Footnotes
-1. `hackrf=0` explanation
-    - Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
-2. IF Gain slider
-    - Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change) 
-
 ## Questions
 
 - Why did we pick the given `Start` and `Stop` for the `center_freq_slider`?
 - Does this range include all Commercial FM stations in the United States?
 - If not, how should you adjust it to include any missing frequencies?
+
+## Footnotes
+1. `hackrf=0` explanation
+    - Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
+2. IF Gain slider
+    - Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change) 
