@@ -5,6 +5,8 @@
 </pre>
 </details>
 
+# Analyze signals: manual
+
 ## Signal interpretation: manually decoding a sequence of bits
 
 Filename: `Sig_interp_bits_manual.grc`
