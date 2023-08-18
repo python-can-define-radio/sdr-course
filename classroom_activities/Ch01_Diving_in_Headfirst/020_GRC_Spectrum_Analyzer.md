@@ -15,16 +15,9 @@ GUI Range
 GUI Range
 
 
-Osmocom  --->  GUI sink
+Osmocom  --->  QT GUI sink
 Source      
 ```
-
-- Have a (working) slider to pick the frequency that you're tuning in to. Working means your physical SDR changes frequency when the slider changes
-- Set `samp_rate` to 20000000 (20 Million)
-- Have a GUI sink connected directly from the osmocom source
-- Have the center of the GUI sink set correctly (OR SET TO ZERO)
-- Have the bandwidth of the GUI sink set correctly
-- For the center frequency slider, set the "Stop" to 500 Million, and "Step" to 10000 
 
 
 ## How to set the Parameters
@@ -49,10 +42,12 @@ Source
 
 - Value: `20e6`
 
-### For the GUI sink:
+### For the QT GUI sink:
 
 - FFT Size: `8192`
+- Center Frequency (Hz): `center_freq_slider`
 - Update Rate: `20`
+- Show RF Freq: `Yes`
 
 ### For the Osmocom Source:
 
