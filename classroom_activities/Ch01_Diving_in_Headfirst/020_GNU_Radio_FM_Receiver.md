@@ -24,13 +24,6 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ```
 
-- Have a (working) slider to pick the frequency that you're tuning in to. Working means your physical SDR changes frequency when the slider changes
-- Demodulate the sound and play it
-- Have two (2) waterfall sinks: one before the Band Pass Filter, and one after
-- Have the centers of the waterfall sinks set correctly (OR SET TO ZERO)
-- Working IF Gain slider (moving the slider changes the IF Gain)
-- Working GUI Chooser to pick a station from a list
-
 
 ## How to set the Parameters
 
@@ -78,7 +71,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the Osmocom Source:
 
-- Device Arguments: `"hackrf=0"`<sup>[1](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GNU_Radio_FM_Receiver.md#hackrf0-explanation)</sup>
+- Device Arguments: `"hackrf=0"`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GNU_Radio_FM_Receiver.md#hackrf0-explanation)</sup>
 - Ch0: Frequency (Hz): `center_freq_slider`
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
@@ -108,9 +101,13 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 - Sample Rate: `48 kHz` (Pick from drop-down menu)
 
-### For BOTH Waterfall Sinks:
+### First Waterfall Sink (unfiltered):
 
 - Leave all as defaults.
+
+### Second Waterfall Sink (filtered):
+
+- Center Frequency (Hz): `center_freq_slider`
 
 ### For the Time Sink:
 
@@ -119,15 +116,20 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ## Discussion
 
+- Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change) 
+
 - If you have any errors, remember to look at the list of Common GNU Radio Error messages in the `resources` folder.
 
 - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
 
-## `hackrf=0` explanation
-1. Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
+## Footnotes
+1. `hackrf=0` explanation
+    - Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
 
 ## Questions
 
-- Why did we pick the given `Start` and `Stop` for the `center_freq_slider`? Does this range include all Commercial FM stations in the United States? If not, how should you adjust it to include any missing frequencies?
+- Why did we pick the given `Start` and `Stop` for the `center_freq_slider`?
+- Does this range include all Commercial FM stations in the United States?
+- If not, how should you adjust it to include any missing frequencies?
