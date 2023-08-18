@@ -78,6 +78,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the Osmocom Source:
 
+- Device Arguments: `"hackrf=0"`
 - Ch0: Frequency (Hz): `center_freq_slider`
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
