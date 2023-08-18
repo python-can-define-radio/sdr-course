@@ -7,6 +7,8 @@
 </pre>
 </details>
 
+# Analyze signals: Binary slicer
+
 ## Digital data interpretation exercise #5
 
 ```
