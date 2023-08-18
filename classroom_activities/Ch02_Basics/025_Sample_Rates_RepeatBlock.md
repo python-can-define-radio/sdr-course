@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-# Sample rates: the Repeat Block
+# Sample rates: Repeat Block
 
 In `024_Sample_Rates_grc_practice.md`, we created a square wave using a Vector Source block.
 
