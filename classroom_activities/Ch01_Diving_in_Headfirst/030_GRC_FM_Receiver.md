@@ -1,5 +1,6 @@
 <details><summary><i>Naming history (click to expand)</i></summary>
 <pre>
+2023 Aug 18: 030_GRC_FM_Receiver.md
 2023 Aug 18: 030_GNU_Radio_FM_Receiver.md
 2023 May 22: 020_GNU_Radio_FM_Receiver.md
 2022 Aug 30: 210-GNU-Radio-FM-Receiver.md
@@ -7,7 +8,7 @@
 </pre>
 </details>
 
-# GNU Radio FM Receiver
+# GRC FM Receiver
 
 ## Summary
 
@@ -47,7 +48,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the First GUI Range:
 
-- Id: `if_gain_slider`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_GNU_Radio_FM_Receiver.md#footnotes)</sup>
+- Id: `if_gain_slider`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_GRC_FM_Receiver.md#footnotes)</sup>
 - Default Value: `24`
 - Start: `0`
 - Stop: `40`
@@ -74,7 +75,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the Osmocom Source:
 
-- Device Arguments: `"hackrf=0"`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_GNU_Radio_FM_Receiver.md#footnotes)</sup>
+- Device Arguments: `"hackrf=0"`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_GRC_FM_Receiver.md#footnotes)</sup>
 - Ch0: Frequency (Hz): `center_freq_slider`
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
