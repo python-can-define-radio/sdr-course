@@ -4,7 +4,6 @@ and such for this class.
 
 Try this to start: wave_gen_prompts()
 """
-from __future__ import annotations
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -36,7 +35,11 @@ def makeRealWave(timestamps: np.ndarray, freq: float):
 
 
 @deal.has()
-def makeComplexWave(timestamps: np.ndarray, freq):
+def makeComplexWave(timestamps: np.ndarray, freq: float):
+    ## Note: I don't know enough about math with complex numbers
+    ## to know if freq should be restricted to real, but I figured
+    ## it was better to type-annotate it as `float` rather than leaving
+    ## it as `Any`.
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 
 
@@ -103,6 +106,12 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
 
 
 @deal.post(lambda result: result.dtype == np.complex64)
+def multiply_by_complex_wave(data: np.ndarray, samp_rate: float):
+    raise NotImplementedError("Planning to move some of the pure logic of generate_ook_modulated_example_data to here.")
+
+
+
+@deal.post(lambda result: result.dtype == np.complex64)
 def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None) -> np.ndarray:
     """
     Generate a file with the given `output_filename`.
@@ -128,7 +137,8 @@ def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool
     bit_length = random.randrange(50, 3000, 10)
     freq = random.randrange(10, samp_rate // 5)
     
-    modded = ook_modulate(str_to_bin_list(message), bit_length)
+    bits = str_to_bin_list(message)
+    modded = ook_modulate(bits, bit_length)
     t = len(modded) / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=len(modded))
     wave = makeComplexWave(timestamps, freq)
