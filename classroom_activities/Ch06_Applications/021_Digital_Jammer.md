@@ -68,8 +68,7 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 
 ### For the Waterfall Sink:
 
-- Leave all as defaults.
-
+- Center Frequency (Hz): `center_freq_slider`
 
 ## Discussion:
 
