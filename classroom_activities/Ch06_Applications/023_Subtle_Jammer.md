@@ -42,6 +42,7 @@ Constant Source  ⟶  Osmocom sink
 
 ### For the Osmocom Sink:
 
+- Device Arguments: `"hackrf=0"`
 - Ch0: Frequency (Hz): `center_freq_slider`
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
