@@ -7,6 +7,8 @@
 </pre>
 </details>
 
+# Unicode and file source
+
 We've talked about sending pulses to represent binary. However, most "real life"  data is more interesting than simply zeros and ones (even if it is stored as zeros and ones on the hard drive). We're going to talk about how text is stored as binary, and how to work with text in both GNU Radio and Python.
 
 # Reading from Files
