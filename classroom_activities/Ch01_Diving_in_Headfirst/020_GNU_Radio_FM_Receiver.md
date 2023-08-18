@@ -71,7 +71,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the Osmocom Source:
 
-- Device Arguments: `"hackrf=0"`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GNU_Radio_FM_Receiver.md#hackrf0-explanation)</sup>
+- Device Arguments: `"hackrf=0"`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GNU_Radio_FM_Receiver.md#footnotes)</sup>
 - Ch0: Frequency (Hz): `center_freq_slider`
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
