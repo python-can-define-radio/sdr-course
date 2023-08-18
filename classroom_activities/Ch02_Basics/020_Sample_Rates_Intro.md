@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-## Introduction
+# Sample rates: Introduction
 
 At this point, you've used various Graphical User Interface (GUI) features to manually adjust the amplitude and the frequency of a pure sine wave. Human-powered modulation is certainly useful, as thousands of telegraph operators could tell you.
 
