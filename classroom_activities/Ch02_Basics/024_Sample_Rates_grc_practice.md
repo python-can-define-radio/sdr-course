@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-# Sample rates: GNU Radio practice
+# Sample rates: GRC practice
 
 ## Practice problem set A
 
