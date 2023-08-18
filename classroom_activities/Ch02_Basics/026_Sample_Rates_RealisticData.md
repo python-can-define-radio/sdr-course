@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-## Sending more interesting (and realistic) data
+# Sample rates: Realistic Data
 
 We've seen how to create a square wave using the Vector Source. Now, let's simulate a more interesting signal.
 
