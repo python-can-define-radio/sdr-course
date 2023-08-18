@@ -51,5 +51,6 @@ Some useful keyboard shortcuts in GNU Radio Companion:
 
 [HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)  
 [HackRF One Block Diagram](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/hackrfone_diagram.png)  
-[Resources](https://github.com/python-can-define-radio/sdr-course/tree/main/resources)
+[Resources](https://github.com/python-can-define-radio/sdr-course/tree/main/resources)  
+[GNUradio tutorials](https://wiki.gnuradio.org/index.php?title=Tutorials)
 
