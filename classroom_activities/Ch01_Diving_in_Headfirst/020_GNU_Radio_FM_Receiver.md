@@ -78,7 +78,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the Osmocom Source:
 
-- Device Arguments: `"hackrf=0"`
+- Device Arguments: `"hackrf=0"`[<sup>1</sup>](## `hackrf=0` explanation)
 - Ch0: Frequency (Hz): `center_freq_slider`
 - Ch0: Frequency Correction (ppm): `0`
 - Ch0: RF Gain (dB): `0`
@@ -124,6 +124,9 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
+
+## `hackrf=0` explanation
+1. Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
 
 ## Questions
 
