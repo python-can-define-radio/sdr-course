@@ -7,6 +7,8 @@
 </pre>
 </details>
 
+# Analyze signals: Data from analog wave
+
 ## Digital data interpretation exercise #2
 
 ```
