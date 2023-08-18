@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-## Ripples and turtle-meters
+# Sample rates: Ripples and turtle-meters
 
 Let's imagine some [ripples in water](https://www.youtube.com/watch?v=FeXP7SxCKKE).
 
