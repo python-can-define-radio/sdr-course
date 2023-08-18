@@ -5,6 +5,8 @@
 </pre>
 </details>
 
+# Decibels dB
+
 if you had a signal of -10 dB, 
 what would be the strength of a signal that is twice as strong?
 
