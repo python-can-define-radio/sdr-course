@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-# Sample Rates: practice problems
+# Sample Rates: Practice problems
 
 Run this. Name it `rough_sine_wave.py`. You'll see that it plots a very rough sine wave.
 
