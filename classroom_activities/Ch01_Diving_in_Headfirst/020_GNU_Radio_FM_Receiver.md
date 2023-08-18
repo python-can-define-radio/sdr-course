@@ -44,7 +44,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the First GUI Range:
 
-- Id: `if_gain_slider`
+- Id: `if_gain_slider`<sup>[ footnote](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GNU_Radio_FM_Receiver.md#footnotes)</sup>
 - Default Value: `24`
 - Start: `0`
 - Stop: `40`
@@ -116,7 +116,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ## Discussion
 
-- Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change) 
+- 
 
 - If you have any errors, remember to look at the list of Common GNU Radio Error messages in the `resources` folder.
 
@@ -127,6 +127,8 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 ## Footnotes
 1. `hackrf=0` explanation
     - Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
+2. IF Gain slider
+    - Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change) 
 
 ## Questions
 
