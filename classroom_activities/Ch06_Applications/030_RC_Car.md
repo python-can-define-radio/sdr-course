@@ -47,10 +47,10 @@ Parameters:
   - Ch0: BB Gain (dB): See note on IF Gain.
 - GUI Range (First):
   - Id: `IFGain`
-  - 0 to 40, steps of 8
+  - `0` to `40`, steps of `8`
 - GUI Range (Second):
   - Id: `BBGain`
-  - 0 to 62, steps of 2
+  - `0` to `62`, steps of `2`
 - Band pass filter:
   - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
   - Low Cut: `-300e3`
@@ -81,6 +81,7 @@ Parameters:
   - Id: `samp_rate`
   - Value: _match your recording sample rate_
 - osmocom Sink:
+  - Device Arguments: `"hackrf=0"`
   - Ch0: Frequency (Hz): _match your recording Ch0 Freq`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `IFGain`
