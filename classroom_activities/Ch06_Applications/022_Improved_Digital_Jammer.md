@@ -5,6 +5,8 @@
 </pre>
 </details>
 
+# Improved Digital Jammer
+
 This digital jammer is more effective than the original because it can match the symbol rate of the target.
 
 ```
