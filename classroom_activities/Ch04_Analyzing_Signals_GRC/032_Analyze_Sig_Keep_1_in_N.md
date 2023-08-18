@@ -7,6 +7,8 @@
 </pre>
 </details>
 
+# Analyze signals: Keep 1 in N
+
 ## Digital data interpretation exercise #4
 
 ```
