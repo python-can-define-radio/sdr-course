@@ -5,7 +5,7 @@
 </pre>
 </details>
 
-## Aliasing
+# Aliasing
 
 Aliasing in signal processing happens when you measure a signal that is outside of what your sample rate allows.
 
@@ -13,7 +13,7 @@ Aliasing in signal processing happens when you measure a signal that is outside 
 2. Have a student run the noise jammer, tuned to near the top end of the spectrum.
 3. Slowly raise the noise jammer past the right edge. It will incorrectly appear on the left edge due to aliasing.
  
-### How to fix?
+## How to fix?
 
 In the FM Radio flowgraph, we use the "filteron" checkbox to do analog filtering inside the Hack RF.
 
