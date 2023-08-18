@@ -6,7 +6,8 @@
 </pre>
 </details>
 
-## Analyze Frequency of Combined Signals/Waves
+# Analyze Frequency of Combined Signals/Waves
+
 This is a demonstration of how GNU Radio Companion can evaluate a signal comprising multiple waveforms (e.g., multiple sine or cosine waves) to determine the frequencies of the individual waves.
 
 ## Summary of the GUI-program
