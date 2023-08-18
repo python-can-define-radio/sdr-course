@@ -7,6 +7,8 @@
 </pre>
 </details>
 
+# GRC Spectrum Analyzer
+
 ## Summary
 
 ```
