@@ -6,6 +6,8 @@
 </pre>
 </details>
 
+# Sample rates: CPU Temperatures
+
 ## Need for speed
 
 In `020_Sample_Rates_Intro.md`, we measured temperature every 2 hours. That works for weather, but now, imagine you're dealing with a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this in the terminal:
