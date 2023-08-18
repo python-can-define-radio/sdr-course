@@ -9,6 +9,8 @@
 </pre>
 </details>
 
+# Nyquist
+
 The instructor will do demonstrations using the notes below.
 
 ```
