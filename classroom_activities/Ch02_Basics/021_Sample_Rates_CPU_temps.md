@@ -6,7 +6,7 @@
 </pre>
 </details>
 
-# Sample rates: CPU Temperatures
+# Sample rates: CPU temperatures
 
 ## Need for speed
 
