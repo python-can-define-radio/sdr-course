@@ -45,3 +45,11 @@ Some useful keyboard shortcuts in GNU Radio Companion:
   - Ctrl + F : Find blocks
   - D : Disable a block
   - E : Enable a block
+
+--------
+## Useful information
+
+[HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)
+[HackRF One Block Diagram](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/hackrfone_diagram.png)
+[resources](https://github.com/python-can-define-radio/sdr-course/tree/main/resources)
+
