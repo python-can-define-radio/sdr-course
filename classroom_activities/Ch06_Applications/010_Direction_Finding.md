@@ -4,6 +4,8 @@
 </pre>
 </details>
 
+# Direction Finding
+
 There are two methods of direction-finding that we'll discuss:
 
 - Using a directional antenna
