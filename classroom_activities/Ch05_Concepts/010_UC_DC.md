@@ -38,7 +38,7 @@ This is a fairly important concept. Try a few different combinations of frequenc
 
 ## Receiving in GNU Radio
 
-Reopen the flowgraph `receiver.grc` from `Ch01_Diving_in_Headfirst` exercise  `020_GNU_Radio_FM_Receiver`.   
+Reopen the flowgraph `receiver.grc` from `Ch01_Diving_in_Headfirst` exercise  `030_GRC_FM_Receiver`.   
 
 Make the following changes:
 
