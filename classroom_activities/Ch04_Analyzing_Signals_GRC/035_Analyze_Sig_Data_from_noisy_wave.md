@@ -8,6 +8,8 @@
 </pre>
 </details>
 
+# Analyze signals: Data from "noisy" wave
+
 ## Digital data interpretation exercise #6
 
 ```
