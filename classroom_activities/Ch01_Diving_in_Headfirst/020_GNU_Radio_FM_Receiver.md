@@ -130,9 +130,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ## Footnotes
 1. `hackrf=0` explanation
-    - Normally index zero is assigned to the first hackrf plugged in. If you have multiple hackrfs, they will be 1..2..3...etc.
+    - Normally index zero is assigned to the first HackRF plugged in. If you have multiple HackRFs, they will be numbered sequentially (0, 1, 2, 3, etc).
 2. IF Gain slider
-    - Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change).
-    - Check out the following link to find out the Intermediate Frequency (IF), Radio Frequency (RF), and Baseband (BB) gain capabilities of the HackRF One.
-    - You can do a Ctl + f search on that page for gain to find it faster.
-    - [HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)
+    - Notice when you adjust the IF Gain slider, the intensity changes. (In the frequency sink, this is seen as a Y-axis increase. In the waterfall sink, this is seen as a color change).
+    - Check out the [HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html) to find out the Intermediate Frequency (IF), Radio Frequency (RF), and Baseband (BB) gain capabilities of the HackRF One. You'll most likely want to do Ctrl + f search for "gain" on that page.
