@@ -1,4 +1,4 @@
-## Upconversion and Downconversion
+# Upconversion and Downconversion
 
 ### Transmitting a pure sine wave (again)
 
