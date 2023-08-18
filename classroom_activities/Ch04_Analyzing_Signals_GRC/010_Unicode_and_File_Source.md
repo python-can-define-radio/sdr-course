@@ -11,7 +11,7 @@
 
 We've talked about sending pulses to represent binary. However, most "real life"  data is more interesting than simply zeros and ones (even if it is stored as zeros and ones on the hard drive). We're going to talk about how text is stored as binary, and how to work with text in both GNU Radio and Python.
 
-# Reading from Files
+## Reading from Files
 
 We've used a Vector Source block to provide data. Now, let's try a File Source. First, we're going to build the concepts in Python.
 
