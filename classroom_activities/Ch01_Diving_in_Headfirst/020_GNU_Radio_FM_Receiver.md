@@ -134,4 +134,5 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 2. IF Gain slider
     - Notice when you use the IF Gain slider the intensity changes... (In the frequency sink this is seen as a Y-axis increase, in the waterfall sink this is seen as a color change).
     - Check out the following link to find out the Intermediate Frequency (IF), Radio Frequency (RF), and Baseband (BB) gain capabilities of the HackRF One.
+    - You can do a Ctl + f search on that page for gain to find it faster.
     - [HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)
