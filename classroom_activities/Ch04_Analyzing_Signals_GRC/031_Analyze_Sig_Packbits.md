@@ -5,6 +5,8 @@
 </pre>
 </details>
 
+# Analyze signals: Packbits
+
 ## Digital data interpretation exercise #3
 
 ```
