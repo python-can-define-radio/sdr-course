@@ -1,0 +1,11 @@
+Goal:
+- Allow for testing without the Hack RF
+--> Set up pcdr functions to connect to waterfall sink in GNU RAdio
+	Example:
+		from pcdr import stuff
+		modulated = ook_modulate([1,0,1,0], bit_length=1000)
+		gnuradio_view_waterfall(modulated, samp_rate=2e6)
+--> Step 1: create gnuradio_view_waterfall()
+     Step 1a: Open GNU Radio, Generate a flowgraph with a waterfall, and figure out the python code
+          
+--> Set up pcdr functions to write to file (for any that don't already)
