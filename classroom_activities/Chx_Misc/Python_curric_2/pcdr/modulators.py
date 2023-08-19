@@ -35,7 +35,7 @@ def __is_binary(x: int) -> bool:
 @deal.pre(lambda _: all(map(__is_binary, _.data)),
           message='ook_modulate expects `data` to be of type List[int], and all of those integers must be either 0 or 1. It cannot be a string, such as "1010".')
 @deal.pre(lambda _: len(_.data) * _.bit_length < maxSizeAfterRepetition, message=maxSizeErrMessage)
-@deal.pre(lambda _: 0 <= _.numtimes)
+@deal.pre(lambda _: 0 <= _.bit_length)
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.has()
 def ook_modulate(data: List[int], bit_length: int, dtype=np.uint8) -> np.ndarray:
