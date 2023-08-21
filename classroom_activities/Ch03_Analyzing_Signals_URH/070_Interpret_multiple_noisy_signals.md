@@ -13,7 +13,7 @@
 
 - Download the following file (link provided) from github ![unknown_signal_4.complex](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_4.complex).
 
-- Put it in your urh project folder.
+- Put it in your folder.
 
 - The first thing we need to do is seperate and save each signal.
 
