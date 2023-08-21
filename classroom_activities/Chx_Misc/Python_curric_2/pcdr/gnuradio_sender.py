@@ -63,6 +63,7 @@ def gnuradio_send(data: Sequence[TRealOrComplexNum],
     """`output_to` can be one of these:
         - "hackrf" (default): send to osmocom sink.
         - "print": print to stdout (usually the terminal).
+        - "network": Use a TCP socket to transmit data to a host on the network (also works for localhost). (Note: implemented using ZeroMQ.)
         - "fn=abc.txt": write output data to a file named 'abc.txt'.
 
         `print_delay` is only used if printing to stdout.
@@ -76,6 +77,8 @@ def gnuradio_send(data: Sequence[TRealOrComplexNum],
         tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
     elif output_to == "print":
         tb = queue_to__print_blk(print_delay, q, chunk_size)
+    elif output_to == "network":
+        tb = queue_to_zmqpub()
     elif output_to.startswith("fn="):
         filename = output_to[3:]  # the part after the "fn="
         tb = queue_to__string_file_sink(filename, q, chunk_size)
