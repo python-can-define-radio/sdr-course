@@ -27,5 +27,4 @@ to measure a 250 Hz wave, you would have to sample at least...
  
 to measure a 2.4 GHz wave, you would have to sample at least...
 
- 
- 
+_Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
