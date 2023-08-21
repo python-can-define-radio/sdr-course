@@ -8,13 +8,13 @@
 
 - So far all we have evaluated are ASK signals lets change that up.
 
-- Launch urh and open your project folder.
+- Launch urh and open your folder.
 
 - Click on the Interpretation tab at the top of the urh window.
 
 - Download the following file (link provided) from github ![unknown_signal_5.complex](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_5.complex).
 
-- Put it in your urh project folder.
+- Put it in your folder.
 
 - The first thing we need to do is seperate and save each signal.
 
