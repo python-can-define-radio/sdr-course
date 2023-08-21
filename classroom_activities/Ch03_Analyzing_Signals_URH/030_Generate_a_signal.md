@@ -65,7 +65,7 @@
 
 - Right click and select Edit on the pause in the window, change the Pause Length to 0 and hit ok.
 
-- Click the Generate file button at the bottom and navigate to your project folder and save the file.
+- Click the Generate file button at the bottom and navigate to your folder and save the file.
     - It is not necessary to rename the file, if you do ensure it is still a `.complex` file.
 
 - Now change tabs to the Interpretation tab.
