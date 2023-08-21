@@ -1,3 +1,16 @@
+## 2023 Aug 21
+Pub/Sub works on WSL. When we tried to extract the relevant parts for easier Python use, it doesn't seem to connect. No error messages.
+
+Next steps:
+-> Try the basic pub/sub "models" on James-pcdr's computer to ensure those work.
+-> Use debugger to step through our simplified publisher; see if can determine source of error.
+
+Historical:
+Solved "Namespace Gtk not available" by following this page: https://www.scivision.dev/gnu-radio-companion-windows-subsystem-for-linux/
+
+
+## 2023 Aug 19
+
 Goal:
 - Allow for testing without the Hack RF
 --> Set up pcdr functions to connect to waterfall sink in GNU RAdio
