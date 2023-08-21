@@ -132,33 +132,33 @@ class queue_to_waterfall(gr.top_block, Qt.QWidget):
 
 
 
-def main(top_block_cls=queue_to_waterfall, options=None):
+# def main(top_block_cls=queue_to_waterfall, options=None):
 
-    if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
-        style = gr.prefs().get_string('qtgui', 'style', 'raster')
-        Qt.QApplication.setGraphicsSystem(style)
-    qapp = Qt.QApplication(sys.argv)
+#     if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
+#         style = gr.prefs().get_string('qtgui', 'style', 'raster')
+#         Qt.QApplication.setGraphicsSystem(style)
+#     qapp = Qt.QApplication(sys.argv)
 
-    tb = top_block_cls()
-    tb.start()
-    tb.show()
+#     tb = top_block_cls()
+#     tb.start()
+#     tb.show()
 
-    def sig_handler(sig=None, frame=None):
-        Qt.QApplication.quit()
+#     def sig_handler(sig=None, frame=None):
+#         Qt.QApplication.quit()
 
-    signal.signal(signal.SIGINT, sig_handler)
-    signal.signal(signal.SIGTERM, sig_handler)
+#     signal.signal(signal.SIGINT, sig_handler)
+#     signal.signal(signal.SIGTERM, sig_handler)
 
-    timer = Qt.QTimer()
-    timer.start(500)
-    timer.timeout.connect(lambda: None)
+#     timer = Qt.QTimer()
+#     timer.start(500)
+#     timer.timeout.connect(lambda: None)
 
-    def quitting():
-        tb.stop()
-        tb.wait()
-    qapp.aboutToQuit.connect(quitting)
-    qapp.exec_()
+#     def quitting():
+#         tb.stop()
+#         tb.wait()
+#     qapp.aboutToQuit.connect(quitting)
+#     qapp.exec_()
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
