@@ -24,7 +24,8 @@ what would be the strength of a signal that is a eighth as strong?
 
 -19 dB
 
-what would be the strength of a signal that is a 10th as strong as -10 dB?
+what would be the strength of a signal that is a 10th as strong as -10 dB?  
+
 -20 dB
 
 
