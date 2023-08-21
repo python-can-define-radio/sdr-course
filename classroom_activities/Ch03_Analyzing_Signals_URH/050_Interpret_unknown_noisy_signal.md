@@ -67,7 +67,7 @@ As in the previous lesson you can also generate noisy signals for practice using
 
 ```python3
 from pcdr import generate_ook_modulated_example_file
-generate_ook_modulated_example_file("my_example_ook_file.complex")
+generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True)
 ```
 
 If you copy and run that, it will create a file named `my_example_ook_file.complex` in your current working directory. You can then try demodulating the message in that file for extra practice. It picks random parameters, so feel free to run it as many times as you like.
