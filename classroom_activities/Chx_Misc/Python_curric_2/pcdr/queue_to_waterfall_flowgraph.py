@@ -10,16 +10,6 @@
 
 from distutils.version import StrictVersion
 
-if __name__ == '__main__':
-    import ctypes
-    import sys
-    if sys.platform.startswith('linux'):
-        try:
-            x11 = ctypes.cdll.LoadLibrary('libX11.so')
-            x11.XInitThreads()
-        except:
-            print("Warning: failed to XInitThreads()")
-
 from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio.filter import firdes
