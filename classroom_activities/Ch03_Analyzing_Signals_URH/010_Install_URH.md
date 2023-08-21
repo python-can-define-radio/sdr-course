@@ -14,6 +14,8 @@
 
 - In terminal type `pip install --upgrade numpy`.
 
+- In terminal type `pip install pcdr`. (locally built package)
+
 - In terminal type `urh` to launch the program.
 
 - If you get an error when launching urh type `source ~/.profile`.
@@ -24,15 +26,13 @@
 
 ![urh_screenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/urh_screenshot.png?raw=true)  
 
-- In the bottom left of urh select `New Project`.
+- At the top left of urh select `File > Open folder` or the keyboard shortcut (Ctrl + Shift + O).
 
-- To the right of `Choose a path` at the top of the urh popup window, select the three dots and navigate to where you want your project folder to be saved.
+- Navigate to your folder created on the Desktop.
 
-- At the end of the path add something like this `/urh_project` and hit `ok` it will automatically create a new folder for you.
-  
-- Presse "OK" at the bottom of the "Create a new project" window.
-  
-- Your new project's path will be shown at the top of the URH primary window.
+- Select Open at the top right of the Open folder popup.
+
+- When it asks if you want to make it a project folder select No.
 
 ### ℹ️ Some useful resources for urh:
 
