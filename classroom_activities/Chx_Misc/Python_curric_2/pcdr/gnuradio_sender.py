@@ -8,6 +8,7 @@ from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__p
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr.helpers import queue_to_list
+from pcdr.osmocom_queued_tx_flowgraph import queue_to_zmqpub_sink
 
 
 
@@ -51,7 +52,7 @@ def pad_chunk_queue(data: Sequence[TRealOrComplexNum], chunk_size: int) -> Simpl
     return q
 
 
-@deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print"])
+@deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print", "network"])
 def gnuradio_send(data: Sequence[TRealOrComplexNum],
                   center_freq: float,
                   samp_rate: float,
@@ -59,7 +60,8 @@ def gnuradio_send(data: Sequence[TRealOrComplexNum],
                   output_to: str = "hackrf",
                   print_delay: float = 0.5,
                   chunk_size: int = 1024,
-                  device_args: str = "hackrf=0"):
+                  device_args: str = "hackrf=0",
+                  port: int = 8008):
     """`output_to` can be one of these:
         - "hackrf" (default): send to osmocom sink.
         - "print": print to stdout (usually the terminal).
@@ -78,7 +80,7 @@ def gnuradio_send(data: Sequence[TRealOrComplexNum],
     elif output_to == "print":
         tb = queue_to__print_blk(print_delay, q, chunk_size)
     elif output_to == "network":
-        tb = queue_to_zmqpub()
+        tb = queue_to_zmqpub_sink(port, q, chunk_size)
     elif output_to.startswith("fn="):
         filename = output_to[3:]  # the part after the "fn="
         tb = queue_to__string_file_sink(filename, q, chunk_size)
