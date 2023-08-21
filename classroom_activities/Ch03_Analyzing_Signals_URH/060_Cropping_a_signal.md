@@ -36,6 +36,14 @@
   
 - Set Show data as to `ASCII` and verify all settings to reveal your message.
 
+### Additional practice
+
+Yet another option for the `generate_ook_modulated_example_file` function is `message_delay`:
+
+```python3
+from pcdr import generate_ook_modulated_example_file
+generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True, message_delay=True)
+```
 
 ### ℹ️ Some useful resources for urh:
 
