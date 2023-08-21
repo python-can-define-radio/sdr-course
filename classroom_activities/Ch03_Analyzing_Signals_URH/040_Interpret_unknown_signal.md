@@ -7,7 +7,7 @@
 
 # Interpret a signal using URH 📻
 
-- Launch urh and open your project folder.
+- Launch urh and open your folder.
 
 - Click on the Interpretation tab at the top of the urh window.
 
