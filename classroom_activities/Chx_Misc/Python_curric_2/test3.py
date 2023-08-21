@@ -1,4 +1,5 @@
-from pcdr.queue_to_waterfall_flowgraph import main
+from pcdr.queue_to_waterfall_flowgraph import queue_to_waterfall
+from pcdr.gnuradio_misc import configure_and_run_gui_flowgraph
 
 
-main()
+configure_and_run_gui_flowgraph(queue_to_waterfall)
