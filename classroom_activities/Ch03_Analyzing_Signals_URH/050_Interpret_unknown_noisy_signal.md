@@ -70,15 +70,6 @@ from pcdr import generate_ook_modulated_example_file
 generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True)
 ```
 
-If you copy and run that, it will create a file named `my_example_ook_file.complex` in your current working directory. You can then try demodulating the message in that file for extra practice. It picks random parameters, so feel free to run it as many times as you like.
-
-For more info on `generate_ook_modulated_example_file`, look at the docstring:
-
-```python3
-from pcdr import generate_ook_modulated_example_file
-print(generate_ook_modulated_example_file.__doc__)
-```
-
 ### ℹ️ Some useful resources for urh:
 
 - https://github.com/jopohl/urh
