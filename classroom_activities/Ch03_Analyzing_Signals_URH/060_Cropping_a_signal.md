@@ -17,7 +17,7 @@
 
 - Click and drag the signal and drop it to the right (On the Interpretation tab).
 
-- Clean up your `noisy` signal by adding a filter like in the previous lesson
+- Clean up your [`noisy`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md) signal by adding a filter like in the previous lesson
 
 - Determine signals [`Modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md) type as in previous lesson.
 
