@@ -71,7 +71,7 @@ def gnuradio_simulate(data: np.ndarray,
     configure_and_run_gui_flowgraph(queue_to_guisink, [center_freq, samp_rate, q, chunk_size])
     
 
-@deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print", "network"])
+@deal.pre(lambda _: _.output_to.startswith("fn:") or _.output_to in ["hackrf", "print", "network"])
 def gnuradio_send(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
@@ -85,7 +85,7 @@ def gnuradio_send(data: np.ndarray,
         - "hackrf" (default): send to osmocom sink.
         - "print": print to stdout (usually the terminal).
         - "network": Use a TCP socket to transmit data to a host on the network (also works for localhost). (Note: implemented using ZeroMQ.)
-        - "fn=abc.txt": write output data to a file named 'abc.txt'.
+        - "fn:abc.txt": write output data to a file named 'abc.txt'.
 
         `print_delay` is only used if printing to stdout.
         """
@@ -100,8 +100,8 @@ def gnuradio_send(data: np.ndarray,
         tb = queue_to__print_blk(print_delay, q, chunk_size)
     elif output_to == "network":
         tb = queue_to_zmqpub_sink(port, q, chunk_size)
-    elif output_to.startswith("fn="):
-        filename = output_to[3:]  # the part after the "fn="
+    elif output_to.startswith("fn:"):
+        filename = output_to[3:]  # the part after the "fn:"
         tb = queue_to__string_file_sink(filename, q, chunk_size)
     else:
         raise ValueError("Shouldn't be possible if deal contracts worked.")

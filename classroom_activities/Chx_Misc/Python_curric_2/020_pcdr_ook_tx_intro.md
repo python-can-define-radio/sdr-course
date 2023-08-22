@@ -13,6 +13,9 @@ from pcdr import gnuradio_send, ook_modulate, gnuradio_simulate
 ##  a spectrum analyzer program such as GQRX,
 ##  and then in URH.
 ## How many seconds long is each bit?
+## If you aren't sure, try setting the bit length to something longer,
+## like int(8e6). Then, use a stopwatch.
+## How does the time for a single bit relate to the bit_length and the samp_rate?
 modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ```
@@ -25,11 +28,11 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
    ``` 
 2. Write the data to a file. You can then examine the file using URH or a program of your choice.
    ```python3
-   gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="fn=generatedfile.complex")
+   gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="fn:generatedfile.complex")
    ```
 3. Use `gnuradio_simulate` instead. This displays the data in a QT GUI Sink. You may wish to use `prepend_zeros`, which adds a delay before the actual data. This can help give you time to switch windows to the GUI before the actual data is displayed.  
    ```python3
-   gnuradio_simulate(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(8e6))
+   gnuradio_simulate(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
    ```
 
 ```python3
@@ -61,6 +64,10 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ## have a full byte of information: 01000011.
 ## Let's try to send it, and receive it using URH.
 ## You may run into an issue, which we'll discuss in the exercise below.
+##
+## No-SDR-hardware option:
+##   Use output_to="fn:generatedfile.complex", and then
+##   open that file in URH.
 modulated = ook_modulate([0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
@@ -93,7 +100,7 @@ print(list_of_bits)
 
 
 ## 9
-## Now that we can use str_to_bin_list, it's much easier to send messages.
+## Now that we can use str_to_bin_list, it's much easier to create messages.
 ## Try this:
 list_of_bits = str_to_bin_list("Hi")
 modulated = ook_modulate(list_of_bits, bit_length=int(1e6))
