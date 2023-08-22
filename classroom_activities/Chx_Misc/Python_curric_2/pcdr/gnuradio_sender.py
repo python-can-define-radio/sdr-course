@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import List, Optional, Sequence, TypeVar, Union
 import deal
 import pydash
@@ -16,28 +15,34 @@ from pcdr.gnuradio_misc import configure_and_run_gui_flowgraph
 T = TypeVar('T')
 
 
-@deal.example(lambda: (
-           np.array(queue_to_list(pad_chunk_queue([1, 2, 3], 5)))
-        == np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
-        ).all()
-)
-@deal.example(lambda: (
-            np.array(queue_to_list(pad_chunk_queue([1, 2, 3], 2))) 
-         == np.array([[1, 2], [3, 0]], dtype=np.complex64)
-        ).all()  
-)
-@deal.example(lambda: (
-            np.array(queue_to_list(pad_chunk_queue(np.ndarray([1, 2, 3], dtype=np.uint8), 2))) 
-         == np.array([[1, 2], [3, 0]], dtype=np.complex64)
-        ).all()  
-)
+def __pad_chunk_queue_test_1():
+    testdata = np.array([1, 2, 3], dtype=np.uint8)
+    pcq = pad_chunk_queue(testdata, 2)
+    nparry = np.array(queue_to_list(pcq))
+    should_be = np.array([[1, 2], [3, 0]], dtype=np.complex64)
+    return (nparry == should_be).all()
+
+
+def __pad_chunk_queue_test_2():
+    testdata = np.array([1, 2, 3], dtype=np.uint8)
+    pcq = pad_chunk_queue(testdata, 5)
+    nparry = np.array(queue_to_list(pcq))
+    should_be = np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
+    return (nparry == should_be).all()
+    
+
+
+@deal.example(__pad_chunk_queue_test_1)
+@deal.example(__pad_chunk_queue_test_2)
 @deal.ensure(lambda _:  \
         queue_to_list(_.result) == [] if len(_.data) == 0 else True,
         message="If data is empty, then the result is an empty queue"
 )
-@deal.pre(lambda _: _.chunk_size > 0)
+@deal.pre(lambda _: 0 < _.chunk_size < int(50e6))
+# Require 1-dimensional array (`shape` has only one item, that is, one dimension)
+@deal.pre(lambda _: len(_.data.shape) == 1)
 @deal.has()
-def pad_chunk_queue(data: Union[np.ndarray, list], chunk_size: int) -> SimpleQueue[np.ndarray]:
+def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueue[np.ndarray]:
     """
     - numpy-ify
     - Pad `data` to a multiple of `chunk_size`
@@ -45,7 +50,10 @@ def pad_chunk_queue(data: Union[np.ndarray, list], chunk_size: int) -> SimpleQue
     - Convert to a queue of numpy arrays for gnuradio use"""
 
     npdata = np.array(data, dtype=np.complex64)
-
+    assert type(npdata) == np.ndarray
+    assert npdata.dtype == np.complex64
+    assert len(npdata.shape) == 1
+    
     ## Pad to next full chunk size, then chunk
     padlen = chunk_size - (len(npdata) % chunk_size)
     if padlen != chunk_size:
