@@ -8,9 +8,15 @@
 # Beginnings
 
 Before starting:
-- Create a folder for yourself with your name (and no spaces) on the Desktop.
+- Create a folder for yourself with your name (and no spaces) on the Desktop (not necessary if you already created one in the python course).
   - We recommend that you create a directory for each exercise number to keep things organized. This is especially helpful when you reach the exercises that use Embedded Python Blocks, as they generate helper files.
-- Change the TMOUT as you did in the python course.
+- Follow these directions to run the student setup script (unecessary if you are on the same computer):
+  - Right-click on this [student_config_script.sh](https://raw.githubusercontent.com/python-can-define-radio/python-course/main/resources/student_config_script.sh)  and select `Save Link As`.  
+  - For the save location, click on `Desktop` on the left, and then click `Save`.
+  - Minimize the browser window so that you can see the Desktop.
+  - Right-click on your Desktop and select `Open in Terminal`.
+  - Type `bash student_config_script.sh` and hit Enter.
+  - Let the instructor know if you see any error messages.
 
 Go to [this tutorial page at GNUradio.org](https://wiki.gnuradio.org/index.php?title=Tutorials) (https://wiki.gnuradio.org/index.php?title=Tutorials).
 
