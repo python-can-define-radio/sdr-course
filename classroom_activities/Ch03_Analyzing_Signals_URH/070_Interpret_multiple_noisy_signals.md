@@ -17,7 +17,7 @@
 
 - The first thing we need to do is seperate and save each signal.
 
-- The second thing we need to do is clean up each `noisy` signal by adding a filter like in the previous lesson
+- The second thing we need to do is clean up each [`noisy`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md) signal by adding a filter like in the previous lesson
 
 - Go back to Signal View `Analog` and determine signals [`modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md) type as in previous lesson.
 
