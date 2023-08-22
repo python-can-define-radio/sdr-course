@@ -23,7 +23,7 @@
 
 - The next thing we need to do is set the [`Center`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md) like the previous lesson.
 
-- Determine signals `Samples/Symbol` as in previous lesson.
+- Determine signals [`Samples/Symbol`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/040_Interpret_unknown_signal.md) as in previous lesson.
 
 - Crop your signal to eliminate leading zeros.
 
