@@ -5,7 +5,7 @@
 One of the biggest advantages of defining radios using software is being able to transmit using arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
 
 ```python3
-from pcdr import gnuradio_send, ook_modulate
+from pcdr import gnuradio_send, ook_modulate, gnuradio_simulate
 
 
 ## 1
@@ -17,11 +17,20 @@ modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ```
 
-Note: if you don't have a SDR peripheral, or if you don't want to actually transmit, use this modified version, which will print the data instead of transmitting it. You may wish to use a shorter bit length, for example, `bit_length=4`. 
+Note: if you don't have a SDR peripheral, or if you don't want to actually transmit, you have a few options:
 
-```python3
-gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="print")
-```
+1. Print the data. In this case, you may wish to use a shorter bit length, for example, `bit_length=4`.
+   ```python3
+   gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="print")
+   ``` 
+2. Write the data to a file. You can then examine the file using URH or a program of your choice.
+   ```python3
+   gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="fn=generatedfile.complex")
+   ```
+3. Use `gnuradio_simulate` instead. This displays the data in a QT GUI Sink. You may wish to use `prepend_zeros`, which adds a delay before the actual data. This can help give you time to switch windows to the GUI before the actual data is displayed.  
+   ```python3
+   gnuradio_simulate(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(8e6))
+   ```
 
 ```python3
 ## 2
