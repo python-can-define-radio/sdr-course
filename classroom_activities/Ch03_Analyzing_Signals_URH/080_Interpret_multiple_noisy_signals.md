@@ -28,7 +28,7 @@
 
 - Determine signals [`Samples/Symbol`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/040_Interpret_unknown_signal.md) as in previous lesson.
 
-- Crop your signal to eliminate leading zeros.
+- [`Crop`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/060_Cropping_a_signal.md) your signal to eliminate leading zeros.
 
 - Set Show data as to `ASCII` and verify all settings to reveal your message.
 
