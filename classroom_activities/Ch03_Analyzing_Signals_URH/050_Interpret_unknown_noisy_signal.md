@@ -39,7 +39,7 @@
 
 - Give it a new name like `unknown_signal_2_filtered.complex` do not save over your original signal in case you need to start over for any reason.
 
-- Go back to Signal View `Analog` and determine signals `Modulation` type as in previous lesson.
+- Go back to Signal View `Analog` and determine signals [`Modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md) type as in previous lesson.
 
 - Now we need to adjust the `Center` setting.
 
