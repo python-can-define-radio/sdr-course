@@ -26,14 +26,14 @@ try:
     #     pass
 
 
-    def configure_and_run_gui_flowgraph(top_block_cls):
+    def configure_and_run_gui_flowgraph(top_block_cls, args):
        
         if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
             style = gr.prefs().get_string('qtgui', 'style', 'raster')
             Qt.QApplication.setGraphicsSystem(style)
         qapp = Qt.QApplication(sys.argv)
 
-        tb = top_block_cls()
+        tb = top_block_cls(*args)
         tb.start()
         tb.show()
 

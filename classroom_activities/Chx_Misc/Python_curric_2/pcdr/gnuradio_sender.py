@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List, Optional, Sequence, TypeVar
+from typing import List, Optional, Sequence, TypeVar, Union
 import deal
 import pydash
 import numpy as np
@@ -9,7 +9,8 @@ from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr.helpers import queue_to_list
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_zmqpub_sink
-
+from pcdr.queue_to_guisink_flowgraph import queue_to_guisink
+from pcdr.gnuradio_misc import configure_and_run_gui_flowgraph
 
 
 T = TypeVar('T')
@@ -25,13 +26,18 @@ T = TypeVar('T')
          == np.array([[1, 2], [3, 0]], dtype=np.complex64)
         ).all()  
 )
+@deal.example(lambda: (
+            np.array(queue_to_list(pad_chunk_queue(np.ndarray([1, 2, 3], dtype=np.uint8), 2))) 
+         == np.array([[1, 2], [3, 0]], dtype=np.complex64)
+        ).all()  
+)
 @deal.ensure(lambda _:  \
         queue_to_list(_.result) == [] if len(_.data) == 0 else True,
         message="If data is empty, then the result is an empty queue"
 )
 @deal.pre(lambda _: _.chunk_size > 0)
 @deal.has()
-def pad_chunk_queue(data: Sequence[TRealOrComplexNum], chunk_size: int) -> SimpleQueue[np.ndarray]:
+def pad_chunk_queue(data: Union[np.ndarray, list], chunk_size: int) -> SimpleQueue[np.ndarray]:
     """
     - numpy-ify
     - Pad `data` to a multiple of `chunk_size`
@@ -52,8 +58,21 @@ def pad_chunk_queue(data: Sequence[TRealOrComplexNum], chunk_size: int) -> Simpl
     return q
 
 
+def gnuradio_simulate(data: np.ndarray,
+                  center_freq: float,
+                  samp_rate: float,
+                  chunk_size: int = 1024,
+                  prepend_zeros: int = 0):
+    """Display using a GNU Radio QT GUI Sink"""
+    prepended = np.concatenate([np.zeros(prepend_zeros, dtype=data.dtype), data])
+    assert prepended.dtype == data.dtype
+    q = pad_chunk_queue(prepended, chunk_size)
+
+    configure_and_run_gui_flowgraph(queue_to_guisink, [center_freq, samp_rate, q, chunk_size])
+    
+
 @deal.pre(lambda _: _.output_to.startswith("fn=") or _.output_to in ["hackrf", "print", "network"])
-def gnuradio_send(data: Sequence[TRealOrComplexNum],
+def gnuradio_send(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
                   if_gain: int = 16,
@@ -70,7 +89,7 @@ def gnuradio_send(data: Sequence[TRealOrComplexNum],
 
         `print_delay` is only used if printing to stdout.
         """
-    
+
     q = pad_chunk_queue(data, chunk_size)
     
     ## Set up and run flowgraph with the data queue we've prepared above

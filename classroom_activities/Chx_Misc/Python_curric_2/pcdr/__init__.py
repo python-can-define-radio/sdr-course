@@ -32,6 +32,7 @@ try:
     from .gnuradio_sender import (
         pad_chunk_queue,
         gnuradio_send,
+        gnuradio_simulate
     )
 
     from .gnuradio_receiver import (
