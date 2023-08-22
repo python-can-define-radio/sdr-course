@@ -91,7 +91,9 @@ Also notice that there are two cycles of the wave for a single bit. In the next 
 
 As you can see from the previous examples, the number of cycles-per-bit is arbitrary. In fact, it does not need to be a whole number! The information is communicated by the wave being "turned on" or "turned off".
 
-That being said, in "real life", there are other people transmitting on nearby frequencies. That means that the chosen frequency needs to be known by both transmitter and receiver so that the receiver can filter out unwanted transmissions.
+That being said, in "real life", there are reasons to pick a certain frequency:
+- Others may be transmitting on nearby frequencies. That means that the chosen frequency needs to be known by both transmitter and receiver so that the receiver can filter out unwanted transmissions.
+- Different frequencies have different propagation characteristics.
 
 Now, let's try adjusting the data.
 
@@ -113,8 +115,11 @@ wave = makeRealWave(timestamps, freq=8)
 fully_modded = modded * wave
 plt.plot(timestamps, fully_modded, "*-", markersize=20)
 plt.show()
+```
 
+Now, let's modulate some text:
 
+```python3
 ## 12
 ## Using the function str_to_bin_list from the previous exercise set, 
 ## - Ask the user for a string
