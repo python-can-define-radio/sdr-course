@@ -19,7 +19,7 @@
 
 - The second thing we need to do is clean up each `noisy` signal by adding a filter like in the previous lesson
 
-- Go back to Signal View `Analog` and determine signals [`Modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md) type as in previous lesson.
+- Go back to Signal View `Analog` and determine signals [`modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md) type as in previous lesson.
 
 - The next thing we need to do is set the `Center` like the previous lesson.
 
