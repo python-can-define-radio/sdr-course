@@ -2,7 +2,11 @@
 
 ℹ️ Prerequisite: `pip install pcdr`
 
+### Introduction
+
 One of the biggest advantages of defining radios using software is being able to transmit using arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
+
+### Sending bits
 
 ```python3
 from pcdr import gnuradio_send, ook_modulate, gnuradio_simulate
@@ -80,6 +84,8 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 modulated = ook_modulate([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ```
+
+### Sending text as bits
 
 Writing the binary explicitly is getting somewhat tedious. The pcdr module includes a `str_to_bin_list` function that converts a string to binary. Let's try it:
 
