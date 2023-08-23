@@ -9,22 +9,14 @@
 </pre>
 </details>
 
-# Nyquist
+# Oversampling and Undersampling
 
-The instructor will do demonstrations using the notes below.
+### Sampling (specifically undersampling and why it's a problem)
 
-```
-Sample rate     Wave freq     Did we capture?
-1000 Hz         100 Hz       
-400  Hz         100 Hz        
-200  Hz         100 Hz        
-```
+Start by reading this [Sampling lesson on this page from Harvey Mudd](https://gallicchio.github.io/learnSDR/lesson06.html).
 
--------------------
+_Note: at time of writing, the caption is wrong on Figure 3. However, the page correctly explains what is happening._
 
-to measure a 250 Hz wave, you would have to sample at least...
- 
- 
-to measure a 2.4 GHz wave, you would have to sample at least...
+### Nyquist and Aliasing
 
 _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
