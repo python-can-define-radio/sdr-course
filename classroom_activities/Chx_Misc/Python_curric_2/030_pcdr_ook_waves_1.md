@@ -126,13 +126,13 @@ Notice that there are two cycles of the wave for a single bit. In the next examp
 
 ```python3
 ## 12
-## Copy and modify the previous example. Change the freq to 16.
-## Is the 1010 pattern still distinguishable?
+## Copy and modify the previous example. Change the freq to 24.
+## Is the 100101 pattern still distinguishable?
 
 
 ## 13
 ## Copy and modify the previous example. Change the freq to 5.
-## Is the 1010 pattern still distinguishable?
+## Is the 100101 pattern still distinguishable?
 ```
 
 As you can see from the previous examples, the number of cycles-per-bit is arbitrary. In fact, it does not need to be a whole number! The information is communicated by the wave being "turned on" or "turned off".
