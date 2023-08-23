@@ -112,7 +112,7 @@ Manually updating `num_samples` based on the length of your data is somewhat ted
 ## Try this.
 modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
 timestamps = createTimestamps(seconds=1.0, num_samples=len(modulated))
-wave = makeRealWave(timestamps, freq=8)
+wave = makeRealWave(timestamps, freq=6)
 fully_modulated = modulated * wave
 plt.plot(timestamps, fully_modulated, "*-", markersize=20)
 plt.show()
@@ -125,12 +125,12 @@ Now, since `num_samples` is set to the length of our modulated data, we can free
 Notice that there are two cycles of the wave for a single bit. In the next example, we'll see four cycles per bit.
 
 ```python3
-## 8
+## 12
 ## Copy and modify the previous example. Change the freq to 16.
 ## Is the 1010 pattern still distinguishable?
 
 
-## 9
+## 13
 ## Copy and modify the previous example. Change the freq to 5.
 ## Is the 1010 pattern still distinguishable?
 ```
@@ -146,7 +146,7 @@ That being said, in "real life", there are reasons to pick a certain frequency:
 Now, let's modulate some text:
 
 ```python3
-## 12
+## 14
 ## Using the function str_to_bin_list from the previous exercise set, 
 ## - Ask the user for a string
 ## - Convert the string to a list of bits
@@ -161,7 +161,7 @@ Up to this point, we've been using a fixed amount of time: 1 second. However, we
 Here's how we handle that:
 
 ```python3
-## 13
+## 15
 ## Try this.
 samp_rate = 50
 modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
@@ -176,7 +176,7 @@ plt.show()
 Notice that `seconds` is now set to `len(modulated) / samp_rate`, which in this case equals `150 / 50`, or `3`. As a result, in the graph, there are 3 seconds of data. Reason: there are 6 bits, each of which is 25 samples long. That's 150 samples. We are working with 50 samples per second (chosen arbitrarily). Each group of 50 samples takes 1 second, so 150 samples takes 3 seconds.
 
 ```python3
-## 14
+## 16
 ## Copy and modify the previous example.
 ## Make the bit length 50, and make the data [1, 0, 1, 0, 1].
 ## How many seconds of data is this?
