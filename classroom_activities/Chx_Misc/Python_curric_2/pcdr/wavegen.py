@@ -72,13 +72,13 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float) ->
     return timestamps, makeComplexWave(timestamps, freq)
 
 
-def makeComplexWave_maxtime(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+def makeComplexWave_time(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
     num_samples = samp_rate * seconds
     timestamps = createTimestamps(seconds, num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
 
 
-def makeRealWave_maxtime(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+def makeRealWave_time(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
     num_samples = samp_rate * seconds
     timestamps = createTimestamps(seconds, num_samples)
     return timestamps, makeRealWave(timestamps, freq)
