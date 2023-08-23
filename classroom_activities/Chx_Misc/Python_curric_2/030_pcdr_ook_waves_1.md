@@ -141,19 +141,6 @@ That being said, in "real life", there are reasons to pick a certain frequency:
 - Others may be transmitting on nearby frequencies. That means that the chosen frequency needs to be known by both transmitter and receiver so that the receiver can filter out unwanted transmissions.
 - Different frequencies have different propagation characteristics.
 
-### Modulating text
-
-Now, let's modulate some text:
-
-```python3
-## 14
-## Using the function str_to_bin_list from the previous exercise set, 
-## - Ask the user for a string
-## - Convert the string to a list of bits
-## - OOK modulate the bits
-## - Plot the result 
-```
-
 ### Sample Rates
 
 Up to this point, we've been using a fixed amount of time: 1 second. However, we eventually want to transmit this data to the Hack RF, and in that context, we will have a fixed **sample rate**, not a fixed amount of time.
@@ -161,7 +148,7 @@ Up to this point, we've been using a fixed amount of time: 1 second. However, we
 Here's how we handle that:
 
 ```python3
-## 15
+## 14
 ## Try this.
 samp_rate = 50
 modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
@@ -176,8 +163,21 @@ plt.show()
 Notice that `seconds` is now set to `len(modulated) / samp_rate`, which in this case equals `150 / 50`, or `3`. As a result, in the graph, there are 3 seconds of data. Reason: there are 6 bits, each of which is 25 samples long. That's 150 samples. We are working with 50 samples per second (chosen arbitrarily). Each group of 50 samples takes 1 second, so 150 samples takes 3 seconds.
 
 ```python3
-## 16
+## 15
 ## Copy and modify the previous example.
 ## Make the bit length 50, and make the data [1, 0, 1, 0, 1].
 ## How many seconds of data is this?
+```
+
+### Modulating text
+
+Now, let's modulate some text:
+
+```python3
+## 16
+## Using the function str_to_bin_list from the previous exercise set, 
+## - Ask the user for a string
+## - Convert the string to a list of bits
+## - OOK modulate the bits
+## - Plot the result 
 ```
