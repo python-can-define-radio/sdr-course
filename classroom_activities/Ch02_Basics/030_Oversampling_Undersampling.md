@@ -6,6 +6,7 @@
 2023 Jan 23: 082LATER-Nyquist.md 
 2023 Jan 28: 999-Nyquist.md
 2023 May 22: 040_Nyquist.md
+2023 Aug 23: 030_Oversampling_Undersampling.md
 </pre>
 </details>
 
