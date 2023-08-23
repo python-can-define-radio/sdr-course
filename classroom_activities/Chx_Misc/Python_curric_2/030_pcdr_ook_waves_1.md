@@ -44,8 +44,8 @@ Now that we've plotted a wave, let's look back at our `ook_modulate` function.
 import matplotlib.pyplot as plt
 from pcdr import ook_modulate
 
-modded = ook_modulate(data=[1, 0, 1, 0], bit_length=4)
-plt.plot(modded, "*-", markersize=20)
+modulated = ook_modulate(data=[1, 0, 1, 0], bit_length=4)
+plt.plot(modulated, "*-", markersize=20)
 plt.show()
 
 
@@ -65,9 +65,9 @@ from pcdr import createTimestamps, makeRealWave, ook_modulate
 
 timestamps = createTimestamps(seconds=1.0, num_samples=100)
 wave = makeRealWave(timestamps, freq=8)
-modded = ook_modulate(data=[1, 0, 1, 0], bit_length=25)
-fully_modded = modded * wave
-plt.plot(timestamps, fully_modded, "*-", markersize=20)
+modulated = ook_modulate(data=[1, 0, 1, 0], bit_length=25)
+fully_modulated = modulated * wave
+plt.plot(timestamps, fully_modulated, "*-", markersize=20)
 plt.show()
 ```
 
@@ -75,7 +75,7 @@ Notice that the data more closely resembles the classic OOK picture: wave turns 
 
 <details><summary>The math: <i>click...</i></summary>
 
-The key line is `fully_modded = modded * wave`. This multiplies each point in `wave` by each point in `modded`. Remember that `wave` is an array of only ones and zeros. Multiplying by one does not change a number, and multiplying by zero results in zero.
+The key line is `fully_modulated = modulated * wave`. This multiplies each point in `wave` by each point in `modulated`. Remember that `wave` is an array of only ones and zeros. Multiplying by one does not change a number, and multiplying by zero results in zero.
 
 </details>
 
@@ -107,16 +107,16 @@ Now, let's try adjusting the data.
 ## data is after running ook_modulate.
 ```
 
-In the most recent exercise, you needed to update `num_samples` based on the length of your data. We can ask the computer to do that for us by setting `num_samples` to the length of `modded`:
+In the most recent exercise, you needed to update `num_samples` based on the length of your data. We can ask the computer to do that for us by setting `num_samples` to the length of `modulated`:
 
 ```python3
 ## 11
 ## Try this.
-modded = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
-timestamps = createTimestamps(seconds=1.0, num_samples=len(modded))
+modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
+timestamps = createTimestamps(seconds=1.0, num_samples=len(modulated))
 wave = makeRealWave(timestamps, freq=8)
-fully_modded = modded * wave
-plt.plot(timestamps, fully_modded, "*-", markersize=20)
+fully_modulated = modulated * wave
+plt.plot(timestamps, fully_modulated, "*-", markersize=20)
 plt.show()
 ```
 
@@ -141,16 +141,16 @@ Here's how we handle that:
 ## 13
 ## Try this.
 samp_rate = 50
-modded = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
-t = len(modded) / samp_rate
-timestamps = createTimestamps(seconds=t, num_samples=len(modded))
+modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
+t = len(modulated) / samp_rate
+timestamps = createTimestamps(seconds=t, num_samples=len(modulated))
 wave = makeRealWave(timestamps, freq=4)
-fully_modded = modded * wave
-plt.plot(timestamps, fully_modded, "*-", markersize=20)
+fully_modulated = modulated * wave
+plt.plot(timestamps, fully_modulated, "*-", markersize=20)
 plt.show()
 ```
 
-Notice that `seconds` is now set to `len(modded) / samp_rate`, which in this case equals `150 / 50`, or `3`. As a result, in the graph, there are 3 seconds of data. Reason: there are 6 bits, each of which is 25 samples long. That's 150 samples. We are working with 50 samples per second (chosen arbitrarily). Each group of 50 samples takes 1 second, so 150 samples takes 3 seconds.
+Notice that `seconds` is now set to `len(modulated) / samp_rate`, which in this case equals `150 / 50`, or `3`. As a result, in the graph, there are 3 seconds of data. Reason: there are 6 bits, each of which is 25 samples long. That's 150 samples. We are working with 50 samples per second (chosen arbitrarily). Each group of 50 samples takes 1 second, so 150 samples takes 3 seconds.
 
 ```python3
 ## 14
