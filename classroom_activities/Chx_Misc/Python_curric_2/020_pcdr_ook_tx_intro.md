@@ -1,4 +1,4 @@
-## Introduction to OOK Transmitting using Python
+## Basic OOK Transmitting using Python
 
 ℹ️ Prerequisite: `pip install pcdr`
 
