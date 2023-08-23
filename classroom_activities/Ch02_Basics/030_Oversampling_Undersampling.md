@@ -89,7 +89,7 @@ plt.plot(timestamps, wave, "o-")
 plt.show()
 ```
 
-The above exercise shows **aliasing**. (You can review the explanation of aliasing [here]()).
+The above exercise shows **aliasing**. (You can review the explanation of aliasing [here](https://gallicchio.github.io/learnSDR/lesson06.html)).
 
 ```python3
 ## 5
