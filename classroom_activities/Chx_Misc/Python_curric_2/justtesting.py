@@ -1,4 +1,3 @@
-from queue import SimpleQueue
 import numpy as np
 import time
 import matplotlib.pyplot as plt

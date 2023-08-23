@@ -1,4 +1,3 @@
-from __future__ import annotations
 from gnuradio import gr
 import sys
 import signal

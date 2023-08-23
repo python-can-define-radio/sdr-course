@@ -1,6 +1,6 @@
-from __future__ import annotations
+import math
 import deal
-from typing import List, Iterable, TypeVar
+from typing import List, Iterable, TypeVar, Tuple
 import pydash
 import numpy as np
 
@@ -32,11 +32,31 @@ def __is_binary(x: int) -> bool:
     return x in [1, 0]
 
 
-@deal.pre(lambda _: all(map(__is_binary, _.data)),
-          message='ook_modulate expects `data` to be of type List[int], and all of those integers must be either 0 or 1. It cannot be a string, such as "1010".')
-@deal.pre(lambda _: len(_.data) * _.bit_length < maxSizeAfterRepetition, message=maxSizeErrMessage)
+
+
+@deal.pre(lambda _: all(map(__is_binary, _.bits)),
+          message='`bits` must be of type List[int], and all of those integers must be either 0 or 1. It cannot be a string, such as "1010".')
+@deal.pre(lambda _: len(_.bits) * _.bit_length < maxSizeAfterRepetition, message=maxSizeErrMessage)
 @deal.pre(lambda _: 0 <= _.bit_length)
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.has()
-def ook_modulate(data: List[int], bit_length: int, dtype=np.uint8) -> np.ndarray:
-    return np.array(__repeat_each_item(data, bit_length), dtype=dtype)
+def ook_modulate(bits: List[int], bit_length: int, dtype=np.uint8) -> np.ndarray:
+    return np.array(__repeat_each_item(bits, bit_length), dtype=dtype)
+
+
+## This import must be here due to circular imports
+from pcdr.wavegen import multiply_by_complex_wave
+
+
+@deal.post(lambda result: result[0].dtype == np.float32)
+@deal.post(lambda result: result[1].dtype == np.complex64)
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.bits) * _.bit_length)
+@deal.pre(lambda _: all(map(__is_binary, _.bits)),
+          message='`bits` must be of type List[int], and all of those integers must be either 0 or 1. It cannot be a string, such as "1010".')
+@deal.pre(lambda _: 1e-10 < _.samp_rate)  # arbitrarily low number
+@deal.pre(lambda _: math.isfinite(_.freq))
+@deal.pre(lambda _: 0 <= _.bit_length)
+@deal.has()
+def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    baseband_sig = ook_modulate(bits, bit_length)
+    return multiply_by_complex_wave(baseband_sig, samp_rate, freq)

@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import deal
 import random
-from typing import Optional
+from typing import Optional, List, Tuple
 
 from pcdr.fileio import writeRealCSV, writeComplexCSV
 from pcdr.modulators import ook_modulate
@@ -17,8 +17,14 @@ from pcdr.helpers import str_to_bin_list
 
 
 
+
 @deal.has()
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
+@deal.ensure(lambda _: len(_.result) == _.num_samples)
+@deal.post(lambda result: np.isfinite(result).all())
+@deal.post(lambda result: (0 <= result).all())
+@deal.pre(lambda _: 0 <= _.seconds < 900e6)  # arbitrarily large number
+@deal.pre(lambda _: 0 <= _.num_samples < 900e6)  # arbitrarily large number
 def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> np.ndarray:
     return np.linspace(
             start=0,
@@ -30,17 +36,40 @@ def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> np.n
 
 
 @deal.has()
+@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
+@deal.pre(lambda _: (0 <= _.timestamps).all())
+@deal.pre(lambda _: np.isfinite(_.timestamps).all())
+@deal.pre(lambda _: _.timestamps.dtype == np.float32)
+@deal.pre(lambda _: len(_.timestamps.shape) == 1)
+@deal.ensure(lambda _: len(_.timestamps) == len(_.result))
 def makeRealWave(timestamps: np.ndarray, freq: float):
     return np.float32(np.sin(freq * 2 * np.pi * timestamps))
 
 
 @deal.has()
-def makeComplexWave(timestamps: np.ndarray, freq: float):
+@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
+@deal.pre(lambda _: (0 <= _.timestamps).all())
+@deal.pre(lambda _: np.isfinite(_.timestamps).all())
+@deal.pre(lambda _: _.timestamps.dtype == np.float32)
+@deal.pre(lambda _: len(_.timestamps.shape) == 1)
+@deal.ensure(lambda _: len(_.timestamps) == len(_.result))
+def makeComplexWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
     ## Note: I don't know enough about math with complex numbers
     ## to know if freq should be restricted to real, but I figured
     ## it was better to type-annotate it as `float` rather than leaving
     ## it as `Any`.
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
+
+
+@deal.has()
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
+@deal.pre(lambda _: 1e-10 < _.samp_rate)  # arbitrarily low number
+@deal.pre(lambda _: 0 <= _.num_samples <= 10e9, message="num_samples must be between 0 and 10 billion. Upper limit is primarily to make automated testing faster")
+@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
+def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    t = num_samples / samp_rate
+    timestamps = createTimestamps(seconds=t, num_samples=num_samples)
+    return timestamps, makeComplexWave(timestamps, freq)
 
 
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
@@ -105,10 +134,12 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
     waveAndWrite(filename, timestamps, freq, complex_or_real)
 
 
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
 @deal.post(lambda result: result.dtype == np.complex64)
-def multiply_by_complex_wave(data: np.ndarray, samp_rate: float):
-    raise NotImplementedError("Planning to move some of the pure logic of generate_ook_modulated_example_data to here.")
-
+def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    timestamps, wave = makeComplexWave_numsamps(len(baseband_sig), samp_rate, freq)
+    mult = baseband_sig * wave
+    return timestamps, mult
 
 
 @deal.post(lambda result: result.dtype == np.complex64)
@@ -138,12 +169,8 @@ def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool
     freq = random.randrange(10, samp_rate // 5)
     
     bits = str_to_bin_list(message)
-    modded = ook_modulate(bits, bit_length)
-    t = len(modded) / samp_rate
-    timestamps = createTimestamps(seconds=t, num_samples=len(modded))
-    wave = makeComplexWave(timestamps, freq)
-    fully_modded = modded * wave
-    assert fully_modded.dtype == np.complex64
+    baseband_sig = ook_modulate(bits, bit_length)
+    timestamps, fully_modded = multiply_by_complex_wave(baseband_sig, samp_rate, freq)
     if message_delay:
         fully_modded = np.concatenate([
             np.zeros(random.randint(100, 1500), dtype=np.complex64),

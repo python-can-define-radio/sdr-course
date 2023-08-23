@@ -1,21 +1,22 @@
-from __future__ import annotations
 import numpy as np
 from gnuradio import gr
 from gnuradio import blocks
 import osmosdr
 import time
-from queue import SimpleQueue, Empty
+from queue import Empty
+from pcdr.helpers import SimpleQueueTypeWrapped
 import deal
 
 
 class __data_queue_source(gr.sync_block):
 
-    def __init__(self, external_queue: SimpleQueue[np.ndarray], chunk_size: int):
+    @deal.pre(lambda _: _.external_queue.qtype == _.out_type)
+    def __init__(self, external_queue: SimpleQueueTypeWrapped, chunk_size: int, out_type = np.complex64):
         gr.sync_block.__init__(
             self,
             name='Python Block: Data Queue Source',
             in_sig=[],
-            out_sig=[(np.complex64, chunk_size)]
+            out_sig=[(out_type, chunk_size)]
         )
         self.__data_queue = external_queue
         self.__chunk_size = chunk_size

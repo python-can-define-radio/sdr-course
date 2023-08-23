@@ -1,10 +1,23 @@
 import deal
 from queue import SimpleQueue, Empty
-from typing import List, TypeVar, Union
+from typing import List, TypeVar, Union, Optional
 
 
 
 T = TypeVar('T')
+
+
+
+class SimpleQueueTypeWrapped(SimpleQueue):
+    """Created this as an alternative to SimpleQueue because Python 3.8 (which we're stuck with currently)
+    doesn't support the type annotation SimpleQueue[something]."""
+    def __init__(self, qtype):
+        self.qtype = qtype
+        super().__init__()
+    
+    @deal.pre(lambda _: isinstance(_.item, _.self.qtype))
+    def put(self, item):
+        return super().put(item)
 
 
 @deal.has()

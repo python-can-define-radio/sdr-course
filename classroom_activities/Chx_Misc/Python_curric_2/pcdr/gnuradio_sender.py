@@ -2,7 +2,8 @@ from typing import List, Optional, Sequence, TypeVar, Union
 import deal
 import pydash
 import numpy as np
-from queue import SimpleQueue, Empty
+from queue import Empty
+from pcdr.helpers import SimpleQueueTypeWrapped
 from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__print_blk, queue_to__string_file_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
@@ -41,8 +42,9 @@ def __pad_chunk_queue_test_2():
 @deal.pre(lambda _: 0 < _.chunk_size < int(50e6))
 # Require 1-dimensional array (`shape` has only one item, that is, one dimension)
 @deal.pre(lambda _: len(_.data.shape) == 1)
+@deal.post(lambda result: issubclass(result.qtype, np.ndarray))
 @deal.has()
-def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueue[np.ndarray]:
+def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped:
     """
     - numpy-ify
     - Pad `data` to a multiple of `chunk_size`
@@ -60,7 +62,7 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueue[np.ndarray
         npdata = np.concatenate([npdata, np.zeros(padlen)])
     chunked = np.split(npdata, len(npdata)/chunk_size)
 
-    q = SimpleQueue()
+    q = SimpleQueueTypeWrapped(np.ndarray)
     for item in chunked:
         q.put(item)
     return q

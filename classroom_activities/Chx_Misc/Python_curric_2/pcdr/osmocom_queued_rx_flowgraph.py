@@ -1,9 +1,9 @@
-from __future__ import annotations
 from gnuradio import gr, blocks
 import numpy as np
 import time
 import random
 import osmosdr
+from typing import List
 from queue import SimpleQueue, Empty, Full
 import deal
 
@@ -40,7 +40,7 @@ class __data_queue_sink(gr.sync_block):
         """Get a chunk from the queue of accumulated received data."""
         return self.__data_queue.get()
 
-    def queue_get_all(self) -> list[np.ndarray]:
+    def queue_get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return queue_to_list(self.__data_queue)
         
@@ -81,14 +81,14 @@ class osmocom_source_to_queue(gr.top_block):
         """Get a chunk from the queue of accumulated received data."""
         return self.data_queue_sink.queue_get()
     
-    def get_all(self) -> list[np.ndarray]:
+    def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return self.data_queue_sink.queue_get_all()
 
 
 class simulated_data_to_queue(gr.top_block):
     def __init__(self, samp_rate: float):
-        modded = ook_modulate(data=[1, 0, 1, 0, 1, 0, 1, 1], bit_length=25)
+        modded = ook_modulate([1, 0, 1, 0, 1, 0, 1, 1], bit_length=25)
         t = len(modded) / samp_rate
         timestamps = createTimestamps(seconds=t, num_samples=len(modded))
         wave = makeRealWave(timestamps, freq=4)

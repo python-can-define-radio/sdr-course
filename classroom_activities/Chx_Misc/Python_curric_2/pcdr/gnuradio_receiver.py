@@ -1,4 +1,4 @@
-from __future__ import annotations
+from typing import List
 import deal
 import numpy as np
 
@@ -37,7 +37,7 @@ class Gnuradio_receiver():
         """Returns a chunk from the queue of accumulated received data."""
         return self.tb.get()
     
-    def get_all(self) -> list[np.ndarray]:
+    def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return self.tb.data_queue_sink.queue_get_all()
 

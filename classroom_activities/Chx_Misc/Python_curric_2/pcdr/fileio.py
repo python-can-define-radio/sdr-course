@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import Iterable, Callable, Any, Tuple
 
 from typing import TYPE_CHECKING
@@ -28,7 +26,7 @@ def writeComplexCSV(filename, data_to_write):
             outfile.write(f"{inphase},{quad}\n")
 
 
-def __readCSV(filename_csv: FileDescriptorOrPath, samp_rate: float, type_: Callable) -> Tuple[np.ndarray, np.ndarray]:
+def __readCSV(filename_csv: str, samp_rate: float, type_: Callable) -> Tuple[np.ndarray, np.ndarray]:
     
     ## This import must be here to avoid circular imports.
     from pcdr.wavegen import createTimestamps
@@ -43,9 +41,9 @@ def __readCSV(filename_csv: FileDescriptorOrPath, samp_rate: float, type_: Calla
     return timestamps, contents_as_numbers
 
 
-def readRealCSV(filename_csv: FileDescriptorOrPath, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
+def readRealCSV(filename_csv: str, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     __readCSV(filename_csv, samp_rate, float)
 
 
-def readComplexCSV(filename_csv: FileDescriptorOrPath, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
+def readComplexCSV(filename_csv: str, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     __readCSV(filename_csv, samp_rate, complex)
