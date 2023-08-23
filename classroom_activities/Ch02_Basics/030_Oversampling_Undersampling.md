@@ -21,3 +21,89 @@ _Note: at time of writing, the caption is wrong on Figure 3. However, the page c
 ### Nyquist and Aliasing
 
 _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
+
+ℹ️ Prerequisite: `pip install pcdr`
+
+
+```python3
+## 1.
+## What figure in the Harvey Mudd page demonstrates what is happening in this video? 
+
+
+## 2. 
+## Try this.
+## Notice that the wave degrades at higher frequencies.
+from pcdr import makeRealWave_time
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,6))  # since we have multiple subplots this makes it large enough so nothing gets cropped off
+
+samp_rate = 20
+seconds = 2
+
+freq = 1
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(221, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+freq = 3
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(222, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+freq = 6
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(223, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+freq = 9
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(224, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+plt.tight_layout()
+plt.show()
+
+
+## 3
+## Copy and modify the previous example (including the code for all
+## of the subplots). Set the samp_rate to 40.
+## Do the waves appear to be higher or lower quality?
+```
+
+As you can see, a higher sample rate allows you to measure a broader range of frequencies because it raises the threshold at which degradation begins.
+
+Now, let's look at what happens when the frequency is very close to the sample rate.
+
+```python3
+## 4
+## Try this. Notice that the frequency is 39,
+## but when you plot it, it (surprisingly) has a frequency of 1.
+## What is the name for this phenomenon? 
+samp_rate = 40
+seconds = 2
+freq = 39
+timestamps, wave = makeRealWave_maxtime(seconds, samp_rate, freq)
+plt.title(f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+plt.show()
+```
+
+The above exercise shows **aliasing**. (You can review the explanation of aliasing [here]()).
+
+```python3
+## 5
+## Copy and modify the previous example.
+## Set the freq to 37.
+## What
+
+
+
+
+## maybe turn these into exercises
+# to measure a 250 Hz wave, you would have to sample at least...
+# to measure a 2.4 GHz wave, you would have to sample at least...
+```
+
+
+
