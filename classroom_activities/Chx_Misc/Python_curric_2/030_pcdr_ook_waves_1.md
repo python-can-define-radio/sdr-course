@@ -53,7 +53,7 @@ plt.show()
 ## Copy and modify the above example so that each bit is 10 samples long.
 ```
 
-You may be surprised that the `ook_modulate` function doesn't produce a wave. Why were we able to send this data to the Hack RF when it doesn't seem to have a carrier wave? Remember that when working with the Hack RF in GNU Radio Companion, we specify a center frequency (or "Ch0 Frequency"). For any data that you ask it to send, the Hack RF first shifts the data to the specified center frequency. This is known as **upconversion**.
+You may be surprised that the `ook_modulate` function doesn't produce a wave. Why were we able to send this data to the Hack RF when it doesn't seem to have a carrier wave? Remember that when working with the Hack RF in GNU Radio Companion, we specify a center frequency (or "Ch0 Frequency"). For any data that you ask it to send, the Hack RF first shifts the data to the specified center frequency. This is known as [**upconversion**](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch05_Concepts/010_UC_DC.md).
 
 There are cases in which we would like to impose the data on a carrier wave in software before the Hack RF does its own shift. Let's try it:
 
