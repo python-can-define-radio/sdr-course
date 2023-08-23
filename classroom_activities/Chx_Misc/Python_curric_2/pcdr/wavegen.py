@@ -72,6 +72,19 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float) ->
     return timestamps, makeComplexWave(timestamps, freq)
 
 
+def makeComplexWave_maxtime(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    num_samples = samp_rate * seconds
+    timestamps = createTimestamps(seconds, num_samples)
+    return timestamps, makeComplexWave(timestamps, freq)
+
+
+def makeRealWave_maxtime(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    num_samples = samp_rate * seconds
+    timestamps = createTimestamps(seconds, num_samples)
+    return timestamps, makeRealWave(timestamps, freq)
+
+
+
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
