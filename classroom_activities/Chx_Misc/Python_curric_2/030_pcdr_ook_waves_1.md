@@ -15,8 +15,16 @@ wave = makeRealWave(timestamps, freq=3)
 plt.plot(timestamps, wave, "*", markersize=10)
 plt.show()
 
-
 ## 2
+## Copy and modify the previous example.
+## Plot a wave that completes two cycles in 1 second.
+
+
+## 3
+## Copy and modify the previous example.
+## Plot a wave that completes a cycle in two seconds.
+
+## 4
 ## Ask the user for
 ## - The frequency of the wave to plot
 ## - The number of samples
@@ -25,12 +33,7 @@ plt.show()
 ## - (Optional) the marker (currently "*". Valid choices are listed in the matplotlib docs. You can also experiment.)
 
 
-## 3
-## Plot a wave that completes two cycles in 1 second.
 
-
-## 4
-## Plot a wave that completes a cycle in two seconds.
 ```
 
 Now that we've plotted a wave, let's look back at our `ook_modulate` function.
