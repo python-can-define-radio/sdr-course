@@ -112,7 +112,7 @@ Manually updating `num_samples` based on the length of your data is somewhat ted
 ## Try this.
 modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
 timestamps = createTimestamps(seconds=1.0, num_samples=len(modulated))
-wave = makeRealWave(timestamps, freq=6)
+wave = makeRealWave(timestamps, freq=12)
 fully_modulated = modulated * wave
 plt.plot(timestamps, fully_modulated, "*-", markersize=20)
 plt.show()
