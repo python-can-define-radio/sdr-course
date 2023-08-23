@@ -95,15 +95,5 @@ The above exercise shows **aliasing**. (You can review the explanation of aliasi
 ## 5
 ## Copy and modify the previous example.
 ## Set the freq to 37.
-## What
-
-
-
-
-## maybe turn these into exercises
-# to measure a 250 Hz wave, you would have to sample at least...
-# to measure a 2.4 GHz wave, you would have to sample at least...
+## Due to aliasing, what frequency is displayed?
 ```
-
-
-
