@@ -18,6 +18,10 @@ from .wavegen import (
     wave_file_gen,
     generate_ook_modulated_example_file,
     makeRealWave_numsamps,
+    makeComplexWave_numsamps,
+    makeComplexWave_time,
+    makeRealWave_time,
+    multiply_by_complex_wave,
 )
 
 from .helpers import (
