@@ -84,69 +84,71 @@ def readme():
         "5) Reset and repeat as needed.")
     Text(window, text="NOTE: If you get an error be sure to hit reset to clear the window")
 
-app = App(title="Subnet Calculator")
-app.height = 750
-app.width = 1000
-app.text_color = "blue"
-app.text_size = 15
-app.bg = "aquamarine"
-Box(app, align="left", height="fill", width=20)
-Box(app, align="right", height="fill", width=20)
-Box(app, align="top", height=20, width="fill")
-Box(app, align="bottom", height=20, width="fill")
 
-menubar = MenuBar(app, toplevel=["File", "Edit", "About"],
-                  options=[
-                      [ ["Calculate", calculate], ["Reset", reset] ],
-                      [ ["Just for looks", edit_function], ["I don't really do anything!", edit_function] ],
-                      [ ["About the Author", popup], ["Read me", readme] ]
-                  ])
+if __name__ == "__main__":
+    app = App(title="Subnet Calculator")
+    app.height = 750
+    app.width = 1000
+    app.text_color = "blue"
+    app.text_size = 15
+    app.bg = "aquamarine"
+    Box(app, align="left", height="fill", width=20)
+    Box(app, align="right", height="fill", width=20)
+    Box(app, align="top", height=20, width="fill")
+    Box(app, align="bottom", height=20, width="fill")
 
-welcome = Text(app, text="Welcome to the IP Subnet Calculator app!")
-welcome.text_size = 26
+    menubar = MenuBar(app, toplevel=["File", "Edit", "About"],
+                    options=[
+                        [ ["Calculate", calculate], ["Reset", reset] ],
+                        [ ["Just for looks", edit_function], ["I don't really do anything!", edit_function] ],
+                        [ ["About the Author", popup], ["Read me", readme] ]
+                    ])
 
-box1 = Box(app, width=900, height=200, border=False)
-Box(box1, align="left", height="fill", width=10)
-Box(box1, align="right", height="fill", width=10)
-Box(box1, align="top", height=10, width="fill")
-Box(box1, align="bottom", height=10, width="fill")
+    welcome = Text(app, text="Welcome to the IP Subnet Calculator app!")
+    welcome.text_size = 26
 
-enterNID = Text(box1, text="Please enter a valid IPv4 Network ID in the box below.")
-Ip_Address = TextBox(box1, width=14, command=enable_calc)
-Ip_Address.bg = "white"
-Ip_Address.text_color = "red"
-checkbox = CheckBox(box1, text="I don't know the Network ID let me use a host address!", command=ch_message)
-checkbox.text_size = 10
-Box(box1, height=10, width="fill")
+    box1 = Box(app, width=900, height=200, border=False)
+    Box(box1, align="left", height="fill", width=10)
+    Box(box1, align="right", height="fill", width=10)
+    Box(box1, align="top", height=10, width="fill")
+    Box(box1, align="bottom", height=10, width="fill")
 
-cidr_message = Text(box1, text="Please choose a CIDR value from the dropdown menu for your subnet.")
-cidr_message.hide()
-cidr = Combo(box1, options= list(range(8, 30+1)))
-cidr.bg = "white"
-cidr.text_color = "red"
-cidr.hide()
-Text(box1, text="")
+    enterNID = Text(box1, text="Please enter a valid IPv4 Network ID in the box below.")
+    Ip_Address = TextBox(box1, width=14, command=enable_calc)
+    Ip_Address.bg = "white"
+    Ip_Address.text_color = "red"
+    checkbox = CheckBox(box1, text="I don't know the Network ID let me use a host address!", command=ch_message)
+    checkbox.text_size = 10
+    Box(box1, height=10, width="fill")
 
-box2 = Box(app, width=900, height=400, border=True)
-box2.bg = "teal"
-box2.text_size = 22
-Box(box2, align="left", height="fill", width=10)
-Box(box2, align="right", height="fill", width=10)
-Box(box2, align="top", height=10, width="fill")
-Box(box2, align="bottom", height=10, width="fill")
+    cidr_message = Text(box1, text="Please choose a CIDR value from the dropdown menu for your subnet.")
+    cidr_message.hide()
+    cidr = Combo(box1, options= list(range(8, 30+1)))
+    cidr.bg = "white"
+    cidr.text_color = "red"
+    cidr.hide()
+    Text(box1, text="")
 
-button1 = PushButton(box2, text="Calculate", command=calculate, enabled=False)
-button1.text_size = 12
-button1.text_color = "orange"
-button1.align = "left"
-button1.bg = "green"
-button2 = PushButton(box2,  text="  Reset  ", command=reset, enabled=False)
-button2.text_size = 12
-button2.text_color = "orange"
-button2.align = "right"
-button2.bg = "green"
+    box2 = Box(app, width=900, height=400, border=True)
+    box2.bg = "teal"
+    box2.text_size = 22
+    Box(box2, align="left", height="fill", width=10)
+    Box(box2, align="right", height="fill", width=10)
+    Box(box2, align="top", height=10, width="fill")
+    Box(box2, align="bottom", height=10, width="fill")
+
+    button1 = PushButton(box2, text="Calculate", command=calculate, enabled=False)
+    button1.text_size = 12
+    button1.text_color = "orange"
+    button1.align = "left"
+    button1.bg = "green"
+    button2 = PushButton(box2,  text="  Reset  ", command=reset, enabled=False)
+    button2.text_size = 12
+    button2.text_color = "orange"
+    button2.align = "right"
+    button2.bg = "green"
 
 
-app.display()
-  
+    app.display()
+    
 
