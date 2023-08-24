@@ -170,12 +170,28 @@ Notice that `seconds` is now set to `len(modulated) / samp_rate`, which in this 
 ## How many seconds of data is this?
 ```
 
+The above code can be simplified using another pcdr function, `makeRealWave_numsamps`:
+
+```python3
+## 16
+## Try this. It should be equivalent the the previous example.
+from pcdr import ook_modulate, makeRealWave_numsamps
+import matplotlib.pyplot as plt
+samp_rate = 50
+modulated = ook_modulate([1, 0, 0, 1, 0, 1], bit_length=25)
+timestamps, wave = makeRealWave_numsamps(num_samples=len(modulated), samp_rate=samp_rate, freq=4)
+fully_modulated = modulated * wave
+plt.plot(timestamps, fully_modulated, "*-", markersize=20)
+plt.show()
+
+```
+
 ### Modulating text
 
 Now, let's modulate some text:
 
 ```python3
-## 16
+## 17
 ## Using the function str_to_bin_list from the previous exercise set, 
 ## - Ask the user for a string
 ## - Convert the string to a list of bits

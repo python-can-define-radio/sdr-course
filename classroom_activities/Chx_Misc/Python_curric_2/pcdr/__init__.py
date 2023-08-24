@@ -17,6 +17,7 @@ from .wavegen import (
     wave_file_gen_prompts,
     wave_file_gen,
     generate_ook_modulated_example_file,
+    makeRealWave_numsamps,
 )
 
 from .helpers import (
