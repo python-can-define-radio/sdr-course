@@ -25,20 +25,20 @@ So, how do you represent a negative frequency? Let's demonstrate that in a plot 
 ## 1 
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import createTimestamps, makeComplexWave
+from pcdr import makeComplexWave_time
 
-timestamps = createTimestamps(seconds=1.0, num_samples=100)
 
-wave_pos_freq = makeComplexWave(timestamps, freq=2)
+
+timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=50, freq=2)
 plt.subplot(211, title="Frequency = +2 Hz")
-plt.plot(timestamps, wave_pos_freq.real, "^-", color="blue", label="Real")
-plt.plot(timestamps, wave_pos_freq.imag, "*-", color="red", label="Imag")
+plt.plot(timestamps, wave.real, "^-", color="blue", label="Real")
+plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
 plt.legend(loc="upper right")
 
-wave_neg_freq = makeComplexWave(timestamps, freq=-2)
+timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=50, freq=-2)
 plt.subplot(212, title="Frequency = -2 Hz")
-plt.plot(timestamps, wave_neg_freq.real, "^-", color="blue", label="Real")
-plt.plot(timestamps, wave_neg_freq.imag, "*-", color="red", label="Imag")
+plt.plot(timestamps, wave.real, "^-", color="blue", label="Real")
+plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
 plt.legend(loc="upper right")
 
 plt.tight_layout()
@@ -53,6 +53,12 @@ Can you see a difference between the two plots?
   
 </details>
 
-If you'd like to delve into the underlying concepts, Arachnoid.com provides a [great explanation](https://arachnoid.com/software_defined_radios/) (along with a [really cool interactive Javascript applet](https://arachnoid.com/software_defined_radios/#Theory__I_Q_Exploration_Applet) for exploring IQ signals.
+If you'd like to delve into the underlying concepts, Arachnoid.com provides a [great explanation](https://arachnoid.com/software_defined_radios/) (along with a [really cool interactive Javascript applet](https://arachnoid.com/software_defined_radios/#Theory__I_Q_Exploration_Applet)) for exploring IQ signals. 
 
+Let's get some more practice working with complex waves.
 
+```python3
+## 2
+## Use the makeComplexWave function to make a wave with frequency 3 Hz.
+## Plot the wave from 0 to 4 seconds.
+```
