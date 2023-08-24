@@ -86,12 +86,20 @@ test_makeComplexWave = deal.cases(
     )
 )
 
+@deal.pure
+def make_alias_limit_msg(samp_rate: float, freq: float) -> str:
+    return f"For a sample rate of {samp_rate}, the highest frequency that can be faithfully represented is {samp_rate/2}. The specified freq, {freq}, is greater than the limit specified by Shannon/Nyquist/Kotelnikov/Whittaker (commonly called the Nyquist frequency)."
+
+test_make_alias_limit_msg = deal.cases(make_alias_limit_msg)
+
+
 
 @deal.has()
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.num_samples)
-def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+@deal.pre(lambda _: _.allowAliasing or (abs(_.freq) <= _.samp_rate/2), message="TODO: better error message")
+def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
@@ -163,6 +171,7 @@ test_makeRealWave_time = deal.cases(
 )
 
 
+
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
@@ -225,10 +234,16 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
     waveAndWrite(filename, timestamps, freq, complex_or_real)
 
 
+print("TODO: incorporate allowAliasing in other places")
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
 @deal.post(lambda result: result[0].dtype == np.float32)
 @deal.post(lambda result: result[1].dtype == np.complex64)
-def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+@deal.reason(ValueError, lambda _: (abs(_.freq) > _.samp_rate/2) and (not _.allowAliasing))
+@deal.raises(ValueError)
+def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    if not allowAliasing:
+        if abs(freq) > samp_rate/2:
+            raise ValueError(make_alias_limit_msg(samp_rate, freq))
     timestamps, wave = makeComplexWave_numsamps(len(baseband_sig), samp_rate, freq)
     mult = baseband_sig * wave
     return timestamps, mult
