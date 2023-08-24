@@ -41,6 +41,7 @@ def __pad_chunk_queue_test_2():
 )
 @deal.pre(lambda _: 0 < _.chunk_size < int(50e6))
 # Require 1-dimensional array (`shape` has only one item, that is, one dimension)
+@deal.pre(lambda _: np.isfinite(_.data).all())
 @deal.pre(lambda _: len(_.data.shape) == 1)
 @deal.post(lambda result: issubclass(result.qtype, np.ndarray))
 @deal.has()

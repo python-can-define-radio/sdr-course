@@ -8,6 +8,8 @@ Try this to start: wave_gen_prompts()
 import numpy as np
 import matplotlib.pyplot as plt
 import deal
+import hypothesis.extra.numpy as hyponp
+import hypothesis.strategies as st
 import random
 from typing import Optional, List, Tuple
 
@@ -19,13 +21,14 @@ from pcdr.helpers import str_to_bin_list
 
 
 @deal.has()
+@deal.pre(lambda _: 0 <= _.seconds)
+@deal.pre(lambda _: 0 <= _.num_samples)
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.ensure(lambda _: len(_.result) == _.num_samples)
-@deal.post(lambda result: np.isfinite(result).all())
 @deal.post(lambda result: (0 <= result).all())
-@deal.pre(lambda _: 0 <= _.seconds < 900e6)  # arbitrarily large number
-@deal.pre(lambda _: 0 <= _.num_samples < 900e6)  # arbitrarily large number
 def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> np.ndarray:
+    """Creates timestamps from zero up to the given maximum number of seconds.
+    Implemented using np.linspace()."""
     return np.linspace(
             start=0,
             stop=seconds,
@@ -34,25 +37,36 @@ def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> np.n
             dtype=dtype
         )
 
+test_createTimestamps = deal.cases(
+    func=createTimestamps,
+    kwargs=dict(
+        seconds=st.floats(max_value=1e6),
+        num_samples=st.integers(max_value=1e6)
+    )
+)
+
 
 @deal.has()
-@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
-@deal.pre(lambda _: (0 <= _.timestamps).all())
-@deal.pre(lambda _: np.isfinite(_.timestamps).all())
-@deal.pre(lambda _: _.timestamps.dtype == np.float32)
-@deal.pre(lambda _: len(_.timestamps.shape) == 1)
-@deal.ensure(lambda _: len(_.timestamps) == len(_.result))
-def makeRealWave(timestamps: np.ndarray, freq: float):
+@deal.ensure(lambda _: _.timestamps.shape == _.result.shape)
+def makeRealWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
     return np.float32(np.sin(freq * 2 * np.pi * timestamps))
 
+test_makeRealWave = deal.cases(
+    func=makeRealWave,
+    kwargs=dict(
+        timestamps=hyponp.arrays(
+            dtype=np.float32,
+            shape=1,
+            elements=st.floats(-10e9, 10e9, width=32)
+        ),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
+
+
 
 @deal.has()
-@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
-@deal.pre(lambda _: (0 <= _.timestamps).all())
-@deal.pre(lambda _: np.isfinite(_.timestamps).all())
-@deal.pre(lambda _: _.timestamps.dtype == np.float32)
-@deal.pre(lambda _: len(_.timestamps.shape) == 1)
-@deal.ensure(lambda _: len(_.timestamps) == len(_.result))
+@deal.ensure(lambda _: _.timestamps.shape == _.result.shape)
 def makeComplexWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
     ## Note: I don't know enough about math with complex numbers
     ## to know if freq should be restricted to real, but I figured
@@ -60,29 +74,93 @@ def makeComplexWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
     ## it as `Any`.
     return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
 
+test_makeComplexWave = deal.cases(
+    func=makeComplexWave,
+    kwargs=dict(
+        timestamps=hyponp.arrays(
+            dtype=np.float32,
+            shape=1,
+            elements=st.floats(-10e9, 10e9, width=32)
+        ),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
+
 
 @deal.has()
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
-@deal.pre(lambda _: 1e-10 < _.samp_rate)  # arbitrarily low number
-@deal.pre(lambda _: 0 <= _.num_samples <= 10e9, message="num_samples must be between 0 and 10 billion. Upper limit is primarily to make automated testing faster")
-@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
+@deal.pre(lambda _: 0 < _.samp_rate)
+@deal.pre(lambda _: 0 <= _.num_samples)
 def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
 
+test_makeComplexWave_numsamps = deal.cases(
+    func=makeComplexWave_numsamps,
+    kwargs=dict(
+        num_samples=st.integers(max_value=1e3),
+        samp_rate=st.floats(1e-3, 10e6),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
 
-def makeComplexWave_time(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
-    num_samples = samp_rate * seconds
+
+@deal.has()
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
+@deal.pre(lambda _: 0 < _.samp_rate)
+@deal.pre(lambda _: 0 <= _.num_samples)
+def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    t = num_samples / samp_rate
+    timestamps = createTimestamps(seconds=t, num_samples=num_samples)
+    return timestamps, makeRealWave(timestamps, freq)
+
+test_makeRealWave_numsamps = deal.cases(
+    func=makeRealWave_numsamps,
+    kwargs=dict(
+        num_samples=st.integers(max_value=1e3),
+        samp_rate=st.floats(1e-3, 10e6),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
+
+
+@deal.has()
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == int(_.samp_rate * _.seconds))
+@deal.pre(lambda _: 0 < _.samp_rate)
+@deal.pre(lambda _: 0 <= _.seconds)
+def makeComplexWave_time(seconds: float, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    num_samples = int(samp_rate * seconds)
     timestamps = createTimestamps(seconds, num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
 
+test_makeComplexWave_time = deal.cases(
+    func=makeComplexWave_time,
+    kwargs=dict(
+        seconds=st.floats(0.01, 1e3),
+        samp_rate=st.floats(0.01, 1e3),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
 
-def makeRealWave_time(seconds: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
-    num_samples = samp_rate * seconds
+
+@deal.has()
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == int(_.samp_rate * _.seconds))
+@deal.pre(lambda _: 0 < _.samp_rate)
+@deal.pre(lambda _: 0 <= _.seconds)
+def makeRealWave_time(seconds: float, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
+    num_samples = int(samp_rate * seconds)
     timestamps = createTimestamps(seconds, num_samples)
     return timestamps, makeRealWave(timestamps, freq)
 
+test_makeRealWave_time = deal.cases(
+    func=makeRealWave_time,
+    kwargs=dict(
+        seconds=st.floats(0.01, 1e3),
+        samp_rate=st.floats(0.01, 1e3),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
 
 
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
@@ -148,11 +226,24 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
 
 
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
-@deal.post(lambda result: result.dtype == np.complex64)
+@deal.post(lambda result: result[0].dtype == np.float32)
+@deal.post(lambda result: result[1].dtype == np.complex64)
 def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
     timestamps, wave = makeComplexWave_numsamps(len(baseband_sig), samp_rate, freq)
     mult = baseband_sig * wave
     return timestamps, mult
+
+test_multiply_by_complex_wave = deal.cases(
+    func=multiply_by_complex_wave,
+    kwargs=dict(
+        baseband_sig=hyponp.arrays(
+            dtype=np.uint8,
+            shape=1
+        ),
+        samp_rate=st.floats(0.01, 1e3),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
 
 
 @deal.post(lambda result: result.dtype == np.complex64)

@@ -54,7 +54,7 @@ from pcdr.wavegen import multiply_by_complex_wave
 @deal.pre(lambda _: all(map(__is_binary, _.bits)),
           message='`bits` must be of type List[int], and all of those integers must be either 0 or 1. It cannot be a string, such as "1010".')
 @deal.pre(lambda _: 1e-10 < _.samp_rate)  # arbitrarily low number
-@deal.pre(lambda _: math.isfinite(_.freq))
+@deal.pre(lambda _: -1e100 < _.freq < 1e100)  # arbitrarily high number that is less than the max float
 @deal.pre(lambda _: 0 <= _.bit_length)
 @deal.has()
 def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
