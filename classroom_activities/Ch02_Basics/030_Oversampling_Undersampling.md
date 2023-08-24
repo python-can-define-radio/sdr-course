@@ -18,6 +18,8 @@ Start by reading this [Sampling lesson on this page from Harvey Mudd](https://ga
 
 _Note: at time of writing, the caption is wrong on Figure 3. However, the page correctly explains what is happening._
 
+If you'd like to read further, see also [this page from allaboutcircuits.com](https://www.allaboutcircuits.com/technical-articles/nyquist-shannon-theorem-understanding-sampled-systems/).
+
 ### Nyquist and Aliasing
 
 _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
