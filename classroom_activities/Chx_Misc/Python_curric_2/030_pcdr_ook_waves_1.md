@@ -43,7 +43,7 @@ Now that we've plotted a wave, let's look back at our `ook_modulate` function.
 import matplotlib.pyplot as plt
 from pcdr import ook_modulate
 
-modulated = ook_modulate(data=[1, 0, 1, 0], bit_length=4)
+modulated = ook_modulate([1, 0, 1, 0], bit_length=4)
 plt.plot(modulated, "*-", markersize=20)
 plt.show()
 
@@ -64,7 +64,7 @@ There are cases in which we would like to impose the data on a carrier wave in s
 import matplotlib.pyplot as plt
 from pcdr import createTimestamps, makeRealWave, ook_modulate
 
-modulated = ook_modulate(data=[1, 0, 1, 0], bit_length=25)
+modulated = ook_modulate([1, 0, 1, 0], bit_length=25)
 timestamps = createTimestamps(seconds=1.0, num_samples=100)
 wave = makeRealWave(timestamps, freq=8)
 fully_modulated = modulated * wave
@@ -77,7 +77,7 @@ plt.show()
 import matplotlib.pyplot as plt
 from pcdr import createTimestamps, makeRealWave, ook_modulate
 
-modulated = ook_modulate(data=[1, 0, 1, 0], bit_length=50)
+modulated = ook_modulate([1, 0, 1, 0], bit_length=50)
 timestamps = createTimestamps(seconds=1.0, num_samples=200)
 wave = makeRealWave(timestamps, freq=8)
 fully_modulated = modulated * wave
@@ -89,7 +89,8 @@ Notice that in both of these examples, the data more closely resembles the class
 
 The key line is `fully_modulated = modulated * wave`. This multiplies each point in `wave` by each point in `modulated`. Remember that `modulated` is an array of only ones and zeros. Multiplying by one does not change a number, and multiplying by zero results in zero.
 
-Also notice that when we set the `num_samples` to `200`, we had to change the `bit_length` to `50`. The reason: the length of `modulated` is going to be `len(data) * bit_length`, which in this case is `4 * 50 = 200`. That length must match the length of `wave` because we are multiplying them point-by-point. The length of `wave` is always equal to the length of `timestamps`, which is based on `num_samples`.
+
+Also notice that when we set the `num_samples` to `200`, we had to change the `bit_length` to `50`. The reason: the length of `modulated` is going to be the number-of-bits times the `bit_length`, which in this case is `4 * 50 = 200`. That length must match the length of `wave` because we are multiplying them point-by-point. The length of `wave` is always equal to the length of `timestamps`, which is based on `num_samples`.
 
 Let's practice.
 
@@ -110,7 +111,7 @@ Manually updating `num_samples` based on the length of your data is somewhat ted
 ```python3
 ## 11
 ## Try this.
-modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
+modulated = ook_modulate([1, 0, 0, 1, 0, 1], bit_length=25)
 timestamps = createTimestamps(seconds=1.0, num_samples=len(modulated))
 wave = makeRealWave(timestamps, freq=12)
 fully_modulated = modulated * wave
@@ -151,7 +152,7 @@ Here's how we handle that:
 ## 14
 ## Try this.
 samp_rate = 50
-modulated = ook_modulate(data=[1, 0, 0, 1, 0, 1], bit_length=25)
+modulated = ook_modulate([1, 0, 0, 1, 0, 1], bit_length=25)
 t = len(modulated) / samp_rate
 timestamps = createTimestamps(seconds=t, num_samples=len(modulated))
 wave = makeRealWave(timestamps, freq=4)
