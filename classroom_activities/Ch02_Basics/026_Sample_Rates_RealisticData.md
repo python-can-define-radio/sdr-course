@@ -16,7 +16,8 @@ Create this flowgraph. Name it `repeat_demo_3.grc`.
 Vector Source  -->  Repeat  -->  Time Sink
 ```
 
-Parameters:  
+### How to set the Parameters:
+
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `10`
