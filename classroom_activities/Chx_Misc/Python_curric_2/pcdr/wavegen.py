@@ -114,8 +114,8 @@ print("""TODO:
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.num_samples)
-@deal.pre(lambda _: _.allowAliasing or (abs(_.freq) <= _.samp_rate/2), message="TODO: better error message")
 def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    aliasingValueError()
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
@@ -254,9 +254,6 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
 @deal.post(lambda result: result[0].dtype == np.float32)
 @deal.post(lambda result: result[1].dtype == np.complex64)
-@deal.reason(ValueError, lambda _: (abs(_.freq) > _.samp_rate/2) and (not _.allowAliasing))
-@deal.raises(ValueError)
-# @aliasingContract
 def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     aliasingValueError(allowAliasing, freq, samp_rate)
     timestamps, wave = makeComplexWave_numsamps(len(baseband_sig), samp_rate, freq)
