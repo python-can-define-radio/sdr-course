@@ -6,7 +6,7 @@
 
 # Install Universal Radio Hacker (URH) 📻
 
-## Initial setup   
+### Initial setup   
 
 - Click on the 9 dots in the taskbar of your linux machine and type `terminal` in the search window.
 
