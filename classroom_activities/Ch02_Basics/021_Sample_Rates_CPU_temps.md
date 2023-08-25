@@ -8,7 +8,7 @@
 
 # Sample rates: CPU temperatures
 
-## Need for speed
+### Need for speed
 
 In `020_Sample_Rates_Intro.md`, we measured temperature every 2 hours. That works for weather, but now, imagine you're dealing with a thermometer on a processor. Actually, you don't need to use your imagination — on Linux, simply run this in the terminal:
 
@@ -35,7 +35,7 @@ Incredibly, the temperature jumps up by about 13 °C in less than a fifth of a s
 If you take out the delay in the python script below, you can try this yourself! Feel free to ask for instructor help.
 </details>
 
-## Recording the data
+### Recording the data
 
 The terminal command above works well for viewing the temperature live. Now, let's take measurements using Python. Name this file `temp_measure.py`:
 
@@ -72,7 +72,7 @@ f_out.close()
 
 When you run that Python file, it will write to a file called `myTempReadings.txt`.
 
-## Visualizing the data
+### Visualizing the data
 
 Reopen your file `temperature_graph_1.py` from `020_Sample_Rates_Intro.md`. Replace the `temps` variable with the measured processor temperatures that are in `myTempReadings.txt`. Run that to graph the data.
 
