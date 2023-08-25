@@ -178,7 +178,7 @@ If the turtle measured its height more frequently, it might look more like...
 ```
 </details>
 
-## Electrons
+### Electrons
 
 Now, imagine you have an electron instead of a turtle. And imagine that instead of water waving, it's the electromagnetic field waving.
 
