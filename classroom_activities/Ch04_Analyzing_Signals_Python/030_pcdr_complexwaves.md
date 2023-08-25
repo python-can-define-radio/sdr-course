@@ -114,7 +114,7 @@ from pcdr import makeRealWave_time, make_fft_positive_freqs_only
 maxTime = 2
 samp_rate = 500
 timestamps, wave1 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=2)
-timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=15)
+timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=25)
 added = wave1 + wave2
 sample_freqs, fft_mag = make_fft_positive_freqs_only(added, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
