@@ -85,7 +85,7 @@ samp_rate = 500
 timestamps, wave1 = makeRealWave_time(seconds=seconds, samp_rate=samp_rate, freq=2)
 timestamps, wave2 = makeRealWave_time(seconds=seconds, samp_rate=samp_rate, freq=15)
 added = wave1 + wave2
-plt.plot(timestamps, added, "*-", markersize=10)
+plt.plot(timestamps, added, "*-", markersize=5)
 plt.show()
 
 
@@ -118,9 +118,10 @@ timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq
 added = wave1 + wave2
 sample_freqs, fft_mag = make_fft_positive_freqs_only(added, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
-plt.plot(timestamps, added, "*-", markersize=10)
+plt.plot(timestamps, added, "*-", markersize=5)
 plt.subplot(2, 1, 2, title="Frequency Domain")
 plt.plot(sample_freqs, fft_mag, '.r-')
+plt.tightlayout()
 plt.show()
 ```
 
