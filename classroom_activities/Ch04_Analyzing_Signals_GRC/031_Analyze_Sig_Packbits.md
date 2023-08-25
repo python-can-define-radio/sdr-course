@@ -7,7 +7,7 @@
 
 # Analyze signals: Packbits
 
-## Digital data interpretation exercise #3
+### Digital data interpretation exercise #3
 
 ```
 Python Block  -->  UChar to Float  -->  Time Sink
