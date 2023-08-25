@@ -41,7 +41,7 @@ The name for this modulation scheme is "On Off Keying".  The website _Open Learn
 
 So, how do we make the Hack RF transmit and receive OOK modulated data? To answer that question, we'll be taking a long detour to explore how sample rates work.
 
-## What is a Sample Rate?
+### What is a Sample Rate?
 
 ### Thermometers and paper
 
