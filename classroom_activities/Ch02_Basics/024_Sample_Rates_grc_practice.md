@@ -8,7 +8,7 @@
 
 # Sample rates: GRC practice
 
-## Practice problem set A
+### Practice problem set A
 
 Make this flowgraph. Name it `messy_sine_vector_source.grc`.
 
@@ -58,7 +58,7 @@ Exercises:
 
 </details>
 
-## Practice problem set B
+### Practice problem set B
 
 Copy and modify the previous flowgraph. Save the new copy as `square_vector_source.grc`.
 
