@@ -9,7 +9,7 @@
 
 # Analyze signals: Binary slicer
 
-## Digital data interpretation exercise #5
+### Digital data interpretation exercise #5
 
 ```
 Python Block  -->  Time Sink
