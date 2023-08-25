@@ -69,3 +69,17 @@ Let's get some more practice working with complex waves.
 ```
 
 ### The frequency domain
+
+```python3
+## 4
+## Try this.
+import matplotlib.pyplot as plt
+from pcdr import makeRealWave_time
+
+timestamps, wave1 = makeRealWave_time(seconds=2, samp_rate=500, freq=2)
+timestamps, wave2 = makeRealWave_time(seconds=2, samp_rate=500, freq=15)
+added = wave1 + wave2
+plt.plot(timestamps, added, "*-", markersize=10)
+plt.show()
+
+```
