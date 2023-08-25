@@ -7,7 +7,7 @@
 
 # Analyze signals: manual
 
-## Signal interpretation: manually decoding a sequence of bits
+### Signal interpretation: manually decoding a sequence of bits
 
 Filename: `Sig_interp_bits_manual.grc`
 
@@ -54,7 +54,8 @@ class blk(gr.basic_block):
 ```
 </details>
 
-Parameters:
+### How to set the Parameters:
+
 - Time Sink:
   - Type: _Decide based on the color of the ports._
   - Number of Points: _Strangely, you should set this to `23`, run the program, then set it to `24`, and run the program again._
