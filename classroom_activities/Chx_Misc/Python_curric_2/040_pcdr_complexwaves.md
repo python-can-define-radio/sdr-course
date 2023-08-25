@@ -11,7 +11,7 @@ The math behind SDRs (and, consequently, the software used with SDRs) is based o
 
 Often, when beginning to work with SDRs, people ask, "What is a negative frequency?" The question is reasonable, as it seems that if something is shaking twice per second, it doesn't matter which direction it's shaking — it's simply shaking twice per second.
 
-The PySDR website has a [useful diagram](https://pysdr.org/content/frequency_domain.html#negative-frequencies) for this. You'll see that their SDR's center frequency is tuned to 100 MHz. When the HackRF One gives the signal to the computer via the USB cable, the signals will have been [**downconverted**](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch05_Concepts/010_UC_DC.md). That means...
+The PySDR website has a [useful diagram](https://pysdr.org/content/frequency_domain.html#negative-frequencies) for this. You'll see that their SDR's center frequency is tuned to 100 MHz. When the HackRF One gives the signal to the computer via the USB cable, the signals will have been **downconverted**. That means...
 
 - The "yellow trapezoid" signal, which was ≈ 104 MHz, will be downconverted to ≈ +4 MHz.
 - The "green trapezoid" signal, which was ≈ 100 MHz, will be downconverted to ≈ 0 MHz.
