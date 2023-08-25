@@ -329,3 +329,16 @@ def generate_ook_modulated_example_file(output_filename: str, noise: bool = Fals
     
     data = generate_ook_modulated_example_data(output_filename, noise, message_delay, text_source)
     data.tofile(output_filename)
+
+
+def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
+    sample_freqs, fft_mag = make_fft(sig, samp_rate)
+    halfway = len(sample_freqs) // 2
+    return sample_freqs[halfway:], fft_mag[halfway:]
+
+
+def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
+    fft_result = np.fft.fftshift(np.fft.fft(sig))
+    sample_freqs = np.fft.fftshift(np.fft.fftfreq(len(sig), 1/samp_rate))
+    fft_mag = abs(fft_result)
+    return sample_freqs, fft_mag
