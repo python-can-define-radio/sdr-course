@@ -71,6 +71,6 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 
 - Leave all as defaults.
 
-## Discussion
+### Discussion
 
 - Try different audio files, different IF Gains, and different broadcast frequencies.
