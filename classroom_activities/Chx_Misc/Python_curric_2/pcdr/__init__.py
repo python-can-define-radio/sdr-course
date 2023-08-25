@@ -22,6 +22,7 @@ from .wavegen import (
     makeComplexWave_time,
     makeRealWave_time,
     multiply_by_complex_wave,
+    multiply_by_real_wave,
     make_fft,
     make_fft_positive_freqs_only,
 )

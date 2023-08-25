@@ -282,6 +282,30 @@ test_multiply_by_complex_wave = deal.cases(
 )
 
 
+@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
+@deal.post(lambda result: result[0].dtype == np.float32)
+@deal.post(lambda result: result[1].dtype == np.float32)
+@deal.raises(ValueError)
+@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    timestamps, wave = makeRealWave_numsamps(len(baseband_sig), samp_rate, freq, allowAliasing)
+    mult = baseband_sig * wave
+    return timestamps, mult
+
+test_multiply_by_real_wave = deal.cases(
+    func=multiply_by_real_wave,
+    kwargs=dict(
+        baseband_sig=hyponp.arrays(
+            dtype=np.uint8,
+            shape=1
+        ),
+        samp_rate=st.floats(0.01, 1e3),
+        freq=st.floats(-1e12, 1e12)
+    )
+)
+
+
+
 @deal.post(lambda result: result.dtype == np.complex64)
 def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None) -> np.ndarray:
     """
