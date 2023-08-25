@@ -9,7 +9,7 @@
 
 # Analyze signals: Keep 1 in N
 
-## Digital data interpretation exercise #4
+### Digital data interpretation exercise #4
 
 ```
 Python Block  -->  UChar to Float  -->  Time Sink
