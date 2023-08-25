@@ -9,7 +9,7 @@
 
 # Analyze signals: Data from analog wave
 
-## Digital data interpretation exercise #2
+### Digital data interpretation exercise #2
 
 ```
 Python Block  -->  Time Sink
