@@ -12,7 +12,7 @@ Well, it's a Software Defined Radio. But you're probably looking for a more in-d
 
 So, let's look at what a radio is. Even before that, we'll start with what a wave is.
 
-## What is a wave?
+### What is a wave?
 
 ### Slinkies and Sound
 
@@ -68,6 +68,7 @@ A traditional radio transmitter (Radio 1) is composed of electronics hardware wi
 So too, a traditional radio receiver (Radio 2) is composed of electronics hardware without software.
 
 ### Software Defined Radio (SDR)
+
 In an SDR, the transmitter and/or receiver functionality is divided into hardware and software:
 
 ```
