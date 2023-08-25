@@ -60,7 +60,7 @@ Source
 - Ch0: IF Gain (dB): `if_gain_slider`
 - Ch0: BB Gain (dB): `50`
 
-## Discussion
+### Discussion
 
 - How big of a slice of the spectrum do you see?
 - While running, in the Frequency Display tab, try raising the Average in the bottom right corner. Does it help make signals more visible?
