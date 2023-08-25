@@ -41,7 +41,8 @@ Create this flowgraph. Name it `repeat_demo_1.grc`.
 Vector Source  -->  Repeat  -->  Time Sink
 ```
 
-Parameters:  
+### How to set the Parameters: 
+
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `10`
@@ -112,7 +113,8 @@ Copy and paste your previous flowgraph. Name it `repeat_demo_2.grc`. Add a throt
 Vector Source  -->  Repeat  -->  Throttle  -->  Time Sink
 ```
 
-Parameters:  
+### How to set the Parameters:
+
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `1e6`
