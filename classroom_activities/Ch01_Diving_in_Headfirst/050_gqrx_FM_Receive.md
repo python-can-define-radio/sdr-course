@@ -8,7 +8,7 @@
 # gqrx FM Receive  
 
 ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
-## Initial setup    
+### Initial setup    
 - Attach an SDR device, e.g. a HackRF One, to your computer
 - Open a terminal (command line interface or CLI) window on your 🖥️ computer.  
 - The first time you launch gqrx you may want to reset to its default settings using the terminal command below.  
@@ -24,7 +24,7 @@
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
-## Settings     
+### Settings     
 ⚠️ **Keep the RF gain at zero.** ⚠️ 
 - **Frequency**  
   - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
