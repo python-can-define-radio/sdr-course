@@ -22,7 +22,7 @@ Source
 ```
 
 
-## How to set the Parameters
+## How to set the Parameters:
 
 ### For the First GUI Range:
 
