@@ -11,7 +11,7 @@
 
 We've talked about sending pulses to represent binary. However, most "real life"  data is more interesting than simply zeros and ones (even if it is stored as zeros and ones on the hard drive). We're going to talk about how text is stored as binary, and how to work with text in both GNU Radio and Python.
 
-## Reading from Files
+### Reading from Files
 
 We've used a Vector Source block to provide data. Now, let's try a File Source. First, we're going to build the concepts in Python.
 
@@ -38,7 +38,7 @@ This reads the file.
 
 However, we'll see later that when GNU Radio reads the file, it's going to produce numbers instead of letters. Where do the numbers come from?
 
-## Encoding
+### Encoding
 
 All data on a computer is stored as binary (0s and 1s). So when we asked Python to write "ABCD", behind the scenes, it converted each letter to a sequence of zeros and ones. This is called _encoding_ the data.
 
@@ -158,7 +158,8 @@ We want to read the File Source using the purple type, a.k.a. Integer 8. That ty
 
 </details>
 
-Parameters:
+### How to set the Parameters:
+
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `1`
