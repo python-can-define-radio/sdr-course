@@ -53,7 +53,7 @@ Some useful keyboard shortcuts in GNU Radio Companion:
   - E : Enable a block
 
 --------
-## Useful information
+### Useful information
 
 [HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)  
 [HackRF One Block Diagram](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/hackrfone_diagram.png)  
