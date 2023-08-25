@@ -59,6 +59,13 @@ Let's get some more practice working with complex waves.
 
 ```python3
 ## 2
-## Use the makeComplexWave function to make a wave with frequency 3 Hz.
+## Use the makeComplexWave_time function to make a wave with frequency 3 Hz.
 ## Plot the wave from 0 to 4 seconds.
+
+
+## 3
+## Use the makeComplexWave_time function to make a wave with frequency 0.5 Hz.
+## Plot the wave from 0 to 2 seconds. 
 ```
+
+### The frequency domain
