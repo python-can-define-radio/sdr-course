@@ -84,7 +84,8 @@ class blk(gr.basic_block):
 ```
 </details>
 
-Configuration for the rest of the flowgraph:
+### How to set the Parameters:
+
 - Variable (_already in the flowgraph_):
   - Id: `samp_rate`
   - Value: `60`
