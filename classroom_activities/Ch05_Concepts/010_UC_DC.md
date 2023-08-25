@@ -16,7 +16,7 @@ You'll need to tune the receiver to near the transmitter's frequency. Make sure 
 
 ℹ️ Sidenote: To see the full list of options for either of these commands, type `man osmocom_siggen_nogui` or `man osmocom_fft`. This will open the manual. Press `q` to quit.
 
-## Transmitting in GNU Radio
+### Transmitting in GNU Radio
 
 Now, let's do this in GNU Radio. We know that we'll be sending some sort of **signal** to the Hack RF. We also know that the **osmocom Sink** is used to tell the Hack RF to transmit. So, it would make sense to do  `Signal Source  -->  osmocom Sink`.
 
@@ -36,7 +36,7 @@ Try sliding the `sigfreq` slider to 200 thousand. You'll see that the frequency 
 
 This is a fairly important concept. Try a few different combinations of frequencies to make sure you feel comfortable with it. Make sure that in every case, the signal is received at the expected frequency.
 
-## Receiving in GNU Radio
+### Receiving in GNU Radio
 
 Reopen the flowgraph `receiver.grc` from `Ch01_Diving_in_Headfirst` exercise  `030_GRC_FM_Receiver`.   
 
