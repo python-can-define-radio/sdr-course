@@ -59,7 +59,7 @@ Can you see the difference between the Time Domain plots?
   
 </details>
 
-If you'd like to delve into the underlying concepts, Arachnoid.com provides a [great explanation](https://arachnoid.com/software_defined_radios/#Theory__The_Frequency_Domain) (along with a [really cool interactive Javascript applet](https://arachnoid.com/software_defined_radios/#Theory__I_Q_Exploration_Applet)) for exploring IQ signals. 
+If you'd like to delve into the underlying concepts, Arachnoid.com provides a [great explanation](https://arachnoid.com/software_defined_radios/#Theory__The_Frequency_Domain) (along with a [really cool interactive Javascript applet](https://arachnoid.com/software_defined_radios/#Theory__I_Q_Exploration_Applet)) for exploring IQ signals. However, a basic understanding will suffice for accomplishing most tasks.
 
 Let's get some more practice working with complex waves.
 
@@ -74,38 +74,4 @@ Let's get some more practice working with complex waves.
 ## Plot the wave from 0 to 2 seconds. 
 ```
 
-### Complex waves in contrast to Real waves
-
-Let's take the fft of a complex wave.
-
-```python3
-## 5
-## Try this.
-import matplotlib.pyplot as plt
-from pcdr import makeComplexWave_time, make_fft_positive_freqs_only
-
-maxTime = 2
-samp_rate = 100
-timestamps, wave = makeComplexWave_time(seconds=maxTime, samp_rate=samp_rate, freq=3)
-sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
-plt.subplot(2, 1, 1, title="Time Domain")
-plt.plot(timestamps, wave.real, "*-", color="blue", label="Real")
-plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
-plt.legend(loc="upper right")
-plt.subplot(2, 1, 2, title="Frequency Domain")
-plt.plot(sample_freqs, fft_mag, '.g-')
-plt.tight_layout()
-plt.show()
-```
-
-You should notice that the frequency domain plot looks identical to the Real wave frequency domain plot.  The difference can only be seen when we look at negative frequencies.
-
-```python3
-## 6
-    
-```  
-  
-  
-  
-  
-  
+### Adding complex waves
