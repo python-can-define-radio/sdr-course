@@ -10,12 +10,22 @@ T = TypeVar('T')
 
 class SimpleQueueTypeWrapped(SimpleQueue):
     """Created this as an alternative to SimpleQueue because Python 3.8 (which we're stuck with currently)
-    doesn't support the type annotation SimpleQueue[something]."""
-    def __init__(self, qtype):
+    doesn't support the type annotation SimpleQueue[something].
+
+    This is specifically for queues of numpy arrays of fixed length and type.
+    
+    The `dtype` parameter is the dtype of the numpy array contents.
+    The `chunk_size` parameter is the length of each queue element.
+    """
+    def __init__(self, qtype, dtype, chunk_size: int):
         self.qtype = qtype
+        self.dtype = dtype
+        self.chunk_size = chunk_size
         super().__init__()
     
     @deal.pre(lambda _: isinstance(_.item, _.self.qtype))
+    @deal.pre(lambda _: _.item.dtype == _.self.dtype)
+    @deal.pre(lambda _: len(_.item) == _.self.chunk_size)
     def put(self, item):
         return super().put(item)
 

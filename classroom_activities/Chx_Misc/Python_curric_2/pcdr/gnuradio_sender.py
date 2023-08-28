@@ -3,11 +3,10 @@ import deal
 import pydash
 import numpy as np
 from queue import Empty
-from pcdr.helpers import SimpleQueueTypeWrapped
+from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
 from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__print_blk, queue_to__string_file_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
-from pcdr.helpers import queue_to_list
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_zmqpub_sink
 from pcdr.queue_to_guisink_flowgraph import queue_to_guisink
 from pcdr.gnuradio_misc import configure_and_run_gui_flowgraph
@@ -40,8 +39,8 @@ def __pad_chunk_queue_test_2():
         message="If data is empty, then the result is an empty queue"
 )
 @deal.pre(lambda _: 0 < _.chunk_size < int(50e6))
-# Require 1-dimensional array (`shape` has only one item, that is, one dimension)
 @deal.pre(lambda _: np.isfinite(_.data).all())
+# Require 1-dimensional array (`shape` has only one item, that is, one dimension)
 @deal.pre(lambda _: len(_.data.shape) == 1)
 @deal.post(lambda result: issubclass(result.qtype, np.ndarray))
 @deal.has()
@@ -60,10 +59,11 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     ## Pad to next full chunk size, then chunk
     padlen = chunk_size - (len(npdata) % chunk_size)
     if padlen != chunk_size:
-        npdata = np.concatenate([npdata, np.zeros(padlen)])
+        npdata = np.concatenate([npdata, np.zeros(padlen, dtype=np.complex64)])
+    assert len(npdata) % chunk_size == 0
     chunked = np.split(npdata, len(npdata)/chunk_size)
 
-    q = SimpleQueueTypeWrapped(np.ndarray)
+    q = SimpleQueueTypeWrapped(np.ndarray, np.complex64, chunk_size)
     for item in chunked:
         q.put(item)
     return q
@@ -72,11 +72,12 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
 def gnuradio_simulate(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
-                  chunk_size: int = 1024,
-                  prepend_zeros: int = 0):
+                  prepend_zeros: int = 0,
+                  chunk_size: int = 1024):
     """Display using a GNU Radio QT GUI Sink"""
     prepended = np.concatenate([np.zeros(prepend_zeros, dtype=data.dtype), data])
     assert prepended.dtype == data.dtype
+    assert (prepended[prepend_zeros:] == data).all()
     q = pad_chunk_queue(prepended, chunk_size)
 
     configure_and_run_gui_flowgraph(queue_to_guisink, [center_freq, samp_rate, q, chunk_size])

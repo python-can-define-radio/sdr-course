@@ -40,5 +40,3 @@ class Gnuradio_receiver():
     def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return self.tb.data_queue_sink.queue_get_all()
-
-    

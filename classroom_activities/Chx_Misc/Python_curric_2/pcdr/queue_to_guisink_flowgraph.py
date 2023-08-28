@@ -22,15 +22,15 @@ from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 from gnuradio import qtgui
-from queue import SimpleQueue
-from pcdr.our_GNU_blocks import __data_queue_source
+from pcdr.helpers import SimpleQueueTypeWrapped
+from pcdr.our_GNU_blocks import data_queue_source
 
 
-_queue_to_guisink__data_queue_source = __data_queue_source
+_queue_to_guisink__data_queue_source = data_queue_source
 
 class queue_to_guisink(gr.top_block, Qt.QWidget):
 
-    def __init__(self, center_freq: float, samp_rate: float, external_queue: SimpleQueue, chunk_size: int):
+    def __init__(self, center_freq: float, samp_rate: float, external_queue: SimpleQueueTypeWrapped, chunk_size: int):
         gr.top_block.__init__(self, "Not titled yet")
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Not titled yet")
@@ -66,7 +66,7 @@ class queue_to_guisink(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self.data_queue_source = __data_queue_source(external_queue, chunk_size)
+        self.data_queue_source = data_queue_source(external_queue, chunk_size)
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
         self.blocks_throttle = blocks.throttle(gr.sizeof_gr_complex, samp_rate, True)
         self.qtgui_sink = qtgui.sink_c(

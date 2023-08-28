@@ -24,10 +24,10 @@ from gnuradio import eng_notation
 from gnuradio import qtgui
 from queue import SimpleQueue
 import numpy as np
-from pcdr.our_GNU_blocks import __data_queue_source
+from pcdr.our_GNU_blocks import data_queue_source
 
 
-_queue_to_waterfall__data_queue_source = __data_queue_source
+_queue_to_waterfall__data_queue_source = data_queue_source
 
 
 class queue_to_waterfall(gr.top_block, Qt.QWidget):
@@ -75,7 +75,7 @@ class queue_to_waterfall(gr.top_block, Qt.QWidget):
         chunk_size = 1024
         external_queue.put(np.ones(chunk_size, dtype=np.complex64))
         ##TODO put data in queue for testing.
-        self.data_queue_source = __data_queue_source(external_queue, chunk_size)
+        self.data_queue_source = data_queue_source(external_queue, chunk_size)
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
             1024, #size
             firdes.WIN_BLACKMAN_hARRIS, #wintype
