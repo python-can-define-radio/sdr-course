@@ -1,6 +1,6 @@
 # Frequency Domain and Complex waves
 
-In the previous lesson, all of the waves that we generated and plotted were real waves. In other words, they had only a real component, and no imaginary component. This lesson will introduce complex waves, which are those that have both a real and an imaginary component. In an SDR context, these are often called IQ signals, which means In-phase (I) and Quadrature (Q). The I refers to  the real part, and the Q refers to the imaginary part.
+In the previous lesson, all of the waves that we generated and plotted were real waves. In other words, they had only a real component, and no imaginary component. This lesson will introduce complex waves, which are those that have both a real and an imaginary component. In an SDR context, these are often called IQ signals, which means In-phase (I) and Quadrature (Q). The I refers to the real part, and the Q refers to the imaginary part.
 
 ### Why are we working with imaginary numbers?
 
@@ -25,27 +25,33 @@ So, how do you represent a negative frequency? Let's demonstrate that in a plot 
 ## 1 
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeComplexWave_time
+from pcdr import makeComplexWave_time, make_fft
 
+samp_rate = 50
+freq = -2
 
+timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=samp_rate, freq=freq)
+sample_freqs, fft_mag = make_fft(wave, samp_rate)
 
-timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=50, freq=2)
-plt.subplot(211, title="Frequency = +2 Hz")
+plt.subplot(211, title=f"{freq} Hz Wave: Time Domain")
 plt.plot(timestamps, wave.real, "^-", color="blue", label="Real")
 plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
 plt.legend(loc="upper right")
 
-timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=50, freq=-2)
-plt.subplot(212, title="Frequency = -2 Hz")
-plt.plot(timestamps, wave.real, "^-", color="blue", label="Real")
-plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
-plt.legend(loc="upper right")
+plt.subplot(212, title=f"{freq} Hz Wave: Frequency Domain")
+plt.plot(sample_freqs, fft_mag, ".g-")
 
 plt.tight_layout()
 plt.show()
+
+
+## 2
+## Copy and modify the previous example. Set the frequency to +2 Hz.
 ```
 
-Can you see a difference between the two plots?
+Notice that in the Frequency Domain, there's only one spike, which occurs at the chosen frequency.
+
+Can you see the difference between the Time Domain plots?
 <details><summary><i>Click here for answer...</i></summary>
   
 - For the wave with positive frequency, the real (blue) part is one-quarter-cycle BEFORE the imaginary (red) part.
@@ -58,12 +64,12 @@ If you'd like to delve into the underlying concepts, Arachnoid.com provides a [g
 Let's get some more practice working with complex waves.
 
 ```python3
-## 2
+## 3
 ## Use the makeComplexWave_time function to make a wave with frequency 3 Hz.
 ## Plot the wave from 0 to 4 seconds.
 
 
-## 3
+## 4
 ## Use the makeComplexWave_time function to make a wave with frequency 0.5 Hz.
 ## Plot the wave from 0 to 2 seconds. 
 ```
@@ -73,7 +79,7 @@ Let's get some more practice working with complex waves.
 Let's take the fft of a complex wave.
 
 ```python3
-## 4
+## 5
 ## Try this.
 import matplotlib.pyplot as plt
 from pcdr import makeComplexWave_time, make_fft_positive_freqs_only
@@ -95,7 +101,7 @@ plt.show()
 You should notice that the frequency domain plot looks identical to the Real wave frequency domain plot.  The difference can only be seen when we look at negative frequencies.
 
 ```python3
-## 5
+## 6
     
 ```  
   
