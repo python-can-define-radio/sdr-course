@@ -119,7 +119,7 @@ sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
 plt.plot(timestamps, wave, "*-", markersize=5)
 plt.subplot(2, 1, 2, title="Frequency Domain")
-plt.plot(sample_freqs, fft_mag, '.r-')
+plt.plot(sample_freqs, fft_mag, '.g-')
 plt.show()
 ```
 
@@ -148,7 +148,7 @@ sample_freqs, fft_mag = make_fft_positive_freqs_only(added, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
 plt.plot(timestamps, added, "*-", markersize=5)
 plt.subplot(2, 1, 2, title="Frequency Domain")
-plt.plot(sample_freqs, fft_mag, '.r-')
+plt.plot(sample_freqs, fft_mag, '.g-')
 plt.tightlayout()
 plt.show()
 ```
@@ -180,13 +180,34 @@ For the next exercise, you may wish to refer to the [matplotlib subplot command 
 ## You may wish to consult the matplotlib subplot documentation listed above.
 ```
 
-### The frequency domain and complex numbers
+### Complex waves in contrast to Real waves
 
-Earlier, we discussed negative frequencies. Let's do an FFT that allows for negative frequencies.
-
+Let's take the fft of a complex wave.
 
 ```python3
-## 
+## 12
+## Try this.
+import matplotlib.pyplot as plt
+from pcdr import makeComplexWave_time, make_fft_positive_freqs_only
+
+maxTime = 2
+samp_rate = 100
+timestamps, wave = makeComplexWave_time(seconds=maxTime, samp_rate=samp_rate, freq=3)
+sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
+plt.subplot(2, 1, 1, title="Time Domain")
+plt.plot(timestamps, wave.real, "*-", color="blue", label="Real")
+plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
+plt.legend(loc="upper right")
+plt.subplot(2, 1, 2, title="Frequency Domain")
+plt.plot(sample_freqs, fft_mag, '.g-')
+plt.tight_layout()
+plt.show()
+```
+
+You should notice that the frequency domain plot looks identical to the Real wave frequency domain plot.  The difference can only be seen when we look at negative frequencies.
+
+```python3
+## 13
     
 ```  
   
