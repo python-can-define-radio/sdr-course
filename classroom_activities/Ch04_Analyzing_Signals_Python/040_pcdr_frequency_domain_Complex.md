@@ -74,4 +74,7 @@ Let's get some more practice working with complex waves.
 ## Plot the wave from 0 to 2 seconds. 
 ```
 
-### Adding complex waves
+### Adding complex waves (Addition forthcoming)
+
+- do two ook signals
+- save to file, demod with urh
