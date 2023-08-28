@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from pcdr import makeRealWave_time
 
 seconds = 2
-samp_rate = 500
+samp_rate = 300
 timestamps, wave1 = makeRealWave_time(seconds=seconds, samp_rate=samp_rate, freq=2)
 timestamps, wave2 = makeRealWave_time(seconds=seconds, samp_rate=samp_rate, freq=25)
 added = wave1 + wave2
@@ -45,7 +45,7 @@ import matplotlib.pyplot as plt
 from pcdr import makeRealWave_time, make_fft_positive_freqs_only
 
 maxTime = 2
-samp_rate = 500
+samp_rate = 300
 timestamps, wave = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=10)
 sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
@@ -72,7 +72,7 @@ import matplotlib.pyplot as plt
 from pcdr import makeRealWave_time, make_fft_positive_freqs_only
 
 maxTime = 2
-samp_rate = 500
+samp_rate = 300
 timestamps, wave1 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=2)
 timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=25)
 added = wave1 + wave2
@@ -112,3 +112,41 @@ For the next exercise, you may wish to refer to the [matplotlib subplot command 
 ## You may wish to consult the matplotlib subplot documentation listed above.
 ```
 
+### The Dark Side of the Frequency Domain (Negative Frequencies)
+
+Up to this point, we've been using the function `make_fft_positive_freqs_only`. The name begs the question -- why are we only looking at only positive frequencies? What happens if you use `make_fft` instead? Let's try it.
+
+```python3
+## 9
+## Try this.
+import matplotlib.pyplot as plt
+from pcdr import makeRealWave_time, make_fft
+
+maxTime = 2
+samp_rate = 300
+timestamps, wave1 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=2)
+timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=25)
+added = wave1 + (0.5*wave2)
+sample_freqs, fft_mag = make_fft(added, samp_rate)
+plt.subplot(2, 1, 1, title="Time Domain")
+plt.plot(timestamps, added, "*-", markersize=5)
+plt.subplot(2, 1, 2, title="Frequency Domain")
+plt.plot(sample_freqs, fft_mag, '.g-', markersize=4)
+plt.tight_layout()
+plt.show()
+```
+
+Notice in the frequency domain that there are now four spikes: -25 Hz, -2 Hz, +2 Hz, +25 Hz.
+
+Let's try a different signal:
+
+```python3
+## 10
+## Copy and modify the previous example. Change both frequencies.
+```
+
+You'll notice that no matter what frequencies you pick, the Frequency Domain will always be symmetric.
+
+You may wonder: why we would ever display the negative frequencies if they'll always be the same as their positive counterparts? The answer: for real signals, the Frequency Domain will always be symmetric, but for signals that are not purely real, they won't necessarily be symmetric.
+
+_A non-real signal? What does that mean?_ See the next lesson for the answer!
