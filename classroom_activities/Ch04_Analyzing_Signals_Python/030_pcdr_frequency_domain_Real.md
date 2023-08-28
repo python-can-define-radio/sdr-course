@@ -1,3 +1,5 @@
+# Frequency Domain and Real Waves
+
 ### Adding waves
 
 When the signal is made up of a single wave, we can fairly easily identify the frequency of that wave. Even if there are two frequencies present, it's not too difficult to distinguish the frequencies that are present:
