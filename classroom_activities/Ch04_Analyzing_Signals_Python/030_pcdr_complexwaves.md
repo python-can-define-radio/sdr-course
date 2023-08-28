@@ -53,7 +53,7 @@ Can you see a difference between the two plots?
   
 </details>
 
-If you'd like to delve into the underlying concepts, Arachnoid.com provides a [great explanation](https://arachnoid.com/software_defined_radios/) (along with a [really cool interactive Javascript applet](https://arachnoid.com/software_defined_radios/#Theory__I_Q_Exploration_Applet)) for exploring IQ signals. 
+If you'd like to delve into the underlying concepts, Arachnoid.com provides a [great explanation](https://arachnoid.com/software_defined_radios/#Theory__The_Frequency_Domain) (along with a [really cool interactive Javascript applet](https://arachnoid.com/software_defined_radios/#Theory__I_Q_Exploration_Applet)) for exploring IQ signals. 
 
 Let's get some more practice working with complex waves.
 
