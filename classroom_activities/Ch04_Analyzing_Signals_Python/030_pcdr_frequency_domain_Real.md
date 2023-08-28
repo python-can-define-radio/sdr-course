@@ -81,7 +81,7 @@ plt.subplot(2, 1, 1, title="Time Domain")
 plt.plot(timestamps, added, "*-", markersize=5)
 plt.subplot(2, 1, 2, title="Frequency Domain")
 plt.plot(sample_freqs, fft_mag, '.g-')
-plt.tightlayout()
+plt.tight_layout()
 plt.show()
 ```
 
