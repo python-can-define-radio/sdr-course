@@ -3,7 +3,8 @@
 2022 Oct 12: 057-File-Source.md
 2022 Oct 17: 065-File-Source.md
 2023 Feb 22: 065-Unicode-and-File-Source.md
-2023 May 22: 010_Unicode_and_File_Source.md
+2023 May 22: Ch05/010_Unicode_and_File_Source.md
+2023 Aug 29: Ch02/040_Unicode_and_File_Source.md
 </pre>
 </details>
 
