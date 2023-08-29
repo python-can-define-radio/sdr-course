@@ -4,7 +4,7 @@ import pydash
 import numpy as np
 from queue import Empty
 from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
-from pcdr.osmocom_queued_tx_flowgraph import queue_to__osmocom_sink, queue_to__print_blk, queue_to__string_file_sink
+from pcdr.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_blk, queue_to_string_file_sink, queue_to_file_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_zmqpub_sink
@@ -86,16 +86,25 @@ def gnuradio_guisink(data: np.ndarray,
 def gnuradio_print(data: np.ndarray, print_delay: float = 0.5, chunk_size: int = 1024):
     """Sends data to a print block."""
     q = pad_chunk_queue(data, chunk_size)
-    tb = queue_to__print_blk(print_delay, q, chunk_size)
+    tb = queue_to_print_blk(print_delay, q, chunk_size)
+    configure_graceful_exit(tb)
+    tb.start()
+    tb.wait()
+
+
+def gnuradio_write_text_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
+    """Writes data to a file named `filename`, encoded as text."""
+    q = pad_chunk_queue(data, chunk_size)
+    tb = queue_to_string_file_sink(filename, q, chunk_size)
     configure_graceful_exit(tb)
     tb.start()
     tb.wait()
 
 
 def gnuradio_write_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
-    """Sends data to a file named `filename` using the GNU Radio File Sink block."""
+    """Writes data to a file named `filename`, encoded as np.complex64."""
     q = pad_chunk_queue(data, chunk_size)
-    tb = queue_to__string_file_sink(filename, q, chunk_size)
+    tb = queue_to_file_sink(filename, q, chunk_size)
     configure_graceful_exit(tb)
     tb.start()
     tb.wait()
@@ -119,7 +128,7 @@ def gnuradio_send(data: np.ndarray,
                   chunk_size: int = 1024):
     """Sends to osmocom sink."""
     q = pad_chunk_queue(data, chunk_size)
-    tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
+    tb = queue_to_osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
     configure_graceful_exit(tb)
     tb.start()
     tb.wait()

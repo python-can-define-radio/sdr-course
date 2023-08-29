@@ -44,6 +44,7 @@ try:
         gnuradio_print,
         gnuradio_guisink,
         gnuradio_write_file, 
+        gnuradio_write_text_file, 
     )
 
     from .gnuradio_receiver import (
@@ -51,9 +52,9 @@ try:
     )
 
     from .osmocom_queued_tx_flowgraph import (
-        queue_to__osmocom_sink,
-        queue_to__print_blk,
-        queue_to__string_file_sink,
+        queue_to_osmocom_sink,
+        queue_to_print_blk,
+        queue_to_string_file_sink,
     )
 except ModuleNotFoundError:
     print("WARNING: Unable to import gnuradio-related functionality.")

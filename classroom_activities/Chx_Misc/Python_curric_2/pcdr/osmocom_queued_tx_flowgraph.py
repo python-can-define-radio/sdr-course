@@ -23,14 +23,15 @@ from gnuradio import zeromq
 
 ## Bizarre GNU Radio variable-rename issues
 
-_queue_to__print_blk__data_queue_source = data_queue_source
-_queue_to__string_file_sink__data_queue_source = data_queue_source
-_queue_to__osmocom_sink__data_queue_source = data_queue_source
-_queue_to__string_file_sink__string_file_sink = string_file_sink
-_queue_to__print_blk__print_blk = print_blk
+_queue_to_print_blk__data_queue_source = data_queue_source
+_queue_to_string_file_sink__data_queue_source = data_queue_source
+_queue_to_osmocom_sink__data_queue_source = data_queue_source
+_queue_to_string_file_sink__string_file_sink = string_file_sink
+_queue_to_print_blk__print_blk = print_blk
 _queue_to_zmqpub_sink__data_queue_source = data_queue_source
 
-class queue_to__osmocom_sink(gr.top_block):
+
+class queue_to_osmocom_sink(gr.top_block):
 
     @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
     @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
@@ -59,7 +60,7 @@ class queue_to__osmocom_sink(gr.top_block):
         self.connect(self.data_queue_source, self.vector_to_stream, self.osmosdr_sink)
 
 
-class queue_to__print_blk(gr.top_block):
+class queue_to_print_blk(gr.top_block):
 
     def __init__(self, print_delay: float, external_queue: SimpleQueue, chunk_size: int):
         gr.top_block.__init__(self, "Top block")
@@ -69,7 +70,7 @@ class queue_to__print_blk(gr.top_block):
         self.connect(self.data_queue_source, self.vector_to_stream, self.print_blk)
 
 
-class queue_to__string_file_sink(gr.top_block):
+class queue_to_string_file_sink(gr.top_block):
 
     def __init__(self, filename: str, external_queue: SimpleQueue, chunk_size: int):
         gr.top_block.__init__(self, "Top block")
@@ -77,7 +78,19 @@ class queue_to__string_file_sink(gr.top_block):
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
         self.string_file_sink = string_file_sink(filename)
         self.connect(self.data_queue_source, self.vector_to_stream, self.string_file_sink)
-        
+
+
+class queue_to_file_sink(gr.top_block):
+
+    def __init__(self, filename: str, external_queue: SimpleQueue, chunk_size: int):
+        gr.top_block.__init__(self, "Top block")
+        self.data_queue_source = data_queue_source(external_queue, chunk_size)
+        self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
+        self.file_sink = blocks.file_sink(gr.sizeof_gr_complex, filename, append=False)
+        self.file_sink.set_unbuffered(False)
+        self.connect(self.data_queue_source, self.vector_to_stream, self.file_sink)
+
+
 class queue_to_zmqpub_sink(gr.top_block):
 
     def __init__(self, port: int, external_queue: SimpleQueue, chunk_size: int):
