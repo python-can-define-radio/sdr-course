@@ -65,7 +65,7 @@ class queue_to__print_blk(gr.top_block):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = data_queue_source(external_queue, chunk_size)
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
-        self.print_blk = __print_blk(print_delay)
+        self.print_blk = print_blk(print_delay)
         self.connect(self.data_queue_source, self.vector_to_stream, self.print_blk)
 
 
@@ -75,7 +75,7 @@ class queue_to__string_file_sink(gr.top_block):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = data_queue_source(external_queue, chunk_size)
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
-        self.string_file_sink = __string_file_sink(filename)
+        self.string_file_sink = string_file_sink(filename)
         self.connect(self.data_queue_source, self.vector_to_stream, self.string_file_sink)
         
 class queue_to_zmqpub_sink(gr.top_block):
