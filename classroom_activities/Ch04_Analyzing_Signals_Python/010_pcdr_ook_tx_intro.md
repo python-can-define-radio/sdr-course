@@ -28,14 +28,17 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
 
 1. Print the data. In this case, you may wish to use a shorter bit length, for example, `bit_length=4`.
    ```python3
-   gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="print")
+   from pcdr import gnuradio_print
+   gnuradio_print(modulated)
    ``` 
 2. Write the data to a file. You can then examine the file using URH or a program of your choice.
    ```python3
-   gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, output_to="fn:generatedfile.complex")
+   from pcdr import gnuradio_write_file
+   gnuradio_write_file(modulated, "generatedfile.complex")
    ```
-3. Use `gnuradio_simulate` instead. This displays the data in a QT GUI Sink. You may wish to use `prepend_zeros`, which adds a delay before the actual data. This can help give you time to switch windows to the GUI before the actual data is displayed.  
+3. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help give you time to switch windows to the GUI before the actual data is displayed.  
    ```python3
+   from pcdr import gnuradio_simulate
    gnuradio_simulate(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
    ```
 
@@ -68,10 +71,6 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ## have a full byte of information: 01000011.
 ## Let's try to send it, and receive it using URH.
 ## You may run into an issue, which we'll discuss in the exercise below.
-##
-## No-SDR-hardware option:
-##   Use output_to="fn:generatedfile.complex", and then
-##   open that file in URH.
 modulated = ook_modulate([0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 

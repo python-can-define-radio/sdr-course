@@ -83,41 +83,43 @@ def gnuradio_simulate(data: np.ndarray,
     configure_and_run_gui_flowgraph(queue_to_guisink, [center_freq, samp_rate, q, chunk_size])
     
 
-@deal.pre(lambda _: _.output_to.startswith("fn:") or _.output_to in ["hackrf", "print", "network"])
+def gnuradio_print(data: np.ndarray, print_delay: float = 0.5, chunk_size: int = 1024):
+    """Sends data to a print block."""
+    q = pad_chunk_queue(data, chunk_size)
+    tb = queue_to__print_blk(print_delay, q, chunk_size)
+    configure_graceful_exit(tb)
+    tb.start()
+    tb.wait()
+
+
+def gnuradio_write_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
+    """Sends data to a file named `filename` using the GNU Radio File Sink block."""
+    q = pad_chunk_queue(data, chunk_size)
+    tb = queue_to__string_file_sink(filename, q, chunk_size)
+    configure_graceful_exit(tb)
+    tb.start()
+    tb.wait()
+
+
+def gnuradio_network_pub(data: np.ndarray, port: int = 8008, chunk_size: int = 1024):
+    """Use a TCP socket to transmit data to a host on the network (also works for localhost).
+    (Note: implemented using ZeroMQ.)"""
+    q = pad_chunk_queue(data, chunk_size)
+    tb = queue_to_zmqpub_sink(port, q, chunk_size)
+    configure_graceful_exit(tb)
+    tb.start()
+    tb.wait()
+
+
 def gnuradio_send(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
                   if_gain: int = 16,
-                  output_to: str = "hackrf",
-                  print_delay: float = 0.5,
-                  chunk_size: int = 1024,
                   device_args: str = "hackrf=0",
-                  port: int = 8008):
-    """`output_to` can be one of these:
-        - "hackrf" (default): send to osmocom sink.
-        - "print": print to stdout (usually the terminal).
-        - "network": Use a TCP socket to transmit data to a host on the network (also works for localhost). (Note: implemented using ZeroMQ.)
-        - "fn:abc.txt": write output data to a file named 'abc.txt'.
-
-        `print_delay` is only used if printing to stdout.
-        """
-
+                  chunk_size: int = 1024):
+    """Sends to osmocom sink."""
     q = pad_chunk_queue(data, chunk_size)
-    
-    ## Set up and run flowgraph with the data queue we've prepared above
-    print(f"Using {output_to}.")
-    if output_to == "hackrf":
-        tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
-    elif output_to == "print":
-        tb = queue_to__print_blk(print_delay, q, chunk_size)
-    elif output_to == "network":
-        tb = queue_to_zmqpub_sink(port, q, chunk_size)
-    elif output_to.startswith("fn:"):
-        filename = output_to[3:]  # the part after the "fn:"
-        tb = queue_to__string_file_sink(filename, q, chunk_size)
-    else:
-        raise ValueError("Shouldn't be possible if deal contracts worked.")
-    
+    tb = queue_to__osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
     configure_graceful_exit(tb)
     tb.start()
     tb.wait()
