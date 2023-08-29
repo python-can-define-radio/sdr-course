@@ -69,7 +69,7 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     return q
 
 
-def gnuradio_simulate(data: np.ndarray,
+def gnuradio_guisink(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
                   prepend_zeros: int = 0,

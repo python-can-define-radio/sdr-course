@@ -9,7 +9,7 @@ One of the biggest advantages of defining radios using software is being able to
 ### Sending bits
 
 ```python3
-from pcdr import gnuradio_send, ook_modulate, gnuradio_simulate
+from pcdr import gnuradio_send, ook_modulate
 
 
 ## 1
@@ -38,8 +38,8 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
    ```
 3. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help give you time to switch windows to the GUI before the actual data is displayed.  
    ```python3
-   from pcdr import gnuradio_simulate
-   gnuradio_simulate(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
+   from pcdr import gnuradio_guisink
+   gnuradio_guisink(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
    ```
 
 ```python3

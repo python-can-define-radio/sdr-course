@@ -40,7 +40,10 @@ try:
     from .gnuradio_sender import (
         pad_chunk_queue,
         gnuradio_send,
-        gnuradio_simulate
+        gnuradio_network_pub,
+        gnuradio_print,
+        gnuradio_guisink,
+        gnuradio_write_file, 
     )
 
     from .gnuradio_receiver import (
