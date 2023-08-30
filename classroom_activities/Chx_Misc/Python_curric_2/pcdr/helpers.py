@@ -69,8 +69,21 @@ def bytes_to_bin_list(b: Union[bytes, List[int]]) -> List[int]:
 NON_ASCII_ERR = "Currently, this only works for characters whose `ord` value is less than 256. For now, use `bytes_to_bin_list` if you wish to use non-ASCII characters. However, this may cause unexpected results for certain characters such as '«' that have multiple possible encodings."
 @deal.pre(lambda _: all(ord(c) < 256 for c in _.message), message=NON_ASCII_ERR)
 @deal.ensure(lambda _: _.result == bytes_to_bin_list(_.message.encode("ASCII")) if all(ord(c) < 128 for c in _.message) else True)
-@deal.example(lambda: str_to_bin_list("«") == [1, 0, 1, 0, 1, 0, 1, 1])
-@deal.example(lambda: str_to_bin_list("CB") == [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0])
 @deal.has()
 def str_to_bin_list(message: str) -> List[int]:
+    """
+    Converts a string to a list of bits.
+
+    Examples:
+
+    >>> str_to_bin_list("C")
+    [0, 1, 0, 0, 0, 0, 1, 1]
+
+    >>> str_to_bin_list("CB")
+    [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0]
+
+    >>> str_to_bin_list("«")
+    [1, 0, 1, 0, 1, 0, 1, 1]
+
+    """
     return bytes_to_bin_list([ord(c) for c in message])

@@ -15,25 +15,7 @@ from pcdr.gnuradio_misc import configure_and_run_gui_flowgraph
 T = TypeVar('T')
 
 
-def __pad_chunk_queue_test_1():
-    testdata = np.array([1, 2, 3], dtype=np.uint8)
-    pcq = pad_chunk_queue(testdata, 2)
-    nparry = np.array(queue_to_list(pcq))
-    should_be = np.array([[1, 2], [3, 0]], dtype=np.complex64)
-    return (nparry == should_be).all()
 
-
-def __pad_chunk_queue_test_2():
-    testdata = np.array([1, 2, 3], dtype=np.uint8)
-    pcq = pad_chunk_queue(testdata, 5)
-    nparry = np.array(queue_to_list(pcq))
-    should_be = np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
-    return (nparry == should_be).all()
-    
-
-
-@deal.example(__pad_chunk_queue_test_1)
-@deal.example(__pad_chunk_queue_test_2)
 @deal.ensure(lambda _:  \
         queue_to_list(_.result) == [] if len(_.data) == 0 else True,
         message="If data is empty, then the result is an empty queue"
