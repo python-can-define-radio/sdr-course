@@ -53,7 +53,7 @@ try:
 
     from .osmocom_queued_tx_flowgraph import (
         queue_to_osmocom_sink,
-        queue_to_print_blk,
+        queue_to_print_sink,
         queue_to_string_file_sink,
     )
 except ModuleNotFoundError:

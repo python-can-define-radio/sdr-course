@@ -4,7 +4,7 @@ import pydash
 import numpy as np
 from queue import Empty
 from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
-from pcdr.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_blk, queue_to_string_file_sink, queue_to_file_sink
+from pcdr.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_sink, queue_to_string_file_sink, queue_to_file_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_zmqpub_sink
@@ -86,7 +86,7 @@ def gnuradio_guisink(data: np.ndarray,
 def gnuradio_print(data: np.ndarray, print_delay: float = 0.5, chunk_size: int = 1024):
     """Sends data to a print block."""
     q = pad_chunk_queue(data, chunk_size)
-    tb = queue_to_print_blk(print_delay, q, chunk_size)
+    tb = queue_to_print_sink(print_delay, q, chunk_size)
     configure_graceful_exit(tb)
     tb.start()
     tb.wait()

@@ -15,7 +15,7 @@ import osmosdr
 import time
 from queue import SimpleQueue, Empty
 import deal
-from pcdr.our_GNU_blocks import data_queue_source, string_file_sink, print_blk
+from pcdr.our_GNU_blocks import data_queue_source, string_file_sink, print_sink
 from gnuradio import zeromq
 
 
@@ -23,11 +23,11 @@ from gnuradio import zeromq
 
 ## Bizarre GNU Radio variable-rename issues
 
-_queue_to_print_blk__data_queue_source = data_queue_source
+_queue_to_print_sink__data_queue_source = data_queue_source
 _queue_to_string_file_sink__data_queue_source = data_queue_source
 _queue_to_osmocom_sink__data_queue_source = data_queue_source
 _queue_to_string_file_sink__string_file_sink = string_file_sink
-_queue_to_print_blk__print_blk = print_blk
+_queue_to_print_sink__print_sink = print_sink
 _queue_to_zmqpub_sink__data_queue_source = data_queue_source
 
 
@@ -60,14 +60,14 @@ class queue_to_osmocom_sink(gr.top_block):
         self.connect(self.data_queue_source, self.vector_to_stream, self.osmosdr_sink)
 
 
-class queue_to_print_blk(gr.top_block):
+class queue_to_print_sink(gr.top_block):
 
     def __init__(self, print_delay: float, external_queue: SimpleQueue, chunk_size: int):
         gr.top_block.__init__(self, "Top block")
         self.data_queue_source = data_queue_source(external_queue, chunk_size)
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)
-        self.print_blk = print_blk(print_delay)
-        self.connect(self.data_queue_source, self.vector_to_stream, self.print_blk)
+        self.print_sink = print_sink(print_delay)
+        self.connect(self.data_queue_source, self.vector_to_stream, self.print_sink)
 
 
 class queue_to_string_file_sink(gr.top_block):

@@ -4,7 +4,9 @@ from gnuradio import blocks
 import osmosdr
 import time
 from queue import Empty
-from pcdr.helpers import SimpleQueueTypeWrapped
+from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
+from queue import Full
+from typing import List
 import deal
 
 
@@ -43,7 +45,7 @@ class data_queue_source(gr.sync_block):
         self.__data_queue.put(data)
 
 
-class print_blk(gr.sync_block):
+class print_sink(gr.sync_block):
 
     def __init__(self, sleep_seconds=0.5):
         gr.sync_block.__init__(
@@ -81,3 +83,37 @@ class string_file_sink(gr.sync_block):
         self.f.flush()
 
         return 1
+
+
+class data_queue_sink(gr.sync_block):
+
+    def __init__(self, chunk_size: int):
+        gr.sync_block.__init__(
+            self,
+            name='Python Block: Data Queue Sink',
+            in_sig=[(np.complex64, chunk_size)],
+            out_sig=[]
+        )
+        self.__data_queue = SimpleQueueTypeWrapped()
+        self.__chunk_size = chunk_size
+
+
+    def work(self, input_items, output_items):
+        try:
+            datacopy = input_items[0][0].copy()
+            self.__data_queue.put(datacopy)
+            return 1
+        except Full:
+            print("Queue Full")
+
+
+    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
+    def queue_get(self) -> np.ndarray:
+        """Get a chunk from the queue of accumulated received data."""
+        return self.__data_queue.get()
+
+    def queue_get_all(self) -> List[np.ndarray]:
+        """Warning: this may or may not work while the flowgraph is running."""
+        return queue_to_list(self.__data_queue)
+
+

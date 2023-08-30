@@ -8,45 +8,14 @@ from queue import SimpleQueue, Empty, Full
 import deal
 
 from pcdr.helpers import queue_to_list
+from pcdr.our_GNU_blocks import data_queue_sink
 
-
-
-class __data_queue_sink(gr.sync_block):
-
-    def __init__(self, chunk_size: int):
-        gr.sync_block.__init__(
-            self,
-            name='Python Block: Data Queue Sink',
-            in_sig=[(np.complex64, chunk_size)],
-            out_sig=[]
-        )
-        self.__data_queue = SimpleQueue()
-        self.__chunk_size = chunk_size
-
-
-    def work(self, input_items, output_items):
-        try:
-            datacopy = input_items[0][0].copy()
-            self.__data_queue.put(datacopy)
-            return 1
-        except Full:
-            print("Queue Full")
-
-
-    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
-    def queue_get(self) -> np.ndarray:
-        """Get a chunk from the queue of accumulated received data."""
-        return self.__data_queue.get()
-
-    def queue_get_all(self) -> List[np.ndarray]:
-        """Warning: this may or may not work while the flowgraph is running."""
-        return queue_to_list(self.__data_queue)
 
 
 
 ## Bizarre GNU Radio variable-rename issues
 
-_osmocom_source_to_queue__data_queue_sink = __data_queue_sink
+_osmocom_source_to_queuedata_queue_sink = data_queue_sink
 
 
 class osmocom_source_to_queue(gr.top_block):
@@ -69,7 +38,7 @@ class osmocom_source_to_queue(gr.top_block):
 
         self.blocks_stream_to_vector = blocks.stream_to_vector(gr.sizeof_gr_complex, chunk_size)
 
-        self.data_queue_sink = __data_queue_sink(chunk_size)
+        self.data_queue_sink = data_queue_sink(chunk_size)
 
         self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.data_queue_sink)
 
