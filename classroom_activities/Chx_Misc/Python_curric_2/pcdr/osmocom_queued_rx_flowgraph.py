@@ -1,13 +1,9 @@
 from gnuradio import gr, blocks
 import numpy as np
-import time
-import random
 import osmosdr
 from typing import List
-from queue import SimpleQueue, Empty, Full
 import deal
 
-from pcdr.helpers import queue_to_list
 from pcdr.our_GNU_blocks import data_queue_sink
 
 
