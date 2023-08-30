@@ -48,7 +48,7 @@ def ook_modulate(bits: List[int], bit_length: int, dtype=np.uint8) -> np.ndarray
 from pcdr.wavegen import multiply_by_complex_wave
 
 
-@deal.post(lambda result: result[0].dtype == np.float32)
+@deal.post(lambda result: result[0].dtype == np.float64)
 @deal.post(lambda result: result[1].dtype == np.complex64)
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.bits) * _.bit_length)
 @deal.pre(lambda _: all(map(__is_binary, _.bits)),

@@ -26,9 +26,12 @@ from pcdr.helpers import str_to_bin_list
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.ensure(lambda _: len(_.result) == _.num_samples)
 @deal.post(lambda result: (0 <= result).all())
-def createTimestamps(seconds: float, num_samples: int, dtype=np.float32) -> np.ndarray:
+def createTimestamps(seconds: float, num_samples: int, dtype=np.float64) -> np.ndarray:
     """Creates timestamps from zero up to the given maximum number of seconds.
-    Implemented using np.linspace()."""
+    Implemented using np.linspace().
+    
+    Note: We use np.float64 as the default dtype because np.float32 was causing float rounding issues
+    that became worse with larger time values (as float rounding issues usually do)."""
     return np.linspace(
             start=0,
             stop=seconds,
@@ -55,7 +58,7 @@ test_makeRealWave = deal.cases(
     func=makeRealWave,
     kwargs=dict(
         timestamps=hyponp.arrays(
-            dtype=np.float32,
+            dtype=np.float64,
             shape=1,
             elements=st.floats(-10e9, 10e9, width=32)
         ),
@@ -78,7 +81,7 @@ test_makeComplexWave = deal.cases(
     func=makeComplexWave,
     kwargs=dict(
         timestamps=hyponp.arrays(
-            dtype=np.float32,
+            dtype=np.float64,
             shape=1,
             elements=st.floats(-10e9, 10e9, width=32)
         ),
@@ -260,7 +263,7 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
 
 
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
-@deal.post(lambda result: result[0].dtype == np.float32)
+@deal.post(lambda result: result[0].dtype == np.float64)
 @deal.post(lambda result: result[1].dtype == np.complex64)
 @deal.raises(ValueError)
 @deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
@@ -283,7 +286,7 @@ test_multiply_by_complex_wave = deal.cases(
 
 
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
-@deal.post(lambda result: result[0].dtype == np.float32)
+@deal.post(lambda result: result[0].dtype == np.float64)
 @deal.post(lambda result: result[1].dtype == np.float32)
 @deal.raises(ValueError)
 @deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
