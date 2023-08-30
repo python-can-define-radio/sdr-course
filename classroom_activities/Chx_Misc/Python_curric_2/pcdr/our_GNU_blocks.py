@@ -29,12 +29,6 @@ class data_queue_source(gr.sync_block):
     def work(self, input_items, output_items):
         try:
             output_items[0][0] = self.__data_queue.get_nowait()
-            abc = output_items[0][0]
-            # import matplotlib.pyplot as plt
-            # plt.plot(abc.real, ".")
-            # plt.plot(abc.imag, ".")
-            # plt.show()
-            # import pdb; pdb.set_trace()
             return 1
         except Empty:
             return -1  # Block is done
