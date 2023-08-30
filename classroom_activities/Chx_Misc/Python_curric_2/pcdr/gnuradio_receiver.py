@@ -17,7 +17,7 @@ from pcdr.helpers import queue_to_list
 
 class Gnuradio_receiver():
 
-    def __init__(self, center_freq: float, samp_rate: float, if_gain: int = 32, bb_gain: int = 42, chunk_size: int = 1024, device_args: str = "hackrf=0"):
+    def __init__(self, center_freq: float, samp_rate: float, if_gain: int = 32, bb_gain: int = 42, device_args: str = "hackrf=0", chunk_size: int = 1024):
         tb = osmocom_source_to_queue(center_freq, samp_rate, chunk_size, device_args, if_gain, bb_gain)
         self.tb = tb
         self.__chunk_size = chunk_size
