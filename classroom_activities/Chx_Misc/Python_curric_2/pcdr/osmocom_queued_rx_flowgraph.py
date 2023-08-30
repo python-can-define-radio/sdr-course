@@ -7,8 +7,6 @@ from typing import List
 from queue import SimpleQueue, Empty, Full
 import deal
 
-from pcdr.modulators import ook_modulate
-from pcdr.wavegen import createTimestamps, makeRealWave
 from pcdr.helpers import queue_to_list
 
 
@@ -43,7 +41,7 @@ class __data_queue_sink(gr.sync_block):
     def queue_get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return queue_to_list(self.__data_queue)
-        
+
 
 
 ## Bizarre GNU Radio variable-rename issues
@@ -52,7 +50,7 @@ _osmocom_source_to_queue__data_queue_sink = __data_queue_sink
 
 
 class osmocom_source_to_queue(gr.top_block):
-    
+
     @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
     @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
     @deal.pre(lambda _: _.if_gain in [0, 8, 16, 24, 32, 40])
@@ -80,24 +78,7 @@ class osmocom_source_to_queue(gr.top_block):
     def get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
         return self.data_queue_sink.queue_get()
-    
+
     def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return self.data_queue_sink.queue_get_all()
-
-
-class simulated_data_to_queue(gr.top_block):
-    def __init__(self, samp_rate: float):
-        modded = ook_modulate([1, 0, 1, 0, 1, 0, 1, 1], bit_length=25)
-        t = len(modded) / samp_rate
-        timestamps = createTimestamps(seconds=t, num_samples=len(modded))
-        wave = makeRealWave(timestamps, freq=4)
-        fully_modded = modded * wave
-        including_initial_empty = np.concatenate(
-            [np.zeros(random.randint(100, 500)), fully_modded]
-        )
-        noisy = including_initial_empty + np.random.normal(len(including_initial_empty))
-        # TODO:
-        # fakeQueue = pad_chunk_queue(TODO, arbitrary_size)
-        raise NotImplementedError()
-        
