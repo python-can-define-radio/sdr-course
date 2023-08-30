@@ -4,17 +4,24 @@ import osmosdr
 from typing import List
 import deal
 
-from pcdr.our_GNU_blocks import data_queue_sink
+from pcdr.our_GNU_blocks import queue_sink
 
 
 
 
 ## Bizarre GNU Radio variable-rename issues
 
-_osmocom_source_to_queuedata_queue_sink = data_queue_sink
+_osmocom_source_to_queuequeue_sink = queue_sink
 
 
-class osmocom_source_to_queue(gr.top_block):
+
+
+def get_all_from_queue_sink(tb: gr.top_block) -> List[np.ndarray]:
+    """Warning: this may or may not work while the flowgraph is running."""
+    return tb.queue_sink.queue_get_all()
+    
+
+class osmocom_source_to_queue_sink(gr.top_block):
 
     @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
     @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
@@ -34,16 +41,31 @@ class osmocom_source_to_queue(gr.top_block):
 
         self.blocks_stream_to_vector = blocks.stream_to_vector(gr.sizeof_gr_complex, chunk_size)
 
-        self.data_queue_sink = data_queue_sink(chunk_size)
+        self.queue_sink = queue_sink(chunk_size)
 
-        self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.data_queue_sink)
+        self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.queue_sink)
 
 
     @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
     def get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
-        return self.data_queue_sink.queue_get()
+        return self.queue_sink.queue_get()
+
+    
+class file_source_to_queue_sink(gr.top_block):
+
+    def __init__(self, chunk_size: int):
+        gr.top_block.__init__(self, "Top block")
+        self.__chunk_size = chunk_size
+        self.blocks_stream_to_vector = blocks.stream_to_vector(gr.sizeof_gr_complex, chunk_size)
+        self.queue_sink = queue_sink(chunk_size)
+        self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.queue_sink)
+
+    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
+    def get(self) -> np.ndarray:
+        """Get a chunk from the queue of accumulated received data."""
+        return self.queue_sink.queue_get()
 
     def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
-        return self.data_queue_sink.queue_get_all()
+        return self.queue_sink.queue_get_all()

@@ -5,7 +5,7 @@ At this point, we've modulated and transmitted On-Off Keyed binary data using Py
 There are at least three challenges that arise on the receiving end:
 
 - Noise
-- Received signal strength varies
+- Signal strength variation
 - Timing
 
 We'll address each of these in more detail, but first, here's a minimal receiver.

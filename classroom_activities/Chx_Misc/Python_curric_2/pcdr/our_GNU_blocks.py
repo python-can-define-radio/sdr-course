@@ -10,7 +10,7 @@ from typing import List
 import deal
 
 
-class data_queue_source(gr.sync_block):
+class queue_source(gr.sync_block):
 
     @deal.pre(lambda _: _.external_queue.qtype == np.ndarray)
     @deal.pre(lambda _: _.external_queue.dtype == _.out_type)
@@ -18,17 +18,17 @@ class data_queue_source(gr.sync_block):
     def __init__(self, external_queue: SimpleQueueTypeWrapped, chunk_size: int, out_type = np.complex64):
         gr.sync_block.__init__(
             self,
-            name='Python Block: Data Queue Source',
+            name='Python Block: Queue Source',
             in_sig=[],
             out_sig=[(out_type, chunk_size)]
         )
-        self.__data_queue = external_queue
+        self.__queue = external_queue
         self.__chunk_size = chunk_size
 
 
     def work(self, input_items, output_items):
         try:
-            output_items[0][0] = self.__data_queue.get_nowait()
+            output_items[0][0] = self.__queue.get_nowait()
             return 1
         except Empty:
             return -1  # Block is done
@@ -36,7 +36,7 @@ class data_queue_source(gr.sync_block):
     
     @deal.pre(lambda _: len(_.data) == _.self.__chunk_size)
     def queue_put(self, data):
-        self.__data_queue.put(data)
+        self.__queue.put(data)
 
 
 class print_sink(gr.sync_block):
@@ -79,7 +79,7 @@ class string_file_sink(gr.sync_block):
         return 1
 
 
-class data_queue_sink(gr.sync_block):
+class queue_sink(gr.sync_block):
 
     def __init__(self, chunk_size: int):
         gr.sync_block.__init__(
@@ -88,14 +88,14 @@ class data_queue_sink(gr.sync_block):
             in_sig=[(np.complex64, chunk_size)],
             out_sig=[]
         )
-        self.__data_queue = SimpleQueueTypeWrapped()
+        self.__queue = SimpleQueueTypeWrapped()
         self.__chunk_size = chunk_size
 
 
     def work(self, input_items, output_items):
         try:
             datacopy = input_items[0][0].copy()
-            self.__data_queue.put(datacopy)
+            self.__queue.put(datacopy)
             return 1
         except Full:
             print("Queue Full")
@@ -104,10 +104,10 @@ class data_queue_sink(gr.sync_block):
     @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
     def queue_get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
-        return self.__data_queue.get()
+        return self.__queue.get()
 
     def queue_get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
-        return queue_to_list(self.__data_queue)
+        return queue_to_list(self.__queue)
 
 
