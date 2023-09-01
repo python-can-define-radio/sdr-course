@@ -28,7 +28,7 @@ class queue_source(gr.sync_block):
 
     def work(self, input_items, output_items):
         try:
-            output_items[0][0] = self.__queue.get_nowait()
+            output_items[0][0][:] = self.__queue.get_nowait()
             return 1
         except Empty:
             return -1  # Block is done
