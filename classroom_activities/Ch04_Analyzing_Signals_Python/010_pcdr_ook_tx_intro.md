@@ -4,7 +4,7 @@
 
 ### Introduction
 
-One of the biggest advantages of defining radios using software is being able to transmit using arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
+One of the biggest advantages of SDRs is that they allow us to transmit arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
 
 ### Sending bits
 
