@@ -23,7 +23,7 @@ from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 from gnuradio import qtgui
 from pcdr.helpers import SimpleQueueTypeWrapped
-from pcdr.our_GNU_blocks import queue_source
+from pcdr.our_GR_blocks import queue_source
 
 
 _queue_to_guisink__queue_source = queue_source

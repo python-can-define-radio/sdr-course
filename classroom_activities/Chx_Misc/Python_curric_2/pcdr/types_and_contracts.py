@@ -1,6 +1,6 @@
 from typing import Union, TypeVar, Protocol
 import deal
-from pcdr.our_GNU_blocks import queue_sink
+from pcdr.our_GR_blocks import queue_sink
 
 
 

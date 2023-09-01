@@ -15,7 +15,7 @@ import osmosdr
 import time
 from queue import SimpleQueue, Empty
 import deal
-from pcdr.our_GNU_blocks import queue_source, string_file_sink, print_sink
+from pcdr.our_GR_blocks import queue_source, string_file_sink, print_sink
 from gnuradio import zeromq
 
 

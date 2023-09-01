@@ -24,7 +24,7 @@ from gnuradio import eng_notation
 from gnuradio import qtgui
 from queue import SimpleQueue
 import numpy as np
-from pcdr.our_GNU_blocks import queue_source
+from pcdr.our_GR_blocks import queue_source
 
 
 _queue_to_waterfall__queue_source = queue_source
