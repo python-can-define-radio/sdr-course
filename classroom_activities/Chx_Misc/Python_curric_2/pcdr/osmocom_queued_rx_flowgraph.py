@@ -1,7 +1,7 @@
 from gnuradio import gr, blocks
 import numpy as np
 import osmosdr
-from typing import List
+from typing import List, Protocol
 import deal
 
 from pcdr.our_GNU_blocks import queue_sink
@@ -14,12 +14,6 @@ from pcdr.our_GNU_blocks import queue_sink
 _osmocom_source_to_queuequeue_sink = queue_sink
 
 
-
-
-def get_all_from_queue_sink(tb: gr.top_block) -> List[np.ndarray]:
-    """Warning: this may or may not work while the flowgraph is running."""
-    return tb.queue_sink.queue_get_all()
-    
 
 class osmocom_source_to_queue_sink(gr.top_block):
 
@@ -45,12 +39,6 @@ class osmocom_source_to_queue_sink(gr.top_block):
 
         self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.queue_sink)
 
-
-    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
-    def get(self) -> np.ndarray:
-        """Get a chunk from the queue of accumulated received data."""
-        return self.queue_sink.queue_get()
-
     
 class file_source_to_queue_sink(gr.top_block):
 
@@ -60,12 +48,3 @@ class file_source_to_queue_sink(gr.top_block):
         self.blocks_stream_to_vector = blocks.stream_to_vector(gr.sizeof_gr_complex, chunk_size)
         self.queue_sink = queue_sink(chunk_size)
         self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.queue_sink)
-
-    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
-    def get(self) -> np.ndarray:
-        """Get a chunk from the queue of accumulated received data."""
-        return self.queue_sink.queue_get()
-
-    def get_all(self) -> List[np.ndarray]:
-        """Warning: this may or may not work while the flowgraph is running."""
-        return self.queue_sink.queue_get_all()

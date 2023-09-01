@@ -102,11 +102,11 @@ class queue_sink(gr.sync_block):
 
 
     @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
-    def queue_get(self) -> np.ndarray:
+    def get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
         return self.__queue.get()
 
-    def queue_get_all(self) -> List[np.ndarray]:
+    def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return queue_to_list(self.__queue)
 

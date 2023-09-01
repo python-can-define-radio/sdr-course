@@ -1,5 +1,6 @@
-from typing import Union, TypeVar
+from typing import Union, TypeVar, Protocol
 import deal
+from pcdr.our_GNU_blocks import queue_sink
 
 
 
@@ -8,4 +9,6 @@ TRealNum = TypeVar('TRealNum', int, float)
 
 TRealOrComplexNum = TypeVar('TRealOrComplexNum', int, float, complex)
 
+class SupportsQueueSink(Protocol):
+    queue_sink: queue_sink
 

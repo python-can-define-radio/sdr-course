@@ -7,16 +7,23 @@ from gnuradio import gr
 from pcdr.osmocom_queued_rx_flowgraph import osmocom_source_to_queue_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.helpers import queue_to_list
+from pcdr.types_and_contracts import SupportsQueueSink
 
 
-def __config_start_sleep_stop_return(tb: gr.top_block, seconds: float):
+
+
+def __run_block_and_return_queue_contents(tb: SupportsQueueSink, seconds: float):
+    
+    ## this assertion should be done as a type annotation, but I haven't yet figured out
+    ## how to do that with multiple types.
+    assert isinstance(tb, gr.top_block)
     configure_graceful_exit(tb)
     tb.start()
     time.sleep(seconds)
     tb.stop()
     tb.wait()
-    assert callable(tb.get_all)
-    rx_data = np.array(tb.get_all())
+    rx_data = np.array(tb.queue_sink.get_all())
+    assert isinstance(rx_data, np.ndarray)
     return rx_data.flatten()
 
 
@@ -35,7 +42,7 @@ def gnuradio_receive(
         chunk_size: int = 1024) -> np.ndarray:
     """Receive for APPROXIMATELY `seconds` seconds."""
     tb = osmocom_source_to_queue_sink(center_freq, samp_rate, if_gain, bb_gain, device_args, chunk_size)
-    __config_start_sleep_stop_return()
+    return __run_block_and_return_queue_contents(tb)
 
 
 
@@ -59,8 +66,8 @@ class Gnuradio_receiver():
     @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
     def get(self):
         """Returns a chunk from the queue of accumulated received data."""
-        return self.tb.get()
+        return self.tb.queue_sink.get()
     
     def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
-        return self.tb.queue_sink.queue_get_all()
+        return self.tb.queue_sink.get_all()
