@@ -1,4 +1,5 @@
 from gnuradio import gr, blocks
+import pmt
 import numpy as np
 import osmosdr
 from typing import List, Protocol
@@ -42,9 +43,14 @@ class osmocom_source_to_queue_sink(gr.top_block):
     
 class file_source_to_queue_sink(gr.top_block):
 
-    def __init__(self, chunk_size: int):
+    def __init__(self, filename: str, chunk_size: int, repeat: bool):
         gr.top_block.__init__(self, "Top block")
         self.__chunk_size = chunk_size
+        self.file_source = blocks.file_source(gr.sizeof_gr_complex, filename, repeat)
+        self.file_source.set_begin_tag(pmt.PMT_NIL)  # Don't know if this is needed
         self.blocks_stream_to_vector = blocks.stream_to_vector(gr.sizeof_gr_complex, chunk_size)
         self.queue_sink = queue_sink(chunk_size)
-        self.connect(self.osmosdr_source, self.blocks_stream_to_vector, self.queue_sink)
+        self.connect(self.file_source, self.blocks_stream_to_vector, self.queue_sink)
+
+
+
