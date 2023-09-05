@@ -41,6 +41,31 @@ def createTimestamps(seconds: float, num_samples: int, dtype=np.float64) -> np.n
         )
 
 
+@deal.has()
+@deal.pre(lambda _: 0 <= _.samp_rate)
+@deal.pre(lambda _: 0 <= _.num_samples)
+@deal.ensure(lambda _: _.result.dtype == _.dtype)
+@deal.ensure(lambda _: len(_.result) == _.num_samples)
+@deal.post(lambda result: (0 <= result).all())
+def createTimestamps_samprate(samp_rate: float, num_samples: int, dtype=np.float64) -> np.ndarray:
+    """Creates `num_samples` timestamps spaced by `1/samp_rate`.
+    Implemented using np.linspace().
+    
+    Examples (THIS IS INCORRECT; NEED TO FIX)
+    >>> createTimestamps_samprate(5, 10)
+    [1, 2]
+
+    Note: We use np.float64 as the default dtype because np.float32 was causing float rounding issues
+    that became worse with larger time values (as float rounding issues usually do)."""
+    return np.linspace(
+            start=0,
+            stop=num_samples/samp_rate,
+            num=num_samples,
+            endpoint=False,
+            dtype=dtype
+        )
+
+
 
 
 @deal.has()
