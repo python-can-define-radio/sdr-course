@@ -88,7 +88,7 @@ class queue_sink(gr.sync_block):
             in_sig=[(np.complex64, chunk_size)],
             out_sig=[]
         )
-        self.__queue = SimpleQueueTypeWrapped()
+        self.__queue = SimpleQueueTypeWrapped(np.ndarray, np.complex64, chunk_size)
         self.__chunk_size = chunk_size
 
 
