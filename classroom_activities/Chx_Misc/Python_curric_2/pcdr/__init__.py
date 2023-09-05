@@ -50,6 +50,7 @@ try:
     from .gnuradio_receiver import (
         Gnuradio_receiver,
         gnuradio_receive,
+        gnuradio_read_file,
     )
 
     from .osmocom_queued_tx_flowgraph import (
