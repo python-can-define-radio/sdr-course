@@ -28,14 +28,24 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
 
 1. Print the data. In this case, you may wish to use a shorter bit length, for example, `bit_length=4`.
    ```python3
+   print(modulated)
+   ```
+
+<!--
+   ```python3
    from pcdr import gnuradio_print
    gnuradio_print(modulated)
    ``` 
-2. Write the data to a file. You can then examine the file using URH or a program of your choice.
+   -->
+2. Write the data to a file. You can then examine the file using URH or a program of your choice. Note that you'll need to convert the data to `np.complex64` before writing it.
    ```python3
+   complexdata = np.complex64(modulated)
+   complexdata.tofile("generatedfile.complex")
+   ```
+   <!--
    from pcdr import gnuradio_write_file
    gnuradio_write_file(modulated, "generatedfile.complex")
-   ```
+   --> 
 3. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help give you time to switch windows to the GUI before the actual data is displayed.  
    ```python3
    from pcdr import gnuradio_guisink
