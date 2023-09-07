@@ -1,12 +1,3 @@
-import sys
-import os
-
-
-cwd = os.getcwd()
-print(f"appending {cwd} to sys path")
-sys.path.append(cwd)
-
-
 from queue import SimpleQueue
 import numpy as np
 import deal
