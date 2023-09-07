@@ -93,12 +93,9 @@ class queue_sink(gr.sync_block):
 
 
     def work(self, input_items, output_items):
-        try:
-            datacopy = input_items[0][0].copy()
-            self.__queue.put(datacopy)
-            return 1
-        except Full:
-            print("Queue Full")
+        datacopy = input_items[0][0].copy()
+        self.__queue.put(datacopy)
+        return 1
 
 
     @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
