@@ -1,4 +1,5 @@
 import deal
+import numpy as np
 from queue import SimpleQueue, Empty
 from typing import List, TypeVar, Union, Optional
 
@@ -141,3 +142,11 @@ def str_to_bin_list(message: str) -> List[int]:
     [1, 0, 1, 0, 1, 0, 1, 1]
     """
     return bytes_to_bin_list([ord(c) for c in message])
+
+
+def prepend_zeros_(data: np.ndarray, zeroCount: int):
+    prepended = np.concatenate([np.zeros(zeroCount, dtype=data.dtype), data])
+    assert isinstance(prepended, np.ndarray)
+    assert prepended.dtype == data.dtype
+    assert (prepended[zeroCount:] == data).all()
+    return prepended
