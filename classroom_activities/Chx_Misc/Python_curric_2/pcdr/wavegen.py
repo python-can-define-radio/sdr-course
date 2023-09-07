@@ -42,7 +42,7 @@ def createTimestamps(seconds: float, num_samples: int, dtype=np.float64) -> np.n
 
 
 @deal.has()
-@deal.pre(lambda _: 0 <= _.samp_rate)
+@deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.num_samples)
 @deal.ensure(lambda _: _.result.dtype == _.dtype)
 @deal.ensure(lambda _: len(_.result) == _.num_samples)
