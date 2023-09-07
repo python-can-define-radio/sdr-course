@@ -10,6 +10,7 @@ One of the biggest advantages of SDRs is that they allow us to transmit arbitrar
 
 ```python3
 from pcdr import gnuradio_send, ook_modulate
+import numpy as np
 
 
 ## 1
