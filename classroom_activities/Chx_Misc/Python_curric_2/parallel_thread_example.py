@@ -8,5 +8,7 @@ def parallel_thread(tb):
         tb.osmocom.set_center_freq(93.9e6)
         time.sleep(1)
 
-
+"""
+TODO: something like this
 start_gui_and_run_thread(noise_jammer, parallel_thread)
+"""
