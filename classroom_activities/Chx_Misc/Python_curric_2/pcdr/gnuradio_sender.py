@@ -56,7 +56,7 @@ def gnuradio_guisink(data: np.ndarray,
                   samp_rate: float,
                   prepend_zeros: int = 0,
                   chunk_size: int = 1024):
-    """Display using a GNU Radio QT GUI Sink"""
+    """Display using a GNU Radio QT GUI Sink."""
     prepended = np.concatenate([np.zeros(prepend_zeros, dtype=data.dtype), data])
     assert prepended.dtype == data.dtype
     assert (prepended[prepend_zeros:] == data).all()
@@ -75,7 +75,8 @@ def gnuradio_print(data: np.ndarray, print_delay: float = 0.5, chunk_size: int =
 
 
 def gnuradio_write_text_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
-    """Writes data to a file named `filename`, encoded as text."""
+    """Writes data to a file named `filename`, encoded as text.
+    NOTE: Based on issues experienced with gnuradio_write_file, this may not write the entire file."""
     q = pad_chunk_queue(data, chunk_size)
     tb = queue_to_string_file_sink(filename, q, chunk_size)
     configure_graceful_exit(tb)
@@ -84,7 +85,8 @@ def gnuradio_write_text_file(data: np.ndarray, filename: str, chunk_size: int = 
 
 
 def gnuradio_write_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
-    """Writes data to a file named `filename`, encoded as np.complex64."""
+    """Writes data to a file named `filename`, encoded as np.complex64.
+    NOTE: There seem to be unresolved issues in which this does not write a full file."""
     q = pad_chunk_queue(data, chunk_size)
     tb = queue_to_file_sink(filename, q, chunk_size)
     configure_graceful_exit(tb)
@@ -108,7 +110,7 @@ def gnuradio_send(data: np.ndarray,
                   if_gain: int = 16,
                   device_args: str = "hackrf=0",
                   chunk_size: int = 1024):
-    """Sends to osmocom sink."""
+    """Sends `data` to osmocom sink."""
     q = pad_chunk_queue(data, chunk_size)
     tb = queue_to_osmocom_sink(center_freq, samp_rate, chunk_size, if_gain, q, device_args)
     configure_graceful_exit(tb)
