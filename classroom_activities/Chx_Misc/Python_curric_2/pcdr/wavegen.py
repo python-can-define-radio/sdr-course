@@ -51,9 +51,12 @@ def createTimestamps_samprate(samp_rate: float, num_samples: int, dtype=np.float
     """Creates `num_samples` timestamps spaced by `1/samp_rate`.
     Implemented using np.linspace().
     
-    Examples (THIS IS INCORRECT; NEED TO FIX)
+    Examples:
     >>> createTimestamps_samprate(5, 10)
-    [1, 2]
+    array([0. , 0.2, 0.4, 0.6, 0.8, 1. , 1.2, 1.4, 1.6, 1.8])
+
+    >>> createTimestamps_samprate(4, 2)
+    array([0.  , 0.25])
 
     Note: We use np.float64 as the default dtype because np.float32 was causing float rounding issues
     that became worse with larger time values (as float rounding issues usually do)."""

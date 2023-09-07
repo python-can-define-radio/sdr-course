@@ -25,6 +25,7 @@ from .wavegen import (
     multiply_by_real_wave,
     make_fft,
     make_fft_positive_freqs_only,
+    createTimestamps_samprate,
 )
 
 from .helpers import (
