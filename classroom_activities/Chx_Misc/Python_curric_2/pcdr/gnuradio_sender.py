@@ -3,12 +3,14 @@ import deal
 import pydash
 import numpy as np
 from queue import Empty
-from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
+from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_sink, queue_to_string_file_sink, queue_to_file_sink
+from pcdr.vector_tx_flowgraphs import vector_to_file_sink, vector_to_osmocom_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_zmqpub_sink
 from pcdr.queue_to_guisink_flowgraph import queue_to_guisink
+from pcdr.vector_to_guisink_flowgraph import vector_to_guisink
 from pcdr.gnuradio_misc import configure_and_run_gui_flowgraph
 
 
@@ -51,7 +53,7 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     return q
 
 
-def gnuradio_guisink(data: np.ndarray,
+def gnuradio_guisink_using_queue_impl(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
                   prepend_zeros: int = 0,
@@ -63,9 +65,19 @@ def gnuradio_guisink(data: np.ndarray,
     q = pad_chunk_queue(prepended, chunk_size)
 
     configure_and_run_gui_flowgraph(queue_to_guisink, [center_freq, samp_rate, q, chunk_size])
-    
 
-def gnuradio_print(data: np.ndarray, print_delay: float = 0.5, chunk_size: int = 1024):
+
+def gnuradio_guisink(data: np.ndarray,
+                  center_freq: float,
+                  samp_rate: float,
+                  prepend_zeros: int = 0):
+    """Display using a GNU Radio QT GUI Sink."""
+    prepended = prepend_zeros_(data, prepend_zeros)
+    normal_py_data = tuple(map(complex, prepended))  # GNURadio type issues. Eventually, fix this for efficiency
+    configure_and_run_gui_flowgraph(vector_to_guisink, [center_freq, samp_rate, normal_py_data])
+
+
+def gnuradio_print_using_queue_impl(data: np.ndarray, print_delay: float = 0.5, chunk_size: int = 1024):
     """Sends data to a print block."""
     q = pad_chunk_queue(data, chunk_size)
     tb = queue_to_print_sink(print_delay, q, chunk_size)
@@ -74,7 +86,15 @@ def gnuradio_print(data: np.ndarray, print_delay: float = 0.5, chunk_size: int =
     tb.wait()
 
 
-def gnuradio_write_text_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
+def gnuradio_print():
+    TODO
+
+
+def gnuradio_write_text_file():
+    TODO
+
+
+def gnuradio_write_text_file_using_queue_impl(data: np.ndarray, filename: str, chunk_size: int = 1024):
     """Writes data to a file named `filename`, encoded as text.
     NOTE: Based on issues experienced with gnuradio_write_file, this may not write the entire file."""
     q = pad_chunk_queue(data, chunk_size)
@@ -84,7 +104,7 @@ def gnuradio_write_text_file(data: np.ndarray, filename: str, chunk_size: int = 
     tb.wait()
 
 
-def gnuradio_write_file(data: np.ndarray, filename: str, chunk_size: int = 1024):
+def gnuradio_write_file_using_queue_impl(data: np.ndarray, filename: str, chunk_size: int = 1024):
     """Writes data to a file named `filename`, encoded as np.complex64.
     NOTE: There seem to be unresolved issues in which this does not write a full file."""
     q = pad_chunk_queue(data, chunk_size)
@@ -94,8 +114,19 @@ def gnuradio_write_file(data: np.ndarray, filename: str, chunk_size: int = 1024)
     tb.wait()
 
 
+def gnuradio_write_file(data: np.ndarray, filename: str):
+    """Writes data to a file named `filename`, encoded as np.complex64.
+    NOTE: There seem to be an unresolved issue in which this does not write a full file."""
+    normal_py_data = tuple(map(complex, data))  # GNURadio type issues. Eventually, fix this for efficiency
+    tb = vector_to_file_sink(normal_py_data, filename)
+    configure_graceful_exit(tb)
+    tb.start()
+    tb.wait()
+
+
 def gnuradio_network_pub(data: np.ndarray, port: int = 8008, chunk_size: int = 1024):
-    """Use a TCP socket to transmit data to a host on the network (also works for localhost).
+    """NOT FULLY TESTED. 
+    Use a TCP socket to transmit data to a host on the network (also works for localhost).
     (Note: implemented using ZeroMQ.)"""
     q = pad_chunk_queue(data, chunk_size)
     tb = queue_to_zmqpub_sink(port, q, chunk_size)
@@ -105,6 +136,20 @@ def gnuradio_network_pub(data: np.ndarray, port: int = 8008, chunk_size: int = 1
 
 
 def gnuradio_send(data: np.ndarray,
+                  center_freq: float,
+                  samp_rate: float,
+                  if_gain: int = 16,
+                  device_args: str = "hackrf=0",
+                  repeat: bool = False):
+    """Sends `data` to osmocom sink."""
+    normal_py_data = tuple(map(complex, data))  # GNURadio type issues. Eventually, fix this for efficiency
+    tb = vector_to_osmocom_sink(normal_py_data, center_freq, samp_rate, if_gain, device_args)
+    configure_graceful_exit(tb)
+    tb.start()
+    tb.wait()
+
+
+def gnuradio_send_using_queue_impl(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
                   if_gain: int = 16,
