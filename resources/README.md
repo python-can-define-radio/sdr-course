@@ -1,5 +1,11 @@
 # Resources
 
+- ["HackRF as the best SDR friend for hackers"](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers/), from Ivan Glinkin. A very long page with a lot of useful info, including...
+  - [Frequency bands](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872452): a summary of what you'll find on each band
+  - [Hacking a doorbell](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872468)
+  - [Hacking a remote-control car – 27 MHz](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872481)
+  - [Hacking a remote-control car – 2.4 GHz](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872485)
+  - [Hacking a portable weather station](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872490)
 - https://greatscottgadgets.com/sdr/ : Hack RF course by Michael Ossmann of Great Scott Gadgets.
 - https://gallicchio.github.io/learnSDR/ : Harvey Mudd College's SDR course.
 - [Tutorials on the GNU Radio Wiki](https://wiki.gnuradio.org/index.php/Tutorials)
