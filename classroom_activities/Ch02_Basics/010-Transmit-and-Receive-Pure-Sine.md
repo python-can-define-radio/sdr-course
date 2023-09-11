@@ -2,7 +2,6 @@
 
 # Transmitting and receiving a pure sine wave
 
-Now that we've seen the basics of GNU Radio Companion, we're going to start using the Hack RFs.
 
 Since the Hack RF is half-duplex, you'll need two flowgraphs to do this activity: one for transmit, and one for receive.
 
