@@ -9,6 +9,8 @@
 
 # GRC Spectrum Analyzer
 
+ℹ️ This material coincides with material from SDR slideshow D (slides 1-27).
+
 ## Summary
 
 ```

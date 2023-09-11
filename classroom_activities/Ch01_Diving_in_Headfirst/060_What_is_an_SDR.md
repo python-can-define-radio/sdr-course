@@ -8,6 +8,8 @@
 
 # SDR Discussion
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 21-22).
+
 Well, it's a Software Defined Radio. But you're probably looking for a more in-depth answer than that.
 
 So, let's look at what a radio is. Even before that, we'll start with what a wave is.

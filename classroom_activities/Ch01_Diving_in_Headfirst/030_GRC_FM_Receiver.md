@@ -10,6 +10,8 @@
 
 # GRC FM Receiver
 
+ℹ️ This material coincides with material from SDR slideshow C (slides 1-44).
+
 ## Summary
 
 ```

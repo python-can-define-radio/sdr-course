@@ -7,6 +7,8 @@
 
 # gqrx FM Receive  
 
+ℹ️ This material coincides with material from SDR slideshow B (slides 69-80).
+
 ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
 ### Initial setup    
 - Attach an SDR device, e.g. a HackRF One, to your computer
