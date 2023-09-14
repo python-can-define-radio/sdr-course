@@ -44,6 +44,7 @@ Other cool stuff:
   - [Hamming code (interesting; more advanced)](https://www.youtube.com/watch?v=X8jsijhllIA)
 - [gr-bokehgui: Web based display for GNU Radio](https://github.com/gnuradio/gr-bokehgui)
 - Air-Gap Covert Channels demos: https://cyber.bgu.ac.il/advanced-cyber/airgap
+- Wireless mouse (and keyboard) vulnerability: https://www.mousejack.com/
 - Keyfob security: 
   - This has good pictures: https://www.andrewmohawk.com/2016/02/05/bypassing-rolling-code-systems/
   - [RTL-SDR blog regarding Hondas](https://www.rtl-sdr.com/?s=honda)
