@@ -8,7 +8,7 @@
 # Title: Not titled yet
 # GNU Radio version: 3.8.1.0
 
-from distutils.version import StrictVersion
+
 
 from PyQt5 import Qt
 from gnuradio import qtgui
@@ -24,6 +24,8 @@ from gnuradio import eng_notation
 from gnuradio import qtgui
 from pcdr.helpers import SimpleQueueTypeWrapped
 from pcdr.our_GR_blocks import queue_source
+from pcdr.wrapped_GR_blocks import qt_gui_init_boilerplate
+
 
 
 _queue_to_guisink__queue_source = queue_source
@@ -32,37 +34,8 @@ class queue_to_guisink(gr.top_block, Qt.QWidget):
 
     def __init__(self, center_freq: float, samp_rate: float, external_queue: SimpleQueueTypeWrapped, chunk_size: int):
         gr.top_block.__init__(self, "Not titled yet")
-        Qt.QWidget.__init__(self)
-        self.setWindowTitle("Not titled yet")
-        qtgui.util.check_set_qss()
-        try:
-            self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
-        except:
-            pass
-        self.top_scroll_layout = Qt.QVBoxLayout()
-        self.setLayout(self.top_scroll_layout)
-        self.top_scroll = Qt.QScrollArea()
-        self.top_scroll.setFrameStyle(Qt.QFrame.NoFrame)
-        self.top_scroll_layout.addWidget(self.top_scroll)
-        self.top_scroll.setWidgetResizable(True)
-        self.top_widget = Qt.QWidget()
-        self.top_scroll.setWidget(self.top_widget)
-        self.top_layout = Qt.QVBoxLayout(self.top_widget)
-        self.top_grid_layout = Qt.QGridLayout()
-        self.top_layout.addLayout(self.top_grid_layout)
-
-        self.settings = Qt.QSettings("GNU Radio", "queue_to_guisink")
-
-        try:
-            if StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
-                self.restoreGeometry(self.settings.value("geometry").toByteArray())
-            else:
-                self.restoreGeometry(self.settings.value("geometry"))
-        except:
-            pass
-
-
-
+        qt_gui_init_boilerplate(self, "queue_to_guisink")
+        
         ##################################################
         # Blocks
         ##################################################
