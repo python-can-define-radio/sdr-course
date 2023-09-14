@@ -237,12 +237,12 @@ import numpy as np
 ## 8
 x = 5
 y = 6
-print(a == b)
+print(x == y)
 
 ## 9
 x = 5
 y = 5
-print(a == b)
+print(x == y)
 
 ## 10
 x = [1, 2, 3]
