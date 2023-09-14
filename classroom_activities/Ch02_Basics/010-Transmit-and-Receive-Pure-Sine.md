@@ -69,7 +69,7 @@ _Note: the following block names are abbreviated:_
   - Frequency: `sigfreq`
   - Amplitude: `amplitu`
 - osmocom Sink:
-  - Ch0: Frequency (Hz): `ASK_THE_INSTRUCTOR`
+  - Ch0: Frequency (Hz): `Use frequency from group # above`
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `ifgain`
@@ -97,7 +97,7 @@ osmocom Source  --->  Time Sink
   - Id: `samp_rate`
   - Value: `2e6`
 - osmocom Source:
-  - Ch0: Frequency (Hz): `ASK_THE_INSTRUCTOR`
+  - Ch0: Frequency (Hz): `Use frequency from group # above`
   - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `32`
