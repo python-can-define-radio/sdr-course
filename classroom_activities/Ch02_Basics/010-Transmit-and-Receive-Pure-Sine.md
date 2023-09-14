@@ -2,23 +2,22 @@
 
 # Transmitting and receiving a pure sine wave
 
-
 Since the Hack RF is half-duplex, you'll need two flowgraphs to do this activity: one for transmit, and one for receive.
 
-Coordinate with the other students in your row so that one student transmits, and the others receive. Then rotate roles.
+The Instructor will assign work groups. Coordinate within your assigned group so that one student transmits, and the other receives. Then rotate roles.
 
-You'lll also notice that the osmocom frequencies are unspecified. The instructor will assign frequency bands by rows:
+You'll also notice that the osmocom frequencies are unspecified. Use the frequency band assigned to your group:
 
-- Row 0: `2.40e9`
-- Row 1: `2.41e9`
-- Row 2: `2.42e9`
-- Row 3: `2.43e9`
-- Row 4: `2.44e9`
-- Row 5: `2.45e9`
-- Row 6: `2.46e9`
-- Row 7: `2.47e9`
-- Row 8: `2.48e9`
-- Row 9: `2.49e9`
+- Group 0: `2.40e9`
+- Group 1: `2.41e9`
+- Group 2: `2.42e9`
+- Group 3: `2.43e9`
+- Group 4: `2.44e9`
+- Group 5: `2.45e9`
+- Group 6: `2.46e9`
+- Group 7: `2.47e9`
+- Group 8: `2.48e9`
+- Group 9: `2.49e9`
 
 _Practical note:_ When retracting the antenna, please push gently in the center of the antenna. Pushing at the top causes the antenna to bend.
 
