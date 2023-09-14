@@ -162,7 +162,7 @@ z is now `np.array([1., 3., 6.])` divides from each element by the constant (pro
 
 </details>
 
-### Performing operations on multiple lists or arrays (+,-,*,/)
+### Operations on multiple lists or arrays (+,-,*,/)
 - multiplication, subtraction, and division does not work on lists
 
 <details><summary> Expand for examples.</summary>
