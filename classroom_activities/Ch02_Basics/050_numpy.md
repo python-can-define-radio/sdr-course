@@ -2,6 +2,18 @@
 
 https://numpy.org/doc/stable/user/absolute_beginners.html#numpy-the-absolute-basics-for-beginners
 
+### Install the necessary modules
+ 
+`pip install numpy`
+
+### Import the module
+
+- we typically import numpy with an alias like below.
+
+```python3
+import numpy as np
+```
+
 ### Create a numpy array from a list
 
 - Basic example.
