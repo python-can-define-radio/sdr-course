@@ -160,5 +160,19 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 
 ## 14
-## Use a loop to send data more than once.
+## Use a `for` loop to send the same message 5 times.
+
+
+## 15
+## Use a `while` loop to repeatedly send a message forever.
+## Use time.sleep to put a 1 second delay between messages.
+```
+
+The `gnuradio_send` function has a built in option for repeating, shown in the example below. This has the advantage of having no delay between repeats (if that's your goal).
+
+```python3
+## 16
+## Try this.
+modulated = ook_modulate([1, 0], bit_length=int(100e3))
+gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, repeat=True)
 ```
