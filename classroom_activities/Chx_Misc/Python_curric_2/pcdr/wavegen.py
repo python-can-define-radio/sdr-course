@@ -8,8 +8,6 @@ Try this to start: wave_gen_prompts()
 import numpy as np
 import matplotlib.pyplot as plt
 import deal
-import hypothesis.extra.numpy as hyponp
-import hypothesis.strategies as st
 import random
 from typing import Optional, List, Tuple
 
