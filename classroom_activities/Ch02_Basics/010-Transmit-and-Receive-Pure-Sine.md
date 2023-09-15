@@ -111,31 +111,56 @@ osmocom Source  --->  Time Sink
   - Y Min: `-110`
 
 
-# Notes
+### Notes
 
 1. You should be able to see the transmitted wave on the receiving end. If you don't, ask for assistance.
 2. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
 3. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
 
-# FAQ
+### FAQ
 
 - Q: Why are there two waves (blue and red)?  
   A: This is Complex data, meaning it has a Real part and an Imaginary part. We'll discuss more details later, but for now, you can ignore or turn off one of the parts.
 
-# Exercises
+### Questions
 
-1. For a frequency of `100,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.  
-   _Note: The period is conventionally represented with a capital T._ 
+1. Adjust the `sigfreq` slider to `100,000 Hz`. What is the period of the wave? Calculate the period first, then verify visually.  
+   _**Note:** The period is conventionally represented with a capital T._ 
 2. For a frequency of `200,000 Hz`, what is the period of the wave? Calculate the period first, then verify visually.
-3. When you change the amplitude, are the changes reflected on the transmission side, the receiving side, or both?
-4. When you change the IF gain, are the changes reflected on the transmission side, the receiving side, or both?
-5. What happens on the receiving end when too much power is received?  _Hint: Look up "Clipping in Signal Procesing"._ 
+3. When you change the `amplitu` slider, are the changes reflected on the transmission side, the receiving side, or both?
+4. When you change the `ifgain` slider, are the changes reflected on the transmission side, the receiving side, or both?
+5. What happens on the receiving end when too much power is received?   
 6. At what point do you start to see clipping?
 7. Can clipping happen on the transmitter's side?  
-   _Hint: Try setting the transmitter's amplitude to a number such as `5`. You may need to modify the GUI Range that adjusts amplitude._  
-   _Note: Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped. If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink will be distorted if it higher than 1 or lower than -1._
+   _**Hint:** Try setting the transmitter's amplitude to a number such as `5`. You may need to modify the GUI Range that adjusts amplitude._   
 8. How could you communicate data using just these sliders?
-9. Modify your receiver to have slidable IF and BB gains. Use proper start, stop, step from [the HackRF docs](https://hackrf.readthedocs.io/). 
-10. _Looking ahead:_ In the Signal Source, there's an option for the Waveform. Does it matter which you pick?
-11. You'll notice the receiver has a spike in the center of the received spectrum. This is called the "DC Spike" -- it is produced by the Hack RF. We often choose to tune to a frequency slightly offset from our desired frequency to avoid interference caused by this spike.
-12. You may or may not see a difference between the transmitted frequency and the received frequency. This is due to variations in equipment.
+
+<details><summary>Click for answers.</summary>
+
+1. 0.00001 seconds or .01 milliseconds or 10 microseconds.  
+  
+2. 0.000005s, .005ms, or 5μs.
+
+3. Both.
+
+4. Receive only because the IF gain amplification happens inside the HackRF right before it is transmitted.
+
+5. _**Hint:** Look up "Clipping in Signal Processing"._
+
+6. At 1 and -1
+
+7. _**Note:** Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped._  
+   _**Note:** If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink will be distorted if it higher than 1 or lower than -1._
+
+8. Basic OOK (On-Off Keying), ASK (Amplitude shift keying), or FSK (Frequency shift keying)
+
+</details>
+
+### Exercises  
+  
+1. Modify your receiver to have slidable IF and BB gains. Use proper start, stop, step from [the HackRF docs](https://hackrf.readthedocs.io/).
+2. In the Signal Source, there's an option for the Waveform. Experiment with the different waveforms.  
+3. You'll notice the receiver has a spike in the center of the received spectrum. This is called the "DC Spike" -- it is produced by the Hack RF. We often choose to tune to a frequency slightly offset from our desired frequency to avoid interference caused by this spike.  
+4. You may or may not see a difference between the transmitted frequency and the received frequency. This is due to variations in equipment.
+
+
