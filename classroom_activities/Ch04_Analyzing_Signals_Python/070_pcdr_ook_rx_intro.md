@@ -17,4 +17,10 @@ while True:
 
 ```
 
+- TODO: Plot FFT
+- TODO: What is maximum frequency in FFT?
+- TODO: Which frequencies in FFT surpass some threshold?
+
+-------
+
 TODO: discuss harmonics and reflections (note that the latter is not the proper term. Referring to a signal appearing in multiple locations on an FFT.)
