@@ -117,6 +117,7 @@ osmocom Source  --->  Time Sink
 2. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
 3. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
 4. You may or may not see a difference between the transmitted frequency and the received frequency. This is due to variations in equipment.
+5. You'll notice the receiver has a spike in the center of the received spectrum. This is called the "DC Spike" -- it is produced by the Hack RF. We often choose to tune to a frequency slightly offset from our desired frequency to avoid interference caused by this spike.  
 
 ### FAQ
 
@@ -160,5 +161,4 @@ osmocom Source  --->  Time Sink
   
 1. Modify your receiver to have slidable IF and BB gains. Use proper start, stop, step from [the HackRF docs](https://hackrf.readthedocs.io/).
 2. In the Signal Source, there's an option for the Waveform. Experiment with the different waveforms.  
-3. You'll notice the receiver has a spike in the center of the received spectrum. This is called the "DC Spike" -- it is produced by the Hack RF. We often choose to tune to a frequency slightly offset from our desired frequency to avoid interference caused by this spike.  
 
