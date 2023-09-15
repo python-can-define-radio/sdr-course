@@ -116,6 +116,7 @@ osmocom Source  --->  Time Sink
 1. You should be able to see the transmitted wave on the receiving end. If you don't, ask for assistance.
 2. Adjust the transmitter's IF Gain slider to be lower if possible (to reduce the amount of unnecessary energy transmitted).
 3. Play with the amplitude and frequency sliders. After about a second, you'll see the changes reflected on the receiving end.
+4. You may or may not see a difference between the transmitted frequency and the received frequency. This is due to variations in equipment.
 
 ### FAQ
 
@@ -139,19 +140,18 @@ osmocom Source  --->  Time Sink
 
 1. 0.00001 seconds or .01 milliseconds or 10 microseconds.  
   
-2. 0.000005s, .005ms, or 5μs.
+2. 0.000005 s, .005 ms, or 5 μs.
 
 3. Both.
 
-4. Receive only because the IF gain amplification happens inside the HackRF right before it is transmitted.
+4. Receive only, because the IF gain amplification happens inside the HackRF right before it is transmitted.
 
-5. _**Hint:** Look up "Clipping in Signal Processing"._
+5. The signal clips. For more info, look up "Clipping in Signal Processing".
 
 6. At 1 and -1
 
-7. _**Note:** Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped._  
-   _**Note:** If you aren't able to reproduce transmitter-side clipping, just remember that data entering your osmocom Sink will be distorted if it higher than 1 or lower than -1._
-
+7. Clipping on the transmitter side is only visible on the receiving side. It often appears as a waveform that is distorted, but isn't obviously clipped.
+   
 8. Basic OOK (On-Off Keying), ASK (Amplitude shift keying), or FSK (Frequency shift keying)
 
 </details>
@@ -161,6 +161,4 @@ osmocom Source  --->  Time Sink
 1. Modify your receiver to have slidable IF and BB gains. Use proper start, stop, step from [the HackRF docs](https://hackrf.readthedocs.io/).
 2. In the Signal Source, there's an option for the Waveform. Experiment with the different waveforms.  
 3. You'll notice the receiver has a spike in the center of the received spectrum. This is called the "DC Spike" -- it is produced by the Hack RF. We often choose to tune to a frequency slightly offset from our desired frequency to avoid interference caused by this spike.  
-4. You may or may not see a difference between the transmitted frequency and the received frequency. This is due to variations in equipment.
-
 
