@@ -16,3 +16,5 @@ while True:
     TODO: get some data
 
 ```
+
+TODO: discuss harmonics and reflections (note that the latter is not the proper term. Referring to a signal appearing in multiple locations on an FFT.)
