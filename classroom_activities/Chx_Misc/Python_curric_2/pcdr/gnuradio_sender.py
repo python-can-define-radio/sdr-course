@@ -143,7 +143,7 @@ def gnuradio_send(data: np.ndarray,
                   repeat: bool = False):
     """Sends `data` to osmocom sink."""
     normal_py_data = tuple(map(complex, data))  # GNURadio type issues. Eventually, fix this for efficiency
-    tb = vector_to_osmocom_sink(normal_py_data, center_freq, samp_rate, if_gain, device_args)
+    tb = vector_to_osmocom_sink(normal_py_data, center_freq, samp_rate, if_gain, device_args, repeat)
     configure_graceful_exit(tb)
     tb.start()
     tb.wait()
