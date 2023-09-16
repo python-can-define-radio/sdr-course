@@ -77,7 +77,7 @@ class zmq_subtest(gr.top_block, Qt.QWidget):
         self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://127.0.0.1:8008', 100, False, -1)
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
             1024, #size
-            firdes.WIN_BLACKMAN_hARRIS, #wintype
+            firdes.WIN_BLACKMAN_HARRIS, #wintype
             0, #fc
             samp_rate, #bw
             "", #name

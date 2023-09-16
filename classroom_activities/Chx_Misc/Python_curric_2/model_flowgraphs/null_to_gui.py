@@ -76,7 +76,7 @@ class null_to_gui(gr.top_block, Qt.QWidget):
         ##################################################
         self.qtgui_sink_x_0 = qtgui.sink_c(
             1024, #fftsize
-            firdes.WIN_BLACKMAN_hARRIS, #wintype
+            firdes.WIN_BLACKMAN_HARRIS, #wintype
             0, #fc
             samp_rate, #bw
             "", #name

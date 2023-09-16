@@ -62,7 +62,7 @@ class vector_to_guisink(gr.top_block, Qt.QWidget):
         self.blocks_throttle = blocks.throttle(gr.sizeof_gr_complex, samp_rate, True)
         self.qtgui_sink = qtgui.sink_c(
             1024, #fftsize
-            firdes.WIN_BLACKMAN_hARRIS, #wintype
+            firdes.WIN_BLACKMAN_HARRIS, #wintype
             0, #fc
             samp_rate, #bw
             "", #name

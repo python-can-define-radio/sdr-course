@@ -78,7 +78,7 @@ class queue_to_waterfall(gr.top_block, Qt.QWidget):
         self.queue_source = queue_source(external_queue, chunk_size)
         self.qtgui_waterfall_sink_x_0 = qtgui.waterfall_sink_c(
             1024, #size
-            firdes.WIN_BLACKMAN_hARRIS, #wintype
+            firdes.WIN_BLACKMAN_HARRIS, #wintype
             0, #fc
             samp_rate, #bw
             "", #name

@@ -103,7 +103,7 @@ blocks:
     showports: 'False'
     showrf: 'False'
     type: complex
-    wintype: firdes.WIN_BLACKMAN_hARRIS
+    wintype: firdes.WIN_BLACKMAN_HARRIS
   states:
     bus_sink: false
     bus_source: false
