@@ -43,7 +43,9 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
    ```python3
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
    complexdata = np.complex64(modulated)
-   complexdata.tofile("generatedfile.complex")
+   f = open("generatedfile.complex", "wb")
+   f.write(complexdata)
+   f.close()
    ```
    <!--
    from pcdr import gnuradio_write_file
