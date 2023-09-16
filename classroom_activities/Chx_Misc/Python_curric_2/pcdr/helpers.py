@@ -144,6 +144,44 @@ def str_to_bin_list(message: str) -> List[int]:
     return bytes_to_bin_list([ord(c) for c in message])
 
 
+def hex_to_bin_list(message: np.ndarray) -> List[int]:
+    """
+    Converts a numpy array of hexadecimal data to a list of bits.
+
+    Examples:
+
+    >>> hex_to_bin_list(np.array([0x43],dtype='uint8'))
+    [0, 1, 0, 0, 0, 0, 1, 1]
+    
+    >>> str_to_bin_list(np.array([0x43,0x42],dtype='uint8'))
+    [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0]
+    
+    >>> str_to_bin_list(np.array([0x4342],dtype='uint16'))
+    [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0]
+	"""
+
+    if ((message.dtype == 'int8')|(message.dtype == 'uint8')):
+        bitlength = 8
+    elif (((message.dtype == 'int16')|(message.dtype == 'uint16'))):
+        bitlength = 16
+    elif (((message.dtype == 'int32')|(message.dtype == 'uint32'))):
+        bitlength = 32
+    elif (((message.dtype == 'int64')|(message.dtype == 'uint64'))):
+        bitlength = 64
+    else:
+        raise ValueError("Unsupported dtype")
+
+    ret = [0]*bitlength*len(message)
+    bitlist_index = 0
+    shift_list = list(reversed(range(0,bitlength)))
+    for x in message:
+        for bit_index in shift_list:
+            if x&(1<<bit_index) > 0:
+                ret[bitlist_index] = 1
+            bitlist_index = bitlist_index + 1
+    return ret
+
+
 def prepend_zeros_(data: np.ndarray, zeroCount: int):
     prepended = np.concatenate([np.zeros(zeroCount, dtype=data.dtype), data])
     assert isinstance(prepended, np.ndarray)
