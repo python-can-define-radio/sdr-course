@@ -87,11 +87,11 @@ def gnuradio_print_using_queue_impl(data: np.ndarray, print_delay: float = 0.5, 
 
 
 def gnuradio_print():
-    TODO
+    raise NotImplementedError()
 
 
 def gnuradio_write_text_file():
-    TODO
+    raise NotImplementedError()
 
 
 def gnuradio_write_text_file_using_queue_impl(data: np.ndarray, filename: str, chunk_size: int = 1024):
