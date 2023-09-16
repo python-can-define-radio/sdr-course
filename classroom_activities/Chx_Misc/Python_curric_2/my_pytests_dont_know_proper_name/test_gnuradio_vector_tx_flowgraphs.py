@@ -1,4 +1,5 @@
-from pcdr import gnuradio_write_file, makeComplexWave_time
+from pcdr.gnuradio_sender import gnuradio_write_file
+from pcdr import makeComplexWave_time
 import numpy as np
 import random
 from pathlib import Path
