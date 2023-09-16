@@ -4,7 +4,7 @@ Make some fake data that looks like this in time:
 
 
 - First 8192 samples: Zeros
-- Next 8192 samples: One pure sine wave on 3 Hz (freq of integers)
+- Next 8192 samples: One pure sine wave on 3 Hz (freq of interest)
 - Next 8192 samples: Zeros
 - Next 8192 samples: One pure sine wave on the wrong freq
 - Next  8192 samples: A noisy sine wave (add a pure wave to some random noise)
