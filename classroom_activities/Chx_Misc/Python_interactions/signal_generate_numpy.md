@@ -4,7 +4,7 @@ Make some fake data that looks like this in time:
 
 
 - First 8192 samples: Zeros
-- Next 8192 samples: One pure sine wave on 3 Hz (freq of inters)
+- Next 8192 samples: One pure sine wave on 3 Hz (freq of integers)
 - Next 8192 samples: Zeros
 - Next 8192 samples: One pure sine wave on the wrong freq
 - Next  8192 samples: A noisy sine wave (add a pure wave to some random noise)
@@ -13,8 +13,8 @@ Make some fake data that looks like this in time:
 You'll prob want the np.concatenate
 
 THEN
-Using a for loop (or your mechnaism of cohice)
-- Take groups of 4096 smaples.  Each group will pertain to a unique time period.
+Using a for loop (or your mechanism of choice)
+- Take groups of 4096 samples.  Each group will pertain to a unique time period.
 - Do an FFT on each group of samples
 - Check whether there is activity surpassing a certain (arbitrary) threshold on an arbitrary frequency (ex: 3 Hz) within each group.
 
