@@ -33,12 +33,6 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
    print(modulated)
    ```
 
-<!--
-   ```python3
-   from pcdr import gnuradio_print
-   gnuradio_print(modulated)
-   ``` 
-   -->
 2. Write the data to a file. You can then examine the file using URH or a program of your choice. URH handles fairly large files without too much trouble, so the `bit_length` does not need to change. However, note that you'll need to convert the data to `np.complex64` before writing it.
    ```python3
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
@@ -47,10 +41,7 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
    f.write(complexdata)
    f.close()
    ```
-   <!--
-   from pcdr import gnuradio_write_file
-   gnuradio_write_file(modulated, "generatedfile.complex")
-   --> 
+
 3. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help by giving you time to switch to the GUI window before the actual data is displayed.  
    ```python3
    from pcdr import gnuradio_guisink, ook_modulate
@@ -101,6 +92,18 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 modulated = ook_modulate([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ```
+
+<!--
+
+TODO: consider
+
+### Sending hexadecimal strings as bits
+
+from pcdr import hex_to_bin_list
+list_of_bits = hex_to_bin_list(0x43)
+print(list_of_bits)
+
+-->
 
 ### Sending text as bits
 
@@ -163,11 +166,16 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 ## 14
 ## Use a `for` loop to send the same message 5 times.
+## Note: if you're using f.write() with the data that you're
+## generating, you may wish to append to the file rather than
+## overwriting it.
 
 
 ## 15
 ## Use a `while` loop to repeatedly send a message forever.
 ## Use time.sleep to put a 1 second delay between messages.
+## Note: if you're using f.write(), you'll probably want to skip
+## this to avoid filling your hard drive.
 ```
 
 The `gnuradio_send` function has a built in option for repeating, shown in the example below. This has the advantage of having no delay between repeats (if that's your goal).
