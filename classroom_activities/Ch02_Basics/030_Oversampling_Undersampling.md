@@ -82,9 +82,9 @@ Now, let's look at what happens when the frequency is very close to the sample r
 ## Try this. Notice that the frequency is 39,
 ## but when you plot it, it (surprisingly) has a frequency of 1.
 ## What is the name for this phenomenon? 
-samp_rate = 40
-seconds = 2
-freq = 39
+samp_rate = 10
+seconds = 1
+freq = 9
 timestamps, wave = makeRealWave_time(seconds, samp_rate, freq, allowAliasing=True)
 plt.title(f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
