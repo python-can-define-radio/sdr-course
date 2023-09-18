@@ -75,7 +75,7 @@ plt.show()
 
 As you can see, a higher sample rate allows you to measure a broader range of frequencies because it raises the threshold at which degradation begins.
 
-Now, let's look at what happens when the frequency is very close to the sample rate.
+Now, let's look at what happens when the frequency is very close to the sample rate. _Note: You'll notice that we have to specify `allowAliasing=True`. Normally, the `makeRealWave_time` function will prevent you from making the mistake of using too high of a frequency. In this case, we disable that safeguard so that we can demonstrate aliasing._
 
 ```python3
 ## 4
@@ -85,7 +85,7 @@ Now, let's look at what happens when the frequency is very close to the sample r
 samp_rate = 40
 seconds = 2
 freq = 39
-timestamps, wave = makeRealWave_maxtime(seconds, samp_rate, freq)
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq, allowAliasing=True)
 plt.title(f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
 plt.show()
