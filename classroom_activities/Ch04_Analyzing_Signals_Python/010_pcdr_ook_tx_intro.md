@@ -6,6 +6,8 @@
 
 One of the biggest advantages of SDRs is that they allow us to transmit arbitrary modulation schemes. In this lesson, we practice using Python (which is using GNU Radio behind the scenes) to transmit data using On-Off Keying (OOK).
 
+Note: if you don't have a SDR peripheral, or if you don't want to actually transmit, you have a few options, listed below the first example. You can use these alternatives for any of the exercises on this page.
+
 ### Sending bits
 
 ```python3
@@ -25,16 +27,20 @@ modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 ```
 
-Note: if you don't have a SDR peripheral, or if you don't want to actually transmit, you have a few options:
+### Non-transmission alternatives
 
-1. Print the data. In this case, you may wish to use a shorter bit length, for example, `bit_length=4`, as the print output would be impractical due to its length if you kept the original `bit_length`.
+These alternative options are useful if you don't have a SDR peripheral, or if you don't want to actually transmit.
+
+**Option A**: Print the data. In this case, you may wish to use a shorter bit length, for example, `bit_length=4`, as the print output would be impractical due to its length if you kept the original `bit_length`.
    ```python3
+   ## Option A example
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=4)
    print(modulated)
    ```
 
-2. Write the data to a file. You can then examine the file using URH or a program of your choice. URH handles fairly large files without too much trouble, so the `bit_length` does not need to change. However, note that you'll need to convert the data to `np.complex64` before writing it.
+**Option B**: Write the data to a file. You can then examine the file using URH or a program of your choice. URH handles fairly large files without too much trouble, so the `bit_length` does not need to change. However, note that you'll need to convert the data to `np.complex64` before writing it.
    ```python3
+   ## Option B example
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
    complexdata = np.complex64(modulated)
    f = open("generatedfile.complex", "wb")
@@ -42,14 +48,15 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
    f.close()
    ```
 
-3. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help by giving you time to switch to the GUI window before the actual data is displayed.  
+**Option C**. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help by giving you time to switch to the GUI window before the actual data is displayed.  
    ```python3
+   ## Option C example
    from pcdr import gnuradio_guisink, ook_modulate
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
    gnuradio_guisink(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
    ```
 
-Here is some further practice.
+### Further practice
 
 ```python3
 ## 2
