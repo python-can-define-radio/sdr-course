@@ -150,3 +150,7 @@ You'll notice that no matter what frequencies you pick, the Frequency Domain wil
 You may wonder: why we would ever display the negative frequencies if they'll always be the same as their positive counterparts? The answer: for real signals, the Frequency Domain will always be symmetric, but for signals that are not purely real, they won't necessarily be symmetric.
 
 _A non-real signal? What does that mean?_ See the next lesson for the answer!
+
+A good video showing how the position of a circle corresponds to the values on a sine wave.  
+[sine_wave_video](https://www.youtube.com/watch?v=k8FXF1KjzY0&t=4s)
+
