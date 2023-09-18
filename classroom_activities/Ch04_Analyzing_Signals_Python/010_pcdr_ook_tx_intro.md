@@ -48,9 +48,19 @@ These alternative options are useful if you don't have a SDR peripheral, or if y
    f.close()
    ```
 
-**Option C**. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help by giving you time to switch to the GUI window before the actual data is displayed.  
+**Option C**: Plot the data using matplotlib. A `bit_length` value of no more than `50e3` is recommended when using this option due to performance issues.
    ```python3
    ## Option C example
+   from pcdr import ook_modulate
+   import matplotlib.pyplot as plt
+   modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(50e3))
+   plt.plot(modulated, "*-")
+   plt.show()
+   ```
+
+**Option D**. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help by giving you time to switch to the GUI window before the actual data is displayed.  
+   ```python3
+   ## Option D example
    from pcdr import gnuradio_guisink, ook_modulate
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
    gnuradio_guisink(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
