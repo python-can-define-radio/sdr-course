@@ -78,7 +78,7 @@ As you can see, a higher sample rate allows you to measure a broader range of fr
 Now, let's look at what happens when the frequency is very close to the sample rate. _Note: You'll notice that we have to specify `allowAliasing=True`. Normally, the `makeRealWave_time` function will prevent you from making the mistake of using too high of a frequency. In this case, we disable that safeguard so that we can demonstrate aliasing._
 
 ```python3
-## 4
+## 4a
 ## Try this. Notice that the frequency is 39,
 ## but when you plot it, it (surprisingly) has a frequency of 1.
 ## What is the name for this phenomenon? 
@@ -88,6 +88,21 @@ freq = 9
 timestamps, wave = makeRealWave_time(seconds, samp_rate, freq, allowAliasing=True)
 plt.title(f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
+plt.show()
+
+
+## 4b
+## Lets view that with an adequate sample rate at the same time to see the difference.
+from pcdr import makeRealWave_time
+
+timestamps, wave = makeRealWave_time(seconds=1, samp_rate=10, freq=9, allowAliasing=True)
+timestamps2, wave2 = makeRealWave_time(seconds=1, samp_rate=400, freq=9)
+
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+plt.plot(timestamps, wave, "o-", label="9 Hz with 10 Sps")
+plt.plot(timestamps2, wave2, "x-", label="9 Hz with 400 Sps")
+plt.legend(loc="upper right")
 plt.show()
 ```
 
