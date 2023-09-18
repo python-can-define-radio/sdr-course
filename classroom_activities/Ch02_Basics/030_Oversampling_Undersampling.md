@@ -126,9 +126,9 @@ When the frequency is above the Nyquist limit (half the sample rate), aliasing w
   
 |  Frequency | Sample Rate | Displayed Frequency |
 |-----|-----|-----|
-| 39| 40 | 1 |
-| 37| 40 | 3 |
-| 30| 40 | 10 |
+| 39 Hz | 40 sps | 1 Hz |
+| 37 Hz | 40 sps | 3 Hz |
+| 30 Hz | 40 sps | 10 Hz |
 
 ### Aliasing demonstration using gqrx
 
