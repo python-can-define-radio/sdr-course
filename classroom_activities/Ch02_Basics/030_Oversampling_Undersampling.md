@@ -34,7 +34,7 @@ _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtub
 
 ## 2. 
 ## Try this.
-## Notice that the wave degrades at higher frequencies.
+## Notice that the wave degrades the closer the frequency gets to the sample rate.
 from pcdr import makeRealWave_time
 import matplotlib.pyplot as plt
 
