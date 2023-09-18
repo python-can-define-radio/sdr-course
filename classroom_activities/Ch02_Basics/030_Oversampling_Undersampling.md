@@ -79,9 +79,11 @@ Now, let's look at what happens when the frequency is very close to the sample r
 
 ```python3
 ## 4a
-## Try this. Notice that the frequency is 39,
+## Try this. Notice that the frequency is 9,
 ## but when you plot it, it (surprisingly) has a frequency of 1.
 ## What is the name for this phenomenon? 
+from pcdr import makeRealWave_time
+
 samp_rate = 10
 seconds = 1
 freq = 9
@@ -92,28 +94,41 @@ plt.show()
 
 
 ## 4b
-## Lets view that with an adequate sample rate at the same time to see the difference.
+## Let's view that with an adequate sample rate at the same time to see the difference.
 from pcdr import makeRealWave_time
 
-timestamps, wave = makeRealWave_time(seconds=1, samp_rate=10, freq=9, allowAliasing=True)
-timestamps2, wave2 = makeRealWave_time(seconds=1, samp_rate=400, freq=9)
+seconds = 1
+samp_rate_too_low = 10
+samp_rate_adequate = 400
+freq = 9
+timestamps, wave = makeRealWave_time(seconds, samp_rate_too_low, freq, allowAliasing=True)
+timestamps2, wave2 = makeRealWave_time(seconds, samp_rate_adequate, freq)
 
 plt.xlabel("Time")
 plt.ylabel("Amplitude")
-plt.plot(timestamps, wave, "o-", label="9 Hz with 10 Sps")
-plt.plot(timestamps2, wave2, "x-", label="9 Hz with 400 Sps")
+plt.plot(timestamps, wave, "o-", label=f"{freq} Hz with {samp_rate_too_low} Sps")
+plt.plot(timestamps2, wave2, "x-", label=f"{freq} Hz with {samp_rate_adequate} Sps")
 plt.legend(loc="upper right")
 plt.show()
 ```
 
-The above exercise shows **aliasing**. (You can review the explanation of aliasing [here](https://gallicchio.github.io/learnSDR/lesson06.html)).
+The above exercise shows [**aliasing**](https://gallicchio.github.io/learnSDR/lesson06.html).
 
 ```python3
 ## 5
-## Copy and modify the previous example.
-## Set the freq to 37.
-## Due to aliasing, what frequency is displayed?
+## Copy and modify the above example.
+## Set the freq to 37 and the sample_rate_too_low variable to 40.
+## Due to aliasing, what frequency is displayed by the blue line?
+## What is the relationship between the displayed frequency and the sample rate?
 ```
+
+When the frequency is above the Nyquist limit (half the sample rate), aliasing will cause the displayed frequency to appear to be a different frequency. The aliased frequency will always be the difference between the actual frequency and the sample rate.
+  
+|  Frequency | Sample Rate | Displayed Frequency |
+|-----|-----|-----|
+| 39| 40 | 1 |
+| 37| 40 | 3 |
+| 30| 40 | 10 |
 
 ### Aliasing demonstration using gqrx
 
