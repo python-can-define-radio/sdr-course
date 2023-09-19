@@ -47,11 +47,11 @@
 
 - Notice that the 32 bit message we selected is now showing up as 4 bytes in the generated data window.
 
-- Now add the « character which will serve as a preamble of 10101011 in the first slot so we will know when our useful data begins.  
-  Here's How:
-    - The Ubuntu keyboard shortcut for this symbol would be Ctl + Shift + u then release and type 00ab then press enter.
-    - The Windows keyboard shortcut if your interested would be Alt + 0171 then release.
-    - Or you can just copy and paste the character above.
+- Now, add the « character which will serve as a preamble of 10101011 in the first slot, so we will know when our useful data begins.  
+  Here's how:
+    - The Ubuntu keyboard shortcut: Ctl + Shift + u, then release. Type `00ab`. Press enter.
+    - The Windows keyboard shortcut: Alt + 0171 then release.
+    - Alternatively, you can just copy and paste the character above.
  
 - The next step would be to add a simple 3 letter word in the remaining slots.
 
