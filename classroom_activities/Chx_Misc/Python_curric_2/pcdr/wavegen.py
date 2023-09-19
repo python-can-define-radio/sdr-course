@@ -305,7 +305,7 @@ def generate_ook_modulated_example_file(output_filename: str, noise: bool = Fals
     generate_ook_modulated_example_file("generated_example_file.complex", text_source=text_content)
     """
     
-    data = generate_ook_modulated_example_data(output_filename, noise, message_delay, text_source)
+    data = generate_ook_modulated_example_data(noise, message_delay, text_source)
     data.tofile(output_filename)
 
 
