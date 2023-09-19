@@ -29,7 +29,7 @@ def test_1_queue_to_list():
     assert queue_to_list(SimpleQueue()) == []
 
 
-from pcdr.wavegen import createTimestamps, makeRealWave, makeComplexWave, isAliasingWhenDisallowed, aliasingValueError, makeComplexWave_numsamps, makeRealWave_numsamps, makeComplexWave_time, makeRealWave_time, multiply_by_complex_wave, multiply_by_real_wave
+from pcdr.wavegen import createTimestamps, makeRealWave, makeComplexWave, isAliasingWhenDisallowed, aliasingValueError, makeComplexWave_numsamps, makeRealWave_numsamps, makeComplexWave_time, makeRealWave_time, multiply_by_complex_wave, multiply_by_real_wave, noisify
 
 seconds_strat = st.floats(max_value=100)
 num_samples_strat = st.integers(max_value=100)
@@ -130,5 +130,12 @@ test_multiply_by_real_wave = deal.cases(
         ),
         samp_rate=st.floats(0.01, 1e3),
         freq=st.floats(-1e12, 1e12)
+    )
+)
+
+test_noisify = deal.cases(
+    func=noisify,
+    kwargs=dict(
+        data=hyponp.arrays(dtype=np.complex64),
     )
 )

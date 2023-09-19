@@ -250,8 +250,49 @@ def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: floa
 
 
 
+def random_normal(size: int, dtype=np.float32, seed=None) -> np.ndarray:
+    """A wrapper of numpy's `standard_normal()` function;
+    returns a numpy array of length `size` containing normally distributed.
 
-@deal.post(lambda result: result.dtype == np.complex64)
+    `seed` is optional, and mostly just used for testing the function.
+    
+    >>> random_normal(size=3, seed=0)
+    array([ 1.117622 , -1.3871249, -0.4265716], dtype=float32)
+
+    >>> random_normal(size=2, dtype=np.float64, seed=0)
+    array([ 0.12573022, -0.13210486])
+    """
+    rng = np.random.default_rng(seed=seed)
+    result = rng.standard_normal(size=size, dtype=dtype)
+    assert isinstance(result, np.ndarray)
+    assert len(result) == size
+    assert result.dtype == dtype
+    return result
+
+
+
+def noisify(data: np.ndarray, seed=None) -> np.ndarray:
+    """
+    Returns a copy of `data` with random normally distributed noise added.
+    `seed` is optional, and mostly just used for testing the function.
+
+    >>> dat = np.array([1, 2, 3], dtype=np.float32)
+    >>> noisify()
+    this_should_fail
+    """
+    if data.dtype not in [np.float32, np.complex64]:
+        raise NotImplementedError("Currently, this only works for these dtypes: float32, complex64.")
+    randnoise = random_normal(len(data), dtype=np.float32)
+    if data.dtype == np.complex64:
+        randImag = random_normal(len(data), dtype=np.float32)
+        randnoise += 1j * randImag
+    assert randnoise.dtype == data.dtype
+    result = data + randnoise
+    assert result.dtype == data.dtype
+    return result
+
+
+
 def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None) -> np.ndarray:
     """
     Generate a file with the given `output_filename`.
@@ -286,9 +327,9 @@ def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool
             fully_modded
         ])
     if noise:
-        fully_modded = fully_modded + np.random.normal(len(fully_modded), dtype=np.complex64)
+        fully_modded = noisify(fully_modded)
     
-    return fully_modded
+    assert fully_modded.dtype == np.complex64
 
 
 def generate_ook_modulated_example_file(output_filename: str, noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None):
