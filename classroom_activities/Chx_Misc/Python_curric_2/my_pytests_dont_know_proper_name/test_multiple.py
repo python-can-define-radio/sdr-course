@@ -10,19 +10,11 @@ from pcdr.helpers import queue_to_list
 
 
 def test_pad_chunk_queue_small_chunk():
-    testdata = np.array([1, 2, 3], dtype=np.uint8)
-    pcq = pad_chunk_queue(testdata, 2)
-    nparry = np.array(queue_to_list(pcq))
-    should_be = np.array([[1, 2], [3, 0]], dtype=np.complex64)
-    assert (nparry == should_be).all()
+    
 
 
 def test_pad_chunk_queue_padding():
-    testdata = np.array([1, 2, 3], dtype=np.uint8)
-    pcq = pad_chunk_queue(testdata, 5)
-    nparry = np.array(queue_to_list(pcq))
-    should_be = np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
-    assert (nparry == should_be).all()
+    
 
 
 def test_1_queue_to_list():

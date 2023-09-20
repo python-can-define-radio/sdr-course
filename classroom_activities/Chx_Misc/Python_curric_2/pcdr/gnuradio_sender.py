@@ -33,7 +33,22 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     - numpy-ify
     - Pad `data` to a multiple of `chunk_size`
     - Split into chunks of that size
-    - Convert to a queue of numpy arrays for gnuradio use"""
+    - Convert to a queue of numpy arrays for gnuradio use
+    
+    Examples:
+    >>> testdata = np.array([1, 2, 3], dtype=np.uint8)
+    >>> pcq = pad_chunk_queue(testdata, 2)
+    >>> pcq.get()
+    np.array([1, 2], dtype=np.complex64)
+    >>> pcq.get()
+    np.array([3, 0], dtype=np.complex64)
+
+    >>> testdata = np.array([1, 2, 3], dtype=np.uint8)
+    >>> pcq = pad_chunk_queue(testdata, 5)
+    >>> nparry = np.array(queue_to_list(pcq))
+    >>> should_be = np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
+    >>> assert (nparry == should_be).all()
+    """
 
     npdata = np.array(data, dtype=np.complex64)
     assert type(npdata) == np.ndarray
