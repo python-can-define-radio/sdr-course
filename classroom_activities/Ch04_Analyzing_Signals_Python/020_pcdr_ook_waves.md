@@ -6,8 +6,11 @@ We've sent some OOK-modulated data. Now, let's graph that data and explore it.
 
 We'll start by exploring two functions from the `pcdr` package that create waves: `makeRealWave_time` and `makeRealWave_numsamps`.
 
+Unless stated otherwise in these lessons, the unit for time will be seconds rather than milliseconds or microseconds.
+The unit of frequency is Hertz or Hz, which is equivalent to 1/sec.  Actually, the numerator may be assigned a unit too, so Hz may also be described as cycles per second.
+
 ```python3
-## 1
+## 1a
 ## Try this.
 ## Notice that you only see two cycles. Why?
 import matplotlib.pyplot as plt
