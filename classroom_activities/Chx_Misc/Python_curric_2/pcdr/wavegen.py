@@ -348,6 +348,7 @@ def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool
         fully_modded = noisify(fully_modded)
     
     assert fully_modded.dtype == np.complex64
+    return fully_modded
 
 
 def generate_ook_modulated_example_file(output_filename: str, noise: bool = False, message_delay: bool = False, text_source: Optional[str] = None):
