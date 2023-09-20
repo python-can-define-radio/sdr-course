@@ -89,30 +89,48 @@ def makeComplexWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
 
 
 
-@deal.example(lambda: isAliasingWhenDisallowed(False, freq=4, samp_rate=5) == True)
-@deal.example(lambda: isAliasingWhenDisallowed(False, freq=2, samp_rate=5) == False)
-@deal.ensure(lambda _: _.result == False if _.allowAliasing else True)
+class AliasError(ValueError):
+    pass
+
+
 @deal.pure
 def isAliasingWhenDisallowed(allowAliasing: bool, freq: float, samp_rate: float):
+    """
+    Examples:
+
+    >>> allowAliasing = False
+    >>> samp_rate = 5
+    >>> too_high_freq = 4
+    >>> acceptable_freq = 2
+    >>> isAliasingWhenDisallowed(allowAliasing, too_high_freq, samp_rate)
+    True
+    >>> isAliasingWhenDisallowed(allowAliasing, acceptable_freq, samp_rate)
+    False
+    >>> allowAliasing = True
+    >>> isAliasingWhenDisallowed(allowAliasing, too_high_freq, samp_rate)
+    False
+    >>> isAliasingWhenDisallowed(allowAliasing, acceptable_freq, samp_rate)
+    False
+    """
     return (not allowAliasing) and (abs(freq) > samp_rate/2)
 
 
 @deal.has()
-@deal.raises(ValueError)
-@deal.reason(ValueError, isAliasingWhenDisallowed)
-def aliasingValueError(allowAliasing: bool, freq: float, samp_rate: float) -> None:
+@deal.raises(AliasError)
+@deal.reason(AliasError, isAliasingWhenDisallowed)
+def aliasingError(allowAliasing: bool, freq: float, samp_rate: float) -> None:
     if isAliasingWhenDisallowed(allowAliasing, freq, samp_rate):
-        raise ValueError(f"For a sample rate of {samp_rate}, the highest frequency that can be faithfully represented is {samp_rate/2}. The specified freq, {freq}, is greater than the limit specified by Shannon/Nyquist/Kotelnikov/Whittaker (commonly called the Nyquist frequency).")
+        raise AliasError(f"For a sample rate of {samp_rate}, the highest frequency that can be faithfully represented is {samp_rate/2}. The specified freq, {freq}, is greater than the limit specified by Shannon/Nyquist/Kotelnikov/Whittaker (commonly called the Nyquist frequency).")
 
 
 @deal.has()
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.num_samples)
-@deal.raises(ValueError)
-@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+@deal.raises(AliasError)
+@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
-    aliasingValueError(allowAliasing, freq, samp_rate)
+    aliasingError(allowAliasing, freq, samp_rate)
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
@@ -124,10 +142,10 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, al
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.num_samples)
-@deal.raises(ValueError)
-@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+@deal.raises(AliasError)
+@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
-    aliasingValueError(allowAliasing, freq, samp_rate)
+    aliasingError(allowAliasing, freq, samp_rate)
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
     return timestamps, makeRealWave(timestamps, freq)
@@ -138,10 +156,10 @@ def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allow
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == int(_.samp_rate * _.seconds))
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.seconds)
-@deal.raises(ValueError)
-@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+@deal.raises(AliasError)
+@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
-    aliasingValueError(allowAliasing, freq, samp_rate)
+    aliasingError(allowAliasing, freq, samp_rate)
     num_samples = int(samp_rate * seconds)
     timestamps = createTimestamps(seconds, num_samples)
     return timestamps, makeComplexWave(timestamps, freq)
@@ -151,10 +169,10 @@ def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAli
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == int(_.samp_rate * _.seconds))
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.seconds)
-@deal.raises(ValueError)
-@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+@deal.raises(AliasError)
+@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
-    aliasingValueError(allowAliasing, freq, samp_rate)
+    aliasingError(allowAliasing, freq, samp_rate)
     num_samples = int(samp_rate * seconds)
     timestamps = createTimestamps(seconds, num_samples)
     return timestamps, makeRealWave(timestamps, freq)
@@ -228,8 +246,8 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
 @deal.post(lambda result: result[0].dtype == np.float64)
 @deal.post(lambda result: result[1].dtype == np.complex64)
-@deal.raises(ValueError)
-@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+@deal.raises(AliasError)
+@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     timestamps, wave = makeComplexWave_numsamps(len(baseband_sig), samp_rate, freq, allowAliasing)
     mult = baseband_sig * wave
@@ -241,8 +259,8 @@ def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: f
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == len(_.baseband_sig))
 @deal.post(lambda result: result[0].dtype == np.float64)
 @deal.post(lambda result: result[1].dtype == np.float32)
-@deal.raises(ValueError)
-@deal.reason(ValueError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
+@deal.raises(AliasError)
+@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     timestamps, wave = makeRealWave_numsamps(len(baseband_sig), samp_rate, freq, allowAliasing)
     mult = baseband_sig * wave

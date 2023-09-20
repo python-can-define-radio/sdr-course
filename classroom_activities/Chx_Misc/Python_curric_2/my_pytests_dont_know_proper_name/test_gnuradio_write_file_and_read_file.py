@@ -1,5 +1,6 @@
 """This demonstrates a few functions. We may turn it into an exercise."""
-from pcdr import gnuradio_write_file, makeComplexWave_time, createTimestamps_samprate, gnuradio_read_file
+from pcdr.gnuradio_sender import gnuradio_write_file
+from pcdr import makeComplexWave_time, createTimestamps_samprate, gnuradio_read_file
 from pathlib import Path
 import numpy as np
 

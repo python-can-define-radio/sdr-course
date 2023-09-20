@@ -6,7 +6,8 @@ from .fileio import (
 )
 
 from .modulators import (
-    ook_modulate
+    ook_modulate,
+    ook_modulate_at_frequency,
 )
 
 from .wavegen import (
