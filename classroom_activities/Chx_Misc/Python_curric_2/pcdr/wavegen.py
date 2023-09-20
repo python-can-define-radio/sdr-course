@@ -378,7 +378,8 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
 
 @deal.has()
 def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
-    fft_result = np.fft.fftshift(np.fft.fft(sig))
-    sample_freqs = np.fft.fftshift(np.fft.fftfreq(len(sig), 1/samp_rate))
+    windowed = sig * np.hamming(len(sig))
+    fft_result = np.fft.fftshift(np.fft.fft(windowed))
+    sample_freqs = np.fft.fftshift(np.fft.fftfreq(len(windowed), 1/samp_rate))
     fft_mag = abs(fft_result)
     return sample_freqs, fft_mag
