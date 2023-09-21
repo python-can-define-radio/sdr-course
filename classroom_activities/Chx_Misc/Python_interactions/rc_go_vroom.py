@@ -8,17 +8,9 @@ def car_go_vroom():
     modulated = ook_modulate(carsig, bit_length=int(1055))
     gnuradio_send(modulated, center_freq=49.86e6, samp_rate=2e6, if_gain=47)
 
-
-def buttonDisappear():
-    mybutton.destroy()
-    Picture(app, "bird_is_the_word.gif")
-    car_go_vroom()
-    
-
-app = App(title="My first GUIZERO app")
+app = App(title="Car controller")
 
 mybutton = PushButton(app,
-                      text="Albatross go Bird!",
-                      command=buttonDisappear)
-
+                      text="Car forward",
+                      command=car_go_vroom)
 app.display()
