@@ -10,3 +10,6 @@ TODO: Have exercises for...
 - GUI Zero:
   - FM Transmit with text box for file name of wav file to send
 - ?Multiplying complex waves?
+
+
+Incorporate https://github.com/mhostetter/sdr
