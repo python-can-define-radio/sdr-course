@@ -144,9 +144,9 @@ def str_to_bin_list(message: str) -> List[int]:
     return bytes_to_bin_list([ord(c) for c in message])
 
 
-def hex_to_bin_list(message: np.ndarray) -> List[int]:
+def int_to_bin_list(message: np.ndarray) -> List[int]:
     """
-    Converts a numpy array of hexadecimal data to a list of bits.
+    Converts a numpy array of integers to a list of bits. Capable handling of a variety of dtypes.
 
     Examples:
 
