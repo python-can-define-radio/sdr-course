@@ -3,16 +3,15 @@ from guizero import App, TextBox
 from pcdr import ook_modulate, gnuradio_send
 
 
-KEY_UP = 111
 def highlight(evdata):
     app.bg = "lightblue"
-    if evdata.keycode == KEY_UP:
+    if evdata.tk_event.keysym == "Up":
         print("Pressed up!")
         gnuradio_send(ookmodded_1, center_freq=499e6, samp_rate=2e6, if_gain=2)
 
 def lowlight(evdata):
     app.bg = "white"
-    if evdata.keycode == KEY_UP:
+    if evdata.tk_event.keysym == "Up":
         print("Released up!")
 
 ookmodded_1 = ook_modulate([1,0,1,0], bit_length=int(500e3))
