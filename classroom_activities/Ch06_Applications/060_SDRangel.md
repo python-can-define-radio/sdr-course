@@ -30,7 +30,7 @@ Start with this video: [One to rule them all - Crossplatform SDR decoder - SDRAN
 13. Close all subwindows, but keep SDRAngel open.
 14. Set up a Hack RF in Transmit mode.
 
-## Intro to transmitting Wide FM
+### Intro to transmitting Wide FM
 15. Create a Wide FM transmit channel.
 16. Try the Morse Code (CW) feature.
 17. Try setting the audio device.
