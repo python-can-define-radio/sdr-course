@@ -2,7 +2,7 @@
 
 Start with this video: [One to rule them all - Crossplatform SDR decoder - SDRANGEL - short review and examples](https://www.youtube.com/watch?v=zrhBcy8L-dA)
 
-### Intro to the Hack RF:
+### Basics of Hack RF receiving:
 
 1. Launch SDR Angel.
 2. Set up a Hack RF in Receive mode.
@@ -12,35 +12,45 @@ Start with this video: [One to rule them all - Crossplatform SDR decoder - SDRAN
 6. Try a variety of bandwidths. What does this setting do?
     1. Why would you want to adjust the bandwith? Answer: to avoid aliasing.
 
-### Intro to Receiving Broadcast FM
+### Receiving Broadcast FM
 7. Create a broadcast FM receiving channel.
 8. Try adjusting the frequency on which you are receiving.
 9. Try adjusting the band-pass filter.
 10. Try the Radio Data Service (RDS).
 
-### Intro to Receiving Narrow FM
+### Receiving Narrow FM
 11. Create a Narrow FM receiving channel.
 12. ...
 
-
-### Intro to Saving a Workspace
+### Saving a Workspace
 13. ...
 
-### Intro to Transmitting
+### Preparing to Transmit
 13. Close all subwindows, but keep SDRAngel open.
 14. Set up a Hack RF in Transmit mode.
 
-### Intro to transmitting Wide FM
+### Transmitting Wide FM
 15. Create a Wide FM transmit channel.
 16. Try the Morse Code (CW) feature.
 17. Try setting the audio device.
 
-### Intro to transmitting two Wide FM channels simultaneously
-18. Create another Wide FM transmit channel.
-19. Set it to a different frequency.
+### Transmitting Wide FM from an audio file
+18. First, you'll need to convert the audio file of interest to `.raw`. That is documented [here](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch03_Misc_examples/soundFile.md) (Do a Ctrl+F search for SDRAngel on that page).
+19. After converting the file, pick it in the WFM subwindow.
 
-### Intro to transmitting text using ChirpChat
-20. Create a ChirpChat transmit channel.
+### Transmitting two Wide FM channels simultaneously
+20. Create another Wide FM transmit channel.
+21. Pick another sound file, or set it to transmit Morse.
+22. Set it to a different frequency.
+
+### Transmitting text using ChirpChat
+23. Create a ChirpChat transmit channel.
+24. ...
+
+### Receiving text using ChirpChat
+25. Create a ChirpChat receive channel.
+26. ...
+
 
 ----
 
