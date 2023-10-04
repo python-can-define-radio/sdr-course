@@ -35,8 +35,9 @@ Start with this video: [One to rule them all - Crossplatform SDR decoder - SDRAN
 17. Try setting the audio device.
 
 ### Transmitting Wide FM from an audio file
-18. First, you'll need to convert the audio file of interest to `.raw`. That is documented [here](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch03_Misc_examples/soundFile.md) - (Look for the exercise where the output_file is in `.raw` format).
-19. After converting the file, pick it in the WFM subwindow.
+18. First, you'll need to convert the audio file of interest to `.raw`. That is documented [here](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch03_Misc_examples/soundFile.md)
+    - (Look for the exercise where the output_file is in `.raw` format).
+20. After converting the file, pick it in the WFM subwindow.
 
 ### Transmitting two Wide FM channels simultaneously
 20. Create another Wide FM transmit channel.
