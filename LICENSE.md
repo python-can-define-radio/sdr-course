@@ -1,6 +1,6 @@
 Copyright 2022 by the Authors of "python-can-define-radio".
 
-Authors: m-pcdr, james-pcdr, wolverine-is-the-best
+Authors: m-pcdr, james-pcdr, wolverine-is-the-best  
 Creator: james-pcdr
 
 Permission is hereby granted, free of charge, to any individual person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, or modify copies of the Software, and to permit persons to whom the Software is furnished to do so in order **_to further the individual's education only._** The Software is **_not for sale or for Commercial use_** unless written permission is granted by at least two "Authors" of the "python-can-define-radio" associated repositories, one of which must be the original "Creator" of the "python-can-define-radio" account. The same copyright terms are true of all content in github.com/python-can-define-radio public and private repositories, subject to the following conditions:
