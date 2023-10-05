@@ -1,6 +1,6 @@
 Copyright 2022 by the writers of "python-can-define-radio".
 
-Permission is hereby granted, free of charge, to any individual person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, or modify copies of the Software, and to permit persons to whom the Software is furnished to do so in order to further the individual's education only. The Software is not for sale or for Commercial use. The same copyright terms are true of all content in github.com/python-can-define-radio public repositories, subject to the following conditions:
+Permission is hereby granted, free of charge, to any individual person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, or modify copies of the Software, and to permit persons to whom the Software is furnished to do so in order to further the individual's education only. The Software is not for sale or for Commercial use unless written permission is granted by at least two primary contributors (writers) of "python-can-define-radio". The same copyright terms are true of all content in github.com/python-can-define-radio public repositories, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
