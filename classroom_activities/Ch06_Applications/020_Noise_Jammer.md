@@ -8,6 +8,8 @@
 
 # Noise Jammer
 
+ℹ️ This material coincides with material from SDR slideshow E (all slides).
+
 ## Disclaimer
 
 Intentionally disrupting someone's wireless connection (i.e., using a jammer) is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
