@@ -6,6 +6,8 @@
 
 # Direction Finding
 
+ℹ️ This material coincides with material from SDR slideshow A (slide 18).
+
 There are two methods of direction-finding that we'll discuss:
 
 - Using a directional antenna
