@@ -7,6 +7,8 @@
 
 # Improved Digital Jammer
 
+ℹ️ This material coincides with material from SDR slideshow F (all slides).
+
 This digital jammer is more effective than the original because it can match the symbol rate of the target.
 
 ```
