@@ -8,6 +8,8 @@
 
 # Sample rates: Introduction
 
+ℹ️ This material coincides with material from SDR slideshow A (slide 25).
+
 At this point, you've used various Graphical User Interface (GUI) features to manually adjust the amplitude and the frequency of a pure sine wave. Human-powered modulation is certainly useful, as thousands of telegraph operators could tell you.
 
 But as we know, the telegraph has fallen out of style. Why? Because we now have computers that can do the moduation for us.

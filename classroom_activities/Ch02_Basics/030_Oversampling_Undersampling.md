@@ -12,6 +12,8 @@
 
 # Oversampling and Undersampling
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 28-31).
+
 ### Sampling (specifically undersampling and why it's a problem)
 
 Start by reading this [Sampling lesson on this page from Harvey Mudd](https://gallicchio.github.io/learnSDR/lesson06.html).

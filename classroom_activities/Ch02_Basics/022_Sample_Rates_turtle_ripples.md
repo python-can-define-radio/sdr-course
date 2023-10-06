@@ -8,6 +8,8 @@
 
 # Sample rates: Ripples and turtle-meters
 
+ℹ️ This material coincides with material from SDR slideshow A (slide 22).
+
 Let's imagine some [ripples in water](https://www.youtube.com/watch?v=FeXP7SxCKKE).
 
 If you viewed the water from the side, it might look like this:

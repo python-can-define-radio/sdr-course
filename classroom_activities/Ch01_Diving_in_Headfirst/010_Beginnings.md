@@ -5,6 +5,8 @@
 </pre>
 </details>
 
+ℹ️ This material coincides with material from SDR slideshow B (slides 49-53).
+
 # Beginnings
 
 Before starting:
