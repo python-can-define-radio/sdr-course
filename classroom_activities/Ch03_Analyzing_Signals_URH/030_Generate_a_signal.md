@@ -6,6 +6,8 @@
 
 # Generate a signal using URH 📻
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
+
 - Click on the Generator tab at the top of the urh window.
 
 - Make sure your defaults are set by clicking the `Edit` button and using the following information:  

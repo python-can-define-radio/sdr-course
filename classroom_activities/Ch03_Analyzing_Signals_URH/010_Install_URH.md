@@ -6,6 +6,8 @@
 
 # Install Universal Radio Hacker (URH) 📻
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
+
 ### Initial setup   
 
 - Click on the 9 dots in the taskbar of your linux machine and type `terminal` in the search window.

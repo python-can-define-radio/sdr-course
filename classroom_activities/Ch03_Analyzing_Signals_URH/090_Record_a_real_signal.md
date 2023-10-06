@@ -6,6 +6,8 @@
 
 # Record a signal using URH 📻
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
+
 - The first thing you will need when recording a signal is to know what frequency you want to record.
 
 - Open File>Record signal.

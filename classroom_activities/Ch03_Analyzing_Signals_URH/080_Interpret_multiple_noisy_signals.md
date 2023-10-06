@@ -6,6 +6,8 @@
 
 # Interpret signals using URH 📻
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
+
 - So far all we have evaluated are ASK signals lets change that up.
 
 - Launch urh and open your folder.
