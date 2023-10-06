@@ -12,7 +12,7 @@
 
 # Oversampling and Undersampling
 
-ℹ️ This material coincides with material from SDR slideshow A (slides 28-31).
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
 
 ### Sampling (specifically undersampling and why it's a problem)
 

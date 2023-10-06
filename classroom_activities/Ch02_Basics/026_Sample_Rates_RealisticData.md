@@ -8,6 +8,8 @@
 
 # Sample rates: Realistic data
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
+
 We've seen how to create a square wave using the Vector Source. Now, let's simulate a more interesting signal.
 
 Create this flowgraph. Name it `repeat_demo_3.grc`.

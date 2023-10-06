@@ -8,7 +8,7 @@
 
 # Sample rates: Ripples and turtle-meters
 
-ℹ️ This material coincides with material from SDR slideshow A (slide 22).
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
 
 Let's imagine some [ripples in water](https://www.youtube.com/watch?v=FeXP7SxCKKE).
 

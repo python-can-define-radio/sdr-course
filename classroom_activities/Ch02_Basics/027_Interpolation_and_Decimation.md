@@ -2,7 +2,7 @@
 
 We've seen that the Repeat block creates extra samples. In this lesson, we examine other ways to change the sample rate.
 
-ℹ️ This material coincides with material from SDR slideshow A (slides 40-42).
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
 
 ### Interpolation
 

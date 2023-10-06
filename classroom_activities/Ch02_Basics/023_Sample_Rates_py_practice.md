@@ -8,6 +8,8 @@
 
 # Sample Rates: Practice problems
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
+
 Run this. Name it `rough_sine_wave.py`. You'll see that it plots a very rough sine wave.
 
 ```python3

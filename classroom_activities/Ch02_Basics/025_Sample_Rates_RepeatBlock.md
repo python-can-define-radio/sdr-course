@@ -8,6 +8,8 @@
 
 # Sample rates: Repeat block
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
+
 In `024_Sample_Rates_grc_practice.md`, we created a square wave using a Vector Source block.
 
 Let's imagine we want to make a square wave with a frequency of 2 Hz, and a sample rate of 1 Msps (Million samples per second).

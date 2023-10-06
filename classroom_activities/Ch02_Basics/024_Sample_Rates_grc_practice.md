@@ -8,6 +8,8 @@
 
 # Sample rates: GRC practice
 
+ℹ️ This material coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).
+
 ### Practice problem set A
 
 Make this flowgraph. Name it `messy_sine_vector_source.grc`.
