@@ -1,5 +1,6 @@
 # Frequency Domain and Complex waves
 
+ℹ️ This material coincides with material from python slideshows B (slides 1-11, 16, 24, 39, 54-63, 69) C (slides 30-38) and  D (slides 4-15, 31-37).
 ℹ️ This material coincides with material from SDR slideshow A (slide 32).
 
 In the previous lesson, all of the waves that we generated and plotted were real waves. In other words, they had only a real component, and no imaginary component. This lesson will introduce complex waves, which are those that have both a real and an imaginary component. In an SDR context, these are often called IQ signals, which means In-phase (I) and Quadrature (Q). The I refers to the real part, and the Q refers to the imaginary part.
