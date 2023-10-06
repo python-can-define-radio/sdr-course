@@ -2,6 +2,8 @@
 
 # Transmitting and receiving a pure sine wave
 
+ℹ️ This material coincides with material from SDR slideshow B (slides 56-63).
+
 Since the Hack RF is half-duplex, you'll need two flowgraphs to do this activity: one for transmit, and one for receive.
 
 The Instructor will assign work groups. Coordinate within your assigned group so that one student transmits, and the other receives. Then rotate roles.
