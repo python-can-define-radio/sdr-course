@@ -9,15 +9,8 @@ from pcdr.gnuradio_sender import pad_chunk_queue
 from pcdr.helpers import queue_to_list
 
 
-def test_pad_chunk_queue_small_chunk():
-    
 
-
-def test_pad_chunk_queue_padding():
-    
-
-
-def test_1_queue_to_list():
+def test_queue_to_list_empty_queue():
     assert queue_to_list(SimpleQueue()) == []
 
 
@@ -141,6 +134,6 @@ test_multiply_by_real_wave = deal.cases(
 test_noisify = deal.cases(
     func=noisify,
     kwargs=dict(
-        data=hyponp.arrays(dtype=np.complex64),
+        data=hyponp.arrays(dtype=np.complex64, shape=1),
     )
 )
