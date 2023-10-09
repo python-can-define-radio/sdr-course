@@ -32,7 +32,7 @@ from .wavegen import (
 from .helpers import (
     queue_to_list,
     str_to_bin_list,
-    hex_to_bin_list,
+    int_to_bin_list,
 )
 
 try:
