@@ -22,12 +22,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import ceil
 
-# print(np.array_split([1,2,3,4,5,6,7,8,9], 9 / 2))
-dat = np.fromfile("ook_mini_content.iqdata", dtype=np.complex64)
-chunks = np.array_split(dat, ceil(len(dat)/4096))
-# print(len(chunks))
-for i, chunk in enumerate(chunks):
-    sample_freqs, fft_mag = make_fft(chunk, samp_rate=20000)
-    plt.plot(sample_freqs, fft_mag + i*10)
-plt.show()
+if __name__ == "__main__":
+    # print(np.array_split([1,2,3,4,5,6,7,8,9], 9 / 2))
+    dat = np.fromfile("ook_mini_content.iqdata", dtype=np.complex64)
+    chunks = np.array_split(dat, ceil(len(dat)/4096))
+    # print(len(chunks))
+    for i, chunk in enumerate(chunks):
+        sample_freqs, fft_mag = make_fft(chunk, samp_rate=20000)
+        plt.plot(sample_freqs, fft_mag + i*10)
+    plt.show()
 
