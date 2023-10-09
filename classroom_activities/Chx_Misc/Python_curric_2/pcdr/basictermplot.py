@@ -69,18 +69,20 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: int = 30, youtputsize: int
          o  
           oo
 
-    >>> xs = np.array([ 0, 10, 20, 40, 50, 60, 70])
-    >>> ys = np.array([20, 30, 20, 20, 10,  0,  0], dtype=np.complex64)
-    >>> plot(xs, ys.real, xoutputsize=8, youtputsize=4)
-    xmin: 0
-    xmax: 70
-    ymin: 0
-    ymax: 30.0
-     o      
-    o o o   
-         o  
-          oo
+    This won't allow complex data, but one option is to just plot the real part.
+    >>> xs = np.array([ 1, 2])
+    >>> ys = np.array([ 1 + 2j, 10 + 20j])
+    >>> plot(xs, ys)
+    Traceback (most recent call last):
+      ...
+    ValueError: ...
     """
+    
+    if np.iscomplex(xs).any():
+        raise ValueError("Complex values are not allowed")
+    if np.iscomplex(ys).any():
+        raise ValueError("Complex values are not allowed")
+    
     drawing = np.zeros((youtputsize, xoutputsize))
 
     scaledx = np.uint16(rescale(xs, 0, xoutputsize - 1))
