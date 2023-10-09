@@ -1,5 +1,4 @@
 import math
-import deal
 from typing import List, Iterable, TypeVar, Tuple
 import numpy as np
 
@@ -29,8 +28,7 @@ class NonBitError(ValueError):
     pass
 
 
-@deal.raises(NonBitError)
-@deal.has()
+
 def __must_be_binary(bits: List[int]) -> None:
     """
     This returns None:
@@ -77,11 +75,22 @@ def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float
 
     Examples:
     >>> from pcdr.basictermplot import plot
-    >>> timestamps, data = ook_modulate_at_frequency([1, 0, 1], 10, 20, freq=2)
-    >>> reald = data.real
-    >>> shifteddata = reald + np.min(reald)
-    >>> plot(timestamps, shifteddata.real)
-    TODO
+    >>> timestamps, data = ook_modulate_at_frequency([1, 0, 1, 1], bit_length=20, samp_rate=40, freq=2)
+    >>> plot(timestamps, data.real, 80, 10)
+    xmin: 0
+    xmax: 1.975
+    ymin: 0
+    ymax: 1.0
+    ~o                                       o                   o                   
+    ~ oo               oo                     oo               oo oo               oo
+    ~   o             o                         o             o     o             o  
+    ~                                                                                
+    ~    o           o                           o           o       o           o   
+    ~     o         o    oooooooooooooooooooo     o         o         o         o    
+    ~      o       o                               o       o           o       o     
+    ~                                                                                
+    ~       o     o                                 o     o             o     o      
+    ~        ooooo                                   ooooo               ooooo       
     """
     __must_be_binary(bits)
     baseband_sig = ook_modulate(bits, bit_length)
