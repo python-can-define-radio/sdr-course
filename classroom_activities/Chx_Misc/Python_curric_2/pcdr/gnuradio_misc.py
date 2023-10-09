@@ -6,6 +6,11 @@ from distutils.version import StrictVersion
 
 
 def configure_graceful_exit(tb: gr.top_block):
+    """The portion of GNU Radio boilerplate that 
+    catches SIGINT and SIGTERM, and tells the flowgraph
+    to gracefully stop before exiting the program.
+    
+    Used mainly for non-graphical flowgraphs."""
     def sig_handler(sig=None, frame=None):
         tb.stop()
         tb.wait()
@@ -26,7 +31,8 @@ try:
 
 
     def configure_and_run_gui_flowgraph(top_block_cls, args):
-       
+        """The portion of GNU Radio boilerplate that 
+        sets up the QT GUI Application."""
         if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
             style = gr.prefs().get_string('qtgui', 'style', 'raster')
             Qt.QApplication.setGraphicsSystem(style)
