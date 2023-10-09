@@ -289,21 +289,27 @@ def random_normal(size: int, dtype=np.float32, seed=None) -> np.ndarray:
 
 
 
-def noisify(data: np.ndarray, seed=None) -> np.ndarray:
+def noisify(data: np.ndarray, amplitude=1, seed=None) -> np.ndarray:
     """
     Returns a copy of `data` with random normally distributed noise added.
     `seed` is optional, and mostly just used for testing the function.
 
-    >>> dat = np.array([1, 2, 3], dtype=np.float32)
-    >>> noisify()
-    this_should_fail
+    >>> dat = np.array([10, 100, 1000], dtype=np.float32)
+    >>> noisify(dat, amplitude=0.1, seed=0)
+    array([ 11.117622,  98.61288 , 999.5734  ], dtype=float32)
+
+    >>> dat = np.array([10 + 20j, 100 + 200j], dtype=np.complex64)
+    >>> noisify(dat, amplitude=0.1, seed=0)
+    array([11.117622 +21.117622j, 98.61288 +198.61287j ], dtype=complex64)
     """
-    if data.dtype not in [np.float32, np.complex64]:
+    if data.dtype == np.float32:
+        randnoise = random_normal(len(data), dtype=np.float32, seed=seed)
+    elif data.dtype == np.complex64:
+        randnoisereal = np.complex64(random_normal(len(data), dtype=np.float32, seed=seed))
+        randnoiseimag = np.complex64(random_normal(len(data), dtype=np.float32, seed=seed))
+        randnoise = randnoisereal + (1j * randnoiseimag)
+    else:
         raise NotImplementedError("Currently, this only works for these dtypes: float32, complex64.")
-    randnoise = random_normal(len(data), dtype=np.float32)
-    if data.dtype == np.complex64:
-        randImag = random_normal(len(data), dtype=np.float32)
-        randnoise += 1j * randImag
     assert randnoise.dtype == data.dtype
     result = data + randnoise
     assert result.dtype == data.dtype
