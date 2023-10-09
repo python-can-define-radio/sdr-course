@@ -39,9 +39,9 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     >>> testdata = np.array([1, 2, 3], dtype=np.uint8)
     >>> pcq = pad_chunk_queue(testdata, 2)
     >>> pcq.get()
-    np.array([1, 2], dtype=np.complex64)
+    array([1.+0.j, 2.+0.j], dtype=complex64)
     >>> pcq.get()
-    np.array([3, 0], dtype=np.complex64)
+    array([3.+0.j, 0.+0.j], dtype=complex64)
 
     >>> testdata = np.array([1, 2, 3], dtype=np.uint8)
     >>> pcq = pad_chunk_queue(testdata, 5)

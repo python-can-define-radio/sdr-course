@@ -69,8 +69,15 @@ from pcdr.wavegen import multiply_by_complex_wave
 
 def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
     """
-    >>> ook_modulate_at_frequency()
-    todo: use term plot or similar
+    OOK Modulate at a given frequency. Returns the timestamps and the modulated data.
+
+    Examples:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps, data = ook_modulate_at_frequency([1, 0, 1], 10, 20, freq=2)
+    >>> reald = data.real
+    >>> shifteddata = reald + np.min(reald)
+    >>> plot(timestamps, shifteddata.real)
+    TODO
     """
     __must_be_binary(bits)
     baseband_sig = ook_modulate(bits, bit_length)

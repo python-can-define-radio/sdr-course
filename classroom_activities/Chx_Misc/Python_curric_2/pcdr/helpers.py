@@ -150,13 +150,13 @@ def int_to_bin_list(message: np.ndarray) -> List[int]:
 
     Examples:
 
-    >>> hex_to_bin_list(np.array([0x43],dtype='uint8'))
+    >>> int_to_bin_list(np.array([0x43],dtype='uint8'))
     [0, 1, 0, 0, 0, 0, 1, 1]
     
-    >>> str_to_bin_list(np.array([0x43,0x42],dtype='uint8'))
+    >>> int_to_bin_list(np.array([0x43,0x42],dtype='uint8'))
     [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0]
     
-    >>> str_to_bin_list(np.array([0x4342],dtype='uint16'))
+    >>> int_to_bin_list(np.array([0x4342],dtype='uint16'))
     [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0]
 	"""
 
