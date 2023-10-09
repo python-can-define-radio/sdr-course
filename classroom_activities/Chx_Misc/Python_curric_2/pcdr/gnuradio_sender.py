@@ -1,6 +1,5 @@
 from typing import List, Optional, Sequence, TypeVar, Union
 import deal
-import pydash
 import numpy as np
 from queue import Empty
 from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_

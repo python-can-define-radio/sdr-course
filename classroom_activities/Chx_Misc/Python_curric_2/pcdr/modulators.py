@@ -1,23 +1,27 @@
 import math
 import deal
 from typing import List, Iterable, TypeVar, Tuple
-import pydash
 import numpy as np
 
 
 T = TypeVar('T')
 
 
-@deal.pre(lambda _: 0 <= _.numtimes)
-@deal.ensure(lambda _: len(_.result) == len(_.original) * _.numtimes)
-@deal.has()
+
 def __repeat_each_item(original: List[T], numtimes: int) -> List[T]:
     """
     Example:
     >>> __repeat_each_item([2, 5], 3)
     [2, 2, 2, 5, 5, 5]
     """
-    return pydash.flat_map(original, lambda item: [item] * numtimes)
+    assert 0 <= numtimes
+
+    result = []
+    for item in original:
+        result += [item] * numtimes
+
+    assert len(result) == len(original) * numtimes
+    return result
 
 
 

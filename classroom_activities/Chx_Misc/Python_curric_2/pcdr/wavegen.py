@@ -6,7 +6,6 @@ Try this to start: wave_gen_prompts()
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 import deal
 import random
 from typing import Optional, List, Tuple
