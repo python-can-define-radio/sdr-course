@@ -1,4 +1,3 @@
-import deal
 import numpy as np
 from queue import SimpleQueue, Empty
 from typing import List, TypeVar, Union, Optional
@@ -31,28 +30,30 @@ class SimpleQueueTypeWrapped(SimpleQueue):
     >>> q.put(np.array([10, 20, 30]))
     Traceback (most recent call last):
       ...
-    deal.PreContractError: ...
+    AssertionError
 
     Wrong size:
     >>> q.put(np.array([10, 20], dtype=np.complex64))
     Traceback (most recent call last):
       ...
-    deal.PreContractError: ...
+    AssertionError
     """
     def __init__(self, qtype, dtype, chunk_size: int):
+        if qtype != np.ndarray:
+            raise NotImplementedError()
         self.qtype = qtype
         self.dtype = dtype
         self.chunk_size = chunk_size
         super().__init__()
     
-    @deal.pre(lambda _: isinstance(_.item, _.self.qtype))
-    @deal.pre(lambda _: _.item.dtype == _.self.dtype)
-    @deal.pre(lambda _: len(_.item) == _.self.chunk_size)
     def put(self, item):
+        assert isinstance(item, self.qtype)
+        assert item.dtype == self.dtype
+        assert len(item) == self.chunk_size
         return super().put(item)
 
 
-@deal.has()
+
 def queue_to_list(q: SimpleQueue) -> list:
     """Converts a queue to a list.
 
@@ -95,10 +96,7 @@ def queue_to_list(q: SimpleQueue) -> list:
 
 
 
-@deal.pre(lambda b: all(0 <= item < 256 for item in b))
-@deal.ensure(lambda _: len(_.result) == len(_.b) * 8)
-@deal.post(lambda result: all(x in [0, 1] for x in result))
-@deal.has()
+
 def bytes_to_bin_list(b: Union[bytes, List[int]]) -> List[int]:
     """
     Converts each item in b to bits.
@@ -117,15 +115,17 @@ def bytes_to_bin_list(b: Union[bytes, List[int]]) -> List[int]:
     >>> bytes_to_bin_list(b"CB")
     [0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0]
     """
+    assert all(0 <= item < 256 for item in b)
     bitstrs = [f"{c:08b}" for c in b]
     joined = "".join(bitstrs)
-    return list(map(int, joined))
+    result = list(map(int, joined))
+    assert len(result) == len(b) * 8
+    assert all(x in [0, 1] for x in result)
+    return result
 
 
 NON_ASCII_ERR = "Currently, this only works for characters whose `ord` value is less than 256. For now, use `bytes_to_bin_list` if you wish to use non-ASCII characters. However, this may cause unexpected results for certain characters such as '«' that have multiple possible encodings."
-@deal.pre(lambda _: all(ord(c) < 256 for c in _.message), message=NON_ASCII_ERR)
-@deal.ensure(lambda _: _.result == bytes_to_bin_list(_.message.encode("ASCII")) if all(ord(c) < 128 for c in _.message) else True)
-@deal.has()
+
 def str_to_bin_list(message: str) -> List[int]:
     """
     Converts a string to a list of bits.
@@ -141,7 +141,16 @@ def str_to_bin_list(message: str) -> List[int]:
     >>> str_to_bin_list("«")
     [1, 0, 1, 0, 1, 0, 1, 1]
     """
-    return bytes_to_bin_list([ord(c) for c in message])
+    if not all(ord(c) < 256 for c in message):
+        raise ValueError(NON_ASCII_ERR)
+    result = bytes_to_bin_list([ord(c) for c in message])
+    return result
+
+Make this a hypothesis test:
+@deal.ensure(lambda _: _.result ==
+                  bytes_to_bin_list(_.message.encode("ASCII"))
+                    if all(ord(c) < 128 for c in _.message)
+                      else True)
 
 
 def int_to_bin_list(message: np.ndarray) -> List[int]:

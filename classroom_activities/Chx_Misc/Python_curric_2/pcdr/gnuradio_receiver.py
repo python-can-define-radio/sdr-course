@@ -1,5 +1,4 @@
 from typing import List, Tuple
-import deal
 import numpy as np
 import time
 from gnuradio import gr
@@ -78,10 +77,11 @@ class Gnuradio_receiver():
     def wait(self):
         self.tb.wait()
     
-    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
-    def get(self):
+    def get(self) -> np.ndarray:
         """Returns a chunk from the queue of accumulated received data."""
-        return self.tb.queue_sink.get()
+        result = self.tb.queue_sink.get()
+        assert len(result == self.__chunk_size)
+        return result
     
     def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
