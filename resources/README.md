@@ -45,6 +45,7 @@ Other cool stuff:
 - [gr-bokehgui: Web based display for GNU Radio](https://github.com/gnuradio/gr-bokehgui)
 - Air-Gap Covert Channels demos: https://cyber.bgu.ac.il/advanced-cyber/airgap
 - Wireless mouse (and keyboard) vulnerability: https://www.mousejack.com/
+- Garage doors: [First link](https://www.rtl-sdr.com/decoding-a-garage-door-opener-with-an-rtl-sdr/); [Second link](https://www.rtl-sdr.com/reverse-engineering-a-30-year-old-wireless-garage-door-opener-with-a-hackrf-and-gnu-radio/)
 - Keyfob security: 
   - This has good pictures: https://www.andrewmohawk.com/2016/02/05/bypassing-rolling-code-systems/
   - [RTL-SDR blog regarding Hondas](https://www.rtl-sdr.com/?s=honda)
