@@ -188,3 +188,82 @@ def prepend_zeros_(data: np.ndarray, zeroCount: int):
     assert prepended.dtype == data.dtype
     assert (prepended[zeroCount:] == data).all()
     return prepended
+
+
+class DeviceParameterError(ValueError):
+    pass
+
+
+def validate_hack_rf_receive(device_args: str,
+                             samp_rate: float,
+                             center_freq: float,
+                             if_gain: int,
+                             bb_gain: int):
+    ## TODO: this won't correctly handle if the device args
+    ##   happen to include 'hackrf=' somewhere else, like in a string
+    if "hackrf=" not in device_args:
+        return
+    
+    if not (2e6 <= samp_rate <= 20e6):
+        raise DeviceParameterError(
+            "The HackRF One is only capable of sample rates "
+            "between 2 Million samples per second (2e6) and "
+            "20 Million samples per second (20e6). "
+            f"Your specified sample rate, {samp_rate}, was outside of this range."
+        )
+    
+    if not (1e6 < center_freq < 6e9):
+        raise DeviceParameterError(
+            "The HackRF One is only capable of center frequencies "
+            "between 1 MHz (1e6) and 6 GHz (6e9). "
+            f"Your specified frequency, {center_freq}, was outside of this range."
+        )
+    
+    if not if_gain in [0, 8, 16, 24, 32, 40]:
+        raise DeviceParameterError(
+            "The HackRF One, when in receive mode, is only capable "
+            "of the following if gain settings: "
+            "[0, 8, 16, 24, 32, 40]. "
+            f"Your specified if gain, {if_gain}, was not one of these options."
+        )
+    
+    if not bb_gain in range(0, 62+2, 2):
+        raise DeviceParameterError(
+            "The HackRF One, when in receive mode, is only capable "
+            "of the following bb gain settings: "
+            "[0, 2, 4, 6, ..., 56, 58, 60, 62]. "
+            f"Your specified bb gain, {bb_gain}, was not one of these options."
+        )
+
+
+def validate_hack_rf_transmit(device_args: str,
+                              samp_rate: float,
+                              center_freq: float,
+                              if_gain: int):
+    ## TODO: this won't correctly handle if the device args
+    ##   happen to include 'hackrf=' somewhere else, like in a string
+    if "hackrf=" not in device_args:
+        return
+    
+    if not (2e6 <= samp_rate <= 20e6):
+        raise DeviceParameterError(
+            "The HackRF One is only capable of sample rates "
+            "between 2 Million samples per second (2e6) and "
+            "20 Million samples per second (20e6). "
+            f"Your specified sample rate, {samp_rate}, was outside of this range."
+        )
+    
+    if not (1e6 < center_freq < 6e9):
+        raise DeviceParameterError(
+            "The HackRF One is only capable of center frequencies "
+            "between 1 MHz (1e6) and 6 GHz (6e9). "
+            f"Your specified frequency, {center_freq}, was outside of this range."
+        )
+    
+    if not if_gain in range(0, 47+1, 1):
+        raise DeviceParameterError(
+            "The HackRF One, when in transmit mode, is only capable "
+            "of the following if gain settings: "
+            "[0, 1, 2, ... 45, 46, 47]. "
+            f"Your specified if gain, {if_gain}, was not one of these options."
+        )

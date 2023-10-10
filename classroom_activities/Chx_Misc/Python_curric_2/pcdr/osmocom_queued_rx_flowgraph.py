@@ -3,9 +3,9 @@ import pmt
 import numpy as np
 import osmosdr
 from typing import List, Protocol
-import deal
 
 from pcdr.our_GR_blocks import queue_sink
+from pcdr.helpers import validate_hack_rf_receive
 
 
 
@@ -18,13 +18,11 @@ _osmocom_source_to_queuequeue_sink = queue_sink
 
 class osmocom_source_to_queue_sink(gr.top_block):
 
-    @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
-    @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
-    @deal.pre(lambda _: _.if_gain in [0, 8, 16, 24, 32, 40])
-    @deal.pre(lambda _: _.bb_gain in range(0, 62+1, 2), message="bb_gain must be one of 0, 2, 4, 6, ... 58, 60, 62")
+    
     def __init__(self, center_freq: float, samp_rate: float, chunk_size: int, device_args: str, if_gain: int = 32, bb_gain: int = 42):
         gr.top_block.__init__(self, "Top block")
 
+        validate_hack_rf_receive(samp_rate, center_freq, if_gain, bb_gain)
         self.__chunk_size = chunk_size
 
         self.osmosdr_source = osmosdr.source(args=device_args)

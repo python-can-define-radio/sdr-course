@@ -6,7 +6,7 @@ from gnuradio import gr
 
 from pcdr.osmocom_queued_rx_flowgraph import osmocom_source_to_queue_sink, file_source_to_queue_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
-from pcdr.helpers import queue_to_list
+from pcdr.helpers import queue_to_list, validate_hack_rf_receive
 from pcdr.types_and_contracts import SupportsQueueSink
 
 
@@ -32,10 +32,6 @@ def __run_block_and_return_queue_contents(tb: SupportsQueueSink, seconds: float)
 
 
 
-@deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
-@deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
-@deal.pre(lambda _: _.if_gain in [0, 8, 16, 24, 32, 40])
-@deal.pre(lambda _: _.bb_gain in range(0, 62+1, 2), message="bb_gain must be one of 0, 2, 4, 6, ... 58, 60, 62")
 def gnuradio_receive(
         center_freq: float,
         samp_rate: float,
@@ -45,6 +41,7 @@ def gnuradio_receive(
         device_args: str = "hackrf=0",
         chunk_size: int = 1024) -> np.ndarray:
     """Receive for APPROXIMATELY `seconds` seconds."""
+    validate_hack_rf_receive(device_args, samp_rate, center_freq, if_gain, bb_gain)
     tb = osmocom_source_to_queue_sink(center_freq, samp_rate, if_gain, bb_gain, device_args, chunk_size)
     return __run_block_and_return_queue_contents(tb, seconds)
 

@@ -14,8 +14,8 @@ from gnuradio import blocks
 import osmosdr
 import time
 from queue import SimpleQueue, Empty
-import deal
 from pcdr.our_GR_blocks import queue_source, string_file_sink, print_sink
+from pcdr.helpers import validate_hack_rf_transmit
 from gnuradio import zeromq
 
 
@@ -33,9 +33,6 @@ _queue_to_zmqpub_sink__queue_source = queue_source
 
 class queue_to_osmocom_sink(gr.top_block):
 
-    @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
-    @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
-    @deal.pre(lambda _: 0 <= _.if_gain <= 47)
     def __init__(self,
                  center_freq: float,
                  samp_rate: float,
@@ -46,6 +43,8 @@ class queue_to_osmocom_sink(gr.top_block):
         
         gr.top_block.__init__(self, "Top block")
         
+        validate_hack_rf_transmit(samp_rate, center_freq, if_gain)
+
         self.queue_source = queue_source(external_queue, chunk_size)
 
         self.vector_to_stream = blocks.vector_to_stream(gr.sizeof_gr_complex, chunk_size)

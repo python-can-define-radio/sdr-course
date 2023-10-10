@@ -13,11 +13,10 @@ from gnuradio import gr
 from gnuradio import blocks
 import osmosdr
 import time
-import deal
 from pcdr.our_GR_blocks import print_sink, string_file_sink
 from gnuradio import zeromq
 from typing import Tuple
-
+from pcdr.helpers import validate_hack_rf_transmit
 
 
 ## Bizarre GNU Radio variable-rename issues
@@ -32,9 +31,6 @@ from typing import Tuple
 
 class vector_to_osmocom_sink(gr.top_block):
 
-    @deal.pre(lambda _: 1e6 <= _.center_freq <= 6e9)
-    @deal.pre(lambda _: 2e6 <= _.samp_rate <= 20e6)
-    @deal.pre(lambda _: 0 <= _.if_gain <= 47)
     def __init__(self,
                  data: Tuple[complex],
                  center_freq: float,
@@ -44,6 +40,8 @@ class vector_to_osmocom_sink(gr.top_block):
                  repeat: bool):
         """device_args: "hackrf=0" is common."""
         
+        validate_hack_rf_transmit(samp_rate, center_freq, if_gain)
+
         gr.top_block.__init__(self, "Top block")
         
         self.vector_source = blocks.vector_source_c(data, repeat)
