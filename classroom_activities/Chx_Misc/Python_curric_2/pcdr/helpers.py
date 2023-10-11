@@ -141,16 +141,10 @@ def str_to_bin_list(message: str) -> List[int]:
     >>> str_to_bin_list("«")
     [1, 0, 1, 0, 1, 0, 1, 1]
     """
-    if not all(ord(c) < 256 for c in message):
+    numeric = [ord(c) for c in message]
+    if any(map(lambda x: x > 256, numeric)):
         raise ValueError(NON_ASCII_ERR)
-    result = bytes_to_bin_list([ord(c) for c in message])
-    return result
-
-Make this a hypothesis test:
-@deal.ensure(lambda _: _.result ==
-                  bytes_to_bin_list(_.message.encode("ASCII"))
-                    if all(ord(c) < 128 for c in _.message)
-                      else True)
+    return bytes_to_bin_list(numeric)
 
 
 def int_to_bin_list(message: np.ndarray) -> List[int]:
