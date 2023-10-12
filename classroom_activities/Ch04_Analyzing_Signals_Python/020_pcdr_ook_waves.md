@@ -87,7 +87,7 @@ You may be surprised that the `ook_modulate` function doesn't produce a wave. Wh
 
 ### OOK on a wave
 
-There are cases in which we would like to impose the data on a carrier wave in software before the Hack RF does its own shift. Let's try it:
+There are cases in which we would like to impose the data on a carrier wave in software before the Hack RF does its own shift. For example, you may wish to transmit on two different frequencies simultaneously. We'll do that at somepoint, but let's try a more basic upconversion example first:
 
 ```python3
 ## 7
