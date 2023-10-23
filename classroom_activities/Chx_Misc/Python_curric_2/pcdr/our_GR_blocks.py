@@ -7,15 +7,15 @@ from queue import Empty
 from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
 from queue import Full
 from typing import List
-import deal
+
 
 
 class queue_source(gr.sync_block):
 
-    @deal.pre(lambda _: _.external_queue.qtype == np.ndarray)
-    @deal.pre(lambda _: _.external_queue.dtype == _.out_type)
-    @deal.pre(lambda _: _.external_queue.chunk_size == _.chunk_size)
     def __init__(self, external_queue: SimpleQueueTypeWrapped, chunk_size: int, out_type = np.complex64):
+        assert external_queue.qtype == np.ndarray
+        assert external_queue.dtype == out_type
+        assert external_queue.chunk_size == chunk_size
         gr.sync_block.__init__(
             self,
             name='Python Block: Queue Source',
@@ -34,8 +34,8 @@ class queue_source(gr.sync_block):
             return -1  # Block is done
     
     
-    @deal.pre(lambda _: len(_.data) == _.self.__chunk_size)
     def queue_put(self, data):
+        assert len(data) == self.__chunk_size
         self.__queue.put(data)
 
 
@@ -98,13 +98,12 @@ class queue_sink(gr.sync_block):
         return 1
 
 
-    @deal.ensure(lambda _: len(_.result) == _.self.__chunk_size)
     def get(self) -> np.ndarray:
         """Get a chunk from the queue of accumulated received data."""
-        return self.__queue.get()
+        result = self.__queue.get()
+        assert len(result) == self.__chunk_size
+        return result
 
     def get_all(self) -> List[np.ndarray]:
         """Warning: this may or may not work while the flowgraph is running."""
         return queue_to_list(self.__queue)
-
-
