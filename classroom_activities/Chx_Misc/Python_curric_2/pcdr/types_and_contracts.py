@@ -1,5 +1,4 @@
 from typing import Union, TypeVar, Protocol
-import deal
 from pcdr.our_GR_blocks import queue_sink
 
 from gnuradio import gr

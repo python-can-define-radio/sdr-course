@@ -12,7 +12,6 @@ import numpy as np
 from gnuradio import gr
 from gnuradio import blocks
 import osmosdr
-import time
 from pcdr.our_GR_blocks import print_sink, string_file_sink
 from gnuradio import zeromq
 from typing import Tuple
