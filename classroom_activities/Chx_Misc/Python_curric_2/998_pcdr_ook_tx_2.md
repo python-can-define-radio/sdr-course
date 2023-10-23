@@ -12,7 +12,7 @@ from pcdr.gnuradio_sender import gnuradio_send
 
 
 timestamps = createTimestamps(seconds=1.0, num_samples=int(2e6))
-wave = makeComplexWave(timestamps, freq=4)
+wave = makeComplexWave_fixme_due_to_function_changes(timestamps, freq=4)
 modded = ook_modulate([1, 0, 1, 0], bit_length=int(500e3))
 fully_modded = modded * wave
 gnuradio_send(fully_modded, center_freq=100e6, samp_rate=2e6)

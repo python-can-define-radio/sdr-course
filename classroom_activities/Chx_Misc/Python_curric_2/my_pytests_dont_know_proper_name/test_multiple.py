@@ -29,8 +29,8 @@ from pcdr.wavegen import (
     noisify
 )
 
-seconds_strat = st.floats(max_value=100)
-num_samples_strat = st.integers(max_value=100)
+seconds_strat = st.floats(0, 100)
+num_samples_strat = st.integers(0, 100)
 freq_strat = st.floats(-1e12, 1e12)
 timestamps_strat = hyponp.arrays(
             dtype=np.float64,

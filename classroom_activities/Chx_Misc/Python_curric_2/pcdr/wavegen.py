@@ -9,41 +9,38 @@ import numpy as np
 import deal
 import random
 from typing import Optional, List, Tuple
-
 from pcdr.fileio import writeRealCSV, writeComplexCSV
 from pcdr.modulators import ook_modulate
 from pcdr.helpers import str_to_bin_list
 
 
 
-
-@deal.has()
-@deal.pre(lambda _: 0 <= _.seconds)
-@deal.pre(lambda _: 0 <= _.num_samples)
-@deal.ensure(lambda _: _.result.dtype == _.dtype)
-@deal.ensure(lambda _: len(_.result) == _.num_samples)
-@deal.post(lambda result: (0 <= result).all())
 def createTimestamps(seconds: float, num_samples: int, dtype=np.float64) -> np.ndarray:
     """Creates timestamps from zero up to the given maximum number of seconds.
     Implemented using np.linspace().
     
     Note: We use np.float64 as the default dtype because np.float32 was causing float rounding issues
-    that became worse with larger time values (as float rounding issues usually do)."""
-    return np.linspace(
-            start=0,
-            stop=seconds,
-            num=num_samples,
-            endpoint=False,
-            dtype=dtype
-        )
+    that became worse with larger time values (as float rounding issues usually do).
+    
+    Example:
+    >>> createTimestamps(2, 10)
+    array([0. , 0.2, 0.4, 0.6, 0.8, 1. , 1.2, 1.4, 1.6, 1.8])
+    """
+    assert 0 <= seconds
+    assert 0 <= num_samples
+    result = np.linspace(
+        start=0,
+        stop=seconds,
+        num=num_samples,
+        endpoint=False,
+        dtype=dtype
+    )
+    assert result.dtype == dtype
+    assert len(result) == num_samples
+    assert (0 <= result).all()
+    return result
 
 
-@deal.has()
-@deal.pre(lambda _: 0 < _.samp_rate)
-@deal.pre(lambda _: 0 <= _.num_samples)
-@deal.ensure(lambda _: _.result.dtype == _.dtype)
-@deal.ensure(lambda _: len(_.result) == _.num_samples)
-@deal.post(lambda result: (0 <= result).all())
 def createTimestamps_samprate(samp_rate: float, num_samples: int, dtype=np.float64) -> np.ndarray:
     """Creates `num_samples` timestamps spaced by `1/samp_rate`.
     Implemented using np.linspace().
@@ -52,39 +49,115 @@ def createTimestamps_samprate(samp_rate: float, num_samples: int, dtype=np.float
     >>> createTimestamps_samprate(5, 10)
     array([0. , 0.2, 0.4, 0.6, 0.8, 1. , 1.2, 1.4, 1.6, 1.8])
 
-    >>> createTimestamps_samprate(4, 2)
-    array([0.  , 0.25])
+    >>> createTimestamps_samprate(10, 4)
+    array([0. , 0.1, 0.2, 0.3])
 
     Note: We use np.float64 as the default dtype because np.float32 was causing float rounding issues
     that became worse with larger time values (as float rounding issues usually do)."""
-    return np.linspace(
+    assert 0 < samp_rate
+    assert 0 <= num_samples
+    
+    result = np.linspace(
             start=0,
             stop=num_samples/samp_rate,
             num=num_samples,
             endpoint=False,
             dtype=dtype
         )
+    
+    assert result.dtype == dtype
+    assert len(result) == num_samples
+    assert (0 <= result).all()
+
+    return result
 
 
+#### This is something we may do eventually.
+# @overload
+# def makeRealWave(samp_rate: float,
+#                  freq: float,
+#                  num_samples: int,
+#                  allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]: ...
+# @overload
+# def makeRealWave(samp_rate: float,
+#                  freq: float,
+#                  seconds: float,
+#                  allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]: ...
+# def makeRealWave(samp_rate: float,
+#                  freq: float,
+#                  **kwargs):
+#     return something
 
 
-@deal.has()
-@deal.ensure(lambda _: _.timestamps.shape == _.result.shape)
-def makeRealWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
-    return np.float32(np.sin(freq * 2 * np.pi * timestamps))
+def makeRealWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
+    """Return a sine wave.
+    
+    Example:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps = createTimestamps(1, 50)
+    >>> wave = makeRealWave_basic(timestamps, 2)
+    >>> plot(timestamps, wave)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~      o                        o                  
+    ~    oo ooo                  o o ooo               
+    ~  oo      o                oo      o              
+    ~ o         o              o         o             
+    ~o           oo           o           oo           
+    ~              o         o              o         o
+    ~               o      oo                o      oo 
+    ~                oooooo                   oooooo   
+    """
+    result = np.float32(np.sin(freq * 2 * np.pi * timestamps))
+    assert timestamps.shape == result.shape
+    return result
 
 
-
-
-
-@deal.has()
-@deal.ensure(lambda _: _.timestamps.shape == _.result.shape)
-def makeComplexWave(timestamps: np.ndarray, freq: float) -> np.ndarray:
+def makeComplexWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
+    """Return a complex wave.
+    
+    The real part is cosine (starts at 1); the imaginary part is sine (starts at 0).
+    
+    Example:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps = createTimestamps(1, 50)
+    >>> wave = makeComplexWave_basic(timestamps, 2)
+    >>> plot(timestamps, wave.real)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 1.0
+    ~o                        o                        
+    ~ ooo                  ooo ooo                  ooo
+    ~    o                o      o                 o   
+    ~     o              o         o              o    
+    ~      o            o           o            o     
+    ~       o          o             o          o      
+    ~        oo      oo               oo      oo       
+    ~          oooooo                   oooooo         
+    >>> plot(timestamps, wave.imag)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~      o                        o                  
+    ~    oo ooo                  o o ooo               
+    ~  oo      o                oo      o              
+    ~ o         o              o         o             
+    ~o           oo           o           oo           
+    ~              o         o              o         o
+    ~               o      oo                o      oo 
+    ~                oooooo                   oooooo   
+    """
     ## Note: I don't know enough about math with complex numbers
     ## to know if freq should be restricted to real, but I figured
     ## it was better to type-annotate it as `float` rather than leaving
     ## it as `Any`.
-    return np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
+    result = np.complex64(np.exp(1j * freq * 2 * np.pi * timestamps))
+    assert timestamps.shape == result.shape
+    return result
 
 
 
@@ -92,8 +165,8 @@ class AliasError(ValueError):
     pass
 
 
-@deal.pure
-def isAliasingWhenDisallowed(allowAliasing: bool, freq: float, samp_rate: float):
+
+def isAliasingWhenDisallowed(allowAliasing: bool, freq: float, samp_rate: float) -> bool:
     """
     Examples:
 
@@ -114,36 +187,104 @@ def isAliasingWhenDisallowed(allowAliasing: bool, freq: float, samp_rate: float)
     return (not allowAliasing) and (abs(freq) > samp_rate/2)
 
 
-@deal.has()
-@deal.raises(AliasError)
-@deal.reason(AliasError, isAliasingWhenDisallowed)
 def aliasingError(allowAliasing: bool, freq: float, samp_rate: float) -> None:
+    """Gives a detailed Aliasing error message if it's aliasing when it shouldn't.
+    :raises AliasError:"""
     if isAliasingWhenDisallowed(allowAliasing, freq, samp_rate):
         raise AliasError(f"For a sample rate of {samp_rate}, the highest frequency that can be faithfully represented is {samp_rate/2}. The specified freq, {freq}, is greater than the limit specified by Shannon/Nyquist/Kotelnikov/Whittaker (commonly called the Nyquist frequency).")
 
 
-@deal.has()
-@deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
-@deal.pre(lambda _: 0 < _.samp_rate)
-@deal.pre(lambda _: 0 <= _.num_samples)
-@deal.raises(AliasError)
-@deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Returns a tuple (timestamps, wave).
+    
+    The real part of the wave is cosine (starts at 1); the imaginary part is sine (starts at 0).
+
+    :raises AliasError: if isAliasingWhenDisallowed
+    
+    Example:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps, wave = makeComplexWave_numsamps(50, 50, 2)
+    >>> plot(timestamps, wave.real)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 1.0
+    ~o                        o                        
+    ~ ooo                  ooo ooo                  ooo
+    ~    o                o      o                 o   
+    ~     o              o         o              o    
+    ~      o            o           o            o     
+    ~       o          o             o          o      
+    ~        oo      oo               oo      oo       
+    ~          oooooo                   oooooo         
+    >>> plot(timestamps, wave.imag)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~      o                        o                  
+    ~    oo ooo                  o o ooo               
+    ~  oo      o                oo      o              
+    ~ o         o              o         o             
+    ~o           oo           o           oo           
+    ~              o         o              o         o
+    ~               o      oo                o      oo 
+    ~                oooooo                   oooooo   
+    """
+    assert 0 < samp_rate
+    assert 0 <= num_samples
     aliasingError(allowAliasing, freq, samp_rate)
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
-    return timestamps, makeComplexWave(timestamps, freq)
+    wave = makeComplexWave(timestamps, freq)
+    assert len(timestamps) == len(wave) == num_samples
+    return timestamps, wave
 
 
-
-
-@deal.has()
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == _.num_samples)
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.num_samples)
 @deal.raises(AliasError)
 @deal.reason(AliasError, lambda _: isAliasingWhenDisallowed(_.allowAliasing, _.freq, _.samp_rate))
 def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Return a complex wave.
+    
+    The real part is cosine (starts at 1); the imaginary part is sine (starts at 0).
+
+    :raises AliasError: if isAliasingWhenDisallowed
+    
+    Example:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps, wave = makeComplexWave_numsamps(50, 50, 2)
+    >>> plot(timestamps, wave.real)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 1.0
+    ~o                        o                        
+    ~ ooo                  ooo ooo                  ooo
+    ~    o                o      o                 o   
+    ~     o              o         o              o    
+    ~      o            o           o            o     
+    ~       o          o             o          o      
+    ~        oo      oo               oo      oo       
+    ~          oooooo                   oooooo         
+    >>> plot(timestamps, wave.imag)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~      o                        o                  
+    ~    oo ooo                  o o ooo               
+    ~  oo      o                oo      o              
+    ~ o         o              o         o             
+    ~o           oo           o           oo           
+    ~              o         o              o         o
+    ~               o      oo                o      oo 
+    ~                oooooo                   oooooo   
+    """
     aliasingError(allowAliasing, freq, samp_rate)
     t = num_samples / samp_rate
     timestamps = createTimestamps(seconds=t, num_samples=num_samples)
@@ -151,7 +292,7 @@ def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allow
 
 
 
-@deal.has()
+
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == int(_.samp_rate * _.seconds))
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.seconds)
@@ -164,7 +305,7 @@ def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAli
     return timestamps, makeComplexWave(timestamps, freq)
 
 
-@deal.has()
+
 @deal.ensure(lambda _: len(_.result[0]) == len(_.result[1]) == int(_.samp_rate * _.seconds))
 @deal.pre(lambda _: 0 < _.samp_rate)
 @deal.pre(lambda _: 0 <= _.seconds)
@@ -182,11 +323,11 @@ def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasi
 @deal.pre(lambda _: _.complex_or_real in ["r", "c"], message="Must choose 'c' or 'r' to specify if real or complex is wanted.")
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real):
     if complex_or_real == "r":
-        data = makeRealWave(timestamps, freq)
+        data = makeRealWave_todo_fix_this(timestamps, freq)
         writeRealCSV(basename + ".csv", data)
         data.tofile(basename + ".float32")
     elif complex_or_real == "c":
-        data = makeComplexWave(timestamps, freq)
+        data = makeComplexWave_todo_fix_this(timestamps, freq)
         writeComplexCSV(basename + ".csv", data)
         data.tofile(basename + ".complex64")
 
@@ -374,14 +515,14 @@ def generate_ook_modulated_example_file(output_filename: str, noise: bool = Fals
     data.tofile(output_filename)
 
 
-@deal.has()
+
 def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     sample_freqs, fft_mag = make_fft(sig, samp_rate)
     halfway = len(sample_freqs) // 2
     return sample_freqs[halfway:], fft_mag[halfway:]
 
 
-@deal.has()
+
 def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     windowed = sig * np.hamming(len(sig))
     fft_result = np.fft.fftshift(np.fft.fft(windowed))
