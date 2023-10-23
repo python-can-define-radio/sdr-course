@@ -55,7 +55,7 @@
     - The Windows keyboard shortcut: Alt + 0171 then release.
     - Alternatively, you can just copy and paste the character above.
  
-- The next step would be to add a simple 3 letter word in the remaining slots.
+- The next step would be to add a simple 3 letter word in the remaining slots. The cursor control is unconventional: you must press `Tab` after each character to move the focus to the next character slot.
 
 - It should now look like this
 
