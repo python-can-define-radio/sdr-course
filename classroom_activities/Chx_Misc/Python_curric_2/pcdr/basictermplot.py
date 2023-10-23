@@ -1,4 +1,5 @@
 import numpy as np
+from typing import Optional
 
 
 def rescale(arry: np.ndarray, lower_limit: int, upper_limit: int):
@@ -32,7 +33,7 @@ def rescale(arry: np.ndarray, lower_limit: int, upper_limit: int):
 
 
     
-def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: int = 30, youtputsize: int = 8) -> None:
+def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, youtputsize: int = 8) -> None:
     """
     A basic plot function, used primarily for docstring (and doctest) examples.
     
@@ -83,6 +84,11 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: int = 30, youtputsize: int
     if np.iscomplex(ys).any():
         raise ValueError("Complex values are not allowed")
     
+    if xoutputsize == None:
+        xoutputsize = len(xs)
+        
+    assert isinstance(xoutputsize, int)
+
     drawing = np.zeros((youtputsize, xoutputsize))
 
     scaledx = np.uint16(rescale(xs, 0, xoutputsize - 1))
@@ -109,7 +115,7 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: int = 30, youtputsize: int
     for row in drawing:
         print("~", end="")
         for item in row:
-            c = "o" if item == 1 else " "
+            c = "o" if item == 1 else "█"
             print(c, end="")
         print()
 
