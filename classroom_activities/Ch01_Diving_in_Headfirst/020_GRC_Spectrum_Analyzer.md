@@ -64,5 +64,6 @@ Source
 
 ### Discussion
 
+- What are the limits of the Hack RF's IF gain?
 - How big of a slice of the spectrum do you see?
 - While running, in the Frequency Display tab, try raising the Average in the bottom right corner. Does it help make signals more visible?
