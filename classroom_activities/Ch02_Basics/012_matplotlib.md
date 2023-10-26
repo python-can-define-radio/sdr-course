@@ -1,17 +1,22 @@
 # Matplotlib module
 
 ### Install the necessary modules
+
+Execute these commands in the terminal:  
 `pip install matplotlib`  
 `pip install numpy`
 
 ### Import the modules
 
-- We will use numpy to create waves, so it will need to be imported as well.
+We will use numpy to create waves, so it will need to be imported as well.
+
+In a Python file:
 
 ```python3
 import matplotlib.pyplot as plt
 import numpy as np
 ```
+
 ### Plotting with y as the variable (x is default) or plotting x and y together
 
 ```python3
@@ -154,18 +159,44 @@ plt.plot(timestamps, y, marker="$S$", color="blue", linestyle= "-", markersize=1
 plt.plot(timestamps, z, marker="$C$", color="red", linestyle= "-", markersize=10, linewidth=3, label="cosine")
 plt.legend(loc="upper right")
 plt.show()
+```
 
+The next exercise shows the `subplot()` function. This diagram shows how the positioning works:
 
+```
+--------------------------------------------------------
+|                          |                           |
+|   plt.subplot(3, 2, 1)   |   plt.subplot(3, 2, 2)    |
+|                          |                           |
+--------------------------------------------------------
+|                          |                           |
+|   plt.subplot(3, 2, 3)   |   plt.subplot(3, 2, 4)    |
+|                          |                           |
+--------------------------------------------------------
+|                          |                           |
+|   plt.subplot(3, 2, 5)   |   plt.subplot(3, 2, 6)    |
+|                          |                           |
+--------------------------------------------------------
+```
+
+There are three arguments to the `subplot` function:  
+    `plt.subplot(rows, columns, index)`
+
+The meaning of the arguments:
+- The first and second argument specify how big the grid is. In the above example, the grid is 3 rows and 2 columns.
+- The third argument specifies the "index" within the grid. Counting goes from left to right in the first row, then the second row, etc.
+
+```python3
 ## 12
 ## Plot this.
 ## It shows the same two waves in seperate subplots.
 timestamps = np.linspace(0, 6.28, 15, endpoint=False)
 y = np.sin(timestamps)
 z = np.cos(timestamps)
-plt.subplot(211)
+plt.subplot(2, 1, 1)
 plt.plot(timestamps, y, marker="$S$", color="blue", linestyle= "-", markersize=10, linewidth=3, label="sine")
 plt.legend(loc="upper right")
-plt.subplot(212)
+plt.subplot(2, 1, 2)
 plt.plot(timestamps, z, marker="$C$", color="red", linestyle= "-", markersize=10, linewidth=3, label="cosine")
 plt.legend(loc="upper right")
 plt.show()
@@ -178,13 +209,13 @@ timestamps = np.linspace(0, 6.28, 15, endpoint=False)
 y = np.sin(timestamps)
 z = np.cos(timestamps)
 t = timestamps
-plt.subplot(311)
+plt.subplot(3, 1, 1)
 plt.plot(timestamps, y, marker="$S$", color="blue", linestyle= "-", markersize=10, linewidth=3, label="sine")
 plt.legend(loc="upper right")
-plt.subplot(312)
+plt.subplot(3, 1, 2)
 plt.plot(timestamps, z, marker="$C$", color="red", linestyle= "-", markersize=10, linewidth=3, label="cosine")
 plt.legend(loc="upper right")
-plt.subplot(313)
+plt.subplot(3, 1, 3)
 plt.plot(timestamps, t, marker="$T$", color="green", linestyle= "-", markersize=10, linewidth=3, label="Timestamps")
 plt.legend(loc="upper right")
 plt.tight_layout()
