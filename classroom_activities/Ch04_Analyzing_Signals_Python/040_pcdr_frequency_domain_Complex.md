@@ -35,12 +35,12 @@ freq = -2
 timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=samp_rate, freq=freq)
 sample_freqs, fft_mag = make_fft(wave, samp_rate)
 
-plt.subplot(211, title=f"{freq} Hz Wave: Time Domain")
+plt.subplot(2, 1, 1, title=f"{freq} Hz Wave: Time Domain")
 plt.plot(timestamps, wave.real, "^-", color="blue", label="Real")
 plt.plot(timestamps, wave.imag, "*-", color="red", label="Imag")
 plt.legend(loc="upper right")
 
-plt.subplot(212, title=f"{freq} Hz Wave: Frequency Domain")
+plt.subplot(2, 1, 2, title=f"{freq} Hz Wave: Frequency Domain")
 plt.plot(sample_freqs, fft_mag, ".g-")
 
 plt.tight_layout()
