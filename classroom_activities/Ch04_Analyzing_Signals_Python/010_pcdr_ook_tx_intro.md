@@ -205,3 +205,12 @@ The `gnuradio_send` function has a built in option for repeating, shown in the e
 modulated = ook_modulate([1, 0], bit_length=int(100e3))
 gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, repeat=True)
 ```
+
+### Further exercises:
+
+```python3
+## 17
+## Using a loop, repeatedly ask for frequencies.
+## Transmit on the chosen frequency for 2 seconds.
+## Then ask for the next transmit frequency.
+```
