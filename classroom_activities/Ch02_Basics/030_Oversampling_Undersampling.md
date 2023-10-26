@@ -47,22 +47,22 @@ seconds = 2
 
 freq = 1
 timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
-plt.subplot(221, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.subplot(2, 2, 1, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
 
 freq = 3
 timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
-plt.subplot(222, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.subplot(2, 2, 2, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
 
 freq = 6
 timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
-plt.subplot(223, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.subplot(2, 2, 3, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
 
 freq = 9
 timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
-plt.subplot(224, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.subplot(2, 2, 4, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
 plt.plot(timestamps, wave, "o-")
 
 plt.tight_layout()
