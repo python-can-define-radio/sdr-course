@@ -66,7 +66,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### For the GUI Check Box:
 
-- Id: `filteron`
+- Id: `hardware_filter`
 - Default Value: `0`
 - True: `1`
 - False: `0`
@@ -83,7 +83,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `if_gain_slider`
 - Ch0: BB Gain (dB): `50`
-- Ch0: Bandwidth (Hz): `filteron * 2.75e6`
+- Ch0: Bandwidth (Hz): `hardware_filter * 2.75e6`
 
 ### For the Band Pass Filter:
 
@@ -107,18 +107,18 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 - Sample Rate: `48 kHz` (Pick from drop-down menu)
 
-### First Waterfall Sink (unfiltered):
+### First Waterfall Sink (directly connected from the osmocom Source):
 
-- Leave all as defaults.
+- Name: "Original spectrum"
 
 ### Second Waterfall Sink (filtered):
 
+- Name: "Filtered: a 200 kHz band in the center of the received spectrum"
 - Center Frequency (Hz): `center_freq_slider`
 
 ### For the Time Sink:
 
 - Leave all as defaults.
-
 
 ### Discussion
 
