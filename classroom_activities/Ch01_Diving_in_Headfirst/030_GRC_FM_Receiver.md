@@ -38,13 +38,13 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Id: `favorite_stations`
 - Type: `Float`
 - Num Options: `4`
-- Option 0: `100.3e6`  (_Replace these with actual stations_)
+- Option 0: `104.3e6`  (_Replace these with actual stations_)
 - Label 0: `Popular country rock jazz`  
-- Option 1: `99.7e6`
+- Option 1: `93.9e6`
 - Label 1: `Baroque heavy metal`
-- Option 2: `99.9e6`
+- Option 2: `100.9e6`
 - Label 2: `Noisy noise`
-- Option 3: `88.7e6`
+- Option 3: `105.7e6`
 - Label 3: `Some other creative station name`
 
 
@@ -62,12 +62,12 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Default Value: `favorite_stations`
 - Start: `88e6`
 - Stop: `108e6`
-- Step: `20e3`
+- Step: `10e3`
 
 ### For the GUI Check Box:
 
 
-- Id: filter_on  <!-- `hardware_filter` -->
+- Id: hardware_filter  
 - Default Value: `0`
 - True: `1`
 - False: `0`
@@ -84,7 +84,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `if_gain_slider`
 - Ch0: BB Gain (dB): `50`
-- Ch0: Bandwidth (Hz): `filter_on * 2.75e6`  <!-- hardware_filter -->
+- Ch0: Bandwidth (Hz): `hardware_filter * 2.75e6`
 
 ### For the Band Pass Filter:
 
