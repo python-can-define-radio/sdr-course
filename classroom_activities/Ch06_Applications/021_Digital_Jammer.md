@@ -38,7 +38,7 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 ### For the GUI Range:
 
 - Id: `center_freq_slider`
-- Default Value: `98.5e6`
+- Default Value: Choose a value between your start and stop values
 - Start: `88e6`
 - Stop: `108e6`
 - Step: `10e3`
