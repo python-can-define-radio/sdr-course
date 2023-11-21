@@ -80,3 +80,14 @@ Let's get some more practice working with complex waves.
 
 - do two ook signals
 - save to file, demod with urh
+
+## Resources about Complex waves & Quadrature mapping of waves
+
+- "Basics of IQ [Quadature] Signals and IQ modulation & demodulation - A tutorial", by user w2aew, https://www.youtube.com/watch?v=h_7d-m1ehoY
+  ("channel of author: https://www.youtube.com/@w2aew)
+  - Good explanations using diagrams & Oscilloscope obervations
+  - 3:31 "Two signals are said to be in quadrature when they are 90 degrees apart."
+
+- "Quadrature Mixers, IQ Demodulation, and the Tayloe Detector" video, by user devttys0,  https://www.youtube.com/watch?v=JuuKF1RFvBM 
+    - Good explanations using diagrams & Oscilloscope obervations
+    - 31:00 Diagram of a Tayoloe 4-to-1 mutliplexer configured to mix an RF & an oscilator signal to get I & Q quadrature signals.
