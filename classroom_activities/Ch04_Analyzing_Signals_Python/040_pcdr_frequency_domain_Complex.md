@@ -85,8 +85,10 @@ Let's get some more practice working with complex waves.
 
 - "Basics of IQ [Quadature] Signals and IQ modulation & demodulation - A tutorial", by user w2aew, https://www.youtube.com/watch?v=h_7d-m1ehoY
   ("channel of author: https://www.youtube.com/@w2aew)
-  - Good explanations using diagrams & Oscilloscope obervations
+  - Good explanations using Phasordiagrams & Oscilloscope obervations (Time stamps listed here are approximate.)
   - 3:31 "Two signals are said to be in quadrature when they are 90 degrees apart."
+  - 11:14 BPSC modulation using I(t) & Q(t) digital signals 
+  - ~14:00 QPSK modulation
 
 - "Quadrature Mixers, IQ Demodulation, and the Tayloe Detector" video, by user devttys0,  https://www.youtube.com/watch?v=JuuKF1RFvBM 
     - Good explanations using diagrams & Oscilloscope obervations
