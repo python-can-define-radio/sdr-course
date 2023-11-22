@@ -49,6 +49,14 @@ Most often, this means that you left a parameter blank that should not be blank.
 - Open the .py file that is mentioned.
 - Look at (or above) the mentioned line to figure out which block is the issue.
 
+## ... not enough devices
+
+```
+RuntimeError: Failed to use '0' as HackRF device index: not enough devices
+```
+
+Usually your HackRF is not plugged in.
+
 ## "Done"
 
 ```
