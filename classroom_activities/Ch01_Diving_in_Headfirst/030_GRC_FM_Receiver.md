@@ -10,7 +10,9 @@
 
 # GRC FM Receiver
 
-ℹ️ This material coincides with material from SDR slideshow C (slides 1-44).
+ℹ️ This material coincides with material from SDR slideshow C (slides 1-44).  However, the slides are not necessary for building and operating this program.
+
+Build this flow diagram in the GNU Radio Companion progam on your computer. (This instruction may not be repeated in subsequent lessons.)
 
 ## Summary
 
@@ -120,6 +122,12 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 ### For the Time Sink:
 
 - Leave all as defaults.
+
+### Now Run the program:
+
+- Press the triangular-shaped "run" button at the top of the program window, or press the F6 button on your keyboard.
+- A new window with a GUI operation window will appear, showing graphs and controls.
+- To stop, either close the GUI operation window, or in the programming window, press the square "stop" button at the top, or press F7 on your keyboard.
 
 ### Discussion
 
