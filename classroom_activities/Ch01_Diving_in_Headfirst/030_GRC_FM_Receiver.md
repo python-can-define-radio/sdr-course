@@ -112,11 +112,11 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ### First Waterfall Sink (directly connected from the osmocom Source):
 
-- Name: "Original spectrum"
+- Name: `"Original spectrum"`
 
 ### Second Waterfall Sink (after the band pass filter):
 
-- Name: "Filtered: a 200 kHz band in the center of the received spectrum"
+- Name: `"Filtered: a 200 kHz band in the center of the received spectrum"`
 - Center Frequency (Hz): `center_freq_slider`
 
 ### For the Time Sink:
