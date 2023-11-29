@@ -12,11 +12,13 @@
 
 - Click on the 9 dots in the taskbar of your linux machine and type `terminal` in the search window.
 
+- In terminal type `pip install cython`. 
+  
 - In terminal type `pip install urh`.
 
 - In terminal type `pip install --upgrade numpy`.
 
-- In terminal type `pip install pcdr`. (locally built package)
+- Optional: In terminal type `pip install pcdr`. (locally built package)
 
 - In terminal type `urh` to launch the program.
 
