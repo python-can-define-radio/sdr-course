@@ -44,7 +44,9 @@
   - Again you may have to adjust the 🖥️ computer audio settings and/or the audio gain slider in gqrx for optimal sound quality.  
   - Also remember antenna placement is very important.
   - Other than the RF gain, feel free to play around with the settings. You can always reset to default configuration with the `$ gqrx -r` terminal command.  
- 
+- **Optional**
+  - You can increase the decimation in the Configure I/O devices window to get better view of the tuned frequency. Ask for a demonstration if this is unclear.
+
 ⚠️ **Remember to respect your fellow classmates (audio level). They may be trying to work as well.**  
 
 ### ℹ️ Some useful resources for gqrx and HackRF One:
