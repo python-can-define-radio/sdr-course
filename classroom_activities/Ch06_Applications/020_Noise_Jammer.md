@@ -37,18 +37,18 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
 ### For the First GUI Range:
 
 - Id: `cut_freq_slider`
-- Default Value: `200e3`
-- Start: `100e3`
-- Stop: `1e6`
-- Step: `50e3`
+- Default Value: `300e3`
+- Start: `20e3`
+- Stop: `900e3`
+- Step: `10e3`
 
 ### For the Second GUI Range:
 
 - Id: `tr_width_slider`
-- Default Value: `200e3`
-- Start: `100e3`
-- Stop: `1e6`
-- Step: `50e3`
+- Default Value: `70e3`
+- Start: `20e3`
+- Stop: `900e3`
+- Step: `10e3`
 
 ### For the Third GUI Range:
 
