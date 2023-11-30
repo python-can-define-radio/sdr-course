@@ -14,7 +14,7 @@
 
 - In terminal type `pip install cython`. 
   
-- In terminal type `pip install urh`.
+- In terminal type `pip install "urh==2.9.4"`.
 
 - In terminal type `pip install --upgrade numpy`.
 
