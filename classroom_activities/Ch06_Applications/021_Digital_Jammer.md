@@ -81,10 +81,11 @@ Random source  ⟶  Constellation modulator  ⟶  Osmocom sink
 
 ## Exercise:
 
-- Sender: Whistle short pulses and long pulses to represent zeros and ones.
+- Sender: Whistle short pulses and long pulses to represent zeros and ones. Let's say a short pulse is a zero, and a long pulse is a one.
 - Receiver: Announce what you're receiving.
-- Rest of class: Make a "psshhhhh" noise. That's noise jamming.
-- Now, rest of class, whistle similarly. That's digital jamming. Notice how much more effective it is.
+- Rest of class: Make a "psshhhhh" noise. That's noise jamming of a broad range of frequencies.
+- Now, rest of class, whistle on same pitch (frequency), with very short pulse-lengths. That's a type of noise jamming called spot jamming -- all of your energy is focused on the target frequency.
+- Finally, rest of class, whistle on the same frequency, but this time, whistle a random sequence of fake data using the same pulse lengths that the sender is using. That's digital jamming. Notice that whistle pulses that are similar in length to the sender's are more effective than pulses that merely match pitch (and not pulse duration).
 
 ### See also...
 
