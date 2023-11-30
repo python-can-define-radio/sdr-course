@@ -13,6 +13,7 @@
 - Open File>Record signal.
 
 - On the Device dropdown menu select HackRF.
+  -  Note: if you do not see HackRF, see the troubleshooting in footnote 1.
 
 - On the Device Identifier click the green refresh button. 🔄 (It is green, I couldn't find a more accurate emoji)
 
@@ -45,3 +46,11 @@
 - https://github.com/jopohl/urh
 
 ## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p>
+
+
+### Footnotes
+
+Footnote 1: Troubleshooting: If you do not see the HackRF device option, do the following:
+  - Go to the main URH window, and click Edit > Options.
+  - Check the checkbox for HackRF.
+    - If the checkbox is unavailable, try downgrading to urh version 2.9.4 by running the following command in a terminal: `pip install urh==2.9.4`
