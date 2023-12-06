@@ -70,7 +70,8 @@ plt.show()
 
 
 ## 2b
-## This time instead of varying the frequency we see the same degradation with a varying sample rate as it approaches the value of the frequency.
+## This time instead of varying the frequency we see the same degradation with a varying sample rate
+## as it approaches the value of the frequency.
 from pcdr import makeRealWave_time
 import matplotlib.pyplot as plt
 
@@ -119,6 +120,7 @@ Now, let's look at what happens when the frequency is very close to the sample r
 ## but when you plot it, it (surprisingly) has a frequency of 1.
 ## What is the name for this phenomenon? 
 from pcdr import makeRealWave_time
+import matplotlib.pyplot as plt
 
 samp_rate = 10
 seconds = 1
