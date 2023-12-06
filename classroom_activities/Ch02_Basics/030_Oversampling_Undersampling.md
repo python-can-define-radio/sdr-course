@@ -134,6 +134,7 @@ plt.show()
 ## 4b
 ## Let's view that with an adequate sample rate at the same time to see the difference.
 from pcdr import makeRealWave_time
+import matplotlib.pyplot as plt
 
 seconds = 1
 samp_rate_too_low = 10
@@ -142,6 +143,7 @@ freq = 9
 timestamps, wave = makeRealWave_time(seconds, samp_rate_too_low, freq, allowAliasing=True)
 timestamps2, wave2 = makeRealWave_time(seconds, samp_rate_adequate, freq)
 
+plt.title('As you can see the blue line is not showing the correct frequency')
 plt.xlabel("Time")
 plt.ylabel("Amplitude")
 plt.plot(timestamps, wave, "o-", label=f"{freq} Hz with {samp_rate_too_low} Sps")
@@ -178,6 +180,6 @@ Aliasing in signal processing happens when you measure a signal that is outside 
  
 ### How to fix?
 
-In the FM Radio flowgraph, we use the "filteron" checkbox to do analog filtering inside the Hack RF.
+In the FM Radio flowgraph, we use the "hardware_filter" checkbox to do analog filtering inside the Hack RF.
 
 In GQRX, you should be able to use the same filter, but as far as I can tell, there's a bug that prevents that from working, unfortunately. (Either that, or I'm doing it wrong.)
