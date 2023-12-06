@@ -34,7 +34,7 @@ _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtub
 ## What figure in the Harvey Mudd page demonstrates what is happening in this video? 
 
 
-## 2. 
+## 2a 
 ## Try this.
 ## Notice that the wave degrades the closer the frequency gets to the sample rate.
 from pcdr import makeRealWave_time
@@ -69,8 +69,42 @@ plt.tight_layout()
 plt.show()
 
 
+## 2b
+## This time instead of varying the frequency we see the same degradation with a varying sample rate as it approaches the value of the frequency.
+from pcdr import makeRealWave_time
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,6))  # since we have multiple subplots this makes it large enough so nothing gets cropped off
+
+freq = 5
+seconds = 2
+
+samp_rate = 25
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(2, 2, 1, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+samp_rate = 20
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(2, 2, 2, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+samp_rate = 15
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(2, 2, 3, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+samp_rate = 10
+timestamps, wave = makeRealWave_time(seconds, samp_rate, freq)
+plt.subplot(2, 2, 4, title=f"samp_rate: {samp_rate} samp/sec, freq: {freq} Hz")
+plt.plot(timestamps, wave, "o-")
+
+plt.tight_layout()
+plt.show()
+
+
 ## 3
-## Copy and modify the previous example (including the code for all
+## Copy and modify the 2a example (including the code for all
 ## of the subplots). Set the samp_rate to 40.
 ## Do the waves appear to be higher or lower quality?
 ```
