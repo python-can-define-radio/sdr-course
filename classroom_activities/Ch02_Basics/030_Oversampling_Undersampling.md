@@ -156,10 +156,27 @@ The above exercise shows [**aliasing**](https://gallicchio.github.io/learnSDR/le
 
 ```python3
 ## 5
-## Copy and modify the above example.
-## Set the freq to 37 and the sample_rate_too_low variable to 40.
+## Try this.
 ## Due to aliasing, what frequency is displayed by the blue line?
 ## What is the relationship between the displayed frequency and the sample rate?
+from pcdr import makeRealWave_time
+import matplotlib.pyplot as plt
+
+seconds = 1
+samp_rate_too_low = 40
+samp_rate_adequate = 400
+freq = 37
+timestamps, wave = makeRealWave_time(seconds, samp_rate_too_low, freq, allowAliasing=True)
+timestamps2, wave2 = makeRealWave_time(seconds, samp_rate_adequate, freq)
+
+plt.title('The frequency displayed will be the difference\n between the frequency and the sample rate')
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+plt.plot(timestamps, wave, "o-", label=f"{freq} Hz with {samp_rate_too_low} Sps")
+plt.plot(timestamps2, wave2, "x-", label=f"{freq} Hz with {samp_rate_adequate} Sps")
+plt.legend(loc="upper right")
+plt.show()
+
 ```
 
 When the frequency is above the Nyquist limit (half the sample rate), aliasing will cause the displayed frequency to appear to be a different frequency. The aliased frequency will always be the difference between the actual frequency and the sample rate.
