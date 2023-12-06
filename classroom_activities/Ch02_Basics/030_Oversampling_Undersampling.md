@@ -147,7 +147,7 @@ plt.title('As you can see the blue line is not showing the correct frequency')
 plt.xlabel("Time")
 plt.ylabel("Amplitude")
 plt.plot(timestamps, wave, "o-", label=f"{freq} Hz with {samp_rate_too_low} Sps")
-plt.plot(timestamps2, wave2, "x-", label=f"{freq} Hz with {samp_rate_adequate} Sps")
+plt.plot(timestamps2, wave2, "-", label=f"{freq} Hz with {samp_rate_adequate} Sps")
 plt.legend(loc="upper right")
 plt.show()
 ```
@@ -158,14 +158,13 @@ The above exercise shows [**aliasing**](https://gallicchio.github.io/learnSDR/le
 ## 5
 ## Try this.
 ## Due to aliasing, what frequency is displayed by the blue line?
-## What is the relationship between the displayed frequency and the sample rate?
 from pcdr import makeRealWave_time
 import matplotlib.pyplot as plt
 
 seconds = 1
-samp_rate_too_low = 40
+samp_rate_too_low = 20
 samp_rate_adequate = 400
-freq = 37
+freq = 18
 timestamps, wave = makeRealWave_time(seconds, samp_rate_too_low, freq, allowAliasing=True)
 timestamps2, wave2 = makeRealWave_time(seconds, samp_rate_adequate, freq)
 
@@ -173,10 +172,15 @@ plt.title('The frequency displayed will be the difference\n between the frequenc
 plt.xlabel("Time")
 plt.ylabel("Amplitude")
 plt.plot(timestamps, wave, "o-", label=f"{freq} Hz with {samp_rate_too_low} Sps")
-plt.plot(timestamps2, wave2, "x-", label=f"{freq} Hz with {samp_rate_adequate} Sps")
+plt.plot(timestamps2, wave2, "-", label=f"{freq} Hz with {samp_rate_adequate} Sps")
 plt.legend(loc="upper right")
 plt.show()
 
+
+## 6
+## Copy and modify the previous example
+## Make your frequency 37 Hz and your samp_rate_too_low 40 Sps
+## What is the relationship between the displayed frequency and the sample rate?
 ```
 
 When the frequency is above the Nyquist limit (half the sample rate), aliasing will cause the displayed frequency to appear to be a different frequency. The aliased frequency will always be the difference between the actual frequency and the sample rate.
