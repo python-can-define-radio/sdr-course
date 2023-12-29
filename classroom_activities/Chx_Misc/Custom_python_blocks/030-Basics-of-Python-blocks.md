@@ -11,6 +11,7 @@ This flowgraph consists of three blocks:
 ```python3
 import numpy as np
 from gnuradio import gr
+import time
 
 
 class Blk_source_output_arb_num(gr.sync_block):
@@ -41,7 +42,7 @@ class Blk_sink_print(gr.sync_block):
         return 1
 
 
-tb = top_block_or_something()
+tb = gr.top_block()
 source_arb = Blk_source_output_arb_num()
 mu = Blk_mult_three()
 sink_pri = Blk_sink_print()
