@@ -4,12 +4,34 @@ import numpy as np
 from gnuradio import gr, blocks, audio
 import time
 from queue import SimpleQueue
+import queue
 from numba import njit
 import matplotlib.pyplot as plt
 from typeguard import typechecked
-from typing import Type
+from typing import Type, Optional
+from termcolor import cprint
+# from pcdr.wavegen import createTimestamps_samprate
 
 
+
+
+def post_warn_chunk_size(chunk_size: int):
+    """
+    These will have output:
+    >>> post_warn_chunk_size(5)
+    Your chunk size 5 is not a power of 2...
+    >>> post_warn_chunk_size(6)
+    Your chunk size 6 is not a power of 2...
+    >>> post_warn_chunk_size(527)
+    This is intentionally a wrong test to remind us to verify this works. Your chunk size 527 is not a power of 2...
+    
+    This one will have no output:
+    >>> post_warn_chunk_size(8)
+    """
+    cs = chunk_size
+    ## If chunk size is not a power of 2
+    if cs & (cs-1) != 0:
+        cprint(f"Your chunk size {cs} is not a power of 2, so GNU Radio likely issued 'buffer_double_mapped' warning(s). This warning can be ignored, as it is only performance-related, not functionality-related.\n", "green")
 
 
 class Blk_sink_print(gr.sync_block):
@@ -135,17 +157,22 @@ class Blk_source_output_arb_num(gr.sync_block):
 
 class Blk_queue_source(gr.sync_block):
     @typechecked
-    def __init__(self, dtype: type, chunk_size: int):
+    def __init__(self, dtype: type, chunk_size: int, timeout: Optional[float] = None):
         gr.sync_block.__init__(self,
             name='Python Block: Queue Source',
             in_sig=[],
             out_sig=[(dtype, chunk_size)]
         )
         self.queue = SimpleQueue()
+        self.timeout = timeout
 
-    def work(self, input_items, output_items):  
-        output_items[0][0][:] = self.queue.get()
-        return 1
+    def work(self, input_items, output_items):
+        try:
+            output_items[0][0][:] = self.queue.get(timeout=self.timeout)
+            return 1
+        except queue.Empty:
+            return -1
+            
 
 
 class QueuedSink:
@@ -162,12 +189,17 @@ class QueuedSink:
         self.__tb = gr.top_block()
         self.__source_q = Blk_queue_source(dtype, chunk_size)
         self.__vector_to_stream = blocks.vector_to_stream(getSize(dtype), chunk_size)
-        self.__sink = SinkBlk(*sink_block_args)
-        self.__tb.connect(self.__source_q, self.__vector_to_stream, self.__sink)
+        self._sink = SinkBlk(*sink_block_args)
+        self.__tb.connect(self.__source_q, self.__vector_to_stream, self._sink)
         self.__tb.start()
+        post_warn_chunk_size(chunk_size)
     
     def put(self, val: np.ndarray):
         return self.__source_q.queue.put(val)
+
+    def stop_and_wait(self):
+        self.__tb.stop()
+        self.__tb.wait()
 
 
 class LargerThanBufferError(Exception):
@@ -211,34 +243,38 @@ class QueuedSink_nonvec:
         self.__tb.wait()
 
 
+# qsour = QueuedSource(Blk_source_output_arb_num, np.float32, siz)
+# x = qsour.get()
+        
 
 if __name__ == "__main__":
-    # siz = 65536
-    # samp_rate = 48000
-    # qsour = QueuedSource(Blk_source_output_arb_num, np.float32, siz)
-    # qsink = QueuedSink(blocks.wavfile_sink, np.float32, siz, ["testf.wav", 1, samp_rate, blocks.FORMAT_WAV, blocks.FORMAT_PCM_16])
+    siz = 96000
+    samp_rate = 48000
+    qsink = QueuedSink(blocks.wavfile_sink, np.float32, siz, ["testf.wav", 1, samp_rate, blocks.FORMAT_WAV, blocks.FORMAT_PCM_16])
     # qsink = QueuedSink(audio.sink, np.float32, siz, [samp_rate])
 
+    timestamps = np.linspace(0, 2, 2*samp_rate, endpoint=False)
+    print(timestamps)
+    y = np.sin(1000 * 2 * np.pi * timestamps)
+    qsink.put(y)
+    y = np.sin(500 * 2 * np.pi * timestamps)
+    qsink.put(y)
+    plt.plot(timestamps[:200], y[:200], ".")
+    plt.show()
+
+
+
+
+
+
+    # chunk_size = 133
+    # sour = QueuedSource(Blk_source_output_arb_num, np.float32, chunk_size)
+    # sink = QueuedSink(Blk_sink_print, np.float32, chunk_size, sink_block_args=[100])
     # while True:
-    # x = qsour.get()
-    # seconds = x / samp_rate
-    # y = np.sin(1000 * 2 * np.pi * seconds)
-    # qsink.put(y)
-    # y = np.sin(500 * 2 * np.pi * seconds)
-    # qsink.put(y)
-    # plt.plot(seconds[:200], y[:200], ".")
-    # plt.show()
-
-
-    # n = 8192
-    # np.linspace(0, n, n, endpoint=False)
-
-    chunk_size = 133
-    sour = QueuedSource(Blk_source_output_arb_num, np.float32, chunk_size)
-    sink = QueuedSink(Blk_sink_print, np.float32, chunk_size, sink_block_args=[100])
-    while True:
-        piece = sour.get()
-        sink.put(piece)
+    #     piece = sour.get()
+    #     sink.put(piece)
+    
+    
     # time.sleep(5)
     # sour.stop_and_wait()
     # sink.stop_and_wait()
