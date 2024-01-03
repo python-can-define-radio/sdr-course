@@ -1,7 +1,8 @@
 import numpy as np
 from queue import SimpleQueue, Empty
 from typing import List, TypeVar, Union, Optional
-
+from typeguard import typechecked
+from gnuradio import gr
 
 
 T = TypeVar('T')
@@ -53,7 +54,7 @@ class SimpleQueueTypeWrapped(SimpleQueue):
         return super().put(item)
 
 
-
+@typechecked
 def queue_to_list(q: SimpleQueue) -> list:
     """Converts a queue to a list.
 
@@ -96,7 +97,7 @@ def queue_to_list(q: SimpleQueue) -> list:
 
 
 
-
+@typechecked
 def bytes_to_bin_list(b: Union[bytes, List[int]]) -> List[int]:
     """
     Converts each item in b to bits.
@@ -126,6 +127,8 @@ def bytes_to_bin_list(b: Union[bytes, List[int]]) -> List[int]:
 
 NON_ASCII_ERR = "Currently, this only works for characters whose `ord` value is less than 256. For now, use `bytes_to_bin_list` if you wish to use non-ASCII characters. However, this may cause unexpected results for certain characters such as '«' that have multiple possible encodings."
 
+
+@typechecked
 def str_to_bin_list(message: str) -> List[int]:
     """
     Converts a string to a list of bits.
@@ -147,6 +150,7 @@ def str_to_bin_list(message: str) -> List[int]:
     return bytes_to_bin_list(numeric)
 
 
+@typechecked
 def int_to_bin_list(message: np.ndarray) -> List[int]:
     """
     Converts a numpy array of integers to a list of bits. Capable handling of a variety of dtypes.
@@ -197,6 +201,7 @@ class DeviceParameterError(ValueError):
     pass
 
 
+@typechecked
 def validate_hack_rf_receive(device_args: str,
                              samp_rate: float,
                              center_freq: float,
@@ -239,6 +244,7 @@ def validate_hack_rf_receive(device_args: str,
         )
 
 
+@typechecked
 def validate_hack_rf_transmit(device_args: str,
                               samp_rate: float,
                               center_freq: float,
@@ -270,3 +276,19 @@ def validate_hack_rf_transmit(device_args: str,
             "[0, 1, 2, ... 45, 46, 47]. "
             f"Your specified if gain, {if_gain}, was not one of these options."
         )
+    
+
+@typechecked
+def getSize(dtype: type) -> int:
+    if dtype == np.complex64:
+        return gr.sizeof_gr_complex
+    elif dtype == np.float32:
+        return gr.sizeof_float
+    elif dtype == np.int32:
+        return gr.sizeof_int
+    elif dtype == np.int16:
+        return gr.sizeof_short
+    elif dtype == np.uint8:
+        return gr.sizeof_char
+    else:
+        return NotImplementedError("Feel free to add more dtype matches")

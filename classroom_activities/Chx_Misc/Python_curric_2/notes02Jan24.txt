@@ -1,14 +1,3 @@
-## TODO next time
-## Flowgraph:
-## queue souce -->  my multiply 3 block -->  print sink
-## insert a print in the multiply block  ("multiplying this chunk: __")
-## Insert arbtiraily long delays within the two latter blocks (to 
-##  simulate long processing)
-## mark "done" in queue source
-## See if the data finishes flowing
-
-
-
 output size of wrapped funcs should match ratio of sample rates
 
 Samples(values, samp_rate)
