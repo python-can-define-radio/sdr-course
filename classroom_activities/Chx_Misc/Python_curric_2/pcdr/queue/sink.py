@@ -3,9 +3,13 @@ Queue-wrapped GNU Radio sink blocks.
 
 Example usage:
 >>> import pcdr.queue.sink
->>> filesink = pcdr.queue.sink.file_sink(np.complex64, "somecomplexfile.complex", samp_rate=100)
+>>> from pathlib import Path
+>>> p = Path("temp_dir_for_tests") / "somecomplexfile.complex"
+>>> filesink = pcdr.queue.sink.file_sink(np.complex64, str(p), samp_rate=1280, timeout=1.0)
 >>> filesink.start()
->>> wait_and_stuff()
+>>> filesink.wait()
+Queue is empty, block will now report 'done' to GNU Radio flowgraph
+>>> p.unlink()
 """
 from typeguard import typechecked
 from gnuradio import gr, blocks
@@ -71,9 +75,13 @@ class _QueuedSink:
     The `chunk_size` arg is how many items are produced per chunk. Larger values are usually more efficient, but too large will delay access to data and possibly reach the RAM max.
     """
     @typechecked
-    def __init__(self, sinkBlk, dtype: type, chunk_size: int):
+    def __init__(self,
+                 sinkBlk,
+                 dtype: type,
+                 chunk_size: int,
+                 timeout: Optional[float] = None):
         self.tb = gr.top_block()
-        self.__source_q = Blk_queue_source(dtype, chunk_size)
+        self.__source_q = Blk_queue_source(dtype, chunk_size, timeout)
         self.__vector_to_stream = blocks.vector_to_stream(getSize(dtype), chunk_size)
         self._sink = sinkBlk
         self.tb.connect(self.__source_q, self.__vector_to_stream, self._sink)
@@ -85,8 +93,10 @@ class _QueuedSink:
     def put(self, val: np.ndarray):
         return self.__source_q.queue.put(val)
 
-    def stop_and_wait(self):
+    def stop(self):
         self.tb.stop()
+    
+    def wait(self):
         self.tb.wait()
         
 
@@ -98,9 +108,14 @@ class file_sink(_QueuedSink):
                  append: bool = False,
                  unbuffered: bool = False,
                  *, samp_rate: float,
-                 chunk_size: Optional[int] = None):
+                 chunk_size: Optional[int] = None,
+                 timeout: Optional[float] = None):
         chunk_size = _compute_chunk_size(samp_rate, chunk_size)
-        super().__init__(blocks.file_sink(getSize(dtype), filename, append), dtype, chunk_size)
+        super().__init__(
+            blocks.file_sink(getSize(dtype), filename, append),
+            dtype,
+            chunk_size,
+            timeout)
         self._sink.set_unbuffered(unbuffered)
 
 

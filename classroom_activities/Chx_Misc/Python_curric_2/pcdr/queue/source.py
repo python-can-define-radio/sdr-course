@@ -1,3 +1,4 @@
+from typing import Optional
 from typeguard import typechecked
 from gnuradio import gr, blocks
 from pcdr.helpers import getSize
@@ -17,9 +18,13 @@ class _QueuedSource:
     The `chunk_size` arg is how many items are produced per chunk. Larger values are usually more efficient, but too large will delay access to data and possibly reach the RAM max.
     """
     @typechecked
-    def __init__(self, SourceBlk, dtype: type, chunk_size: int, source_block_args: list = []):
+    def __init__(self,
+                 sourceBlk,
+                 dtype: type,
+                 chunk_size: int,
+                 timeout: Optional[float] = None):
         self.tb = gr.top_block()
-        self.__source = SourceBlk(*source_block_args)
+        self.__source = sourceBlk
         self.__stream_to_vec = blocks.stream_to_vector(getSize(dtype), chunk_size)
         self.__sink_q = Blk_queue_sink(dtype, chunk_size)
         self.tb.connect(self.__source, self.__stream_to_vec, self.__sink_q)
