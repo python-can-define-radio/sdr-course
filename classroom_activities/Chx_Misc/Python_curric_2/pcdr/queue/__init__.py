@@ -1,0 +1,2 @@
+class ChunkSizeNonIntegerError(Exception):
+    pass

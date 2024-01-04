@@ -1,5 +1,5 @@
-
-from guizero import App, Text, PushButton, Picture, TextBox, Combo, Box, CheckBox, MenuBar, Window
+### Temporarily commenting out the guizero import until we actually make this
+# from guizero import App, Text, PushButton, Picture, TextBox, Combo, Box, CheckBox, MenuBar, Window
 import ipaddress
 import tkinter as tk
 import PIL

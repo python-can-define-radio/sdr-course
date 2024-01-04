@@ -6,7 +6,7 @@ import numpy as np
 
 
 
-class QueuedSource:
+class _QueuedSource:
     """
     Sets up a top block that...
      - Runs the source block
@@ -18,12 +18,11 @@ class QueuedSource:
     """
     @typechecked
     def __init__(self, SourceBlk, dtype: type, chunk_size: int, source_block_args: list = []):
-        self.__tb = gr.top_block()
+        self.tb = gr.top_block()
         self.__source = SourceBlk(*source_block_args)
         self.__stream_to_vec = blocks.stream_to_vector(getSize(dtype), chunk_size)
         self.__sink_q = Blk_queue_sink(dtype, chunk_size)
-        self.__tb.connect(self.__source, self.__stream_to_vec, self.__sink_q)
-        self.__tb.start()
+        self.tb.connect(self.__source, self.__stream_to_vec, self.__sink_q)
     
     def get(self) -> np.ndarray:
         return self.__sink_q.queue.get()

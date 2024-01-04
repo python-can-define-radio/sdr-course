@@ -75,6 +75,8 @@ class Blk_sink_print(gr.sync_block):
         return 1
 
 
+print_sink = Blk_sink_print  # Temporary alias while migrating to new name
+
 class string_file_sink(gr.sync_block):
 
     def __init__(self, filename):

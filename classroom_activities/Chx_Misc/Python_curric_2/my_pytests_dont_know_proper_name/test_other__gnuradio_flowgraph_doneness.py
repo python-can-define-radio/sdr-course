@@ -1,4 +1,4 @@
-from ex_2023_dec_30_flowgraph_test_basic import Blk_queue_source, Blk_sink_print
+from pcdr.our_GR_blocks import Blk_queue_source, Blk_sink_print
 from gnuradio import gr, blocks
 import time
 import numpy as np
@@ -53,7 +53,7 @@ class Test_Queue_Source:
         queue_source = Blk_queue_source(np.uint8, 4, timeout=1)
         vec_to_stream = blocks.vector_to_stream(gr.sizeof_char, 4)
         mult3 = Blk_mult_three()
-        printsink = Blk_sink_print(sleep=0.2)
+        printsink = Blk_sink_print(sleep_seconds=0.2)
         tb.connect(queue_source, vec_to_stream, mult3, printsink)
         tb.start()
         queue_source.queue.put(np.array([3, 6, 2, 5], dtype=np.uint8))

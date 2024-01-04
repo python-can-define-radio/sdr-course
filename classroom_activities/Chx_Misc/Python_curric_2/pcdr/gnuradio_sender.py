@@ -1,5 +1,4 @@
 from typing import List, Optional, Sequence, TypeVar, Union
-import deal
 import numpy as np
 from queue import Empty
 from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_
@@ -17,16 +16,6 @@ T = TypeVar('T')
 
 
 
-@deal.ensure(lambda _:  \
-        queue_to_list(_.result) == [] if len(_.data) == 0 else True,
-        message="If data is empty, then the result is an empty queue"
-)
-@deal.pre(lambda _: 0 < _.chunk_size < int(50e6))
-@deal.pre(lambda _: np.isfinite(_.data).all())
-# Require 1-dimensional array (`shape` has only one item, that is, one dimension)
-@deal.pre(lambda _: len(_.data.shape) == 1)
-@deal.post(lambda result: issubclass(result.qtype, np.ndarray))
-@deal.has()
 def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped:
     """
     - numpy-ify
@@ -48,7 +37,8 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     >>> should_be = np.array([[1, 2, 3, 0, 0]], dtype=np.complex64)
     >>> assert (nparry == should_be).all()
     """
-
+    assert 0 < chunk_size
+    assert len(data.shape) == 1  # Require 1-dimensional array (`shape` has only one item, that is, one dimension)
     npdata = np.array(data, dtype=np.complex64)
     assert type(npdata) == np.ndarray
     assert npdata.dtype == np.complex64
@@ -64,6 +54,7 @@ def pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped
     q = SimpleQueueTypeWrapped(np.ndarray, np.complex64, chunk_size)
     for item in chunked:
         q.put(item)
+    assert issubclass(q.qtype, np.ndarray)
     return q
 
 

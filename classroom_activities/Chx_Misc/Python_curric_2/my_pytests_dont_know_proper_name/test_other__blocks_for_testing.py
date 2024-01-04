@@ -1,4 +1,5 @@
 from gnuradio import gr
+import numpy as np
 
 
 class Blk_mult_three(gr.sync_block):

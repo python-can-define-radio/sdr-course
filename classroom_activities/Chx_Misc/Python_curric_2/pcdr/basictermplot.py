@@ -44,8 +44,8 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     xmax: 10
     ymin: 0
     ymax: 30
-    ~ o
-    ~o 
+    ~█o
+    ~o█
 
     >>> xs = np.array([0, 20, 30])
     >>> ys = np.array([0, 20, 10])
@@ -54,9 +54,9 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     xmax: 30
     ymin: 0
     ymax: 20
-    ~  o 
-    ~   o
-    ~o   
+    ~██o█
+    ~███o
+    ~o███
 
     >>> xs = np.array([ 0, 10, 20, 40, 50, 60, 70])
     >>> ys = np.array([20, 30, 20, 20, 10,  0,  0])
@@ -65,10 +65,10 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     xmax: 70
     ymin: 0
     ymax: 30
-    ~ o      
-    ~o o o   
-    ~     o  
-    ~      oo
+    ~█o██████
+    ~o█o█o███
+    ~█████o██
+    ~██████oo
 
     This won't allow complex data, but one option is to just plot the real part.
     >>> xs = np.array([ 1, 2])

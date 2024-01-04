@@ -1,15 +1,15 @@
 import numpy as np
 from gnuradio import blocks, audio
 import matplotlib.pyplot as plt
-from pcdr.queue.sink import QueuedSink
-from pcdr.queue.source import QueuedSource
+from pcdr.queue.sink import _QueuedSink
+from pcdr.queue.source import _QueuedSource
 
 
 
 if __name__ == "__main__":
     siz = 96000
     samp_rate = 48000
-    qsink = QueuedSink(blocks.wavfile_sink, np.float32, siz, ["testf.wav", 1, samp_rate, blocks.FORMAT_WAV, blocks.FORMAT_PCM_16])
+    qsink = _QueuedSink(blocks.wavfile_sink, np.float32, siz, ["testf.wav", 1, samp_rate, blocks.FORMAT_WAV, blocks.FORMAT_PCM_16])
     # qsink = QueuedSink(audio.sink, np.float32, siz, [samp_rate])
 
     timestamps = np.linspace(0, 2, 2*samp_rate, endpoint=False)
