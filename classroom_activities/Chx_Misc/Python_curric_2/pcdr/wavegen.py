@@ -243,15 +243,48 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, al
 
 def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     """
-    Return a complex wave.
-    
-    The real part is cosine (starts at 1); the imaginary part is sine (starts at 0).
+    Return a Real wave.
 
     :raises AliasError: if isAliasingWhenDisallowed
     
     Example:
     >>> from pcdr.basictermplot import plot
-    >>> timestamps, wave = makeComplexWave_numsamps(50, 50, 2)
+    >>> timestamps, wave = makeRealWave_numsamps(50, 50, 2)
+    >>> plot(timestamps, wave)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~██████o████████████████████████o██████████████████
+    ~████oo█ooo██████████████████o█o█ooo███████████████
+    ~██oo██████o████████████████oo██████o██████████████
+    ~█o█████████o██████████████o█████████o█████████████
+    ~o███████████oo███████████o███████████oo███████████
+    ~██████████████o█████████o██████████████o█████████o
+    ~███████████████o██████oo████████████████o██████oo█
+    ~████████████████oooooo███████████████████oooooo███
+    """
+    assert 0 < samp_rate
+    assert 0 <= num_samples
+    aliasingError(allowAliasing, freq, samp_rate)
+    t = num_samples / samp_rate
+    timestamps = createTimestamps(seconds=t, num_samples=num_samples)
+    wave = makeRealWave_basic(timestamps, freq)
+    assert len(timestamps) == len(wave) == num_samples
+    return timestamps, wave
+
+
+def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Returns a tuple (timestamps, wave).
+    
+    The real part of the wave is cosine (starts at 1); the imaginary part is sine (starts at 0).
+
+    :raises AliasError: if isAliasingWhenDisallowed
+    
+    Example:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps, wave = makeComplexWave_time(1, 50, 2)
     >>> plot(timestamps, wave.real)
     xmin: 0
     xmax: 0.98
@@ -280,21 +313,6 @@ def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allow
     ~████████████████oooooo███████████████████oooooo███
     """
     assert 0 < samp_rate
-    assert 0 <= num_samples
-    aliasingError(allowAliasing, freq, samp_rate)
-    t = num_samples / samp_rate
-    timestamps = createTimestamps(seconds=t, num_samples=num_samples)
-    wave = makeRealWave_basic(timestamps, freq)
-    assert len(timestamps) == len(wave) == num_samples
-    return timestamps, wave
-
-
-def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    TODO: DOCTEST
-    """
-    assert 0 < samp_rate
-    assert 0 <= num_samples
     aliasingError(allowAliasing, freq, samp_rate)
     num_samples = int(samp_rate * seconds)
     timestamps = createTimestamps(seconds, num_samples)
@@ -305,10 +323,28 @@ def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAli
 
 def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     """
-    TODO: DOCTEST
+    Return a Real wave.
+
+    :raises AliasError: if isAliasingWhenDisallowed
+    
+    Example:
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps, wave = makeRealWave_time(1, 50, 2)
+    >>> plot(timestamps, wave.real)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~██████o████████████████████████o██████████████████
+    ~████oo█ooo██████████████████o█o█ooo███████████████
+    ~██oo██████o████████████████oo██████o██████████████
+    ~█o█████████o██████████████o█████████o█████████████
+    ~o███████████oo███████████o███████████oo███████████
+    ~██████████████o█████████o██████████████o█████████o
+    ~███████████████o██████oo████████████████o██████oo█
+    ~████████████████oooooo███████████████████oooooo███
     """
     assert 0 < samp_rate
-    assert 0 <= num_samples
     aliasingError(allowAliasing, freq, samp_rate)
     num_samples = int(samp_rate * seconds)
     timestamps = createTimestamps(seconds, num_samples)
@@ -381,10 +417,28 @@ def wave_file_gen(samp_rate: float, max_time: float, freq: float, complex_or_rea
 
 def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     """
-    TODO: DOCTEST
+    Returns a tuple (timestamps, mult).
+
+    >>> from pcdr.basictermplot import plot
+    >>> from pcdr.wavegen import multiply_by_complex_wave, ook_modulate
+    >>> baseband_sig = ook_modulate([1, 0], 32)
+    >>> timestamps, mult = multiply_by_complex_wave(baseband_sig, 64, 2)
+    >>> plot(timestamps, mult.real)
+    xmin: 0
+    xmax: 0.984375
+    ymin: 0
+    ymax: 1.0
+    ~o███████████████████████████████████████████████████████████████
+    ~█ooo█████████████████████████ooo████████████████████████████████
+    ~████oo█████████████████████oo███████████████████████████████████
+    ~██████oo█████████████████oo█████████████████████████████████████
+    ~████████o███████████████o███████oooooooooooooooooooooooooooooooo
+    ~█████████oo███████████oo████████████████████████████████████████
+    ~███████████oo███████oo██████████████████████████████████████████
+    ~█████████████ooooooo████████████████████████████████████████████
     """
     timestamps, wave = makeComplexWave_numsamps(len(baseband_sig), samp_rate, freq, allowAliasing)
-    mult = baseband_sig * wave
+    mult = np.complex64(baseband_sig) * wave
     assert len(timestamps) == len(mult) == len(baseband_sig)
     assert timestamps.dtype == np.float64
     assert mult.dtype == np.complex64
@@ -393,13 +447,31 @@ def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: f
 
 def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: float, allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     """
-    TODO: DOCTEST
+    Returns a tuple (timestamps, mult).
+
+    >>> from pcdr.basictermplot import plot
+    >>> from pcdr.wavegen import multiply_by_real_wave, ook_modulate
+    >>> baseband_sig = ook_modulate([1, 0], 32)
+    >>> timestamps, wave = multiply_by_real_wave(baseband_sig, 64, 2)
+    >>> plot(timestamps, wave)
+    xmin: 0
+    xmax: 0.984375
+    ymin: 0
+    ymax: 1.0
+    ~████████o███████████████████████████████████████████████████████
+    ~█████ooo█ooo████████████████████████████████████████████████████
+    ~███oo███████oo██████████████████████████████████████████████████
+    ~█oo███████████oo████████████████████████████████████████████████
+    ~o███████████████o███████████████oooooooooooooooooooooooooooooooo
+    ~█████████████████oo███████████oo████████████████████████████████
+    ~███████████████████oo███████oo██████████████████████████████████
+    ~█████████████████████ooooooo████████████████████████████████████
     """
     timestamps, wave = makeRealWave_numsamps(len(baseband_sig), samp_rate, freq, allowAliasing)
-    mult = baseband_sig * wave
+    mult = np.float32(baseband_sig) * wave
     assert len(timestamps) == len(mult) == len(baseband_sig)
     assert timestamps.dtype == np.float64
-    assert mult.dtype == np.complex64
+    assert mult.dtype == np.float32
     return timestamps, mult
 
 
@@ -510,7 +582,27 @@ def generate_ook_modulated_example_file(output_filename: str, noise: bool = Fals
 
 def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     """
-    TODO: DOCTEST
+    Computes an fft, returns only the positive frequencies.
+    Return value is a tuple: (sample_freqs, fft_mag).
+    `sample_freqs` ranges from 0 to approximately samp_rate/2
+
+    >>> from pcdr.basictermplot import plot
+    >>> from pcdr.wavegen import makeComplexWave_time, make_fft_positive_freqs_only
+    >>> timestamps, wave = makeComplexWave_time(2, 50, 5)
+    >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, 50)
+    >>> plot(sample_freqs, fft_mag)
+    xmin: 0
+    xmax: 24.5
+    ymin: 0
+    ymax: 53.540000575039286
+    ~██████████████████████████████████████████████████
+    ~██████████o███████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~█████████o█o██████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~ooooooooo███oooooooooooooooooooooooooooooooooooooo
     """
     sample_freqs, fft_mag = make_fft(sig, samp_rate)
     halfway = len(sample_freqs) // 2
@@ -519,7 +611,26 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
 
 def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]:
     """
-    TODO: DOCTEST
+    Returns a tuple of (sample_freqs, fft_mag).
+    `sample_freqs` ranges from approximately `-samp_rate/2` to approximately `samp_rate/2`.
+
+    >>> from pcdr.basictermplot import plot
+    >>> from pcdr.wavegen import makeComplexWave_time, make_fft
+    >>> timestamps, wave = makeComplexWave_time(1, 50, 10)
+    >>> sample_freqs, fft_mag = make_fft(wave, 50)
+    >>> plot(sample_freqs, fft_mag)
+    xmin: 0
+    xmax: 24.0
+    ymin: 0
+    ymax: 26.5400002850713
+    ~███████████████████████████████████o██████████████
+    ~██████████████████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~██████████████████████████████████o█o█████████████
+    ~██████████████████████████████████████████████████
+    ~██████████████████████████████████████████████████
+    ~oooooooooooooooooooooooooooooooooo███ooooooooooooo
     """
     windowed = sig * np.hamming(len(sig))
     fft_result = np.fft.fftshift(np.fft.fft(windowed))
