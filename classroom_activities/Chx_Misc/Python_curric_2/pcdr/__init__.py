@@ -12,10 +12,9 @@ from .modulators import (
 
 from .wavegen import (
     createTimestamps,
-    waveAndWrite,
-    wave_file_gen_prompts,
-    wave_file_gen,
+    createTimestamps_samprate,
     generate_ook_modulated_example_file,
+    makeWave,
     makeRealWave_numsamps,
     makeComplexWave_numsamps,
     makeComplexWave_time,
@@ -24,7 +23,6 @@ from .wavegen import (
     multiply_by_real_wave,
     make_fft,
     make_fft_positive_freqs_only,
-    createTimestamps_samprate,
 )
 
 from .helpers import (

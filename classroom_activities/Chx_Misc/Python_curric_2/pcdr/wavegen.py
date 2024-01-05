@@ -11,6 +11,7 @@ from typing import Optional, List, Tuple, Literal
 from pcdr.fileio import writeRealCSV, writeComplexCSV
 from pcdr.modulators import ook_modulate
 from pcdr.helpers import str_to_bin_list
+from typeguard import typechecked
 
 
 
@@ -351,6 +352,47 @@ def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasi
     wave = makeRealWave_basic(timestamps, freq)
     assert len(timestamps) == len(wave) == num_samples
     return timestamps, wave
+
+
+@typechecked
+def makeWave(samp_rate: float,
+             freq: float,
+             type_: Literal["real", "complex"],
+             *, seconds: float = None,
+             num: float = None,
+             allowAliasing: bool = False):
+    """
+    TODO:
+     - finish writing tests
+     - Write implementation that makes these tests pass
+     - Change lessons to use makeWave
+     - Add @typechecked to all funcs in this file
+    
+    >>> makeWave(10, 2, "real", seconds=3) == makeRealWave_time(3, 10, 2)
+    True
+    >>> makeWave(10, 2, "complex", seconds=3) == makeComplexWave_time(3, 10, 2)
+    True
+    >>> makeWave(10, 2, "real", num=60) == makeRealWave_numsamps(fill_this_in)
+    True
+    >>> makeWave(10, 2, "complex", num=60) == makeComplexWave_numsamps(fill_this_in)
+    True
+    >>> makeWave(10, 2, "real")
+    Traceback:
+      ...
+    ValueError: Must specify either `seconds` or `num`
+    >>> makeWave(10, 2, "complex", seconds=3, num=60)
+    Traceback:
+      ...
+    ValueError: Cannot specify both `seconds` or `num` simultaneously
+    >>> makeWave(10, 7, "real", seconds=3)
+    Traceback:
+      ...
+    For a sample rate of 10, the highest frequency ...
+    >>> makeWave(10, 7, "real", seconds=3, allowAliasing=True) == makeRealWave_time(3, 10, 2, allowAliasing=True)
+    True
+    """
+    raise NotImplementedError()
+    
 
 
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real: Literal["c", "r"]):
