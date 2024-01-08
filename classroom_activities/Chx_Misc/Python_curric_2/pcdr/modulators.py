@@ -64,10 +64,6 @@ def ook_modulate(bits: List[int], bit_length: int, dtype=np.uint8) -> np.ndarray
     return result
 
 
-## This import must be here due to circular imports
-from pcdr.wavegen import multiply_by_complex_wave
-
-
 def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float, freq: float) -> Tuple[np.ndarray, np.ndarray]:
     """
     OOK Modulate at a given frequency. Returns the timestamps and the modulated data.
@@ -92,6 +88,10 @@ def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float
     ~████████ooooo███████████████████████████████████ooooo███████████████ooooo███████
     """
     __must_be_binary(bits)
+    ## TODO: place this import better.
+    ## For now, this import must be here due to circular imports
+    from pcdr.wavegen import multiply_by_complex_wave
+
     baseband_sig = ook_modulate(bits, bit_length)
     result = multiply_by_complex_wave(baseband_sig, samp_rate, freq)
     assert result[0].dtype == np.float64
