@@ -358,9 +358,9 @@ def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasi
 def makeWave(samp_rate: float,
              freq: float,
              type_: Literal["real", "complex"],
-             *, seconds: float = None,
-             num: float = None,
-             allowAliasing: bool = False):
+             *, seconds: Optional[float] = None,
+             num: Optional[float] = None,
+             allowAliasing: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     """
     TODO:
      - finish writing tests
@@ -368,31 +368,44 @@ def makeWave(samp_rate: float,
      - Change lessons to use makeWave
      - Add @typechecked to all funcs in this file
     
-    >>> makeWave(10, 2, "real", seconds=3) == makeRealWave_time(3, 10, 2)
+    >>> from pcdr.basictermplot import plot
+    >>> timestamps, wave = makeWave(50, 3, "real", seconds=1)
+    >>> plot(timestamps, wave)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~████o████████████████o████████████████████████████
+    ~███o█oo████████████oo█o█████████████oooo██████████
+    ~██o████o██████████o████o███████████o████o█████████
+    ~█o██████████████████████o█████████o██████o████████
+    ~o███████o████████o███████o███████o████████o███████
+    ~█████████o██████o█████████o██████████████████████o
+    ~██████████o████o███████████o████o██████████o████o█
+    ~███████████oooo█████████████o█oo████████████oooo██
+
+    >> makeWave(10, 2, "complex", seconds=3) == makeComplexWave_time(3, 10, 2)
     True
-    >>> makeWave(10, 2, "complex", seconds=3) == makeComplexWave_time(3, 10, 2)
+    >> makeWave(10, 2, "real", num=60) == makeRealWave_numsamps(10, 2, 60)
     True
-    >>> makeWave(10, 2, "real", num=60) == makeRealWave_numsamps(fill_this_in)
+    >> makeWave(10, 2, "complex", num=60) == makeComplexWave_numsamps(60, 10, 2)
     True
-    >>> makeWave(10, 2, "complex", num=60) == makeComplexWave_numsamps(fill_this_in)
-    True
-    >>> makeWave(10, 2, "real")
+    >> makeWave(10, 2, "real")
     Traceback:
       ...
     ValueError: Must specify either `seconds` or `num`
-    >>> makeWave(10, 2, "complex", seconds=3, num=60)
+    >> makeWave(10, 2, "complex", seconds=3, num=60)
     Traceback:
       ...
     ValueError: Cannot specify both `seconds` or `num` simultaneously
-    >>> makeWave(10, 7, "real", seconds=3)
+    >> makeWave(10, 7, "real", seconds=3)
     Traceback:
       ...
     For a sample rate of 10, the highest frequency ...
-    >>> makeWave(10, 7, "real", seconds=3, allowAliasing=True) == makeRealWave_time(3, 10, 2, allowAliasing=True)
+    >> makeWave(10, 7, "real", seconds=3, allowAliasing=True) == makeRealWave_time(3, 10, 2, allowAliasing=True)
     True
     """
-    raise NotImplementedError()
-    
+    return makeRealWave_time(seconds, samp_rate, freq)    
 
 
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real: Literal["c", "r"]):
