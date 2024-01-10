@@ -384,12 +384,78 @@ def makeWave(samp_rate: float,
     ~██████████o████o███████████o████o██████████o████o█
     ~███████████oooo█████████████o█oo████████████oooo██
 
-    >> makeWave(10, 2, "complex", seconds=3) == makeComplexWave_time(3, 10, 2)
-    True
-    >> makeWave(10, 2, "real", num=60) == makeRealWave_numsamps(10, 2, 60)
-    True
-    >> makeWave(10, 2, "complex", num=60) == makeComplexWave_numsamps(60, 10, 2)
-    True
+    >>> timestamps, wave = makeWave(50, 3, "complex", seconds=1)
+    >>> plot(timestamps, wave.real)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 1.0
+    ~o█████████████████████████████████████████████████
+    ~█oo████████████oooo█████████████oooo████████████oo
+    ~██████████████o████o███████████o████o█████████████
+    ~███o█████████o██████o█████████o██████o█████████o██
+    ~████o████████████████o██████o█████████████████o███
+    ~█████o██████o█████████o█████o█████████o██████o████
+    ~██████o████o███████████████████████████o████o█████
+    ~███████oooo████████████ooooo████████████oooo██████
+
+    >>> plot(timestamps, wave.imag)
+    xmin: 0
+    xmax: 0.98
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~████o████████████████o████████████████████████████
+    ~███o█oo████████████oo█o█████████████oooo██████████
+    ~██o████o██████████o████o███████████o████o█████████
+    ~█o██████████████████████o█████████o██████o████████
+    ~o███████o████████o███████o███████o████████o███████
+    ~█████████o██████o█████████o██████████████████████o
+    ~██████████o████o███████████o████o██████████o████o█
+    ~███████████oooo█████████████o█oo████████████oooo██
+
+    >>> timestamps, wave = makeWave(50, 3, "real", num=60)
+    >>> plot(timestamps, wave)
+    xmin: 0
+    xmax: 1.18
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~████o████████████████o████████████████████████████████o█████
+    ~███o█oo████████████oo█o█████████████oooo█████████████o█oo███
+    ~██o████o██████████o████o███████████o████o███████████o████o██
+    ~█o██████████████████████o█████████o██████o█████████o████████
+    ~o███████o████████o███████o███████o████████o███████o██████o██
+    ~█████████o██████o█████████o██████████████████████o█████████o
+    ~██████████o████o███████████o████o██████████o████o███████████
+    ~███████████oooo█████████████o█oo████████████oooo████████████
+
+    >>> timestamps, wave = makeWave(50, 3, "complex", num=60)
+    >>> plot(timestamps, wave.real)
+    xmin: 0
+    xmax: 1.18
+    ymin: 0
+    ymax: 1.0
+    ~o█████████████████████████████████████████████████o█████████
+    ~█oo████████████oooo█████████████oooo████████████oo█oo███████
+    ~██████████████o████o███████████o████o███████████████████████
+    ~███o█████████o██████o█████████o██████o█████████o█████o██████
+    ~████o████████████████o██████o█████████████████o███████o█████
+    ~█████o██████o█████████o█████o█████████o██████o█████████o████
+    ~██████o████o███████████████████████████o████o███████████o███
+    ~███████oooo████████████ooooo████████████oooo█████████████o█o
+    >>> plot(timestamps, wave.imag)
+    xmin: 0
+    xmax: 1.18
+    ymin: 0
+    ymax: 0.9980267286300659
+    ~████o████████████████o████████████████████████████████o█████
+    ~███o█oo████████████oo█o█████████████oooo█████████████o█oo███
+    ~██o████o██████████o████o███████████o████o███████████o████o██
+    ~█o██████████████████████o█████████o██████o█████████o████████
+    ~o███████o████████o███████o███████o████████o███████o██████o██
+    ~█████████o██████o█████████o██████████████████████o█████████o
+    ~██████████o████o███████████o████o██████████o████o███████████
+    ~███████████oooo█████████████o█oo████████████oooo████████████
+    
     >> makeWave(10, 2, "real")
     Traceback:
       ...
@@ -405,8 +471,27 @@ def makeWave(samp_rate: float,
     >> makeWave(10, 7, "real", seconds=3, allowAliasing=True) == makeRealWave_time(3, 10, 2, allowAliasing=True)
     True
     """
-    return makeRealWave_time(seconds, samp_rate, freq)    
-
+    if seconds != None and num != None:
+        raise ValueError("Cannot specify both `seconds` and `num` simultaneously")
+    elif seconds == None and num == None:
+        raise ValueError("Must specify either `seconds` or `num`")
+    elif seconds != None:
+        if type_ == "real":
+            return makeRealWave_time(seconds, samp_rate, freq, allowAliasing)
+        elif type_ == "complex":
+            return makeComplexWave_time(seconds, samp_rate, freq, allowAliasing)
+        else:
+            raise ValueError("This will never happen if the @typechecked works")
+    elif num != None:
+        if type_ == "real":
+            return makeRealWave_numsamps(num, samp_rate, freq, allowAliasing)
+        elif type_ == "complex":
+            return makeComplexWave_numsamps(num, samp_rate, freq, allowAliasing)
+        else:
+            raise ValueError("This will never happen if the @typechecked works")
+    else:
+        raise Exception("Impossible case")
+    
 
 def waveAndWrite(basename: str, timestamps: np.ndarray, freq, complex_or_real: Literal["c", "r"]):
     if complex_or_real == "r":
