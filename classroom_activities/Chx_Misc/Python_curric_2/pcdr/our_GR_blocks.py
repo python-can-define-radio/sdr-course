@@ -3,7 +3,7 @@ from gnuradio import gr
 from gnuradio import blocks
 import osmosdr
 import time
-from queue import Empty, SimpleQueue
+from queue import Empty, SimpleQueue, Queue
 from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
 from typing import List, Optional
 from typeguard import typechecked
@@ -42,22 +42,28 @@ class queue_source(gr.sync_block):
 
 class Blk_queue_source(gr.sync_block):
     @typechecked
-    def __init__(self, dtype: type, chunk_size: int, timeout: Optional[float] = None):
+    ## TODO: Look at my notes to self to see if I wanted to remove this timeout arg
+    def __init__(self, dtype: type, chunk_size: int, timeout: Optional[float] = None, approx_queue_size_bytes: int = 30_000_000):
         gr.sync_block.__init__(self,
             name='Python Block: Queue Source',
             in_sig=[],
             out_sig=[(dtype, chunk_size)]
         )
-        self.queue = SimpleQueue()
-        self.timeout = timeout
+        self.queue = QueueTypeWrapped(int(approx_queue_size_bytes/chunk_size))
+        self.marked_done = False
+        
 
     def work(self, input_items, output_items):
         try:
-            output_items[0][0][:] = self.queue.get(timeout=self.timeout)
+            output_items[0][0][:] = self.queue.get(timeout=10e-6)
             return 1
         except Empty:
-            print("Queue is empty, block will now report 'done' to GNU Radio flowgraph")
-            return -1
+            if self.marked_done:
+                return -1
+            else:
+                return 0
+            # print("Queue is empty, block will now report 'done' to GNU Radio flowgraph")
+            
 
 
 class Blk_sink_print(gr.sync_block):

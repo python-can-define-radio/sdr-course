@@ -628,7 +628,10 @@ def random_normal(size: int, dtype=np.float32, seed=None) -> np.ndarray:
     array([ 0.12573022, -0.13210486])
     """
     rng = np.random.default_rng(seed=seed)
-    result = rng.standard_normal(size=size, dtype=dtype)
+    if dtype == np.complex64:
+        re = rng.standard_normal(size=size, dtype=np.float32)
+        im = 1j * rng.standard_normal(size=size, dtype=np.float32)
+        result = re + im
     assert isinstance(result, np.ndarray)
     assert len(result) == size
     assert result.dtype == dtype

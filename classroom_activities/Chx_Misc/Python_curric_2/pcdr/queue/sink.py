@@ -62,7 +62,7 @@ def _compute_chunk_size(samp_rate: float, chunk_size: Optional[int]) -> int:
     divby = 10
     if samp_rate % divby != 0:
         raise ChunkSizeNonIntegerError(f"Chunk size must be specified if samp rate is not divisible by {divby}.")
-    return samp_rate // 10
+    return int(samp_rate // divby)
 
 
 class _QueuedSink:
@@ -79,6 +79,7 @@ class _QueuedSink:
                  sinkBlk,
                  dtype: type,
                  chunk_size: int,
+                 autostart: bool,
                  timeout: Optional[float] = None):
         self.tb = gr.top_block()
         self.__source_q = Blk_queue_source(dtype, chunk_size, timeout)
@@ -86,18 +87,24 @@ class _QueuedSink:
         self._sink = sinkBlk
         self.tb.connect(self.__source_q, self.__vector_to_stream, self._sink)
         _post_warn_chunk_size(chunk_size)
+        if autostart:
+            self.start()
     
     def start(self):
         self.tb.start()
         
-    def put(self, val: np.ndarray):
-        return self.__source_q.queue.put(val)
+    def put(self, data: np.ndarray):
+        """Enqueues a chunk of data to be fed to the sink."""
+        return self.__source_q.queue.put(data)
 
     def stop(self):
         self.tb.stop()
     
     def wait(self):
         self.tb.wait()
+    
+    def mark_done(self):
+        self.__source_q.marked_done = True
         
 
 class file_sink(_QueuedSink):
@@ -144,24 +151,30 @@ class osmosdr_sink(_QueuedSink):
                  samp_rate: float,
                  center_freq: float,
                  if_gain: int,
-                 *, chunk_size: int
+                 *, chunk_size: Optional[int] = None,
+                 autostart: bool = True,
                  ):
         """
         `device_name`: One of the supported osmocom devices, such as hackrf, bladerf, etc (see the osmocom docs)
         `device_id`: A zero-based index ("0", "1", etc), or the partial serial number of the device, which can be gotten from GQRX
+
+        >>> 
         """
         chunk_size = _compute_chunk_size(samp_rate, chunk_size)
         device_args = f"{device_name}={device_id}"
-        sink = osmosdr.sink(device_args)
+        self.gr_sink = osmosdr.sink(device_args)
         super().__init__(
-            sink, np.complex64, chunk_size
+            self.gr_sink, np.complex64, chunk_size, autostart
         )
-        sink.set_time_now(  
+        self.gr_sink.set_time_now(  
             # This corresponds to the "PC Clock" option in GRC,
             # which is known to work with our hardware.
             # Long term TODO: consider providing an __init__ arg as GRC does
             osmosdr.time_spec_t(time.time()),
             osmosdr.ALL_MBOARDS)
-        sink.set_sample_rate(samp_rate)
-        sink.set_center_freq(center_freq)
-        sink.set_if_gain(if_gain)
+        self.gr_sink.set_sample_rate(samp_rate)
+        self.set_center_freq(center_freq)
+        self.gr_sink.set_if_gain(if_gain)
+    
+    def set_center_freq(self, samp_rate: float) -> float:
+        return self.gr_sink.set_center_freq(samp_rate)

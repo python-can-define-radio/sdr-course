@@ -1,5 +1,5 @@
 import numpy as np
-from queue import SimpleQueue, Empty
+from queue import SimpleQueue, Empty, Queue
 from typing import List, TypeVar, Union, Optional
 from typeguard import typechecked
 from gnuradio import gr
@@ -9,11 +9,13 @@ T = TypeVar('T')
 
 
 
-class SimpleQueueTypeWrapped(SimpleQueue):
-    """Created this as an alternative to SimpleQueue because Python 3.8 (which we're stuck with currently)
-    doesn't support the type annotation SimpleQueue[something].
+class QueueTypeWrapped(Queue):
+    """
+    >>> TODO
+    """
 
-    This is specifically for queues of numpy arrays of fixed length and type.
+class SimpleQueueTypeWrapped(SimpleQueue):
+    """For queues of numpy arrays of fixed length and type.
     
     The `dtype` parameter is the dtype of the numpy array contents.
     The `chunk_size` parameter is the length of each queue element.
