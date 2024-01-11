@@ -33,6 +33,8 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6)
 
 These alternative options are useful if you don't have a SDR peripheral, or if you don't want to actually transmit.
 
+<details><summary>Click here if you'd like to see them.</summary>
+
 **Option A**: Print the data. In this case, you may wish to use a shorter bit length, for example, `bit_length=4`, as the print output would be impractical due to its length if you kept the original `bit_length`.
    ```python3
    ## Option A example
@@ -67,6 +69,8 @@ These alternative options are useful if you don't have a SDR peripheral, or if y
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
    gnuradio_guisink(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
    ```
+
+</details>
 
 ### Further practice
 
