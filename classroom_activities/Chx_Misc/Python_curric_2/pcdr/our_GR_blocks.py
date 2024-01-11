@@ -4,7 +4,7 @@ from gnuradio import blocks
 import osmosdr
 import time
 from queue import Empty, SimpleQueue, Queue
-from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list
+from pcdr.helpers import SimpleQueueTypeWrapped, QueueTypeWrapped, queue_to_list
 from typing import List, Optional
 from typeguard import typechecked
 

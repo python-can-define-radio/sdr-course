@@ -13,16 +13,10 @@ samp_rate = 2e6
 center_freq = 434e6
 if_gain = 42
 modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
-print("Init")
 osmosink = qsink.osmosdr_sink("hackrf", "0", samp_rate, center_freq,
                               if_gain, chunk_size=len(modulated))
-print("About to enqueue")
 for x in range(100):
     osmosink.put(modulated)
     print(x)
-print("Marking done")
 osmosink.mark_done()
-print("Start waiting")
 osmosink.wait()
-print("Done")
-
