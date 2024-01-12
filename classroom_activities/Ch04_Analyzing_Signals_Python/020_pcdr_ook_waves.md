@@ -15,10 +15,12 @@ The unit of frequency is Hertz or Hz, which is equivalent to 1/sec.  Actually, t
 ## 1a
 ## Try this.
 ## Notice that you only see two cycles. Why?
+## With the help of your editor, determine
+##  what the `100` and the `4` represent.
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_time
+from pcdr import makeWave
 
-timestamps, wave = makeRealWave_time(seconds=0.5, samp_rate=100, freq=4)
+timestamps, wave = makeWave(100, 4, "real", seconds=0.5)
 plt.plot(timestamps, wave, "*", markersize=10)
 plt.show()
 
@@ -28,40 +30,39 @@ plt.show()
 ## How much time is displayed?
 ## How is that related to the number of samples and the sample rate?
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_numsamps
+from pcdr import makeWave
 
-timestamps, wave = makeRealWave_numsamps(num_samples=100, samp_rate=200, freq=4)
+timestamps, wave = makeWave(200, 4, "real", num=100)
 plt.plot(timestamps, wave, "*", markersize=10)
 plt.show()
 
 
-## 2a
+## 2
 ## Plot a wave that completes two cycles in 1 second
-## using the makeRealWave_numsamps function.
+## using the makeWave function.
+## Complete this exercise by specifying `seconds`,
+## then do it again by specifying `num`.
 
 
-## 2b
-## Plot a wave that completes two cycles in 1 second
-## using the makeRealWave_time function.
-
-
-## 3a
+## 3
 ## Plot a wave that completes a cycle in two seconds
-## using the makeRealWave_numsamps function.
+## using the makeWave function.
 
 
-## 3b
-## Plot a wave that completes a cycle in two seconds
-## using the makeRealWave_time function.
-
-
-## 4
+## 4a
 ## Ask the user for
 ## - The frequency of the wave to plot
-## - The number of samples
+## - The sample rate
 ## - The amount of time (that is, the number of seconds)
 ## - (Optional) the markersize
 ## - (Optional) the marker (currently "*". Valid choices are listed in the matplotlib docs. You can also experiment.)
+
+## 4b
+## Same as the previous exercise, but this time, ask the user for
+## - The frequency of the wave to plot
+## - The number of samples
+## - The amount of time (that is, the number of seconds).
+## You'll need to compute the sample rate from the given information.
 ```
 
 ### Revisiting OOK
