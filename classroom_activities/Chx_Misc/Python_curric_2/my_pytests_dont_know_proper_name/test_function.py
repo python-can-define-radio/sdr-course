@@ -7,6 +7,7 @@ from my_pytests_dont_know_proper_name.test_other__blocks_for_testing import Blk_
 
 
 def test_QueuedBothEnds_1():
+    assert "TODO" == " TODO"
     qbe = _QueuedBothEnds(Blk_mult_three,
                 in_dtype=np.uint8,
                 out_dtype=np.float32, 
@@ -27,6 +28,7 @@ def test_QueuedBothEnds_1():
 
 
 def test_QueuedBothEnds_proc_func():
+    assert "TODO" == " TODO"
     qbe = _QueuedBothEnds(Blk_mult_three,
                 in_dtype=np.uint8,
                 out_dtype=np.float32, 

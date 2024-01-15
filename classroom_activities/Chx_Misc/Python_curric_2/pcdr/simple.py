@@ -1,23 +1,30 @@
-from gnuradio import gr
+from gnuradio import gr, blocks
 from osmosdr import source as osmo_source
+from pcdr.our_GR_blocks import Blk_strength_at_freq
+
 
 
 class OsmosdrReceiver:
-    def __init__(self):
+    def __init__(self, center_freq: float):
+        self.tb = gr.top_block()
+        self.freq_offset = 20e3
+        samp_rate = 2e6
+        fft_size = 1024
         self.osmo_source = osmo_source()
-        ## TODO
-        # osmosdr.source(
-        #     args="numchan=" + str(1) + " " + ""
-        # )
-        # self.osmosdr_source_0.set_time_unknown_pps(osmosdr.time_spec_t())
-        # self.osmosdr_source_0.set_sample_rate(samp_rate)
-        # self.osmosdr_source_0.set_center_freq(100e6, 0)
-        # self.osmosdr_source_0.set_freq_corr(0, 0)
-        # self.osmosdr_source_0.set_dc_offset_mode(0, 0)
-        # self.osmosdr_source_0.set_iq_balance_mode(0, 0)
-        # self.osmosdr_source_0.set_gain_mode(False, 0)
-        # self.osmosdr_source_0.set_gain(10, 0)
-        # self.osmosdr_source_0.set_if_gain(20, 0)
-        # self.osmosdr_source_0.set_bb_gain(20, 0)
-        # self.osmosdr_source_0.set_antenna('', 0)
-        # self.osmosdr_source_0.set_bandwidth(0, 0)
+        self.osmo_source.set_sample_rate(samp_rate)
+        self.osmo_source.set_center_freq(center_freq - self.freq_offset)
+        self.osmo_source.set_if_gain(32)
+        self.osmo_source.set_bb_gain(40)
+        self.stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, fft_size)
+        self.streng = Blk_strength_at_freq(samp_rate, self.freq_offset, fft_size)
+        self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
+        self.tb.start()
+
+    def get_cf_strength(self) -> float:
+        return self.streng.latest_reading
+    
+    def set_sample_rate(self, samp_rate: float):
+        return self.osmo_source.set_sample_rate(samp_rate)
+
+    def set_center_freq(self, center_freq: float):
+        return self.osmo_source.set_center_freq(center_freq - self.freq_offset)

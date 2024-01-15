@@ -118,6 +118,7 @@ class file_sink(_QueuedSink):
                  chunk_size: Optional[int] = None,
                  timeout: Optional[float] = None):
         chunk_size = _compute_chunk_size(samp_rate, chunk_size)
+        assert "NEED TO UPDATE THE INIT. NEED TO DECIDE ABOUT AUTOSTART." == False
         super().__init__(
             blocks.file_sink(getSize(dtype), filename, append),
             dtype,

@@ -153,20 +153,21 @@ class Blk_queue_sink(gr.sync_block):
 
 class Blk_strength_at_freq(gr.sync_block):
     @typechecked
-    def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int = 1024):
+    def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int):
         gr.sync_block.__init__(self,
             name='Python Block: Strength at frequency',
             in_sig=[(np.complex64, fft_size)],
             out_sig=[]
         )
         assert 0 <= freq_of_interest < samp_rate / 2
-        self.latest_reading = 0
+        self.latest_reading = 0.0
         maxval = samp_rate/2 - samp_rate/fft_size
         ratio = fft_size / (2 * maxval) 
-        self.idx = int(ratio * freq_of_interest)
+        self._fft = None
+        self._idx = int(ratio * freq_of_interest)
     
     def work(self, input_items, output_items):
         dat = input_items[0][0]
-        fft = abs(np.fft.fft(dat))
-        self.latest_reading = fft[self.idx]
+        self._fft = abs(np.fft.fft(dat))
+        self.latest_reading = float(self._fft[self._idx])
         return len(dat)

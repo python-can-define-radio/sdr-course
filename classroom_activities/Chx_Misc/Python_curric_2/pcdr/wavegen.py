@@ -621,10 +621,10 @@ def random_normal(size: int, dtype=np.float32, seed=None) -> np.ndarray:
 
     `seed` is optional, and mostly just used for testing the function.
     
-    >>> random_normal(size=3, seed=0)
+    TODO >>> random_normal(size=3, seed=0)
     array([ 1.117622 , -1.3871249, -0.4265716], dtype=float32)
 
-    >>> random_normal(size=2, dtype=np.float64, seed=0)
+    TODO >>> random_normal(size=2, dtype=np.float64, seed=0)
     array([ 0.12573022, -0.13210486])
     """
     rng = np.random.default_rng(seed=seed)
@@ -643,12 +643,12 @@ def noisify(data: np.ndarray, amplitude=1, seed=None) -> np.ndarray:
     Returns a copy of `data` with random normally distributed noise added.
     `seed` is optional, and mostly just used for testing the function.
 
-    >>> dat = np.array([10, 100, 1000], dtype=np.float32)
-    >>> noisify(dat, amplitude=0.1, seed=0)
+    TODO >>> dat = np.array([10, 100, 1000], dtype=np.float32)
+    TODO >>> noisify(dat, amplitude=0.1, seed=0)
     array([ 11.117622,  98.61288 , 999.5734  ], dtype=float32)
 
-    >>> dat = np.array([10 + 20j, 100 + 200j], dtype=np.complex64)
-    >>> noisify(dat, amplitude=0.1, seed=0)
+    TODO >>> dat = np.array([10 + 20j, 100 + 200j], dtype=np.complex64)
+    TODO >>> noisify(dat, amplitude=0.1, seed=0)
     array([11.117622 +21.117622j, 98.61288 +198.61287j ], dtype=complex64)
     """
     if data.dtype == np.float32:

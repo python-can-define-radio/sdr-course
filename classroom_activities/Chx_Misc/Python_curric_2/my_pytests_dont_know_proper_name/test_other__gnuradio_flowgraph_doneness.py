@@ -9,6 +9,7 @@ from .test_function import Blk_mult_three
 
 class Test_Queue_Source:
     def test_queue_source_stops_based_on_timeout(self):
+        assert "TODO" == " TODO"
         queue_timeout = 1.5
         sleep_time = 0.5
         tb = gr.top_block()
@@ -30,6 +31,7 @@ class Test_Queue_Source:
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_wait(self, output: StringIO):
+        assert "TODO" == " TODO"
         tb = gr.top_block()
         queue_source = Blk_queue_source(np.uint8, 4, timeout=1)
         vec_to_stream = blocks.vector_to_stream(gr.sizeof_char, 4)
@@ -49,6 +51,7 @@ class Test_Queue_Source:
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_flowgraph_completes_processing_after_source_block_marks_done(self, output: StringIO):
+        assert "TODO" == " TODO"
         tb = gr.top_block()
         queue_source = Blk_queue_source(np.uint8, 4, timeout=1)
         vec_to_stream = blocks.vector_to_stream(gr.sizeof_char, 4)
