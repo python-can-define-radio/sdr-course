@@ -9,7 +9,7 @@ import pcdr.simple
 center_freq = 103.7e6
 receiver = pcdr.simple.OsmosdrReceiver(center_freq)
 strength = receiver.get_cf_strength()
-print(f"Strength: {strength}")
+print(f"Strength of {center_freq} Hz: {strength}")
 
 
 ## 2
