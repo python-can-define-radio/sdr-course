@@ -63,3 +63,51 @@ class _QueuedBothEnds:
 # 	quad_rate=,
 # 	audio_decimation=,
 # )
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from pcdr.wavegen import makeWave
+# from gnuradio import blocks, filter
+# from gnuradio.filter import firdes
+# import numpy as np
+# import matplotlib.pyplot as plt
+ 
+# samp_rate = 2e6
+ 
+# t, w1 = makeWave(samp_rate, 20_000, "complex", seconds=1/1_000)
+# t, w2 = makeWave(samp_rate, 1_000, "complex", seconds=1/1_000)
+# combined = w1 + w2
+ 
+# band_pass_filter = filter.fir_filter_ccc(
+#     1,
+#     firdes.complex_band_pass(
+#         1,
+#         samp_rate,
+#         -20e3,
+#         20e3,
+#         30e3))
+ 
+ 
+# qbe = _QueuedBothEnds(band_pass_filter,
+#                               np.complex64,
+#                               np.complex64,
+#                               in_chunk_size=len(combined),
+#                               out_chunk_size=len(combined),
+#                               )
+ 
+# filtered = qbe.proc(combined)
+# plt.plot(t, combined.real)
+# plt.plot(t, combined.imag)
+# plt.show()
