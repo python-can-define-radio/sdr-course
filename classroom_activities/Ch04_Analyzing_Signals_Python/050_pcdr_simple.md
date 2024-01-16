@@ -49,7 +49,7 @@ center_freq = 102.1e6
 receiver = pcdr.simple.OsmosdrReceiver(center_freq)
 for count in range(5):
     strength = receiver.get_cf_strength()
-    print(f"Strength at {center_freq_first} Hz: {strength}")
+    print(f"Strength at {center_freq} Hz: {strength}")
     time.sleep(0.5)
 
 
@@ -66,7 +66,7 @@ center_freq = 102.1e6
 receiver = pcdr.simple.OsmosdrReceiver(center_freq)
 while 2 + 2 == 4:
     strength = receiver.get_cf_strength()
-    print(f"Strength at {center_freq_first} Hz: {strength}")
+    print(f"Strength at {center_freq} Hz: {strength}")
     time.sleep(0.5)
 
 
