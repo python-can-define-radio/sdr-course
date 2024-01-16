@@ -81,4 +81,32 @@ while 2 + 2 == 4:
 ## Copy and modify the previous example.
 ## Referring back to the Python exercises about while loops if needed,
 ## make the loop exit if activity is detected.
+
+
+## 10
+## Try this.
+import pcdr.simple
+import time
+from rich.console import Console
+from rich.table import Table
+
+center_freq0 = 93.9e6
+receiver = pcdr.simple.OsmosdrReceiver(center_freq0)
+
+while True:
+    table = Table(title="Frequencies")
+    table.add_column("Frequency", justify="center", style="magenta")
+    table.add_column("Strength", justify="center", style="green")
+    table.add_row(str(center_freq0), str(receiver.get_cf_strength()))
+    console = Console()
+    console.print(table) 
+    time.sleep(3)
+
+
+## 11
+## Copy and modify the previous example.
+## Expand the table to include at least four different frequency rows and
+## add a time column using the datetime module. You will need to add the following import.
+
+from datetime import datetime
 ```
