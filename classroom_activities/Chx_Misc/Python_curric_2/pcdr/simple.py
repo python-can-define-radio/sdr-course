@@ -39,11 +39,14 @@ class OsmosdrReceiver:
         """Get the center frequency signal strength.
         The center frequency is specified when the `OsmosdrReceiver` is created,
         and can be changed using `set_center_freq`."""
-        while True:
-            try:
-                return self.streng._deq.pop()
-            except IndexError:
-                time.sleep(100e-6)
+        ## TODO: Fix this sleep with the queue implementation.
+        time.sleep(0.01)
+        return self.streng.latest_reading
+        # while True:
+        #     try:
+        #         return self.streng._deq.pop()
+        #     except IndexError:
+        #         time.sleep(100e-6)
     
 
     def set_sample_rate(self, samp_rate: float):

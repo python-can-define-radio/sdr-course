@@ -28,7 +28,8 @@ class fake_osmosdr_source(analog.sig_source_c):
 
 
 def test_OsmosdrReceiver_tuned_on_activity():
-    def fake_osmo():
+    def fake_osmo(args: str):
+        assert args == "hackrf=0"
         return fake_osmosdr_source(2e6, 200_000, 180_000)
     with patch("pcdr.simple.osmo_source", fake_osmo):
         receiver = OsmosdrReceiver(200_000)
@@ -39,7 +40,8 @@ def test_OsmosdrReceiver_tuned_on_activity():
 
 
 def test_OsmosdrReceiver_tuned_off_activity():
-    def fake_osmo():
+    def fake_osmo(args: str):
+        assert args == "hackrf=0"
         return fake_osmosdr_source(2e6, 600_000, 180_000)
     with patch("pcdr.simple.osmo_source", fake_osmo):
         receiver = OsmosdrReceiver(200_000)
@@ -50,7 +52,8 @@ def test_OsmosdrReceiver_tuned_off_activity():
 
 
 def test_OsmosdrReceiver_scan():
-    def fake_osmo():
+    def fake_osmo(args: str):
+        assert args == "hackrf=0"
         return fake_osmosdr_source(2e6, 600_000, 180_000)
     with patch("pcdr.simple.osmo_source", fake_osmo):
         receiver = OsmosdrReceiver(200_000)
