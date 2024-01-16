@@ -43,7 +43,7 @@ class OsmosdrReceiver:
             try:
                 return self.streng._deq.pop()
             except IndexError:
-                pass
+                time.sleep(100e-6)
     
 
     def set_sample_rate(self, samp_rate: float):
