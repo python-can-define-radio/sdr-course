@@ -170,4 +170,4 @@ class Blk_strength_at_freq(gr.sync_block):
         dat = input_items[0][0]
         self._fft = abs(np.fft.fft(dat))
         self.latest_reading = float(self._fft[self._idx])
-        return len(dat)
+        return 1
