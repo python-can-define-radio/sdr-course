@@ -23,7 +23,7 @@ class OsmosdrReceiver:
         self.freq_offset = 20e3
         self.samp_rate = 2e6
         self.fft_size = 1024
-        self.osmo_source = osmo_source()
+        self.osmo_source = osmo_source(args="hackrf=0")
         self.osmo_source.set_sample_rate(self.samp_rate)
         self.osmo_source.set_center_freq(center_freq - self.freq_offset)
         self.osmo_source.set_if_gain(32)
