@@ -1,6 +1,7 @@
 import numpy as np
 from gnuradio import gr
 from gnuradio import blocks
+from collections import deque
 import osmosdr
 import time
 from queue import Empty, SimpleQueue, Queue
@@ -153,21 +154,29 @@ class Blk_queue_sink(gr.sync_block):
 
 class Blk_strength_at_freq(gr.sync_block):
     @typechecked
-    def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int):
+    def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int, avg_count: int):
         gr.sync_block.__init__(self,
             name='Python Block: Strength at frequency',
             in_sig=[(np.complex64, fft_size)],
             out_sig=[]
         )
         assert 0 <= freq_of_interest < samp_rate / 2
-        self.latest_reading = 0.0
         maxval = samp_rate/2 - samp_rate/fft_size
         ratio = fft_size / (2 * maxval) 
         self._fft = None
         self._idx = int(ratio * freq_of_interest)
+        self._deq = deque([], 1)
+        self.__last_few = []
+        self._avg_count = avg_count
     
     def work(self, input_items, output_items):
         dat = input_items[0][0]
         self._fft = abs(np.fft.fft(dat))
-        self.latest_reading = float(self._fft[self._idx])
+        if len(self.__last_few) < self._avg_count:
+            fft_val = float(self._fft[self._idx])
+            self.__last_few.append(fft_val)
+        else:
+            avg = sum(self.__last_few) / len(self.__last_few)
+            self._deq.append(avg)
+            self.__last_few = []
         return 1

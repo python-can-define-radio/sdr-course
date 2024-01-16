@@ -2,6 +2,7 @@ from gnuradio import gr, blocks
 from osmosdr import source as osmo_source
 from pcdr.our_GR_blocks import Blk_strength_at_freq
 import time
+from typeguard import typechecked
 
 
 
@@ -28,26 +29,23 @@ class OsmosdrReceiver:
         self.osmo_source.set_if_gain(32)
         self.osmo_source.set_bb_gain(40)
         self.stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, self.fft_size)
-        self.streng = Blk_strength_at_freq(self.samp_rate, self.freq_offset, self.fft_size)
+        self.streng = Blk_strength_at_freq(self.samp_rate, self.freq_offset, self.fft_size, 10)
         self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
         self.tb.start()
-        
-        ## TODO: this is a temporary fix to ensure the osmocom source has
-        ## had time to collect some data.
-        ## One possible proper fix is to implement Blk_strength_at_freq.latest_reading
-        ## using a LIFO queue that clears every time we fetch from it
-        ## (so that it's always the freshest data, but it will block
-        ##  if it hasn't received anything since the last fetch).
-        time.sleep(0.3)
 
+
+    @typechecked
     def get_cf_strength(self) -> float:
         """Get the center frequency signal strength.
         The center frequency is specified when the `OsmosdrReceiver` is created,
         and can be changed using `set_center_freq`."""
-        ## TODO: Fix this sleep with the queue implementation.
-        time.sleep(self.fft_size / self.samp_rate)
-        return self.streng.latest_reading
+        while True:
+            try:
+                return self.streng._deq.pop()
+            except IndexError:
+                pass
     
+
     def set_sample_rate(self, samp_rate: float):
         return self.osmo_source.set_sample_rate(samp_rate)
 
