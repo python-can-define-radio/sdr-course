@@ -110,4 +110,37 @@ while True:
 ## add a time column using the datetime module. You will need to add the following import.
 
 from datetime import datetime
+
+
+## 12
+## Try this.
+for center_freq in range(104_000_000, 104_700_000, 100_000):
+    print(center_freq)
+
+
+## 13
+## Copy and modify the previous example so that the step size is
+## one thousand instead of one hundred thousand.
+
+
+## 14
+## Copy and modify the previous example so that it does the following:
+## - Create an OsmosdrReceiver (once, before any looping)
+## - Use a for loop to produce output as shown in the example below.
+##
+## Example run:
+## Strength of 104000000 Hz: 2.131712706467802
+## Strength of 104001000 Hz: 2.439891476468502
+## Strength of 104002000 Hz: 2.011395112798358
+## ... (many lines omitted)
+## Strength of 104600000 Hz: 2.011395112798358
+
+
+## 15
+## Copy and modify the previous example. Instead of displaying the 
+## strength as a number, display it using this code:
+## dots = int(strength) * "o"
+## print(f"Strength of {center_freq} Hz: {dots}")
+
 ```
+
