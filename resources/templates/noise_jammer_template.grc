@@ -1,6 +1,6 @@
 options:
   parameters:
-    author: michael.a.hutchings98
+    author: template
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
