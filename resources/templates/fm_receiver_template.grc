@@ -132,6 +132,34 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
+- name: note_0
+  id: note
+  parameters:
+    alias: ''
+    comment: "Please connect THIS waterfall sink\ndirectly to the osmocom source.\n\
+      \nDelete this note block before \nturning in your assignment."
+    note: Turn on "Show block comments" to see the full comment.
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [252, 389]
+    rotation: 0
+    state: true
+- name: note_0_0
+  id: note
+  parameters:
+    alias: ''
+    comment: "Please connect THIS waterfall sink\nafter the band pass filter.\n\n\
+      Delete this note block before \nturning in your assignment."
+    note: Turn on "Show block comments" to see the full comment.
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [682, 402]
+    rotation: 0
+    state: true
 - name: qtgui_waterfall_sink_x_0
   id: qtgui_waterfall_sink_x
   parameters:
@@ -190,7 +218,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [306, 260]
+    coordinate: [257, 288]
     rotation: 0
     state: true
 - name: qtgui_waterfall_sink_x_1
@@ -251,7 +279,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [542, 495]
+    coordinate: [683, 297]
     rotation: 0
     state: true
 connections: []
