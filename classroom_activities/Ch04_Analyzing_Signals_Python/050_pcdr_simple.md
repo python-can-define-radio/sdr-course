@@ -4,7 +4,7 @@
 ## 1
 ## Run this twice -- once with center_freq set to a strong radio station
 ## in your area, and once with it set to a weak station.
-## How does the result vary?
+## How do the two results differ?
 import pcdr.simple
 center_freq = 103.7e6
 receiver = pcdr.simple.OsmosdrReceiver(center_freq)
@@ -98,6 +98,7 @@ for center_freq in range(104_000_000, 104_700_000, 100_000):
 ## Copy and modify the previous example so that it does the following:
 ## - Create an OsmosdrReceiver (once, before any looping)
 ## - Use a for loop to produce output as shown in the example below.
+## - From earlier recall this command: receiver.set_center_freq(##)
 ##
 ## Example run:
 ## Strength of 104000000 Hz: 2.131712706467802
