@@ -85,45 +85,16 @@ while 2 + 2 == 4:
 
 ## 10
 ## Try this.
-import pcdr.simple
-import time
-from rich.console import Console
-from rich.table import Table
-
-center_freq0 = 93.9e6
-receiver = pcdr.simple.OsmosdrReceiver(center_freq0)
-console = Console()
-
-while True:
-    table = Table(title="Frequencies")
-    table.add_column("Frequency", justify="center", style="magenta")
-    table.add_column("Strength", justify="center", style="green")
-    table.add_row(str(center_freq0), str(receiver.get_cf_strength()))
-    console.clear()
-    console.print(table) 
-    time.sleep(3)
-
-
-## 11
-## Copy and modify the previous example.
-## Expand the table to include at least four different frequency rows and
-## add a time column using the datetime module. You will need to add the following import.
-
-from datetime import datetime
-
-
-## 12
-## Try this.
 for center_freq in range(104_000_000, 104_700_000, 100_000):
     print(center_freq)
 
 
-## 13
+## 11
 ## Copy and modify the previous example so that the step size is
 ## one thousand instead of one hundred thousand.
 
 
-## 14
+## 12
 ## Copy and modify the previous example so that it does the following:
 ## - Create an OsmosdrReceiver (once, before any looping)
 ## - Use a for loop to produce output as shown in the example below.
@@ -136,11 +107,41 @@ for center_freq in range(104_000_000, 104_700_000, 100_000):
 ## Strength of 104600000 Hz: 2.011395112798358
 
 
-## 15
+## 13
 ## Copy and modify the previous example. Instead of displaying the 
 ## strength as a number, display it using this code:
 ## dots = int(strength) * "o"
 ## print(f"Strength of {center_freq} Hz: {dots}")
+
+
+## 14
+## Try this.
+import pcdr.simple
+import time
+from rich.console import Console
+from rich.table import Table
+
+center_freq = 93.9e6
+receiver = pcdr.simple.OsmosdrReceiver(center_freq)
+console = Console()
+
+while True:
+    table = Table(title="Frequencies")
+    table.add_column("Frequency", justify="center", style="magenta")
+    table.add_column("Strength", justify="center", style="green")
+    table.add_row(str(center_freq), str(receiver.get_cf_strength()))
+    console.clear()
+    console.print(table) 
+    time.sleep(3)
+
+
+## 11
+## Copy and modify the previous example.
+## Expand the table to include at least four different frequency rows and
+## add a time column using the datetime module. You will need to add the following import.
+## For an extra challenge, do this using a for loop.
+
+from datetime import datetime
 
 ```
 
