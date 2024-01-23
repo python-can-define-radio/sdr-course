@@ -115,7 +115,7 @@ for center_freq in range(104_000_000, 104_700_000, 100_000):
 ## print(f"Strength of {center_freq} Hz: {dots}")
 
 
-## 14
+## 14  Tabular display -- Measure strength of a single frequency multiple times
 ## Try this.
 import pcdr.simple
 import time
@@ -136,13 +136,16 @@ while True:
     time.sleep(3)
 
 
-## 11
+## 15 Tabular display -- Measure strength of multiple frequencies multiple times
 ## Copy and modify the previous example.
 ## Expand the table to include at least four different frequency rows and
 ## add a time column using the datetime module. You will need to add the following import.
 ## For an extra challenge, do this using a for loop.
 
 from datetime import datetime
+## To get current time:
+datetime.now()
+## Save that to a variable or put it directly in an output statement.  Convert to string.
 
 ```
 
