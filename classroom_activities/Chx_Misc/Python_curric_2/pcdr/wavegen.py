@@ -730,16 +730,17 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
     `sample_freqs` ranges from 0 to approximately samp_rate/2
 
     >>> from pcdr.basictermplot import plot
-    >>> from pcdr.wavegen import makeComplexWave_time, make_fft_positive_freqs_only
-    >>> timestamps, wave = makeComplexWave_time(2, 50, 5)
-    >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, 50)
+    >>> from pcdr.wavegen import makeWave, make_fft_positive_freqs_only
+    >>> samp_rate = 50
+    >>> timestamps, wave = makeWave(samp_rate, 5, "complex", seconds=2)
+    >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
     >>> plot(sample_freqs, fft_mag)
     xmin: 0
     xmax: 24.5
     ymin: 0
-    ymax: 53.540000575039286
-    ~██████████████████████████████████████████████████
+    ymax: 53.5400005750393
     ~██████████o███████████████████████████████████████
+    ~██████████████████████████████████████████████████
     ~██████████████████████████████████████████████████
     ~██████████████████████████████████████████████████
     ~█████████o█o██████████████████████████████████████

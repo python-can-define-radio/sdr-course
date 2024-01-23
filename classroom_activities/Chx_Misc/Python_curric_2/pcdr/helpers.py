@@ -11,8 +11,11 @@ T = TypeVar('T')
 
 class QueueTypeWrapped(Queue):
     """
-    >>> TODO
+    Right now, this is actually just an alias for Queue.
+    Someday, we may implement it similarly to `SimpleQueueTypeWrapped`.
     """
+    pass
+
 
 class SimpleQueueTypeWrapped(SimpleQueue):
     """For queues of numpy arrays of fixed length and type.
