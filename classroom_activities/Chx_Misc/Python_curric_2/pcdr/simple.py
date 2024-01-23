@@ -13,7 +13,7 @@ class OsmosdrReceiver:
     
     ```python3
     import pcdr.simple
-    receiver = pcdr.simple.OsmosdrReceiver(103.9e6)
+    receiver = pcdr.simple.OsmosdrReceiver("hackrf", "0")
     strength = receiver.get_cf_strength()
     print(strength)
     ```
