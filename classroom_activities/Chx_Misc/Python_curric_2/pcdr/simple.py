@@ -2,6 +2,7 @@ from gnuradio import gr, blocks
 from osmosdr import source as osmo_source
 from pcdr.our_GR_blocks import Blk_strength_at_freq
 import time
+from typing import Union
 from typeguard import typechecked
 
 
@@ -13,12 +14,12 @@ class OsmosdrReceiver:
     
     ```python3
     import pcdr.simple
-    receiver = pcdr.simple.OsmosdrReceiver("hackrf", "0")
+    receiver = pcdr.simple.OsmosdrReceiver("hackrf", "0", 103.9e6)
     strength = receiver.get_cf_strength()
     print(strength)
     ```
     """
-    def __init__(self, device_name: str, device_id: str, center_freq: float):
+    def __init__(self, device_name: str, device_id: Union[int, str], center_freq: float):
         """
         `device_name`: One of the supported osmocom devices, such as hackrf, bladerf, etc (see the osmocom docs)
         `device_id`: A zero-based index ("0", "1", etc), or the partial serial number of the device, which can be gotten from GQRX
@@ -74,3 +75,7 @@ class OsmosdrReceiver:
     def set_bb_gain(self, TODO):
         TODO
         
+
+class HackRFReceiver(OsmosdrReceiver):
+    def __init__(self, device_id: Union[int, str]):
+        OsmosdrReceiver.__init__(self, "hackrf", device_id, center_freq)
