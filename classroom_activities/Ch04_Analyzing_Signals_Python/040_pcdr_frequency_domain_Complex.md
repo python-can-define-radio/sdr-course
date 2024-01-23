@@ -27,12 +27,12 @@ So, how do you represent a negative frequency? Let's demonstrate that in a plot 
 ## 1 
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeComplexWave_time, make_fft
+from pcdr import makeWave, make_fft
 
 samp_rate = 50
 freq = -2
 
-timestamps, wave = makeComplexWave_time(seconds=2, samp_rate=samp_rate, freq=freq)
+timestamps, wave = makeWave(samp_rate, freq, "complex", seconds=2)
 sample_freqs, fft_mag = make_fft(wave, samp_rate)
 
 plt.subplot(2, 1, 1, title=f"{freq} Hz Wave: Time Domain")
@@ -67,12 +67,12 @@ Let's get some more practice working with complex waves.
 
 ```python3
 ## 3
-## Use the makeComplexWave_time function to make a wave with frequency 3 Hz.
+## Use the makeWave function to make a complex wave with frequency 3 Hz.
 ## Plot the wave from 0 to 4 seconds.
 
 
 ## 4
-## Use the makeComplexWave_time function to make a wave with frequency 0.5 Hz.
+## Use the makeWave function to make a complex wave with frequency 0.5 Hz.
 ## Plot the wave from 0 to 2 seconds. 
 ```
 

@@ -12,12 +12,12 @@ When the signal is made up of a single wave, we can fairly easily identify the f
 ## Notice that we're only plotting the sum of the waves.
 ## Can you still distinguish the two separate frequencies?
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_time
+from pcdr import makeWave
 
 seconds = 2
 samp_rate = 300
-timestamps, wave1 = makeRealWave_time(seconds=seconds, samp_rate=samp_rate, freq=2)
-timestamps, wave2 = makeRealWave_time(seconds=seconds, samp_rate=samp_rate, freq=25)
+timestamps, wave1 = makeWave(samp_rate, 2, "real", seconds=seconds)
+timestamps, wave2 = makeWave(samp_rate, 25, "real", seconds=seconds)
 added = wave1 + wave2
 plt.plot(timestamps, added, "*-", markersize=5)
 plt.show()
@@ -44,11 +44,11 @@ The solution to the limitations of the Time Domain is to view the signal in the 
 ```python3
 ## 4
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_time, make_fft_positive_freqs_only
+from pcdr import makeWave, make_fft_positive_freqs_only
 
 maxTime = 2
-samp_rate = 300
-timestamps, wave = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=10)
+samp_rate = 300 
+timestamps, wave = makeWave(samp_rate, 10, "real", seconds=maxTime)
 sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
 plt.plot(timestamps, wave, "*-", markersize=5)
@@ -71,12 +71,12 @@ Let's try it with two signals added:
 ## 6
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_time, make_fft_positive_freqs_only
+from pcdr import makeWave, make_fft_positive_freqs_only
 
 maxTime = 2
 samp_rate = 300
-timestamps, wave1 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=2)
-timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=25)
+timestamps, wave1 = makeWave(samp_rate, 2, "real", seconds=maxTime)
+timestamps, wave2 = makeWave(samp_rate, 25, "real", seconds=maxTime)
 added = wave1 + wave2
 sample_freqs, fft_mag = make_fft_positive_freqs_only(added, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")
@@ -122,12 +122,12 @@ Up to this point, we've been using the function `make_fft_positive_freqs_only`. 
 ## 9
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_time, make_fft
+from pcdr import makeWave, make_fft
 
 maxTime = 2
 samp_rate = 300
-timestamps, wave1 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=2)
-timestamps, wave2 = makeRealWave_time(seconds=maxTime, samp_rate=samp_rate, freq=25)
+timestamps, wave1 = makeWave(samp_rate, 2, "real", seconds=maxTime)
+timestamps, wave2 = makeWave(samp_rate, 25, "real", seconds=maxTime)
 added = wave1 + (0.5*wave2)
 sample_freqs, fft_mag = make_fft(added, samp_rate)
 plt.subplot(2, 1, 1, title="Time Domain")

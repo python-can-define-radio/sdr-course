@@ -95,10 +95,10 @@ There are cases in which we would like to impose the data on a carrier wave in s
 ## 7
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_numsamps, ook_modulate
+from pcdr import makeWave, ook_modulate
 
 modulated = ook_modulate([1, 0, 1, 0], bit_length=25)
-timestamps, wave = makeRealWave_numsamps(num_samples=100, samp_rate=100, freq=4)
+timestamps, wave = makeWave(100, 4, "real", num=100)
 upconverted = modulated * wave
 plt.plot(timestamps, upconverted, "*-", markersize=10)
 plt.show()
@@ -107,10 +107,10 @@ plt.show()
 ## 8
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeRealWave_numsamps, ook_modulate
+from pcdr import makeWave, ook_modulate
 
 modulated = ook_modulate([1, 0, 1, 0], bit_length=50)
-timestamps, wave = makeRealWave_numsamps(num_samples=200, samp_rate=100, freq=4)
+timestamps, wave = makeWave(100, 4, "real", num=200)
 upconverted = modulated * wave
 plt.plot(timestamps, upconverted, "*-", markersize=10)
 plt.show()
@@ -142,7 +142,7 @@ Manually updating `num_samples` based on the length of your data is somewhat ted
 ## 11
 ## Try this.
 modulated = ook_modulate([1, 0, 0, 1, 0, 1], bit_length=25)
-timestamps, wave = makeRealWave_numsamps(num_samples=len(modulated), samp_rate=100, freq=8)
+timestamps, wave = makeWave(100, 8, "real", num=len(modulated))
 upconverted = modulated * wave
 plt.plot(timestamps, upconverted, "*-", markersize=10)
 plt.show()
