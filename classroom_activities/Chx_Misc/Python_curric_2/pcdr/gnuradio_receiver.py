@@ -40,6 +40,7 @@ def gnuradio_receive(
         device_args: str = "hackrf=0",
         chunk_size: int = 1024) -> np.ndarray:
     """Receive for APPROXIMATELY `seconds` seconds."""
+    ## TODO: This should be device_name instead of device_args.
     validate_hack_rf_receive(device_args, samp_rate, center_freq, if_gain, bb_gain)
     tb = osmocom_source_to_queue_sink(center_freq, samp_rate, if_gain, bb_gain, device_args, chunk_size)
     return __run_block_and_return_queue_contents(tb, seconds)

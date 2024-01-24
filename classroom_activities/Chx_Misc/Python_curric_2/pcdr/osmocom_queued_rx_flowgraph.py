@@ -22,7 +22,8 @@ class osmocom_source_to_queue_sink(gr.top_block):
     def __init__(self, center_freq: float, samp_rate: float, chunk_size: int, device_args: str, if_gain: int = 32, bb_gain: int = 42):
         gr.top_block.__init__(self, "Top block")
 
-        validate_hack_rf_receive(samp_rate, center_freq, if_gain, bb_gain)
+        ## TODO: This should be device_name instead of device_args.
+        validate_hack_rf_receive(device_args, samp_rate, center_freq, if_gain, bb_gain)
         self.__chunk_size = chunk_size
 
         self.osmosdr_source = osmosdr.source(args=device_args)
