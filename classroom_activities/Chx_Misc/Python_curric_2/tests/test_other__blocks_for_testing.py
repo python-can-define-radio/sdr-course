@@ -22,3 +22,16 @@ class Blk_source_output_arb_num(gr.sync_block):
         output_items[0][2] = self.i + 2
         self.i += 3
         return 3
+
+class Blk_arb_num_multiplied_by_three(gr.hier_block2):
+    def __init__(self):
+        """
+        our configured hier block
+
+        """
+        gr.hier_block2.__init__(self, "arb_num_mult_three",
+                                # Input signature
+                                [],
+                                [np.float32])      # Output signature
+
+        self.connect(self, self.something, self.somethingelse, self)

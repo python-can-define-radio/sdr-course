@@ -2,7 +2,7 @@ import time
 from gnuradio import gr
 from pcdr.function import _QueuedBothEnds
 import numpy as np
-from my_pytests_dont_know_proper_name.test_other__blocks_for_testing import Blk_mult_three
+from tests.test_other__blocks_for_testing import Blk_mult_three
 
 
 
