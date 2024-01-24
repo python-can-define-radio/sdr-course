@@ -6,6 +6,10 @@ from typeguard import typechecked
 
 
 
+def fake_val_hack_rf_rec(*args):
+    pass
+
+
 @typechecked
 def fake_osmosdr_source_factory(fake_samp_rate: float, fake_center_freq: float):
     """Return a block that resembles the osmosdr_source, but always has activity at only 200kHz."""
@@ -22,6 +26,7 @@ def fake_osmosdr_source_factory(fake_samp_rate: float, fake_center_freq: float):
         assert fake_center_freq == center_freq
     analog_sig_source.set_center_freq = set_center_freq
 
+    analog_sig_source.set_gain = lambda gain: None
     analog_sig_source.set_if_gain = lambda if_gain: None
     analog_sig_source.set_bb_gain = lambda bb_gain: None
 
@@ -37,11 +42,12 @@ def test_OsmosdrReceiver_tuned_on_activity():
         assert args == "hackrf=0"
         return fake_osmosdr_source_factory(2e6, behind_the_scenes_tune_freq)
     with patch("pcdr.simple.osmo_source", fake_osmo):
-        receiver = OsmosdrReceiver(apparent_tune_freq)
-        time.sleep(0.5)
-        assert receiver.get_cf_strength() > 650
-        receiver.tb.stop()
-        receiver.tb.wait()
+        with patch("pcdr.simple.validate_hack_rf_receive", fake_val_hack_rf_rec):
+            receiver = OsmosdrReceiver("hackrf", freq=apparent_tune_freq)
+            time.sleep(0.5)
+            assert receiver.get_strength() > 650
+            receiver.tb.stop()
+            receiver.tb.wait()
 
 
 def test_OsmosdrReceiver_tuned_off_activity():
@@ -52,8 +58,9 @@ def test_OsmosdrReceiver_tuned_off_activity():
         assert args == "hackrf=0"
         return fake_osmosdr_source_factory(2e6, behind_the_scenes_tune_freq)
     with patch("pcdr.simple.osmo_source", fake_osmo):
-        receiver = OsmosdrReceiver(apparent_tune_freq)
-        time.sleep(0.5)
-        assert receiver.get_cf_strength() < 10
-        receiver.tb.stop()
-        receiver.tb.wait()
+        with patch("pcdr.simple.validate_hack_rf_receive", fake_val_hack_rf_rec):
+            receiver = OsmosdrReceiver("hackrf", freq=apparent_tune_freq)
+            time.sleep(0.5)
+            assert receiver.get_strength() < 10
+            receiver.tb.stop()
+            receiver.tb.wait()
