@@ -4,6 +4,7 @@ from pcdr.our_GR_blocks import Blk_strength_at_freq
 import time
 from typing import Union
 from typeguard import typechecked
+from pcdr.helpers import validate_hack_rf_receive
 
 
 
@@ -14,12 +15,14 @@ class OsmosdrReceiver:
     
     ```python3
     import pcdr.simple
-    receiver = pcdr.simple.OsmosdrReceiver("hackrf", "0", 103.9e6)
+    receiver = pcdr.simple.OsmosdrReceiver("hackrf", 0, 103.9e6)
     strength = receiver.get_cf_strength()
     print(strength)
     ```
     """
-    def __init__(self, device_name: str, device_id: Union[int, str], center_freq: float):
+    @typechecked
+    # def __init__(self, device_name: str, device_id: Union[int, str], center_freq: float):
+    def __init__(self, center_freq: float):
         """
         `device_name`: One of the supported osmocom devices, such as hackrf, bladerf, etc (see the osmocom docs)
         `device_id`: A zero-based index ("0", "1", etc), or the partial serial number of the device, which can be gotten from GQRX
@@ -30,12 +33,18 @@ class OsmosdrReceiver:
         self.freq_offset = 20e3
         self.samp_rate = 2e6
         self.fft_size = 1024
+        if_gain = 32
+        bb_gain = 40
+        ### TODO: DEBUG
+        device_name = "hackrf"
+        device_id = 0
         device_args = f"{device_name}={device_id}"
+        validate_hack_rf_receive(device_name, self.samp_rate, center_freq, if_gain, bb_gain)
         self.osmo_source = osmo_source(args=device_args)
         self.osmo_source.set_sample_rate(self.samp_rate)
         self.osmo_source.set_center_freq(center_freq - self.freq_offset)
-        self.osmo_source.set_if_gain(32)
-        self.osmo_source.set_bb_gain(40)
+        self.osmo_source.set_if_gain(if_gain)
+        self.osmo_source.set_bb_gain(bb_gain)
         self.stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, self.fft_size)
         self.streng = Blk_strength_at_freq(self.samp_rate, self.freq_offset, self.fft_size, 10)
         self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
@@ -57,23 +66,29 @@ class OsmosdrReceiver:
         #         time.sleep(100e-6)
     
 
+    @typechecked
     def set_sample_rate(self, samp_rate: float):
-        # TODO: Validate samp rate within range
+        validate_hack_rf_receive("hackrf", samp_rate=samp_rate)
         return self.osmo_source.set_sample_rate(samp_rate)
 
+    @typechecked
     def set_center_freq(self, center_freq: float):
-        # TODO: Validate freq within range
+        validate_hack_rf_receive("hackrf", center_freq=center_freq)
         # Also, TODO:
         #   Tell the queue work function to consume the entire input_items so that
         #   any data after that is fresh, THEN clear the current get_cf_strength() reading (which
         #   will presumably be using a deque object).
         return self.osmo_source.set_center_freq(center_freq - self.freq_offset)
 
-    def set_if_gain(self, TODO):
-        TODO
+    @typechecked
+    def set_if_gain(self, if_gain: float):
+        validate_hack_rf_receive("hackrf", if_gain=if_gain)
+        self.osmo_source.set_if_gain(if_gain)
 
-    def set_bb_gain(self, TODO):
-        TODO
+    @typechecked
+    def set_bb_gain(self, bb_gain: float):
+        validate_hack_rf_receive("hackrf", bb_gain=bb_gain)
+        self.osmo_source.set_bb_gain(bb_gain)
         
 
 class HackRFReceiver(OsmosdrReceiver):

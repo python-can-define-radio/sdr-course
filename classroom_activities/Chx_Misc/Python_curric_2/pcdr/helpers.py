@@ -36,13 +36,13 @@ class SimpleQueueTypeWrapped(SimpleQueue):
     >>> q.put(np.array([10, 20, 30]))
     Traceback (most recent call last):
       ...
-    AssertionError
+    AssertionError: assert dtype('int64') == <class 'numpy.complex64'>...
 
     Wrong size:
     >>> q.put(np.array([10, 20], dtype=np.complex64))
     Traceback (most recent call last):
       ...
-    AssertionError
+    AssertionError: assert 2 == 3...
     """
     def __init__(self, qtype, dtype, chunk_size: int):
         if qtype != np.ndarray:
@@ -207,17 +207,29 @@ class DeviceParameterError(ValueError):
 
 
 @typechecked
-def validate_hack_rf_receive(device_args: str,
-                             samp_rate: float,
-                             center_freq: float,
-                             if_gain: int,
-                             bb_gain: int):
-    ## TODO: this won't correctly handle if the device args
-    ##   happen to include 'hackrf=' somewhere else, like in a string
-    if "hackrf=" not in device_args:
+def validate_hack_rf_receive(device_name: str,
+                             samp_rate: Optional[float] = None,
+                             center_freq: Optional[float] = None,
+                             if_gain: Optional[int] = None,
+                             bb_gain: Optional[int] = None):
+    """
+    >>> validate_hack_rf_receive("hackrf", samp_rate=1e6)
+    Traceback (most recent call last):
+      ...
+    pcdr.helpers.DeviceParameterError: The HackRF One is only capable of sample rates between 2 Million samples per second (2e6) and 20 Million samples per second (20e6). Your specified sample rate, 1000000.0, was outside of this range.
+    
+    >>> validate_hack_rf_receive("hackrf", center_freq=7e9)
+    Traceback (most recent call last):
+      ...
+    pcdr.helpers.DeviceParameterError: The HackRF One is only capable of center frequencies ...
+    
+    No result if valid:
+    >>> validate_hack_rf_receive("hackrf", samp_rate=3e6)
+    """
+    if device_name != "hackrf":
         return
     
-    if not (2e6 <= samp_rate <= 20e6):
+    if samp_rate and not (2e6 <= samp_rate <= 20e6):
         raise DeviceParameterError(
             "The HackRF One is only capable of sample rates "
             "between 2 Million samples per second (2e6) and "
@@ -225,14 +237,14 @@ def validate_hack_rf_receive(device_args: str,
             f"Your specified sample rate, {samp_rate}, was outside of this range."
         )
     
-    if not (1e6 < center_freq < 6e9):
+    if center_freq and not (1e6 < center_freq < 6e9):
         raise DeviceParameterError(
             "The HackRF One is only capable of center frequencies "
             "between 1 MHz (1e6) and 6 GHz (6e9). "
             f"Your specified frequency, {center_freq}, was outside of this range."
         )
     
-    if not if_gain in [0, 8, 16, 24, 32, 40]:
+    if if_gain and not if_gain in range(0, 40+8, 8):
         raise DeviceParameterError(
             "The HackRF One, when in receive mode, is only capable "
             "of the following if gain settings: "
@@ -240,7 +252,7 @@ def validate_hack_rf_receive(device_args: str,
             f"Your specified if gain, {if_gain}, was not one of these options."
         )
     
-    if not bb_gain in range(0, 62+2, 2):
+    if bb_gain and not bb_gain in range(0, 62+2, 2):
         raise DeviceParameterError(
             "The HackRF One, when in receive mode, is only capable "
             "of the following bb gain settings: "
@@ -250,13 +262,11 @@ def validate_hack_rf_receive(device_args: str,
 
 
 @typechecked
-def validate_hack_rf_transmit(device_args: str,
+def validate_hack_rf_transmit(device_name: str,
                               samp_rate: float,
                               center_freq: float,
                               if_gain: int):
-    ## TODO: this won't correctly handle if the device args
-    ##   happen to include 'hackrf=' somewhere else, like in a string
-    if "hackrf=" not in device_args:
+    if device_name != "hackrf":
         return
     
     if not (2e6 <= samp_rate <= 20e6):
