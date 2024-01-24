@@ -1,5 +1,9 @@
 import numpy as np
-from typing import Optional
+from typing import Optional, TextIO
+import sys
+from typeguard import typechecked
+from io import StringIO
+
 
 
 def rescale(arry: np.ndarray, lower_limit: int, upper_limit: int):
@@ -32,8 +36,9 @@ def rescale(arry: np.ndarray, lower_limit: int, upper_limit: int):
     return rescaled + lower_limit
 
 
-    
-def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, youtputsize: int = 8, round_ndigits: int = 2) -> None:
+
+@typechecked    
+def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, youtputsize: int = 8, round_ndigits: int = 2, output_stream: Optional[TextIO] = None) -> None:
     """
     A basic plot function, used primarily for docstring (and doctest) examples.
     
@@ -108,17 +113,21 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     assert (invertedy < youtputsize).all()
     
     drawing[invertedy, scaledx] = 1
-    print(f"xmin: 0")
-    print(f"xmax: {round(np.max(xs), round_ndigits)}")
-    print(f"ymin: 0")
-    print(f"ymax: {round(np.max(ys), round_ndigits)}")
+
+    @typechecked
+    def printstream(x: str = "", end: str = "\n"):
+        if output_stream == None:
+            print(x, end=end)
+        else:
+            print(x, end=end, file=output_stream)
+
+    printstream(f"xmin: {round(np.min(xs), round_ndigits)}")
+    printstream(f"xmax: {round(np.max(xs), round_ndigits)}")
+    printstream(f"ymin: {round(np.min(ys), round_ndigits)}")
+    printstream(f"ymax: {round(np.max(ys), round_ndigits)}")
     for row in drawing:
-        print("~", end="")
+        printstream("~", end="")
         for item in row:
             c = "o" if item == 1 else "█"
-            print(c, end="")
-        print()
-
-
-
-
+            printstream(c, end="")
+        printstream()
