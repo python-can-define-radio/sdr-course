@@ -2,7 +2,7 @@
 
 ```python3
 ## 1
-## Run this twice -- once with center_freq set to a strong radio station
+## Run this twice -- once with tuned_freq set to a strong radio station
 ## in your area, and once with it set to a weak station.
 ## How do the two results differ?
 import pcdr.simple
@@ -17,7 +17,7 @@ print(f"Strength of {tuned_freq} Hz: {strength}")
 ## for a frequency in MHz. Then,
 ## - Automatically convert the specified frequency to Hz
 ## - Create an OsmosdrReceiver using the given frequency
-## - Display the center frequency strength
+## - Display the tuned frequency strength
 
 
 ## 3
@@ -26,7 +26,7 @@ import pcdr.simple
 import time
 tuned_freq_first = 102.1e6
 tuned_freq_second = 102.3e6
-receiver = pcdr.simple.OsmosdrReceiver(tuned_freq_first)
+receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
 strength = receiver.get_strength()
 print(f"Strength at {tuned_freq_first} Hz: {strength}")
 print("Will check another frequency in 1 second.")
@@ -45,11 +45,11 @@ print(f"Strength at {tuned_freq_second} Hz: {strength}")
 ## Try this.
 import pcdr.simple
 import time
-center_freq = 102.1e6
-receiver = pcdr.simple.OsmosdrReceiver(TODO center_freq)
+tuned_freq = 102.1e6
+receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
 for count in range(5):
-    strength = receiver.get_cf_strength()
-    print(f"Strength at {center_freq} Hz: {strength}")
+    strength = receiver.get_strength()
+    print(f"Strength at {tuned_freq} Hz: {strength}")
     time.sleep(0.5)
 
 
@@ -62,11 +62,11 @@ for count in range(5):
 ## Try this.
 import pcdr.simple
 import time
-center_freq = 102.1e6
-receiver = pcdr.simple.OsmosdrReceiver(center_freq)
+tuned_freq = 102.1e6
+receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
 while 2 + 2 == 4:
-    strength = receiver.get_cf_strength()
-    print(f"Strength at {center_freq} Hz: {strength}")
+    strength = receiver.get_strength()
+    print(f"Strength at {tuned_freq} Hz: {strength}")
     time.sleep(0.5)
 
 
@@ -85,8 +85,8 @@ while 2 + 2 == 4:
 
 ## 10
 ## Try this.
-for center_freq in range(104_000_000, 104_700_000, 100_000):
-    print(center_freq)
+for tuned_freq in range(104_000_000, 104_700_000, 100_000):
+    print(tuned_freq)
 
 
 ## 11
@@ -98,7 +98,7 @@ for center_freq in range(104_000_000, 104_700_000, 100_000):
 ## Copy and modify the previous example so that it does the following:
 ## - Create an OsmosdrReceiver (once, before any looping)
 ## - Use a for loop to produce output as shown in the example below.
-## - From earlier recall this command: receiver.set_center_freq(##)
+## - From earlier recall this command: receiver.set_freq(##)
 ##
 ## Example run:
 ## Strength of 104000000 Hz: 2.131712706467802
@@ -112,7 +112,7 @@ for center_freq in range(104_000_000, 104_700_000, 100_000):
 ## Copy and modify the previous example. Instead of displaying the 
 ## strength as a number, display it using this code:
 ## dots = int(strength) * "o"
-## print(f"Strength of {center_freq} Hz: {dots}")
+## print(f"Strength of {tuned_freq} Hz: {dots}")
 
 
 ## 14  Tabular display -- Measure strength of a single frequency multiple times
@@ -122,15 +122,15 @@ import time
 from rich.console import Console
 from rich.table import Table
 
-center_freq = 93.9e6
-receiver = pcdr.simple.OsmosdrReceiver(center_freq)
+tuned_freq = 93.9e6
+receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
 console = Console()
 
 while True:
     table = Table(title="Frequencies")
     table.add_column("Frequency", justify="center", style="magenta")
     table.add_column("Strength", justify="center", style="green")
-    table.add_row(str(center_freq), str(receiver.get_cf_strength()))
+    table.add_row(str(tuned_freq), str(receiver.get_strength()))
     console.clear()
     console.print(table) 
     time.sleep(3)
@@ -141,7 +141,7 @@ while True:
 ## Expand the table to include at least four different frequency rows and
 ## add a time column using the datetime module. You will need to add the following import.
 ## For an extra challenge, do this using a for loop.
-## Be sure to tune/set your "receiver" to the targetted center frequency when appropriate.
+## Be sure to tune/set your "receiver" to the targetted frequency when appropriate.
 
 from datetime import datetime
 ## To get current time:
