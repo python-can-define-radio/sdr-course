@@ -141,6 +141,7 @@ while True:
 ## Expand the table to include at least four different frequency rows and
 ## add a time column using the datetime module. You will need to add the following import.
 ## For an extra challenge, do this using a for loop.
+## Be sure to tune/set your "receiver" to the targetted center frequency when appropriate.
 
 from datetime import datetime
 ## To get current time:
