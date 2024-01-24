@@ -33,7 +33,7 @@ def rescale(arry: np.ndarray, lower_limit: int, upper_limit: int):
 
 
     
-def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, youtputsize: int = 8) -> None:
+def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, youtputsize: int = 8, round_ndigits: int = 2) -> None:
     """
     A basic plot function, used primarily for docstring (and doctest) examples.
     
@@ -109,9 +109,9 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     
     drawing[invertedy, scaledx] = 1
     print(f"xmin: 0")
-    print(f"xmax: {np.max(xs)}")
+    print(f"xmax: {round(np.max(xs), round_ndigits)}")
     print(f"ymin: 0")
-    print(f"ymax: {np.max(ys)}")
+    print(f"ymax: {round(np.max(ys), round_ndigits)}")
     for row in drawing:
         print("~", end="")
         for item in row:

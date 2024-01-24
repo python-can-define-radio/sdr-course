@@ -73,7 +73,7 @@ def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float
     >>> timestamps, data = ook_modulate_at_frequency([1, 0, 1, 1], bit_length=20, samp_rate=40, freq=2)
     >>> plot(timestamps, data.real, 80, 10)
     xmin: 0
-    xmax: 1.975
+    xmax: 1.98
     ymin: 0
     ymax: 1.0
     ~o███████████████████████████████████████o███████████████████o███████████████████

@@ -1,10 +1,3 @@
-"""
-A collection of misc functions
-and such for this class.
-
-Try this to start: wave_gen_prompts()
-"""
-
 import numpy as np
 import random
 from typing import Optional, List, Tuple, Literal
@@ -100,7 +93,7 @@ def makeRealWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -141,7 +134,7 @@ def makeComplexWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -222,7 +215,7 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, al
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -255,7 +248,7 @@ def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allow
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -303,7 +296,7 @@ def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAli
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -335,7 +328,7 @@ def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasi
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -374,7 +367,7 @@ def makeWave(samp_rate: float,
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~████o████████████████o████████████████████████████
     ~███o█oo████████████oo█o█████████████oooo██████████
     ~██o████o██████████o████o███████████o████o█████████
@@ -403,7 +396,7 @@ def makeWave(samp_rate: float,
     xmin: 0
     xmax: 0.98
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~████o████████████████o████████████████████████████
     ~███o█oo████████████oo█o█████████████oooo██████████
     ~██o████o██████████o████o███████████o████o█████████
@@ -418,7 +411,7 @@ def makeWave(samp_rate: float,
     xmin: 0
     xmax: 1.18
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~████o████████████████o████████████████████████████████o█████
     ~███o█oo████████████oo█o█████████████oooo█████████████o█oo███
     ~██o████o██████████o████o███████████o████o███████████o████o██
@@ -446,7 +439,7 @@ def makeWave(samp_rate: float,
     xmin: 0
     xmax: 1.18
     ymin: 0
-    ymax: 0.9980267286300659
+    ymax: 1.0
     ~████o████████████████o████████████████████████████████o█████
     ~███o█oo████████████oo█o█████████████oooo█████████████o█oo███
     ~██o████o██████████o████o███████████o████o███████████o████o██
@@ -565,7 +558,7 @@ def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: f
     >>> timestamps, mult = multiply_by_complex_wave(baseband_sig, 64, 2)
     >>> plot(timestamps, mult.real)
     xmin: 0
-    xmax: 0.984375
+    xmax: 0.98
     ymin: 0
     ymax: 1.0
     ~o███████████████████████████████████████████████████████████████
@@ -595,7 +588,7 @@ def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: floa
     >>> timestamps, wave = multiply_by_real_wave(baseband_sig, 64, 2)
     >>> plot(timestamps, wave)
     xmin: 0
-    xmax: 0.984375
+    xmax: 0.98
     ymin: 0
     ymax: 1.0
     ~████████o███████████████████████████████████████████████████████
@@ -734,18 +727,14 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
     >>> samp_rate = 50
     >>> timestamps, wave = makeWave(samp_rate, 5, "complex", seconds=2)
     >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
-    >>> plot(sample_freqs, fft_mag)
+    >>> plot(sample_freqs, fft_mag, youtputsize=4)
     xmin: 0
     xmax: 24.5
     ymin: 0
-    ymax: 53.5400005750393
+    ymax: 53.54
     ~██████████o███████████████████████████████████████
     ~██████████████████████████████████████████████████
-    ~██████████████████████████████████████████████████
-    ~██████████████████████████████████████████████████
     ~█████████o█o██████████████████████████████████████
-    ~██████████████████████████████████████████████████
-    ~██████████████████████████████████████████████████
     ~ooooooooo███oooooooooooooooooooooooooooooooooooooo
     """
     sample_freqs, fft_mag = make_fft(sig, samp_rate)
@@ -766,7 +755,7 @@ def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]
     xmin: 0
     xmax: 24.0
     ymin: 0
-    ymax: 26.5400002850713
+    ymax: 26.54
     ~███████████████████████████████████o██████████████
     ~██████████████████████████████████████████████████
     ~██████████████████████████████████████████████████
