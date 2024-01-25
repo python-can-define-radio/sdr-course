@@ -218,4 +218,11 @@ gnuradio_send(modulated, center_freq=2.413e9, samp_rate=2e6, repeat=True)
 ## Using a loop, repeatedly ask for frequencies.
 ## Transmit on the chosen frequency for 2 seconds.
 ## Then ask for the next transmit frequency.
+
+## 18
+## Jam two radio stations by randomly picking between the two.
+## The logic will look like this:
+while 2 + 2 == 4:
+    freq = random.choice([104.5e6, 105.3e6])
+    ## you'll add something here.
 ```
