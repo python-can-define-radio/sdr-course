@@ -90,10 +90,10 @@ def makeRealWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
     >>> timestamps = createTimestamps(1, 50)
     >>> wave = makeRealWave_basic(timestamps, 2)
     >>> plot(timestamps, wave)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -118,10 +118,10 @@ def makeComplexWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
     >>> timestamps = createTimestamps(1, 50)
     >>> wave = makeComplexWave_basic(timestamps, 2)
     >>> plot(timestamps, wave.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -0.99
+    ymax: 1.00
     ~o████████████████████████o████████████████████████
     ~█ooo██████████████████ooo█ooo██████████████████ooo
     ~████o████████████████o██████o█████████████████o███
@@ -131,10 +131,10 @@ def makeComplexWave_basic(timestamps: np.ndarray, freq: float) -> np.ndarray:
     ~████████oo██████oo███████████████oo██████oo███████
     ~██████████oooooo███████████████████oooooo█████████
     >>> plot(timestamps, wave.imag)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -199,10 +199,10 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, al
     >>> from pcdr.basictermplot import plot
     >>> timestamps, wave = makeComplexWave_numsamps(50, 50, 2)
     >>> plot(timestamps, wave.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -0.99
+    ymax: 1.00
     ~o████████████████████████o████████████████████████
     ~█ooo██████████████████ooo█ooo██████████████████ooo
     ~████o████████████████o██████o█████████████████o███
@@ -212,10 +212,10 @@ def makeComplexWave_numsamps(num_samples: int, samp_rate: float, freq: float, al
     ~████████oo██████oo███████████████oo██████oo███████
     ~██████████oooooo███████████████████oooooo█████████
     >>> plot(timestamps, wave.imag)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -245,10 +245,10 @@ def makeRealWave_numsamps(num_samples: int, samp_rate: float, freq: float, allow
     >>> from pcdr.basictermplot import plot
     >>> timestamps, wave = makeRealWave_numsamps(50, 50, 2)
     >>> plot(timestamps, wave)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -280,10 +280,10 @@ def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAli
     >>> from pcdr.basictermplot import plot
     >>> timestamps, wave = makeComplexWave_time(1, 50, 2)
     >>> plot(timestamps, wave.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -0.99
+    ymax: 1.00
     ~o████████████████████████o████████████████████████
     ~█ooo██████████████████ooo█ooo██████████████████ooo
     ~████o████████████████o██████o█████████████████o███
@@ -293,10 +293,10 @@ def makeComplexWave_time(seconds: float, samp_rate: float, freq: float, allowAli
     ~████████oo██████oo███████████████oo██████oo███████
     ~██████████oooooo███████████████████oooooo█████████
     >>> plot(timestamps, wave.imag)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -325,10 +325,10 @@ def makeRealWave_time(seconds: float, samp_rate: float, freq: float, allowAliasi
     >>> from pcdr.basictermplot import plot
     >>> timestamps, wave = makeRealWave_time(1, 50, 2)
     >>> plot(timestamps, wave.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~██████o████████████████████████o██████████████████
     ~████oo█ooo██████████████████o█o█ooo███████████████
     ~██oo██████o████████████████oo██████o██████████████
@@ -364,10 +364,10 @@ def makeWave(samp_rate: float,
     >>> from pcdr.basictermplot import plot
     >>> timestamps, wave = makeWave(50, 3, "real", seconds=1)
     >>> plot(timestamps, wave)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~████o████████████████o████████████████████████████
     ~███o█oo████████████oo█o█████████████oooo██████████
     ~██o████o██████████o████o███████████o████o█████████
@@ -379,10 +379,10 @@ def makeWave(samp_rate: float,
 
     >>> timestamps, wave = makeWave(50, 3, "complex", seconds=1)
     >>> plot(timestamps, wave.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~o█████████████████████████████████████████████████
     ~█oo████████████oooo█████████████oooo████████████oo
     ~██████████████o████o███████████o████o█████████████
@@ -393,10 +393,10 @@ def makeWave(samp_rate: float,
     ~███████oooo████████████ooooo████████████oooo██████
 
     >>> plot(timestamps, wave.imag)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~████o████████████████o████████████████████████████
     ~███o█oo████████████oo█o█████████████oooo██████████
     ~██o████o██████████o████o███████████o████o█████████
@@ -408,10 +408,10 @@ def makeWave(samp_rate: float,
 
     >>> timestamps, wave = makeWave(50, 3, "real", num=60)
     >>> plot(timestamps, wave)
-    xmin: 0
+    xmin: 0.00
     xmax: 1.18
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~████o████████████████o████████████████████████████████o█████
     ~███o█oo████████████oo█o█████████████oooo█████████████o█oo███
     ~██o████o██████████o████o███████████o████o███████████o████o██
@@ -423,10 +423,10 @@ def makeWave(samp_rate: float,
 
     >>> timestamps, wave = makeWave(50, 3, "complex", num=60)
     >>> plot(timestamps, wave.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 1.18
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~o█████████████████████████████████████████████████o█████████
     ~█oo████████████oooo█████████████oooo████████████oo█oo███████
     ~██████████████o████o███████████o████o███████████████████████
@@ -436,10 +436,10 @@ def makeWave(samp_rate: float,
     ~██████o████o███████████████████████████o████o███████████o███
     ~███████oooo████████████ooooo████████████oooo█████████████o█o
     >>> plot(timestamps, wave.imag)
-    xmin: 0
+    xmin: 0.00
     xmax: 1.18
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~████o████████████████o████████████████████████████████o█████
     ~███o█oo████████████oo█o█████████████oooo█████████████o█oo███
     ~██o████o██████████o████o███████████o████o███████████o████o██
@@ -557,10 +557,10 @@ def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: f
     >>> baseband_sig = ook_modulate([1, 0], 32)
     >>> timestamps, mult = multiply_by_complex_wave(baseband_sig, 64, 2)
     >>> plot(timestamps, mult.real)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~o███████████████████████████████████████████████████████████████
     ~█ooo█████████████████████████ooo████████████████████████████████
     ~████oo█████████████████████oo███████████████████████████████████
@@ -587,10 +587,10 @@ def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: floa
     >>> baseband_sig = ook_modulate([1, 0], 32)
     >>> timestamps, wave = multiply_by_real_wave(baseband_sig, 64, 2)
     >>> plot(timestamps, wave)
-    xmin: 0
+    xmin: 0.00
     xmax: 0.98
-    ymin: 0
-    ymax: 1.0
+    ymin: -1.00
+    ymax: 1.00
     ~████████o███████████████████████████████████████████████████████
     ~█████ooo█ooo████████████████████████████████████████████████████
     ~███oo███████oo██████████████████████████████████████████████████
@@ -728,9 +728,9 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
     >>> timestamps, wave = makeWave(samp_rate, 5, "complex", seconds=2)
     >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
     >>> plot(sample_freqs, fft_mag, youtputsize=4)
-    xmin: 0
-    xmax: 24.5
-    ymin: 0
+    xmin: 0.00
+    xmax: 24.50
+    ymin: 0.00
     ymax: 53.54
     ~██████████o███████████████████████████████████████
     ~██████████████████████████████████████████████████
@@ -752,9 +752,9 @@ def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]
     >>> timestamps, wave = makeComplexWave_time(1, 50, 10)
     >>> sample_freqs, fft_mag = make_fft(wave, 50)
     >>> plot(sample_freqs, fft_mag)
-    xmin: 0
-    xmax: 24.0
-    ymin: 0
+    xmin: -25.00
+    xmax: 24.00
+    ymin: 0.00
     ymax: 26.54
     ~███████████████████████████████████o██████████████
     ~██████████████████████████████████████████████████

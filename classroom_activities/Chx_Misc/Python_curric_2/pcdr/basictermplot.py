@@ -6,6 +6,16 @@ from io import StringIO
 
 
 
+def fmntDig(x, round_ndigits):
+    """
+    >>> fmntDig(1.2345, 2)
+    '1.23'
+    >>> fmntDig(1.2, 3)
+    '1.200'
+    """
+    return format(x, f".{round_ndigits}f")
+
+
 def rescale(arry: np.ndarray, lower_limit: int, upper_limit: int):
     """
     Rescale data to given bounds.
@@ -45,20 +55,20 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     >>> xs = np.array([0, 10])
     >>> ys = np.array([0, 30])
     >>> plot(xs, ys, 2, 2)
-    xmin: 0
-    xmax: 10
-    ymin: 0
-    ymax: 30
+    xmin: 0.00
+    xmax: 10.00
+    ymin: 0.00
+    ymax: 30.00
     ~█o
     ~o█
 
     >>> xs = np.array([0, 20, 30])
     >>> ys = np.array([0, 20, 10])
     >>> plot(xs, ys, 4, 3)
-    xmin: 0
-    xmax: 30
-    ymin: 0
-    ymax: 20
+    xmin: 0.00
+    xmax: 30.00
+    ymin: 0.00
+    ymax: 20.00
     ~██o█
     ~███o
     ~o███
@@ -66,10 +76,10 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
     >>> xs = np.array([ 0, 10, 20, 40, 50, 60, 70])
     >>> ys = np.array([20, 30, 20, 20, 10,  0,  0])
     >>> plot(xs, ys, xoutputsize=8, youtputsize=4)
-    xmin: 0
-    xmax: 70
-    ymin: 0
-    ymax: 30
+    xmin: 0.00
+    xmax: 70.00
+    ymin: 0.00
+    ymax: 30.00
     ~█o██████
     ~o█o█o███
     ~█████o██
@@ -121,10 +131,10 @@ def plot(xs: np.ndarray, ys: np.ndarray, xoutputsize: Optional[int] = None, yout
         else:
             print(x, end=end, file=output_stream)
 
-    printstream(f"xmin: {round(np.min(xs), round_ndigits)}")
-    printstream(f"xmax: {round(np.max(xs), round_ndigits)}")
-    printstream(f"ymin: {round(np.min(ys), round_ndigits)}")
-    printstream(f"ymax: {round(np.max(ys), round_ndigits)}")
+    printstream(f"xmin: {fmntDig(np.min(xs), round_ndigits)}")
+    printstream(f"xmax: {fmntDig(np.max(xs), round_ndigits)}")
+    printstream(f"ymin: {fmntDig(np.min(ys), round_ndigits)}")
+    printstream(f"ymax: {fmntDig(np.max(ys), round_ndigits)}")
     for row in drawing:
         printstream("~", end="")
         for item in row:

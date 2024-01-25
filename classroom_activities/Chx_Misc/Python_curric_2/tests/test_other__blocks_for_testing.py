@@ -153,10 +153,10 @@ def test_Blk_fake_osmosdr_source(output: StringIO):
     plot(np.array(range(len(parsed))), parsed.real, output_stream=plotOutput)
     ## TODO: I haven't verified that the wave has the right frequency.
     assert plotOutput.getvalue() == """\
-xmin: 0
-xmax: 49
-ymin: -1.0
-ymax: 1.0
+xmin: 0.00
+xmax: 49.00
+ymin: -1.00
+ymax: 1.00
 ~o█████████████████████████████████████████████████
 ~█oooooooo█████████████████████████████████████████
 ~█████████ooo██████████████████████████████████████
