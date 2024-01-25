@@ -148,5 +148,17 @@ from datetime import datetime
 datetime.now()
 ## Save that to a variable or put it directly in an output statement.  Convert to string.
 
+
+## 16
+## Loop through the Commercial FM broadcast frequencies.
+## Check the strength of each.
+## If any of the strength levels surpass a specified threshold, display that frequency.
+
+
+## 17
+## - Loop through the Commercial FM broadcast frequencies. 
+## - Make a list of strength levels that surpass a threshold.
+## - Randomly jam each using what you learned in the PCDR OOK Transmission lesson:
+##     https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md
 ```
 
