@@ -78,10 +78,11 @@ In an SDR, the transmitter and/or receiver functionality is divided into hardwar
 
 ```
                          <SDR 1>                      <SDR 2>
---------------        --------------                -------------          ----------
-  Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver  --- Wire --- Speaker
---------------          [software]                    [software]           ----------
-                       +[hardware]                   +[hardware] 
+--------------        --------------                -------------             ----------
+  Microphone ---Wire-- Transmitter(TX) ~~~ Air ~~~~~ Receiver(RX) --- Wire ---- Speaker
+--------------          [software]                    [software]              ----------
+                            +                             + 
+                        [hardware]                    [hardware] 
                       --------------                -------------
 ```
 
