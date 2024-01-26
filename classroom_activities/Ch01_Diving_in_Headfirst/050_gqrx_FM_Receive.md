@@ -17,20 +17,24 @@
   `$ gqrx -r`  (Note: "$" represents your command prompt.  Do not type it.)
 - On the Configure I/O devices window select the "device" dropdown menu.
   - Choose the first HackRF entry which should look something like this:  
-  - HackRF HackRF One `123456f` (the numbers are a partial serial number of the device) 
-  - Change the input rate to `8000000`, and press the "OK" button at the bottom.
-- Maximize your gqrx window.
+  - HackRF HackRF One `123456f` (The numbers will be part of a device identifier.) 
+  - Change the input rate to `20000000` Hz (20 MHz), and press the "OK" button at the bottom.
+- Maximize or make your gqrx window as large as is practical.
+
+### Settings 
 - Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
+- Set gain levels (amplification) for SDR system -- Go to right side of window.  Select "Input controls".  Set these parameters:
+  - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️ 
+  - IF gain: 50 (intermediate freqency gain)  -- may be varied
+  - BB gain: 32 (baseband gain)  -- may be varied
 - Click the ▶️ Play button in the top left under "File".  
 - You should see some static (noise) and spikes in the spectrum display.
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
-### Settings     
-⚠️ **Keep the RF gain at zero.** ⚠️ 
 - **Frequency**  
   - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
-  - gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (on the right).
+  - HOW: gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (on the right).
   - In the spectrum view, clicking on the top of the numbers increases, and clicking on the bottom of the numbers decreases the frequency.  
   - In the Frequency box of the Receiver Options pane, it would be `98000.000 kHz`.
 - **Squelch**  
@@ -46,7 +50,7 @@
   - Other than the RF gain, feel free to play around with the settings. You can always reset to default configuration with the `$ gqrx -r` terminal command.  
 - **Optional**
   - You can increase the decimation in the Configure I/O devices window to get better view of the tuned frequency. Ask for a demonstration if this is unclear.
-
+⚠️ **Keep the RF gain at zero.** ⚠️ 
 ⚠️ **Remember to respect your fellow classmates (audio level). They may be trying to work as well.**  
 
 ### ℹ️ Some useful resources for gqrx and HackRF One:
