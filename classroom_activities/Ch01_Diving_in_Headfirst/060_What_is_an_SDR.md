@@ -10,7 +10,7 @@
 
 ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 21-22).
 
-Well, it's a Software Defined Radio. But you're probably looking for a more in-depth answer than that.
+What is an SDR?  Well, it's a Software Defined Radio. But you're probably looking for a more in-depth answer than that.
 
 So, let's look at what a radio is. Even before that, we'll start with what a wave is.
 
@@ -58,7 +58,7 @@ What kind of signal is carried on the string? On the wire?
 
 ### Radios
 
-A radio is almost identical:
+A radio system is similarily interconnected:
 
 ```
                          <Radio 1>                    <Radio 2>
@@ -66,8 +66,11 @@ A radio is almost identical:
   Microphone ---Wire--- Transmitter ~~~~~~ Air ~~~~~~ Receiver --- Wire ------ Speaker
 --------------        --------------                 ----------              -----------
 ```
+
 A traditional radio transmitter (Radio 1) is composed of electronics hardware without software.
 So too, a traditional radio receiver (Radio 2) is composed of electronics hardware without software.
+
+A "gimme" question:  What type of signal is exchanged through the air?  
 
 ### Software Defined Radio (SDR)
 
@@ -86,10 +89,10 @@ The hardware and software of the software defined radio (SDR) may be housed in a
 <details> <summary> ℹ️ Expand for further explanation </summary>
  
 * The diagram above shows two separate SDR's, one designated as the transmitter and the other as the receiver.  Either SDR may, optionally, communicate with a traditional radio as well.  
-* Most SDR devices can be operated in both a transmission mode and reception mode.
-* Depending on its mode of operation, an SDR device may be called the "transmitter", the "reciever", or the "transciever", but, as stated above, some of the functionality of transmission or reception is allocated to a separate computing device.
+* Most SDR devices can be operated in both a transmission mode and a reception mode.
+* Depending on its mode of operation, an SDR device may be called the "transmitter", the "reciever", or the "transciever.  For either mode of SDR operation (transmission or reception), some of the functionality is allocated to a separate computing device.
 * In current discussion, the term "computer" may refer to a desktop computer, a laptop computer, a tablet computer, or a mobile smart telephone, as examples.
-* Although wires are shown in the diagram, in some SDR systems, the microphone may be connected to the SDR via wireless communication technology.
+* Although wires are shown in the diagram, in some SDR systems, the microphone, speaker, etc. may be connected to the SDR via wireless communication technology.
 
 </details>
 
