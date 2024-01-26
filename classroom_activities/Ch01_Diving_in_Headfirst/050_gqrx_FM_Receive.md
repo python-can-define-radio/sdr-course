@@ -27,16 +27,16 @@
   - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️ 
   - IF gain: 50 (intermediate freqency gain)  -- may be varied
   - BB gain: 32 (baseband gain)  -- may be varied
-- Click the ▶️ Play button in the top left under "File".  
+- Click the ▶️ Play button in the top left under "File".  (If the sound is much too load, Press Play button again.  Adjust system or gqrx (@ bottom right) sound level, and Play again.) 
 - You should see some static (noise) and spikes in the spectrum display.
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
 - **Frequency**  
   - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
-  - HOW: gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (on the right).
+  - HOW: gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (a tab on the right side).
   - In the spectrum view, clicking on the top of the numbers increases, and clicking on the bottom of the numbers decreases the frequency.  
-  - In the Frequency box of the Receiver Options pane, it would be `98000.000 kHz`.
+  - In the Frequency box of the Receiver Options pane, it would be typed: `98000.000 kHz`.
 - **Squelch**  
   - With your mouse, click anywhere on the spectrum where there is no spike present.
   - In the receiver options pane (on the right), click the <kbd>A</kbd> button (short for automatic) next to "Squelch".
@@ -50,7 +50,9 @@
   - Other than the RF gain, feel free to play around with the settings. You can always reset to default configuration with the `$ gqrx -r` terminal command.  
 - **Optional**
   - You can increase the decimation in the Configure I/O devices window to get better view of the tuned frequency. Ask for a demonstration if this is unclear.
+
 ⚠️ **Keep the RF gain at zero.** ⚠️ 
+
 ⚠️ **Remember to respect your fellow classmates (audio level). They may be trying to work as well.**  
 
 ### ℹ️ Some useful resources for gqrx and HackRF One:
