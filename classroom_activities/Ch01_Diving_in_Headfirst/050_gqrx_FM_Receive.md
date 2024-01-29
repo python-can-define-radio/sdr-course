@@ -25,8 +25,8 @@
 - Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
 - Set gain levels (amplification) for SDR system -- Go to right side of window.  Select "Input controls".  Set these parameters:
   - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️ 
-  - IF gain: 50 (intermediate freqency gain)  -- may be varied
-  - BB gain: 32 (baseband gain)  -- may be varied
+  - IF gain: 32 (intermediate freqency gain)  -- may be varied
+  - BB gain: 50 (baseband gain)  -- may be varied
 - Click the ▶️ Play button in the top left under "File".  (If the sound is much too load, Press Play button again.  Adjust system or gqrx (@ bottom right) sound level, and Play again.) 
 - You should see some static (noise) and spikes in the spectrum display.
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.  
