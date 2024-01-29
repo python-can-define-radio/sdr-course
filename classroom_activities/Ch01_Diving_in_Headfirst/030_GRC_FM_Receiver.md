@@ -40,6 +40,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 - Id: `favorite_stations`
 - Type: `Float`
 - Num Options: `4`
+- Default Option: `104.3e6`  (_This only applies if your version of GRC has a `Default Option` separated from `Option 0`._)
 - Option 0: `104.3e6`  (_Replace these with actual stations_)
 - Label 0: `Popular country rock jazz`  
 - Option 1: `93.9e6`
