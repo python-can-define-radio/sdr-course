@@ -1,6 +1,10 @@
 from gnuradio import gr, analog, blocks
-from pcdr.our_GR_blocks import Blk_strength_at_freq
+from pcdr.our_GR_blocks import Blk_strength_at_freq, SingleItemStack, Averager
 import time
+import pytest
+import queue
+
+
 
 
 def test_Blk_strength_at_freq_1():
@@ -13,10 +17,8 @@ def test_Blk_strength_at_freq_1():
     saf = Blk_strength_at_freq(samp_rate, 1000, fft_size)
     
     tb.connect(sig_s, stream_to_vec, saf)
-    assert saf.latest_reading == 0
     tb.start()
-    time.sleep(0.5)
-    assert saf.latest_reading > 650
+    assert saf._reading.get() > 650
     tb.stop()
     tb.wait()
 
@@ -31,10 +33,8 @@ def test_Blk_strength_at_freq_2():
     saf = Blk_strength_at_freq(samp_rate, 1000, fft_size)
     
     tb.connect(sig_s, stream_to_vec, saf)
-    assert saf.latest_reading == 0
     tb.start()
-    time.sleep(0.5)
-    assert saf.latest_reading < 6
+    assert saf._reading.get() < 6
     tb.stop()
     tb.wait()
 
@@ -49,10 +49,8 @@ def test_Blk_strength_at_freq_3():
     saf = Blk_strength_at_freq(samp_rate, 4800, fft_size)
     
     tb.connect(sig_s, stream_to_vec, saf)
-    assert saf.latest_reading == 0
     tb.start()
-    time.sleep(0.5)
-    assert saf.latest_reading > 650
+    assert saf._reading.get() > 650
     tb.stop()
     tb.wait()
 
@@ -67,9 +65,28 @@ def test_Blk_strength_at_freq_4():
     saf = Blk_strength_at_freq(samp_rate, 4800, fft_size)
     
     tb.connect(sig_s, stream_to_vec, saf)
-    assert saf.latest_reading == 0
     tb.start()
-    time.sleep(0.5)
-    assert saf.latest_reading < 6
+    assert saf._reading.get() < 6
     tb.stop()
     tb.wait()
+
+
+def test_SingleItemStack_can_add_one():
+    s = SingleItemStack()
+    s.put(42)
+    assert s.get() == 42
+
+
+def test_SingleItemStack_can_add_two():
+    """Notice that the first item that was `put()` is gone."""
+    s = SingleItemStack()
+    s.put(42)
+    s.put(43)
+    assert s.get() == 43
+    with pytest.raises(queue.Empty):
+        s.get(timeout=0.01)
+
+
+def test_Averager():
+    a = Averager()
+    assert "Something that is useful in Blk_strength_at_freq"

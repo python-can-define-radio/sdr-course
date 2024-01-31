@@ -1,10 +1,9 @@
 import numpy as np
 from gnuradio import gr
 from gnuradio import blocks
-from collections import deque
 import osmosdr
 import time
-from queue import Empty, SimpleQueue, Queue
+from queue import Empty, SimpleQueue, LifoQueue
 from pcdr.helpers import SimpleQueueTypeWrapped, QueueTypeWrapped, queue_to_list
 from typing import List, Optional
 from typeguard import typechecked
@@ -152,6 +151,37 @@ class Blk_queue_sink(gr.sync_block):
         return 1
 
 
+class SingleItemStack:
+    def __init__(self):
+        self.__stack = LifoQueue()
+    
+    def get(self, block: bool = True, timeout: Optional[float] = None):
+        """Get the item stored in the stack.
+        For details about arguments, see the Python Queue `.get()` docs:
+        import queue
+        q = queue.Queue()
+        q.get()
+        """
+        return self.__stack.get(block, timeout)
+    
+    def put(self, val):
+        """
+        Put an item in the stack.
+        If there's already an item, `get()` it to clear the stack, then proceed with `put()`.
+        """
+        try:
+            self.__stack.get(block=False)
+        except Empty:
+            pass
+        self.__stack.put(val)
+
+
+class Averager:
+    def __init__(self):
+        raise NotImplementedError()
+
+
+
 class Blk_strength_at_freq(gr.sync_block):
     @typechecked
     def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int, avg_count: int = 1):
@@ -161,19 +191,18 @@ class Blk_strength_at_freq(gr.sync_block):
             out_sig=[]
         )
         assert 0 <= freq_of_interest < samp_rate / 2
-        self.latest_reading = 0.0
         maxval = samp_rate/2 - samp_rate/fft_size
-        ratio = fft_size / (2 * maxval) 
+        ratio = fft_size / (2 * maxval)
+        self._reading = SingleItemStack()
         self._fft = None
         self._idx = int(ratio * freq_of_interest)
-        # self._deq = deque([], 1)
         # self.__last_few = []
         # self._avg_count = avg_count
     
     def work(self, input_items, output_items):
         dat = input_items[0][0]
         self._fft = abs(np.fft.fft(dat))
-        self.latest_reading = float(self._fft[self._idx])
+        self._reading.put(float(self._fft[self._idx]))
         # if len(self.__last_few) < self._avg_count:
         #     fft_val = float(self._fft[self._idx])
         #     self.__last_few.append(fft_val)

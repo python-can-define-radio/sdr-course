@@ -6,7 +6,7 @@ from tests.test_other__blocks_for_testing import Blk_fake_osmosdr_source
 
 
 
-def fake_val_hack_rf_rec(*args):
+def fake_val_hack_rf_rec(*args, **kwargs):
     """A function that does nothing; current usage is to replace the device parameter validation function."""
     pass
    
@@ -22,7 +22,6 @@ def test_OsmosdrReceiver_tuned_on_activity():
     with patch("pcdr.simple.osmo_source", fake_osmo):
         with patch("pcdr.simple.validate_hack_rf_receive", fake_val_hack_rf_rec):
             receiver = OsmosdrReceiver("hackrf", freq=apparent_tune_freq)
-            time.sleep(0.3)
             assert receiver.get_strength() > 650
             receiver.tb.stop()
             receiver.tb.wait()
@@ -38,7 +37,6 @@ def test_OsmosdrReceiver_tuned_off_activity():
     with patch("pcdr.simple.osmo_source", fake_osmo):
         with patch("pcdr.simple.validate_hack_rf_receive", fake_val_hack_rf_rec):
             receiver = OsmosdrReceiver("hackrf", freq=apparent_tune_freq)
-            time.sleep(0.3)
             assert receiver.get_strength() < 10
             receiver.tb.stop()
             receiver.tb.wait()

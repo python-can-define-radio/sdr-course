@@ -15,8 +15,8 @@ class OsmosdrReceiver:
     
     ```python3
     import pcdr.simple
-    receiver = pcdr.simple.OsmosdrReceiver("hackrf", 0, 103.9e6)
-    strength = receiver.get_cf_strength()
+    receiver = pcdr.simple.OsmosdrReceiver("hackrf", 103.9e6)
+    strength = receiver.get_strength()
     print(strength)
     ```
     """
@@ -34,14 +34,10 @@ class OsmosdrReceiver:
         self.fft_size = 1024
         if_gain = 32
         bb_gain = 40
-        ### TODO: DEBUG
-        device_name = "hackrf"
-        device_id = 0
         device_args = f"{device_name}={device_id}"
         validate_hack_rf_receive(device_name, self.samp_rate, freq, if_gain, bb_gain)
         self.osmo_source = osmo_source(args=device_args)
         self.osmo_source.set_sample_rate(self.samp_rate)
-        self.osmo_source.set_center_freq(freq - self.freq_offset)
         self.osmo_source.set_gain(0)
         self.osmo_source.set_if_gain(if_gain)
         self.osmo_source.set_bb_gain(bb_gain)
@@ -49,26 +45,24 @@ class OsmosdrReceiver:
         self.streng = Blk_strength_at_freq(self.samp_rate, self.freq_offset, self.fft_size, 10)
         self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
         self.tb.start()
+        self.set_freq(freq)
 
 
     @typechecked
-    def get_strength(self) -> float:
+    def get_strength(self, block: bool = True, timeout: float = 2.0) -> float:
         """Get the signal strength at the current frequency.
         The frequency is specified when the `OsmosdrReceiver` is created,
-        and can be changed using `set_freq`."""
-        ## TODO: Fix this sleep with the queue implementation.
-        time.sleep(0.01)
-        return self.streng.latest_reading
-        # while True:
-        #     try:
-        #         return self.streng._deq.pop()
-        #     except IndexError:
-        #         time.sleep(100e-6)
+        and can be changed using `set_freq`.
+        """
+        return self.streng._reading.get(block, timeout)
     
     @typechecked
-    def set_freq(self, freq: float):
+    def set_freq(self, freq: float, seconds: float = 0.5):
         """
-        Set the frequency of the receiver.
+        Set the frequency of the receiver, then
+        wait `seconds` seconds. This delay allows the buffer to fill with data from the newly chosen frequency.
+        
+        Note: It's possible that a smaller delay would suffice; we chose a number that would safely guarantee a fresh buffer.
         
         Implementation detail: Those who are familiar with SDRs may wonder how
         this avoids the "DC spike". `set_freq` actually tunes below the specified
@@ -79,9 +73,11 @@ class OsmosdrReceiver:
         validate_hack_rf_receive("hackrf", center_freq=freq)
         # Also, TODO:
         #   Tell the queue work function to consume the entire input_items so that
-        #   any data after that is fresh, THEN clear the current get_cf_strength() reading (which
+        #   any data after that is fresh, THEN clear the current get_strength() reading (which
         #   will presumably be using a deque object).
-        return self.osmo_source.set_center_freq(freq - self.freq_offset)
+        retval = self.osmo_source.set_center_freq(freq - self.freq_offset)
+        time.sleep(seconds)
+        return retval
 
     @typechecked
     def set_if_gain(self, if_gain: float):
