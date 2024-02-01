@@ -38,8 +38,9 @@ class vector_to_osmocom_sink(gr.top_block):
                  device_args: str,
                  repeat: bool):
         """device_args: "hackrf=0" is common."""
-        
-        validate_hack_rf_transmit(samp_rate, center_freq, if_gain)
+
+        ## TODO: make the device name be passed in rather than always "hackrf"
+        validate_hack_rf_transmit("hackrf", samp_rate, center_freq, if_gain)
 
         gr.top_block.__init__(self, "Top block")
         
