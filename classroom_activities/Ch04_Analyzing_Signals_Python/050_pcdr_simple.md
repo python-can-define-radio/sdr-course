@@ -29,8 +29,8 @@ tuned_freq_second = 102.3e6
 receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
 strength = receiver.get_strength()
 print(f"Strength at {tuned_freq_first} Hz: {strength}")
-print("Will check another frequency in 1 second.")
-time.sleep(1)
+print("Will check another frequency.")
+# Note that set_freq has a time.sleep built inside it.
 receiver.set_freq(tuned_freq_second)
 strength = receiver.get_strength()
 print(f"Strength at {tuned_freq_second} Hz: {strength}")
