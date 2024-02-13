@@ -120,7 +120,7 @@ print(y)
 
 <details><summary> Expand for examples.</summary>
     
-   - ### multiplying for a list
+   - ### multiplying a list by a constant
 ```python3 
 y = [4, 5, 6]  
 z = 3 * y
@@ -128,7 +128,7 @@ print(z)
 ```
 z is now `[4, 5, 6, 4, 5, 6, 4, 5, 6]` repeats all elements 3 times
    
-   - ### multiplying for an array
+   - ### multiplying an array by a constant
 ```python3
 y = np.array([4, 5, 6])  
 z = 3 * y
@@ -136,7 +136,7 @@ print(z)
 ```
 z is now `np.array([12, 15, 18])` multiplies each element by 3
    
-   - ### adding for an array (cannot be done with lists)
+   - ### adding a constant to an array (cannot be done with lists)
 ```python3
 x =np.array([3, 8, 15])  
 z = x + 3  
@@ -144,7 +144,7 @@ print(z)
 ```
 z is now `np.array([6, 11, 18])` adds to each element by the constant
    
-   - ### subtracting for an array (cannot be done with lists)
+   - ### subtracting a constant from an array (cannot be done with lists)
 ```python3
 x =np.array([3, 8, 15])  
 z = x - 3
@@ -152,7 +152,7 @@ print(z)
 ```
 z is now `np.array([0, 5, 12])` subtracts from each element by the constant
    
-   - ### dividing for an array (cannot be done with lists)
+   - ### dividing an array by a constant (cannot be done with lists)
 ```python3 
 x =np.array([3, 9, 18])  
 z = x / 3
@@ -167,7 +167,7 @@ z is now `np.array([1., 3., 6.])` divides from each element by the constant (pro
 
 <details><summary> Expand for examples.</summary>
     
-   - ### adding for a list
+   - ### adding two lists
 ```python3 
 x = [5, 6, 7]  
 y = [8, 9, 10]  
@@ -176,7 +176,7 @@ print(z)
 ```
 z is now `[5, 6, 7, 8, 9, 10]` creates new list with all elements from each list
    
-   - ### adding for an array
+   - ### adding two arrays
 ```python3   
 x = np.array([5, 6, 7])  
 y = np.array([8, 9, 10])  
@@ -185,7 +185,7 @@ print(z)
 ```
 z is now `np.array([13, 15, 17])` adds each element to its counterpart same index
    
-   - ### subtracting for an array (cannot be done with lists)
+   - ### subtracting two arrays (cannot be done with lists)
 ```python3
 x =np.array([3, 8, 15])  
 y =np.array([1, 2, 3])  
@@ -194,7 +194,7 @@ print(z)
 ```
 z is now `np.array([2, 6, 12])` subtracts counterpart same index element from first array element
    
-   - ### multiplying for an array (cannot be done with lists)
+   - ### m (cannot be done with lists)
 ```python3
 x = np.array([5, 6, 7])  
 y = np.array([8, 9, 10])  
@@ -203,7 +203,7 @@ print(z)
 ```
 z is now `np.array([40, 54, 70])` multiplies each element to its counterpart same index
     
-   - ### dividing for an array (cannot be done with lists)
+   - ### dividing two arrays (cannot be done with lists)
 ```python3
 x = np.array([3, 8, 15])  
 y = np.array([1, 2, 3])  
