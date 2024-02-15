@@ -225,7 +225,8 @@ y = np.array([64, 7, 12])
 z = np.concatenate([x, y])
 print(z)
 ``` 
-z is now `np.array([3, 9, 18, 64, 7, 12])`
+z is now `np.array([3, 9, 18, 64, 7, 12])`.   
+z prints as: [ 3  9 18 64  7 12].  Notice -- Numpy arrays print without commas between elements.
    
 ### == with arrays
 
