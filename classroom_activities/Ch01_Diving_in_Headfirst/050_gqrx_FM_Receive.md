@@ -18,7 +18,8 @@
 - On the Configure I/O devices window select the "device" dropdown menu.
   - Choose the first HackRF entry which should look something like this:  
   - HackRF HackRF One `123456f` (The numbers will be part of a device identifier.) 
-  - Change the input rate to `20000000` Hz (20 MHz), and press the "OK" button at the bottom.
+  <!-- - Change the input rate to `20000000` Hz (20 MHz). -->
+  - Press the "OK" button at the bottom.
 - Maximize or make your gqrx window as large as is practical.
 
 ### Settings 
