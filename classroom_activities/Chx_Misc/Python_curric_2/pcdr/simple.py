@@ -1,6 +1,7 @@
 from gnuradio import gr, blocks
 from osmosdr import source as osmo_source
 from pcdr.our_GR_blocks import Blk_strength_at_freq
+from pcdr import configure_graceful_exit
 import time
 from typing import Union
 from typeguard import typechecked
@@ -44,8 +45,14 @@ class OsmosdrReceiver:
         self.stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, self.fft_size)
         self.streng = Blk_strength_at_freq(self.samp_rate, self.freq_offset, self.fft_size, 10)
         self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
+        configure_graceful_exit(self.tb)
         self.tb.start()
         self.set_freq(freq)
+        
+
+    def stop_and_wait(self):
+        self.tb.stop()
+        self.tb.wait()
 
 
     @typechecked
