@@ -610,7 +610,7 @@ def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: floa
 
 def random_normal(size: int, dtype=np.float32, seed=None) -> np.ndarray:
     """A wrapper of numpy's `standard_normal()` function;
-    returns a numpy array of length `size` containing normally distributed.
+    returns a numpy array of length `size` containing normally distributed noise.
 
     `seed` is optional, and mostly just used for testing the function.
     
@@ -621,10 +621,14 @@ def random_normal(size: int, dtype=np.float32, seed=None) -> np.ndarray:
     array([ 0.12573022, -0.13210486])
     """
     rng = np.random.default_rng(seed=seed)
-    if dtype == np.complex64:
-        re = rng.standard_normal(size=size, dtype=np.float32)
+    re = rng.standard_normal(size=size, dtype=np.float32)
+    if dtype == np.float32:
+        result = re
+    elif dtype == np.complex64:
         im = 1j * rng.standard_normal(size=size, dtype=np.float32)
         result = re + im
+    else:
+        raise NotImplementedError()
     assert isinstance(result, np.ndarray)
     assert len(result) == size
     assert result.dtype == dtype
