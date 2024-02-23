@@ -10,6 +10,7 @@ tuned_freq = 103.7e6
 receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
 strength = receiver.get_strength()
 print(f"Strength of {tuned_freq} Hz: {strength}")
+receiver.stop_and_wait()
 
 
 ## 2
