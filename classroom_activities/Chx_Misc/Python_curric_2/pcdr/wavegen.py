@@ -687,7 +687,8 @@ def generate_ook_modulated_example_data(noise: bool = False, message_delay: bool
     bit_length = random.randrange(50, 3000, 10)
     freq = random.randrange(10, samp_rate // 5)
     
-    bits = str_to_bin_list(message)
+    with_preamb = "«" + message
+    bits = str_to_bin_list(with_preamb)
     baseband_sig = ook_modulate(bits, bit_length)
     timestamps, fully_modded = multiply_by_complex_wave(baseband_sig, samp_rate, freq)
     if message_delay:
