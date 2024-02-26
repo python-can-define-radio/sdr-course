@@ -122,6 +122,20 @@ For example:
 
 If you're having trouble finding the culprit characters, you can always erase the Id entirely and type a new Id.
 
+## Overflow
+
+```
+OverflowError: argument ... overflowed: value must be in the range -2147483648 to 2147483647
+```
+
+Often, this is caused by GUI Ranges. For example, if you chose the following arguments...
+
+- Start: 0
+- Stop: 1e12
+- Step: 2
+
+... then the computer would attempt to create a slider with 500 billion steps. Sliders can't have that many steps. (Also, in most cases, you wouldn't need the precision of stepping by 2 when working with such a large range of values.)
+
 ## Topology
 
 ```
