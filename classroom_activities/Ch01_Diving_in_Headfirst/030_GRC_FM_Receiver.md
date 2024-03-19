@@ -70,9 +70,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 ### For the GUI Check Box:
 
 - Id: `hardware_filter`
-- Default Value: `0` (_or `False`_)
-- True: `1` (_or `True`_)
-- False: `0` (_or `False`_)
+- Default Value: `False`
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
