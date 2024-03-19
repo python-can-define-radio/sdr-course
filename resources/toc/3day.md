@@ -1,14 +1,5 @@
 # Software Defined Radio (SDR) Course
 
-## Daily Schedule
-
-0900 - 1000  
-1010 - 1115  
-1300 - 1400  
-1410 - 1500  
-
-Instructors will be available until approx 1520 if further questions.
-
 ## Table of Contents (TOC)
 
 ### Day 1
