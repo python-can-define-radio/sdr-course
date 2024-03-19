@@ -41,7 +41,6 @@ Parameters:
   - Frequency: `sigfreq`
 - Osmocom Sink:
   - Ch0: Frequency (Hz): `2.4e9`
-  - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `35`
   - Ch0: BB Gain (dB): `0`

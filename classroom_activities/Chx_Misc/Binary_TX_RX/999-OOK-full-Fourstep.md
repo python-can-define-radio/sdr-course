@@ -49,7 +49,6 @@ Parameters:
 - Osmocom Sink:
   - Sample Rate: `samp_rate`
   - Ch0: Frequency (Hz): _Pick something_
-  - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `32`
   - Ch0: BB Gain (dB): `0`
@@ -78,7 +77,6 @@ Osmocom Source  -->  Band Pass Filter  -->  Complex to Mag  -->  Moving Average 
   - Value: `2e6`
 - Osmocom Source:
   - Ch0: Frequency (Hz): _Tune to 250 kHz below your transmit freq._
-  - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `32`
   - Ch0: BB Gain (dB): `32`

@@ -73,7 +73,6 @@ _Note: the following block names are abbreviated:_
 - osmocom Sink:
   - Device Arguments: `"hackrf=0"`
   - Ch0: Frequency (Hz): `Use frequency from group # above`
-  - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `ifgain`
   - Ch0: BB Gain (dB): `0`
@@ -102,7 +101,6 @@ osmocom Source  --->  Time Sink
 - osmocom Source:
   - Device Arguments: `"hackrf=0"`
   - Ch0: Frequency (Hz): `Use frequency from group # above`
-  - Ch0: Frequency Correction (ppm): `0`
   - Ch0: RF Gain (dB): `0`
   - Ch0: IF Gain (dB): `32`
   - Ch0: BB Gain (dB): `32`

@@ -22,7 +22,6 @@ Parameters:
   - Symbol Length: `int(1e6)`
 - osmocom Sink:
   - Ch0 Frequency (Hz): `2.4e9`
-  - Ch0 Frequency Correction: `0`
   - RF Gain: `0`
   - IF Gain: `30`
   - BB Gain: `0`
