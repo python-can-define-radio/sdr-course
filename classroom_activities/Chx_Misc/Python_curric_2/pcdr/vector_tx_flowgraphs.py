@@ -16,6 +16,7 @@ from pcdr.our_GR_blocks import print_sink, string_file_sink
 from gnuradio import zeromq
 from typing import Tuple
 from pcdr.helpers import validate_hack_rf_transmit
+from typeguard import typechecked
 
 
 ## Bizarre GNU Radio variable-rename issues
@@ -30,6 +31,7 @@ from pcdr.helpers import validate_hack_rf_transmit
 
 class vector_to_osmocom_sink(gr.top_block):
 
+    @typechecked
     def __init__(self,
                  data: Tuple[complex],
                  center_freq: float,
