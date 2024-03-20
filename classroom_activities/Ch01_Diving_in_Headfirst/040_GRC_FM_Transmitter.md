@@ -42,6 +42,7 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 
 ### For the Wav File Source:
 
+- _NOTE: You can use a Audio Source instead if you'd like. See notes at the bottom of this page._
 - File: Pick a file by pressing the "..." button. It must be a wav file, not an mp3, etc.
 - Repeat: Up to you; do you want it to repeat?
 
@@ -73,3 +74,11 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 ### Discussion
 
 - Try different audio files, different IF Gains, and different broadcast frequencies.
+
+### Using an Audio Source
+
+You have two options:
+1. Simply using an `Audio Source` block allows you to use a microphone as your source.
+2. You can also use an `Audio Source` block with a special configuration to broadcast whatever is currently playing on your computer:
+    1. Do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
+    2. In your `Audio Source` block, for the Device Name, put "pulse_monitor".
