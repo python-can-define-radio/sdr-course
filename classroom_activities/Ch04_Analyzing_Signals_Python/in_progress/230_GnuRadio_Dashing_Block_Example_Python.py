@@ -22,7 +22,7 @@ class dashing_display(gr.sync_block):
             in_sig=[np.complex64],                                            
             out_sig=[]                                                        
         )                                                                     
-        self.ui = HChart(title="Some Horizontal Chart", color=7, border_color=
+        self.ui = HChart(title="Some Horizontal Chart", color=7, border_color=2)
         self.sleep_seconds = sleep_seconds                                    
                                                                               
     def work(self, input_items, output_items):                                
