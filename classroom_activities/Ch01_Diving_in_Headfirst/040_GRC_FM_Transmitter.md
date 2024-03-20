@@ -49,9 +49,7 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 
 - Type: `Float -> Float (Real Taps)`
 - Interpolation: `int(samp_rate)`
-- Decimation: Check the sample rate in the properties of the wav file. If you can't find the sample rate, put `int(20e3)`. The song will play either too fast or too slowly; adjust up or down to make the song sound normal.  
-  Good Example: `21000`  
-  Bad Example: `21000 Hz`  (don't put the "Hz" part)
+- Decimation: This should match the sample rate that you'll find in the properties of the wav file. If you can't find the sample rate, put `60_000` (which is 60000 Hz, or 60 kHz). The song will probably play too fast; adjust to make the song sound normal. 
 
 ### For the WBFM Transmit:
 
