@@ -29,6 +29,12 @@
 - Discuss [FM Receiver][030_GRC_FM_Receiver]
   - Sub-point: discuss how the hardware filter helps to avoid aliasing
 
+- Independent work time to experiment with what we've learned so far.
+  For those who wish to work ahead, look at these. Start from the top of whichever chapter you find interesting.
+    - [Ch03 URH][Ch_URH]
+    - [Ch04 Python][Ch_Python]
+    - [Ch06 Applications][Ch_Applic]
+
 ### Day 4
 
 - B1:  
