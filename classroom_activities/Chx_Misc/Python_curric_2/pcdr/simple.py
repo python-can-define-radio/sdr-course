@@ -5,7 +5,7 @@ from pcdr import configure_graceful_exit
 import time
 from typing import Union
 from typeguard import typechecked
-from pcdr.helpers import validate_hack_rf_receive
+from pcdr.helpers import validate_hack_rf_receive, HackRFArgs_RX
 
 
 
@@ -22,28 +22,28 @@ class OsmosdrReceiver:
     ```
     """
     @typechecked
-    def __init__(self, device_name: str, freq: float, *, device_id: Union[int, str] = 0):
+    def __init__(self, device_args: str, freq: float):
         """
-        `device_name`: One of the supported osmocom devices, such as "hackrf", "bladerf", etc. See the osmocom docs for a full list.
+        `device_name`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
         `freq`: The frequency which the device will tune to. See note on `set_freq` for more info.
-        `device_id`: A zero-based index ("0", "1", etc), or the partial serial number of the device, which can be gotten from GQRX
         >>> 
         """
         self.tb = gr.top_block()
         self.freq_offset = 20e3
-        self.samp_rate = 2e6
         self.fft_size = 1024
-        if_gain = 32
-        bb_gain = 40
-        device_args = f"{device_name}={device_id}"
-        validate_hack_rf_receive(device_name, self.samp_rate, freq, if_gain, bb_gain)
+        if device_args.startswith("hackrf="):
+            self.osmoargs = HackRFArgs_RX(freq, device_args)
+        else:
+            raise NotImplementedError("Only implemented for HackRF so far.")
+        
+        # validate_hack_rf_receive(device_name, self.samp_rate, freq, if_gain, bb_gain)
         self.osmo_source = osmo_source(args=device_args)
-        self.osmo_source.set_sample_rate(self.samp_rate)
-        self.osmo_source.set_gain(0)
-        self.osmo_source.set_if_gain(if_gain)
-        self.osmo_source.set_bb_gain(bb_gain)
+        self.osmo_source.set_sample_rate(self.osmoargs.samp_rate)
+        self.osmo_source.set_gain(self.osmoargs.rf_gain)
+        self.osmo_source.set_if_gain(self.osmoargs.if_gain)
+        self.osmo_source.set_bb_gain(self.osmoargs.bb_gain)
         self.stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, self.fft_size)
-        self.streng = Blk_strength_at_freq(self.samp_rate, self.freq_offset, self.fft_size, 10)
+        self.streng = Blk_strength_at_freq(self.osmoargs.samp_rate, self.freq_offset, self.fft_size, 10)
         self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
         configure_graceful_exit(self.tb)
         self.tb.start()

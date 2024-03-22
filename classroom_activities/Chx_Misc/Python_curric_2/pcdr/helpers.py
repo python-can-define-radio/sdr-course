@@ -3,9 +3,45 @@ from queue import SimpleQueue, Empty, Queue
 from typing import List, TypeVar, Union, Optional
 from typeguard import typechecked
 from gnuradio import gr
+import attrs
 
 
 T = TypeVar('T')
+
+
+
+
+
+@attrs.define
+class HackRFArgs_RX:
+    """
+    device_args: documented here: https://osmocom.org/projects/gr-osmosdr/wiki
+    """
+    center_freq: float
+    device_args: str = "hackrf=0"
+    samp_rate: float = 2e6   # TODO: Put validation logic for all
+    rf_gain: int = 0
+    if_gain: int = 24
+    bb_gain: int = 30
+    bandwidth: float = 0
+    
+
+@attrs.define
+class HackRFArgs_TX:
+    """
+    device_args: documented here: https://osmocom.org/projects/gr-osmosdr/wiki
+    """
+    center_freq: float
+    device_args: str = "hackrf=0"
+    samp_rate: float = 2e6
+    rf_gain: int = 0
+    if_gain: int = 24
+
+
+
+## Eventually, I imagine adding other devices, like
+##  OsmocomArguments = Union[HackRFArguments, RTLSDRArguments, ...]
+OsmocomArguments = Union[HackRFArgs_RX, HackRFArgs_TX]
 
 
 
