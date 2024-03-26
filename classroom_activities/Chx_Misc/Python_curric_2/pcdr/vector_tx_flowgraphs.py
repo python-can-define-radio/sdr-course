@@ -14,7 +14,7 @@ from gnuradio import blocks
 import osmosdr
 from pcdr.our_GR_blocks import print_sink, string_file_sink
 from gnuradio import zeromq
-from typing import Tuple
+from typing import List
 from pcdr.helpers import validate_hack_rf_transmit
 from typeguard import typechecked
 
@@ -33,7 +33,7 @@ class vector_to_osmocom_sink(gr.top_block):
 
     @typechecked
     def __init__(self,
-                 data: Tuple[complex],
+                 data: List[complex],
                  center_freq: float,
                  samp_rate: float,
                  if_gain: int,
@@ -59,7 +59,7 @@ class vector_to_osmocom_sink(gr.top_block):
 
 
 class vector_to_print_sink(gr.top_block):
-    def __init__(self, print_delay: float, data: Tuple[complex], repeat: bool):
+    def __init__(self, print_delay: float, data: List[complex], repeat: bool):
         gr.top_block.__init__(self, "Top block")
         self.vector_source = blocks.vector_source_c(data, repeat)
         self.print_sink = print_sink(print_delay)
@@ -67,7 +67,7 @@ class vector_to_print_sink(gr.top_block):
 
 
 class vector_to_string_file_sink(gr.top_block):
-    def __init__(self, filename: str, data: Tuple[complex]):
+    def __init__(self, filename: str, data: List[complex]):
         assert isinstance(filename, str)
         gr.top_block.__init__(self, "Top block")
         self.vector_source = blocks.vector_source_c(data)
@@ -76,7 +76,7 @@ class vector_to_string_file_sink(gr.top_block):
 
 
 class vector_to_file_sink(gr.top_block):
-    def __init__(self, data: Tuple[complex], filename: str):
+    def __init__(self, data: List[complex], filename: str):
         assert isinstance(filename, str)
         gr.top_block.__init__(self, "Top block")
         self.vector_source = blocks.vector_source_c(data)
