@@ -1,9 +1,13 @@
 import numpy as np
 from queue import SimpleQueue, Empty, Queue
-from typing import List, TypeVar, Union, Optional
+from typing import List, TypeVar, Union, Optional, Type, overload
 from typeguard import typechecked
 from gnuradio import gr
+from .gnuradio_misc import configure_graceful_exit
 import attrs
+from attrs import field, validators
+import osmosdr
+
 
 
 T = TypeVar('T')
@@ -11,37 +15,178 @@ T = TypeVar('T')
 
 
 
+class HACKRF_ERRORS:
+    """Just an organizational structure. Not intended for instantiation or mutation."""
+
+    SAMP_RATE = ("The HackRF One is only capable of sample rates "
+            "between 2 Million samples per second (2e6) and "
+            "20 Million samples per second (20e6). "
+            f"Your specified sample rate was outside of this range.")
+    CENTER_FREQ = ("The HackRF One is only capable of center frequencies "
+            "between 1 MHz (1e6) and 6 GHz (6e9). "
+            f"Your specified frequency was outside of this range.")
+    RX_IF_GAIN = ("The HackRF One, when in receive mode, is only capable "
+            "of the following IF gain settings: "
+            "[0, 8, 16, 24, 32, 40]. "
+            f"Your specified IF gain was not one of these options.")
+    RX_BB_GAIN = ("The HackRF One, when in receive mode, is only capable "
+            "of the following BB gain settings: "
+            "[0, 2, 4, 6, ..., 56, 58, 60, 62]. "
+            f"Your specified BB gain was not one of these options.")
+    TX_IF_GAIN = ("The HackRF One, when in transmit mode, is only capable "
+            "of the following if gain settings: "
+            "[0, 1, 2, 3, ..., 45, 46, 47]. "
+            f"Your specified if gain was not one of these options.")
+
 
 @attrs.define
 class HackRFArgs_RX:
     """
     device_args: documented here: https://osmocom.org/projects/gr-osmosdr/wiki
+    Others are documented on the Hack RF FAQ.
     """
-    center_freq: float
-    device_args: str = "hackrf=0"
-    samp_rate: float = 2e6   # TODO: Put validation logic for all
-    rf_gain: int = 0
-    if_gain: int = 24
-    bb_gain: int = 30
-    bandwidth: float = 0
+    center_freq: float = field()
+    @center_freq.validator
+    def check(self, attribute, value):
+        if not (1e6 <= value <= 6e9):
+            raise ValueError(HACKRF_ERRORS.CENTER_FREQ)
+
+    device_args: str = field(default="hackrf=0")
+
+    samp_rate: float = field(default=2e6)
+    @samp_rate.validator
+    def check(self, attribute, value):
+        if not (2e6 <= value <= 20e6):
+            raise ValueError(HACKRF_ERRORS.SAMP_RATE)
+
+    rf_gain: int = field(default=0, validator=validators.ge(0))
+
+    if_gain: int = field(default=24)
+    @if_gain.validator
+    def check(self, attribute, value):
+        if value not in range(0, 40+8, 8):
+            raise ValueError(HACKRF_ERRORS.RX_IF_GAIN)
+        
+    bb_gain: int = field(default=30)
+    @bb_gain.validator
+    def check(self, attribute, value):
+        if value not in range(0, 62+2, 2):
+            raise ValueError(HACKRF_ERRORS.RX_BB_GAIN)
+        
+    bandwidth: float = field(default=0)
     
 
 @attrs.define
 class HackRFArgs_TX:
     """
     device_args: documented here: https://osmocom.org/projects/gr-osmosdr/wiki
+    Others are documented on the Hack RF FAQ.
     """
-    center_freq: float
-    device_args: str = "hackrf=0"
-    samp_rate: float = 2e6
-    rf_gain: int = 0
-    if_gain: int = 24
+    ## TODO
+    # center_freq = field(type=Union[float, int],
+    #                     invariant=lambda x: (1e6 <= x <= 6e9, HACKRF_ERRORS.CENTER_FREQ),
+    #                     mandatory=True)
+    # device_args = field(type=str,
+    #                     initial="hackrf=0",
+    #                     mandatory=True)
+    # samp_rate = field(type=Union[float, int],
+    #                   initial=2e6,
+    #                   invariant=lambda x: (2e6 <= x <= 20e6, HACKRF_ERRORS.SAMP_RATE),
+    #                   mandatory=True)
+    # rf_gain = field(type=int,
+    #                 initial=0,
+    #                 invariant=lambda x: (x >= 0, "RF Gain invalid"),
+    #                 mandatory=True)
+    # if_gain = field(type=int,
+    #                 initial=24,
+    #                 invariant=lambda x: (x in range(0, 47+1), HACKRF_ERRORS.TX_IF_GAIN),
+    #                 mandatory=True)
 
+
+class SettableCenterFrequency:
+
+    @typechecked
+    def set_center_freq(self, freq: float) -> float:
+        ## TODO: how to statically check that osmo has correct type?
+        tb = self.tb
+        osmo = tb.osmo
+        return osmo.set_center_freq(freq)
+
+
+class Startable:
+    def start(self):
+        self._tb.start()
+
+
+class StopAndWaitable:
+    def stop_and_wait(self):
+        self._tb.stop()
+        self._tb.wait()
+
+
+class IFGainSettable:
+    @typechecked
+    def set_if_gain(self, if_gain: float) -> float:
+        self._osmoargs.if_gain = if_gain
+        return self._osmo.set_if_gain(if_gain)
+
+
+class BBGainSettable:
+    @typechecked
+    def set_bb_gain(self, bb_gain: float) -> float:
+        self._osmoargs.bb_gain = bb_gain
+        return self._osmo.set_bb_gain(bb_gain)
 
 
 ## Eventually, I imagine adding other devices, like
-##  OsmocomArguments = Union[HackRFArguments, RTLSDRArguments, ...]
-OsmocomArguments = Union[HackRFArgs_RX, HackRFArgs_TX]
+##  OsmocomArgs_RX = Union[HackRFArgs_RX, RTLSDRArgs_RX, ...]
+OsmocomArgs_RX = HackRFArgs_RX
+OsmocomArgs_TX = HackRFArgs_TX
+
+
+@typechecked
+def get_OsmocomArgs_RX(center_freq: float, device_args: str) -> OsmocomArgs_RX:
+    if device_args.startswith("hackrf="):
+        return HackRFArgs_RX(center_freq, device_args)
+    else:
+        raise NotImplementedError("In the current implementation, device_args must "
+                                  "start with 'hackrf=', for example, 'hackrf=0'.")
+
+
+@overload
+def configureOsmocom(osmo_init_func: Type[osmosdr.source],
+                     osmoargs: OsmocomArgs_RX
+                     ) -> osmosdr.source: ...
+@overload
+def configureOsmocom(osmo_init_func: Type[osmosdr.sink],
+                     osmoargs: OsmocomArgs_TX
+                     ) -> osmosdr.sink: ...
+@typechecked
+def configureOsmocom(osmo_init_func,
+                     osmoargs: Union[OsmocomArgs_RX, OsmocomArgs_TX]
+                     ) -> Union[osmosdr.source, osmosdr.sink]:
+    """
+    Boilerplate for initializing an osmocom source or sink
+    """
+    ## TODO: The osmo_init_func is actually either osmosdr.source or osmosdr.sink,
+    ## but since in this version of GNU Radio we can't specify that, these
+    ## won't show correctly.
+    osmo = osmo_init_func(osmoargs.device_args)
+    osmo.set_center_freq(osmoargs.center_freq)
+    osmo.set_sample_rate(osmoargs.samp_rate)
+    osmo.set_gain(osmoargs.rf_gain)
+    osmo.set_if_gain(osmoargs.if_gain)
+    osmo.set_bb_gain(osmoargs.bb_gain)
+    osmo.set_bandwidth(osmoargs.bandwidth)
+    return osmo
+    
+
+@typechecked
+def create_top_block_and_configure_exit() -> gr.top_block:
+    tb = gr.top_block()
+    configure_graceful_exit(tb)
+    return tb
+    
 
 
 
@@ -243,61 +388,6 @@ class DeviceParameterError(ValueError):
 
 
 @typechecked
-def validate_hack_rf_receive(device_name: str,
-                             samp_rate: Optional[float] = None,
-                             center_freq: Optional[float] = None,
-                             if_gain: Optional[int] = None,
-                             bb_gain: Optional[int] = None):
-    """
-    >>> validate_hack_rf_receive("hackrf", samp_rate=1e6)
-    Traceback (most recent call last):
-      ...
-    pcdr.helpers.DeviceParameterError: The HackRF One is only capable of sample rates between 2 Million samples per second (2e6) and 20 Million samples per second (20e6). Your specified sample rate, 1000000.0, was outside of this range.
-    
-    >>> validate_hack_rf_receive("hackrf", center_freq=7e9)
-    Traceback (most recent call last):
-      ...
-    pcdr.helpers.DeviceParameterError: The HackRF One is only capable of center frequencies ...
-    
-    No result if valid:
-    >>> validate_hack_rf_receive("hackrf", samp_rate=3e6)
-    """
-    if device_name != "hackrf":
-        return
-    
-    if samp_rate and not (2e6 <= samp_rate <= 20e6):
-        raise DeviceParameterError(
-            "The HackRF One is only capable of sample rates "
-            "between 2 Million samples per second (2e6) and "
-            "20 Million samples per second (20e6). "
-            f"Your specified sample rate, {samp_rate}, was outside of this range."
-        )
-    
-    if center_freq and not (1e6 < center_freq < 6e9):
-        raise DeviceParameterError(
-            "The HackRF One is only capable of center frequencies "
-            "between 1 MHz (1e6) and 6 GHz (6e9). "
-            f"Your specified frequency, {center_freq}, was outside of this range."
-        )
-    
-    if if_gain and not if_gain in range(0, 40+8, 8):
-        raise DeviceParameterError(
-            "The HackRF One, when in receive mode, is only capable "
-            "of the following if gain settings: "
-            "[0, 8, 16, 24, 32, 40]. "
-            f"Your specified if gain, {if_gain}, was not one of these options."
-        )
-    
-    if bb_gain and not bb_gain in range(0, 62+2, 2):
-        raise DeviceParameterError(
-            "The HackRF One, when in receive mode, is only capable "
-            "of the following bb gain settings: "
-            "[0, 2, 4, 6, ..., 56, 58, 60, 62]. "
-            f"Your specified bb gain, {bb_gain}, was not one of these options."
-        )
-
-
-@typechecked
 def validate_hack_rf_transmit(device_name: str,
                               samp_rate: float,
                               center_freq: float,
@@ -323,9 +413,9 @@ def validate_hack_rf_transmit(device_name: str,
     if not if_gain in range(0, 47+1, 1):
         raise DeviceParameterError(
             "The HackRF One, when in transmit mode, is only capable "
-            "of the following if gain settings: "
+            "of the following IF gain settings: "
             "[0, 1, 2, ... 45, 46, 47]. "
-            f"Your specified if gain, {if_gain}, was not one of these options."
+            f"Your specified IF gain, {if_gain}, was not one of these options."
         )
     
 

@@ -5,11 +5,16 @@ from pcdr import configure_graceful_exit
 import time
 from typing import Union
 from typeguard import typechecked
-from pcdr.helpers import validate_hack_rf_receive, HackRFArgs_RX
+from pcdr.helpers import (
+    HackRFArgs_RX, OsmocomArgs_RX, get_OsmocomArgs_RX,
+    configureOsmocom, create_top_block_and_configure_exit,
+    Startable, StopAndWaitable, IFGainSettable,
+    BBGainSettable
+)
 
 
 
-class OsmosdrReceiver:
+class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable):
     """A simplified interface to the Osmosdr Source
     which measures the strength of only the specified frequency.
     Example usage:
@@ -24,44 +29,27 @@ class OsmosdrReceiver:
     @typechecked
     def __init__(self, device_args: str, freq: float):
         """
-        `device_name`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
+        `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
         `freq`: The frequency which the device will tune to. See note on `set_freq` for more info.
         >>> 
         """
-        self.tb = gr.top_block()
-        self.freq_offset = 20e3
-        self.fft_size = 1024
-        if device_args.startswith("hackrf="):
-            self.osmoargs = HackRFArgs_RX(freq, device_args)
-        else:
-            raise NotImplementedError("Only implemented for HackRF so far.")
+        self._tb = create_top_block_and_configure_exit()
+        self.__freq_offset = 20e3
+        true_freq = freq - self.__freq_offset
+        self._osmoargs = get_OsmocomArgs_RX(true_freq, device_args)
+        self._osmo = configureOsmocom(osmo_source, self._osmoargs)
+        fft_size = 1024        
+        self.__stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, fft_size)
+        self.__streng = Blk_strength_at_freq(self._osmoargs.samp_rate, self.__freq_offset, fft_size)
+        self._tb.connect(self._osmo, self.__stream_to_vec, self.__streng)
         
-        # validate_hack_rf_receive(device_name, self.samp_rate, freq, if_gain, bb_gain)
-        self.osmo_source = osmo_source(args=device_args)
-        self.osmo_source.set_sample_rate(self.osmoargs.samp_rate)
-        self.osmo_source.set_gain(self.osmoargs.rf_gain)
-        self.osmo_source.set_if_gain(self.osmoargs.if_gain)
-        self.osmo_source.set_bb_gain(self.osmoargs.bb_gain)
-        self.stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, self.fft_size)
-        self.streng = Blk_strength_at_freq(self.osmoargs.samp_rate, self.freq_offset, self.fft_size, 10)
-        self.tb.connect(self.osmo_source, self.stream_to_vec, self.streng)
-        configure_graceful_exit(self.tb)
-        self.tb.start()
-        self.set_freq(freq)
-        
-
-    def stop_and_wait(self):
-        self.tb.stop()
-        self.tb.wait()
-
-
     @typechecked
     def get_strength(self, block: bool = True, timeout: float = 2.0) -> float:
         """Get the signal strength at the current frequency.
         The frequency is specified when the `OsmosdrReceiver` is created,
         and can be changed using `set_freq`.
         """
-        return self.streng._reading.get(block, timeout)
+        return self.__streng._reading.get(block, timeout)
     
     @typechecked
     def set_freq(self, freq: float, seconds: float = 0.5):
@@ -77,21 +65,8 @@ class OsmosdrReceiver:
         the receiver checks for activity at the expected location (the `freq` specified in this function).
         As a result, the strength level returned by `get_strength` is that of the desired frequency.
         """
-        validate_hack_rf_receive("hackrf", center_freq=freq)
-        # Also, TODO:
-        #   Tell the queue work function to consume the entire input_items so that
-        #   any data after that is fresh, THEN clear the current get_strength() reading (which
-        #   will presumably be using a deque object).
-        retval = self.osmo_source.set_center_freq(freq - self.freq_offset)
+        true_freq = freq - self.__freq_offset
+        self._osmoargs.center_freq = true_freq
+        retval = self._osmo.set_center_freq(true_freq)
         time.sleep(seconds)
         return retval
-
-    @typechecked
-    def set_if_gain(self, if_gain: float):
-        validate_hack_rf_receive("hackrf", if_gain=if_gain)
-        self.osmo_source.set_if_gain(if_gain)
-
-    @typechecked
-    def set_bb_gain(self, bb_gain: float):
-        validate_hack_rf_receive("hackrf", bb_gain=bb_gain)
-        self.osmo_source.set_bb_gain(bb_gain)
