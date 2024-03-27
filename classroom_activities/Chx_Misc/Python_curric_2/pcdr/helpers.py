@@ -113,13 +113,12 @@ class HackRFArgs_TX:
     bandwidth: float = field(default=0)
 
 
-class SettableCenterFrequency:
+class CenterFrequencySettable:
     @typechecked
-    def set_center_freq(self, freq: float) -> float:
+    def set_center_freq(self, center_freq: float) -> float:
         ## TODO: how to statically check that osmo has correct type?
-        tb = self.tb
-        osmo = tb.osmo
-        return osmo.set_center_freq(freq)
+        self._osmoargs.center_freq = center_freq
+        return self._osmo.set_center_freq(center_freq)
 
 
 class LockUnlockable:

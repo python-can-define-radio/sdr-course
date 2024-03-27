@@ -1,15 +1,13 @@
-from gnuradio import gr, blocks, analog
+from gnuradio import gr, blocks, analog, audio, filter
 import osmosdr
 from pcdr.our_GR_blocks import Blk_strength_at_freq
-from pcdr import configure_graceful_exit
 import time
-from typing import Union
 from typeguard import typechecked
 from pcdr.helpers import (
     get_OsmocomArgs_RX, get_OsmocomArgs_TX, 
     configureOsmocom, create_top_block_and_configure_exit,
     Startable, StopAndWaitable, IFGainSettable,
-    BBGainSettable, LockUnlockable
+    BBGainSettable, LockUnlockable, CenterFrequencySettable
 )
 
 
@@ -102,7 +100,7 @@ class OsmosdrTransmitter(LockUnlockable, Startable, StopAndWaitable,
     def __init__(self, device_args: str, freq: float):
         """
         `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
-        `freq`: The frequency which the device will tune to. See note on `set_freq` for more info.
+        `freq`: The frequency which the device will tune to.
         >>> 
         """
         self._tb = create_top_block_and_configure_exit()
@@ -115,3 +113,33 @@ class OsmosdrTransmitter(LockUnlockable, Startable, StopAndWaitable,
     def set_freq(self, freq: float) -> float:
         self._osmoargs.center_freq = freq
         return self._osmo.set_center_freq(freq)
+
+
+class OsmosdrWBFMTransmitter(LockUnlockable, Startable, StopAndWaitable, CenterFrequencySettable,
+                             IFGainSettable, BBGainSettable):
+    """
+    import pcdr.simple
+    import time
+    transmitter = pcdr.simple.OsmosdrWBFMTransmitter("hackrf=0", 2.45e9, "pulse_monitor")
+    transmitter.start()
+    transmitter.set_if_gain(37)
+    time.sleep(10)
+    transmitter.stop_and_wait()
+    """
+    @typechecked
+    def __init__(self, device_args: str, freq: float,
+                 source: str = "",
+                 audio_sample_rate: float = 48e3):
+        """
+        `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
+        `freq`: The frequency which the device will tune to.
+        `source`: "" if you want to use the microphone; "pulse_monitor" to use whatever is currently playing on the computer. The "pulse_monitor" option currently only works on GNU Linux, and only after pre-configuring the ALSA Pseudodevice according to the GNU Radio docs: https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio
+        
+        """
+        self._tb = create_top_block_and_configure_exit()
+        self._osmoargs = get_OsmocomArgs_TX(freq, device_args)
+        self.__audio_source = audio.source(audio_sample_rate, source, True)
+        self.__rational_resampler = filter.rational_resampler_fff(int(self._osmoargs.samp_rate), int(audio_sample_rate))
+        self.__wfm_tx = analog.wfm_tx(self._osmoargs.samp_rate, self._osmoargs.samp_rate)
+        self._osmo = configureOsmocom(osmosdr.sink, self._osmoargs)
+        self._tb.connect(self.__audio_source, self.__rational_resampler, self.__wfm_tx, self._osmo)
