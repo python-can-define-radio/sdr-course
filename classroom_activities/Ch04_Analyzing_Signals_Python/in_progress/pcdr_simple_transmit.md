@@ -15,8 +15,11 @@ transmitter.set_freq(2.4502e9)
 time.sleep(1)
 transmitter.stop_and_wait()
 
+
 ## 2
-## Try setting the frequency to a commercial FM broadcast. How does it impact the broadcast?
+## Try setting the frequency to a commercial FM broadcast.
+## How does it impact the broadcast?
+
 
 ## 3
 ## Using Python, loop the following:
@@ -24,6 +27,7 @@ transmitter.stop_and_wait()
 ##  - Jam it for half a second
 ##  - Set the frequency to a different FM broadcast station
 ## - Jam it for half a second
+
 
 ## 4
 ## Copy and modify the previous example.
