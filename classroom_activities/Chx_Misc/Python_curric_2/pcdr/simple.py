@@ -1,15 +1,15 @@
-from gnuradio import gr, blocks
-from osmosdr import source as osmo_source
+from gnuradio import gr, blocks, analog
+import osmosdr
 from pcdr.our_GR_blocks import Blk_strength_at_freq
 from pcdr import configure_graceful_exit
 import time
 from typing import Union
 from typeguard import typechecked
 from pcdr.helpers import (
-    HackRFArgs_RX, OsmocomArgs_RX, get_OsmocomArgs_RX,
+    get_OsmocomArgs_RX, get_OsmocomArgs_TX, 
     configureOsmocom, create_top_block_and_configure_exit,
     Startable, StopAndWaitable, IFGainSettable,
-    BBGainSettable
+    BBGainSettable, LockUnlockable
 )
 
 
@@ -21,7 +21,8 @@ class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable
     
     ```python3
     import pcdr.simple
-    receiver = pcdr.simple.OsmosdrReceiver("hackrf", 103.9e6)
+    receiver = pcdr.simple.OsmosdrReceiver("hackrf=0", 103.9e6)
+    recevier.start()
     strength = receiver.get_strength()
     print(strength)
     ```
@@ -37,7 +38,7 @@ class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable
         self.__freq_offset = 20e3
         true_freq = freq - self.__freq_offset
         self._osmoargs = get_OsmocomArgs_RX(true_freq, device_args)
-        self._osmo = configureOsmocom(osmo_source, self._osmoargs)
+        self._osmo = configureOsmocom(osmosdr.source, self._osmoargs)
         fft_size = 1024        
         self.__stream_to_vec = blocks.stream_to_vector(gr.sizeof_gr_complex, fft_size)
         self.__streng = Blk_strength_at_freq(self._osmoargs.samp_rate, self.__freq_offset, fft_size)
@@ -70,3 +71,47 @@ class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable
         retval = self._osmo.set_center_freq(true_freq)
         time.sleep(seconds)
         return retval
+
+
+class OsmosdrTransmitter(LockUnlockable, Startable, StopAndWaitable,
+                         IFGainSettable, BBGainSettable):
+    """A simplified interface to the Osmosdr Sink
+    which transmits a pure sine wave on the specified frequency.
+    
+    Example usage:
+    
+    ```python3
+    import pcdr.simple
+    import time
+    transmitter = pcdr.simple.OsmosdrTransmitter("hackrf=0", 2.45e9)
+    transmitter.start()
+    transmitter.set_if_gain(37)
+    time.sleep(1)
+    transmitter.set_freq(2.4501e9)
+    time.sleep(1)
+    transmitter.set_freq(2.4502e9)
+    time.sleep(1)
+    transmitter.set_if_gain(0)
+    time.sleep(1)
+    transmitter.set_if_gain(37)
+    time.sleep(1)
+    transmitter.stop_and_wait()
+    ```
+    """
+    @typechecked
+    def __init__(self, device_args: str, freq: float):
+        """
+        `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
+        `freq`: The frequency which the device will tune to. See note on `set_freq` for more info.
+        >>> 
+        """
+        self._tb = create_top_block_and_configure_exit()
+        self._osmoargs = get_OsmocomArgs_TX(freq, device_args)
+        self.__constant_source = analog.sig_source_c(self._osmoargs.samp_rate, analog.GR_CONST_WAVE, 0, 0, 3)
+        self._osmo = configureOsmocom(osmosdr.sink, self._osmoargs)
+        self._tb.connect(self.__constant_source, self._osmo)
+
+    @typechecked
+    def set_freq(self, freq: float) -> float:
+        self._osmoargs.center_freq = freq
+        return self._osmo.set_center_freq(freq)
