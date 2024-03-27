@@ -7,7 +7,7 @@ from pcdr.helpers import (
     get_OsmocomArgs_RX, get_OsmocomArgs_TX, 
     configureOsmocom, create_top_block_and_configure_exit,
     Startable, StopAndWaitable, IFGainSettable,
-    BBGainSettable, LockUnlockable, CenterFrequencySettable
+    BBGainSettable, CenterFrequencySettable
 )
 
 
@@ -71,7 +71,7 @@ class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable
         return retval
 
 
-class OsmosdrTransmitter(LockUnlockable, Startable, StopAndWaitable,
+class OsmosdrTransmitter(Startable, StopAndWaitable,
                          IFGainSettable, BBGainSettable):
     """A simplified interface to the Osmosdr Sink
     which transmits a pure sine wave on the specified frequency.
@@ -115,7 +115,7 @@ class OsmosdrTransmitter(LockUnlockable, Startable, StopAndWaitable,
         return self._osmo.set_center_freq(freq)
 
 
-class OsmosdrWBFMTransmitter(LockUnlockable, Startable, StopAndWaitable, CenterFrequencySettable,
+class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable,
                              IFGainSettable, BBGainSettable):
     """
     import pcdr.simple
