@@ -1,13 +1,15 @@
 <details><summary><i>Naming history (click to expand)</i></summary>
 <pre>
-2023 May 22: 010_Beginnings.md
 2023 Feb 22: 025-Beginnings.md
+2023 May 22: 010_Beginnings.md
 </pre>
 </details>
 
 ℹ️ This material coincides with material from SDR slideshow B (slides 49-53).
 
 # Beginnings
+
+- [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md)
 
 Before starting:
 - Create a folder for yourself with your name (and no spaces) on the Desktop (not necessary if you already created one in the python course).
