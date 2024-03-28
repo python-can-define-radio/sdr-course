@@ -79,9 +79,9 @@
 
 ### Day 7
 
-- B1: Test Preparation; AAR
-- B2: Independent work time
-- B3: 🧠 SDR Exam
+- Test Preperation
+
+🧠 <span style="color: green"><b>SDR Exam</b></span>
   
 <!--
 
