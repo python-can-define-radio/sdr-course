@@ -1,4 +1,4 @@
-from typing import Union, TypeVar, Protocol
+from typing import Union, TypeVar, Protocol, Callable
 from pcdr.our_GR_blocks import queue_sink
 
 from gnuradio import gr
@@ -17,3 +17,6 @@ class SupportsQueueSink(Protocol):
 
 class top_block_and_widget(gr.top_block, Qt.QWidget):
     pass
+
+class HasWorkFunc(Protocol):
+    work: Callable

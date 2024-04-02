@@ -1,3 +1,5 @@
+from typing import Optional, Union
+from pathlib import Path
 from gnuradio import gr, blocks, analog, audio, filter
 import osmosdr
 from pcdr.our_GR_blocks import Blk_strength_at_freq
@@ -9,6 +11,7 @@ from pcdr.helpers import (
     Startable, StopAndWaitable, IFGainSettable,
     BBGainSettable, CenterFrequencySettable
 )
+from pcdr.types_and_contracts import HasWorkFunc
 
 
 
@@ -115,6 +118,22 @@ class OsmosdrTransmitter(Startable, StopAndWaitable,
         return self._osmo.set_center_freq(freq)
 
 
+@typechecked
+def pick_audio_source(audio_device: Optional[str], wavfile: Optional[Union[str, Path]], audio_sample_rate: float) -> HasWorkFunc:
+    """
+    >>> pick_audio_source("", None)
+    
+    """
+    if audio_device != None and wavfile != None:
+        raise ValueError("You must specify either `wavfile` or `device`, not both")
+    elif audio_device != None:
+        return audio.source(audio_sample_rate, audio_device, ok_to_block=True)
+    elif wavfile != None:
+        return blocks.wavfile_source(wavfile, repeat=False)
+    else:
+        raise ValueError("You must specify either `wavfile` or `device`")
+
+
 class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable,
                              IFGainSettable, BBGainSettable):
     """
@@ -127,19 +146,22 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
     transmitter.stop_and_wait()
     """
     @typechecked
-    def __init__(self, device_args: str, freq: float,
-                 source: str = "",
+    def __init__(self, device_args: str, freq: float, *,
+                 audio_device: Optional[str] = None,
+                 wavfile: Optional[Union[str, Path]] = None,
                  audio_sample_rate: float = 48e3):
         """
+        You must specify either `wavfile` or `device`.
+        
         `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
         `freq`: The frequency which the device will tune to.
-        `source`: "" if you want to use the microphone; "pulse_monitor" to use whatever is currently playing on the computer. The "pulse_monitor" option currently only works on GNU Linux, and only after pre-configuring the ALSA Pseudodevice according to the GNU Radio docs: https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio
-        
+        `device`: "" if you want to use the microphone; "pulse_monitor" to use whatever is currently playing on the computer. The "pulse_monitor" option currently only works on GNU Linux, and only after pre-configuring the ALSA Pseudodevice according to the GNU Radio docs: https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio
+        `wavfile`: The path to a wav file that will be played.
         """
         self._tb = create_top_block_and_configure_exit()
+        self.__source = pick_audio_source(audio_device, wavfile, audio_sample_rate)
         self._osmoargs = get_OsmocomArgs_TX(freq, device_args)
-        self.__audio_source = audio.source(audio_sample_rate, source, True)
         self.__rational_resampler = filter.rational_resampler_fff(int(self._osmoargs.samp_rate), int(audio_sample_rate))
         self.__wfm_tx = analog.wfm_tx(self._osmoargs.samp_rate, self._osmoargs.samp_rate)
         self._osmo = configureOsmocom(osmosdr.sink, self._osmoargs)
-        self._tb.connect(self.__audio_source, self.__rational_resampler, self.__wfm_tx, self._osmo)
+        self._tb.connect(self.__source, self.__rational_resampler, self.__wfm_tx, self._osmo)
