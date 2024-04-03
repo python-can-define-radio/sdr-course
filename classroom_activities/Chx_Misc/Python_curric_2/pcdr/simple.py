@@ -142,8 +142,8 @@ class AudioPlayer(Startable, StopAndWaitable):
     @typechecked
     def __init__(self, *,
                  wavfile: Optional[Union[str, Path]] = None,
-                 repeat: bool = False,
-                 audio_sample_rate: float = 48e3):
+                 audio_sample_rate: float = 48e3,
+                 repeat: bool = False):
         """
         Plays the audio locally (not using the SDR hardware). Useful for testing that your wav file is working.
 
@@ -171,8 +171,8 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
     def __init__(self, device_args: str, freq: float, *,
                  audio_device: Optional[str] = None,
                  wavfile: Optional[Union[str, Path]] = None,
-                 repeat: bool = False,
-                 audio_sample_rate: float = 48e3):
+                 audio_sample_rate: float = 48e3,
+                 repeat: bool = False):
         """
         You must specify either `wavfile` or `device`.
         
