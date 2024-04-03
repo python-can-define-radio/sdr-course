@@ -13,11 +13,44 @@ However, before we use the SDR hardware, let's verify that we can play an audio 
 ## Try this. It will play audio locally.
 ## You must provide a wav file.
 ## One possible wav file is drum_cowbell.wav from here:
-## https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi
+##   https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi
+## Note: For the file to play at the proper speed, you must
+##  set the audio_sample_rate based on the properties of
+##  the wav file. You can view that in a  GUI file browser,
+##  or using the `file` terminal command on GNU Linux:
+##     file drum_cowbell.wav
+##          ^^^^^^^^^^^^^^^^ replace this part with your wav file's name.
+## Alternatively, set the audio_sample_rate to 60_000 and
+## then adjust based on how it sounds.
 import pcdr.simple
-TODO
+import time
+
+player = pcdr.simple.AudioPlayer(
+    wavfile="drum_cowbell.wav",
+    audio_sample_rate=22050
+)
+player.start()
+player.wait()
 
 
+## 2
+## Try this variation. What is different?
+import pcdr.simple
+import time
+
+player = pcdr.simple.AudioPlayer(
+    wavfile="drum_cowbell.wav",
+    repeat=True,
+    audio_sample_rate=22050
+)
+player.start()
+time.sleep(3)
+player.stop_and_wait()
+```
+
+Now, using the hardware:
+
+```
 ## 2
 import pcdr.simple
 import time
