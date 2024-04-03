@@ -75,7 +75,8 @@ class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable
 
 
 class OsmosdrTransmitter(Startable, StopAndWaitable,
-                         IFGainSettable, BBGainSettable):
+                         IFGainSettable, BBGainSettable,
+                         CenterFrequencySettable):
     """A simplified interface to the Osmosdr Sink
     which transmits a pure sine wave on the specified frequency.
     
@@ -88,9 +89,9 @@ class OsmosdrTransmitter(Startable, StopAndWaitable,
     transmitter.start()
     transmitter.set_if_gain(37)
     time.sleep(1)
-    transmitter.set_freq(2.4501e9)
+    transmitter.set_center_freq(2.4501e9)
     time.sleep(1)
-    transmitter.set_freq(2.4502e9)
+    transmitter.set_center_freq(2.4502e9)
     time.sleep(1)
     transmitter.set_if_gain(0)
     time.sleep(1)
@@ -114,8 +115,8 @@ class OsmosdrTransmitter(Startable, StopAndWaitable,
 
     @typechecked
     def set_freq(self, freq: float) -> float:
-        self._osmoargs.center_freq = freq
-        return self._osmo.set_center_freq(freq)
+        """Equivalent to `self.set_center_freq(freq)`, for backwards compatibility."""
+        return self.set_center_freq(freq)
 
 
 @typechecked
