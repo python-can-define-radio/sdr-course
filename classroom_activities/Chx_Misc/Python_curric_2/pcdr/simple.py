@@ -8,7 +8,7 @@ from typeguard import typechecked
 from pcdr.helpers import (
     get_OsmocomArgs_RX, get_OsmocomArgs_TX, 
     configureOsmocom, create_top_block_and_configure_exit,
-    Startable, StopAndWaitable, IFGainSettable,
+    Startable, StopAndWaitable, Waitable, IFGainSettable,
     BBGainSettable, CenterFrequencySettable
 )
 from pcdr.types_and_contracts import HasWorkFunc
@@ -138,7 +138,7 @@ def pick_audio_source(audio_device: Optional[str],
         raise ValueError("You must specify either `wavfile` or `device`")
 
 
-class AudioPlayer(Startable, StopAndWaitable):
+class AudioPlayer(Startable, StopAndWaitable, Waitable):
     @typechecked
     def __init__(self, *,
                  wavfile: Optional[Union[str, Path]] = None,
@@ -157,7 +157,7 @@ class AudioPlayer(Startable, StopAndWaitable):
 
 
 class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable,
-                             IFGainSettable, BBGainSettable):
+                             IFGainSettable, BBGainSettable, Waitable):
     """
     import pcdr.simple
     import time

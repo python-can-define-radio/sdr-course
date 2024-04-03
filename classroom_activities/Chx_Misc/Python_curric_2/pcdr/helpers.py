@@ -140,6 +140,11 @@ class StopAndWaitable:
         self._tb.wait()
 
 
+class Waitable:
+    def wait(self):
+        self._tb.wait()
+
+
 class IFGainSettable:
     @typechecked
     def set_if_gain(self, if_gain: float) -> float:
