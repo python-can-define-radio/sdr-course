@@ -1,11 +1,27 @@
-(Insert disclaimer about transmitting)
+## Disclaimer
+
+Broadcasting without a license is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
+
+## WBFM Transmitting
+
+This lesson shows how to use the pcdr module to transmit Wide-Band-Frequency-Modulated audio.
+
+However, before we use the SDR hardware, let's verify that we can play an audio file locally.
 
 ```python3
 ## 1
-## Try this.
+## Try this. It will play audio locally.
+## You must provide a wav file.
+## One possible wav file is drum_cowbell.wav from here:
+## https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi
+import pcdr.simple
+TODO
+
+
+## 2
 import pcdr.simple
 import time
-transmitter = pcdr.simple.OsmosdrWBFMTransmitter("hackrf=0", 2.45e9, "pulse_monitor")
+transmitter = pcdr.simple.OsmosdrWBFMTransmitter("hackrf=0", 2.45e9)
 transmitter.start()
 transmitter.set_if_gain(37)
 time.sleep(10)
