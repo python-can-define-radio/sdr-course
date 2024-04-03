@@ -120,7 +120,10 @@ class OsmosdrTransmitter(Startable, StopAndWaitable,
 
 
 @typechecked
-def pick_audio_source(audio_device: Optional[str], wavfile: Optional[Union[str, Path]], audio_sample_rate: float) -> HasWorkFunc:
+def pick_audio_source(audio_device: Optional[str],
+                      wavfile: Optional[Union[str, Path]],
+                      audio_sample_rate: float,
+                      repeat: bool) -> HasWorkFunc:
     """
     >>> pick_audio_source("", None)
     
@@ -130,9 +133,27 @@ def pick_audio_source(audio_device: Optional[str], wavfile: Optional[Union[str, 
     elif audio_device != None:
         return audio.source(audio_sample_rate, audio_device, ok_to_block=True)
     elif wavfile != None:
-        return blocks.wavfile_source(wavfile, repeat=False)
+        return blocks.wavfile_source(wavfile, repeat)
     else:
         raise ValueError("You must specify either `wavfile` or `device`")
+
+
+class AudioPlayer(Startable, StopAndWaitable):
+    @typechecked
+    def __init__(self, *,
+                 wavfile: Optional[Union[str, Path]] = None,
+                 repeat: bool = False,
+                 audio_sample_rate: float = 48e3):
+        """
+        Plays the audio locally (not using the SDR hardware). Useful for testing that your wav file is working.
+
+        `wavfile`: The path to a wav file that will be played.
+        """
+        self._tb = create_top_block_and_configure_exit()
+        self.__source = blocks.wavfile_source(wavfile, repeat)
+        self.__sink = audio.sink(audio_sample_rate, device_name="", ok_to_block=True)
+        self._tb.connect(self.__source, self.__sink)
+
 
 
 class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable,
@@ -150,6 +171,7 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
     def __init__(self, device_args: str, freq: float, *,
                  audio_device: Optional[str] = None,
                  wavfile: Optional[Union[str, Path]] = None,
+                 repeat: bool = False,
                  audio_sample_rate: float = 48e3):
         """
         You must specify either `wavfile` or `device`.
@@ -160,7 +182,7 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
         `wavfile`: The path to a wav file that will be played.
         """
         self._tb = create_top_block_and_configure_exit()
-        self.__source = pick_audio_source(audio_device, wavfile, audio_sample_rate)
+        self.__source = pick_audio_source(audio_device, wavfile, audio_sample_rate, repeat)
         self._osmoargs = get_OsmocomArgs_TX(freq, device_args)
         self.__rational_resampler = filter.rational_resampler_fff(int(self._osmoargs.samp_rate), int(audio_sample_rate))
         self.__wfm_tx = analog.wfm_tx(self._osmoargs.samp_rate, self._osmoargs.samp_rate)
