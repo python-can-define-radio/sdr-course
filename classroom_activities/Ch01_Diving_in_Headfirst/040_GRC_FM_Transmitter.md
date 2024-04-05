@@ -43,7 +43,8 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 ### For the Wav File Source:
 
 - _NOTE: You can use a Audio Source instead if you'd like. See notes at the bottom of this page._
-- File: Pick a file by pressing the "..." button. It must be a wav file, not an mp3, etc.
+- File: Pick a file by pressing the "..." button. It must be a wav file, not an mp3, etc. You can find wav files [here](https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi).
+
 - Repeat: Up to you; do you want it to repeat?
 
 ### For the Rational Resampler:
