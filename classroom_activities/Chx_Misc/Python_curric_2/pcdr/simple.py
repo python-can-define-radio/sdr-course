@@ -174,7 +174,8 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
                  audio_sample_rate: float = 48e3,
                  repeat: bool = False):
         """
-        You must specify either `wavfile` or `device`.
+        You must specify either `wavfile` or `device`.  
+        If you specify `device`, then `repeat` is ignored.
         
         `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
         `freq`: The frequency which the device will tune to.
