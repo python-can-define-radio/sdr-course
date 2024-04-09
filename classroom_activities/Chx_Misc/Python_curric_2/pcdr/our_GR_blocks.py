@@ -4,7 +4,10 @@ from gnuradio import blocks
 import osmosdr
 import time
 from queue import Empty, SimpleQueue, LifoQueue
-from pcdr.helpers import SimpleQueueTypeWrapped, QueueTypeWrapped, queue_to_list
+from pcdr.helpers import (
+    SimpleQueueTypeWrapped, QueueTypeWrapped,
+    queue_to_list, getSize
+)
 from typing import List, Optional
 from typeguard import typechecked
 
@@ -211,3 +214,35 @@ class Blk_strength_at_freq(gr.sync_block):
         #     self._deq.append(avg)
         #     self.__last_few = []
         return 1
+
+
+class Blk_SingleItemStack(gr.sync_block):
+    @typechecked
+    def __init__(self, length: int, type_: type):
+        gr.sync_block.__init__(self,
+            name='Python Block: Single Item Stack',
+            in_sig=[(type_, length)],
+            out_sig=[]
+        )
+        self._reading = SingleItemStack()
+    
+    def work(self, input_items, output_items):
+        dat = input_items[0][0]
+        self._reading.put(dat)
+        return 1
+
+
+class Blk_VecSingleItemStack(gr.hier_block2):
+    @typechecked
+    def __init__(self, type_: type, vecsize: int):
+                
+        itemsize = getSize(type_)
+        gr.hier_block2.__init__(
+            self, 
+            "VecSingleItemStack",
+            gr.io_signature(1, 1, itemsize),
+            gr.io_signature(0, 0, 0)
+        )
+        self.stv = blocks.stream_to_vector(itemsize, vecsize)
+        self.sis = Blk_SingleItemStack(vecsize, type_)
+        self.connect(self, self.stv, self.sis)

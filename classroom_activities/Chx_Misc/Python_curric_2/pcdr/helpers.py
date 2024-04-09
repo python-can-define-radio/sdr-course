@@ -3,7 +3,8 @@ from queue import SimpleQueue, Empty, Queue
 from typing import List, TypeVar, Union, Optional, Type, overload
 from typeguard import typechecked
 from gnuradio import gr
-from .gnuradio_misc import configure_graceful_exit
+from pcdr.gnuradio_misc import configure_graceful_exit
+from pcdr.types_and_contracts import HasWorkFunc
 import attrs
 from attrs import field, validators
 import osmosdr
@@ -157,6 +158,14 @@ class BBGainSettable:
     def set_bb_gain(self, bb_gain: float) -> float:
         self._osmoargs.bb_gain = bb_gain
         return self._osmo.set_bb_gain(bb_gain)
+
+
+class ProbeReadable:
+    @typechecked
+    def read_probe(self) -> np.ndarray:
+        if self._probe == None:
+            raise AttributeError("The probe must be set using connect_probe().")
+        return self._probe.sis._reading.get()
 
 
 ## Eventually, I imagine adding other devices, like
@@ -463,3 +472,14 @@ def getSize(dtype: type) -> int:
         return gr.sizeof_char
     else:
         return NotImplementedError("Feel free to add more dtype matches")
+    
+
+@typechecked
+def connect_probe_common(tb: gr.top_block, src_blk, type_: type, vecsize: int):
+    ## placed here to avoid circular imports
+    from pcdr.our_GR_blocks import Blk_VecSingleItemStack
+
+    probe = Blk_VecSingleItemStack(type_, vecsize)
+    tb.connect(src_blk, probe)
+    return probe
+

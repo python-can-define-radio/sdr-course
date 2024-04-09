@@ -1,6 +1,5 @@
 from typing import Union, TypeVar, Protocol, Callable
-from pcdr.our_GR_blocks import queue_sink
-
+import typing
 from gnuradio import gr
 from PyQt5 import Qt
 
@@ -12,11 +11,16 @@ TRealNum = TypeVar('TRealNum', int, float)
 TRealOrComplexNum = TypeVar('TRealOrComplexNum', int, float, complex)
 
 class SupportsQueueSink(Protocol):
-    queue_sink: queue_sink
+    queue_sink: "queue_sink"
 
 
 class top_block_and_widget(gr.top_block, Qt.QWidget):
     pass
 
+# TODO: incorporate this # @typing.runtime_checkable
 class HasWorkFunc(Protocol):
     work: Callable
+
+
+## avoid circular imports
+from pcdr.our_GR_blocks import queue_sink

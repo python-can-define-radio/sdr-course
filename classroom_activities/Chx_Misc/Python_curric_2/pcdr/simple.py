@@ -1,15 +1,19 @@
-from typing import Optional, Union
+from typing import Optional, Union, Literal
 from pathlib import Path
 from gnuradio import gr, blocks, analog, audio, filter
 import osmosdr
-from pcdr.our_GR_blocks import Blk_strength_at_freq
+import numpy as np
+from pcdr.our_GR_blocks import (
+    Blk_strength_at_freq, Blk_VecSingleItemStack
+)
 import time
 from typeguard import typechecked
 from pcdr.helpers import (
     get_OsmocomArgs_RX, get_OsmocomArgs_TX, 
     configureOsmocom, create_top_block_and_configure_exit,
+    connect_probe_common,
     Startable, StopAndWaitable, Waitable, IFGainSettable,
-    BBGainSettable, CenterFrequencySettable
+    BBGainSettable, CenterFrequencySettable, ProbeReadable
 )
 from pcdr.types_and_contracts import HasWorkFunc
 
@@ -138,7 +142,7 @@ def pick_audio_source(audio_device: Optional[str],
         raise ValueError("You must specify either `wavfile` or `device`")
 
 
-class AudioPlayer(Startable, StopAndWaitable, Waitable):
+class AudioPlayer(Startable, StopAndWaitable, Waitable, ProbeReadable):
     @typechecked
     def __init__(self, *,
                  wavfile: Optional[Union[str, Path]] = None,
@@ -153,7 +157,20 @@ class AudioPlayer(Startable, StopAndWaitable, Waitable):
         self.__source = blocks.wavfile_source(wavfile, repeat)
         self.__sink = audio.sink(audio_sample_rate, device_name="", ok_to_block=True)
         self._tb.connect(self.__source, self.__sink)
-
+        self._probe: Optional[Blk_VecSingleItemStack] = None
+    
+    @typechecked
+    def connect_probe(self, *,
+                      location: Literal["wavfile_source", "audio_sink"],
+                      vecsize: int):
+        if location == "wavfile_source":
+            src_blk = self.__source
+            type_ = np.float32
+        elif location == "audio_sink":
+            # this is the feeder block for the audio sink
+            src_blk = self.__source  
+            type_ = np.float32
+        self._probe = connect_probe_common(self._tb, src_blk, type_, vecsize)
 
 
 class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable,
