@@ -173,14 +173,20 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
                  wavfile: Optional[Union[str, Path]] = None,
                  audio_sample_rate: float = 48e3,
                  repeat: bool = False):
-        """
-        You must specify either `wavfile` or `device`.  
-        If you specify `device`, then `repeat` is ignored.
-        
-        `device_args`: For example, "hackrf=0", etc. See the osmocom docs for a full list.
-        `freq`: The frequency which the device will tune to.
-        `device`: "" if you want to use the microphone; "pulse_monitor" to use whatever is currently playing on the computer. The "pulse_monitor" option currently only works on GNU Linux, and only after pre-configuring the ALSA Pseudodevice according to the GNU Radio docs: https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio
-        `wavfile`: The path to a wav file that will be played.
+        """        
+        Parameters
+        ----------
+        device_args :
+            For example, "hackrf=0", etc. See the osmocom docs for a full list.
+        freq :
+            The frequency which the device will tune to in Hz.
+        audio_device : 
+            - if you want to use the microphone, set to `""`
+            - "pulse_monitor" to use whatever is currently playing on the computer. The "pulse_monitor" option currently only works on GNU Linux, and only after pre-configuring the ALSA Pseudodevice according to the GNU Radio docs: https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio
+            
+            Note: If you specify `audio_device`, then `repeat` is ignored.
+        wavfile :
+            The path to a wav file that will be played.
         """
         self._tb = create_top_block_and_configure_exit()
         self.__source = pick_audio_source(audio_device, wavfile, audio_sample_rate, repeat)
