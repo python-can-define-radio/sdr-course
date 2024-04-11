@@ -1,6 +1,0 @@
-output size of wrapped funcs should match ratio of sample rates
-
-Samples(values, samp_rate)
-
-make a resamp_wbfm_tx hier block that has a rational resampler and a wbfm tx.
-
