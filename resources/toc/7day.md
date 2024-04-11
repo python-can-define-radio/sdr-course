@@ -21,7 +21,8 @@
 
 <div style=float:left>🔬</div>
 
-- [GQRX][050_gqrx_FM_Receive.md]  
+- [GQRX][050_gqrx_FM_Receive.md]
+- [What is an SDR?](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/060_What_is_an_SDR.md)
 - Independent work time to experiment with what we've learned so far.
   For those who wish to work ahead, look at these. Start from the top of whichever chapter you find interesting.
     - [Ch03 URH][Ch_URH]
