@@ -1,8 +1,8 @@
 import numpy as np
 from gnuradio import blocks, audio
 import matplotlib.pyplot as plt
-from pcdr.queue.sink import _QueuedSink
-from pcdr.queue.source import _QueuedSource
+from pcdr._queue.sink import _QueuedSink
+from pcdr._queue.source import _QueuedSource
 
 
 

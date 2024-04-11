@@ -6,7 +6,7 @@ from gnuradio import gr, analog
 import numpy as np
 from typeguard import typechecked
 from pcdr.our_GR_blocks import Blk_sink_print
-from pcdr.basictermplot import plot
+from pcdr._internal.basictermplot import plot
 
 
 

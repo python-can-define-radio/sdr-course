@@ -7,7 +7,7 @@
 # ## "Level 2" lesson
 
 from pcdr import ook_modulate
-import pcdr.queue.sink as qsink
+import pcdr._queue.sink as qsink
 
 if __name__ == "__main__":
     samp_rate = 2e6

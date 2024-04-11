@@ -1,4 +1,4 @@
-import pcdr.queue.sink as qsink
+import pcdr._queue.sink as qsink
 from pcdr.wavegen import random_normal, makeWave
 import numpy as np
 import random
