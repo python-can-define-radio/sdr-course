@@ -127,7 +127,7 @@ class OsmosdrTransmitter(Startable, StopAndWaitable,
 def pick_audio_source(audio_device: Optional[str],
                       wavfile: Optional[Union[str, Path]],
                       audio_sample_rate: float,
-                      repeat: bool) -> HasWorkFunc:
+                      repeat: bool) -> Union[audio.source, blocks.wavfile_source]:
     """
     >>> pick_audio_source("", None)
     
