@@ -9,11 +9,6 @@ from pcdr.our_GR_blocks import queue_sink
 
 
 
-## Bizarre GNU Radio variable-rename issues
-
-_osmocom_source_to_queuequeue_sink = queue_sink
-
-
 
 class osmocom_source_to_queue_sink(gr.top_block):
 
