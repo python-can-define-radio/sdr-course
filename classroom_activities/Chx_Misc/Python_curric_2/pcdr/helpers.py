@@ -60,7 +60,7 @@ class HackRFArgs_RX:
         if not (1e6 <= value <= 6e9):
             raise ValueError(_HACKRF_ERRORS.CENTER_FREQ)
 
-    device_args: str = field(default="hackrf=0")
+    device_args: str = field()
 
     samp_rate: float = field(default=2e6)
     @samp_rate.validator
@@ -105,7 +105,7 @@ class HackRFArgs_TX:
         if not (1e6 <= value <= 6e9):
             raise ValueError(_HACKRF_ERRORS.CENTER_FREQ)
 
-    device_args: str = field(default="hackrf=0")
+    device_args: str = field()
 
     samp_rate: float = field(default=2e6)
     @samp_rate.validator
