@@ -23,4 +23,4 @@ class HasWorkFunc(Protocol):
 
 
 ## avoid circular imports
-from pcdr.our_GR_blocks import queue_sink
+from pcdr._internal.our_GR_blocks import queue_sink

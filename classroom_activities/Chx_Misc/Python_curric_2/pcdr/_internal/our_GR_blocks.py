@@ -187,7 +187,7 @@ class Averager:
 
 class Blk_strength_at_freq(gr.sync_block):
     @typechecked
-    def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int, avg_count: int = 1):
+    def __init__(self, samp_rate: float, freq_of_interest: float, fft_size: int):
         gr.sync_block.__init__(self,
             name='Python Block: Strength at frequency',
             in_sig=[(np.complex64, fft_size)],

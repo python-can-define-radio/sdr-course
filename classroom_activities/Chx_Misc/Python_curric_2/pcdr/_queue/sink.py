@@ -16,7 +16,7 @@ from typeguard import typechecked
 from gnuradio import gr, blocks
 from termcolor import cprint
 from pcdr._internal.misc import getSize
-from pcdr.our_GR_blocks import Blk_queue_source
+from pcdr._internal.our_GR_blocks import Blk_queue_source
 from pcdr.queue import ChunkSizeNonIntegerError
 import numpy as np
 from typing import Optional

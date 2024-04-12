@@ -397,7 +397,7 @@ def getSize(dtype: type) -> int:
 @typechecked
 def connect_probe_common(tb: gr.top_block, src_blk, type_: type, vecsize: int):
     ## placed here to avoid circular imports
-    from pcdr.our_GR_blocks import Blk_VecSingleItemStack
+    from pcdr._internal.our_GR_blocks import Blk_VecSingleItemStack
 
     probe = Blk_VecSingleItemStack(type_, vecsize)
     tb.connect(src_blk, probe)

@@ -1,4 +1,4 @@
-from pcdr.our_GR_blocks import Blk_queue_source, Blk_sink_print
+from pcdr._internal.our_GR_blocks import Blk_queue_source, Blk_sink_print
 from gnuradio import gr, blocks
 import time
 import numpy as np

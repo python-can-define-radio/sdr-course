@@ -12,7 +12,7 @@ import numpy as np
 from gnuradio import gr
 from gnuradio import blocks
 import osmosdr
-from pcdr.our_GR_blocks import print_sink, string_file_sink
+from pcdr._internal.our_GR_blocks import print_sink, string_file_sink
 from gnuradio import zeromq
 from typing import List
 from pcdr._internal.misc import validate_hack_rf_transmit

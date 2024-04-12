@@ -5,7 +5,7 @@ from unittest.mock import patch
 from gnuradio import gr, analog
 import numpy as np
 from typeguard import typechecked
-from pcdr.our_GR_blocks import Blk_sink_print
+from pcdr._internal.our_GR_blocks import Blk_sink_print
 from pcdr._internal.basictermplot import plot
 
 

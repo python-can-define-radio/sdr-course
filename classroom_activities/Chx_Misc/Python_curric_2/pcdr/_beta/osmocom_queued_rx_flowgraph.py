@@ -4,7 +4,7 @@ import numpy as np
 import osmosdr
 from typing import List, Protocol
 
-from pcdr.our_GR_blocks import queue_sink
+from pcdr._internal.our_GR_blocks import queue_sink
 
 
 

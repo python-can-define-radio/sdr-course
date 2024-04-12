@@ -3,7 +3,7 @@ from pathlib import Path
 from gnuradio import gr, blocks, analog, audio, filter
 import osmosdr
 import numpy as np
-from pcdr.our_GR_blocks import (
+from pcdr._internal.our_GR_blocks import (
     Blk_strength_at_freq, Blk_VecSingleItemStack
 )
 import time

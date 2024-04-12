@@ -2,7 +2,7 @@ from typing import Optional
 from typeguard import typechecked
 import numpy as np
 from gnuradio import gr, blocks
-from pcdr.our_GR_blocks import Blk_queue_source, Blk_queue_sink
+from pcdr._internal.our_GR_blocks import Blk_queue_source, Blk_queue_sink
 from pcdr._internal.misc import getSize
 
 
