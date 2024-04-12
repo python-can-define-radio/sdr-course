@@ -1,5 +1,5 @@
 from pcdr.gnuradio_misc import _configure_and_run_gui_flowgraph
-from pcdr.queue_to_guisink_flowgraph import queue_to_guisink
+from pcdr._internal.queue_to_guisink_flowgraph import queue_to_guisink
 from pcdr._internal.misc import SimpleQueueTypeWrapped
 import numpy as np
 
