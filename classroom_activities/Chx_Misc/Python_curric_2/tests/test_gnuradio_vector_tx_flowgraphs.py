@@ -1,4 +1,4 @@
-from pcdr.gnuradio_sender import gnuradio_write_file
+from pcdr.gnuradio_sender import _gnuradio_write_file
 from pcdr import makeComplexWave_time
 import numpy as np
 import random
@@ -14,7 +14,7 @@ def test_write_and_read():
     # timestamps, wave = makeComplexWave_time(2, 1000, 10)
     assert len(dat_to_write) == len_dat
     assert isinstance(dat_to_write, np.ndarray)
-    gnuradio_write_file(dat_to_write, fn)
+    _gnuradio_write_file(dat_to_write, fn)
     
     nploaded = np.fromfile(fn, np.complex64)
     assert len(nploaded) <= len(dat_to_write)

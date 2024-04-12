@@ -30,7 +30,7 @@ try:
     #     pass
 
 
-    def configure_and_run_gui_flowgraph(top_block_cls, args):
+    def _configure_and_run_gui_flowgraph(top_block_cls, args):
         """The portion of GNU Radio boilerplate that 
         sets up the QT GUI Application."""
         if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):

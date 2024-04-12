@@ -1,5 +1,5 @@
 """This demonstrates a few functions. We may turn it into an exercise."""
-from pcdr.gnuradio_sender import gnuradio_write_file
+from pcdr.gnuradio_sender import _gnuradio_write_file
 from pcdr import makeComplexWave_time, createTimestamps_samprate, gnuradio_read_file
 from pathlib import Path
 import numpy as np
@@ -13,7 +13,7 @@ def FAILED_test_write_and_read():
     timestamps, wave = makeComplexWave_time(tot_time, 100, 20)
     assert len(wave) == 3000
     assert timestamps[1] == 0.01
-    gnuradio_write_file(wave, str(basepath / "samprate_2e6_basic_wave.complex"), chunk_size=2)
+    _gnuradio_write_file(wave, str(basepath / "samprate_2e6_basic_wave.complex"), chunk_size=2)
 
     numpyread = np.fromfile(str(basepath / "samprate_2e6_basic_wave.complex"), dtype=np.complex64)
     assert len(numpyread) == len(wave)

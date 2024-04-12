@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from typing import Optional, List, Tuple, Literal
-from pcdr.fileio import writeRealCSV, writeComplexCSV
+from pcdr._internal.fileio import writeRealCSV, writeComplexCSV
 from pcdr.modulators import ook_modulate
 from pcdr.helpers import str_to_bin_list
 from typeguard import typechecked

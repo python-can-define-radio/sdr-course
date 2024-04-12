@@ -11,12 +11,12 @@ import osmosdr
 
 
 
-T = TypeVar('T')
+T = TypeVar('T')  
+"""Type variable for internal use."""
 
 
 
-
-class HACKRF_ERRORS:
+class _HACKRF_ERRORS:
     """Just an organizational structure. Not intended for instantiation or mutation."""
 
     SAMP_RATE = ("The HackRF One is only capable of sample rates "
@@ -43,14 +43,22 @@ class HACKRF_ERRORS:
 @attrs.define
 class HackRFArgs_RX:
     """
-    device_args: documented here: https://osmocom.org/projects/gr-osmosdr/wiki
-    Others are documented on the Hack RF FAQ.
+    Used in GNU Radio's Osmocom Source block.
+    
+    Parameters
+    ----------
+    device_args :
+        This is typically "hackrf=0" when using the Hack RF.  
+        Options documented here: https://osmocom.org/projects/gr-osmosdr/wiki
+    
+    All others: 
+        Documented on the Hack RF FAQ.
     """
     center_freq: float = field()
     @center_freq.validator
     def check(self, attribute, value):
         if not (1e6 <= value <= 6e9):
-            raise ValueError(HACKRF_ERRORS.CENTER_FREQ)
+            raise ValueError(_HACKRF_ERRORS.CENTER_FREQ)
 
     device_args: str = field(default="hackrf=0")
 
@@ -58,7 +66,7 @@ class HackRFArgs_RX:
     @samp_rate.validator
     def check(self, attribute, value):
         if not (2e6 <= value <= 20e6):
-            raise ValueError(HACKRF_ERRORS.SAMP_RATE)
+            raise ValueError(_HACKRF_ERRORS.SAMP_RATE)
 
     rf_gain: int = field(default=0, validator=validators.ge(0))
 
@@ -66,13 +74,13 @@ class HackRFArgs_RX:
     @if_gain.validator
     def check(self, attribute, value):
         if value not in range(0, 40+8, 8):
-            raise ValueError(HACKRF_ERRORS.RX_IF_GAIN)
+            raise ValueError(_HACKRF_ERRORS.RX_IF_GAIN)
         
     bb_gain: int = field(default=30)
     @bb_gain.validator
     def check(self, attribute, value):
         if value not in range(0, 62+2, 2):
-            raise ValueError(HACKRF_ERRORS.RX_BB_GAIN)
+            raise ValueError(_HACKRF_ERRORS.RX_BB_GAIN)
         
     bandwidth: float = field(default=0)
     
@@ -80,14 +88,22 @@ class HackRFArgs_RX:
 @attrs.define
 class HackRFArgs_TX:
     """
-    device_args: documented here: https://osmocom.org/projects/gr-osmosdr/wiki
-    Others are documented on the Hack RF FAQ.
+    Used in GNU Radio's Osmocom Sink block.
+    
+    Parameters
+    ----------
+    device_args :
+        This is typically "hackrf=0" when using the Hack RF.  
+        Options documented here: https://osmocom.org/projects/gr-osmosdr/wiki
+    
+    All others: 
+        Documented on the Hack RF FAQ.
     """
     center_freq: float = field()
     @center_freq.validator
     def check(self, attribute, value):
         if not (1e6 <= value <= 6e9):
-            raise ValueError(HACKRF_ERRORS.CENTER_FREQ)
+            raise ValueError(_HACKRF_ERRORS.CENTER_FREQ)
 
     device_args: str = field(default="hackrf=0")
 
@@ -95,7 +111,7 @@ class HackRFArgs_TX:
     @samp_rate.validator
     def check(self, attribute, value):
         if not (2e6 <= value <= 20e6):
-            raise ValueError(HACKRF_ERRORS.SAMP_RATE)
+            raise ValueError(_HACKRF_ERRORS.SAMP_RATE)
 
     rf_gain: int = field(default=0, validator=validators.ge(0))
 
@@ -103,15 +119,18 @@ class HackRFArgs_TX:
     @if_gain.validator
     def check(self, attribute, value):
         if value not in range(0, 47+1):
-            raise ValueError(HACKRF_ERRORS.TX_IF_GAIN)
+            raise ValueError(_HACKRF_ERRORS.TX_IF_GAIN)
         
     bb_gain: int = field(default=30)
     @bb_gain.validator
     def check(self, attribute, value):
         if value not in range(0, 62+2, 2):
-            raise ValueError(HACKRF_ERRORS.RX_BB_GAIN)
+            raise ValueError(_HACKRF_ERRORS.RX_BB_GAIN)
         
     bandwidth: float = field(default=0)
+
+# TODO 2024 APRIL 11:
+# Continue alphabetically, starting on this file, reorganizing stuff.
 
 
 class CenterFrequencySettable:
