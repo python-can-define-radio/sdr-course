@@ -1,0 +1,2 @@
+from shortcuts import OsmosdrSingleFreqReceiver as OsmosdrReceiver
+from shortcuts import OsmosdrSingleFreqTransmitter as OsmosdrTransmitter
