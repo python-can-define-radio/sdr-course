@@ -4,14 +4,10 @@ from .modulators import (
 )
 
 from .wavegen import (
-    createTimestamps,
-    createTimestamps_samprate,
+    make_timestamps,
     generate_ook_modulated_example_file,
     makeWave,
-    makeRealWave_numsamps,
-    makeComplexWave_numsamps,
-    makeComplexWave_time,
-    makeRealWave_time,
+    make_wave,
     multiply_by_complex_wave,
     multiply_by_real_wave,
     make_fft,

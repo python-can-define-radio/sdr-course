@@ -14,11 +14,10 @@ def test_queue_to_list_empty_queue():
 
 
 from pcdr.wavegen import (
-    createTimestamps,
     makeRealWave_basic,
     makeComplexWave_basic,
-    isAliasingWhenDisallowed,
-    aliasingError,
+    _isAliasingWhenDisallowed,
+    _aliasingError,
     makeComplexWave_numsamps,
     makeRealWave_numsamps,
     makeComplexWave_time,
@@ -42,13 +41,6 @@ samp_rate_strat = st.floats(
 )
 
 
-# test_createTimestamps = deal.cases(
-#     func=createTimestamps,
-#     kwargs=dict(
-#         seconds=seconds_strat,
-#         num_samples=num_samples_strat
-#     )
-# )
 
 # test_makeRealWave = deal.cases(
 #     func=makeRealWave,
@@ -66,9 +58,9 @@ samp_rate_strat = st.floats(
 #     )
 # )
 
-# test_isAliasingWhenDisallowed = deal.cases(isAliasingWhenDisallowed)
+# test__isAliasingWhenDisallowed = deal.cases(_isAliasingWhenDisallowed)
 
-# test_aliasingError = deal.cases(aliasingError)
+# test__aliasingError = deal.cases(_aliasingError)
 
 # test_makeComplexWave_numsamps = deal.cases(
 #     func=makeComplexWave_numsamps,

@@ -24,7 +24,7 @@ from gnuradio import eng_notation
 from gnuradio import qtgui
 from pcdr._internal.misc import SimpleQueueTypeWrapped
 from pcdr._internal.our_GR_blocks import queue_source
-from pcdr.wrapped_GR_blocks import qt_gui_init_boilerplate
+from pcdr._internal.wrapped_GR_blocks import qt_gui_init_boilerplate
 
 
 
