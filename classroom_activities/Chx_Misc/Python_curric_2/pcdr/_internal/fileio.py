@@ -6,7 +6,7 @@ if TYPE_CHECKING:
 
 import numpy as np
 
-from pcdr.types_and_contracts import TRealNum
+from pcdr._internal.types_and_contracts import TRealNum
 
 
 

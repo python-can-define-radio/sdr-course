@@ -15,7 +15,7 @@ from pcdr._internal.misc import (
     Startable, StopAndWaitable, Waitable, IFGainSettable,
     BBGainSettable, CenterFrequencySettable, ProbeReadable
 )
-from pcdr.types_and_contracts import HasWorkFunc
+from pcdr._internal.types_and_contracts import HasWorkFunc
 
 
 

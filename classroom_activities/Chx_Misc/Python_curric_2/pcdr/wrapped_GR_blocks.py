@@ -7,7 +7,7 @@ from distutils.version import StrictVersion
 
 from gnuradio import gr
 from PyQt5 import Qt
-from pcdr.types_and_contracts import top_block_and_widget
+from pcdr._internal.types_and_contracts import top_block_and_widget
 from gnuradio import qtgui
 
 
