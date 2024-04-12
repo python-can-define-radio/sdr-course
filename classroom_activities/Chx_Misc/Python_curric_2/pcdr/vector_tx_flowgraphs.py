@@ -15,7 +15,7 @@ import osmosdr
 from pcdr.our_GR_blocks import print_sink, string_file_sink
 from gnuradio import zeromq
 from typing import List
-from pcdr.helpers import validate_hack_rf_transmit
+from pcdr._internal.misc import validate_hack_rf_transmit
 from typeguard import typechecked
 
 

@@ -15,7 +15,7 @@ import osmosdr
 import time
 from queue import SimpleQueue, Empty
 from pcdr.our_GR_blocks import queue_source, string_file_sink, print_sink
-from pcdr.helpers import validate_hack_rf_transmit
+from pcdr._internal.misc import validate_hack_rf_transmit
 from gnuradio import zeromq
 
 

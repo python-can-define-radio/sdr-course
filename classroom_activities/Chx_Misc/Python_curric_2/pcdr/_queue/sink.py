@@ -15,7 +15,7 @@ Queue is empty, block will now report 'done' to GNU Radio flowgraph
 from typeguard import typechecked
 from gnuradio import gr, blocks
 from termcolor import cprint
-from pcdr.helpers import getSize
+from pcdr._internal.misc import getSize
 from pcdr.our_GR_blocks import Blk_queue_source
 from pcdr.queue import ChunkSizeNonIntegerError
 import numpy as np

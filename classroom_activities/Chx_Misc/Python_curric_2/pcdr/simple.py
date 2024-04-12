@@ -8,7 +8,7 @@ from pcdr.our_GR_blocks import (
 )
 import time
 from typeguard import typechecked
-from pcdr.helpers import (
+from pcdr._internal.misc import (
     get_OsmocomArgs_RX, get_OsmocomArgs_TX, 
     configureOsmocom, create_top_block_and_configure_exit,
     connect_probe_common,

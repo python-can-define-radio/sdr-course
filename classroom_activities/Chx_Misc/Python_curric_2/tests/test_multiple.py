@@ -5,7 +5,7 @@ import hypothesis.strategies as st
 
 
 from pcdr.gnuradio_sender import _pad_chunk_queue
-from pcdr.helpers import queue_to_list
+from pcdr._internal.misc import queue_to_list
 
 
 

@@ -1,7 +1,7 @@
 from typing import List, Optional, Sequence, TypeVar, Union
 import numpy as np
 from queue import Empty
-from pcdr.helpers import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_
+from pcdr._internal.misc import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_
 from pcdr.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_sink, queue_to_string_file_sink, queue_to_file_sink
 from pcdr.vector_tx_flowgraphs import vector_to_file_sink, vector_to_osmocom_sink
 from pcdr.gnuradio_misc import configure_graceful_exit
@@ -11,8 +11,6 @@ from pcdr.queue_to_guisink_flowgraph import queue_to_guisink
 from pcdr.vector_to_guisink_flowgraph import vector_to_guisink
 from pcdr.gnuradio_misc import _configure_and_run_gui_flowgraph
 
-
-T = TypeVar('T')
 
 
 

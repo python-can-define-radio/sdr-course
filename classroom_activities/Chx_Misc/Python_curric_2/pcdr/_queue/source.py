@@ -1,7 +1,7 @@
 from typing import Optional
 from typeguard import typechecked
 from gnuradio import gr, blocks
-from pcdr.helpers import getSize
+from pcdr._internal.misc import getSize
 from pcdr.our_GR_blocks import Blk_queue_sink
 import numpy as np
 

@@ -22,7 +22,7 @@ from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 from gnuradio import qtgui
-from pcdr.helpers import SimpleQueueTypeWrapped
+from pcdr._internal.misc import SimpleQueueTypeWrapped
 from pcdr.our_GR_blocks import queue_source
 from pcdr.wrapped_GR_blocks import qt_gui_init_boilerplate
 
