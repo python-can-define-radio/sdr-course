@@ -19,7 +19,7 @@ from pcdr.types_and_contracts import HasWorkFunc
 
 
 
-class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable):
+class OsmosdrSingleFreqReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable):
     """A simplified interface to the Osmosdr Source
     which measures the strength of only the specified frequency.
     Example usage:
@@ -78,7 +78,7 @@ class OsmosdrReceiver(Startable, StopAndWaitable, IFGainSettable, BBGainSettable
         return retval
 
 
-class OsmosdrTransmitter(Startable, StopAndWaitable,
+class OsmosdrSingleFreqTransmitter(Startable, StopAndWaitable,
                          IFGainSettable, BBGainSettable,
                          CenterFrequencySettable):
     """A simplified interface to the Osmosdr Sink
@@ -124,12 +124,12 @@ class OsmosdrTransmitter(Startable, StopAndWaitable,
 
 
 @typechecked
-def pick_audio_source(audio_device: Optional[str],
+def _pick_audio_source(audio_device: Optional[str],
                       wavfile: Optional[Union[str, Path]],
                       audio_sample_rate: float,
                       repeat: bool) -> Union[audio.source, blocks.wavfile_source]:
     """
-    >>> pick_audio_source("", None)
+    >>> _pick_audio_source("", None)
     
     """
     if audio_device != None and wavfile != None:
@@ -176,6 +176,7 @@ class AudioPlayer(Startable, StopAndWaitable, Waitable, ProbeReadable):
 class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable,
                              IFGainSettable, BBGainSettable, Waitable):
     """
+    ```python3
     import pcdr.simple
     import time
     transmitter = pcdr.simple.OsmosdrWBFMTransmitter("hackrf=0", 2.45e9, "pulse_monitor")
@@ -183,6 +184,7 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
     transmitter.set_if_gain(37)
     time.sleep(10)
     transmitter.stop_and_wait()
+    ```
     """
     @typechecked
     def __init__(self, device_args: str, freq: float, *,
@@ -206,7 +208,7 @@ class OsmosdrWBFMTransmitter(Startable, StopAndWaitable, CenterFrequencySettable
             The path to a wav file that will be played.
         """
         self._tb = create_top_block_and_configure_exit()
-        self.__source = pick_audio_source(audio_device, wavfile, audio_sample_rate, repeat)
+        self.__source = _pick_audio_source(audio_device, wavfile, audio_sample_rate, repeat)
         self._osmoargs = get_OsmocomArgs_TX(freq, device_args)
         self.__rational_resampler = filter.rational_resampler_fff(int(self._osmoargs.samp_rate), int(audio_sample_rate))
         self.__wfm_tx = analog.wfm_tx(self._osmoargs.samp_rate, self._osmoargs.samp_rate)
