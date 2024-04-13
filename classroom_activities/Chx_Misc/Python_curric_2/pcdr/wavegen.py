@@ -39,10 +39,10 @@ def make_timestamps_samprate(samp_rate: float, num_samples: int, dtype=np.float6
     Implemented using np.linspace().
     
     Examples:
-    >>> make_timestamps_seconds(5, 10)
+    >>> make_timestamps_samprate(5, 10)
     array([0. , 0.2, 0.4, 0.6, 0.8, 1. , 1.2, 1.4, 1.6, 1.8])
 
-    >>> make_timestamps_seconds(10, 4)
+    >>> make_timestamps_samprate(10, 4)
     array([0. , 0.1, 0.2, 0.3])
 
     Note: We use np.float64 as the default dtype because np.float32 was causing float rounding issues
@@ -743,11 +743,23 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
     xmin: 0.00
     xmax: 24.50
     ymin: 0.00
-    ymax: 53.54
+    ymax: ...
     ~██████████o███████████████████████████████████████
     ~██████████████████████████████████████████████████
     ~█████████o█o██████████████████████████████████████
     ~ooooooooo███oooooooooooooooooooooooooooooooooooooo
+
+    >>> timestamps, wave = makeWave(samp_rate, 5, "complex", seconds=0.2)
+    >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
+    >>> plot(sample_freqs, fft_mag, youtputsize=4)
+    xmin: 0.00
+    xmax: 20.00
+    ymin: 0.06
+    ymax: ...
+    ~█o███
+    ~█████
+    ~o█o██
+    ~███oo
     """
     sample_freqs, fft_mag = make_fft(sig, samp_rate)
     halfway = len(sample_freqs) // 2
@@ -761,21 +773,47 @@ def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]
 
     >>> from pcdr._internal.basictermplot import plot
     >>> from pcdr.wavegen import makeComplexWave_time, make_fft
-    >>> timestamps, wave = makeComplexWave_time(1, 50, 10)
-    >>> sample_freqs, fft_mag = make_fft(wave, 50)
-    >>> plot(sample_freqs, fft_mag)
+    >>> seconds = 0.2
+    >>> samp_rate = 50
+    >>> freq = 5
+    >>> timestamps, wave = makeComplexWave_time(seconds, samp_rate, freq)
+    >>> sample_freqs, fft_mag = make_fft(wave, samp_rate)
+    >>> sample_freqs
+    array([-25., -20., -15., -10.,  -5.,   0.,   5.,  10.,  15.,  20.])
+
+    >>> plot(sample_freqs, fft_mag, youtputsize=2)
     xmin: -25.00
-    xmax: 24.00
+    xmax: 20.00
     ymin: 0.00
-    ymax: 26.54
-    ~███████████████████████████████████o██████████████
-    ~██████████████████████████████████████████████████
-    ~██████████████████████████████████████████████████
-    ~██████████████████████████████████████████████████
-    ~██████████████████████████████████o█o█████████████
-    ~██████████████████████████████████████████████████
-    ~██████████████████████████████████████████████████
-    ~oooooooooooooooooooooooooooooooooo███ooooooooooooo
+    ymax: ...
+    ~██████o███
+    ~oooooo█ooo
+
+    >>> seconds = 0.8
+    >>> samp_rate = 10
+    >>> freq = 2
+    >>> timestamps, wave = makeComplexWave_time(seconds, samp_rate, freq)
+    >>> sample_freqs, fft_mag = make_fft(wave, samp_rate)
+    >>> sample_freqs
+    array([-5.  , -3.75, -2.5 , -1.25,  0.  ,  1.25,  2.5 ,  3.75])
+
+    >>> plot(sample_freqs, fft_mag, youtputsize=2)
+    xmin: -5.00
+    xmax: 3.75
+    ymin: 0.01
+    ymax: ...
+    ~██████o█
+    ~oooooo█o
+
+    Notice that the lowest sample frequency is not necessarily `samp_rate / 2`:
+    >>> seconds = 0.9
+    >>> samp_rate = 10
+    >>> freq = 2
+    >>> timestamps, wave = makeComplexWave_time(seconds, samp_rate, freq)
+    >>> sample_freqs, fft_mag = make_fft(wave, samp_rate)
+    >>> sample_freqs
+    array([-4.44444444, -3.33333333, -2.22222222, -1.11111111,  0.        ,
+            1.11111111,  2.22222222,  3.33333333,  4.44444444])
     """
     windowed = sig * np.hamming(len(sig))
     fft_result = np.fft.fftshift(np.fft.fft(windowed))
