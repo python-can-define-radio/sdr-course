@@ -10,8 +10,6 @@ import numpy as np
 import osmosdr
 from typeguard import typechecked
 
-from pcdr._internal.vector_tx_flowgraphs import vector_to_osmocom_sink
-
 
 
 class DeviceParameterError(ValueError):
@@ -426,6 +424,7 @@ def gnuradio_send(data: np.ndarray,
                   device_args: str = "hackrf=0",
                   repeat: bool = False):
     """Sends `data` to osmocom sink."""
+    from pcdr._internal.vector_tx_flowgraphs import vector_to_osmocom_sink
     normal_py_data = list(map(complex, data))  # GNURadio type issues. Eventually, fix this for efficiency
     tb = vector_to_osmocom_sink(normal_py_data, center_freq, samp_rate, if_gain, device_args, repeat)
     configure_graceful_exit(tb)

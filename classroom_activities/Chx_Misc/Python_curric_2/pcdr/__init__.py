@@ -1,5 +1,3 @@
-from pcdr import flow
-
 from pcdr._modulators import (
     ook_modulate,
     ook_modulate_at_frequency,
@@ -22,6 +20,8 @@ from pcdr._helpers import (
 )
 
 try:
+    from pcdr import flow
+
     from pcdr._internal.misc import (
         gnuradio_send
     )
