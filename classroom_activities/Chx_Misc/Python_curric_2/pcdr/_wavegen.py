@@ -562,7 +562,7 @@ def multiply_by_complex_wave(baseband_sig: np.ndarray, samp_rate: float, freq: f
     Returns a tuple (timestamps, mult).
 
     >>> from pcdr._internal.basictermplot import plot
-    >>> from pcdr.wavegen import multiply_by_complex_wave, ook_modulate
+    >>> from pcdr import multiply_by_complex_wave, ook_modulate
     >>> baseband_sig = ook_modulate([1, 0], 32)
     >>> timestamps, mult = multiply_by_complex_wave(baseband_sig, 64, 2)
     >>> plot(timestamps, mult.real)
@@ -592,7 +592,7 @@ def multiply_by_real_wave(baseband_sig: np.ndarray, samp_rate: float, freq: floa
     Returns a tuple (timestamps, mult).
 
     >>> from pcdr._internal.basictermplot import plot
-    >>> from pcdr.wavegen import multiply_by_real_wave, ook_modulate
+    >>> from pcdr import multiply_by_real_wave, ook_modulate
     >>> baseband_sig = ook_modulate([1, 0], 32)
     >>> timestamps, wave = multiply_by_real_wave(baseband_sig, 64, 2)
     >>> plot(timestamps, wave)
@@ -737,9 +737,9 @@ def make_fft_positive_freqs_only(sig: np.ndarray, samp_rate: float) -> Tuple[np.
     `sample_freqs` ranges from 0 to approximately samp_rate/2
 
     >>> from pcdr._internal.basictermplot import plot
-    >>> from pcdr.wavegen import makeWave, make_fft_positive_freqs_only
+    >>> from pcdr import make_wave, make_fft_positive_freqs_only
     >>> samp_rate = 50
-    >>> timestamps, wave = makeWave(samp_rate, 5, "complex", seconds=2)
+    >>> timestamps, wave = make_wave(samp_rate, 5, "complex", seconds=2)
     >>> sample_freqs, fft_mag = make_fft_positive_freqs_only(wave, samp_rate)
     >>> plot(sample_freqs, fft_mag, youtputsize=4)
     xmin: 0.00
@@ -774,11 +774,11 @@ def make_fft(sig: np.ndarray, samp_rate: float) -> Tuple[np.ndarray, np.ndarray]
     `sample_freqs` ranges from approximately `-samp_rate/2` to approximately `samp_rate/2`.
 
     >>> from pcdr._internal.basictermplot import plot
-    >>> from pcdr.wavegen import makeComplexWave_time, make_fft
+    >>> from pcdr import make_wave, make_fft
     >>> seconds = 0.2
     >>> samp_rate = 50
     >>> freq = 5
-    >>> timestamps, wave = makeComplexWave_time(seconds, samp_rate, freq)
+    >>> timestamps, wave = make_wave(samp_rate, freq, "complex", seconds=seconds)
     >>> sample_freqs, fft_mag = make_fft(wave, samp_rate)
     >>> sample_freqs
     array([-25., -20., -15., -10.,  -5.,   0.,   5.,  10.,  15.,  20.])

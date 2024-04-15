@@ -52,7 +52,7 @@ def _compute_chunk_size(samp_rate: float, chunk_size: Optional[int]) -> int:
     >>> _compute_chunk_size(321, None)
     Traceback (most recent call last):
       ...
-    pcdr.queue.ChunkSizeNonIntegerError: Chunk size must be specified if samp rate is not divisible by 10.
+    pcdr._queue.ChunkSizeNonIntegerError: Chunk size must be specified if samp rate is not divisible by 10.
 
     If chunk size is specified, simply return it:
     >>> _compute_chunk_size(321, 300)
