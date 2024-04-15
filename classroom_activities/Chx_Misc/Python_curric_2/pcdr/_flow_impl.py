@@ -129,8 +129,8 @@ def _pick_audio_source(audio_device: Optional[str],
                       audio_sample_rate: float,
                       repeat: bool) -> Union[audio.source, blocks.wavfile_source]:
     """
-    >>> _pick_audio_source("", None)
-    
+    >>> _pick_audio_source("", None, 48000, False)
+    <gnuradio.audio...>
     """
     if audio_device != None and wavfile != None:
         raise ValueError("You must specify either `wavfile` or `device`, not both")
