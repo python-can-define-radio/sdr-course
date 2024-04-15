@@ -1,5 +1,7 @@
 from queue import SimpleQueue, Empty, Queue
 from typing import Union, Type, overload
+import sys
+import signal
 
 import attrs
 from attrs import field, validators
@@ -7,8 +9,6 @@ from gnuradio import gr
 import numpy as np
 import osmosdr
 from typeguard import typechecked
-
-from pcdr.gnuradio_misc import configure_graceful_exit
 
 
 
@@ -236,13 +236,26 @@ def configureOsmocom(osmo_init_func,
     return osmo
     
 
+def configure_graceful_exit(tb: gr.top_block):
+    """The portion of GNU Radio boilerplate that 
+    catches SIGINT and SIGTERM, and tells the flowgraph
+    to gracefully stop before exiting the program.
+    
+    Used mainly for non-graphical flowgraphs."""
+    def sig_handler(sig=None, frame=None):
+        tb.stop()
+        tb.wait()
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, sig_handler)
+    signal.signal(signal.SIGTERM, sig_handler)
+
+
 @typechecked
 def create_top_block_and_configure_exit() -> gr.top_block:
     tb = gr.top_block()
     configure_graceful_exit(tb)
     return tb
-    
-
 
 
 class QueueTypeWrapped(Queue):

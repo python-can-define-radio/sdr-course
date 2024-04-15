@@ -1,10 +1,9 @@
 from typing import List, Optional, Sequence, TypeVar, Union
 import numpy as np
 from queue import Empty
-from pcdr._internal.misc import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_
+from pcdr._internal.misc import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_, configure_graceful_exit
 from pcdr._beta.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_sink, queue_to_string_file_sink, queue_to_file_sink, queue_to_zmqpub_sink
 from pcdr._internal.vector_tx_flowgraphs import vector_to_file_sink, vector_to_osmocom_sink
-from pcdr.gnuradio_misc import configure_graceful_exit
 from pcdr._internal.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr._internal.queue_to_guisink_flowgraph import queue_to_guisink
 from pcdr._internal.vector_to_guisink_flowgraph import vector_to_guisink

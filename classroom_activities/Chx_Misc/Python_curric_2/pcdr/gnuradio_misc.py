@@ -5,19 +5,6 @@ from distutils.version import StrictVersion
 
 
 
-def configure_graceful_exit(tb: gr.top_block):
-    """The portion of GNU Radio boilerplate that 
-    catches SIGINT and SIGTERM, and tells the flowgraph
-    to gracefully stop before exiting the program.
-    
-    Used mainly for non-graphical flowgraphs."""
-    def sig_handler(sig=None, frame=None):
-        tb.stop()
-        tb.wait()
-        sys.exit(0)
-
-    signal.signal(signal.SIGINT, sig_handler)
-    signal.signal(signal.SIGTERM, sig_handler)
 
 
 try:

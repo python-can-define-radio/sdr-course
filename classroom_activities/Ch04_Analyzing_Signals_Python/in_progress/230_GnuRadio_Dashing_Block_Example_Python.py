@@ -7,10 +7,27 @@ https://github.com/FedericoCeratto/dashing
 from __future__ import annotations
 from gnuradio import gr
 from gnuradio import blocks
-from pcdr.gnuradio_misc import configure_graceful_exit
 import time
 import numpy as np
-from dashing import *
+import sys
+import signal
+from dashing import HChart
+
+
+
+def configure_exit_signal(tb: gr.top_block):
+    """The portion of GNU Radio boilerplate that 
+    catches SIGINT and SIGTERM, and tells the flowgraph
+    to gracefully stop before exiting the program.
+    
+    Used mainly for non-graphical flowgraphs."""
+    def sig_handler(sig=None, frame=None):
+        tb.stop()
+        tb.wait()
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, sig_handler)
+    signal.signal(signal.SIGTERM, sig_handler)
 
 
 class dashing_display(gr.sync_block):
@@ -41,7 +58,7 @@ class Random_Signal_Generator(gr.top_block):
         self.connect(self.myFirstBlock, self.dashing_display)
 
 tb = Random_Signal_Generator()
-configure_graceful_exit(tb)
+configure_exit_signal(tb)
 tb.start()
 while True:
     time.sleep(0.25)

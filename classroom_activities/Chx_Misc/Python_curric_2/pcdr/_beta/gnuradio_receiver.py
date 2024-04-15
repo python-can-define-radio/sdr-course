@@ -4,8 +4,7 @@ import time
 from gnuradio import gr
 
 from pcdr._beta.osmocom_queued_rx_flowgraph import osmocom_source_to_queue_sink, file_source_to_queue_sink
-from pcdr.gnuradio_misc import configure_graceful_exit
-from pcdr._internal.misc import queue_to_list
+from pcdr._internal.misc import configure_graceful_exit
 from pcdr._internal.types_and_contracts import SupportsQueueSink
 
 
