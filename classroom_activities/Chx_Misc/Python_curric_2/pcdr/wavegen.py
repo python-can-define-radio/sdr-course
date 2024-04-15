@@ -664,7 +664,7 @@ def noisify(data: np.ndarray, amplitude=1, seed=None) -> np.ndarray:
     else:
         raise NotImplementedError("Currently, this only works for these dtypes: float32, complex64.")
     assert randnoise.dtype == data.dtype
-    result = data + randnoise
+    result = data + amplitude * randnoise
     assert result.dtype == data.dtype
     return result
 
