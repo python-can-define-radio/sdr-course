@@ -1,6 +1,7 @@
 These are terms that relate to GNU Radio and/or to SDRs in general. 
 
 **Decimate, Decimation**: Reduce the sample rate of a signal.  
+ℹ️ This definition coincides with material from SDR slideshow A (slides 22, 25, 28-32, 40-42).  
 Decimation is a mathematical operation that reduces the original sample rate of a sequence to a lower rate. It is the opposite of interpolation. In mathematics, decimation refers to the creation of a new sequence comprising only every n-th element of a source sequence.1.
 
 Common reasons to do this include...
