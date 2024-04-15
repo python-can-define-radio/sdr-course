@@ -1,4 +1,4 @@
-from pcdr.gnuradio_sender import _gnuradio_write_file
+from pcdr._beta.gnuradio_sendlike import _gnuradio_write_file
 from pcdr import makeComplexWave_time
 import numpy as np
 import random

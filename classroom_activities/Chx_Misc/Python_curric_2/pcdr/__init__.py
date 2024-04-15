@@ -20,7 +20,7 @@ from .helpers import (
 )
 
 try:
-    from .gnuradio_sender import (
+    from pcdr._internal.misc import (
         gnuradio_send
     )
     

@@ -179,20 +179,6 @@ def _gnuradio_network_pub(data: np.ndarray, port: int = 8008, chunk_size: int = 
     tb.wait()
 
 
-def gnuradio_send(data: np.ndarray,
-                  center_freq: float,
-                  samp_rate: float,
-                  if_gain: int = 16,
-                  device_args: str = "hackrf=0",
-                  repeat: bool = False):
-    """Sends `data` to osmocom sink."""
-    normal_py_data = list(map(complex, data))  # GNURadio type issues. Eventually, fix this for efficiency
-    tb = vector_to_osmocom_sink(normal_py_data, center_freq, samp_rate, if_gain, device_args, repeat)
-    configure_graceful_exit(tb)
-    tb.start()
-    tb.wait()
-
-
 def _gnuradio_send_using_queue_impl(data: np.ndarray,
                   center_freq: float,
                   samp_rate: float,
