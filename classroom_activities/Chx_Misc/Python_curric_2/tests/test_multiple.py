@@ -1,8 +1,8 @@
 from queue import SimpleQueue
-import numpy as np
+
 import hypothesis.extra.numpy as hyponp
 import hypothesis.strategies as st
-
+import numpy as np
 
 from pcdr._beta.gnuradio_sendlike import _pad_chunk_queue
 from pcdr._internal.misc import queue_to_list
@@ -13,7 +13,7 @@ def test_queue_to_list_empty_queue():
     assert queue_to_list(SimpleQueue()) == []
 
 
-from pcdr.wavegen import (
+from pcdr._wavegen import (
     makeRealWave_basic,
     makeComplexWave_basic,
     _isAliasingWhenDisallowed,

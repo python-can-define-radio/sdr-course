@@ -1,8 +1,6 @@
 import pcdr._queue.sink as qsink
-from pcdr.wavegen import random_normal, makeWave
-import numpy as np
-import random
-import time
+from pcdr._wavegen import random_normal, makeWave
+
 
 if __name__ == "__main__":
     samp_rate = 2e6  # units: samples per second

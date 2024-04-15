@@ -1,7 +1,7 @@
 from hypothesis import given
 from hypothesis.strategies import text
 
-from pcdr.helpers import str_to_bin_list, bytes_to_bin_list
+from pcdr._helpers import str_to_bin_list, bytes_to_bin_list
 
 
 @given(text(alphabet=[chr(c) for c in range(128)]))

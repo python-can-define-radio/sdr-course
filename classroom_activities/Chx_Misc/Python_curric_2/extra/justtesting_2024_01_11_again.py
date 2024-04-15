@@ -1,8 +1,11 @@
-import pcdr._queue.sink as qsink
-from pcdr.wavegen import random_normal, makeWave
-import numpy as np
 import random
 import time
+
+import numpy as np
+
+import pcdr._queue.sink as qsink
+from pcdr._wavegen import random_normal, makeWave
+
 
 if __name__ == "__main__":
     freqs = [104.3e6, 107.7e6]   # Hz

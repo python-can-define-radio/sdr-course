@@ -1,9 +1,11 @@
-from .modulators import (
+from pcdr import flow
+
+from pcdr._modulators import (
     ook_modulate,
     ook_modulate_at_frequency,
 )
 
-from .wavegen import (
+from pcdr._wavegen import (
     make_timestamps,
     generate_ook_modulated_example_file,
     makeWave,
@@ -14,7 +16,7 @@ from .wavegen import (
     make_fft_positive_freqs_only,
 )
 
-from .helpers import (
+from pcdr._helpers import (
     str_to_bin_list,
     int_to_bin_list,
 )

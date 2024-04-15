@@ -1,4 +1,5 @@
 from typing import List, Iterable, TypeVar, Tuple
+
 import numpy as np
 
 
@@ -90,7 +91,7 @@ def ook_modulate_at_frequency(bits: List[int], bit_length: int, samp_rate: float
     __must_be_binary(bits)
     ## TODO: place this import better.
     ## For now, this import must be here due to circular imports
-    from pcdr.wavegen import multiply_by_complex_wave
+    from pcdr._wavegen import multiply_by_complex_wave
 
     baseband_sig = ook_modulate(bits, bit_length)
     result = multiply_by_complex_wave(baseband_sig, samp_rate, freq)

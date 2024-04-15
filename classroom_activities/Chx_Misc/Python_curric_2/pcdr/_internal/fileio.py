@@ -29,7 +29,7 @@ def writeComplexCSV(filename, data_to_write):
 def __readCSV(filename_csv: str, samp_rate: float, type_: Callable) -> Tuple[np.ndarray, np.ndarray]:
     
     ## This import must be here to avoid circular imports.
-    from pcdr.wavegen import make_timestamps_seconds
+    from pcdr._wavegen import make_timestamps_seconds
 
     with open(filename_csv) as f:
         contents = f.read().splitlines()
