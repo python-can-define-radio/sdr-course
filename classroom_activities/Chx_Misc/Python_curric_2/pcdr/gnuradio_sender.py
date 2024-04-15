@@ -1,15 +1,58 @@
-from typing import List, Optional, Sequence, TypeVar, Union
-import numpy as np
+from distutils.version import StrictVersion
 from queue import Empty
-from pcdr._internal.misc import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_, configure_graceful_exit
+import signal
+import sys
+from typing import List, Optional, Sequence, TypeVar, Union
+
+import numpy as np
+from gnuradio import gr
+
 from pcdr._beta.osmocom_queued_tx_flowgraph import queue_to_osmocom_sink, queue_to_print_sink, queue_to_string_file_sink, queue_to_file_sink, queue_to_zmqpub_sink
+from pcdr._internal.misc import SimpleQueueTypeWrapped, queue_to_list, prepend_zeros_, configure_graceful_exit
 from pcdr._internal.vector_tx_flowgraphs import vector_to_file_sink, vector_to_osmocom_sink
 from pcdr._internal.types_and_contracts import TRealNum, TRealOrComplexNum
 from pcdr._internal.queue_to_guisink_flowgraph import queue_to_guisink
 from pcdr._internal.vector_to_guisink_flowgraph import vector_to_guisink
-from pcdr.gnuradio_misc import _configure_and_run_gui_flowgraph
 
 
+
+try:
+    ## Why this import is here:
+    ## We don't want Qt to be required for ALL pcdr uses;
+    ## just graphical ones.
+    from PyQt5 import Qt
+
+
+    def _configure_and_run_gui_flowgraph(top_block_cls, args):
+        """The portion of GNU Radio boilerplate that 
+        sets up the QT GUI Application."""
+        if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
+            style = gr.prefs().get_string('qtgui', 'style', 'raster')
+            Qt.QApplication.setGraphicsSystem(style)
+        qapp = Qt.QApplication(sys.argv)
+
+        tb = top_block_cls(*args)
+        tb.start()
+        tb.show()
+
+        def sig_handler(sig=None, frame=None):
+            Qt.QApplication.quit()
+
+        signal.signal(signal.SIGINT, sig_handler)
+        signal.signal(signal.SIGTERM, sig_handler)
+
+        timer = Qt.QTimer()
+        timer.start(500)
+        timer.timeout.connect(lambda: None)
+
+        def quitting():
+            tb.stop()
+            tb.wait()
+        qapp.aboutToQuit.connect(quitting)
+        qapp.exec_()
+
+except ModuleNotFoundError:
+    pass
 
 
 def _pad_chunk_queue(data: np.ndarray, chunk_size: int) -> SimpleQueueTypeWrapped:
