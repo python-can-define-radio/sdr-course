@@ -13,6 +13,9 @@ Common reasons to do this include...
 The word "Extrapolate" is fairly common in non-technical English. The word "Interpolate" has a related meaning.
 As used in mathematics the definition of interpolation is: The insertion of an intermediate value or term into a series by estimating or calculating it from surrounding known values.
 
+**Rational Resampler**: Changes the sample rate using interpolation, decimation, or both.  
+For example, in the FM Receiver flowgraph, the Rational Resampler reduces the sample rate because the sound card (which the Audio Sink interfaces with) cannot handle the high sample rate that comes from the SDR device (which the osmocom Source interfaces with).
+
 **Sample Rate**: (todo)
 
 **Sink**: in GNU Radio, a block that has "in" ports (data can flow into it), but no "out" ports.  
