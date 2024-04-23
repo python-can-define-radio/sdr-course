@@ -192,6 +192,35 @@ When the frequency is above the Nyquist limit (half the sample rate), aliasing w
 | 37 Hz | 40 sps | 3 Hz |
 | 30 Hz | 40 sps | 10 Hz |
 
+### Aliasing demonstration using pyqtgraph
+
+```python3
+## 7
+## Try this. 
+## The instructor will demonstrate...
+## 1. How to show the FFT of the signal
+## 2. The effects of resampling / decimating the signal
+
+import pyqtgraph as pg
+from pcdr import make_wave
+
+## QT GUI Boilerplate setup
+pg.mkQApp()
+gview = pg.GraphicsView()
+glayout = pg.GraphicsLayout()
+gview.setCentralWidget(glayout)
+gview.show()
+## Create two plots, plot the same wave on each
+p1 = glayout.addPlot()
+p2 = glayout.addPlot()
+x, y = make_wave(50, 10, "real", seconds=2)
+curve1 = p1.plot(x, y, symbol="t")
+curve2 = p2.plot(x, y, symbol="t")
+
+if __name__ == '__main__':
+    pg.exec()
+```
+
 ### Aliasing demonstration using gqrx
 
 Aliasing in signal processing happens when you measure a signal that is outside of what your sample rate allows.
