@@ -27,7 +27,7 @@ If you'd like to read further, see also [this page from allaboutcircuits.com](ht
 
 _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
 
-ℹ️ Prerequisite: `pip install pcdr`
+ℹ️ Prerequisite: `pip install --pre --upgrade pcdr`
 
 
 ```python3
@@ -193,6 +193,8 @@ When the frequency is above the Nyquist limit (half the sample rate), aliasing w
 | 30 Hz | 40 sps | 10 Hz |
 
 ### Aliasing demonstration using pyqtgraph
+
+ℹ️ Prerequisite: `pip install "pyqtgraph==0.12.4"`
 
 ```python3
 ## 7
