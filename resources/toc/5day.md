@@ -32,8 +32,7 @@
 - GRC: Noise jammer
 - Concepts:
   - Instantaneous BW vs scan
-  - ...
-  - ...
+  - (and others)
 
 ### Day 5
 
