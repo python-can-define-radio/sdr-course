@@ -22,7 +22,7 @@
 - Python if-else exercises 6 through 16c
 - "cool": Gpredict
 
-## Day 3
+### Day 3
 - Demo if-else usage in detector using GQRX
 - Play wav when activity
 - GRC: pitfalls and FM Transmit
