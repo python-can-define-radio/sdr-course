@@ -5,27 +5,27 @@
 ### Day 1
 
 - Overview slides
-- Demo: Turning on a HackRF transmitter using pcdr module (and GQRX to receive)
 - Distribute equipment
 - Set up Thonny and VS Code on laptops
 - Verify GQRX and GRC can start on laptops
 - Python print and inputs exercises: #1-#20, #28b, #28c, #28d
-- "cool" conclusion: SDR Angel
 
 ### Day 2
 
-- Python pcdr basic Tx (show GQRX on board)
+- Demo: Turning on a HackRF transmitter using pcdr module (and GQRX to receive)
+- Do: (same) (show GQRX on board)
 - GQRX FM Receive; take turns transmitting / receiving to each other on the Broadcast FM band.
 - Python pcdr basic Rx strength: discuss non-standardized unit
 - Python while loop to repeatedly read
   - We also want to take action IF something happens, such as what?
 - Python if-else exercises 6 through 16c
-- "cool": Gpredict
+- "cool" conclusion: SDR Angel
 
 ### Day 3
 - Demo if-else usage in detector using GQRX
 - Play wav when activity
 - GRC: pitfalls and FM Transmit
+- "cool": Gpredict
 
 ### Day 4
 
