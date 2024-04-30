@@ -2,16 +2,16 @@
 
 Broadcasting without a license is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
 
-## "Simple" Transmitting
+## Transmitting on a Single Frequency
 
-This lesson demonstrates the `OsmosdrTransmitter`, which transmits a pure sine wave on a specified frequency, similar to how Morse code works. It provides an introduction to methods such as `set_center_freq` which we will use in the Wide-Band-Frequency-Modulator (WBFM).
+This lesson demonstrates the `OsmoSingleFrequencyTransmitter`, which transmits a pure sine wave on a specified frequency. It provides an introduction to methods such as `set_center_freq` which we will use in the Wide-Band-Frequency-Modulator (WBFM).
 
 ```python3
 ## 1
 ## Try this.
-import pcdr.simple
 import time
-transmitter = pcdr.simple.OsmosdrTransmitter("hackrf=0", 2.45e9)
+from pcdr.flow import OsmoSingleFreqTransmitter
+transmitter = OsmoSingleFreqTransmitter("hackrf=0", 2.45e9)
 transmitter.start()
 transmitter.set_if_gain(37)
 time.sleep(1)
@@ -41,7 +41,7 @@ transmitter.stop_and_wait()
 ## about 1 second at time of writing.
 ## We, the authors, do not know a way to quickly
 ## stop a transmission, but one alternative option
-## is to lower the if gain --
+## is to lower the IF gain --
 ## for example, set_if_gain(0).
 ## This is not truly OFF, but it makes the
 ## transmission relatively low power.
@@ -57,12 +57,12 @@ transmitter.stop_and_wait()
 ##  - Set the frequency to an FM broadcast station
 ##  - Jam it for half a second
 ##  - Set the frequency to a different FM broadcast station
-## - Jam it for half a second
+##  - Jam it for half a second
 
 
 ## 6
 ## Copy and modify the previous example.
 ## In this version, instead of cycling between the two stations,
-## randomly pick every half second.
+## randomly pick one every half second.
 ## Then, try the same exercise with three stations.
 ```
