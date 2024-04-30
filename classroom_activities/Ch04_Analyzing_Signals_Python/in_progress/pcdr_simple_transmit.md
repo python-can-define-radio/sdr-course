@@ -2,7 +2,7 @@
 
 Broadcasting without a license is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
 
-## "Simple" Transmitting
+## Transmitting on a Single Frequency
 
 This lesson demonstrates the `OsmosdrTransmitter`, which transmits a pure sine wave on a specified frequency, similar to how Morse code works. It provides an introduction to methods such as `set_center_freq` which we will use in the Wide-Band-Frequency-Modulator (WBFM).
 
