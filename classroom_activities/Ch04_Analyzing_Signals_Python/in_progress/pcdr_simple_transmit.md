@@ -9,9 +9,9 @@ This lesson demonstrates the `OsmosdrTransmitter`, which transmits a pure sine w
 ```python3
 ## 1
 ## Try this.
-import pcdr.simple
 import time
-transmitter = pcdr.simple.OsmosdrTransmitter("hackrf=0", 2.45e9)
+from pcdr.flow import OsmoSingleFrequencyTransmitter
+transmitter = OsmoSingleFrequencyTransmitter("hackrf=0", 2.45e9)
 transmitter.start()
 transmitter.set_if_gain(37)
 time.sleep(1)
