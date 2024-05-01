@@ -33,8 +33,7 @@
 - Demo if-else usage in detector using GQRX
 - Play wav when activity
 - GRC: pitfalls and FM Transmit
-- "cool" conclusion: SDR Angel
-
+- "cool": SDR Angel
 - GRC: Noise jammer
 - Concepts:
   - Instantaneous BW vs scan
