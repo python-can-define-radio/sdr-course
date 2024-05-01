@@ -18,18 +18,22 @@
 
 ### Day 3
 - take turns transmitting / receiving to each other on the Broadcast FM band.
-- Python pcdr basic Rx strength: discuss non-standardized unit
-- Python while loop to repeatedly read
-  - We also want to take action IF something happens, such as what?
 - Python if-else exercises 6 through 16c
-- "cool" conclusion: SDR Angel
+  - For students who are ahead, do the for-loops exercises
+- "cool": Gpredict
+- GQRX Keyfob demo. Talk about non-standardized dB units (it's not dBm)
+- Python Keyfob
+- Python pcdr basic Rx strength: reiterate non-standardized unit
+- Python while loop to repeatedly read
+- Python while loop exercises #1 - #9
+- Optional Homework: Finish if-else exercises
+
+### Day 4
 
 - Demo if-else usage in detector using GQRX
 - Play wav when activity
 - GRC: pitfalls and FM Transmit
-- "cool": Gpredict
-
-### Day 4
+- "cool" conclusion: SDR Angel
 
 - GRC: Noise jammer
 - Concepts:
