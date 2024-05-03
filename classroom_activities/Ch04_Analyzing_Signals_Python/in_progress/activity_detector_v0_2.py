@@ -15,8 +15,9 @@ def safePlay(fn, block):
 rec = OsmoSingleFreqReceiver("hackrf=0", 462.7e6)
 rec.start()
 short_avg = 0
-long_avg = 0
+long_avg = 5  # Arbitrary; adjust to taste
 count = 0
+start_time = time.time()
 fn = "activity.csv"
 if os.path.exists(fn):
     newfile = False
@@ -24,7 +25,8 @@ else:
     newfile = True
 with open(fn, "a", encoding="utf-8") as f:
     if newfile:
-        f.write("passedThresh,date,time,unix_timestamp,strength,short_avg,long_avg\n")
+        f.write("passedThresh,date,time,unix_timestamp,time_since_start,strength,short_avg,long_avg\n")
+    
     while True:
         stren = rec.get_strength()
         short_avg = 0.9*short_avg + 0.1*stren
@@ -34,6 +36,7 @@ with open(fn, "a", encoding="utf-8") as f:
             count = 0
  
             nowtime = time.time()
+            timedelta = nowtime - start_time
             dt = datetime.datetime.fromtimestamp(nowtime)
             print(f"{dt}  Recording to file.")
  
@@ -47,5 +50,5 @@ with open(fn, "a", encoding="utf-8") as f:
                 f.write("SPIKE,")
             else:
                 f.write("NO,")
-            f.write(f"{dt.date()},{dt.time()},{nowtime},{stren},{short_avg},{long_avg}\n")
+            f.write(f"{dt.date()},{dt.time()},{nowtime},{timedelta},{stren},{short_avg},{long_avg}\n")
             f.flush()
