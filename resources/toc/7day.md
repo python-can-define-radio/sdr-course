@@ -1,5 +1,12 @@
 # Software Defined Radio (SDR) Course
 
+<div style=float:right>
+  
+👨🏽‍🏫 = <span style="color: #2c99ff"><b>Discussion/Lecture</b></span>  
+🧠 = <span style="color: green"><b>PE/Exam</b></span>  
+🔬 = <span style="color: green"><b>Independent Work Time/Experimentation</b></span>
+</div>
+
 ### Table of Contents (TOC)
 
 #### Day 1
