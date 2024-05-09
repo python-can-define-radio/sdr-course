@@ -46,7 +46,6 @@
 <div style=float:left>👨🏽‍🏫</div> 
 
 - Discuss [FM Receiver][030_GRC_FM_Receiver]
-  - Sub-point: discuss how the hardware filter helps to avoid aliasing
 
 <div style=float:left>🔬</div>
 
