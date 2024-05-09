@@ -134,6 +134,8 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
 
+- The purpose of the `hardware_filter` is to avoid aliasing. For more info, see [this lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/034_Oversampling_Undersampling.md).
+
 ### Questions
 
 - Why did we pick the given `Start` and `Stop` for the `center_freq_slider`?
