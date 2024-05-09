@@ -17,12 +17,12 @@
 
 <div style=float:left>👨🏽‍🏫</div> 
 
-- [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
+- Discuss [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
+- [GQRX][050_gqrx_FM_Receive.md]
+- [What is an SDR?](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/060_What_is_an_SDR.md)
 
 <div style=float:left>🔬</div>
 
-- [GQRX][050_gqrx_FM_Receive.md]
-- [What is an SDR?](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/060_What_is_an_SDR.md)
 - Independent work time to experiment with what we've learned so far.
   For those who wish to work ahead, look at these. Start from the top of whichever chapter you find interesting.
     - [Ch03 URH][Ch_URH]
@@ -31,32 +31,46 @@
 
 ### Day 3
 
-- B1:  
-  Brief review of Spectrum Analyzer  
-  🧠 PE 1: Spectrum Analyzer
-- B2: Discuss [FM Receiver][030_GRC_FM_Receiver]
+<div style=float:left>🧠</div> 
+
+- Review of [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
+- PE 1: [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
+
+<div style=float:left>👨🏽‍🏫</div> 
+
+- Discuss [FM Receiver][030_GRC_FM_Receiver]
   - Sub-point: discuss how the hardware filter helps to avoid aliasing
-- B3: Student activity, groups of 5:
+
+<div style=float:left>🔬</div>
+
+- Student activity, groups of 5:
     - Draw pictures to show what each of these blocks is doing:
         - Band pass filter
         - WBFM Receive
         - Rational Resampler
     - Give textual descriptions of what every other block does.
-- B4: Discuss activity as a class
+- Discuss activity as a class
 
 ### Day 4
 
-- B1:  
-  Review of FM Receiver  
-  🧠 PE 2: FM Receiver
-- B2: Go outside
-- B3: (Same)
-- B4: (Same)
+<div style=float:left>🧠</div> 
+
+- Review of [FM Receiver][030_GRC_FM_Receiver]  
+- PE 2: [FM Receiver][030_GRC_FM_Receiver]
+
+<div style=float:left>🔬</div>
+
+- Go outside
 
 ### Day 5
 
-- B1: Discuss [Noise Jammer][020_Noise_Jammer]
-- B2: URH
+<div style=float:left>👨🏽‍🏫</div> 
+
+- Discuss [Noise Jammer][020_Noise_Jammer]
+
+<div style=float:left>🔬</div>
+
+- URH
     - Incorporate RC Car with URH:
          1. Simple Record and Replay
          2. Demodulate and generate:
@@ -64,19 +78,26 @@
              - Demod (Get zeros and ones; use URH's Generate tab to verify)
              - Generate and Transmit using Python [pcdr OOK transmit][010_pcdr_ook_tx_intro]
              - Use GUIZero to create up/down/left/right buttons to control car
-- B3: (Same)
-- B4: (Same)
 
 ### Day 6
 
-- B1:  
-  Review of Noise jammer  
-  🧠 PE 3: Noise Jammer
-- B2: Discuss [PSK Digital Jammer][021_Digital_Jammer] 
-- B3:
-  Review Digital Jammer  
-  🧠 PE 4: Digital Jammer
-- B4: Independent work time
+<div style=float:left>🧠</div> 
+
+- Review of [Noise Jammer][020_Noise_Jammer]  
+- PE 3: [Noise Jammer][020_Noise_Jammer]
+
+<div style=float:left>👨🏽‍🏫</div> 
+
+- Discuss [PSK Digital Jammer][021_Digital_Jammer]
+
+<div style=float:left>🧠</div> 
+
+- Review [PSK Digital Jammer][021_Digital_Jammer]
+- PE 4: [PSK Digital Jammer][021_Digital_Jammer]
+
+<div style=float:left>🔬</div>
+
+- Independent work time
 
 ### Day 7
 
