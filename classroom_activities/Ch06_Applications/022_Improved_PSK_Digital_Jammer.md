@@ -25,7 +25,7 @@ Random source  ⟶  Constellation modulator  ⟶  Rational Resampler      ⟶  O
                                                                       ⟶  Time sink
 ```
 
-- Variable `samp_rate`: Same as usual
+- Variable `samp_rate`: Same as PSK_Digital_Jammer
 - Variable (a new variable block):
   - Id: `symbol_rate`
   - Value: `100e3`
