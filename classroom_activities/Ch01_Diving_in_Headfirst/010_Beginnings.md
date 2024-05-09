@@ -53,6 +53,13 @@ Some useful keyboard shortcuts in GNU Radio Companion:
   - D : Disable a block
   - E : Enable a block
 
+-------
+
+Videos from Veritasium explaining analog and digital:
+
+- https://www.youtube.com/watch?v=IgF3OX8nT0w
+- https://www.youtube.com/watch?v=GVsUOuSjvcg
+
 --------
 ### Useful information
 
