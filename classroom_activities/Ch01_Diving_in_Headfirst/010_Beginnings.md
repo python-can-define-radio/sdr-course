@@ -49,8 +49,8 @@
 - When editing the "Properties" of a block (Access these by double-clicking or right-clicking the block):
   - When you scroll, you may accidentally scroll above the arrow of a drop-down menu, which changes the contents.
     - Solution: Scroll with your cursor on the left side of the window.
-  - The `Apply` button is buggy: it will sometimes NOT apply the changes, such as if you use it twice in a row.
-    - Solution: Don't use the "Apply" button. Press "Ok" instead.
+- The `Apply` button is buggy: it will sometimes NOT apply the changes, such as if you use it twice in a row.
+  - Solution: Don't use the "Apply" button. Press "Ok" instead.
 
 ### Useful information
 
