@@ -41,7 +41,7 @@
 <div style=float:left>🧠</div> 
 
 - Review of [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
-- PE 1: [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
+- <span style="color: green"><b>PE 1: [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]</b></span>
 
 <div style=float:left>👨🏽‍🏫</div> 
 
@@ -55,8 +55,8 @@
 
 <div style=float:left>🧠</div> 
 
-- Review of [FM Receiver][030_GRC_FM_Receiver]  
-- PE 2: [FM Receiver][030_GRC_FM_Receiver]
+- Review of [FM Receiver][030_GRC_FM_Receiver]
+- <span style="color: green"><b>PE 2: [FM Receiver][030_GRC_FM_Receiver]</b></span>
 
 <div style=float:left>🔬</div>
 
@@ -67,43 +67,38 @@
 <div style=float:left>👨🏽‍🏫</div> 
 
 - Discuss [Noise Jammer][020_Noise_Jammer]
+- Discuss [PSK Digital Jammer][021_Digital_Jammer]
+- Guided [URH][010_Install_URH] 
 
 <div style=float:left>🔬</div>
 
-- URH
-    - Incorporate RC Car with URH:
-         1. Simple Record and Replay
-         2. Demodulate and generate:
-             - Record (Make sure you're offset to avoid DC Spike)
-             - Demod (Get zeros and ones; use URH's Generate tab to verify)
-             - Generate and Transmit using Python [pcdr OOK transmit][010_pcdr_ook_tx_intro]
-             - Use GUIZero to create up/down/left/right buttons to control car
+- Self-paced [URH][Ch_URH]
 
 ### Day 6
 
 <div style=float:left>🧠</div> 
 
-- Review of [Noise Jammer][020_Noise_Jammer]  
-- PE 3: [Noise Jammer][020_Noise_Jammer]
-
-<div style=float:left>👨🏽‍🏫</div> 
-
-- Discuss [PSK Digital Jammer][021_Digital_Jammer]
+- Review of [Noise Jammer][020_Noise_Jammer]
+- <span style="color: green"><b>PE 3: [Noise Jammer][020_Noise_Jammer]</b></span>
 
 <div style=float:left>🧠</div> 
 
 - Review [PSK Digital Jammer][021_Digital_Jammer]
-- PE 4: [PSK Digital Jammer][021_Digital_Jammer]
+- <span style="color: green"><b>PE 4: [PSK Digital Jammer][021_Digital_Jammer]</b></span>
 
 <div style=float:left>🔬</div>
 
 - Independent work time
 
+<div style=float:left>👨🏽‍🏫</div>
+
+- Test Preparation
+
 ### Day 7
 
-- Test Preperation
+<div style=float:left>🧠</div> 
 
-🧠 <span style="color: green"><b>SDR Exam</b></span>
+- <span style="color: green"><b>SDR Exam</b></span>
   
 <!--
 
