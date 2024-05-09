@@ -41,6 +41,16 @@
 
 - Once you have been successful feel free to partner up with a classmate and try to generate and send your own messages that your partner can Demodulate.
 
+### Optional exercise
+
+- Incorporate RC Car with URH:  
+  - Simple Record and Replay  
+  - Demodulate and generate:  
+    - Record (Make sure you're offset to avoid DC Spike)  
+    - Demod (Get zeros and ones; use URH's Generate tab to verify)  
+    - Generate and Transmit using Python [pcdr OOK transmit][010_pcdr_ook_tx_intro]  
+    - Use GUIZero to create up/down/left/right buttons to control car
+
 ### ℹ️ Some useful resources for urh:
 
 - https://github.com/jopohl/urh
@@ -54,3 +64,6 @@ Footnote 1: Troubleshooting: If you do not see the HackRF device option, do the 
   - Go to the main URH window, and click Edit > Options.
   - Check the checkbox for HackRF.
     - If the checkbox is unavailable, try downgrading to urh version 2.9.4 by running the following command in a terminal: `pip install "urh==2.9.4"`
+
+
+[010_pcdr_ook_tx_intro]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md
