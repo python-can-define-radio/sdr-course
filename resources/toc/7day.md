@@ -49,13 +49,7 @@
 
 <div style=float:left>🔬</div>
 
-- Student activity, groups of 5:
-    - Draw pictures to show what each of these blocks is doing:
-        - Band pass filter
-        - WBFM Receive
-        - Rational Resampler
-    - Give textual descriptions of what every other block does.
-- Discuss activity as a class
+- Independent work time
 
 ### Day 4
 
