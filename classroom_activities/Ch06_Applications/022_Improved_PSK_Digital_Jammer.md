@@ -20,9 +20,9 @@ Constellation Object
 Variable
 
 
-Random source  ⟶  Constellation  ⟶  Rational     ⟶  Osmocom sink
-                  modulator         Resampler    ⟶  Waterfall sink
-                                                 ⟶  Time sink
+Random source  ⟶  Constellation modulator  ⟶  Rational Resampler      ⟶  Osmocom sink
+                                                                      ⟶  Waterfall sink
+                                                                      ⟶  Time sink
 ```
 
 - Variable `samp_rate`: Same as usual
