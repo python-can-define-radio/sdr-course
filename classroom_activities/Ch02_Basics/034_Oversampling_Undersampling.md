@@ -204,7 +204,7 @@ When the frequency is above the Nyquist limit (half the sample rate), aliasing w
 ## 2. The effects of resampling / decimating the signal
 
 import pyqtgraph as pg
-from pcdr import make_wave
+from pcdr import makeWave
 
 ## QT GUI Boilerplate setup
 pg.mkQApp()
@@ -215,7 +215,7 @@ gview.show()
 ## Create two plots, plot the same wave on each
 p1 = glayout.addPlot()
 p2 = glayout.addPlot()
-x, y = make_wave(50, 10, "real", seconds=2)
+x, y = makeWave(50, 10, "real", seconds=2)
 curve1 = p1.plot(x, y, symbol="t")
 curve2 = p2.plot(x, y, symbol="t")
 
