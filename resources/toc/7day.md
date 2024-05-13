@@ -184,4 +184,4 @@
 [040_pcdr_frequency_domain_Complex]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/040_pcdr_frequency_domain_Complex.md
 [050_pcdr_simple]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/050_pcdr_simple.md
 [Ch_Applic]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/
-[021_Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/021_Digital_Jammer.md
+[021_Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/021_PSK_Digital_Jammer.md
