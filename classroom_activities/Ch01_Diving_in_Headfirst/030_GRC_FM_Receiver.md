@@ -32,6 +32,7 @@ Osmocom Source ─┴─⟶  Band Pass Filter ─┴─⟶  WBFM Receive  ⟶  R
 
 ```
 
+You may wish to reference these Common GNU Radio Companion [error messages](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/Common-GNURadio-error-messages.md).
 
 ## How to set the Parameters
 
