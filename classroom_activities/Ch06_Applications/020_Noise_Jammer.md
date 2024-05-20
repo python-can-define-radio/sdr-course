@@ -28,6 +28,8 @@ Noise Source  ⟶  Low Pass Filter  ⟶  Osmocom sink
                                   ⟶  Waterfall sink
 ```
 
+You may wish to reference these Common GNU Radio Companion [error messages](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/Common-GNURadio-error-messages.md).
+
 - In the Low Pass Filter, the **cutoff** and **transition width** should be sliders.
 - Know how to change Noise Type in Noise Source.
 - Have a slidable frequency to control where you are jamming.
