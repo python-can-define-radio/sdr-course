@@ -30,15 +30,15 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
-- Value: `2e6`
+- Value: `2_000_000`
 
 ### For the GUI Range:
 
 - Id: `center_freq_slider`
-- Default Value: `98.5e6`
-- Start: `88e6`
-- Stop: `108e6`
-- Step: `10e3`
+- Default Value: `98_500_000`
+- Start: `88_000_000`
+- Stop: `108_000_000`
+- Step: `10_000`
 
 ### For the Wav File Source:
 
