@@ -28,7 +28,7 @@ Random source  ⟶  Constellation modulator  ⟶  Rational Resampler      ⟶  O
 - Variable `samp_rate`: Same as PSK_Digital_Jammer
 - Variable (a new variable block):
   - Id: `symbol_rate`
-  - Value: `100e3`
+  - Value: `100_000`
 - Rational Resampler:
   - Interpolation: `int(samp_rate)`
   - Decimation: `int(symbol_rate)`
