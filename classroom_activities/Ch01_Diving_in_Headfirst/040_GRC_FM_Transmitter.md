@@ -77,7 +77,7 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 ### Using an Audio Source
 
 You have two options:
-1. Simply using an `Audio Source` block allows you to use a microphone as your source.
+1. Simply using an `Audio Source` block allows you to use a microphone as your source. You'll leave the "Device Name" empty, and set the "Sample Rate" to 48 kHz.
 2. You can also use an `Audio Source` block with a special configuration to broadcast whatever is currently playing on your computer:
     1. Do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
     2. In your `Audio Source` block, for the Device Name, put "pulse_monitor".
