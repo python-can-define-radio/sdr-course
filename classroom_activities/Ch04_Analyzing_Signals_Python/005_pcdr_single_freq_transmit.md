@@ -13,12 +13,15 @@ import time
 from pcdr.unstable.flow import OsmoSingleFreqTransmitter
 transmitter = OsmoSingleFreqTransmitter("hackrf=0", 2.45e9)
 transmitter.start()
+print()
+print("Transmission started.")
 transmitter.set_if_gain(37)
 time.sleep(1)
 transmitter.set_center_freq(2.4501e9)
 time.sleep(1)
 transmitter.set_center_freq(2.4502e9)
 time.sleep(1)
+print("Stopping...")
 transmitter.stop_and_wait()
 
 
