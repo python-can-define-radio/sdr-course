@@ -40,7 +40,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 ### For the Second GUI Range:
 
 - Id: `center_freq_slider`
-- Default Value: `1_079_000_000` #This is the same as 107.9e6
+- Default Value: `107_900_000` #This is the same as 107.9e6
 - Start: `40_000_000`
 - Stop: `500_000_000`
 - Step: `10_000`
