@@ -10,7 +10,7 @@ This lesson demonstrates the `OsmoSingleFrequencyTransmitter`, which transmits a
 ## 1
 ## Try this.
 import time
-from pcdr.flow import OsmoSingleFreqTransmitter
+from pcdr.unstable.flow import OsmoSingleFreqTransmitter
 transmitter = OsmoSingleFreqTransmitter("hackrf=0", 2.45e9)
 transmitter.start()
 transmitter.set_if_gain(37)
