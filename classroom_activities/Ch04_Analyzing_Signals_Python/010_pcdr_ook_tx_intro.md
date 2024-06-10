@@ -14,7 +14,8 @@ Note: if you don't have a SDR peripheral, or if you don't want to actually trans
 ### Sending bits
 
 ```python3
-from pcdr import gnuradio_send, ook_modulate
+from pcdr.v0_compat import gnuradio_send, ook_modulate
+## Note: for the version 0 series, use `from pcdr import gnuradio_send, ook_modulate`
 import numpy as np
 
 
