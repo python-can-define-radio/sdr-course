@@ -39,7 +39,7 @@
 
 - https://github.com/jopohl/urh
 
-### General order of operations for analyzing an ASK signal:
+### General order of operations for analyzing a signal:
 |    | Step |
 |-----|-----------|
 |1|  Separate signals.|
