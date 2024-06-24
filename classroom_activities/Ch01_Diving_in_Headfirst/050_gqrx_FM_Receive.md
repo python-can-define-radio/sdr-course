@@ -56,6 +56,10 @@
 
 ⚠️ **Remember to respect your fellow classmates (audio level). They may be trying to work as well.**  
 
+### Note: versions
+
+- You have the option of using the GQRX AppImage, which is newer than our pre-installed GQRX. This is left as an activity for the student.
+
 ### ℹ️ Some useful resources for gqrx and HackRF One:
 (Suggestion: When using a web-link, Right-Click with your mouse and select "open in new tab" or new window and then go to that tab/window.)
 - https://gqrx.dk/
