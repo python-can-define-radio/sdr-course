@@ -34,7 +34,7 @@ Students will work in groups of 4 to develop a wireless communication scheme.
 **Directions**: Describe a communication system that uses the **EMS (ElectroMagnetic Spectrum)**. The system should be able to communicate any single word that is at most five letters long.
 
 **Constraints**:
-- You cannot use Frequency Modulated audio with a microphone (similar to a walkie-talkie).
+- You must modulate and demodulate the word by hand.
 - You will not know the word in advance.
 - The word will be written using Latin characters (a-z).
 
