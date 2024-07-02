@@ -1,4 +1,19 @@
+## Version 1
 
+```python3
+## 1
+## Run this twice -- once with tuned_freq set to a strong radio station
+## in your area, and once with it set to a weak station.
+## How do the two results differ?
+from pcdr.unstable.flow import OsmoSingleFreqReceiver
+receiver = OsmoSingleFreqReceiver("hackrf=0", 103.9e6)
+receiver.start()
+strength = receiver.get_strength()
+print(strength)
+receiver.stop_and_wait()
+```
+
+## Version zero below
 
 ```python3
 ## 1
