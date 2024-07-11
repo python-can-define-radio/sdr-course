@@ -1,12 +1,10 @@
-## Goal
+# Manual modulation
 
-Students discover the foundational concepts of wireless communication through a goal-directed activity that gives much freedom in execution, a sense of accomplishment, and just enough direction and constraint to ensure key concepts are included.
+### Summary
 
-## Overall context
+Most of us have heard terms like amplitude and frequency, but how do we these invisible electromagnetic waves allow us to communicate in our everyday lives? This activity provides an opportunity to explore and experience these concepts.
 
-Students will work in groups of 4 to develop a wireless communication scheme.
-
-## Details
+You'll work in groups of 4 to develop a wireless communication scheme. You'll start with audio, and then move to using EM waves. Each level will incorporate a way to improve the communication scheme.
 
 ### Difficulty Level 1
 
@@ -18,11 +16,13 @@ Students will work in groups of 4 to develop a wireless communication scheme.
 - You will not know the word in advance.
 - The word will be written using Latin characters (a-z).
 
-**Execution**: All student groups will submit their directions anonymously. The instructor will... The instructor will...
-- Briefly look at each submission; decide the order of presentation (ideally worst-to-best). 
-- Show the directions on the board and read them aloud.
-- Ask for a pair of students to volunteer to execute the directions. (Ideally, this pair is **not** from the group that submitted the directions. However, maintaining submission anonymity is first priority because the instructor will likely point out faults in the communication scheme for educational purposes.)
-- Facilitate a discussion of the pros and cons of the approach.
+**Execution**:
+- All student groups will submit their directions anonymously.
+- The instructor will briefly look at each submission and decide the order of presentation. Note: the instructor will probably choose to present flawed systems first so as to demonstrate the flaws for learning purposes.
+- For each submission, the instructor will...
+  - Show the submitted directions on the board and read them aloud.
+  - Ask for a pair of students to volunteer to execute the directions. (Ideally, this pair is **not** from the group that submitted the directions. However, maintaining submission anonymity is first priority because the instructor will likely point out flaws in the communication scheme.)
+  - Facilitate a discussion of the pros and cons of the approach.
 
 **Conclusion**: If any of the following concepts did not arise naturally during the student presentations, the instructor will present them:
 - OOK
