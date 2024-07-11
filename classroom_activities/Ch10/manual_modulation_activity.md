@@ -2,7 +2,7 @@
 
 ### Summary
 
-Most of us have heard terms like amplitude and frequency, but how do we these invisible electromagnetic waves allow us to communicate in our everyday lives? This activity provides an opportunity to explore and experience these concepts.
+Most of us have heard terms like amplitude and frequency, but how do we use these invisible electromagnetic waves to communicate in our everyday lives? This activity provides an opportunity to explore and experience these concepts.
 
 You'll work in groups of 4 to develop a wireless communication scheme. You'll start with audio, and then move to using EM waves. Each level will incorporate a way to improve the communication scheme.
 
