@@ -15,6 +15,7 @@ You'll work in groups of 4 to develop a wireless communication scheme. You'll st
 - You cannot use any other sounds (clicking, snapping, clapping, spoken words, etc).
 - You will not know the word in advance.
 - The word will be written using Latin characters (a-z).
+- The system must be at least loosely based on Unicode or ASCII.
 
 **Execution**:
 - All student groups will submit their directions anonymously.
