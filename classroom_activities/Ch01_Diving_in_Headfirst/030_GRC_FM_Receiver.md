@@ -50,6 +50,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 - Label 2: `Noisy noise`
 - Option 3: `105_700_000`
 - Label 3: `Some other creative station name`
+- Widget: `Radio Buttons`
 
 
 ### For the First GUI Range:
