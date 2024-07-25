@@ -6,6 +6,7 @@
 
 - Overview slides
 - Distribute equipment
+- Terminal tutorial
 - Set up Thonny and VS Code on laptops
 - Verify GQRX and GRC can start on laptops
 - Python print and inputs exercises: #1-#20, #28b, #28c, #28d
