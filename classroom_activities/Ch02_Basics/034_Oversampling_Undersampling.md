@@ -27,7 +27,7 @@ If you'd like to read further, see also [this page from allaboutcircuits.com](ht
 
 _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtube.com/watch?v=yr3ngmRuGUc)_
 
-ℹ️ Prerequisite: `pip install --pre --upgrade pcdr`
+ℹ️ Prerequisite: `pip install --upgrade pcdr`
 
 
 ```python3

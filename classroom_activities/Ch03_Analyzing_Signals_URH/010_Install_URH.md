@@ -18,7 +18,7 @@
 
 - In terminal type `pip install --upgrade numpy`.
 
-- Optional: In terminal type `pip install --pre --upgrade pcdr`. (locally built package)
+- Optional: In terminal type `pip install --upgrade pcdr`. (locally built package)
 
 - In terminal type `urh` to launch the program.
 
