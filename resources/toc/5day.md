@@ -16,9 +16,14 @@
 - Demo: Turning on a HackRF transmitter using pcdr module (and GQRX to receive)
 - Do: (same) (show GQRX on board)
 - GQRX FM Receive
+- SDR Angel
+- Discussion: Underworkings of Python, libraries
+  - What happens when an "import" is done
+  - the logics of different Python "things"
+- take turns transmitting / receiving to each other on the Broadcast FM band.
+- Check out waveforms if possible, WiFi, Bluetooth, GSM? CDMA?
 
 ### Day 3
-- take turns transmitting / receiving to each other on the Broadcast FM band.
 - Python if-else exercises 6 through 16c
   - For students who are ahead, do the for-loops exercises
 - "cool": Gpredict
