@@ -1,4 +1,4 @@
-## Version 1
+# `pcdr` module: Single Frequency Receiver
 
 ```python3
 ## 1
@@ -41,6 +41,45 @@ print(f"Strength at {tuned_freq_second} Hz: {strength}")
 ## asks the user to specify tuned_freq_first and tuned_freq_second.
 
 
+## 5
+## Try this.
+from pcdr.unstable.flow import OsmoSingleFreqReceiver
+import time
+receiver = OsmoSingleFreqReceiver("hackrf=0", 102.1e6)
+for count in range(5):
+    strength = receiver.get_strength()
+    print(f"Strength at specified frequency: {strength}")
+    time.sleep(0.5)
+
+
+## 6
+## Copy and modify the previous exercise so that
+## the user can pick how many measurements are displayed.
+
+
+## 7
+## Try this.
+from pcdr.unstable.flow import OsmoSingleFreqReceiver
+import time
+tuned_freq = 102.1e6
+receiver = OsmoSingleFreqReceiver("hackrf", freq=tuned_freq)
+while 2 + 2 == 4:
+    strength = receiver.get_strength()
+    print(f"Strength at {tuned_freq} Hz: {strength}")
+    time.sleep(0.5)
+
+
+## 8
+## Copy and modify the previous example.
+## If the strength passes a given threshold, print "SOMETHING HAPPENED!"
+## (In other words, make an activity detector.)
+## For extra fun, make it play a sound using the playsound module.
+
+
+## 9
+## Copy and modify the previous example.
+## Referring back to the Python exercises about while loops if needed,
+## make the loop exit if activity is detected.
 
 ```
 
