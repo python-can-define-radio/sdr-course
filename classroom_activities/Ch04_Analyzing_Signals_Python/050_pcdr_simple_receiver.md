@@ -11,9 +11,42 @@ receiver.start()
 strength = receiver.get_strength()
 print(strength)
 receiver.stop_and_wait()
+
+
+## 2
+## Change the previous example to ask the user 
+## for a frequency in MHz. Then,
+## - Automatically convert the specified frequency to Hz
+## - Create an OsmosdrReceiver using the given frequency
+## - Display the tuned frequency strength
+
+
+## 3
+## Try this.
+from pcdr.unstable.flow import OsmoSingleFreqReceiver
+tuned_freq_first = 102.1e6
+tuned_freq_second = 102.3e6
+receiver = OsmoSingleFreqReceiver("hackrf=0", freq=tuned_freq_first)
+strength = receiver.get_strength()
+print(f"Strength at {tuned_freq_first} Hz: {strength}")
+print("Will check another frequency.")
+# Note that set_freq has a time.sleep built inside it.
+receiver.set_freq(tuned_freq_second)
+strength = receiver.get_strength()
+print(f"Strength at {tuned_freq_second} Hz: {strength}")
+
+
+## 4
+## Copy and modify the previous example so that it
+## asks the user to specify tuned_freq_first and tuned_freq_second.
+
+
+
 ```
 
 ## Version zero below
+
+<details><summary>Click to expand.</summary>
 
 ```python3
 ## 1
@@ -42,7 +75,7 @@ import pcdr.simple
 import time
 tuned_freq_first = 102.1e6
 tuned_freq_second = 102.3e6
-receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq)
+receiver = pcdr.simple.OsmosdrReceiver("hackrf", freq=tuned_freq_first)
 strength = receiver.get_strength()
 print(f"Strength at {tuned_freq_first} Hz: {strength}")
 print("Will check another frequency.")
@@ -178,3 +211,4 @@ datetime.now()
 ##     https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md
 ```
 
+</details>
