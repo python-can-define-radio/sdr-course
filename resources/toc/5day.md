@@ -36,19 +36,34 @@
 
 ### Day 4
 
-- Demo if-else usage in detector using GQRX
-- Play wav when activity
-- GRC: pitfalls and FM Transmit
-- "cool": SDR Angel
-- GRC: Noise jammer
-- Concepts:
-  - Instantaneous BW vs scan
-  - (and others)
+- Incorporate PCDR module
+  - [Single frequency transmitter](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/005_pcdr_single_freq_transmit.md): work through together
+  - [Single frequency receiver](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/050_pcdr_simple_receiver.md):
+    - Demo first exercise. GQRX open to confirm functionality.
+    - Have students work independently up to exercise #9.
+- Incorporate playsound
+  - Some students may hit the installation requirement challenge
+- Incorporate file writing/naming:
+  - .csv file
+  - writing to a file
+  - When/why we need to flush to a file
+- Incorporate time functions (nowtime/datetime)
+- _Lunch_
+- FM Transmitter using Python/PCDR
+- FM Receiver using Python/PCDR
+- Homework:
+  - Successfully write an activity detector that...
+    - Takes continuous measurements of the strength of a specified frequency
+    - Records data to a csv file with ability to view immediately (i.e., flush to file)
+    - Plays three different sounds depending on RSSI (low|med|high strength measured)
 
 ### Day 5
 
 - Tone-varying DF tool built in Python; go outside
-
+- _Lunch_
+- URH:
+  - Record and Replay
+  - Modulation: OOK, ASK, FSK (as time allows)
 --------
 
 ### Weather-dependent
@@ -57,7 +72,7 @@ DF with Yagi-uda
 
 ### Other
 
-URH?
-
+- GRC: Noise jammer
+  
 <!-- Links below -->
 
