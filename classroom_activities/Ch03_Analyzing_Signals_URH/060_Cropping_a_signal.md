@@ -43,7 +43,7 @@
 Yet another option for the `generate_ook_modulated_example_file` function is `message_delay`:
 
 ```python3
-from pcdr import generate_ook_modulated_example_file
+from pcdr.v0_compat import generate_ook_modulated_example_file
 generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True, message_delay=True)
 ```
 

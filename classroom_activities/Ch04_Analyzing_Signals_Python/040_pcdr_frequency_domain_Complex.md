@@ -27,7 +27,7 @@ So, how do you represent a negative frequency? Let's demonstrate that in a plot 
 ## 1 
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeWave, make_fft
+from pcdr.v0_compat import makeWave, make_fft
 
 samp_rate = 50
 freq = -2

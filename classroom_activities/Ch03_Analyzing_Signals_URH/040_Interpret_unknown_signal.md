@@ -56,7 +56,7 @@
 For additional practice, you can generate a file using this Python code:
 
 ```python3
-from pcdr import generate_ook_modulated_example_file
+from pcdr.v0_compat import generate_ook_modulated_example_file
 generate_ook_modulated_example_file("my_example_ook_file.complex")
 ```
 
@@ -65,7 +65,7 @@ If you copy and run that, it will create a file named `my_example_ook_file.compl
 For more info on `generate_ook_modulated_example_file`, look at the docstring:
 
 ```python3
-from pcdr import generate_ook_modulated_example_file
+from pcdr.v0_compat import generate_ook_modulated_example_file
 print(generate_ook_modulated_example_file.__doc__)
 ```
 

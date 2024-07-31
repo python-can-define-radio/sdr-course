@@ -1,4 +1,4 @@
-from pcdr import gnuradio_send, ook_modulate
+from pcdr.v0_compat import gnuradio_send, ook_modulate
 import numpy as np
 
 buncha_1_0 = [1,0] * 35

@@ -19,7 +19,7 @@ The unit of frequency is Hertz or Hz, which is equivalent to one cycle per secon
 ## With the help of your editor, determine
 ##  what the `100` and the `4` represent.
 import matplotlib.pyplot as plt
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 
 timestamps, wave = makeWave(100, 4, "real", seconds=0.5)
 plt.plot(timestamps, wave, "*", markersize=10)
@@ -31,7 +31,7 @@ plt.show()
 ## How much time is displayed?
 ## How is that related to the number of samples and the sample rate?
 import matplotlib.pyplot as plt
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 
 timestamps, wave = makeWave(200, 4, "real", num=100)
 plt.plot(timestamps, wave, "*", markersize=10)
@@ -74,7 +74,7 @@ Now that we've plotted a wave, let's look back at our `ook_modulate` function.
 ## 5
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import ook_modulate
+from pcdr.v0_compat import ook_modulate
 
 modulated = ook_modulate([1, 0, 1, 0], bit_length=4)
 plt.plot(modulated, "*-", markersize=20)
@@ -95,7 +95,7 @@ There are cases in which we would like to impose the data on a carrier wave in s
 ## 7
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeWave, ook_modulate
+from pcdr.v0_compat import makeWave, ook_modulate
 
 modulated = ook_modulate([1, 0, 1, 0], bit_length=25)
 timestamps, wave = makeWave(100, 4, "real", num=100)
@@ -107,7 +107,7 @@ plt.show()
 ## 8
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeWave, ook_modulate
+from pcdr.v0_compat import makeWave, ook_modulate
 
 modulated = ook_modulate([1, 0, 1, 0], bit_length=50)
 timestamps, wave = makeWave(100, 4, "real", num=200)

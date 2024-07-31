@@ -68,7 +68,7 @@
 As in the previous lesson you can also generate noisy signals for practice using this Python code:
 
 ```python3
-from pcdr import generate_ook_modulated_example_file
+from pcdr.v0_compat import generate_ook_modulated_example_file
 generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True)
 ```
 

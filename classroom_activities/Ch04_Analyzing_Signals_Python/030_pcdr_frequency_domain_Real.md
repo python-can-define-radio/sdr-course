@@ -12,7 +12,7 @@ When the signal is made up of a single wave, we can fairly easily identify the f
 ## Notice that we're only plotting the sum of the waves.
 ## Can you still distinguish the two separate frequencies?
 import matplotlib.pyplot as plt
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 
 seconds = 2
 samp_rate = 300
@@ -44,7 +44,7 @@ The solution to the limitations of the Time Domain is to view the signal in the 
 ```python3
 ## 4
 import matplotlib.pyplot as plt
-from pcdr import makeWave, make_fft_positive_freqs_only
+from pcdr.v0_compat import makeWave, make_fft_positive_freqs_only
 
 maxTime = 2
 samp_rate = 300 
@@ -71,7 +71,7 @@ Let's try it with two signals added:
 ## 6
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeWave, make_fft_positive_freqs_only
+from pcdr.v0_compat import makeWave, make_fft_positive_freqs_only
 
 maxTime = 2
 samp_rate = 300
@@ -122,7 +122,7 @@ Up to this point, we've been using the function `make_fft_positive_freqs_only`. 
 ## 9
 ## Try this.
 import matplotlib.pyplot as plt
-from pcdr import makeWave, make_fft
+from pcdr.v0_compat import makeWave, make_fft
 
 maxTime = 2
 samp_rate = 300

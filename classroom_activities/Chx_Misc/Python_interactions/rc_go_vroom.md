@@ -4,7 +4,7 @@ This is an unknown car at 49.86 MHz. Possibly our toy tank.
 
 ```python3
 from guizero import App, PushButton, Picture
-from pcdr import gnuradio_send, ook_modulate
+from pcdr.v0_compat import gnuradio_send, ook_modulate
 import numpy as np
 
 
@@ -26,7 +26,7 @@ app.display()
 This is very similar code for our toy 4-wheeler, near 27 MHz.
 
 ```python3
-from pcdr import gnuradio_send, ook_modulate
+from pcdr.v0_compat import gnuradio_send, ook_modulate
 from guizero import App, PushButton
 
 def sendIt():

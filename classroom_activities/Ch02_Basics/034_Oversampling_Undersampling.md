@@ -38,7 +38,7 @@ _Nyquist: [Helicopter blade demonstration of Nyquist theorem](https://www.youtub
 ## 2a 
 ## Try this.
 ## Notice that the wave degrades the closer the frequency gets to the sample rate.
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(8,6))  # since we have multiple subplots, this makes the figure large enough that nothing gets cropped off
@@ -73,7 +73,7 @@ plt.show()
 ## 2b
 ## This time instead of varying the frequency we see the same degradation with a varying sample rate
 ## as it approaches the value of the frequency.
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(8,6))  # since we have multiple subplots this makes it large enough so nothing gets cropped off
@@ -120,7 +120,7 @@ Now, let's look at what happens when the frequency is very close to the sample r
 ## Try this. Notice that the frequency is 9,
 ## but when you plot it, it (surprisingly) has a frequency of 1.
 ## What is the name for this phenomenon? 
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 import matplotlib.pyplot as plt
 
 samp_rate = 10
@@ -134,7 +134,7 @@ plt.show()
 
 ## 4b
 ## Let's view that with an adequate sample rate at the same time to see the difference.
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 import matplotlib.pyplot as plt
 
 seconds = 1
@@ -159,7 +159,7 @@ The above exercise shows [**aliasing**](https://gallicchio.github.io/learnSDR/le
 ## 5
 ## Try this.
 ## Due to aliasing, what frequency is displayed by the blue line?
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 import matplotlib.pyplot as plt
 
 seconds = 1
@@ -204,7 +204,7 @@ When the frequency is above the Nyquist limit (half the sample rate), aliasing w
 ## 2. The effects of resampling / decimating the signal
 
 import pyqtgraph as pg
-from pcdr import makeWave
+from pcdr.v0_compat import makeWave
 
 ## QT GUI Boilerplate setup
 pg.mkQApp()

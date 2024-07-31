@@ -59,7 +59,7 @@ These alternative options are useful if you don't have a SDR peripheral, or if y
 **Option C**: Plot the data using matplotlib. A `bit_length` value of no more than `50e3` is recommended when using this option due to performance issues.
    ```python3
    ## Option C example
-   from pcdr import ook_modulate
+   from pcdr.v0_compat import ook_modulate
    import matplotlib.pyplot as plt
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(50e3))
    plt.plot(modulated, "*-")
@@ -70,7 +70,7 @@ These alternative options are useful if you don't have a SDR peripheral, or if y
 **Option D**. Display the data in a QT GUI Sink. You may wish to use the `prepend_zeros` argument, which adds a delay before the actual data. This can help by giving you time to switch to the GUI window before the actual data is displayed.  
    ```python3
    ## Option D example
-   from pcdr import ook_modulate
+   from pcdr.v0_compat import ook_modulate
    from pcdr.gnuradio_sender import gnuradio_guisink
    modulated = ook_modulate([1, 0, 1, 0, 1, 0, 0, 1], bit_length=int(1e6))
    gnuradio_guisink(modulated, center_freq=2.413e9, samp_rate=2e6, prepend_zeros=int(4e6))
@@ -128,7 +128,7 @@ TODO: consider
 
 ### Sending hexadecimal strings as bits
 
-from pcdr import hex_to_bin_list
+from pcdr.v0_compat import hex_to_bin_list
 list_of_bits = hex_to_bin_list(0x43)
 print(list_of_bits)
 
@@ -142,7 +142,7 @@ Writing the binary explicitly is getting somewhat tedious. The pcdr module inclu
 ## 7
 ## Try this. It should print the same list we saw earlier,
 ## specifically, [0, 1, 0, 0, 0, 0, 1, 1].
-from pcdr import str_to_bin_list
+from pcdr.v0_compat import str_to_bin_list
 list_of_bits = str_to_bin_list("C")
 print(list_of_bits)
 
