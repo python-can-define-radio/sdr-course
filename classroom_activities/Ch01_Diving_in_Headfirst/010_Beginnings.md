@@ -37,6 +37,7 @@
 
   - Ctrl + F : Find blocks
   - D : Disable a block
+  - B : Bypass a block
   - E : Enable a block
 
 ### Common pitfalls of GNU Radio Companion (GRC):
