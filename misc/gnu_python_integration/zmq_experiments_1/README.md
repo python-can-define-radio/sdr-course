@@ -1,1 +1,0 @@
-These are in progress. Not organized yet.

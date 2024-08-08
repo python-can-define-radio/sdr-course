@@ -1,1 +1,0 @@
-This is in progress. Will be based on [these files](https://github.com/python-can-define-radio/sdr-course/tree/main/topics/gnu_python_integration/zmq_basic_1).
