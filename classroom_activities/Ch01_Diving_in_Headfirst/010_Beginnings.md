@@ -32,6 +32,13 @@
 - The `Apply` button is buggy: it will sometimes NOT apply the changes, such as if you use it twice in a row.
   - Solution: Don't use the "Apply" button. Press "Ok" instead.
 
+### Some useful keyboard shortcuts in GNU Radio Companion (GRC):
+
+  - Ctrl + F : Find blocks
+  - D : Disable a block
+  - B : Bypass a block
+  - E : Enable a block
+
 ### Tutorial:
 
 - Go to [this tutorial page at GNUradio.org](https://wiki.gnuradio.org/index.php?title=Tutorials) (https://wiki.gnuradio.org/index.php?title=Tutorials).
@@ -45,13 +52,6 @@
   - Runtime Updating Variables
   - Signal Data Types
   - Converting Data Types
- 
-- Some useful keyboard shortcuts in GNU Radio Companion (GRC):
-
-  - Ctrl + F : Find blocks
-  - D : Disable a block
-  - B : Bypass a block
-  - E : Enable a block
 
 ### Useful information
 
