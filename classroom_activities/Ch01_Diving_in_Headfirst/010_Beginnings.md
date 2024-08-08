@@ -43,9 +43,9 @@
 
 - Go to [this tutorial page at GNUradio.org](https://wiki.gnuradio.org/index.php?title=Tutorials) (https://wiki.gnuradio.org/index.php?title=Tutorials).
 
-  - Work through the "3. Your First Flowgraph" tutorial (in upper-left) together as a class. 
+  - Under `Beginner Tutorials > Introducing GNU Radio` we will work through the "Your First Flowgraph" tutorial together as a class. 
 
-- Once you have finished "Your First Flowgraph", follow these tutorials from the same page (mid-left side):
+- Once you have finished "Your First Flowgraph", complete these tutorials from the `Flowgraph Fundamentals` category:
 
   - Python Variables in GRC
   - Variables in Flowgraphs
@@ -53,15 +53,13 @@
   - Signal Data Types
   - Converting Data Types
 
+- Once those are completed you should return to `Ch01_Diving_in_Headfirst` and try constructing the FM receiver in `030_GRC_FM_Receiver.md`.
+
+
 ### Useful information
 
 [HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)  
 [HackRF One Block Diagram](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/hackrfone_diagram.png)  
+[GNU Radio tutorials](https://wiki.gnuradio.org/index.php?title=Tutorials)  
+[GNU Radio error messages](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/Common-GNURadio-error-messages.md)  
 [Resources](https://github.com/python-can-define-radio/sdr-course/tree/main/resources)  
-[GNU Radio tutorials](https://wiki.gnuradio.org/index.php?title=Tutorials)
-[GNU Radio error messages](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/Common-GNURadio-error-messages.md)
-
-Videos from Veritasium explaining analog and digital:
-
-- https://www.youtube.com/watch?v=IgF3OX8nT0w
-- https://www.youtube.com/watch?v=GVsUOuSjvcg
