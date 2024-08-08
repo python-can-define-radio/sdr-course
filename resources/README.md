@@ -55,6 +55,11 @@ Other cool stuff:
 - Vinyl LP Record - Electron microscope slow-motion video -  https://www.youtube.com/watch?v=GuCdsyCWmt8
   - When GNU Radio Companion is tuned to a radio station, graph ("sink") shows similiarity to the groove on the record? 
 
+Videos from Veritasium explaining analog and digital:
+
+- https://www.youtube.com/watch?v=IgF3OX8nT0w
+- https://www.youtube.com/watch?v=GVsUOuSjvcg
+
 -----------------------------
 
 Not as cool, but worth saving for other reasons:
