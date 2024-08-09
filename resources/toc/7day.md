@@ -185,12 +185,12 @@
 [070_Interpret_multiple_noisy_signals]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/070_Interpret_multiple_noisy_signals.md
 [080_Interpret_multiple_noisy_signals]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md
 [090_Record_a_real_signal]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/090_Record_a_real_signal.md
-[020_Noise_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/020_Noise_Jammer.md
+[020_Noise_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/020_Noise_Jammer.md
 [Ch_Python]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/
 [010_pcdr_ook_tx_intro]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md
 [020_pcdr_ook_waves]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/020_pcdr_ook_waves.md
 [030_pcdr_frequency_domain_Real]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/030_pcdr_frequency_domain_Real.md
 [040_pcdr_frequency_domain_Complex]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/040_pcdr_frequency_domain_Complex.md
 [050_pcdr_simple]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/050_pcdr_simple.md
-[Ch_Applic]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/
-[021_Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/021_PSK_Digital_Jammer.md
+[Ch_Applic]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/
+[021_Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/021_PSK_Digital_Jammer.md
