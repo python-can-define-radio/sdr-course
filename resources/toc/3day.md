@@ -77,8 +77,8 @@
 [GRC_Spectrum_Analyzer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GRC_Spectrum_Analyzer.md
 [GRC_FM_Receiver]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_GRC_FM_Receiver.md
 [GRC_FM_Transmitter]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/040_GRC_FM_Transmitter.md
-[Noise_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/020_Noise_Jammer.md
-[Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch06_Applications/021_Digital_Jammer.md
+[Noise_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/020_Noise_Jammer.md
+[Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/021_Digital_Jammer.md
 [Sample_Rates_turtle_ripples]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/022_Sample_Rates_turtle_ripples.md
 [AnalyzeFreq_of_Combined_Signals]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/030_AnalyzeFreq_of_Combined_Signals.md
 [010_pcdr_ook_tx_intro]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md
