@@ -73,5 +73,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 ### Discussion
 
 - What are the limits of the Hack RF's IF gain?
-- How big of a slice of the spectrum do you see?
+- How big of a slice of the spectrum do you see? What part of the flowgraph defines this?
 - While running, in the Frequency Display tab, try raising the Average in the bottom right corner. Does it help make signals more visible?
+- What happens when various variables are either left as default or set incorrectly?
+  - In particular, the instructor will demonstrate this problem using the GUI Sink's Center Frequency attribute.
