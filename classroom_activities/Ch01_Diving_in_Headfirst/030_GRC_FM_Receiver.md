@@ -41,14 +41,14 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 - Id: `favorite_stations`
 - Type: `Float`
 - Num Options: `4`
-- Default Option: `104_300_000`  (_This only applies if your version of GRC has a `Default Option` separated from `Option 0`._)
-- Option 0: `104_300_000`  (_Replace these with actual stations_)
+- Default Option: `104.3e6`  (_This only applies if your version of GRC has a `Default Option` separated from `Option 0`._)
+- Option 0: `104.3e6`  (_Replace these with actual stations_)
 - Label 0: `Popular country rock jazz`  
-- Option 1: `93_900_000`
+- Option 1: `93.9e6`
 - Label 1: `Baroque heavy metal`
-- Option 2: `100_900_000`
+- Option 2: `100.9e6`
 - Label 2: `Noisy noise`
-- Option 3: `105_700_000`
+- Option 3: `105.7e6`
 - Label 3: `Some other creative station name`
 - Widget: `Radio Buttons`
 
@@ -65,9 +65,9 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 
 - Id: `center_freq_slider`
 - Default Value: `favorite_stations`
-- Start: `88_000_000`
-- Stop: `108_000_000`
-- Step: `10_000`
+- Start: `88e6`
+- Stop: `108e60`
+- Step: `10e3`
 
 ### For the GUI Check Box:
 
@@ -76,7 +76,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
-- Value: `8_000_000`
+- Value: `8e6`
 
 ### For the Osmocom Source:
 
@@ -85,14 +85,14 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 - Ch0: RF Gain (dB): `0`
 - Ch0: IF Gain (dB): `if_gain_slider`
 - Ch0: BB Gain (dB): `50`
-- Ch0: Bandwidth (Hz): `hardware_filter * 2_750_000`
+- Ch0: Bandwidth (Hz): `hardware_filter * 2.75e6`
 
 ### For the Band Pass Filter:
 
 - FIR Type: `Complex -> Complex (Complex Taps) (Decim)`
-- Low Cutoff Freq: `-100_000` (notice the negative)
-- High Cutoff Freq: `100_000`
-- Transition Width: `90_000`
+- Low Cutoff Freq: `-100e3` (notice the negative)
+- High Cutoff Freq: `100e3`
+- Transition Width: `90e3`
 
 ### For the WBFM Receive:
 
@@ -102,7 +102,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 ### For the Rational Resampler:
 
 - Type: `Float -> Float (Real Taps)`
-- Interpolation: `48_000`
+- Interpolation: `int(48e3)`
 - Decimation: `int(samp_rate)`
 
 ### For the Audio Sink:
