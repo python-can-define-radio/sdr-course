@@ -35,15 +35,15 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
-- Value: `2_000_000`
+- Value: `2e6`
 
 ### For the GUI Range:
 
 - Id: `center_freq_slider`
 - Default Value: Choose a value between your start and stop values
-- Start: `88_000_000`
-- Stop: `108_000_000`
-- Step: `10_000`
+- Start: `88e6`
+- Stop: `108e6`
+- Step: `10e3`
 
 ### For the Constellation Object:
 
