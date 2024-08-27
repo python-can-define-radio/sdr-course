@@ -39,26 +39,26 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 ### For the First GUI Range:
 
 - Id: `cut_freq_slider`
-- Default Value: `300_000`
-- Start: `20_000`
-- Stop: `900_000`
-- Step: `10_000`
+- Default Value: `300e3`
+- Start: `20e3`
+- Stop: `900e3`
+- Step: `10e3`
 
 ### For the Second GUI Range:
 
 - Id: `tr_width_slider`
-- Default Value: `70_000`
-- Start: `20_000`
-- Stop: `900_000`
-- Step: `10_000`
+- Default Value: `70e3`
+- Start: `20e3`
+- Stop: `900e3`
+- Step: `10e3`
 
 ### For the Third GUI Range:
 
 - Id: `center_freq_slider`
 - Default Value: Choose a value between your start and stop values
-- Start: `88_000_000`
-- Stop: `108_000_000`
-- Step: `10_000`
+- Start: `88e6`
+- Stop: `108e6`
+- Step: `10e3`
 
 ### For the Low Pass Filter:
 
@@ -72,7 +72,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
-- Value: `2_000_000`
+- Value: `2e6`
 
 ### For the Osmocom Sink:
 
