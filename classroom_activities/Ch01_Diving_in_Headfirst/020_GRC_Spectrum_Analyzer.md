@@ -41,17 +41,17 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 
 - Id: `center_freq_slider`
 - Default Value: `107_900_000` #This is the same as 107.9e6
-- Start: `40_000_000`
-- Stop: `500_000_000`
-- Step: `10_000`
+- Start: `40e6`
+- Stop: `500e6`
+- Step: `10e3`
 
 ### For the `samp_rate` variable (_already in the flowgraph_):
 
-- Value: `20_000_000`
+- Value: `20e6`
 
 ### For the QT GUI sink:
 
-- FFT Size: `8_192`
+- FFT Size: `8192`
 - Center Frequency (Hz): `center_freq_slider`
 - Update Rate: `20`
 - Show RF Freq: `Yes`
