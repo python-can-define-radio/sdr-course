@@ -31,7 +31,7 @@
 
 - It should now look like this:
 
-![record_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/record_signal.png?raw=true) 
+![record_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/record_signal.png?raw=true) 
 
 - Press start when you are ready to begin recording.
     - Hint: Make sure that whoever is transmitting has their message on repeat.
