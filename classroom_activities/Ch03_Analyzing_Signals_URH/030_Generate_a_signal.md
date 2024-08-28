@@ -45,7 +45,7 @@
 
 - This is what your generated data window should now look like.
 
-![generated_data.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_data.png?raw=true) 
+![generated_data.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/generated_data.png?raw=true) 
 
 - Notice that the 32 bit message we selected is now showing up as 4 bytes in the generated data window.
 
@@ -59,11 +59,11 @@
 
 - It should now look like this
 
-![catscreenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/catscreenshot.png?raw=true) 
+![catscreenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/catscreenshot.png?raw=true) 
 
 - Select the Pauses tab as shown.
 
-![pauses.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/pauses.png?raw=true) 
+![pauses.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/pauses.png?raw=true) 
 
 - Right click and select Edit on the pause in the window, change the Pause Length to 0 and hit ok.
 
@@ -73,7 +73,7 @@
 - Now change tabs to the Interpretation tab.
     - Click and drag the file `generated.complex` (or whatever you renamed it) to the grey space on the right.
  
-![generated_file.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/generated_file.png?raw=true) 
+![generated_file.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/generated_file.png?raw=true) 
 
 - Now ensure your settings match the picture above and change the  `Show data as` dropdown menu to `ASCII` and you should see your message in the window.
     - In the next lesson we will learn how to do the same thing without already knowing all the settings.
