@@ -30,11 +30,11 @@
 - Crop your signal to eliminate leading zeros.
     - Since we know our preample starts with a `1` now we can highlight everything past the first `1` in the bits window.
 
-    ![highlightfirst1.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/highlightfirst1.png?raw=true)
+    ![highlightfirst1.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/highlightfirst1.png?raw=true)
 
     - Right-click in the signal window and select `Crop to selection`.
       
-    ![crop.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/crop.png?raw=true)
+    ![crop.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/crop.png?raw=true)
   
 - Set Show data as to `ASCII` and verify all settings to reveal your message.
 
