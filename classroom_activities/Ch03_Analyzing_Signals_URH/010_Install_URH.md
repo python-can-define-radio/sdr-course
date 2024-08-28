@@ -28,7 +28,7 @@
 
 - It should look something like this:
 
-![urh_screenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/urh_screenshot.png?raw=true)  
+![urh_screenshot.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/urh_screenshot.png?raw=true)  
 
 - At the top left of urh select `File > Open folder` or the keyboard shortcut (Ctrl + Shift + O).
 
