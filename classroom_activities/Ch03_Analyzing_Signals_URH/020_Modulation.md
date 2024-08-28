@@ -55,16 +55,16 @@ In this section, we will visually show you what those modulation techniques look
 - It should look something like this:
     - ASK should be pretty easy determining the difference between a 1 and a 0.
    
-![ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/ASK_modulated_signal.png?raw=true)
+![ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/ASK_modulated_signal.png?raw=true)
 
 - Now on the modulated signal click and drag to try to highlight a single bit (1 or 0).
     - Notice the Samples selected should be around 200000 which lines up with our Samples per Symbol setting above.
 
-![singlebithighlighted.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/singlebithighlighted.png?raw=true)
+![singlebithighlighted.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/singlebithighlighted.png?raw=true)
 
 - You can also adjust the Amplitudes in % value which essentially changes the value/height/amplitude of a "0".
 
-![amplitude25%.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/amplitude25%25.png?raw=true)
+![amplitude25%.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/amplitude25%25.png?raw=true)
 
 - Try changing the modulation.
 
@@ -78,12 +78,12 @@ In this section, we will visually show you what those modulation techniques look
   
 - What do you see different?
 
-![fsk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/fsk_modulation.png?raw=true)
+![fsk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/fsk_modulation.png?raw=true)
 
 - To determine Samples per Symbol of FSK highlight the smallest section of a single frequency that you can find.
     - This becomes harder and harder the closer the frequencies are to each other.
 
-![fsk_highlight.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/fsk_highlight.png?raw=true)
+![fsk_highlight.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/fsk_highlight.png?raw=true)
 
 - The last thing we are going to look at is Phase Shift Keying (PSK).
 
@@ -99,11 +99,11 @@ In this section, we will visually show you what those modulation techniques look
   
 - It should look something like this:
   
-![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/psk_modulation.png?raw=true)
+![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/psk_modulation.png?raw=true)
 
 - To determine Samples per Symbol of PSK highlight the smallest portion of the signal between phase changes that you can find.
 
-![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/psk_highlight.png?raw=true)
+![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/psk_highlight.png?raw=true)
 
 - In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
 
