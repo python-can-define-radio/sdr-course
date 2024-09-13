@@ -66,7 +66,7 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 - Id: `center_freq_slider`
 - Default Value: `favorite_stations`
 - Start: `88e6`
-- Stop: `108e60`
+- Stop: `108e6`
 - Step: `10e3`
 
 ### For the GUI Check Box:
