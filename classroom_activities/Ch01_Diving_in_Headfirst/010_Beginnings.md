@@ -13,7 +13,9 @@
 
 ### Before starting: 
 
-- If you have changed classrooms it may be necessary to repeat some steps of the python [preliminaries](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch01_Basics/ex_0a_preliminaries.md) lesson.
+- If you have changed classrooms, it may be necessary to repeat some steps of the Python [preliminaries](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch01_Basics/ex_0a_preliminaries.md) lesson.
+
+- If your instructor plans to use SDRangel, run the [SDRangel setup script](https://raw.githubusercontent.com/python-can-define-radio/sdr-course/refs/heads/main/resources/sdrsetup.sh).
 
 - Create a folder for your SDR files with your name (and no spaces) on the Desktop.
   
