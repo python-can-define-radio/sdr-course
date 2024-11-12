@@ -26,7 +26,7 @@
 
 echo "Enter the ip address or domain name provided by the instructor."
 echo "(Example: 10.1.2.3, or foo.bar.net) "
-echo -n "--> "
+printf '%s' "--> "
 read addr_to_fetch
 zip_dl_dir=~/.sdr_angel_zip_temp
 mkdir "$zip_dl_dir"
