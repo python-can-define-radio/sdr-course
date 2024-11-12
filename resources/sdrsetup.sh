@@ -29,7 +29,7 @@ read addr_to_fetch
 zip_dl_dir=~/.sdr_angel_zip_temp
 mkdir "$zip_dl_dir"
 echo "Downloading tar file."
-curl -L -o "$zip_dl_dir/sdr_proot_env.tar" "http://$ipaddr_to_fetch:8000/sdr_proot_env.tar"
+curl -L -o "$zip_dl_dir/sdr_proot_env.tar" "http://$addr_to_fetch:8000/sdr_proot_env.tar"
 echo "Extracting tar file."
 tar -xvf "$zip_dl_dir/sdr_proot_env.tar" --directory=$HOME
 rm -r "$zip_dl_dir"
