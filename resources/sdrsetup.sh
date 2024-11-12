@@ -24,7 +24,9 @@
 ##     https://github.com/python-can-define-radio/more-sdr/blob/main/2024-07-11/proot-directions.md
 
 
-echo "Enter the ip address or domain name provided by the instructor. (Example: 10.1.2.3, or foo.bar.net) "
+echo "Enter the ip address or domain name provided by the instructor."
+echo "(Example: 10.1.2.3, or foo.bar.net) "
+echo -n "--> "
 read addr_to_fetch
 zip_dl_dir=~/.sdr_angel_zip_temp
 mkdir "$zip_dl_dir"
