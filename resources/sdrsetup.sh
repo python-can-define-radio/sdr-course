@@ -21,7 +21,7 @@
 ## - Some details about how to work with proot are listed here: https://github.com/python-can-define-radio/more-sdr/blob/main/2024-07-11/proot-directions.md
 
 
-echo "Enter the ip address provided by the instructor."
+echo "Enter the ip address provided by the instructor. (Example: 10.1.2.3) "
 read ipaddr_to_fetch
 zip_dl_dir=~/.sdr_angel_zip_temp
 mkdir "$zip_dl_dir"
