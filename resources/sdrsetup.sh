@@ -73,7 +73,7 @@ fi
 echo "Extracting tar file."
 tar -xf "$destination_dir_sdr_angel_tar/sdr_proot_env.tar" --directory=$HOME
 rm -r "$destination_dir_sdr_angel_tar"
-# chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
-# ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
-# source ~/.profile
-# echo "You should now be able to run the command `sdrangel` from the terminal. You may need to log out and log in."
+chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
+ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
+source ~/.profile
+echo "You should now be able to run the command `sdrangel` from the terminal. You may need to log out and log in."
