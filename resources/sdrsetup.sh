@@ -23,19 +23,57 @@
 ## - Some details about how to work with proot are listed here:
 ##     https://github.com/python-can-define-radio/more-sdr/blob/main/2024-07-11/proot-directions.md
 
+cd /run/user
+directories=($(ls -d */))
+if [ -z "$directories" ]; then
+    echo "Samba does not appear to be mounted. Specifically, didn't find any directories in $(pwd).";
+fi
 
-echo "Enter the ip address or domain name provided by the instructor."
-echo "(Example: 10.1.2.3, or foo.bar.net) "
-printf '%s' "--> "
-read addr_to_fetch
-zip_dl_dir=~/.sdr_angel_zip_temp
-mkdir "$zip_dl_dir"
-echo "Downloading tar file."
-curl -L -o "$zip_dl_dir/sdr_proot_env.tar" "http://$addr_to_fetch:8000/sdr_proot_env.tar"
+for dir in "${directories[@]}"; do
+    # Remove the trailing slash from the directory name
+    dir=${dir%/}
+    # Check if the directory name contains more than 5 digits
+    if [[ "$dir" =~ [0-9]{6,} ]]; then
+        usernumber=$dir
+        break
+    fi
+done 
+
+cd $usernumber
+cd gvfs
+
+if [ -z "$(ls)" ]; then
+    echo "No samba shares appear to be mounted. Specifically, didn't find anything in $(pwd)";
+    exit
+fi
+
+studentdir="$(ls | grep student || true)"
+
+if [ -z "$studentdir" ]; then
+    echo "Student samba share does not appear to be mounted. Specifically, didn't find anything containing the word student in $(pwd)";
+    exit    
+fi
+# studentdir=$(ls -lt | grep "^d" | grep "student" | head -n 1 | awk '{print $NF}')
+cd $studentdir # chooses just the student samba dir in the event the instructor is linked to both inst samba and student samba
+samba_root=$(pwd)
+
+source_file_sdr_angel_tar="$samba_root/sdr_resources/sdr_angel_tar"
+destination_dir_sdr_angel_tar="$HOME/Desktop/sdr_angel_tar"  
+
+echo "Copying the SDR Angel tar folder"
+echo "It is not locked up or stuck be patient the sdr_angel_tar folder is large and may take a minute to download."
+cp -r "$source_file_sdr_angel_tar" "$destination_dir_sdr_angel_tar"
+
+if [ $? -eq 0 ]; then
+    echo -e "\e[32m- Successfully copied sdr angel tar folder to the Desktop.\e[35m"
+else
+    echo "Move failed."
+fi 
+
 echo "Extracting tar file."
-tar -xvf "$zip_dl_dir/sdr_proot_env.tar" --directory=$HOME
-rm -r "$zip_dl_dir"
-chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
-ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
-source ~/.profile
-echo "You should now be able to run the command `sdrangel` from the terminal. You may need to log out and log in."
+tar -xvf "$destination_dir_sdr_angel_tar/sdr_proot_env.tar" --directory=$HOME
+# rm -r "$destination_dir_sdr_angel_tar"
+# chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
+# ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
+# source ~/.profile
+# echo "You should now be able to run the command `sdrangel` from the terminal. You may need to log out and log in."
