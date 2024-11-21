@@ -60,8 +60,8 @@ samba_root=$(pwd)
 source_file_sdr_angel_tar="$samba_root/sdr_resources/sdr_angel_tar"
 destination_dir_sdr_angel_tar="$HOME/Desktop/sdr_angel_tar"  
 
-echo "Copying the SDR Angel tar folder"
-echo "It is not locked up or stuck be patient the sdr_angel_tar folder is large and may take a minute to download."
+echo "Copying the SDR Angel tar folder."
+echo "It is not locked up or stuck. Be patient; the sdr_angel_tar folder is large and may take a minute to download."
 cp -r "$source_file_sdr_angel_tar" "$destination_dir_sdr_angel_tar"
 
 if [ $? -eq 0 ]; then
@@ -70,10 +70,11 @@ else
     echo "Move failed."
 fi 
 
-echo "Extracting tar file."
+echo "Extracting tar file (also a slow step)."
 tar -xf "$destination_dir_sdr_angel_tar/sdr_proot_env.tar" --directory=$HOME
 rm -r "$destination_dir_sdr_angel_tar"
 chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
+mkdir -p ~/.local/bin/
 ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
 source ~/.profile
 echo "You should now be able to run the command `sdrangel` from the terminal. You may need to log out and log in."
