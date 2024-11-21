@@ -29,6 +29,8 @@ if [ -z "$directories" ]; then
     echo "Samba does not appear to be mounted. Specifically, didn't find any directories in $(pwd).";
 fi
 
+## TODO: WE NEED TO CHANGE THIS TO WORK WITH SHORT DIRECTORY NUMBER-STRING NAMES ALSO.
+
 for dir in "${directories[@]}"; do
     # Remove the trailing slash from the directory name
     dir=${dir%/}
