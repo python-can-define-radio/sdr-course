@@ -71,8 +71,8 @@ else
 fi 
 
 echo "Extracting tar file."
-tar -xvf "$destination_dir_sdr_angel_tar/sdr_proot_env.tar" --directory=$HOME
-# rm -r "$destination_dir_sdr_angel_tar"
+tar -xf "$destination_dir_sdr_angel_tar/sdr_proot_env.tar" --directory=$HOME
+rm -r "$destination_dir_sdr_angel_tar"
 # chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
 # ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
 # source ~/.profile
