@@ -46,4 +46,4 @@ chmod +x ~/.sdr_proot_env/run_sdr_angel.sh
 mkdir -p ~/.local/bin/
 ln -s ~/.sdr_proot_env/run_sdr_angel.sh ~/.local/bin/sdrangel
 source ~/.profile
-echo "You should now be able to run the command `sdrangel` from the terminal. You may need to log out and log in."
+echo "You should now be able to run the command 'sdrangel' from the terminal. You may need to log out and log in."
