@@ -1,8 +1,6 @@
 #!/bin/bash
 ## Assumptions:
-## - The instructor is running an http server on port 8000
-##   (perhaps using `python3 -m http.server`)
-##   with the file "sdr_proot_env.tar" available.
+## - The file "sdr_proot_env.tar" is in "/run/user/*/gvfs/*student*/sdr_resources/sdr_angel_tar/".
 ## - The file "sdr_proot_env.tar" contains one directory,
 ##   which is named ".sdr_proot_env" (Note the preceeding dot).
 ## - The directory ".sdr_proot_env" contains...
