@@ -51,7 +51,7 @@
 
 - Now, add the « character which will serve as a preamble of 10101011 in the first slot, so we will know when our useful data begins.  
   Here's how:
-    - The Ubuntu keyboard shortcut: Ctl + Shift + u, then release. Type `00ab`. Press enter.
+    - The Ubuntu keyboard shortcut: Ctl + Shift + u, then release. Type `ab`. Press enter.
     - The Windows keyboard shortcut: Alt + 0171 then release.
     - Alternatively, you can just copy and paste the character above.
  
