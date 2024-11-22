@@ -23,42 +23,9 @@
 ## - Some details about how to work with proot are listed here:
 ##     https://github.com/python-can-define-radio/more-sdr/blob/main/2024-07-11/proot-directions.md
 
-cd /run/user
-directories=($(ls -d */))
-if [ -z "$directories" ]; then
-    echo "Samba does not appear to be mounted. Specifically, didn't find any directories in $(pwd).";
-fi
+cd /run/user/*/gvfs/*student*/ || { echo "Samba appears to not be connected."; exit; }
 
-## TODO: WE NEED TO CHANGE THIS TO WORK WITH SHORT DIRECTORY NUMBER-STRING NAMES ALSO.
-
-for dir in "${directories[@]}"; do
-    # Remove the trailing slash from the directory name
-    dir=${dir%/}
-    # Check if the directory name contains more than 5 digits
-    if [[ "$dir" =~ [0-9]{6,} ]]; then
-        usernumber=$dir
-        break
-    fi
-done 
-
-cd $usernumber
-cd gvfs
-
-if [ -z "$(ls)" ]; then
-    echo "No samba shares appear to be mounted. Specifically, didn't find anything in $(pwd)";
-    exit
-fi
-
-studentdir="$(ls | grep student || true)"
-
-if [ -z "$studentdir" ]; then
-    echo "Student samba share does not appear to be mounted. Specifically, didn't find anything containing the word student in $(pwd)";
-    exit    
-fi
-# studentdir=$(ls -lt | grep "^d" | grep "student" | head -n 1 | awk '{print $NF}')
-cd $studentdir # chooses just the student samba dir in the event the instructor is linked to both inst samba and student samba
 samba_root=$(pwd)
-
 source_file_sdr_angel_tar="$samba_root/sdr_resources/sdr_angel_tar"
 destination_dir_sdr_angel_tar="$HOME/Desktop/sdr_angel_tar"  
 
