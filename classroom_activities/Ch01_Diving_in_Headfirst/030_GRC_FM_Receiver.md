@@ -130,13 +130,13 @@ You may wish to reference these Common GNU Radio Companion [error messages](http
 
 ### Discussion
 
-- If you have any errors, remember to look at the list of Common GNU Radio Error messages in the [resources](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch05_Concepts/034_Oversampling_Undersampling.md) folder.
+- If you have any errors, remember to look at the list of Common GNU Radio Error messages in the [resources](https://github.com/python-can-define-radio/sdr-course/tree/main/resources) folder.
 
 - You'll notice that sometimes you need to move the antenna to ensure good reception. Watching the Waterfall can help with seeing how good your reception is.
 
 - In our experience, the osmocom Source's Bandwidth parameter only works if you set it during runtime. Ask if you'd like to know details.
 
-- The purpose of the `hardware_filter` is to avoid aliasing. For more info, see [this lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/034_Oversampling_Undersampling.md).
+- The purpose of the `hardware_filter` is to avoid aliasing. For more info, see [this lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch05_Concepts/034_Oversampling_Undersampling.md).
 
 ### Questions
 
