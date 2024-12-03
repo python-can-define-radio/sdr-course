@@ -36,6 +36,7 @@
 ------------------------------
 
 Other cool stuff:
+- [Double Slit Experiment: Veritasium](https://www.youtube.com/watch?v=Iuv6hY6zsd0)
 - ["Kid krypto": Public Key encryption](https://classic.csunplugged.org/documents/activities/public-key-encryption/unplugged-18-public_key_encryption_0.pdf): Don't let the name fool you -- this is the best explanation of Public Key Encryption that I've seen. It does require some reading, but it well worth it. Also see [source](https://classic.csunplugged.org/activities/public-key-encryption/) and [an interesting subsequent work](https://files.eric.ed.gov/fulltext/EJ1177112.pdf)
 - https://www.rtl-sdr.com/creating-a-low-cost-ground-penetrating-radar-with-two-hackrfs/
 - http://www.diva-portal.org/smash/get/diva2:933202/FULLTEXT01.pdf
