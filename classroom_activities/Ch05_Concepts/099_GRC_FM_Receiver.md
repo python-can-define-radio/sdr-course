@@ -1,12 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 Aug 18: 030_GRC_FM_Receiver.md
-2023 Aug 18: 030_GNU_Radio_FM_Receiver.md
-2023 May 22: 020_GNU_Radio_FM_Receiver.md
-2022 Aug 30: 210-GNU-Radio-FM-Receiver.md
-2022 Aug 08: 110-GNU-Radio-FM-Receiver.md
-</pre>
-</details>
 
 # GRC FM Receiver
 

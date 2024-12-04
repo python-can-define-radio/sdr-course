@@ -1,11 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2022 Aug 08: 120-GNU-Radio-Spectrum-Analyzer.md
-2022 Aug 30: 220-GNU-Radio-Spectrum-Analyzer.md
-2023 May 22: 040_GRC_Spectrum_Analyzer.md
-2023 Aug 18: 020_GRC_Spectrum_Analyzer.md (moved to Chapter 1)
-</pre>
-</details>
 
 # GRC Spectrum Analyzer
 
