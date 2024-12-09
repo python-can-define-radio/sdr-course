@@ -7,7 +7,7 @@ Prerequisite: basic knowledge of [guizero](https://github.com/python-can-define-
 
 ### Introduction
 
-Viewing the spectrum is useful. (TODO: More intro here.)
+Viewing the spectrum is useful. In order to effect change to the electromagnetic spectrum we first have to be able to `see` those frequencies.
 
 ### Execution
 
