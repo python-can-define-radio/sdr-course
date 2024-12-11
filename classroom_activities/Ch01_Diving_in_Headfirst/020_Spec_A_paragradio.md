@@ -7,26 +7,25 @@ Prerequisite: basic knowledge of [guizero](https://github.com/python-can-define-
 
 ### Introduction
 
-Viewing the spectrum is useful. In order to effect change to the electromagnetic spectrum we first have to be able to `see` those frequencies.
+Viewing the spectrum is useful. In order to effect change to the electromagnetic spectrum we first have to be able to **_see_** those frequencies.
 
 ### Execution
 
-We'll start by displaying a simulated signal. This allows us to familiarize ourselves with the Python code that launches GNU Radio.
+We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio.
 
 ```python3
 ## 1
 ## Try this.
-from paragradio.v2024_12 import PGR_sinewave
-pgr = PGR_sinewave(simulated_freq=1e6)
+from paragradio.v2024_12 import PGR_simspecan
+pgr = PGR_simspecan()
 pgr.start()
-## [[ TODO: Does this stay open without needing to do something like a while loop to keep the computer busy?]]
 ```
 
 If you get an error saying "No module named ...", pip install [[TODO]]
 
 If it runs, you should see this:
 
-[[TODO: Image of simulated sine wave in QT GUI Sink]]
+[[TODO: Image of simspecan]]
 
 Looking at the x-axis, we see [[TODO time disucssion, look how it's 1 MHz]]
 
