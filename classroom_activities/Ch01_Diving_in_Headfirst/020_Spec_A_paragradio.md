@@ -7,7 +7,7 @@ Prerequisite: basic knowledge of [guizero](https://github.com/python-can-define-
 
 ### Introduction
 
-Viewing the spectrum is useful. In order to effect change to the electromagnetic spectrum we first have to be able to **_see_** those frequencies.
+Most of us have listened to an FM Radio at least once in our lives. We may even know that the music on these radio stations is transmitted using electromagnetic waves. However, it can be difficult to imagine what this looks like   **_see_** those frequencies.
 
 ### Execution
 
