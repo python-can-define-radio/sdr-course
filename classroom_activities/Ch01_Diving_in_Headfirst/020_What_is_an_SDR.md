@@ -1,10 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 Aug 18: 060_What_is_an_SDR.md
-2023 May 22: 050_What_is_an_SDR.md
-2022 Aug 08: 020_What_is_an_SDR.md
-</pre>
-</details>
 
 # SDR Discussion
 

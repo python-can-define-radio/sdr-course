@@ -1,9 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 Feb 22: 025-Beginnings.md
-2023 May 22: 010_Beginnings.md
-</pre>
-</details>
 
 # Beginnings
 
