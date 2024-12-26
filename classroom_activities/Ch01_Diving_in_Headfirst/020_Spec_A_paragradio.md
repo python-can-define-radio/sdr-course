@@ -9,8 +9,12 @@ Most of us have listened to an FM Radio at least once in our lives. We may even 
 
 ### Dependencies
 
-The paragradio module is required for the next exercise; you will need to `pip install paragradio`.
-Marimo is also required: `pip install marimo`.
+In the terminal, run these:
+
+```
+pip install paragradio
+pip install marimo
+```
 
 ### Execution
 
