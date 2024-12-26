@@ -1,10 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2022 Aug 08: 130-GNU-Radio-Noise-Jammer.md
-2022 Aug 30: 230-GNU-Radio-Noise-Jammer.md
-2023 May 22: 020_Noise_Jammer.md
-</pre>
-</details>
 
 # Noise Jammer
 

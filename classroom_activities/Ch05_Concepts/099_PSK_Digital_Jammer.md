@@ -1,10 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2022 Aug 08: 140-GNU-Radio-Digital-Jammer.md
-2022 Aug 30: 240-GNU-Radio-Digital-Jammer.md
-2023 May 22: 021_Digital_Jammer.md
-</pre>
-</details>
 
 # Digital Jammer
 

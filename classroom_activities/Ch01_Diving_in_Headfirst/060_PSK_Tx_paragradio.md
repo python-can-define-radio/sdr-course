@@ -1,10 +1,10 @@
-# Paragradio Spectrum Analyzer
+# Paragradio PSK transmitter
 
-ℹ️ This material coincides with material from SDR slideshow D (slides 1-27).  However, the slides are not necessary for building and operating this program.
+ℹ️ This material coincides with material from SDR slideshow F (all slides).
 
 ### Introduction
 
-Most of us have listened to an FM Radio at least once in our lives. We may even know that the music on these radio stations is transmitted using electromagnetic waves. However, it can be difficult to imagine what these invisible waves look like. A Spectrum Analyzer is one way to **_see_** those frequencies. 
+TODO
 
 ### Dependencies
 
@@ -17,8 +17,6 @@ pip install marimo
 
 ### Execution
 
-We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio.
-
 Open a new Marimo notebook. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
@@ -28,27 +26,37 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2024_12 import SpecAnSim, SpecAn
+from paragradio.v2024_12 import PSK_Tx_loop
 
 #### In the second cell:
-sa = SpecAnSim()
-sa.start()
+phaser = PSK_Tx_loop()
+phaser.start()
 ```
 
 If it runs, you should see this:
 
-[[TODO: Image of simspecan]]
+[[TODO: Image]]
 
-[[ Discuss the three GUI Sinks. ]]
+Discussion on FM Radio sinks: waterfall unfiltered, waterfall filtered to the listening region
+
+We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones:
+
+- `set_freq_offset` adjusts the frequency that is being demodulated.
+- `set_channel_width` adjusts the width of the band-pass filter, usually with the goal of matching the width of the transmitted station. [^1]
+
+Examples:
 
 ```python3
 ## 2
-## Keep the same Marimo cells shown above.
-## In a new cell, add this:
-simsp.set_center_freq(93.7e6)
+fmrx.set_freq_offset(500e3)
 ```
 
-What did it do? Look closely at the simspecan, then change the frequency and try again.
+```python3
+## 3
+fmrx.set_channel_width(200e3)
+```
+
+What did they do?
 
 #### Adding a slider
 
@@ -113,3 +121,5 @@ Notice that you (the student) tuned to a frequency that was slightly offset from
 #### What to expect on the assessment
 
 For the graded assignment, you'll have access to this lesson. You'll be expected to know the name and meaning of each of the parameters. We'll ask you to modify certain parameters, and you'll need to know what parameter we're referring to and where it would need to be modified in the provided code.
+
+[^1]:  As we'll see in the waterfall view, the channel width for WBFM broadcasting in the United States is standardized to be 200 kHz. As [this article from the FCC describes](https://www.fcc.gov/media/radio/fm-frequencies-end-odd-decimal), this is why stations are always spaced by 0.2 MHz (200 kHz). Most stations use less than the full 200 kHz channel width in order to respect neighboring stations.
