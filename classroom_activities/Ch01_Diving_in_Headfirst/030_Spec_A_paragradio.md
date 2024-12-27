@@ -56,11 +56,12 @@ What did it do? Look closely at the simspecan, then change the frequency and try
 
 #### Adding a slider
 
-To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc). In this lesson, we'll use Marimo.
+To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc), but we will continue to use Marimo.
 
 ```python3
 ## 3
 ## Try this.
+## Add this to the third cell.
 cfslider = mo.ui.slider(start=92.5, stop=94.5, step=0.01, label="Frequency (MHz)", show_value=True)
 cfslider
 ```
