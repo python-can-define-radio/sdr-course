@@ -68,7 +68,7 @@ cfslider
 
 This will create and display a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
 
-To make it actually work, insert this:
+To make it actually work, update the third cell to look like this:
 
 ```python3
 ## 4
