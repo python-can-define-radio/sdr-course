@@ -28,7 +28,7 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2024_12 import SpecAnSim, SpecAn
+from paragradio.v2025_01 import SpecAnSim, SpecAn
 
 #### In the second cell:
 sa = SpecAnSim()
