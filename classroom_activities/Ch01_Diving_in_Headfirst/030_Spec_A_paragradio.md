@@ -19,7 +19,7 @@ pip install marimo
 
 We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio.
 
-Open a new Marimo notebook. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Open a new Marimo notebook called **simspecan.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
@@ -28,7 +28,7 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2025_01 import SpecAnSim, SpecAn
+from paragradio.v2025_01 import SpecAnSim
 
 #### In the second cell:
 simsa = SpecAnSim()
@@ -77,14 +77,21 @@ simsa.set_center_freq(cfslider.value)
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
 
-Now, let's start using hardware. First, let's run the code without plugging in the hardware, so we can see the error message:
+Now, let's start using hardware.  
+First, Open a new Marimo notebook called **specan.py**.  
+Now let's run the following code without plugging in the hardware, so we can see the error message:
 
 ```python3
-## 2
+## 5
 ## Try this. You should get an error.
-specan = PGR_specan()
-specan.start()
-specan.set_center_freq(104.5e6)
+#### In the first cell:
+import marimo as mo
+from paragradio.v2025_01 import SpecAn
+
+#### In the second cell:
+sa = SpecAn()
+sa.start()
+sa.set_center_freq(104.5e6)
 ```
 
 You should see `Failed to launch ... not enough devices [[ TODO: actual err msg]]`. As we expected, having no devices plugged in causes this error.
