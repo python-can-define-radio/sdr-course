@@ -15,9 +15,9 @@ pip install paragradio
 pip install marimo
 ```
 
-### Execution
+### Simulated Spectrum Analyzer
 
-We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio.
+We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio without the hardware initially.
 
 Open a terminal and type `marimo edit` then create a new notebook and save it as **simspecan.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
@@ -54,8 +54,6 @@ simsa.set_center_freq(93.7e6)
 
 What did it do? Look closely at the simspecan, then change the frequency and try again.
 
-#### Adding a slider
-
 To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc), but we will continue to use Marimo.
 
 ```python3
@@ -76,6 +74,8 @@ simsa.set_center_freq(cfslider.value)
 ```
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
+
+### Spectrum Analyzer
 
 Now, let's start using hardware. 
 Exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
