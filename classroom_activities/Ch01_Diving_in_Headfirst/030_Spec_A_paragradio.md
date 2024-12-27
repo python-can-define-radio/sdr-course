@@ -31,8 +31,8 @@ import marimo as mo
 from paragradio.v2025_01 import SpecAnSim, SpecAn
 
 #### In the second cell:
-sa = SpecAnSim()
-sa.start()
+simsa = SpecAnSim()
+simsa.start()
 ```
 
 If it runs, you should see this:
@@ -45,7 +45,7 @@ If it runs, you should see this:
 ## 2
 ## Keep the same Marimo cells shown above.
 ## In a new cell, add this:
-simsp.set_center_freq(93.7e6)
+simsa.set_center_freq(93.7e6)
 ```
 
 What did it do? Look closely at the simspecan, then change the frequency and try again.
@@ -67,7 +67,7 @@ To make it actually work, insert this:
 
 ```python3
 ## 4
-simsp.set_center_freq(slider.value)
+simsa.set_center_freq(slider.value)
 ```
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
