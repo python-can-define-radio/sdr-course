@@ -19,7 +19,7 @@ pip install marimo
 
 We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio.
 
-Open a new Marimo notebook called **simspecan.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Open a terminal and type `marimo edit` then create a new notebook and save it as **simspecan.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
@@ -77,8 +77,9 @@ simsa.set_center_freq(cfslider.value)
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
 
-Now, let's start using hardware.  
-First, Open a new Marimo notebook called **specan.py**.  
+Now, let's start using hardware. 
+Exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
+Create a new Marimo notebook and save it as **specan.py**.  
 Now let's run the following code without plugging in the hardware, so we can see the error message:
 
 ```python3
