@@ -62,7 +62,7 @@ To improve the user experience, we can add a slider to control the frequency. Th
 ## 3
 ## Try this.
 ## Add this to the third cell.
-cfslider = mo.ui.slider(start=92.5, stop=94.5, step=0.01, label="Frequency (MHz)", show_value=True)
+cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, label="Frequency (MHz)", show_value=True)
 cfslider
 ```
 
