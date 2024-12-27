@@ -72,7 +72,7 @@ To make it actually work, insert this:
 
 ```python3
 ## 4
-simsa.set_center_freq(slider.value)
+simsa.set_center_freq(cfslider.value)
 ```
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
