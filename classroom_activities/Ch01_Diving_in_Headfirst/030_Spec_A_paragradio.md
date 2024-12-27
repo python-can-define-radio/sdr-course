@@ -92,7 +92,7 @@ from paragradio.v2025_01 import SpecAn
 #### In the second cell:
 sa = SpecAn()
 sa.start()
-sa.set_center_freq(104.5e6)
+sa.set_center_freq(2.437e9)
 ```
 
 You should see `Failed to launch ... not enough devices [[ TODO: actual err msg]]`. As we expected, having no devices plugged in causes this error.
