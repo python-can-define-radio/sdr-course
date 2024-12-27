@@ -39,6 +39,10 @@ If it runs, you should see this:
 
 [[TODO: Image of simspecan]]
 
+For better viewing:
+  - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the black titlebar of the running spectrum analyzer and select ***always on top***.
+  - resize or move as necessary so it does not obstruct your view.
+
 [[ Discuss the three GUI Sinks. ]]
 
 ```python3
