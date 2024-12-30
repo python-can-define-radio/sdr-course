@@ -2,9 +2,9 @@
 
 ℹ️ This material coincides with material from python slideshows B (slides 1-11, 16, 24, 39, 54-63, 69) C (slides 30-38) and D (slides 4-15, 31-37), and SDR slideshow A (slides 22, 25, 28-32, 40-42).
 
-### Adding waves
+### Viewing added waves in the Time domain
 
-When the signal is made up of a single wave, we can fairly easily identify the frequency of that wave. Even if there are two frequencies present, it's not too difficult to distinguish the frequencies that are present:
+When the signal is made up of a single wave, we can fairly easily identify the frequency of that wave by simply looking at a plot of the wave's amplitude over time. Even if there are two frequencies present, it's not too difficult to distinguish the frequencies that are present:
 
 ```python3
 ## 1
