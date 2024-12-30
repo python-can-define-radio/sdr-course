@@ -1,20 +1,3 @@
-
-# Beginnings
-
-ℹ️ This material coincides with material from SDR slideshow B (slides 49-53).
-
-- [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md)
-
-### Before starting: 
-
-- If you have changed classrooms, it may be necessary to repeat some steps of the Python [preliminaries](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch01_Basics/ex_0a_preliminaries.md) lesson.
-
-- If your instructor plans to use SDRangel, run the [SDRangel setup script](https://raw.githubusercontent.com/python-can-define-radio/sdr-course/refs/heads/main/resources/sdrsetup.sh).
-
-- Create a folder for your SDR files with your name (and no spaces) on the Desktop.
-  
-- We recommend that you create a directory for each exercise number to keep things organized. This is especially helpful when you reach the exercises that use Embedded Python Blocks, as they generate helper files.
-
 ### Common pitfalls of GNU Radio Companion (GRC):
 
 - When using the "save" dialog in the Ubuntu GNOME desktop environment, it's easy to accidentally search instead of typing the file name.
@@ -51,11 +34,5 @@
 
 - Once those are completed you should return to `Ch01_Diving_in_Headfirst` and try constructing the FM receiver in `030_GRC_FM_Receiver.md`.
 
-
-### Useful information
-
-[HackRF One FAQ](https://hackrf.readthedocs.io/en/latest/faq.html)  
-[HackRF One Block Diagram](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Chx_Misc/Images/hackrfone_diagram.png)  
 [GNU Radio tutorials](https://wiki.gnuradio.org/index.php?title=Tutorials)  
 [GNU Radio error messages](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/Common-GNURadio-error-messages.md)  
-[Resources](https://github.com/python-can-define-radio/sdr-course/tree/main/resources)  

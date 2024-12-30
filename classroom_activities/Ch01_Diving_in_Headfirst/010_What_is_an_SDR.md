@@ -3,13 +3,23 @@
 
 ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 21-22).
 
+### Before starting: 
+
+- [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md)
+
+- If you have changed classrooms, it may be necessary to repeat some steps of the Python [preliminaries](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch01_Basics/ex_0a_preliminaries.md) lesson.
+
+- If your instructor plans to use SDRangel, run the [SDRangel setup script](https://raw.githubusercontent.com/python-can-define-radio/sdr-course/refs/heads/main/resources/sdrsetup.sh).
+
+- Create a folder for your SDR files with your name (and no spaces) on the Desktop.
+
+### Introduction:
+
 What is an SDR?  Well, it's a Software Defined Radio. But you're probably looking for a more in-depth answer than that.
 
 So, let's look at what a radio is. Even before that, we'll start with what a wave is.
 
-### What is a wave?
-
-### Slinkies and Sound
+### What is a wave? Slinkies and Sound
 
 Here's a [slinky](https://www.youtube.com/watch?v=g8GcMn7K0u4?t=11).
 

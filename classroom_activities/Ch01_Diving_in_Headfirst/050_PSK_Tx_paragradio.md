@@ -1,6 +1,6 @@
-# Paragradio Noise transmitter
+# Paragradio PSK transmitter
 
-ℹ️ This material coincides with material from SDR slideshow E (all slides).
+ℹ️ This material coincides with material from SDR slideshow F (all slides).
 
 ### Introduction
 
@@ -26,29 +26,34 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2024_12 import Noise_Tx
+from paragradio.v2024_12 import PSK_Tx_loop
 
 #### In the second cell:
-moose = Noise_Tx()
-moose.start()
+phaser = PSK_Tx_loop()
+phaser.start()
 ```
 
 If it runs, you should see this:
 
 [[TODO: Image]]
 
-Discussion on sinks: TODO
+Discussion on FM Radio sinks: waterfall unfiltered, waterfall filtered to the listening region
 
-Examples of method usage...
+We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones:
+
+- `set_freq_offset` adjusts the frequency that is being demodulated.
+- `set_channel_width` adjusts the width of the band-pass filter, usually with the goal of matching the width of the transmitted station. [^1]
+
+Examples:
 
 ```python3
 ## 2
-TODO
+fmrx.set_freq_offset(500e3)
 ```
 
 ```python3
 ## 3
-TODO
+fmrx.set_channel_width(200e3)
 ```
 
 What did they do?
@@ -115,4 +120,4 @@ Notice that you (the student) tuned to a frequency that was slightly offset from
 
 #### What to expect on the assessment
 
-See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md#what-to-expect-on-the-assessment).
+See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md#what-to-expect-on-the-assessment).

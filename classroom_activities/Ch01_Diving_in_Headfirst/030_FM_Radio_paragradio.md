@@ -39,7 +39,7 @@ If it runs, you should see this:
 
 Discussion on FM Radio sinks: waterfall unfiltered, waterfall filtered to the listening region
 
-We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones:
+We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones:
 
 - `set_freq_offset` adjusts the frequency that is being demodulated.
 - `set_channel_width` adjusts the width of the band-pass filter, usually with the goal of matching the width of the transmitted station. [^1]
