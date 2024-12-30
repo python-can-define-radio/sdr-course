@@ -58,7 +58,7 @@ fmrx.set_channel_width(200e3)
 
 What did they do?
 
-#### Adding a slider
+#### Adding other UI elements
 
 To improve the user experience, we can add various Marimo UI elements.
 
@@ -108,7 +108,7 @@ Adjust the UI elements, and watch for changes in the view to ensure functionalit
 
 #### What to expect on the assessment
 
-For the graded assignment, you'll have access to this lesson. You'll be expected to know the name and meaning of each of the parameters. We'll ask you to modify certain parameters, and you'll need to know what parameter we're referring to and where it would need to be modified in the provided code.
+See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md#what-to-expect-on-the-assessment).
 
 #### Footnotes
 

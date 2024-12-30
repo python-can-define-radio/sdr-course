@@ -115,6 +115,4 @@ Notice that you (the student) tuned to a frequency that was slightly offset from
 
 #### What to expect on the assessment
 
-For the graded assignment, you'll have access to this lesson. You'll be expected to know the name and meaning of each of the parameters. We'll ask you to modify certain parameters, and you'll need to know what parameter we're referring to and where it would need to be modified in the provided code.
-
-[^1]:  As we'll see in the waterfall view, the channel width for WBFM broadcasting in the United States is standardized to be 200 kHz. As [this article from the FCC describes](https://www.fcc.gov/media/radio/fm-frequencies-end-odd-decimal), this is why stations are always spaced by 0.2 MHz (200 kHz). Most stations use less than the full 200 kHz channel width in order to respect neighboring stations.
+See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md#what-to-expect-on-the-assessment).
