@@ -24,7 +24,7 @@ Open a terminal and type `marimo edit` then create a new notebook and save it as
 Copy the following:
 
 ```python3
-## 1
+## Exercise 1
 ## Try this.
 #### In the first cell:
 import marimo as mo
@@ -40,15 +40,19 @@ If it runs, you should see this:
 [[TODO: Image of simspecan]]
 
 For better viewing:
-  - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the black titlebar of the running spectrum analyzer and select ***always on top***.
-  - resize or move as necessary so it does not obstruct your view.
+- in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the titlebar of the running spectrum analyzer and select ***always on top***.
+- resize or move as necessary so it does not obstruct your view.
 
-[[ Discuss the three GUI Sinks. ]]
+You'll see three views of the signal: the Time Domain view, the Frequency Domain view, and a Waterfall view.
+
+- The Time Domain shows the raw signal as it is received from the USB port. (x-axis: time; y-axis: amplitude)
+- The Frequency Domain shows the amount of each frequency that is present in the slice of the spectrum that we have selected. (x-axis: frequencies; y-axis: amplitude)
+- The Waterfall shows the same information as the Frequency Domain, but using colors to represent strength of signal instead of the height of the spike. It also scrolls, which provides a view of the the history of the signal. (x-axis: frequencies; y-axis: time; colors: amplitude)
 
 ```python3
-## 2
+## Exercise 2
 ## Keep the same Marimo cells shown above.
-## In a new cell, add this:
+## In the third cell:
 simsa.set_center_freq(93.7e6)
 ```
 
@@ -57,34 +61,45 @@ What did it do? Look closely at the simspecan, then change the frequency and try
 To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc), but we will continue to use Marimo.
 
 ```python3
-## 3
-## Try this.
-## Add this to the third cell.
+## Exercise 3
+## In the fourth cell:
 cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, label="Frequency (MHz)", show_value=True)
 cfslider
 ```
 
 This will create and display a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
 
-To make it actually work, update the third cell to look like this:
+Let's make it actually work:
 
 ```python3
-## 4
+## Exercise 4
+## Update the third cell to use the slider value:
 simsa.set_center_freq(cfslider.value)
 ```
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
 
+Now, let's start using hardware. 
+
+#### Intro to the HackRF One
+
+Your instructor will...
+
+- Guide you through the assembly of the HackRF One
+- Discuss the [HackRF documentation](https://hackrf.readthedocs.io/en/latest/), including...
+  - The [Block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png)
+  - The [Sample rate limitations and Frequency range](https://hackrf.readthedocs.io/en/latest/hackrf_one.html#features)[^1]
+  - The [Gain limitations](https://hackrf.readthedocs.io/en/latest/faq.html#what-gain-controls-are-provided-by-hackrf)
+  - The [Transmit power limitations](https://hackrf.readthedocs.io/en/latest/faq.html#what-is-the-transmit-power-of-hackrf)
+
 ### Spectrum Analyzer
 
-Now, let's start using hardware. 
-Exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
-Create a new Marimo notebook and save it as **specan.py**.  
-Now let's run the following code without plugging in the hardware, so we can see the error message:
+Create a new Marimo notebook and save it as **specan.py**.
+- If you don't see the "Create a new notebook" option, exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
 
 ```python3
-## 5
-## Try this. You should get an error.
+## Exercise 5
+## Try this.
 #### In the first cell:
 import marimo as mo
 from paragradio.v2025_01 import SpecAn
@@ -95,13 +110,8 @@ sa.start()
 sa.set_center_freq(2.4369e9)
 ```
 
-You should see `Failed to launch ... not enough devices [[ TODO: actual err msg]]`. As we expected, having no devices plugged in causes this error.
-
-#### Intro to the HackRF One
-
-Open your HackRF One box [[ TODO: assembly discussion, careful antenna, etc. Also discuss the HackRF docs, including block diagram, sample rate limitations (tell them this is the instantaneous bandwidth that it can see), gain limitations, transmit power limitations, pointing out that we chose 2.437 GHz because the HackRF One is stronger in this band ]]
-
-Run the code again with the HackRF plugged in, and you should see something very similar to the simulated spectrum analyzer. The difference is that these are frequencies are being measured from the universe around you!
+You should see something very similar to the simulated spectrum analyzer. The difference is that these frequencies are being measured from the universe around you!  
+If it doesn't work, ensure you have plugged in your HackRF One.
 
 [[ TODO: Image of Spec A ]]
 
@@ -111,18 +121,54 @@ The spectrum will vary depending on what activity (if any) is present on those f
 
 The instructor will ensure that everyone has working hardware by doing the following activity:
 
-1. The instructor will transmit a pure sine wave on 2.437 GHz that toggles on and off every few seconds.
-2. Students will adjust the Python code to tune to 2.4369 GHz.
-3. Students will look at the waterfall sink or the frequency sink to see the spike of activity appearing and disappearing.
+1. The instructor will transmit a pure sine wave on 2.437 GHz that toggles on and off every few seconds.[^2]
+2. Students will look at the waterfall sink or the frequency sink to see the spike of activity appearing and disappearing.
 
-Notice that you (the student) tuned to a frequency that was slightly offset from the transmitted frequency. This is because the Hack RF (and most SDR devices that aren't terribly expensive) have a "DC Spike" on the center frequency of the received spectrum. We tune off-center so that this spike doesn't obscure or distort the frequency of interest.
+Notice that you (the student) tuned to a frequency that was slightly offset from the transmitted frequency (2.4369 GHz rather than 2.437 GHz). This is because the Hack RF (and most SDR devices that aren't terribly expensive) have a "DC Spike" on the center frequency of the received spectrum. We tune off-center so that this spike doesn't obscure or distort the frequency of interest.
+
+Review: Why do you think we chose 2.437 GHz? [Hint](https://hackrf.readthedocs.io/en/latest/faq.html#what-is-the-transmit-power-of-hackrf).
 
 #### Modifying the parameters
 
-[[ TODO: Show center frequency slider, if gain slider, bb gain slider, sample rate, hardware filter (adjustable, not simply on/off)]]
+We've seen one of the spectrum analyzer's methods, `set_center_freq`. There are a few others available. Here's how to see them:
 
-[[ Why you should almost always use the hardware filter (link to resources that state as much) ]]
+```python3
+## Exercise 6
+## In the third cell:
+sa.
+```
+
+Marimo should show possible completions:
+
+{{ TODO: screenshot of what completions look like; ensure method docs visible in screenshot }}
+
+Notice that each method's documentation is also visible.
 
 #### What to expect on the assessment
 
-For the graded assignment, you'll have access to this lesson. You'll be expected to know the name and meaning of each of the parameters. We'll ask you to modify certain parameters, and you'll need to know what parameter we're referring to and where it would need to be modified in the provided code.
+For the graded assignment...
+- You'll have access to this lesson and your own notes.
+- You'll be expected to know the name and meaning of each of the parameters that is settable using a method (such as `set_if_gain`).
+- You'll be asked to create Marimo UI elements that control specific parameters, similar to the `cfslider` above.
+  - The Marimo UI elements will be limited to any that you've seen in this lesson or any previous lessons.
+- You'll be expected to know the Hack RF's limitations for each settable parameter in order to adjust the associated settings in the UI elements. For example, Marimo sliders have a `step` parameter, and the HackRF One requires a Rx IF Gain step value of 8.[^3]
+- If you'd like to practice, try creating Marimo UI elements to control each parameter, and ask an instructor to check your work.
+
+
+[^1]: The Sample rate limits the instantaneous bandwidth that the hardware can measure.
+[^2]: The instructor is using this code:
+    ```python3
+    from paragradio.v2025_01 import SingleFreq_Tx
+    import time
+    sftx = SingleFreq_Tx()
+    sftx.start()
+    sftx.set_center_freq(2.437e9)
+    while True:
+        sftx.set_amplitude(1)
+        sftx.set_if_gain(47)
+        time.sleep(2)
+        sftx.set_amplitude(0)
+        sftx.set_if_gain(0)
+        time.sleep(2)
+    ```
+[^3]: Most of the HackRF One limitations can be found in the [FAQ](https://hackrf.readthedocs.io/en/latest/faq.html). The Hardware Filter Bandwidth limits are a little more hidden; you'll see them on the [block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png).
