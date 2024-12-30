@@ -8,21 +8,21 @@ Like we stated in the spectrum analyzer lesson, most of us have listened to an F
 
 ### Dependencies
 
-In the terminal, run these:
+In the terminal, if you haven't already, run these:
 
 ```
 pip install paragradio
 pip install marimo
 ```
 
-### Execution
+### FM Radio
 
-Open a new Marimo notebook. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Open a terminal and type `marimo edit`. Create a new notebook and save it as **fm_radio.py**. (For an intro to marimo, reference the [lesson in the Github python-course](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
 ```python3
-## 1
+## Exercise 1
 ## Try this.
 #### In the first cell:
 import marimo as mo
@@ -33,78 +33,60 @@ fmrx = WBFM_rx()
 fmrx.start()
 ```
 
-If it runs, you should see this:
+If it runs, you should see two waterfall sinks:
 
 [[TODO: Image of FM_radio]]
 
-Discussion on FM Radio sinks: waterfall unfiltered, waterfall filtered to the listening region
+The first waterfall sink is the spectrum as it is received from the HackRF with no software filtering.[^1] The second is the same spectrum, with software filtering to remove signals outside of the target listening region.
 
-We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones:
+We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
 
-- `set_freq_offset` adjusts the frequency that is being demodulated.
-- `set_channel_width` adjusts the width of the band-pass filter, usually with the goal of matching the width of the transmitted station. [^1]
+### Why are all radio stations odd numbers?
 
-Examples:
-
-```python3
-## 2
-fmrx.set_freq_offset(500e3)
-```
-
-```python3
-## 3
-fmrx.set_channel_width(200e3)
-```
-
-What did they do?
+As we'll see in the waterfall view, the channel width for WBFM broadcasting in the United States is standardized to be 200 kHz. [This article from the FCC](https://www.fcc.gov/media/radio/fm-frequencies-end-odd-decimal) explains this. FCC regulations also require that stations use less than the full 200 kHz channel width in order to not interfere with neighboring stations.
 
 #### Adding other UI elements
 
 To improve the user experience, we can add various Marimo UI elements.
 
 ```python3
-## 4
+## Exercise 2
 ## Make a Numeric text field to control the center frequency.
 ## Set the left and right limits to match the US WBFM Broadcast range.
 ```
 
 ```python3
-## 5
+## Exercise 3
 ## Make a slider to control the BB gain.
 ## The range should match the HackRF One's hardware specs.
 ```
 
 ```python3
-## 6
+## Exercise 4
 ## Make a dropdown to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
 ```
 
 ```python3
-## 7
+## Exercise 5
 ## Make a dropdown to control the filter width. 
 ## Have three options: Narrow, Normal, Wide
 ```
 
 ```python3
-## 8
+## Exercise 6
 ## Make a Numeric text field to control the frequency offset.
 ```
 
 <!-- ```python3
-## 3
 ## Make a .... to control the squelch.
 ``` -->
 
-Adjust the UI elements, and watch for changes in the view to ensure functionality.
+Adjust each UI element, and watch for changes in the view to ensure proper functionality.
 
 #### Checkpoint Activity
 
-The instructor will provide 15 minutes for students to experiment.
-
-#### Modifying the parameters
-
-Adjust the UI elements, and watch for changes in the view to ensure functionality.
+The instructor will provide 30 minutes for students to experiment. Each student should ensure that they can receive at least one radio station, asking an instructor for assistance as needed.
 
 #### What to expect on the assessment
 
@@ -112,4 +94,4 @@ See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/class
 
 #### Footnotes
 
-[^1]:  As we'll see in the waterfall view, the channel width for WBFM broadcasting in the United States is standardized to be 200 kHz. As [this article from the FCC describes](https://www.fcc.gov/media/radio/fm-frequencies-end-odd-decimal), this is why stations are always spaced by 0.2 MHz (200 kHz). Most stations use less than the full 200 kHz channel width in order to respect neighboring stations.
+[^1]: While it doesn't have any _software_ filtering applied, the effects of _hardware_ filtering will show up in this view of the spectrum. Thus, it is not an "unfiltered" view, but a "pre-software filtering" view.

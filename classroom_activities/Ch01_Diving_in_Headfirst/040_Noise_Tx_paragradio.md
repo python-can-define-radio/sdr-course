@@ -4,20 +4,22 @@
 
 ### Introduction
 
-TODO
+Transmitting noise has a few uses. It can be used for research purposes, to test how well a signal is able to be demodulated in the presence of background noise. It can also be used to prevent others from using a specific frequency or range of frequencies. If the intent is disrupting legitimate users, it would be called jamming.
+
+_Disclaimer: jamming is illegal in many countries. This should only be used in an environment that is sufficiently distant/radio-shielded from other electronics using those frequencies._
 
 ### Dependencies
 
-In the terminal, run these:
+In the terminal, if you haven't already, run these:
 
 ```
 pip install paragradio
 pip install marimo
 ```
 
-### Execution
+### Noise Transmitter
 
-Open a new Marimo notebook. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Open a terminal and type `marimo edit`. Create a new notebook and save it as **noise_tx.py**. (For an intro to marimo, reference the [lesson in the Github python-course](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
@@ -30,6 +32,7 @@ from paragradio.v2024_12 import Noise_Tx
 
 #### In the second cell:
 moose = Noise_Tx()
+moose.set_amplitude(1)
 moose.start()
 ```
 
@@ -38,8 +41,6 @@ If it runs, you should see this:
 [[TODO: Image]]
 
 Discussion on sinks: TODO
-
-Examples of method usage...
 
 ```python3
 ## 2
@@ -53,65 +54,6 @@ TODO
 
 What did they do?
 
-#### Adding a slider
-
-To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc). In this lesson, we'll use Marimo.
-
-```python3
-## 3
-## Try this.
-cfslider = mo.ui.slider(start=92.5, stop=94.5, step=0.01, label="Frequency (MHz)", show_value=True)
-cfslider
-```
-
-This will create and display a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
-
-To make it actually work, insert this:
-
-```python3
-## 4
-simsp.set_center_freq(slider.value)
-```
-
-Adjust the slider, and you should see the view of the spectrum adjust accordingly.
-
-Now, let's start using hardware. First, let's run the code without plugging in the hardware, so we can see the error message:
-
-```python3
-## 2
-## Try this. You should get an error.
-specan = PGR_specan()
-specan.start()
-specan.set_center_freq(104.5e6)
-```
-
-You should see `Failed to launch ... not enough devices [[ TODO: actual err msg]]`. As we expected, having no devices plugged in causes this error.
-
-#### Intro to the HackRF One
-
-Open your HackRF One box [[ TODO: assembly discussion, careful antenna, etc. Also discuss the HackRF docs, including block diagram, sample rate limitations (tell them this is the instantaneous bandwidth that it can see), gain limitations, transmit power limitations, pointing out that we chose 2.437 GHz because the HackRF One is stronger in this band ]]
-
-Run the code again with the HackRF plugged in, and you should see something very similar to the simulated spectrum analyzer. The difference is that these are frequencies are being measured from the universe around you!
-
-[[ TODO: Image of Spec A ]]
-
-The spectrum will vary depending on what activity (if any) is present on those frequencies in your area.
-
-#### Checkpoint Activity
-
-The instructor will ensure that everyone has working hardware by doing the following activity:
-
-1. The instructor will transmit a pure sine wave on 2.437 GHz that toggles on and off every few seconds.
-2. Students will adjust the Python code to tune to 2.4369 GHz.
-3. Students will look at the waterfall sink or the frequency sink to see the spike of activity appearing and disappearing.
-
-Notice that you (the student) tuned to a frequency that was slightly offset from the transmitted frequency. This is because the Hack RF (and most SDR devices that aren't terribly expensive) have a "DC Spike" on the center frequency of the received spectrum. We tune off-center so that this spike doesn't obscure or distort the frequency of interest.
-
-#### Modifying the parameters
-
-[[ TODO: Show center frequency slider, if gain slider, bb gain slider, sample rate, hardware filter (adjustable, not simply on/off)]]
-
-[[ Why you should almost always use the hardware filter (link to resources that state as much) ]]
 
 #### What to expect on the assessment
 

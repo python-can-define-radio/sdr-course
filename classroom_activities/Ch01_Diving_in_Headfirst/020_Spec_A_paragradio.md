@@ -19,7 +19,7 @@ pip install marimo
 
 We'll start by looking at a simulated spectrum analyzer. This allows us to familiarize ourselves with the Python code that launches GNU Radio without the hardware initially.
 
-Open a terminal and type `marimo edit` then create a new notebook and save it as **simspecan.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Open a terminal and type `marimo edit`. Create a new notebook and save it as **simspecan.py**. (For an intro to marimo, reference the [lesson in the Github python-course](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
@@ -119,9 +119,9 @@ The spectrum will vary depending on what activity (if any) is present on those f
 
 #### Checkpoint Activity
 
-The instructor will ensure that everyone has working hardware by doing the following activity:
-
-1. The instructor will transmit a pure sine wave on 2.437 GHz that toggles on and off every few seconds.[^2]
+The instructor will ensure that everyone has working hardware by doing the following activity. _If you are doing this lesson without instructor guidance, have a partner [create a transmitter](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md#transmission-code)._
+  
+1. The instructor or your partner will transmit a narrow signal on 2.437 GHz that toggles on and off every few seconds.
 2. Students will look at the waterfall sink or the frequency sink to see the spike of activity appearing and disappearing.
 
 Notice that you (the student) tuned to a frequency that was slightly offset from the transmitted frequency (2.4369 GHz rather than 2.437 GHz). This is because the Hack RF (and most SDR devices that aren't terribly expensive) have a "DC Spike" on the center frequency of the received spectrum. We tune off-center so that this spike doesn't obscure or distort the frequency of interest.
@@ -142,7 +142,7 @@ Marimo should show possible completions:
 
 {{ TODO: screenshot of what completions look like; ensure method docs visible in screenshot }}
 
-Notice that each method's documentation is also visible.
+Notice that each method's documentation is also visible. We recommend investigating and experimenting with each to learn what functionality is available.
 
 #### What to expect on the assessment
 
@@ -151,24 +151,30 @@ For the graded assignment...
 - You'll be expected to know the name and meaning of each of the parameters that is settable using a method (such as `set_if_gain`).
 - You'll be asked to create Marimo UI elements that control specific parameters, similar to the `cfslider` above.
   - The Marimo UI elements will be limited to any that you've seen in this lesson or any previous lessons.
-- You'll be expected to know the Hack RF's limitations for each settable parameter in order to adjust the associated settings in the UI elements. For example, Marimo sliders have a `step` parameter, and the HackRF One requires a Rx IF Gain step value of 8.[^3]
+- You'll be expected to know the Hack RF's limitations for each settable parameter in order to adjust the associated settings in the UI elements. For example, Marimo sliders have a `step` parameter, and the HackRF One requires a Rx IF Gain step value of 8.[^2]
 - If you'd like to practice, try creating Marimo UI elements to control each parameter, and ask an instructor to check your work.
 
+#### Transmission code:
+
+The following code is one way to create a transmission for testing that your Hack RF is able to receive signals.
+
+```python3
+from paragradio.v2025_01 import Noise_Tx
+import time
+ntx = Noise_Tx()
+ntx.start()
+ntx.set_center_freq(2.437e9)
+ntx.set_filter_cutoff_freq(50e3)
+ntx.set_filter_tr_width(50e3)
+while True:
+    ntx.set_amplitude(100)
+    ntx.set_if_gain(47)
+    time.sleep(2)
+    ntx.set_amplitude(0)
+    ntx.set_if_gain(0)
+    time.sleep(2)
+```
 
 [^1]: The Sample rate limits the instantaneous bandwidth that the hardware can measure.
-[^2]: The instructor is using this code:
-    ```python3
-    from paragradio.v2025_01 import SingleFreq_Tx
-    import time
-    sftx = SingleFreq_Tx()
-    sftx.start()
-    sftx.set_center_freq(2.437e9)
-    while True:
-        sftx.set_amplitude(1)
-        sftx.set_if_gain(47)
-        time.sleep(2)
-        sftx.set_amplitude(0)
-        sftx.set_if_gain(0)
-        time.sleep(2)
-    ```
-[^3]: Most of the HackRF One limitations can be found in the [FAQ](https://hackrf.readthedocs.io/en/latest/faq.html). The Hardware Filter Bandwidth limits are a little more hidden; you'll see them on the [block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png).
+
+[^2]: Most of the HackRF One limitations can be found in the [FAQ](https://hackrf.readthedocs.io/en/latest/faq.html). The Hardware Filter Bandwidth limits are a little more hidden; you'll see them on the [block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png).
