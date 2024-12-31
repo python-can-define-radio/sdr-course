@@ -24,7 +24,7 @@ Open a terminal and type `marimo edit`. Create a new notebook and save it as **n
 Copy the following:
 
 ```python3
-## 1
+## Exercise 1
 ## Try this.
 #### In the first cell:
 import marimo as mo
@@ -48,19 +48,19 @@ Note that it's possible to make a noise transmitter without a waterfall display.
 We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
 
 ```python3
-## 2
+## Exercise 2
 ## Make a Numeric text field to control the center frequency.
 ## Set the left and right limits to match the frequency range available to the HackRf One
 ```
 
 ```python3
-## 3
+## Exercise 3
 ## Make a dropdown to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
 ```
 
 ```python3
-## 4
+## Exercise 4
 ## Make a slider to control the filter cutoff width. 
 ## The parameters should have these values: 
     - Left Limit: 2e3
@@ -69,7 +69,7 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 ```
 
 ```python3
-## 5
+## Exercise 5
 ## Make a slider to control the filter transition width. 
 ## The parameters should have these values: 
     - Left Limit: 2e3
