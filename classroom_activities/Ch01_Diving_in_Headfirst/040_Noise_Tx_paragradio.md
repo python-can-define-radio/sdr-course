@@ -33,26 +33,43 @@ from paragradio.v2024_12 import Noise_Tx
 #### In the second cell:
 moose = Noise_Tx()
 moose.set_amplitude(1)
+moose.set_noise_type("gaussian)
 moose.start()
 ```
 
 If it runs, you should see this:
 
-[[TODO: Image]]
+[[TODO: Image of Noise_tx]]
 
-Discussion on sinks: TODO
+Technically we do not require any sink for the transmission to work but we have added a single waterfall sink in order to view our transmission.
+
+We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
 
 ```python3
 ## 2
-TODO
+## Make a Numeric text field to control the center frequency.
+## Set the left and right limits to match the frequency range available to the HackRf One
 ```
 
 ```python3
 ## 3
-TODO
+## Make a dropdown to control the IF gain. 
+## The options should match the HackRF One's hardware specs.
 ```
 
-What did they do?
+```python3
+## 4
+## Make a dropdown to control the filter cutoff width. 
+## Have three options: Narrow, Normal, Wide
+```
+
+```python3
+## 5
+## Make a dropdown to control the filter transition width. 
+## Have three options: Narrow, Normal, Wide
+```
+
+Adjust each UI element, and watch for changes in the view to ensure proper functionality.
 
 
 #### What to expect on the assessment
