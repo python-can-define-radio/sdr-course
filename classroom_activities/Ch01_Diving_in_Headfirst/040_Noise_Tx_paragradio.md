@@ -77,8 +77,9 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
     - Step value: 1e3
 ```
 
-Adjust each UI element, and watch for changes in the view to ensure proper functionality.
+#### Checkpoint Activity
 
+The instructor will provide 30 minutes for students to experiment. Each student should ensure with a partner that their Noise Transmitter signal can be seen, adjust each UI element, and watch for changes in the view to ensure proper functionality. asking an instructor for assistance as needed.
 
 #### What to expect on the assessment
 
