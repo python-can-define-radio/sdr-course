@@ -70,7 +70,9 @@ To improve the user experience, we can add various Marimo UI elements.
 ```python3
 ## Exercise 5
 ## Make a dropdown to control the filter width. 
-## Have three options: Narrow, Normal, Wide
+## Have three options: Narrow, Normal, Wide.
+## Those labels should correspond to filter values of
+##   120 kHz, 160 kHz, and 200 kHz respectively.
 ```
 
 ```python3
@@ -83,6 +85,45 @@ To improve the user experience, we can add various Marimo UI elements.
 ``` -->
 
 Adjust each UI element, and watch for changes in the view to ensure proper functionality.
+
+#### Using UI elements together
+
+In a car radio, you often have buttons for favorite stations. We can do something similar in Marimo by using a slider and a radio butttons widget together, as shown in the following example.
+
+Recommended: create a new notebook for this example called **fm_radio_buttons_and_slider.py**.
+
+```python3
+## In the first cell, put your imports as mentioned above.
+
+## In the second cell, create an instance of a WBFM receiver.
+
+## In the third cell:
+cfslider = mo.ui.slider(88.3, 99.5, 0.1)
+cfslider
+
+## In the fourth cell:
+radiobuttons = mo.ui.radio({"Bob FM": 93.9, "WKXC": 95.5, "Use slider": 0})
+radiobuttons
+
+## In the fifth cell:
+if radiobuttons.value == 0:
+    tunemsg = "Tuning using slider"
+    tunefreq = cfslider.value
+else:
+    tunemsg = "Tuning using radio buttons"
+    tunefreq = radiobuttons.value
+
+## In the sixth cell:
+f"{tunemsg}. Frequency: {tunefreq} MHz, which is {tunefreq*1e6} Hz."
+
+## In the seventh cell:
+fmrx.set_center_freq(tunefreq*1e6)
+```
+
+Ways to explore:
+- How can you tell whether the frequency is tuning correctly?
+- What happens if you do `fmrx.set_center_freq(tunefreq)` without the `*1e6`?
+- What happens if you do `*1e4` instead of `*1e6`?
 
 #### Checkpoint Activity
 
