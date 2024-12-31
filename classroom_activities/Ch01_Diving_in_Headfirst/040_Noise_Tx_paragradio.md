@@ -35,7 +35,7 @@ moose = Noise_Tx()
 moose.set_amplitude(1)
 moose.set_noise_type("gaussian")
 sr = 2e6
-moose.set_sample_rate(sr)
+moose.set_samp_rate(sr)
 moose.start()
 ```
 
@@ -43,7 +43,7 @@ If it runs, you should see this:
 
 [[TODO: Image of Noise_tx]]
 
-Technically we do not require any sink for the transmission to work but we have added a single waterfall sink in order to view our transmission.
+Note that it's possible to make a noise transmitter without a waterfall display. The display does not make the transmitter work better; it just provides a view of what is being transmitted.
 
 We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
 
