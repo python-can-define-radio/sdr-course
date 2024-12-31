@@ -114,10 +114,10 @@ else:
     tunefreq = radiobuttons.value
 
 ## In the sixth cell:
-f"{tunemsg}. Frequency: {tunefreq} MHz, which is {tunefreq*1e6} Hz."
+fmrx.set_center_freq(tunefreq*1e6)
 
 ## In the seventh cell:
-fmrx.set_center_freq(tunefreq*1e6)
+f"{tunemsg}. Frequency: {tunefreq} MHz, which is {tunefreq*1e6} Hz."
 ```
 
 Ways to explore:
