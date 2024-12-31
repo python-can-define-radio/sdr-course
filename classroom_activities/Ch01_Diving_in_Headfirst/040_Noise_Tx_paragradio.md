@@ -33,7 +33,9 @@ from paragradio.v2024_12 import Noise_Tx
 #### In the second cell:
 moose = Noise_Tx()
 moose.set_amplitude(1)
-moose.set_noise_type("gaussian)
+moose.set_noise_type("gaussian")
+sr = 2e6
+moose.set_sample_rate(sr)
 moose.start()
 ```
 
@@ -59,14 +61,20 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 
 ```python3
 ## 4
-## Make a dropdown to control the filter cutoff width. 
-## Have three options: Narrow, Normal, Wide
+## Make a slider to control the filter cutoff width. 
+## The parameters should have these values: 
+    - Left Limit: 2e3
+    - Right Limit: sr/2
+    - Step value: 1e3
 ```
 
 ```python3
 ## 5
-## Make a dropdown to control the filter transition width. 
-## Have three options: Narrow, Normal, Wide
+## Make a slider to control the filter transition width. 
+## The parameters should have these values: 
+    - Left Limit: 2e3
+    - Right Limit: sr/2
+    - Step value: 1e3
 ```
 
 Adjust each UI element, and watch for changes in the view to ensure proper functionality.
