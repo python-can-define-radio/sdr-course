@@ -15,9 +15,9 @@ pip install paragradio
 pip install marimo
 ```
 
-### Execution
+### PSK Transmitter
 
-Open a new Marimo notebook. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Create a new notebook and save it as **psk_tx.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
@@ -40,9 +40,9 @@ phaser.start()
 
 If it runs, you should see this:
 
-[[TODO: Image]]
+[[TODO: Image of psk_tx]]
 
-We included a time sink so you can see the bits being transmitted.
+We included a waterfall sink and a time sink so you can see the bits being transmitted.
 
 We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
 
@@ -63,6 +63,10 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 ## You'll notice that the modulation we chose in our example is BPSK.
 ## Try all of the modulation options to see how they vary.
 ```
+
+#### Checkpoint Activity
+
+The instructor will provide 30 minutes for students to experiment. Each student should ensure with a partner that their PSK Transmitter signal can be seen, adjust each UI element, and watch for changes in the partners view to ensure proper functionality. asking an instructor for assistance as needed.
 
 #### What to expect on the assessment
 
