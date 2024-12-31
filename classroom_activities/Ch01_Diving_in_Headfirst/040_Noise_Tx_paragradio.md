@@ -19,7 +19,7 @@ pip install marimo
 
 ### Noise Transmitter
 
-Open a terminal and type `marimo edit`. Create a new notebook and save it as **noise_tx.py**. (For an intro to marimo, reference the [lesson in the Github python-course](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Open a terminal and type `marimo edit`. Create a new notebook and save it as **noise_tx.py**. (For an intro to marimo, reference [this lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md) in the Github python-course).
 
 Copy the following:
 
