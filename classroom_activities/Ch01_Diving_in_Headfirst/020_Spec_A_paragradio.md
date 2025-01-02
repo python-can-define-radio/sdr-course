@@ -28,7 +28,7 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2025_01 import SpecAnSim
+from paragradio.v2025_02 import SpecAnSim
 
 #### In the second cell:
 simsa = SpecAnSim()
@@ -102,7 +102,7 @@ Create a new Marimo notebook and save it as **specan.py**.
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2025_01 import SpecAn
+from paragradio.v2025_02 import SpecAn
 
 #### In the second cell:
 sa = SpecAn()
@@ -159,7 +159,7 @@ For the graded assignment...
 The following code is one way to create a transmission for testing that your Hack RF is able to receive signals.
 
 ```python3
-from paragradio.v2025_01 import Noise_Tx
+from paragradio.v2025_02 import Noise_Tx
 import time
 ntx = Noise_Tx()
 ntx.start()

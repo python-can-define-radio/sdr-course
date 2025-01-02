@@ -28,7 +28,7 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2024_12 import Noise_Tx
+from paragradio.v2025_02 import Noise_Tx
 
 #### In the second cell:
 moose = Noise_Tx()
