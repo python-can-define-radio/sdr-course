@@ -38,11 +38,7 @@ phaser.set_amplitude(1)
 phaser.set_if_gain(32)
 ```
 
-If it runs, you should see this:
-
-[[TODO: Image of psk_tx]]
-
-We included a waterfall sink and a time sink so you can see the bits being transmitted.
+If it runs, you should see a window open. It includes a waterfall sink and a time sink so you can see the bits being transmitted.
 
 We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
 
