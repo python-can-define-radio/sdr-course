@@ -88,7 +88,7 @@ Adjust each UI element, and watch for changes in the view to ensure proper funct
 
 #### Using UI elements together
 
-In a car radio, you often have buttons for favorite stations. We can do something similar in Marimo by using a slider and a radio butttons widget together, as shown in the following example.
+In a car radio, you often have buttons for favorite stations. We can do something similar in Marimo by providing the option of using radio buttons or a slider, as shown in the following example.
 
 Recommended: create a new notebook for this example called **fm_radio_buttons_and_slider.py**.
 
@@ -98,31 +98,28 @@ Recommended: create a new notebook for this example called **fm_radio_buttons_an
 ## In the second cell, create an instance of a WBFM receiver.
 
 ## In the third cell:
-cfslider = mo.ui.slider(88.3, 99.5, 0.1)
-cfslider
+tuner_ui = mo.ui.dropdown(["radio buttons", "slider"], label="Tune using", value="radio buttons", allow_select_none=False)
+tuner_ui
 
 ## In the fourth cell:
-radiobuttons = mo.ui.radio({"Bob FM": 93.9, "WKXC": 95.5, "Use slider": 0})
-radiobuttons
+if tuner_ui.value == "slider":
+    frequency = mo.ui.slider(88, 108, 0.1, label="Station", show_value=True)
+elif tuner_ui.value == "radio buttons":
+    frequency = mo.ui.radio({"Some station": 100.1, "Another": 102.3}, label="Station")
+else:
+    frequency = "Invalid tuner_ui choice"
+frequency
 
 ## In the fifth cell:
-if radiobuttons.value == 0:
-    tunemsg = "Tuning using slider"
-    tunefreq = cfslider.value
-else:
-    tunemsg = "Tuning using radio buttons"
-    tunefreq = radiobuttons.value
+fmrx.set_center_freq(frequency.value*1e6)
 
 ## In the sixth cell:
-fmrx.set_center_freq(tunefreq*1e6)
-
-## In the seventh cell:
-f"{tunemsg}. Frequency: {tunefreq} MHz, which is {tunefreq*1e6} Hz."
+f"Tuned to {frequency.value} MHz, which is {frequency.value*1e6} Hz."
 ```
 
 Ways to explore:
 - How can you tell whether the frequency is tuning correctly?
-- What happens if you do `fmrx.set_center_freq(tunefreq)` without the `*1e6`?
+- What happens if you do `fmrx.set_center_freq(frequency.value)` without the `*1e6`?
 - What happens if you do `*1e4` instead of `*1e6`?
 
 #### Checkpoint Activity
