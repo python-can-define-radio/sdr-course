@@ -26,10 +26,10 @@ Copy the following:
 ## Try this.
 #### In the first cell:
 import marimo as mo
-from paragradio.v2025_02 import WBFM_rx
+from paragradio.v2025_02 import WBFM_Rx
 
 #### In the second cell:
-fmrx = WBFM_rx()
+fmrx = WBFM_Rx()
 fmrx.start()
 ```
 
