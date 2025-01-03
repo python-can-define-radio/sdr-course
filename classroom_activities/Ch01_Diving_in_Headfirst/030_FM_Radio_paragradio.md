@@ -131,7 +131,7 @@ The instructor will provide 30 minutes for students to experiment. Each student 
 
 #### What to expect on the assessment
 
-See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_Spec_A_paragradio.md#what-to-expect-on-the-assessment).
+See [here](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md#what-to-expect-on-the-assessment).
 
 #### Footnotes
 
