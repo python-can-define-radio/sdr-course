@@ -147,8 +147,10 @@ Notice that each method's documentation is also visible. We recommend investigat
 #### What to expect on the assessment
 
 For the graded assignment...
-- You'll have access to this lesson and your own notes.
-- You'll be expected to know the name and meaning of each of the parameters that is settable using a method (such as `set_if_gain`).
+- You'll have access to this lesson, your own notes, and the Hack RF Docs. You will not be allowed to use any other resources.
+- You'll be expected to be able to use the metric prefixes kilo, Mega, and Giga. For example, if the assignment says "Tune to 350 MHz", you'll need to be able to convert that to `350e6 Hz` or `0.35 GHz`. As a reminder, you will not be allowed to use online converter tools.
+- You'll be expected to know the name and meaning of each of the parameters that is settable using a method (such as `set_if_gain`), ***including those which are not mentioned in the lesson above***.
+  - If you need help finding the list of available methods, ask an instructor.
 - You'll be asked to create Marimo UI elements that control specific parameters, similar to the `cfslider` above.
   - The Marimo UI elements will be limited to any that you've seen in this lesson or any previous lessons.
 - You'll be expected to know the Hack RF's limitations for each settable parameter in order to adjust the associated settings in the UI elements. For example, Marimo sliders have a `step` parameter, and the HackRF One requires a Rx IF Gain step value of 8.[^2]
