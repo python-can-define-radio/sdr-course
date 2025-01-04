@@ -27,12 +27,11 @@ Copy the following:
 #### In the first cell:
 import marimo as mo
 from paragradio.v2025_02 import PSK_Tx_loop
-import numpy as np
 
 #### In the second cell:
 phaser = PSK_Tx_loop(modulation="BPSK")
 phaser.start()
-data = np.array([1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1])
+data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1
 phaser.set_data(data)
 phaser.set_amplitude(1)
 phaser.set_if_gain(32)
