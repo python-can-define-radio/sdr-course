@@ -31,7 +31,7 @@ from paragradio.v2025_02 import PSK_Tx_loop
 #### In the second cell:
 phaser = PSK_Tx_loop(modulation="BPSK")
 phaser.start()
-data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1
+data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1]
 phaser.set_data(data)
 phaser.set_amplitude(1)
 phaser.set_if_gain(32)
@@ -49,8 +49,8 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 
 ```python3
 ## 3
-## Make a dropdown to control the IF gain. 
-## The options should match the HackRF One's hardware specs.
+## Make a slider to control the IF gain. 
+## The parameters should match the HackRF One's hardware specs.
 ```
 
 ```python3
