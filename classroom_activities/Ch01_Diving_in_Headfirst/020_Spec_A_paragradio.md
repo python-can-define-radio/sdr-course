@@ -179,4 +179,4 @@ while True:
 
 [^1]: The Sample rate limits the instantaneous bandwidth that the hardware can measure.
 
-[^2]: Most of the HackRF One limitations can be found in the [FAQ](https://hackrf.readthedocs.io/en/latest/faq.html). The Hardware Filter Bandwidth limits are a little more hidden; you'll see them on the [block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png).
+[^2]: Most of the HackRF One limitations can be found in the [FAQ](https://hackrf.readthedocs.io/en/latest/faq.html). The Hardware Baseband Filter's limits are a little more hidden; you'll see them on the [block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png).
