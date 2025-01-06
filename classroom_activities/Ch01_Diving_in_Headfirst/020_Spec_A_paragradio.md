@@ -37,8 +37,9 @@ simsa.start()
 
 If it runs, you should see this:
 
-[[TODO: Image of simspecan]]
-
+![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim1.png?raw=true)  
+ 
+https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim2.png
 For better viewing:
 - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the titlebar of the running spectrum analyzer and select ***always on top***.
 - resize or move as necessary so it does not obstruct your view.
@@ -113,7 +114,7 @@ sa.set_center_freq(2.4369e9)
 You should see something very similar to the simulated spectrum analyzer. The difference is that these frequencies are being measured from the universe around you!  
 If it doesn't work, ensure you have plugged in your HackRF One.
 
-[[ TODO: Image of Spec A ]]
+![specAn.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim2.png?raw=true) 
 
 The spectrum will vary depending on what activity (if any) is present on those frequencies in your area.
 
@@ -140,7 +141,7 @@ sa.
 
 Marimo should show possible completions:
 
-{{ TODO: screenshot of what completions look like; ensure method docs visible in screenshot }}
+![completions.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim3.png?raw=true) 
 
 Notice that each method's documentation is also visible. We recommend investigating and experimenting with each to learn what functionality is available.
 
