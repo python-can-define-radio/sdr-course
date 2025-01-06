@@ -39,7 +39,6 @@ If it runs, you should see this:
 
 ![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim1.png?raw=true)  
  
-https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim2.png
 For better viewing:
 - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the titlebar of the running spectrum analyzer and select ***always on top***.
 - resize or move as necessary so it does not obstruct your view.
