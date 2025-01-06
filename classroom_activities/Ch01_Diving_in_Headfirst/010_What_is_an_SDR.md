@@ -5,7 +5,7 @@
 
 ### Before starting: 
 
-- [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md)
+<!--- - [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md) --->
 
 - If you have changed classrooms, it may be necessary to repeat some steps of the Python [preliminaries](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch01_Basics/ex_0a_preliminaries.md) lesson.
 
