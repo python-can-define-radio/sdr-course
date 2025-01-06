@@ -1,6 +1,6 @@
 # Software-Defined Radio (SDR) Course
 
-- [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md)
+ <!--- - [Daily Schedule of Events](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/toc/7day.md) --->
 
 ## Where to start:
 
