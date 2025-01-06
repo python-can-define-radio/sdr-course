@@ -79,6 +79,16 @@ simsa.set_center_freq(cfslider.value)
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
 
+#### Improving the display of the chosen frequency
+
+You can show the frequency in a more pleasant way like so:
+
+```python3
+## Exercise 4b
+## In the fifth cell:
+cfslider, f"{cfslider.value} Hz",  f"{cfslider.value/1e3} kHz", f"{cfslider.value/1e6} MHz", f"{cfslider.value/1e9} GHz"
+```
+
 Now, let's start using hardware. 
 
 #### Intro to the HackRF One
