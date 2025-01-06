@@ -177,7 +177,7 @@ ntx = Noise_Tx()
 ntx.start()
 ntx.set_center_freq(2.437e9)
 ntx.set_filter_cutoff_freq(50e3)
-ntx.set_filter_tr_width(50e3)
+ntx.set_filter_transition_width(50e3)
 while True:
     ntx.set_amplitude(100)
     ntx.set_if_gain(47)
