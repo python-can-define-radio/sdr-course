@@ -35,7 +35,7 @@ fmrx.start()
 
 If it runs, you should see two waterfall sinks:
 
-[[TODO: Image of FM_radio]]
+![WBFM_Rx1.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/WBFM_Rx1.png?raw=true)  
 
 The first waterfall sink is the spectrum as it is received from the HackRF with no software filtering.[^1] The second is the same spectrum, with software filtering to remove signals outside of the target listening region.
 
