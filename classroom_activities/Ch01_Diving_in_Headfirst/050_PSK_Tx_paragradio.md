@@ -31,7 +31,8 @@ from paragradio.v2025_02 import PSK_Tx_loop
 #### In the second cell:
 phaser = PSK_Tx_loop(modulation="BPSK")
 phaser.start()
-data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1]
+data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0]
+phaser.set_center_freq(2.43e9)
 phaser.set_data(data)
 phaser.set_amplitude(1)
 phaser.set_if_gain(32)
@@ -62,6 +63,17 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 #### Checkpoint Activity
 
 The instructor will provide 30 minutes for students to experiment. Each student should ensure with a partner that their PSK Transmitter signal can be seen, adjust each UI element, and watch for changes in the partners view to ensure proper functionality. asking an instructor for assistance as needed.
+
+#### Creating more interesting data
+
+You can generate random bits like so:
+
+```python3
+import random
+bits = random.choices([0, 1], k=100)
+print(bits)
+phaser.set_data(bits)
+```
 
 #### What to expect on the assessment
 
