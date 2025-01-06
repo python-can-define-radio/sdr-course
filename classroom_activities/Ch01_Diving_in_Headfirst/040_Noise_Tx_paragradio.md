@@ -32,11 +32,11 @@ from paragradio.v2025_02 import Noise_Tx
 
 #### In the second cell:
 moose = Noise_Tx()
+moose.start()
 moose.set_amplitude(1)
 moose.set_noise_type("gaussian")
 sr = 2e6
 moose.set_samp_rate(sr)
-moose.start()
 ```
 
 If it runs, you should see a waterfall display. Note that it's possible to make a noise transmitter without a waterfall display. The display does not make the transmitter work better; it just provides a view of what is being transmitted.
