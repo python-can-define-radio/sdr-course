@@ -13,79 +13,70 @@
 
 <div style=float:left>👨🏽‍🏫</div> 
 
-- [Beginnings][010_Beginnings]
-
+- [What is an SDR?](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/010_What_is_an_SDR.md)
+- Discuss [Spectrum Analyzer][020_Spec_A_paragradio]
+- [GQRX][015_gqrx_FM_Receive.md]
 <div style=float:left>🔬</div>
 
-- [FM Receiver][030_GRC_FM_Receiver]
-- [FM Transmitter][040_GRC_FM_Transmitter]
+- Explore the [Spectrum Analyzer][020_Spec_A_paragradio]
 
 ### Day 2
 
+
+<div style=float:left>🧠</div> 
+
+- <span style="color: green"><b>PE 1: [Spectrum Analyzer][020_Spec_A_paragradio]</b></span>
+
 <div style=float:left>👨🏽‍🏫</div> 
 
-- Discuss [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
-- [GQRX][050_gqrx_FM_Receive.md]
-- [What is an SDR?](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/060_What_is_an_SDR.md)
+- Discuss [FM Receiver][030_FM_Radio_paragradio]
 
 <div style=float:left>🔬</div>
 
-- Independent work time to experiment with what we've learned so far.
-  For those who wish to work ahead, look at these. Start from the top of whichever chapter you find interesting.
-    - [Ch02 Applications][Ch_Applic]
-    - [Ch03 URH][Ch_URH]
-    - [Ch04 Python][Ch_Python]
-    
+
+- Explore the [FM Receiver][030_FM_Radio_paragradio]
 
 ### Day 3
 
 <div style=float:left>🧠</div> 
 
-- Review of [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]
-- <span style="color: green"><b>PE 1: [Spectrum Analyzer][020_GRC_Spectrum_Analyzer]</b></span>
+- <span style="color: green"><b>PE 2: [FM Receiver][030_FM_Radio_paragradio]</b></span>
 
 <div style=float:left>👨🏽‍🏫</div> 
 
-- Discuss [FM Receiver][030_GRC_FM_Receiver]
+- Discuss [Noise Transmitter][040_Noise_Jammer]
 
 <div style=float:left>🔬</div>
 
-- Independent work time
+- Explore the [Noise Transmitter][040_Noise_Jammer]
 
 ### Day 4
 
 <div style=float:left>🧠</div> 
 
-- Review of [FM Receiver][030_GRC_FM_Receiver]
-- <span style="color: green"><b>PE 2: [FM Receiver][030_GRC_FM_Receiver]</b></span>
-
-<div style=float:left>🔬</div>
-
-- Go outside
-
-### Day 5
+- <span style="color: green"><b>PE 3: [Noise Transmitter][040_Noise_Jammer]</b></span>
 
 <div style=float:left>👨🏽‍🏫</div> 
 
-- Discuss [Noise Jammer][020_Noise_Jammer]
-- Discuss [PSK Digital Jammer][021_Digital_Jammer]
-- Guided [URH][010_Install_URH] 
+- Discuss [PSK Digital Jammer][PSK_Digital_Jammer]
 
 <div style=float:left>🔬</div>
 
-- Self-paced [URH][Ch_URH]
+- Explore the [PSK Digital Jammer][PSK_Digital_Jammer]
+
+
+
+### Day 5
+
+<div style=float:left>🧠</div> 
+
+- <span style="color: green"><b>PE 4: [PSK Digital Jammer][PSK_Digital_Jammer]</b></span>
+
+<div style=float:left>🔬</div>
+
+- Independent work time
 
 ### Day 6
-
-<div style=float:left>🧠</div> 
-
-- Review of [Noise Jammer][020_Noise_Jammer]
-- <span style="color: green"><b>PE 3: [Noise Jammer][020_Noise_Jammer]</b></span>
-
-<div style=float:left>🧠</div> 
-
-- Review [PSK Digital Jammer][021_Digital_Jammer]
-- <span style="color: green"><b>PE 4: [PSK Digital Jammer][021_Digital_Jammer]</b></span>
 
 <div style=float:left>🔬</div>
 
@@ -111,7 +102,11 @@
     - any other online/offline source not approved by your instructor
   
 <!--
-
+- Independent work time to experiment with what we've learned so far.
+  For those who wish to work ahead, look at these. Start from the top of whichever chapter you find interesting.
+    - [Ch02 Applications][Ch_Applic]
+    - [Ch03 URH][Ch_URH]
+    - [Ch04 Python][Ch_Python]
 
 <div style=float:left>👩🏽‍🏫</div>  
 
@@ -155,11 +150,11 @@
 
 -->
 
-[010_Beginnings]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/010_Beginnings.md
-[050_gqrx_FM_Receive.md]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/050_gqrx_FM_Receive.md
+
+[015_gqrx_FM_Receive.md]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/015_gqrx_FM_Receive.md
 [060_What_is_an_SDR]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/060_What_is_an_SDR.md
-[020_GRC_Spectrum_Analyzer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_GRC_Spectrum_Analyzer.md
-[030_GRC_FM_Receiver]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_GRC_FM_Receiver.md
+[020_Spec_A_paragradio]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md
+[030_FM_Radio_paragradio]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/030_FM_Radio_paragradio.md
 [040_GRC_FM_Transmitter]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/040_GRC_FM_Transmitter.md
 [010-Transmit-and-Receive-Pure-Sine]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/010-Transmit-and-Receive-Pure-Sine.md
 [011_numpy]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/011_numpy.md
@@ -186,7 +181,7 @@
 [070_Interpret_multiple_noisy_signals]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/070_Interpret_multiple_noisy_signals.md
 [080_Interpret_multiple_noisy_signals]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md
 [090_Record_a_real_signal]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/090_Record_a_real_signal.md
-[020_Noise_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/020_Noise_Jammer.md
+[040_Noise_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/040_Noise_Tx_paragradio.md
 [Ch_Python]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/
 [010_pcdr_ook_tx_intro]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md
 [020_pcdr_ook_waves]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/020_pcdr_ook_waves.md
@@ -194,4 +189,4 @@
 [040_pcdr_frequency_domain_Complex]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/040_pcdr_frequency_domain_Complex.md
 [050_pcdr_simple]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/050_pcdr_simple.md
 [Ch_Applic]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/
-[021_Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Applications/021_PSK_Digital_Jammer.md
+[PSK_Digital_Jammer]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/050_PSK_Tx_paragradio.md
