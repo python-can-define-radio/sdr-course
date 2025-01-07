@@ -60,28 +60,45 @@ What did it do? Look closely at the simspecan, then change the frequency and try
 
 To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc), but we will continue to use Marimo.
 
-### Slider
-Now lets demonstrate how to create a slider. We will start by making a Center Frequency Slider called cfslider for short.
+### Sliders
+Now lets demonstrate how to create a slider. For this example we will start by making a slider that can adjust our frequency called cfslider (meaning 'Center Frequency Slider') for short.
 
 ```python3
 ## Exercise 3
-## In the fourth cell:
-cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.0, label="Frequency (MHz)", show_value=True)
+## In the third cell:
+## REPLACE:
+
+simsa.set_center_freq(93.7e6)
+
+## WITH THIS:
+
+cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.7e6, label="Frequency (MHz)", show_value=True)
 cfslider
 ```
-Start
+Lets discuss what all of the elements of this slider mean:
+ - **Start:** This is the lowest value or left most limit of the slider.
+ - **Stop:** This is the highest value or right most limit of the slider.
+ - **Step:** This is how far the slider value will adjust between each 'step' on the slider between the start and stop values.
+ - **Value:** This is the default value the slider will be on when the program is launched. 
+   - In the example slider above this would be 93.7 MHz. This is where the slider will start but may be adjusted down to 92.5 MHz or up to 94.5 MHz
+ - **Label:** This is the label or title that will appear above the slider.
+ - **show_value:** When this equals 'True', The value the slider is currently set to will be displayed beside the slider.
 
-This will create and display a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
+Notice how our 'Value' in the slider is the same as we set our frequency to in Exercise 2. The difference is we can now adjust the value of our frequency between multiple values by dragging the slider instead of the frequency having just one unadjustable value.
 
-Let's make it actually work:
+We have created and displayed a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
+
+Let's make it actually adjust our frequency:
 
 ```python3
 ## Exercise 4
-## Update the bottom cell to use the slider value:
+## In the fourth cell add the following to use the slider value:
 simsa.set_center_freq(cfslider.value)
 ```
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
+
+**Notice:** It is good practice to make sure that when setting a parameter to '.value' (such as 'simsa.set_center_freq(**cfslider.value**)' like the previous exercise) to make sure that it is in the bottom most cell of your marimo notebook. While the program may work with this value in other cells, following this practice can help ensure that the program won't have issues that can arise from cells being out of order. 
 
 #### Improving the display of the chosen frequency
 
@@ -108,6 +125,10 @@ Your instructor will...
 
 ### Spectrum Analyzer
 
+Now we are going to make a real spectrum analyzer since the previous one was just a simulation.
+
+Start by ensuring your HackRF One is plugged into the proper computer.
+
 Create a new Marimo notebook and save it as **specan.py**.
 - If you don't see the "Create a new notebook" option, exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
 
@@ -123,6 +144,7 @@ sa = SpecAn()
 sa.start()
 sa.set_center_freq(2.4369e9)
 ```
+**Notice:** We are importing 'SpecAn' from Paragradio now and not 'SpecAnSim' like in the previous exercises.
 
 You should see something very similar to the simulated spectrum analyzer. The difference is that these frequencies are being measured from the universe around you!  
 If it doesn't work, ensure you have plugged in your HackRF One.
