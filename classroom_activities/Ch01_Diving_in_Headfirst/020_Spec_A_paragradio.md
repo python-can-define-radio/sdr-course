@@ -60,12 +60,16 @@ What did it do? Look closely at the simspecan, then change the frequency and try
 
 To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc), but we will continue to use Marimo.
 
+### Slider
+Now lets demonstrate how to create a slider. We will start by making a Center Frequency Slider called cfslider for short.
+
 ```python3
 ## Exercise 3
 ## In the fourth cell:
-cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, label="Frequency (MHz)", show_value=True)
+cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.0, label="Frequency (MHz)", show_value=True)
 cfslider
 ```
+Start
 
 This will create and display a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
 
@@ -73,7 +77,7 @@ Let's make it actually work:
 
 ```python3
 ## Exercise 4
-## Update the third cell to use the slider value:
+## Update the bottom cell to use the slider value:
 simsa.set_center_freq(cfslider.value)
 ```
 
