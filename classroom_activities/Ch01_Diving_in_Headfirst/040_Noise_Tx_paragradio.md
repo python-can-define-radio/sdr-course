@@ -53,6 +53,8 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 ## Exercise 3
 ## Make a dropdown to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
+## Note: this would require 48 options (from 0 to 47) to allow all possibilities.
+##       For the sake of saving typing, simply allow the user to pick 0, 10, 23, 35, 43, 47.
 ```
 
 ```python3
