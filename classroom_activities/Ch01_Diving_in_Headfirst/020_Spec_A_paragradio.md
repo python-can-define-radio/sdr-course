@@ -31,11 +31,12 @@ import marimo as mo
 from paragradio.v2025_02 import SpecAnSim
 
 #### In the second cell:
-simsa = SpecAnSim()
-simsa.start()
+SpecAnSim.launch_or_existing()
 ```
 
-If it runs, you should see this:
+TODO: screenshot needs new code
+
+If it runs, it should look like this:
 
 ![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim1.png?raw=true)  
  
@@ -43,7 +44,7 @@ For better viewing:
 - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the titlebar of the running spectrum analyzer and select ***always on top***.
 - resize or move as necessary so it does not obstruct your view.
 
-You'll see three views of the signal: the Time Domain view, the Frequency Domain view, and a Waterfall view.
+In the GNU Radio App that launched, you'll see three views of the signal: the Time Domain view, the Frequency Domain view, and a Waterfall view.
 
 - The Time Domain shows the raw signal as it is received from the USB port. (x-axis: time; y-axis: amplitude)
 - The Frequency Domain shows the amount of each frequency that is present in the slice of the spectrum that we have selected. (x-axis: frequencies; y-axis: amplitude)
@@ -52,40 +53,73 @@ You'll see three views of the signal: the Time Domain view, the Frequency Domain
 ```python3
 ## Exercise 2
 ## Keep the same Marimo cells shown above.
-## In the third cell:
-simsa.set_center_freq(93.7e6)
+## In the parentheses for SpecAnSim; Add the following code:
+
+center_freq=93.7e6
 ```
+It should now look like this:
+
+## [TODO: Add Photo]
 
 What did it do? Look closely at the simspecan, then change the frequency and try again.
 
 To improve the user experience, we can add a slider to control the frequency. This could be done using any graphics toolkit (Guizero, PyQt, PyGame, etc), but we will continue to use Marimo.
 
+### Sliders
+Now we are going to create a slider. For this example we will start by making a slider that can adjust our frequency called 'cfslider' (meaning 'Center Frequency Slider' for short).
+
 ```python3
 ## Exercise 3
-## In the fourth cell:
-cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, label="Frequency (MHz)", show_value=True)
+## In the second cell add this:
+
+cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.7e6, label="Frequency (MHz)", show_value=True)
 cfslider
 ```
+Let's pause here to discuss what all of the elements of this slider mean:
+ - **Start:** This is the lowest value or left most limit of the slider.
+ - **Stop:** This is the highest value or right most limit of the slider.
+ - **Step:** This is how far the slider value will adjust between each 'step' on the slider between the start and stop values.
+ - **Value:** This is the default value the slider will be on when the program is launched. 
+   - In the example slider above this would be 93.7 MHz. This is where the slider will start but may be adjusted down to 92.5 MHz or up to 94.5 MHz
+ - **Label:** This is the label or title that will appear above the slider.
+ - **show_value:** When this equals 'True', The value the slider is currently set to will be displayed beside the slider.
 
-This will create and display a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
+Notice how our 'Value' in the slider is the same as we set our frequency to in Exercise 2. The difference is we can now adjust the value of our frequency between multiple values by dragging the slider instead of having to change the code.
 
-Let's make it actually work:
+We have created and displayed a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
+
+Let's make it actually adjust our frequency:
 
 ```python3
 ## Exercise 4
-## Update the third cell to use the slider value:
-simsa.set_center_freq(cfslider.value)
+## In the second cell; replace the following to use the slider value:
+
+REPLACE:
+center_freq=93.7e6
+
+WITH:
+center_freq=cfslider.value
+
 ```
 
 Adjust the slider, and you should see the view of the spectrum adjust accordingly.
 
+### Features
+
+There are a couple nifty features we'll highlight here. 
+
+- You will notice a timestamp just above `launch_or_existing`. The timestamp shows the last time that a parameter change was sent to the GNU Radio App (for example, last time the `center_freq` was changed). This can help with troubleshooting because if the timestamp is not changing at all, then you know that your sliders are having no impact on the GNU Radio App.
+- If you adjust a slider, but have closed your GNU Radio App, it will automatically re-launch.
+   - This is what the "launch_or_existing" code is for -- updating the existing app or launching the app if it isn't running.
+- There are examples of common mistakes at the end of this lesson. 
+     
 #### Improving the display of the chosen frequency
 
 You can show the frequency in a more pleasant way like so:
 
 ```python3
 ## Exercise 4b
-## In the fifth cell:
+## In the fourth cell:
 cfslider, f"{cfslider.value} Hz",  f"{cfslider.value/1e3} kHz", f"{cfslider.value/1e6} MHz", f"{cfslider.value/1e9} GHz"
 ```
 
@@ -104,6 +138,10 @@ Your instructor will...
 
 ### Spectrum Analyzer
 
+Now we are going to make a real spectrum analyzer since the previous one was just a simulation.
+
+Start by ensuring your HackRF One is plugged into the proper computer.
+
 Create a new Marimo notebook and save it as **specan.py**.
 - If you don't see the "Create a new notebook" option, exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
 
@@ -115,10 +153,11 @@ import marimo as mo
 from paragradio.v2025_02 import SpecAn
 
 #### In the second cell:
-sa = SpecAn()
-sa.start()
-sa.set_center_freq(2.4369e9)
+SpecAn.launch_or_existing(
+    center_freq=cfslider.2.4369e9
+)
 ```
+**Notice:** In the first cell; We are importing 'SpecAn' from Paragradio now and not 'SpecAnSim' like in the previous exercises.
 
 You should see something very similar to the simulated spectrum analyzer. The difference is that these frequencies are being measured from the universe around you!  
 If it doesn't work, ensure you have plugged in your HackRF One.
@@ -141,6 +180,8 @@ Review: Why do you think we chose 2.437 GHz? [Hint](https://hackrf.readthedocs.i
 #### Modifying the parameters
 
 We've seen one of the spectrum analyzer's methods, `set_center_freq`. There are a few others available. Here's how to see them:
+
+## [Not sure what to do with this example]
 
 ```python3
 ## Exercise 6
