@@ -36,7 +36,7 @@ SpecAnSim.launch_or_existing()
 
 TODO: screenshot needs new code
 
-If it runs, you should see this:
+If it runs, it should look like this:
 
 ![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim1.png?raw=true)  
  
@@ -44,7 +44,7 @@ For better viewing:
 - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the titlebar of the running spectrum analyzer and select ***always on top***.
 - resize or move as necessary so it does not obstruct your view.
 
-You'll see three views of the signal: the Time Domain view, the Frequency Domain view, and a Waterfall view.
+In the GNU Radio App that launched, you'll see three views of the signal: the Time Domain view, the Frequency Domain view, and a Waterfall view.
 
 - The Time Domain shows the raw signal as it is received from the USB port. (x-axis: time; y-axis: amplitude)
 - The Frequency Domain shows the amount of each frequency that is present in the slice of the spectrum that we have selected. (x-axis: frequencies; y-axis: amplitude)
@@ -84,7 +84,7 @@ Let's pause here to discuss what all of the elements of this slider mean:
  - **Label:** This is the label or title that will appear above the slider.
  - **show_value:** When this equals 'True', The value the slider is currently set to will be displayed beside the slider.
 
-Notice how our 'Value' in the slider is the same as we set our frequency to in Exercise 2. The difference is we can now adjust the value of our frequency between multiple values by dragging the slider instead of the frequency having just one unadjustable value.
+Notice how our 'Value' in the slider is the same as we set our frequency to in Exercise 2. The difference is we can now adjust the value of our frequency between multiple values by dragging the slider instead of having to change the code.
 
 We have created and displayed a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
 
@@ -108,11 +108,10 @@ Adjust the slider, and you should see the view of the spectrum adjust accordingl
 
 There are a couple nifty features we'll highlight here. 
 
- - When the program is running, you will notice a timestamp at the top. When you adjust the slider, not only should the frequency change, but the timestamp will update in real-time. This is a great indicator of whether the program is running properly
-   - If the timestamp stays the same when manipulating the slider, that means there is an error.
-   - There are examples of common mistakes at the end of this lesson. 
- - If you adjust the slider, but have closed your GNU Radio App, it will automatically re-launch it.
-   - This is what the "launch_or_existing" code is for; Updating the existing app or launching the app if it isn't running.
+- You will notice a timestamp just above `launch_or_existing`. The timestamp shows the last time that a parameter change was sent to the GNU Radio App (for example, last time the `center_freq` was changed). This can help with troubleshooting because if the timestamp is not changing at all, then you know that your sliders are having no impact on the GNU Radio App.
+- If you adjust a slider, but have closed your GNU Radio App, it will automatically re-launch.
+   - This is what the "launch_or_existing" code is for -- updating the existing app or launching the app if it isn't running.
+- There are examples of common mistakes at the end of this lesson. 
      
 #### Improving the display of the chosen frequency
 
