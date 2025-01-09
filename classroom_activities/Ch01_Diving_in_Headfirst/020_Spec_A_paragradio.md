@@ -34,6 +34,8 @@ from paragradio.v2025_02 import SpecAnSim
 SpecAnSim.launch_or_existing()
 ```
 
+TODO: screenshot needs new code
+
 If it runs, you should see this:
 
 ![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim1.png?raw=true)  
