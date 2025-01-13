@@ -29,7 +29,7 @@ import marimo as mo
 from paragradio.v2025_02 import PSK_Tx_loop
 
 #### In the second cell:
-phaser = PSK_Tx_loop(modulation="BPSK")
+phaser = PSK_Tx_loop()    # This was updated 2025 Jan 13. Requires paragradio version 2025.2.4
 phaser.start()
 data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0]
 phaser.set_center_freq(2.43e9)
@@ -56,8 +56,7 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 
 ```python3
 ## 4
-## You'll notice that the modulation we chose in our example is BPSK.
-## Try all of the modulation options to see how they vary.
+## Make a dropdown menu to pick between the five modulation options.
 ```
 
 #### Checkpoint Activity
