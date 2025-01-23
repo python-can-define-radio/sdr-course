@@ -35,7 +35,6 @@ moose = Noise_Tx()
 moose.start()
 moose.set_amplitude(1)
 moose.set_noise_type("gaussian")
-sr = 2e6
 moose.set_samp_rate(sr)
 ```
 
@@ -62,7 +61,7 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 ## Make a slider to control the filter cutoff width. 
 ## The parameters should have these values: 
     - Left Limit: 2e3
-    - Right Limit: sr/2
+    - Right Limit: 1e6
     - Step value: 1e3
 ```
 
@@ -71,7 +70,7 @@ We have the same methods available as we had in the [Spectrum Analyzer Lesson](h
 ## Make a slider to control the filter transition width. 
 ## The parameters should have these values: 
     - Left Limit: 2e3
-    - Right Limit: sr/2
+    - Right Limit: 1e6
     - Step value: 1e3
 ```
 
