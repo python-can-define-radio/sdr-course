@@ -26,12 +26,12 @@ Copy the following:
 ```python3
 ## Exercise 1
 ## Try this.
-#### In the first cell:
+#### Name the first cell "imports". Put this code:
 import marimo as mo
 from paragradio.v2025_02 import SpecAnSim
 
-#### In the second cell:
-SpecAnSim.launch_or_existing()
+#### Name the second cell "launch". Put this code:
+SpecAnSim.config(running=True)
 ```
 
 TODO: screenshot needs new code
@@ -52,10 +52,11 @@ In the GNU Radio App that launched, you'll see three views of the signal: the Ti
 
 ```python3
 ## Exercise 2
-## Keep the same Marimo cells shown above.
-## In the parentheses for SpecAnSim; Add the following code:
-
-center_freq=93.7e6
+## Replace the contents of the "launch" cell with the following:
+SpecAnSim.config(
+    running=True,
+    center_freq=93.7e6,
+)
 ```
 It should now look like this:
 
@@ -70,34 +71,33 @@ Now we are going to create a slider. For this example we will start by making a 
 
 ```python3
 ## Exercise 3
-## In the second cell add this:
+## Create a third cell. Name it "create_ui". Put this code:
+cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.7e6, label="Frequency")
 
-cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.7e6, label="Frequency (MHz)", show_value=True)
-cfslider
+## Create a fourth cell. Name it "render_ui". Put this code:
+mo.md(f"""{cfslider} {cfslider.value} Hz""")
 ```
 Let's pause here to discuss what all of the elements of this slider mean:
  - **Start:** This is the lowest value or left most limit of the slider.
  - **Stop:** This is the highest value or right most limit of the slider.
- - **Step:** This is how far the slider value will adjust between each 'step' on the slider between the start and stop values.
+ - **Step:** This is how much the value will adjust between each 'step' on the slider as the user drags it between the start and stop values.
+   - In the above code, the value of step is 10e3, or 10 thousand. As the user drags the slider, the value will increase or decrease by 10e3 increments.
  - **Value:** This is the default value the slider will be on when the program is launched. 
-   - In the example slider above this would be 93.7 MHz. This is where the slider will start but may be adjusted down to 92.5 MHz or up to 94.5 MHz
- - **Label:** This is the label or title that will appear above the slider.
- - **show_value:** When this equals 'True', The value the slider is currently set to will be displayed beside the slider.
+   - In the example slider above this would be 93.7 Million. This is where the slider will start, but may be adjusted down to 92.5 Million or up to 94.5 Million.
+ - **Label:** This is the label or title that will appear next to the slider.
 
-Notice how our 'Value' in the slider is the same as we set our frequency to in Exercise 2. The difference is we can now adjust the value of our frequency between multiple values by dragging the slider instead of having to change the code.
-
-We have created and displayed a slider, but the slider doesn't do anything yet. (Try sliding it to confirm.)
+Notice how our 'Value' in the slider is the same as we set our frequency to in Exercise 2. The difference is we can now adjust the value of our frequency slider between multiple values by dragging the slider, however, the frequency value in the GNU Radio app is not changing.
 
 Let's make it actually adjust our frequency:
 
 ```python3
 ## Exercise 4
-## In the second cell; replace the following to use the slider value:
+## In the "launch" cell; replace the following to use the slider value:
 
-REPLACE:
+# REPLACE:
 center_freq=93.7e6
 
-WITH:
+# WITH:
 center_freq=cfslider.value
 
 ```
@@ -106,21 +106,27 @@ Adjust the slider, and you should see the view of the spectrum adjust accordingl
 
 ### Features
 
-There are a couple nifty features we'll highlight here. 
+There are a couple of nifty features we'll highlight here. 
 
-- You will notice a timestamp just above `launch_or_existing`. The timestamp shows the last time that a parameter change was sent to the GNU Radio App (for example, last time the `center_freq` was changed). This can help with troubleshooting because if the timestamp is not changing at all, then you know that your sliders are having no impact on the GNU Radio App.
+- You will notice a timestamp above the "launch" cell. The timestamp shows the last time that a parameter change was sent to the GNU Radio App (for example, last time the `center_freq` was changed). This can help with troubleshooting because if the timestamp is not changing at all, then you know that your sliders are having no impact on the GNU Radio App.
 - If you adjust a slider, but have closed your GNU Radio App, it will automatically re-launch.
-   - This is what the "launch_or_existing" code is for -- updating the existing app or launching the app if it isn't running.
-- There are examples of common mistakes at the end of this lesson. 
+   - This is what the "config" code is for -- updating the existing app or launching the app if it isn't running.
      
 #### Improving the display of the chosen frequency
 
 You can show the frequency in a more pleasant way like so:
 
 ```python3
-## Exercise 4b
-## In the fourth cell:
-cfslider, f"{cfslider.value} Hz",  f"{cfslider.value/1e3} kHz", f"{cfslider.value/1e6} MHz", f"{cfslider.value/1e9} GHz"
+## Exercise 5
+## Replace the code in the "render_ui" cell with the following
+mo.md(f"""{cfslider} {cfslider.value} Hz = {cfslider.value/1e6} MHz""")
+```
+
+Complete the following exercise:
+
+```python3
+## Exercise 6
+## Change the "render_ui" cell to display the value in kHz and in GHz.
 ```
 
 Now, let's start using hardware. 
@@ -146,18 +152,20 @@ Create a new Marimo notebook and save it as **specan.py**.
 - If you don't see the "Create a new notebook" option, exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
 
 ```python3
-## Exercise 5
+## Exercise 7
 ## Try this.
-#### In the first cell:
+#### Name the first cell "imports". Put this code:
 import marimo as mo
 from paragradio.v2025_02 import SpecAn
 
-#### In the second cell:
-SpecAn.launch_or_existing(
-    center_freq=cfslider.2.4369e9
+## Initially let's hardcode our frequency instead of using a ui element value.
+#### Name the second cell "launch". Put this code:
+SpecAn.config(
+    running=True,
+    center_freq=2.4369e9,
 )
 ```
-**Notice:** In the first cell; We are importing 'SpecAn' from Paragradio now and not 'SpecAnSim' like in the previous exercises.
+**Notice:** In the "imports" cell, we are importing 'SpecAn' from Paragradio now instead of the "SpecAnSim" that was in the previous exercises.
 
 You should see something very similar to the simulated spectrum analyzer. The difference is that these frequencies are being measured from the universe around you!  
 If it doesn't work, ensure you have plugged in your HackRF One.
@@ -177,31 +185,30 @@ Notice that you (the student) tuned to a frequency that was slightly offset from
 
 Review: Why do you think we chose 2.437 GHz? [Hint](https://hackrf.readthedocs.io/en/latest/faq.html#what-is-the-transmit-power-of-hackrf).
 
-#### Modifying the parameters
+#### Using the help function
 
-We've seen one of the spectrum analyzer's methods, `set_center_freq`. There are a few others available. Here's how to see them:
-
-## [Not sure what to do with this example]
+We've seen that the spectrum analyzer's `center_freq` is settable. Here's how to see the other settable parameters:
 
 ```python3
-## Exercise 6
-## In the third cell:
-sa.
+## Exercise 8
+## In a separate cell:
+help(SpecAn.config)
 ```
 
-Marimo should show possible completions:
+This will print the documentation string (docstring) for the `config` function:
 
-![completions.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim3.png?raw=true) 
+TODO: THIS SCREENSHOT NEEDS TO BE REPLACED
 
-Notice that each method's documentation is also visible. We recommend investigating and experimenting with each to learn what functionality is available.
+![docstring.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/docstring.png?raw=true) 
+
+The instructor can demonstrate the usage of each parameter upon request.
 
 #### What to expect on the assessment
 
 For the graded assignment...
 - You'll have access to this lesson, your own notes, and the Hack RF Docs. You will not be allowed to use any other resources.
-- You'll be expected to be able to use the metric prefixes kilo, Mega, and Giga. For example, if the assignment says "Tune to 350 MHz", you'll need to be able to convert that to `350e6 Hz` or `0.35 GHz`. As a reminder, you will not be allowed to use online converter tools.
-- You'll be expected to know the name and meaning of each of the parameters that is settable using a method (such as `set_if_gain`), ***including those which are not mentioned in the lesson above***.
-  - If you need help finding the list of available methods, ask an instructor.
+- You'll be expected to know how to use the metric prefixes kilo, Mega, and Giga. For example, if the assignment says "Tune to 350 MHz", you'll need to be able to convert that to `350e6 Hz` or `0.35 GHz`. As a reminder, you will not be allowed to use online converter tools.
+- You'll be expected to know the name and meaning of each of the parameters that is settable in `config()` (such as `if_gain`), ***including those which are not mentioned in the lesson above***.
 - You'll be asked to create Marimo UI elements that control specific parameters, similar to the `cfslider` above.
   - The Marimo UI elements will be limited to any that you've seen in this lesson or any previous lessons.
 - You'll be expected to know the Hack RF's limitations for each settable parameter in order to adjust the associated settings in the UI elements. For example, Marimo sliders have a `step` parameter, and the HackRF One requires a Rx IF Gain step value of 8.[^2]
@@ -214,17 +221,20 @@ The following code is one way to create a transmission for testing that your Hac
 ```python3
 from paragradio.v2025_02 import Noise_Tx
 import time
-ntx = Noise_Tx()
-ntx.start()
-ntx.set_center_freq(2.437e9)
-ntx.set_filter_cutoff_freq(50e3)
-ntx.set_filter_transition_width(50e3)
+
+def ntxconfig(ampli, ifg):
+    Noise_Tx.config(
+        center_freq=2.437e9,
+        filter_cutoff_freq=50e3,
+        filter_transition_width=50e3,
+        amplitude=ampli,
+        if_gain=ifg,
+    )
+
 while True:
-    ntx.set_amplitude(100)
-    ntx.set_if_gain(47)
+    ntxconfig(100, 47)
     time.sleep(2)
-    ntx.set_amplitude(0)
-    ntx.set_if_gain(0)
+    ntxconfig(0, 0)
     time.sleep(2)
 ```
 
