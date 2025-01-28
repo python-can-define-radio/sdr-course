@@ -203,6 +203,25 @@ TODO: THIS SCREENSHOT NEEDS TO BE REPLACED
 
 The instructor can demonstrate the usage of each parameter upon request.
 
+#### More exercises
+
+```
+## Exercise 9
+## In the "create_ui" cell, add a slider element that controls the center frequency.
+## Set the left limit to 400e6 and right limit to 600e6.
+## Render the element in the "render_ui" cell.
+
+
+## Exercise 10
+## In the "create_ui" cell, add a switch element that controls whether the SpecAn is running.
+## Render the element in the "render_ui" cell.
+
+
+## Exercise 11
+## In the "create_ui" cell, add a slider that controls the samp_rate. The limits should match the Hack RF's limitations.
+## Render the element in the "render_ui" cell.
+
+
 #### What to expect on the assessment
 
 For the graded assignment...
