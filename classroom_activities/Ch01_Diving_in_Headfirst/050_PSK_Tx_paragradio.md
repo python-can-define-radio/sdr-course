@@ -4,7 +4,7 @@
 
 ### Introduction
 
-In the modern world, trillions of bits are sent wirelessly every day. How do we modulation electromagnetic waves to commuicate this massive amount of data? One way to do so is using Phase Shift Keying, or PSK.
+In the modern world, trillions of bits are sent wirelessly every day. How do we use electromagnetic waves to communicate this massive amount of data? One way to do so is using Phase Shift Keying, or PSK.
 
 ### Dependencies
 
@@ -17,46 +17,48 @@ pip install marimo
 
 ### PSK Transmitter
 
-Create a new notebook and save it as **psk_tx.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
+Create a new notebook and save it as **psk_tx_loop.py**. (For an intro to marimo, reference the lesson in the github python course [Marimo Lesson](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)).
 
 Copy the following:
 
 ```python3
-## 1
+## Exercise 1
 ## Try this.
-#### In the first cell:
+#### Name the first cell "imports". Put this code:
 import marimo as mo
 from paragradio.v2025_02 import PSK_Tx_loop
 
-#### In the second cell:
-phaser = PSK_Tx_loop()    # This was updated 2025 Jan 13. Requires paragradio version 2025.2.4
-phaser.start()
-data = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0]
-phaser.set_center_freq(2.43e9)
-phaser.set_data(data)
-phaser.set_amplitude(1)
-phaser.set_if_gain(32)
+#### Name the second cell "launch". Put this code:
+PSK_Tx_loop.config(
+    data=[1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
+    center_freq=2.43e9,
+)
 ```
 
 If it runs, you should see a window open. It includes a waterfall sink and a time sink so you can see the bits being transmitted.
 
-We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
+Many of the parameters of `config` are the same as the `SpecAn` discussed in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `center_freq`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available. Try using the "help(PSK_Tx_loop.config)" in a marimo cell for more information.
 
 ```python3
-## 2
-## Make a Numeric text field to control the center frequency.
+## Exercise 2
+## Name the third cell "create_ui". 
+## Name the fourth cell "render_ui".
+## In the "create_ui" cell, add a `mo.ui.number` element to control the center frequency.
 ## Set the left and right limits to match the frequency range available to the HackRf One.
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
-## 3
-## Make a slider to control the IF gain. 
+## Exercise 3
+## In the "create_ui" cell, add a slider element to control the IF gain.  
 ## The parameters should match the HackRF One's hardware specs.
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
-## 4
-## Make a dropdown menu to pick between the five modulation options.
+## Exercise 4
+## In the "create_ui" cell, add a dropdown menu to pick between all available modulation options.
+## Render the element in the "render_ui" cell.
 ```
 
 #### Checkpoint Activity
@@ -71,8 +73,9 @@ You can generate random bits like so:
 import random
 bits = random.choices([0, 1], k=100)
 print(bits)
-phaser.set_data(bits)
 ```
+
+As an exercise, try to use the `bits` variable as your `data` in `PSK_Tx_loop.config`.
 
 #### What to expect on the assessment
 

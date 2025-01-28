@@ -24,13 +24,12 @@ Copy the following:
 ```python3
 ## Exercise 1
 ## Try this.
-#### In the first cell:
+#### Name the first cell "imports". Put this code:
 import marimo as mo
 from paragradio.v2025_02 import WBFM_Rx
 
-#### In the second cell:
-fmrx = WBFM_Rx()
-fmrx.start()
+#### Name the second cell "launch". Put this code:
+WBFM_Rx.config(running=True)
 ```
 
 If it runs, you should see two waterfall sinks:
@@ -39,7 +38,7 @@ If it runs, you should see two waterfall sinks:
 
 The first waterfall sink is the spectrum as it is received from the HackRF with no software filtering.[^1] The second is the same spectrum, with software filtering to remove signals outside of the target listening region.
 
-We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
+Many of the parameters of `config` are the same as the `SpecAn` discussed in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `center_freq`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available. Try using the "help(WBFM_Rx.config)" in a marimo cell for more information.
 
 ### Why are all radio stations odd numbers?
 
@@ -51,33 +50,39 @@ To improve the user experience, we can add various Marimo UI elements.
 
 ```python3
 ## Exercise 2
-## Make a Numeric text field to control the center frequency.
+## Name the third cell "create_ui". 
+## Name the fourth cell "render_ui".
+## Create and render a `mo.ui.number` element that controls the center frequency.
 ## Set the left and right limits to match the US WBFM Broadcast range.
 ```
 
 ```python3
 ## Exercise 3
-## Make a slider to control the BB gain.
+## In the "create_ui" cell, add a slider to control the BB gain.
 ## The range should match the HackRF One's hardware specs.
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 4
-## Make a dropdown to control the IF gain. 
+## In the "create_ui" cell, add a dropdown to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 5
-## Make a dropdown to control the filter width. 
+## In the "create_ui" cell, add a dropdown to control the filter width. 
 ## Have three options: Narrow, Normal, Wide.
 ## Those labels should correspond to filter values of
 ##   120 kHz, 160 kHz, and 200 kHz respectively.
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 6
-## Make a Numeric text field to control the frequency offset.
+## In the "create_ui" cell, add a `mo.ui.number` element to control the frequency offset.
+## Render the element in the "render_ui" cell.
 ```
 
 <!-- ```python3
@@ -95,32 +100,29 @@ Recommended: create a new notebook for this example called **fm_radio_buttons_an
 ```python3
 ## In the first cell, put your imports as mentioned above.
 
-## In the second cell, create an instance of a WBFM receiver.
+## In the second cell, launch a WBFM receiver as above.
+## In `config`, the center_freq should be set to the value of freq_ui_elem, which we create below.
 
 ## In the third cell:
 tuner_ui = mo.ui.dropdown(["radio buttons", "slider"], label="Tune using", value="radio buttons", allow_select_none=False)
-tuner_ui
+if tuner_ui.value == "slider":
+    freq_ui_elem = mo.ui.slider(88, 108, 0.1, label="Station", show_value=True)
+elif tuner_ui.value == "radio buttons":
+    freq_ui_elem = mo.ui.radio({"Some station": 100.1, "Another": 102.3}, label="Station", value="Another", allow_select_none=False)
+else:
+    raise ValueError('The dropdown menu should only have exactly two options: "slider" and "radio buttons". If you see this error, it most likely means that you have a typo or capitalization error.')
 
 ## In the fourth cell:
-if tuner_ui.value == "slider":
-    frequency = mo.ui.slider(88, 108, 0.1, label="Station", show_value=True)
-elif tuner_ui.value == "radio buttons":
-    frequency = mo.ui.radio({"Some station": 100.1, "Another": 102.3}, label="Station")
-else:
-    frequency = "Invalid tuner_ui choice"
-frequency
+mo.md(f"""
+{tuner_ui}  
+{freq_ui_elem}
+""")
 
-## In the fifth cell:
-fmrx.set_center_freq(frequency.value*1e6)
 
-## In the sixth cell:
-f"Tuned to {frequency.value} MHz, which is {frequency.value*1e6} Hz."
-```
-
-Ways to explore:
-- How can you tell whether the frequency is tuning correctly?
-- What happens if you do `fmrx.set_center_freq(frequency.value)` without the `*1e6`?
-- What happens if you do `*1e4` instead of `*1e6`?
+This will create three UI elements:
+- A dropdown that allows the user to choose between radio buttons and a slider.
+- A slider that tunes the frequency.
+- Radio buttons that tune the frequency to one of a collection of provided options.
 
 #### Checkpoint Activity
 

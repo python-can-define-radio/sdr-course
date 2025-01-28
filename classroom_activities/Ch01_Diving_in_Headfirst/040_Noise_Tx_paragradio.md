@@ -26,52 +26,67 @@ Copy the following:
 ```python3
 ## Exercise 1
 ## Try this.
-#### In the first cell:
+#### Name the first cell "imports". Put this code:
 import marimo as mo
 from paragradio.v2025_02 import Noise_Tx
 
-#### In the second cell:
-moose = Noise_Tx()
-moose.start()
-moose.set_amplitude(1)
-moose.set_noise_type("gaussian")
-moose.set_samp_rate(sr)
+#### Name the second cell "launch". Put this code:
+Noise_Tx.config(
+    running=True,
+    center_freq=2.45e9,
+)
 ```
 
 If it runs, you should see a waterfall display. Note that it's possible to make a noise transmitter without a waterfall display. The display does not make the transmitter work better; it just provides a view of what is being transmitted.
 
-We have the same methods available as we had in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `set_center_freq()`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available.
+Many of the parameters of `config` are the same as the `SpecAn` discussed in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `center_freq`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available. Try using the "help(Noise_Tx.config)" in a marimo cell for more information.
 
 ```python3
 ## Exercise 2
-## Make a Numeric text field to control the center frequency.
-## Set the left and right limits to match the frequency range available to the HackRf One
+## Name the third cell "create_ui". 
+## Name the fourth cell "render_ui".
+## In the "create_ui" cell, add a slider to control the amplitude.
+## The parameters should have these values: 
+##   - Left Limit: 0
+##   - Right Limit: 30
+##   - Step value: 0.01
+##   - Default value: 0.5
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 3
-## Make a dropdown to control the IF gain. 
-## The options should match the HackRF One's hardware specs.
-## Note: this would require 48 options (from 0 to 47) to allow all possibilities.
-##       For the sake of saving typing, simply allow the user to pick 0, 10, 23, 35, 43, 47.
+## In the "create_ui" cell, add a `mo.ui.number` element to control the center frequency.
+## Set the left and right limits to match the frequency range available to the HackRF One.
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 4
-## Make a slider to control the filter cutoff width. 
-## The parameters should have these values: 
-    - Left Limit: 2e3
-    - Right Limit: 1e6
-    - Step value: 1e3
+## In the "create_ui" cell, add a slider to control the IF gain. 
+## The options should match the HackRF One's hardware specs.
+## Hint: we're transmitting. What are the IF gain requirements?
+## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 5
-## Make a slider to control the filter transition width. 
+## In the "create_ui" cell, add a slider to control the filter cutoff width. 
 ## The parameters should have these values: 
-    - Left Limit: 2e3
-    - Right Limit: 1e6
-    - Step value: 1e3
+##   - Left Limit: 2e3
+##   - Right Limit: 400e3
+##   - Step value: 1e3
+## Render the element in the "render_ui" cell.
+```
+
+```python3
+## Exercise 6
+## In the "create_ui" cell, add a slider to control the filter transition width. 
+## The parameters should have these values: 
+##   - Left Limit: 2e3
+##   - Right Limit: 500e3
+##   - Step value: 1e3
+## Render the element in the "render_ui" cell.
 ```
 
 #### Checkpoint Activity
