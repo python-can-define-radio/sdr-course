@@ -118,6 +118,7 @@ mo.md(f"""
 {freq_ui_elem}
 """)
 
+```
 
 This will create three UI elements:
 - A dropdown that allows the user to choose between radio buttons and a slider.
