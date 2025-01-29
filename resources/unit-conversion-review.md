@@ -101,7 +101,8 @@ print(7e3)
 ```
 ## Exercise 6
 ## a. List the numbers from 10 to 20 with a step size of 2, including both endpoints.
-## b. Same exercise, but from 3000 to 7000 with a step size of 1000. Now try doing it with scientific notation. (e.g. 3e3 is our starting point)
+## b. Same exercise, but from 3000 to 7000 with a step size of 1000.
+## Now try doing it with scientific notation. (e.g. 3e3 is our starting point)
 ## c. Same exercise, but start=2e3, stop=6e3, step=1e3.
 ## d. Same exercise, but start=8e6, stop=9e6, step=200e3.
 ## e. Same exercise, but start=2.4e9, stop=2.6e9, step=500e6.
