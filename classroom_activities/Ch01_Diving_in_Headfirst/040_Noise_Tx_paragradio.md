@@ -93,7 +93,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Exercise 7
 ## In the "create_ui" cell, add a switch element that controls whether the Noise_Tx is running.
 ## Render the element in the "render_ui" cell.
-
+```
 
 
 
