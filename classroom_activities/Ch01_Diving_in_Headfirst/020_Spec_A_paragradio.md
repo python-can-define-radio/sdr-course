@@ -166,10 +166,7 @@ SpecAn.config(
 **Notice:** In the "imports" cell, we are importing 'SpecAn' from Paragradio now instead of the "SpecAnSim" that was in the previous exercises.
 
 You should see something very similar to the simulated spectrum analyzer. The difference is that these frequencies are being measured from the universe around you!  
-If it doesn't work, ensure you have plugged in your HackRF One.
-
-![specAn.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim2.png?raw=true) 
-
+If it doesn't work, ensure you have plugged in your HackRF One.  
 The spectrum will vary depending on what activity (if any) is present on those frequencies in your area.
 
 #### Checkpoint Activity
@@ -189,15 +186,16 @@ We've seen that the spectrum analyzer's `center_freq` is settable. Here's how to
 
 ```python3
 ## Exercise 8
-## In a separate cell:
-help(SpecAn.config)
+## import cell:
+import marimo as mo
+from paragradio.v2025_03 import SpecAn
+## in a second cell:
+mo.md(SpecAn.config.__doc__)
 ```
 
-This will print the documentation string (docstring) for the `config` function:
+This will print the documentation string (docstring) for the `config` function and it should look something like this:
 
-TODO: THIS SCREENSHOT NEEDS TO BE REPLACED
-
-![docstring.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/docstring.png?raw=true) 
+![docstring.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specanhelp1.png?raw=true) 
 
 The instructor can demonstrate the usage of each parameter upon request.
 
