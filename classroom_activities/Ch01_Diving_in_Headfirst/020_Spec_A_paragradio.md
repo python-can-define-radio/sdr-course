@@ -224,6 +224,7 @@ The instructor can demonstrate the usage of each parameter upon request.
 ## In the "create_ui" cell, add a slider that controls the samp_rate. The limits should match the Hack RF's limitations.
 ## Render the element in the "render_ui" cell.
 
+```
 
 #### What to expect on the assessment
 
