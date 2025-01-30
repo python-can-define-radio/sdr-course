@@ -28,7 +28,7 @@ Copy the following:
 ## Try this.
 #### Name the first cell "imports". Put this code:
 import marimo as mo
-from paragradio.v2025_02 import Noise_Tx
+from paragradio.v2025_03 import Noise_Tx
 
 #### Name the second cell "launch". Put this code:
 Noise_Tx.config(

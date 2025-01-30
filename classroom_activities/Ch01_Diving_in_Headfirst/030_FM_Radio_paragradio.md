@@ -26,7 +26,7 @@ Copy the following:
 ## Try this.
 #### Name the first cell "imports". Put this code:
 import marimo as mo
-from paragradio.v2025_02 import WBFM_Rx
+from paragradio.v2025_03 import WBFM_Rx
 
 #### Name the second cell "launch". Put this code:
 WBFM_Rx.config(running=True)

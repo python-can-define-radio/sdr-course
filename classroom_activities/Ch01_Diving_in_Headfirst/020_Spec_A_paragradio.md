@@ -28,7 +28,7 @@ Copy the following:
 ## Try this.
 #### Name the first cell "imports". Put this code:
 import marimo as mo
-from paragradio.v2025_02 import SpecAnSim
+from paragradio.v2025_03 import SpecAnSim
 
 #### Name the second cell "launch". Put this code:
 SpecAnSim.config(running=True)
@@ -156,7 +156,7 @@ Create a new Marimo notebook and save it as **specan.py**.
 ## Try this.
 #### Name the first cell "imports". Put this code:
 import marimo as mo
-from paragradio.v2025_02 import SpecAn
+from paragradio.v2025_03 import SpecAn
 
 ## Initially let's hardcode our frequency instead of using a ui element value.
 #### Name the second cell "launch". Put this code:
@@ -238,7 +238,7 @@ For the graded assignment...
 The following code is one way to create a transmission for testing that your Hack RF is able to receive signals.
 
 ```python3
-from paragradio.v2025_02 import Noise_Tx
+from paragradio.v2025_03 import Noise_Tx
 import time
 
 def ntxconfig(ampli, ifg):
