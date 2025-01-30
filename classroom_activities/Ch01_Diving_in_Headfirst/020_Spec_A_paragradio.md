@@ -34,11 +34,9 @@ from paragradio.v2025_03 import SpecAnSim
 SpecAnSim.config(running=True)
 ```
 
-TODO: screenshot needs new code
-
 If it runs, it should look like this:
 
-![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specAnSim1.png?raw=true)  
+![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specansim1.png?raw=true)  
  
 For better viewing:
 - in order to watch the changes as you make them, and if you do not have a secondary screen available, right click on the titlebar of the running spectrum analyzer and select ***always on top***.
