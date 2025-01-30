@@ -127,6 +127,13 @@ Complete the following exercise:
 ## Change the "render_ui" cell to display the value in kHz and in GHz.
 ```
 
+```python3
+## Exercise 7
+## Create a switch.
+## Display the current True/False value of the switch.
+## Change the SpecAnSim.config so that the switch controls whether it is running.
+```
+
 Now, let's start using hardware. 
 
 #### Intro to the HackRF One
@@ -150,7 +157,7 @@ Create a new Marimo notebook and save it as **specan.py**.
 - If you don't see the "Create a new notebook" option, exit your current notebook by clicking the three lines in the top right of your screen and selecting Return home.
 
 ```python3
-## Exercise 7
+## Exercise 8
 ## Try this.
 #### Name the first cell "imports". Put this code:
 import marimo as mo
@@ -185,7 +192,7 @@ Review: Why do you think we chose 2.437 GHz? [Hint](https://hackrf.readthedocs.i
 We've seen that the spectrum analyzer's `center_freq` is settable. Here's how to see the other settable parameters:
 
 ```python3
-## Exercise 8
+## Exercise 9
 ## import cell:
 import marimo as mo
 from paragradio.v2025_03 import SpecAn
@@ -202,18 +209,18 @@ The instructor can demonstrate the usage of each parameter upon request.
 #### More exercises
 
 ```
-## Exercise 9
+## Exercise 10
 ## In the "create_ui" cell, add a slider element that controls the center frequency.
 ## Set the left limit to 400e6 and right limit to 600e6.
 ## Render the element in the "render_ui" cell.
 
 
-## Exercise 10
+## Exercise 11
 ## In the "create_ui" cell, add a switch element that controls whether the SpecAn is running.
 ## Render the element in the "render_ui" cell.
 
 
-## Exercise 11
+## Exercise 12
 ## In the "create_ui" cell, add a slider that controls the samp_rate. The limits should match the Hack RF's limitations.
 ## Render the element in the "render_ui" cell.
 
