@@ -89,7 +89,7 @@ To improve the user experience, we can add various Marimo UI elements.
 ## Exercise 7
 ## In the "create_ui" cell, add a switch element that controls whether the FM_Radio is running.
 ## Render the element in the "render_ui" cell.
-
+```
 
 <!-- ```python3
 ## Make a .... to control the squelch.
