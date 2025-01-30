@@ -61,6 +61,13 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Render the element in the "render_ui" cell.
 ```
 
+```python3
+## Exercise 5
+## In the "create_ui" cell, add a switch element that controls whether the PSK_Tx is running.
+## Render the element in the "render_ui" cell.
+```
+
+
 #### Checkpoint Activity
 
 The instructor will provide 30 minutes for students to experiment. Each student should ensure with a partner that their PSK Transmitter signal can be seen, adjust each UI element, and watch for changes in the partners view to ensure proper functionality. asking an instructor for assistance as needed.
