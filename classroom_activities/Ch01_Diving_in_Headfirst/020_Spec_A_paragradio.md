@@ -58,7 +58,7 @@ SpecAnSim.config(
 ```
 It should now look like this:
 
-## [TODO: Add Photo]
+![specAnSim.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/specansim2.png?raw=true)  
 
 What did it do? Look closely at the simspecan, then change the frequency and try again.
 
