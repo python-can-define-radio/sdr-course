@@ -69,6 +69,7 @@ To improve the user experience, we can add various Marimo UI elements.
 ## Exercise 4
 ## In the "create_ui" cell, add a dropdown to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
+## The labels for the options should be the words "zero", "eight", etc.
 ## Set the label to "IF Gain".
 ## Render the element in the "render_ui" cell.
 ```
@@ -86,7 +87,11 @@ To improve the user experience, we can add various Marimo UI elements.
 ```python3
 ## Exercise 6
 ## In the "create_ui" cell, add a `mo.ui.number` element to control the frequency offset.
-## Set the label to "Frequency Offset".
+##   - Left Limit: -2 MHz
+##   - Right Limit: 2 MHz
+##   - Step value: 5 kHz
+##   - Default value: 300 kHz
+##   - Label: "Frequency Offset"
 ## Render the element in the "render_ui" cell.
 ```
 
