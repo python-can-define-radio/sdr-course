@@ -43,14 +43,14 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Exercise 2
 ## Name the third cell "create_ui". 
 ## Name the fourth cell "render_ui".
-## In the "create_ui" cell, add a `mo.ui.number` element to control the center frequency.
+## In the "create_ui" cell, add and label `mo.ui.number` element to control the center frequency.
 ## Set the left and right limits to match the frequency range available to the HackRf One.
 ## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 3
-## In the "create_ui" cell, add a slider element to control the IF gain.  
+## In the "create_ui" cell, add a labeled slider element to control the IF gain.  
 ## The parameters should match the HackRF One's hardware specs.
 ## Render the element in the "render_ui" cell.
 ```
@@ -63,7 +63,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 
 ```python3
 ## Exercise 5
-## In the "create_ui" cell, add a switch element that controls whether the PSK_Tx is running.
+## In the "create_ui" cell, add a labeled switch element that controls whether the PSK_Tx is running.
 ## Render the element in the "render_ui" cell.
 ```
 
