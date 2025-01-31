@@ -71,7 +71,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 
 ```python3
 ## Exercise 5
-## In the "create_ui" cell, add a slider to control the filter cutoff width. 
+## In the "create_ui" cell, add a slider to control the filter cutoff frequency. 
 ## The parameters should have these values: 
 ##   - Left Limit: 2e3
 ##   - Right Limit: 400e3
