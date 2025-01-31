@@ -51,6 +51,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ##   - Right Limit: 30
 ##   - Step value: 0.01
 ##   - Default value: 0.5
+##   - Label: Amplitude
 ## Render the element in the "render_ui" cell.
 ```
 
@@ -58,6 +59,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Exercise 3
 ## In the "create_ui" cell, add a `mo.ui.number` element to control the center frequency.
 ## Set the left and right limits to match the frequency range available to the HackRF One.
+## Set the label to "Center Frequency"
 ## Render the element in the "render_ui" cell.
 ```
 
@@ -65,6 +67,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Exercise 4
 ## In the "create_ui" cell, add a slider to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
+## Set the label to "IF Gain"
 ## Hint: we're transmitting. What are the IF gain requirements?
 ## Render the element in the "render_ui" cell.
 ```
@@ -76,6 +79,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ##   - Left Limit: 2e3
 ##   - Right Limit: 400e3
 ##   - Step value: 1e3
+##   - Label: "Cutoff Frequency"
 ## Render the element in the "render_ui" cell.
 ```
 
@@ -86,12 +90,14 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ##   - Left Limit: 2e3
 ##   - Right Limit: 500e3
 ##   - Step value: 1e3
+##   - Label: "Transition width"
 ## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 7
 ## In the "create_ui" cell, add a switch element that controls whether the Noise_Tx is running.
+## Set the label to "On/Off"
 ## Render the element in the "render_ui" cell.
 ```
 
