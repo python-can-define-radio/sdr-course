@@ -32,7 +32,7 @@ from paragradio.v2025_03 import WBFM_Rx
 WBFM_Rx.config(running=True)
 ```
 
-If it runs, you should see two waterfall sinks:
+If it runs, you should see two waterfall sinks and a frequency sink:
 
 ![WBFM_Rx.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/WBFM_Rx.png?raw=true)  
 
