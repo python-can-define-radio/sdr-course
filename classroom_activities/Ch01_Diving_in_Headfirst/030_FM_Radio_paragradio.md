@@ -34,7 +34,6 @@ WBFM_Rx.config(running=True)
 
 If it runs, you should see two waterfall sinks and a frequency sink:
 
-##TODO update image to add freq sink
 ![WBFM_Rx.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/WBFM_Rx.png?raw=true)  
 
 The first waterfall sink is the spectrum as it is received from the HackRF with no software filtering.[^1] The second is the same spectrum, with software filtering to remove signals outside of the target listening region.
