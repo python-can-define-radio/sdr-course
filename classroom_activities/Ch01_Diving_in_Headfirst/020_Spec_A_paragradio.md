@@ -213,11 +213,14 @@ The instructor can demonstrate the usage of each parameter upon request.
 ## In the "create_ui" cell, add a slider element that controls the center frequency.
 ## Set the left limit to 400e6 and right limit to 600e6.
 ## Render the element in the "render_ui" cell.
+## Hint: It should look like this:
+##    mo.md(f"""{replace_this_part_with_the_name_of_the_slider}""")
 
 
 ## Exercise 11
 ## In the "create_ui" cell, add a switch element that controls whether the SpecAn is running.
 ## Render the element in the "render_ui" cell.
+## Hint: it should be inside the quotes of the mo.md() that you added in Exercise 10.
 
 
 ## Exercise 12
