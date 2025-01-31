@@ -52,27 +52,27 @@ To improve the user experience, we can add various Marimo UI elements.
 ## Exercise 2
 ## Name the third cell "create_ui". 
 ## Name the fourth cell "render_ui".
-## Create and render a `mo.ui.number` element that controls the center frequency.
+## Create and render a labeled `mo.ui.number` element that controls the center frequency.
 ## Set the left and right limits to match the US WBFM Broadcast range.
 ```
 
 ```python3
 ## Exercise 3
-## In the "create_ui" cell, add a slider to control the BB gain.
+## In the "create_ui" cell, add a labeled slider to control the BB gain.
 ## The range should match the HackRF One's hardware specs.
 ## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 4
-## In the "create_ui" cell, add a dropdown to control the IF gain. 
+## In the "create_ui" cell, add a labeled dropdown to control the IF gain. 
 ## The options should match the HackRF One's hardware specs.
 ## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 5
-## In the "create_ui" cell, add a dropdown to control the filter width. 
+## In the "create_ui" cell, add a labeled dropdown to control the filter width. 
 ## Have three options: Narrow, Normal, Wide.
 ## Those labels should correspond to filter values of
 ##   120 kHz, 160 kHz, and 200 kHz respectively.
@@ -81,13 +81,13 @@ To improve the user experience, we can add various Marimo UI elements.
 
 ```python3
 ## Exercise 6
-## In the "create_ui" cell, add a `mo.ui.number` element to control the frequency offset.
+## In the "create_ui" cell, add a labeled `mo.ui.number` element to control the frequency offset.
 ## Render the element in the "render_ui" cell.
 ```
 
 ```python3
 ## Exercise 7
-## In the "create_ui" cell, add a switch element that controls whether the FM_Radio is running.
+## In the "create_ui" cell, add a labeled switch element that controls whether the FM_Radio is running.
 ## Render the element in the "render_ui" cell.
 ```
 
