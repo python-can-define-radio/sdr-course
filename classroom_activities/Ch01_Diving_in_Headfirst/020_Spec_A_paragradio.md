@@ -73,7 +73,7 @@ Now we are going to create a slider. For this example we will start by making a 
 cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.7e6, label="Frequency")
 
 ## Create a fourth cell. Name it "render_ui". Put this code:
-mo.md(f"""{cfslider} {cfslider.value} Hz"""), ensure it is labeled.
+mo.md(f"""{cfslider} {cfslider.value} Hz""")
 ```
 Let's pause here to discuss what all of the elements of this slider mean:
  - **Start:** This is the lowest value or left most limit of the slider.
@@ -129,8 +129,9 @@ Complete the following exercise:
 
 ```python3
 ## Exercise 7
-## Create and label a switch.
+## Create a switch.
 ## Display the current True/False value of the switch.
+## Set the label to "On/Off".
 ## Change the SpecAnSim.config so that the switch controls whether it is running.
 ```
 
@@ -212,6 +213,7 @@ The instructor can demonstrate the usage of each parameter upon request.
 ## Exercise 10
 ## In the "create_ui" cell, add a slider element that controls the center frequency.
 ## Set the left limit to 400e6 and right limit to 600e6.
+## Set the label to "Center Frequency".
 ## Render the element in the "render_ui" cell.
 ## Hint: It should look like this:
 ##    mo.md(f"""{replace_this_part_with_the_name_of_the_slider}""")
@@ -219,12 +221,14 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 ## Exercise 11
 ## In the "create_ui" cell, add a switch element that controls whether the SpecAn is running.
+## Set the label to "On/Off".
 ## Render the element in the "render_ui" cell.
 ## Hint: it should be inside the quotes of the mo.md() that you added in Exercise 10.
 
 
 ## Exercise 12
 ## In the "create_ui" cell, add a slider that controls the samp_rate.
+## Set the label to "Sample Rate".
 ## The limits should match the Hack RF's limitations.
 ## Render the element in the "render_ui" cell.
 
