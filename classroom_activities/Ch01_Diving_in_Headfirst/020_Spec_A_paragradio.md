@@ -73,7 +73,7 @@ Now we are going to create a slider. For this example we will start by making a 
 cfslider = mo.ui.slider(start=92.5e6, stop=94.5e6, step=10e3, value=93.7e6, label="Frequency")
 
 ## Create a fourth cell. Name it "render_ui". Put this code:
-mo.md(f"""{cfslider} {cfslider.value} Hz""")
+mo.md(f"""{cfslider} {cfslider.value} Hz"""), ensure it is labeled.
 ```
 Let's pause here to discuss what all of the elements of this slider mean:
  - **Start:** This is the lowest value or left most limit of the slider.
@@ -129,7 +129,7 @@ Complete the following exercise:
 
 ```python3
 ## Exercise 7
-## Create a switch.
+## Create and label a switch.
 ## Display the current True/False value of the switch.
 ## Change the SpecAnSim.config so that the switch controls whether it is running.
 ```
