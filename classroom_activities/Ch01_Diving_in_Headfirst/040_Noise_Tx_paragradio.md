@@ -76,9 +76,9 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Exercise 5
 ## In the "create_ui" cell, add a slider to control the filter cutoff frequency. 
 ## The parameters should have these values: 
-##   - Left Limit: 2e3
-##   - Right Limit: 400e3
-##   - Step value: 1e3
+##   - Left Limit: 2 kHz
+##   - Right Limit: 400 kHz
+##   - Step value: 1 kHz
 ##   - Label: "Cutoff Frequency"
 ## Render the element in the "render_ui" cell.
 ```
@@ -87,9 +87,9 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## Exercise 6
 ## In the "create_ui" cell, add a slider to control the filter transition width. 
 ## The parameters should have these values: 
-##   - Left Limit: 2e3
-##   - Right Limit: 500e3
-##   - Step value: 1e3
+##   - Left Limit: 2 kHz
+##   - Right Limit: 500 kHz
+##   - Step value: 1 kHz
 ##   - Label: "Transition width"
 ## Render the element in the "render_ui" cell.
 ```
