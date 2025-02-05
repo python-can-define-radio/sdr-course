@@ -11,7 +11,7 @@ Most of us have listened to an FM Radio at least once in our lives. We may even 
 In the terminal, run these:
 
 ```
-pip install "paragradio==2025.03"
+pip install --upgrade "paragradio==2025.3.*"
 pip install marimo
 ```
 

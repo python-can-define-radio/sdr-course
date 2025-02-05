@@ -11,7 +11,7 @@ Like we stated in the spectrum analyzer lesson, most of us have listened to an F
 In the terminal, if you haven't already, run these:
 
 ```
-pip install paragradio
+pip install --upgrade "paragradio==2025.3.*"
 pip install marimo
 ```
 

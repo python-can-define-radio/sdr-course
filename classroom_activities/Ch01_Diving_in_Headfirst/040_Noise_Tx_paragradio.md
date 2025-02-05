@@ -13,7 +13,7 @@ _Disclaimer: jamming is illegal in many countries. This should only be used in a
 In the terminal, if you haven't already, run these:
 
 ```
-pip install paragradio
+pip install --upgrade "paragradio==2025.3.*"
 pip install marimo
 ```
 
