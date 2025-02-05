@@ -255,6 +255,7 @@ import time
 
 def ntxconfig(ampli, ifg):
     Noise_Tx.config(
+        running=True,
         center_freq=2.437e9,
         filter_cutoff_freq=50e3,
         filter_transition_width=50e3,
