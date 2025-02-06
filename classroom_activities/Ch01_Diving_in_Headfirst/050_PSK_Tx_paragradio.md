@@ -68,7 +68,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ```python3
 ## Exercise 5
 ## In the "create_ui" cell, add a switch element that controls whether the PSK_Tx is running.
-## Set the label to "On/Off".
+## Set the label to "Off/On".
 ## Render the element in the "render_ui" cell.
 ```
 
