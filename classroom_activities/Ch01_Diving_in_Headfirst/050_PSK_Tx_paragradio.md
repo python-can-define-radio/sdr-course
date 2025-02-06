@@ -62,6 +62,7 @@ Many of the parameters of `config` are the same as the `SpecAn` discussed in the
 ## In the "create_ui" cell, add a dropdown menu to pick between all available modulation options.
 ## Set the label to "Modulation".
 ## Render the element in the "render_ui" cell.
+## Remember to use "help(PSK_Tx_loop.config)" in a marimo cell for more information.
 ```
 
 ```python3
