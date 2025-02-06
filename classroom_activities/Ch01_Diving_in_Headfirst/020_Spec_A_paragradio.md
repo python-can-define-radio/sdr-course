@@ -131,7 +131,7 @@ Complete the following exercise:
 ## Exercise 7
 ## Create a switch.
 ## Display the current True/False value of the switch.
-## Set the label to "On/Off".
+## Set the label to "Off/On".
 ## Change the SpecAnSim.config so that the switch controls whether it is running.
 ```
 
@@ -221,7 +221,7 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 ## Exercise 11
 ## In the "create_ui" cell, add a switch element that controls whether the SpecAn is running.
-## Set the label to "On/Off".
+## Set the label to "Off/On".
 ## Render the element in the "render_ui" cell.
 ## Hint: it should be inside the quotes of the mo.md() that you added in Exercise 10.
 
