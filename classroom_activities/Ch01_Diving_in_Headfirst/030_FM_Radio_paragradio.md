@@ -98,7 +98,7 @@ To improve the user experience, we can add various Marimo UI elements.
 ```python3
 ## Exercise 7
 ## In the "create_ui" cell, add a switch element that controls whether the FM_Radio is running.
-## Set the label to "On/Off".
+## Set the label to "Off/On".
 ## Render the element in the "render_ui" cell.
 ```
 
