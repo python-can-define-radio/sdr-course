@@ -125,9 +125,9 @@ tuner_ui = mo.ui.dropdown(["radio buttons", "slider"], label="Tune using", value
 
 ## In the fourth cell:
 if tuner_ui.value == "slider":
-    freq_ui_elem = mo.ui.slider(88, 108, 0.1, label="Station", show_value=True)
+    freq_ui_elem = mo.ui.slider(88e6, 108e6, 0.1e6, label="Station", show_value=True)
 elif tuner_ui.value == "radio buttons":
-    freq_ui_elem = mo.ui.radio({"Some station": 100.1, "Another": 102.3}, label="Station", value="Another")
+    freq_ui_elem = mo.ui.radio({"Some station": 100.1e6, "Another": 102.3e6}, label="Station", value="Another")
 else:
     raise ValueError('The dropdown menu should only have exactly two options: "slider" and "radio buttons". If you see this error, it most likely means that you have a typo or capitalization error.')
 
