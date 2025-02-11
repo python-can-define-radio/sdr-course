@@ -32,6 +32,7 @@ from paragradio.v2025_03 import PSK_Tx_loop
 PSK_Tx_loop.config(
     data=[1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
     center_freq=2.43e9,
+    amplitude=1,
 )
 ```
 
