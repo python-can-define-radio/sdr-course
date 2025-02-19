@@ -128,7 +128,7 @@ Now, we're going to make the radio buttons and the slider work together.
 freqsli = mo.ui.slider(90e6, 93e6, label="Center Frequency")
 
 ## Create a new cell called "create_radio_buttons", add the following:
-favorites = mo.ui.radio({"A": 91.3e6, "B": 92.5e6}, value=freqsli.value, label="Favorite station")
+favorites = mo.ui.radio({"Use Slider": freqsli.value, "A": 91.3e6, "B": 92.5e6}, value="Use Slider", label="Favorite station")
 
 ## Render both elements in the "render_ui" cell.
 
