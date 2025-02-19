@@ -115,16 +115,7 @@ In a car radio, you often have buttons for favorite stations. We can do somethin
 ```python3
 ## Exercise 8
 ## In the "create_ui" cell, remove or comment any UI elements that control the frequency. 
-## Create a radio buttons element that controls the frequency.
-## Have the following options: "Good music", corresponding to 97.1 MHz, and "Mediocre music", corresponding to 102.7 MHz.
-## Render the element in the "render_ui" cell.
-```
-
-Now, we're going to make the radio buttons and the slider work together.
-
-```python3
-## Exercise 9
-## In the "create_ui" cell, do the following:
+## Then add the following:
 freqsli = mo.ui.slider(90e6, 93e6, label="Center Frequency")
 
 ## Create a new cell called "create_radio_buttons", add the following:
