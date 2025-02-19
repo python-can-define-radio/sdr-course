@@ -110,9 +110,41 @@ Adjust each UI element, and watch for changes in the view to ensure proper funct
 
 #### Using UI elements together
 
-In a car radio, you often have buttons for favorite stations. We can do something similar in Marimo by providing the option of using radio buttons or a slider, as shown in the following example.
+In a car radio, you often have buttons for favorite stations. We can do something similar in Marimo by providing both radio buttons and a slider, as shown in the following sequence of examples.
 
-Recommended: create a new notebook for this example called **fm_radio_buttons_and_slider.py**.
+```python3
+## Exercise 8
+## In the "create_ui" cell, remove or comment any UI elements that control the frequency. 
+## Create a radio buttons element that controls the frequency.
+## Have the following options: "Good music", corresponding to 97.1 MHz, and "Mediocre music", corresponding to 102.7 MHz.
+## Render the element in the "render_ui" cell.
+```
+
+Now, we're going to make the radio buttons and the slider work together.
+
+```python3
+## Exercise 9
+## In the "create_ui" cell, do the following:
+freqsli = mo.ui.slider(90e6, 93e6, label="Center Frequency")
+
+## Create a new cell called "create_radio_buttons", add the following:
+favorites = mo.ui.radio({"A": 91.3e6, "B": 92.5e6}, value=freqsli.value, label="Favorite station")
+
+## Render both elements in the "render_ui" cell.
+
+## In the "launch" cell, set the 
+## center_freq to `favorites.value`. This should
+## allow BOTH of the ui elements to work. Test both 
+## to ensure that they both work.
+```
+
+
+
+<details><summary>Optionally, you can create a dropdown menu that switches between `mo.ui.radio` and `mo.ui.slider`. Click here to expand to see.</summary>
+
+_Note: this will not be on our graded assignments._
+
+Recommended: create a new notebook for this example called **fm_radio_dropdown.py**.
 
 ```python3
 ## In the first cell, put your imports as mentioned above.
@@ -143,6 +175,8 @@ This will create three UI elements:
 - A dropdown that allows the user to choose between radio buttons and a slider.
 - A slider that tunes the frequency.
 - Radio buttons that tune the frequency to one of a collection of provided options.
+
+</details>
 
 #### Checkpoint Activity
 
