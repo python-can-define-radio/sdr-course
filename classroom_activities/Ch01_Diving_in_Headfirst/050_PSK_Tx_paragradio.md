@@ -30,6 +30,7 @@ from paragradio.v2025_03 import PSK_Tx_loop
 
 #### Name the second cell "launch". Put this code:
 PSK_Tx_loop.config(
+    running=True,
     data=[1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
     center_freq=2.43e9,
     amplitude=1,
