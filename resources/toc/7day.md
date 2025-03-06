@@ -14,10 +14,11 @@
 <div style=float:left>👨🏽‍🏫</div> 
 
 - [What is an SDR?](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/010_What_is_an_SDR.md)
+- Discuss [Marimo](https://github.com/python-can-define-radio/python-course/blob/main/classroom_activities/Ch02_Advanced/01_marimo.md)
 - Discuss [Spectrum Analyzer][020_Spec_A_paragradio]
-- [GQRX][015_gqrx_FM_Receive.md]
 <div style=float:left>🔬</div>
 
+- Explore [Unit conversion](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/unit-conversion-review.md)
 - Explore the [Spectrum Analyzer][020_Spec_A_paragradio]
 
 ### Day 2
@@ -44,6 +45,7 @@
 
 <div style=float:left>👨🏽‍🏫</div> 
 
+- [GQRX][015_gqrx_FM_Receive.md]
 - Discuss [Noise Transmitter][040_Noise_Jammer]
 
 <div style=float:left>🔬</div>
