@@ -234,7 +234,7 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 
 ## Exercise 13
-## In the "create_ui" cell, add a `number` element that controls the IF Gain.
+## In the "create_ui" cell, add a `number` element (not a slider) that controls the IF Gain.
 ## Set the label to "IF Gain".
 ## The limits should match the Hack RF's Receive (Rx) limitations.
 ## Render the element in the "render_ui" cell.
