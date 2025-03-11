@@ -211,7 +211,7 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 ```
 ## Exercise 10
-## In the "create_ui" cell, add a slider element that controls the center frequency.
+## In the "create_ui" cell, add a `slider` element that controls the center frequency.
 ## Set the left limit to 400e6 and right limit to 600e6.
 ## Set the label to "Center Frequency".
 ## Render the element in the "render_ui" cell.
@@ -220,14 +220,14 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 
 ## Exercise 11
-## In the "create_ui" cell, add a switch element that controls whether the SpecAn is running.
+## In the "create_ui" cell, add a `switch` element that controls whether the SpecAn is running.
 ## Set the label to "Off/On".
 ## Render the element in the "render_ui" cell.
 ## Hint: it should be inside the quotes of the mo.md() that you added in Exercise 10.
 
 
 ## Exercise 12
-## In the "create_ui" cell, add a slider that controls the samp_rate.
+## In the "create_ui" cell, add a `slider` element that controls the samp_rate.
 ## Set the label to "Sample Rate".
 ## The limits should match the Hack RF's limitations.
 ## Render the element in the "render_ui" cell.
@@ -236,6 +236,13 @@ The instructor can demonstrate the usage of each parameter upon request.
 ## Exercise 13
 ## In the "create_ui" cell, add a `number` element (not a slider) that controls the IF Gain.
 ## Set the label to "IF Gain".
+## The limits should match the Hack RF's Receive (Rx) limitations.
+## Render the element in the "render_ui" cell.
+
+
+## Exercise 14
+## In the "create_ui" cell, add a `slider` element (not a slider) that controls the BB Gain.
+## Set the label to "BB Gain".
 ## The limits should match the Hack RF's Receive (Rx) limitations.
 ## Render the element in the "render_ui" cell.
 
