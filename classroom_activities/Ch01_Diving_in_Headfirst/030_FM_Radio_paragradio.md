@@ -133,7 +133,7 @@ favorites = mo.ui.radio({"Use Slider": freqsli.value, "A": 91.3e6, "B": 92.5e6},
 
 <details><summary>Optionally, you can create a dropdown menu that switches between `mo.ui.radio` and `mo.ui.slider`. Click here to expand to see.</summary>
 
-_Note: this will not be on our graded assignments._
+## _Note: this method should not be used on our graded assignments._
 
 Recommended: create a new notebook for this example called **fm_radio_dropdown.py**.
 
