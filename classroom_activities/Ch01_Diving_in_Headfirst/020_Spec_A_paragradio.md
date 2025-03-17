@@ -220,7 +220,7 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 
 ## Exercise 11
-## In the "create_ui" cell, add a `switch` element that controls whether the SpecAn is running.
+## In the "create_ui" cell, add a `switch` element (not a slider) that controls whether the SpecAn is running.
 ## Set the label to "Off/On".
 ## Render the element in the "render_ui" cell.
 ## Hint: it should be inside the quotes of the mo.md() that you added in Exercise 10.
@@ -241,12 +241,30 @@ The instructor can demonstrate the usage of each parameter upon request.
 
 
 ## Exercise 14
-## In the "create_ui" cell, add a `slider` element (not a slider) that controls the BB Gain.
+## In the "create_ui" cell, add a `slider` element that controls the BB Gain.
 ## Set the label to "BB Gain".
 ## The limits should match the Hack RF's Receive (Rx) limitations.
 ## Render the element in the "render_ui" cell.
 
+
 ```
+
+#### Hardware baseband filter
+
+This allows you to filter the signal in the HackRF One hardware before it reaches the software portion.
+
+```
+## Exercise 15
+## In the "create_ui" cell, add a `slider` element that controls the Hardware baseband filter.
+## Set the label to "HW_BB_filt".
+## The limits should match the Hack RF's limitations.
+## Render the element in the "render_ui" cell.
+
+
+```
+
+The value used represents the cutoff frequency for the hardware filter, that is, the distance from the center frequency that filtering begins.
+![hw_bb_filter_illustration.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/hw_bb_filt_illustration.png?raw=true)  
 
 #### What to expect on the assessment
 
