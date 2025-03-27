@@ -145,8 +145,8 @@ Your instructor will...
 - Discuss the [HackRF documentation](https://hackrf.readthedocs.io/en/latest/), including...
   - The [Block diagram](https://hackrf.readthedocs.io/en/latest/_images/block-diagram.png)
   - The [Sample rate limitations and Frequency range](https://hackrf.readthedocs.io/en/latest/hackrf_one.html#features)[^1]
-  - The [Gain limitations](https://hackrf.readthedocs.io/en/latest/faq.html#what-gain-controls-are-provided-by-hackrf)
-  - The [Transmit power limitations](https://hackrf.readthedocs.io/en/latest/faq.html#what-is-the-transmit-power-of-hackrf)
+  - The [Gain limitations](https://hackrf.readthedocs.io/en/latest/setting_gain.html#setting-gain-controls-for-rx)
+  - The [Transmit power limitations](https://hackrf.readthedocs.io/en/latest/hackrf_one.html#typical-maximum-transmit-power)
 
 ### Spectrum Analyzer
 
