@@ -36,7 +36,7 @@ If it runs, you should see two waterfall sinks and a frequency sink:
 
 ![WBFM_Rx.png](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/WBFM_Rx.png?raw=true)  
 
-The first waterfall sink is the spectrum as it is received from the HackRF with no software filtering.[^1] The second is the same spectrum, with software filtering to remove signals outside of the target listening region. The frequency sink shows the same unfiltered signal as the first waterfall.
+The first waterfall sink is the spectrum as it is received from the HackRF with no software filtering.[^1] The second is the same spectrum, with software filtering to remove signals outside of the target listening region. The frequency sink shows the same signal as the first waterfall, before software filtering.
 
 Many of the parameters of `config` are the same as the `SpecAn` discussed in the [Spectrum Analyzer Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch01_Diving_in_Headfirst/020_Spec_A_paragradio.md), such as `center_freq`. There are also a few new ones. As before, we recommend investigating and experimenting with each to learn what functionality is available. Try using the "help(WBFM_Rx.config)" in a marimo cell for more information.
 
