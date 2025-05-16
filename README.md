@@ -12,7 +12,7 @@ This is an in-progress collection of tutorials about the foundations of Software
 
 ## Possible hardware:
 
-- [HackRF One](https://hackrf.readthedocs.io/en/latest/faq.html) (half duplex)
-- [PlutoSDR](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html#eb-overview) (full duplex)
-- [RTL-SDR](https://www.rtl-sdr.com/) (receive only)
-- Nooelec NESDR SMArt (receive only)
+ - [RTL-SDR](https://www.rtl-sdr.com/) -- Top recommendation due to low cost; receive only
+ - [PlutoSDR](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html#eb-overview)  -- Second recommendation due to full-duplex ability
+ - [HackRF One](https://hackrf.readthedocs.io/en/latest/faq.html) -- half-duplex
+ - Nooelec NESDR SMArt: receive only
