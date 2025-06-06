@@ -34,7 +34,7 @@
 - If you still do not hear any static you may need to adjust your gain slider on the Audio pane (bottom right within gqrx).  
 
 - **Frequency**  
-  - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88 to 108 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
+  - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88.1 to 107.9 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
   - HOW: gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (a tab on the right side).
   - In the spectrum view, clicking on the top of the numbers increases, and clicking on the bottom of the numbers decreases the frequency.  
   - In the Frequency box of the Receiver Options pane, it would be typed: `98000.000 kHz`.

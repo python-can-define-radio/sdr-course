@@ -76,8 +76,8 @@ Exercise 2
 
 ```
 ## Exercise 4
-## The channels for a particular radio frequency band range from 88 MHz to 108 MHz with a spacing of 200 kHz.
-## a. The first channel spans from 88.0 MHz to ___ MHz.
+## The channels for a particular radio frequency band range from 88.1 MHz to 107.9 MHz with a spacing of 200 kHz.
+## a. The first channel spans from 88.1 MHz to ___ MHz.
 ## b. The center of the first channel is ____ MHz.
 ## c. The second channel spans from _____ to ____ MHz.
 ## d. The center of the second channel is ____ MHz.
