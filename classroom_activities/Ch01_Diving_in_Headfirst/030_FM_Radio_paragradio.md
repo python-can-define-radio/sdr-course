@@ -90,7 +90,7 @@ To improve the user experience, we can add various Marimo UI elements.
 ##   - Left Limit: -2 MHz
 ##   - Right Limit: 2 MHz
 ##   - Step value: 5 kHz
-##   - Default value: 300 kHz
+##   - Default value: 0 kHz
 ##   - Label: "Frequency Offset"
 ## Render the element in the "render_ui" cell.
 ```
