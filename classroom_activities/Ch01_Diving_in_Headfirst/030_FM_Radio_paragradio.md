@@ -54,7 +54,7 @@ To improve the user experience, we can add various Marimo UI elements.
 ## Name the fourth cell "render_ui".
 ## Create and render a `mo.ui.number` element that controls the center frequency.
 ## Set the label to "Center Frequency".
-## Set the left and right limits to match the US WBFM Broadcast range.
+## Set the left and right limits to match the US WBFM Broadcast range taking into account the 200 kHz channel width.
 ```
 
 ```python3
