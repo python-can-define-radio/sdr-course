@@ -74,6 +74,7 @@ Exercise 2
 ## d. 342 MHz = ___ GHz
 ```
 
+<!-- 
 ```
 ## Exercise 4
 ## The channels for a particular radio frequency band range from 88.1 MHz to 107.9 MHz with a spacing of 200 kHz.
@@ -84,6 +85,7 @@ Exercise 2
 ## e. The center of the third, fourth, fifth, and sixth channels are ____, ____, ____, ____.
 ## f. (optional, may require Internet research) In the United States, these are channels that are licensed for ____.
 ```
+-->
 
 
 ```python3
@@ -151,6 +153,7 @@ d. 0.342 GHz
 
 </details>
 
+<!-- 
 <details><summary>Exercise 4 Answers:</summary>
 
 ```
@@ -163,6 +166,7 @@ f. FM Radio
 ```
 
 </details>
+-->
 
 <details><summary>Exercise 5 Answers:</summary>
 
