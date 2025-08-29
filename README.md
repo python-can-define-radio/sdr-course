@@ -13,6 +13,7 @@ This is an in-progress collection of tutorials about the foundations of Software
 ## Possible hardware:
 
  - [RTL-SDR](https://www.rtl-sdr.com/) -- Top recommendation due to low cost; receive only
+ - [Tiny Spectrum Analyzer](https://www.tinysa.org/) -- Second lowest cost (around $90); built-in screen; can transmit and receive. From what we can tell, it doesn't have full SDR capabilities, but it's great for scanning.
  - [PlutoSDR](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html#eb-overview)  -- Second recommendation due to full-duplex ability
  - [HackRF One](https://hackrf.readthedocs.io/en/latest/faq.html) -- half-duplex
  - Nooelec NESDR SMArt: receive only
