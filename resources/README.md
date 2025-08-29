@@ -1,7 +1,7 @@
 # Resources
 
 - [Using Cheap Software Defined Radios to Track Drones and Jammers](https://www.youtube.com/watch?v=nNEHPiEcCMY), from TREX LABS
-- [How does Software Defined Radio (SDR) work under the Hood? SDR Tutorial](https://www.youtube.com/watch?v=xQVm-YTKR9s)
+- [How does Software Defined Radio (SDR) work under the Hood? SDR Tutorial](https://www.youtube.com/watch?v=xQVm-YTKR9s), from Andreas Spiess
 - ["HackRF as the best SDR friend for hackers"](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers/), from Ivan Glinkin. A very long page with a lot of useful info, including...
   - [Frequency bands](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872452): a summary of what you'll find on each band
   - [Hacking a doorbell](https://www.ivanglinkin.com/hackrf-as-the-best-sdr-friend-for-hackers#_Toc143872468)
