@@ -15,6 +15,7 @@
 - In terminal type `pip install cython`. 
   
 - In terminal type `pip install "urh==2.9.4"`.
+<!-- ensure pyqt5 version 5.14.1 is installed. The newest version is failing on the build wheel -->
 
 - In terminal type `pip install --upgrade numpy`.
 
