@@ -12,14 +12,14 @@
 
 - Make sure your defaults are set by clicking the `Edit` button and using the following information:  
 
-### Carrier section:  
+#### Carrier section:  
 
   | | |
   |-------|-----|
   |Frequency:| 10.0|
   |Phase:| 0.000°|  
 
-### Data (raw bits) section:
+#### Data (raw bits) section:
 
   | | |
   |-------|-----|
@@ -27,7 +27,7 @@
   |Samples per Symbol:| 200000|
   |Sample Rate (Sps):| 2.0M| 
 
-### Modulation section:
+#### Modulation section:
 
   | | |
   |-------|-----|
@@ -35,17 +35,23 @@
   |Bits per Symbol:| 1|
   |Amplitudes in %:| 0/100|
 
+<!-- pandoc-only ### TODO TODO TODO TODO TODO  -->
+
 - Close the `Edit` window.
 
 - On the right side under "Generated Data" in the white space right-click and select `add empty message`.
 
 - Type in 32 and hit `ok`.
 
+<!-- pandoc-only ### TODO TODO TODO TODO TODO  -->
+
 - At the bottom right of the window select `ASCII` from the `viewtype` dropdown menu.
 
 - This is what your generated data window should now look like.
 
 ![generated_data.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/generated_data.png?raw=true) 
+
+<!-- pandoc-only ### TODO TODO TODO TODO TODO  -->
 
 - Notice that the 32 bit message we selected is now showing up as 4 bytes in the generated data window.
 
@@ -56,6 +62,8 @@
     - Alternatively, you can just copy and paste the character above.
  
 - The next step would be to add a simple 3 letter word in the remaining slots. The cursor control is unconventional: you must press `Tab` after each character to move the focus to the next character slot.
+
+<!-- pandoc-only ### TODO TODO TODO TODO TODO  -->
 
 - It should now look like this
 
