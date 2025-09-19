@@ -1,12 +1,4 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 May 22: 090_Record_a_real_signal.md
-</pre>
-</details>
-
 # Record a signal using URH 📻
-
-ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
 
 - The first thing you will need when recording a signal is to know what frequency you want to record.
 
@@ -55,7 +47,7 @@
 
 - https://github.com/jopohl/urh
 
-## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p>
+## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p> <!-- pandoc-exclude-line --> 
 
 
 ### Footnotes

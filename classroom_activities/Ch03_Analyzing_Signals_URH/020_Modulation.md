@@ -1,15 +1,3 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 May 22: 020_Modulation.md
-</pre>
-</details>
-
-ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
-
-You may remember that we introduced the idea of [Modulation](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch02_Basics/020_Sample_Rates_Intro.md#what-is-modulation) in a previous lesson. 
-
-In this section, we will visually show you what those modulation techniques look like using urh.
-
 # Demonstrate Modulation using URH 📻
 
 - There are 3 basic types of modulation we will demonstrate.
@@ -29,14 +17,14 @@ In this section, we will visually show you what those modulation techniques look
 
 - Set it up something like this to start:
 
-### Carrier section:
+#### Carrier section:
 
   | | |
   |-------|-----|
   |Frequency:| 10.0|
   |Phase:| 0.000°|  
 
-### Data (raw bits) section:
+#### Data (raw bits) section:
 
   | | |
   |-------|-----|
@@ -44,7 +32,7 @@ In this section, we will visually show you what those modulation techniques look
   |Samples per Symbol:| 200000|
   |Sample Rate (Sps):| 2.0M| 
 
-### Modulation section:
+#### Modulation section:
 
   | | |
   |-------|-----|
@@ -118,4 +106,4 @@ In this section, we will visually show you what those modulation techniques look
 
 - https://github.com/jopohl/urh
 
-## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/010_Install_URH.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/030_Generate_a_signal.md)</p>
+## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/010_Install_URH.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/030_Generate_a_signal.md)</p> <!-- pandoc-exclude-line --> 

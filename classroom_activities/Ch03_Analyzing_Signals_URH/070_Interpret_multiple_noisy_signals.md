@@ -1,13 +1,4 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 May 22: 060_Interpret_multiple_noisy_signals.md
-2023 July 10: 070_Interpret_multiple_noisy_signals.md
-</pre>
-</details>
-
 # Interpret a signal using URH 📻
-
-ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
 
 - Launch urh and open your folder.
 
@@ -47,4 +38,4 @@
 |6|  Crop the signal to eliminate the portion without data.|
 |7|  Verify all settings.|
 
-## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/060_Cropping_a_signal.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p>
+## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/060_Cropping_a_signal.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p> <!-- pandoc-exclude-line --> 

@@ -1,13 +1,4 @@
-
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 May 22: 040_Interpret_unknown_signal.md
-</pre>
-</details>
-
 # Interpret a signal using URH 📻
-
-ℹ️ This material coincides with material from SDR slideshow A (slides 7-8, 14, 20, 22, 25, 28-32, 34-39, 40-46).
 
 - Launch urh and open your folder.
 
@@ -73,4 +64,4 @@ print(generate_ook_modulated_example_file.__doc__)
 
 - https://github.com/jopohl/urh
 
-## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/030_Generate_a_signal.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md)</p>
+## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/030_Generate_a_signal.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md)</p> <!-- pandoc-exclude-line --> 
