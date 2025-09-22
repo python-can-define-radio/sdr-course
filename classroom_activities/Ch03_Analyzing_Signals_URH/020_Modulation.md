@@ -15,9 +15,7 @@
 - Then select `Edit` at the bottom of the urh window.
 - This opens a popup showing a carrier signal, some raw data, and what the signal would look like combined with the data.
 
-### Settings
-
-Table: Modulation settings
+### Modulation settings
 
   | | |
   |-------|-----|
@@ -130,7 +128,6 @@ Table: Modulation settings
 <div class="column">
 
 - In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
-- It should look something like this:
 
 </div>
 <div class="column">
@@ -155,6 +152,8 @@ Table: Modulation settings
 </div>
 </div>
 
+<!-- pandoc-only ### PSK Modulation -->
+
 - This simple example is known as Binary Phase Shift Keying or BPSK.
     - Other examples of PSK
         - QPSK (2 bits per symbol)
@@ -162,8 +161,8 @@ Table: Modulation settings
         - 16QAM (4 bits per symbol)
           - ℹ️ Note: 16QAM involves modulating both the phase and the amplitude. This is currently outside of urh's capability.
 
-### Some useful resources for urh:
+### Some useful resources for urh <!-- pandoc-exclude-line --> 
 
-- https://github.com/jopohl/urh
+- https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 
 ## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/010_Install_URH.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/030_Generate_a_signal.md)</p> <!-- pandoc-exclude-line --> 

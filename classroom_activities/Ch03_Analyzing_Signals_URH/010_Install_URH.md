@@ -13,25 +13,31 @@
 
 - In terminal type `urh` to launch the program.
 
-- If you get an error when launching urh type `source ~/.profile`.
+- If you get an error when launching urh type `source ~/.profile` then relaunch by typing `urh` again.
 
-- Relaunch by typing `urh` again.
+### Launch screen
 
-- It should look something like this:
+<div class="columns">
+<div class="column">
+
+- At the top left of urh 
+    - Select `File > Open folder` or use the keyboard shortcut `Ctrl + Shift + O`.
+    - Navigate to the Desktop.
+    - Select/Create a folder to store your files.
+    - Select Open at the top right of the Open folder popup.
+    - When it asks if you want to make it a project folder select No.
+
+</div>
+<div class="column">
 
 ![urh launched](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/urh_screenshot.png?raw=true)  
 
-- At the top left of urh select `File > Open folder` or the keyboard shortcut (Ctrl + Shift + O).
+</div>
+</div>
 
-- Navigate to your folder created on the Desktop.
+### Some useful resources for urh <!-- pandoc-exclude-line --> 
 
-- Select Open at the top right of the Open folder popup.
-
-- When it asks if you want to make it a project folder select No.
-
-### Some useful resources for urh:
-
-- https://github.com/jopohl/urh  
+- https://github.com/jopohl/urh  <!-- pandoc-exclude-line --> 
 
 ## <p align="center">[Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md)</p> <!-- pandoc-exclude-line --> 
   
