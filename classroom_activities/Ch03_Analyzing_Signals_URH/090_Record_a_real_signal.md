@@ -43,9 +43,9 @@
     - Generate and Transmit using Python [pcdr OOK transmit][010_pcdr_ook_tx_intro]  
     - Use GUIZero to create up/down/left/right buttons to control car
 
-### ℹ️ Some useful resources for urh:
+### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
 
-- https://github.com/jopohl/urh
+- https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 
 ## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p> <!-- pandoc-exclude-line --> 
 

@@ -63,8 +63,8 @@ from pcdr.v0_compat import generate_ook_modulated_example_file
 generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True)
 ```
 
-### ℹ️ Some useful resources for urh:
+### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
 
-- https://github.com/jopohl/urh
+- https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 
 ## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/040_Interpret_unknown_signal.md)  --------  [Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/060_Cropping_a_signal.md)</p> <!-- pandoc-exclude-line --> 

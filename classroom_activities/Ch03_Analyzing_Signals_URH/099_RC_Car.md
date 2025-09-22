@@ -89,3 +89,7 @@ Optionally, you can add a selector in the middle on to allow choosing from multi
 
 ## To edit the data file prior to replay (Optional)
 Linux OS users might find and use **"inspectrum"** software to edit the data file(s) recorded from the RC vehicled remote control unit.  The software may be available on github.com or another source.  Other software might be found having suitable capabilitiees.  The student or end-user will need to determine the suitability and appropriateness of any software he or she loads.
+
+### ℹ️ Some useful resources for urh:
+
+- https://github.com/jopohl/urh
