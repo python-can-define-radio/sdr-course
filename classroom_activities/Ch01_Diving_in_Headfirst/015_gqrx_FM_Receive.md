@@ -1,29 +1,40 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 Aug 18: 050_gqrx_FM_Receive.md
-2023 May 22: 040_gqrx_FM_Receive.md
-</pre>
-</details>
+# SDR: Receiving
 
-# gqrx FM Receive  
+<!-- pandoc-only ### Purpose -->
+### Summary  <!-- pandoc-exclude-line -->
 
-ℹ️ This material coincides with material from SDR slideshow B (slides 69-80).
+Gqrx is an SDR program that can receive, view, and demodulate signals. This lesson provides basic familiarity with Gqrx.
 
-⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
-### Initial setup    
+<!-- pandoc-only ### Outcome -->
+
+<!-- pandoc-only By the end of this lesson, students will be able to: -->
+<!-- pandoc-only - Launch Gqrx -->
+<!-- pandoc-only - Configure basic settings in Gqrx -->
+<!-- pandoc-only - Listen to FM Radio using Gqrx -->
+
+<!-- pandoc-only ### Learning Step Activities -->
+
+<!-- pandoc-only - LSA 1: Launch Gqrx -->
+<!-- pandoc-only - LSA 2: Configure basic settings in Gqrx -->
+<!-- pandoc-only - LSA 3: Listen to FM Radio using Gqrx -->
+
+### <!-- pandoc-only LSA 1: --> Launch Gqrx
 - Attach an SDR device, e.g. a HackRF One, to your computer
 - Open a terminal (command line interface or CLI) window on your 🖥️ computer.  
-- The first time you launch gqrx you may want to reset to its default settings using the terminal command below.  
+- The first time you launch gqrx, you may want to reset to its default settings using the terminal command below.  
   `$ gqrx -r`  (Note: "$" represents your command prompt.  Do not type it.)
-- On the Configure I/O devices window select the "device" dropdown menu.
-  - Choose the first HackRF entry which should look something like this:  
-  - HackRF HackRF One `123456f` (The numbers will be part of a device identifier.) 
+
+### Configuration
+- On the "Configure I/O devices" window, in the "Device" dropdown menu, choose the first HackRF entry.  
+  It should look something like this:  
+  `HackRF HackRF One 123456f` (The numbers identify the device.) 
   <!-- - Change the input rate to `20000000` Hz (20 MHz). -->
   - Press the "OK" button at the bottom.
 - Maximize or make your gqrx window as large as is practical.
 
 ### Settings 
 - Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
+- ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
 - Set gain levels (amplification) for SDR system -- Go to right side of window.  Select "Input controls".  Set these parameters:
   - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️ 
   - IF gain: 32 (intermediate freqency gain)  -- may be varied
