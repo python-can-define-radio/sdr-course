@@ -1,4 +1,6 @@
-# SDR: Receiving
+<!-- pandoc-only % SDR: Receiving -->
+
+# Introduction to Gqrx  <!-- pandoc-exclude-line -->
 
 <!-- pandoc-only ### Purpose -->
 ### Summary  <!-- pandoc-exclude-line -->
