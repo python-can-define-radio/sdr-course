@@ -1,62 +1,83 @@
 # Demonstrate Modulation using URH 📻
 
+### Types of Modulation
+
 - There are 3 basic types of modulation we will demonstrate.
     - Amplitude Shift Keying (ASK)
     - Frequency Shift Keying (FSK)
     - Phase Shift Keying (PSK)
 
+### Instructions
+
 - Open a terminal window.
-  
 - Type `urh` to launch the program.
-  
 - Select the Generator tab at the top of urh window.
-
 - Then select `Edit` at the bottom of the urh window.
-
 - This opens a popup showing a carrier signal, some raw data, and what the signal would look like combined with the data.
 
-- Set it up something like this to start:
+### Settings
 
-#### Carrier section:
+Table: Modulation settings
 
   | | |
   |-------|-----|
   |Frequency:| 10.0|
   |Phase:| 0.000°|  
-
-#### Data (raw bits) section:
-
-  | | |
-  |-------|-----|
   |Data:| 1010110010101100|
   |Samples per Symbol:| 200000|
   |Sample Rate (Sps):| 2.0M| 
-
-#### Modulation section:
-
-  | | |
-  |-------|-----|
   |dropdown menu ▾|Amplitude Shift Keying (ASK)|
   |Bits per Symbol:| 1|
   |Amplitudes in %:| 0/100|
 
+### ASK Modulation
+
+<div class="columns">
+<div class="column">
+
 - It should look something like this:
-    - ASK should be pretty easy determining the difference between a 1 and a 0.
-   
-![ASK_modulated_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/ASK_modulated_signal.png?raw=true)
+- ASK should be pretty easy determining the difference between a 1 and a 0.
+
+</div>
+<div class="column">
+
+![ASK modulated signal](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/ASK_modulated_signal.png?raw=true)
+
+</div>
+</div>
+
+<!-- pandoc-only ### ASK Modulation -->
+
+<div class="columns">
+<div class="column">
 
 - Now on the modulated signal click and drag to try to highlight a single bit (1 or 0).
-    - Notice the Samples selected should be around 200000 which lines up with our Samples per Symbol setting above.
+- Notice the Samples selected should be around 200000 which lines up with our Samples per Symbol setting above.
 
-![singlebithighlighted.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/singlebithighlighted.png?raw=true)
+</div>
+<div class="column">
+
+![single bit highlighted](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/singlebithighlighted.png?raw=true)
+
+</div>
+</div>
+
+<!-- pandoc-only ### ASK Modulation -->
+
+<div class="columns">
+<div class="column">
 
 - You can also adjust the Amplitudes in % value which essentially changes the value/height/amplitude of a "0".
 
-![amplitude25%.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/amplitude25%25.png?raw=true)
+</div>
+<div class="column">
 
-- Try changing the modulation.
+![percentage of amplitude](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/amplitude25%25.png?raw=true)
 
-  ### Modulation section:
+</div>
+</div>
+
+### New Modulation settings
 
   | | |
   |-------|-----|
@@ -64,20 +85,38 @@
   |Bits per Symbol:| 1|
   |Frequencies in Hz:|20/200|
   
+### FSK Modulation
+
+<div class="columns">
+<div class="column">
+
 - What do you see different?
 
-![fsk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/fsk_modulation.png?raw=true)
+</div>
+<div class="column">
+
+![FSK modulated signal](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/fsk_modulation.png?raw=true)
+
+</div>
+</div>
+
+<!-- pandoc-only ### FSK Modulation -->
+
+<div class="columns">
+<div class="column">
 
 - To determine Samples per Symbol of FSK highlight the smallest section of a single frequency that you can find.
-    - This becomes harder and harder the closer the frequencies are to each other.
+- This becomes harder and harder the closer the frequencies are to each other.
 
-![fsk_highlight.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/fsk_highlight.png?raw=true)
+</div>
+<div class="column">
 
-- The last thing we are going to look at is Phase Shift Keying (PSK).
+![single bit highlighted](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/fsk_highlight.png?raw=true)
 
-- Try this:
+</div>
+</div>
 
-  ### Modulation section:
+### New Modulation settings:
 
   | | |
   |-------|-----|
@@ -85,15 +124,36 @@
   |Bits per Symbol:| 1|
   |Phases in degree:|0/180 or 180/0|
   
+### PSK Modulation
+
+<div class="columns">
+<div class="column">
+
+- In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
 - It should look something like this:
-  
-![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/psk_modulation.png?raw=true)
+
+</div>
+<div class="column">
+
+![PSK modulated signal](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/psk_modulation.png?raw=true)
+
+</div>
+</div>
+
+<!-- pandoc-only ### PSK Modulation -->
+
+<div class="columns">
+<div class="column">
 
 - To determine Samples per Symbol of PSK highlight the smallest portion of the signal between phase changes that you can find.
 
-![psk_modulation.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/psk_highlight.png?raw=true)
+</div>
+<div class="column">
 
-- In Phase Shift Keying the change of phase marks the shift between a 1 and a 0.
+![single bit highlighted](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/psk_highlight.png?raw=true)
+
+</div>
+</div>
 
 - This simple example is known as Binary Phase Shift Keying or BPSK.
     - Other examples of PSK
@@ -102,7 +162,7 @@
         - 16QAM (4 bits per symbol)
           - ℹ️ Note: 16QAM involves modulating both the phase and the amplitude. This is currently outside of urh's capability.
 
-### ℹ️ Some useful resources for urh:
+### Some useful resources for urh:
 
 - https://github.com/jopohl/urh
 
