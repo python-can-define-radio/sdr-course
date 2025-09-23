@@ -1,4 +1,4 @@
-# Cropping a noisy signal using URH 📻
+# <!-- pandoc-only LSA 6: --> Cropping a noisy signal using URH 📻
 
 ### Download file
 

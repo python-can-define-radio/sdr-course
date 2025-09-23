@@ -1,4 +1,4 @@
-# Generate a signal using URH 📻
+# <!-- pandoc-only LSA 3: --> Generate a signal using URH 📻
 
 ### Modulation settings
 

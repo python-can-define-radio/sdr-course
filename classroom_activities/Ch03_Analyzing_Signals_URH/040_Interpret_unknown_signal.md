@@ -1,4 +1,4 @@
-# Interpret a signal using URH 📻
+# <!-- pandoc-only LSA 4: --> Interpret a signal using URH 📻
 
 ### Download signal
 

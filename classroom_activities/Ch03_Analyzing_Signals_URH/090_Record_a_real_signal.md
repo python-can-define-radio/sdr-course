@@ -1,4 +1,4 @@
-# Record a signal using URH 📻
+# <!-- pandoc-only LSA 8: --> Record a signal using URH 📻
 
 ### Record a signal 
 

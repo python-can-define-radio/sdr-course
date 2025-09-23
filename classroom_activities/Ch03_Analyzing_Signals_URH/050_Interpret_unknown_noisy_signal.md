@@ -1,4 +1,4 @@
-# Interpret a noisy signal using URH 📻
+# <!-- pandoc-only LSA 5: --> Interpret a noisy signal using URH 📻
 
 ### Download file
 

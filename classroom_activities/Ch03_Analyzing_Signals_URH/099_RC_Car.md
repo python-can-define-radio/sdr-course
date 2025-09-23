@@ -1,4 +1,4 @@
-# RC Car
+# <!-- pandoc-only LSA 8: --> RC Car
 
 ## Disclaimer
 

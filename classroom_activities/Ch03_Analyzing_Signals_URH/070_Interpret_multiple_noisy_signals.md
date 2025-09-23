@@ -1,4 +1,4 @@
-# Interpret multiple noisy signals using URH 📻
+# <!-- pandoc-only LSA 7: --> Interpret multiple noisy signals using URH 📻
 
 ### Download the file
 
