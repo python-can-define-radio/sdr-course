@@ -9,7 +9,7 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file from github [unknown_signal_1.complex](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_1.complex). 
+- Download the following file from github [unknown signal 1](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_1.complex). 
 
 - Put it in your folder.
     - You may have other files showing than the ones you see here.
@@ -17,7 +17,7 @@
 </div>
 <div class="column">
 
-![unknown_signal_1.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/unknown_signal_1.png?raw=true) 
+![unknown signal 1](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/unknown_signal_1.png?raw=true) 
 
 </div>
 </div>
@@ -65,7 +65,7 @@
 <div class="columns">
 <div class="column">
 
-- If you actually highlighted a single 1 or 0 then we can now change our settings to 50 Samples/Symbol and 1 Bit(s)/Symbol.
+- If you actually highlighted a single 1 or 0 then we can now change our settings to 50 Samples/Symbol and 1 Bits/Symbol.
 
 - Now ensure your settings are correct.
     - ⚠️ Your settings may be different.

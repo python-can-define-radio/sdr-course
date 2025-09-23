@@ -2,7 +2,7 @@
 
 ### Record a signal 
 
-- The first thing you will need when recording a signal is to know what frequency you want to record.
+- When recording a signal you need to know what frequency you want to record.
 
 - Open File>Record signal.
 

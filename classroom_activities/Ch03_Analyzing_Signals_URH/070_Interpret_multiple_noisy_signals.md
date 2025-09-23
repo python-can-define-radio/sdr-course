@@ -6,11 +6,11 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file from github [unknown_signal_4.complex](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_4.complex).
+- Download the following file from github [unknown signal 4](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_4.complex).
 
 - Put it in your folder.
 
-- The first thing we need to do is seperate and save each signal.
+- The first thing we need to do is separate and save each signal.
 
 ### Interpret the signal
 

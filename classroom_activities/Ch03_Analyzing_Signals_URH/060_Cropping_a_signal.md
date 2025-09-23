@@ -6,7 +6,7 @@
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file from github [unknown_signal_3.complex](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_3.complex).
+- Download the following file from github [unknown signal 3](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_3.complex).
 
 - Put it in your folder.
 
@@ -43,12 +43,12 @@
 <div class="columns">
 <div class="column">
 
-    - Right-click in the signal window and select `Crop to selection`.
+- Right-click in the signal window and select `Crop to selection`.
 
 </div>
 <div class="column">
 
-![crop to selection](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/crop.png?raw=true)
+![Crop to selection](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/crop.png?raw=true)
 
 </div>
 </div>

@@ -2,23 +2,23 @@
 
 ### Download the file
 
-- So far all we have evaluated are ASK signals lets change that up.
+- So far all we have evaluated are ASK signals lets change that.
 
 - Launch urh and open your folder.
 
 - Click on the Interpretation tab at the top of the urh window.
 
-- Download the following file (link provided) from github [unknown_signal_5.complex](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_5.complex).
+- Download the following file from github [unknown signal 5](https://github.com/python-can-define-radio/sdr-course/raw/main/classroom_activities/Ch03_Analyzing_Signals_URH/unknown_signal_5.complex).
 
 - Put it in your folder.
 
-- The first thing we need to do is seperate and save each signal.
+- The first thing we need to do is separate and save each signal.
 
 ### Interpret the signal
 
-- The second thing we need to do is clean up each [`noisy`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md) signal by adding a filter.
-    - Before adding a filter to each signal right-click and select `Configure filter bandwidth` and select `Narrow` at 0.01Hz then click ok.
+- Before adding a filter to each signal right-click and select `Configure filter bandwidth` and select `Narrow` at 0.01Hz then click ok.
     - The closer your signals are to each other the narrower your filter bandwidth should be.
+- Now clean up each [`noisy`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md) signal by adding a filter.
 
 - Go back to Signal View `Analog` and determine signals [`modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md).
 
