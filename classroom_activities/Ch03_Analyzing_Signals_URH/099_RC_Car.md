@@ -69,12 +69,13 @@ osmocom source  -->  Band pass filter -->
 <!-- pandoc-only ### Parameters -->
 
 - File sink:
-  - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`. Do NOT pick a `.grc` file. <details><summary>Details if you're curious:</summary> When faced with a file-picking dialog, beginners will often navigate to the current `.grc` file. This is definitely not what you want -- as soon as you run the flowgraph, it will overwrite the saved flowgraph file with the data that you're recording.
-       
-       Instead, I recommend picking a directory for your file, and naming it `my_gnu_recording.iqdata`. The file extension can be anything you want (GNU Radio will treat it the same regardless), but `.iqdata` seems somewhat common in the SDR community.  
-        A good example may look like this:  
-        `/home/yourusername/Desktop/my_gnu_recording.iq`
-</details>
+  - File name: Pick using the "...". Make sure to pick a file that does NOT exist. One good name could be `my_car_recording.iqdata`. Do NOT pick a `.grc` file.
+  <details><summary>Details if you're curious:</summary> When faced with a file-picking dialog, beginners will often navigate to the current `.grc` file. This is definitely not what you want -- as soon as you run the flowgraph, it will overwrite the saved flowgraph file with the data that you're recording. <!-- pandoc-exclude-line -->
+  - Instead, I recommend picking a directory for your file, and naming it `my_gnu_recording.iqdata`. <!-- pandoc-exclude-line -->
+  - The file extension can be anything you want (GNU Radio will treat it the same regardless), but `.iqdata` seems somewhat common in the SDR community. <!-- pandoc-exclude-line -->
+        A good example may look like this:  <!-- pandoc-exclude-line -->
+        `/home/yourusername/Desktop/my_gnu_recording.iq` <!-- pandoc-exclude-line -->
+</details> <!-- pandoc-exclude-line -->
 
 ### rc_car_replay.grc:
 
