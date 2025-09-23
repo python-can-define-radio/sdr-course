@@ -1,4 +1,4 @@
-# Interpret a signal using URH 📻
+# Interpret multiple noisy signals using URH 📻
 
 - Launch urh and open your folder.
 

@@ -1,4 +1,4 @@
-# Interpret a signal using URH 📻
+# Cropping a noisy signal using URH 📻
 
 - Launch urh and open your folder.
 

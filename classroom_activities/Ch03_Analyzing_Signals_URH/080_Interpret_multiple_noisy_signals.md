@@ -1,4 +1,4 @@
-# Interpret signals using URH 📻
+# Interpret multiple noisy signals using URH 📻
 
 - So far all we have evaluated are ASK signals lets change that up.
 
