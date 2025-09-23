@@ -1,11 +1,18 @@
 # Record a signal using URH 📻
 
+### Record a signal 
+
 - The first thing you will need when recording a signal is to know what frequency you want to record.
 
 - Open File>Record signal.
 
 - On the Device dropdown menu select HackRF.
-  -  Note: if you do not see HackRF, see the troubleshooting in footnote 1.
+- If you do not see the HackRF device option, do the following:
+    - Go to the main URH window, and click Edit > Options.
+    - Check the checkbox for HackRF.
+    - If the checkbox is unavailable, downgrade your urh version to 2.9.4 by running the following command in a terminal: `pip install "urh==2.9.4"`
+
+<!-- pandoc-only ### Record a signal -->
 
 - On the Device Identifier click the green refresh button. 🔄 (It is green, I couldn't find a more accurate emoji)
 
@@ -21,41 +28,35 @@
 
 - Set your BB Gain to 40.
 
-- It should now look like this:
+<!-- pandoc-only ### Record a signal -->
 
-![record_signal.png](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/record_signal.png?raw=true) 
+<div class="columns">
+<div class="column">
+
+- It should now look like this:
 
 - Press start when you are ready to begin recording.
     - Hint: Make sure that whoever is transmitting has their message on repeat.
     - You will only need to record for 3-5 seconds or the file will be large.
- 
+
+</div>
+<div class="column">
+
+![Record Signal View](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/Images/record_signal.png?raw=true) 
+
+</div>
+</div>
+
+<!-- pandoc-only ### Record a signal -->
+
 - Now you can go to the Interpretation tab and use what you learned previously to Demodulate the message.
 
 - Once you have been successful feel free to partner up with a classmate and try to generate and send your own messages that your partner can Demodulate.
-
-### Optional exercise
-
-- Incorporate RC Car with URH:  
-  - Simple Record and Replay  
-  - Demodulate and generate:  
-    - Record (Make sure you're offset to avoid DC Spike)  
-    - Demod (Get zeros and ones; use URH's Generate tab to verify)  
-    - Generate and Transmit using Python [pcdr OOK transmit][010_pcdr_ook_tx_intro]  
-    - Use GUIZero to create up/down/left/right buttons to control car
 
 ### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 
 ## <p align="center">[&larr; Previous Lesson](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/080_Interpret_multiple_noisy_signals.md)</p> <!-- pandoc-exclude-line --> 
-
-
-### Footnotes
-
-Footnote 1: Troubleshooting: If you do not see the HackRF device option, do the following:
-  - Go to the main URH window, and click Edit > Options.
-  - Check the checkbox for HackRF.
-    - If the checkbox is unavailable, try downgrading to urh version 2.9.4 by running the following command in a terminal: `pip install "urh==2.9.4"`
-
 
 [010_pcdr_ook_tx_intro]: https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch04_Analyzing_Signals_Python/010_pcdr_ook_tx_intro.md

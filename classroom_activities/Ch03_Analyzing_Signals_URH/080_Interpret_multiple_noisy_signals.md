@@ -35,7 +35,7 @@
 ### Order of operations for analyzing a signal
 
 |    | Step |
-|----|------|
+|----|----------------------------------------------------------------------|
 |  1 |  Separate signals.|
 |  2 |  Apply a bandpass filter to eliminate unwanted signal (noise).|
 |  3 |  Determine the signal's modulation scheme.|
