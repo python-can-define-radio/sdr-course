@@ -1,4 +1,11 @@
-# Install Universal Radio Hacker (URH) 📻
+<!-- pandoc-only % SDR: Modulation -->
+
+<!-- pandoc-only ### Purpose -->
+
+<!-- pandoc-only The purpose of this lesson is to practice modulating and demodulating signals using a Software Defined Radio (SDR). -->
+
+
+# <!-- pandoc-only LSA 1: --> Install Universal Radio Hacker (URH) 📻
 
 ### Initial setup   
 
