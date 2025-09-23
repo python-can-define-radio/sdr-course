@@ -18,7 +18,6 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 
 <!-- pandoc-only - LSA 1: Launch Gqrx -->
 <!-- pandoc-only - LSA 2: Configure basic settings in Gqrx -->
-<!-- pandoc-only - LSA 3: Listen to FM Radio using Gqrx -->
 
 ### <!-- pandoc-only LSA 1: --> Launch Gqrx
 - Attach an SDR device, e.g. a HackRF One, to your computer
@@ -34,7 +33,7 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
   - Press the "OK" button at the bottom.
 - Maximize or make your gqrx window as large as is practical.
 
-### Settings 
+### <!-- pandoc-only LSA 2: --> Configure basic settings in Gqrx
 - Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
 - ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**  
 - Set gain levels (amplification) for SDR system -- Go to right side of window.  Select "Input controls".  Set these parameters:

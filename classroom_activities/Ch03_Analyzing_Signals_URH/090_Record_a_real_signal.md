@@ -2,7 +2,7 @@
 
 ### Record a signal 
 
-- When recording a signal you need to know what frequency you want to record.
+- You need to know what frequency you want to record.
 
 - Open File>Record signal.
 
@@ -10,15 +10,17 @@
 - If you do not see the HackRF device option, do the following:
     - Go to the main URH window, and click Edit > Options.
     - Check the checkbox for HackRF.
-    - If the checkbox is unavailable, downgrade your urh version to 2.9.4 by running the following command in a terminal: `pip install "urh==2.9.4"`
+    - If the checkbox is unavailable, downgrade your urh version to 2.9.4.
+        - Run this command in a terminal: `pip install "urh==2.9.4"`
 
 <!-- pandoc-only ### Record a signal -->
 
-- On the Device Identifier click the green refresh button. 🔄 (It is green, I couldn't find a more accurate emoji)
+- On the Device Identifier click the green refresh button.
+    - 🔄 It is green, I couldn't find a more accurate emoji.
 
 - Set your Frequency (Hz) to 2.45G (GigaHertz).
 
-- Set you Sample Rate (Sps) to 2.0 Million.
+- Set your Sample Rate (Sps) to 2.0 Million.
 
 - Set your Bandwidth (Hz) to 2.0 Million.
 
