@@ -65,8 +65,11 @@
 ### Add the preamble
 
 - Now, add the « character which will serve as a preamble of 10101011 in the first slot, so we will know when our useful data begins.  
-    - The Ubuntu keyboard shortcut: Ctl + Shift + u, then release. Type `ab`. Press enter.
-    - The Windows keyboard shortcut: Alt + 0171 then release.
+    - The Ubuntu keyboard shortcut:
+      - Ctl + Shift + u, then release
+      - Type `ab` and press enter
+    - The Windows keyboard shortcut:
+      - Alt + 0171 then release
     - Alternatively, you can just copy and paste the « character.
  
 ### Add the message

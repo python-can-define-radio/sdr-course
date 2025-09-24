@@ -19,7 +19,8 @@
 <div class="columns">
 <div class="column">
 
-- Change the Signal View to `Spectrogram`. (You should see something like this)
+- Change the Signal View to `Spectrogram`. 
+- You should see something like this.
 
 </div>
 <div class="column">
@@ -51,7 +52,9 @@
 
 - Now somewhere in the reddish area right-click and select `Apply bandpass filter (filter bw=0.08)`.
 
-- Now you should see both signals in the window like this (don't worry if your filtered signal looks different).
+- Now you should see both signals in the window like this.
+
+- Don't worry if your filtered signal looks different.
 
 </div>
 <div class="column">
