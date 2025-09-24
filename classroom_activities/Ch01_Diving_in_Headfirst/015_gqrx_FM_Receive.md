@@ -91,7 +91,17 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 
   - ⚠️ **Remember to respect your fellow classmates (audio level). They may be trying to work as well.**  
 
-### ℹ️ Resources for gqrx and HackRF One
+### ℹ️ Resources for gqrx and HackRF One <!-- pandoc-exclude-line -->
+
+<!-- pandoc-only ### Summary -->
+
+<!-- pandoc-only In summary, you learned: -->
+
+<!-- pandoc-only - How to launch Gqrx -->  
+<!-- pandoc-only - How to configure basic settings in Gqrx -->  
+<!-- pandoc-only - How to listen to FM Radio using Gqrx -->
+
+<!-- pandoc-only ### References -->
 
 - https://gqrx.dk/
 - https://hackrf.readthedocs.io/en/latest/index.html

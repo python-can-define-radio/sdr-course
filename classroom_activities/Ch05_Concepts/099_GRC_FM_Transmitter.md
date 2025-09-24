@@ -109,3 +109,15 @@ WS = Waterfall sink
     - `Audio Source -> Device Name -> "pulse_monitor"`
     - `Audio Source -> sample rate -> 48000`
     - `Rational Resampler -> Decimation -> 48000`
+
+<!-- pandoc-only ### Summary -->
+
+<!-- pandoc-only In summary, you learned: -->
+
+<!-- pandoc-only - How to launch GRC -->  
+<!-- pandoc-only - How to configure flowgraph parameters in GRC -->  
+<!-- pandoc-only - How to transmit FM Radio using GRC -->
+
+<!-- pandoc-only ### References -->
+
+<!-- pandoc-only - https://wiki.gnuradio.org/index.php/Main_Page -->

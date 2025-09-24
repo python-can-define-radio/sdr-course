@@ -113,6 +113,19 @@ Optionally, you can add a selector in the middle to allow choosing from multiple
 
 ### ℹ️ Some useful resources for urh  <!-- pandoc-exclude-line --> 
 
-<!-- pandoc-only ### Resources -->
+<!-- pandoc-only ### Summary -->
+
+<!-- pandoc-only In summary, you learned: -->
+
+<!-- pandoc-only - How to install Universal Radio Hacker (URH) -->
+<!-- pandoc-only - How to demonstrate Modulation using URH -->
+<!-- pandoc-only - How to generate a signal using URH -->
+<!-- pandoc-only - How to interpret a signal using URH -->
+<!-- pandoc-only - How to interpret a noisy signal using URH -->
+<!-- pandoc-only - How to cropp a noisy signal using URH -->
+<!-- pandoc-only - How to interpret multiple noisy signals using URH -->
+<!-- pandoc-only - How to record a signal using URH -->
+
+<!-- pandoc-only ### References -->
 
 - https://github.com/jopohl/urh
