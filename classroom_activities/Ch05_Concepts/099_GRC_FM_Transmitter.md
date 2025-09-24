@@ -1,74 +1,95 @@
-<details><summary><i>Naming history (click to expand)</i></summary>
-<pre>
-2023 Aug 18: 040_GRC_FM_Transmitter.md
-2023 May 22: 030_GNU_Radio_FM_Transmitter.md
-2022 Aug 30: 250-GNU-Radio-FM-Transmitter.md
-2022 Aug 08: 150-GNU-Radio-FM-Transmitter.md
-</pre>
-</details>
+<!-- pandoc-only % SDR: Transmitting -->
 
-# GRC FM Transmitter
+# GRC FM Transmitter  <!-- pandoc-exclude-line -->
 
-## Disclaimer
+<!-- pandoc-only ### Purpose -->
+### Summary  <!-- pandoc-exclude-line -->
+
+GNU Radio Companion (GRC) is an SDR program that can transmit, receive, view, and demodulate signals. This lesson provides basic familiarity with GRC.
+
+<!-- pandoc-only ### Outcome -->
+
+<!-- pandoc-only By the end of this lesson, students will be able to: -->  
+<!-- pandoc-only - Launch GRC -->  
+<!-- pandoc-only - Configure flowgraph parameters in GRC -->  
+<!-- pandoc-only - Transmit FM Radio using GRC -->
+
+<!-- pandoc-only ### Learning Step Activities -->
+
+<!-- pandoc-only - LSA 1: Launch GRC -->  
+<!-- pandoc-only - LSA 2: Configure flowgraph parameters in GRC -->  
+<!-- pandoc-only - LSA 3: Transmit FM Radio using GRC -->
+
+# <!-- pandoc-only LSA 1: --> Launch GRC
+
+### Disclaimer
 
 Broadcasting without a license is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
 
-## Summary
+### Flowgraph Diagram
 
 ```
 GUI Range
-
-Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
-                                                          ⟶  Waterfall sink
+WFS -> RR -> WBFM T -> Os S
+                    -> WS
 ```
+&nbsp;  
+WFS = Wav File Source  
+RR = Rational Resampler  
+WBFM T = WBFM Transmit  
+Os S = Osmocom sink  
+WS = Waterfall sink
 
-- Have a (working) slider to pick the frequency that you're tuning in to. Working means the HackRF changes frequency when the slider changes
-- Modulate the sound and transmit it
+# <!-- pandoc-only LSA 2: --> Configure flowgraph parameters in GRC
 
+### Parameters
 
-## How to set the Parameters
+<!-- pandoc-only ::: notes -->
 
-### For the `samp_rate` variable (_already in the flowgraph_):
+<!-- pandoc-only sample rate variable is already in the flowgraph -->
 
-- Value: `2e6`
+<!-- pandoc-only ::: -->
 
-### For the GUI Range:
+- `samp_rate` variable 
+    - Value: `2e6`
 
-- Id: `center_freq_slider`
-- Default Value: `98.5e6`
-- Start: `88e6`
-- Stop: `108e6`
-- Step: `10e3`
+- GUI Range:
+    - Id: `center_freq_slider`
+    - Default Value: `98.5e6`
+    - Start: `88e6`
+    - Stop: `108e6`
+    - Step: `10e3`
 
-### For the Wav File Source:
+<!-- pandoc-only ### Parameters -->
 
-- _NOTE: You can use a Audio Source instead if you'd like. See notes at the bottom of this page._
-- File: Pick a file by pressing the "..." button. It must be a wav file, not an mp3, etc. You can find wav files [here](https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi).
+- Wav File Source:
+    - _NOTE: You can use a Audio Source instead if you'd like. See notes at the bottom of this page._
+    - File: Pick a file by pressing the "..." button. It must be a wav file, not an mp3, etc. You can find wav files [here](https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi).
+    - Repeat: Up to you; do you want it to repeat?
 
-- Repeat: Up to you; do you want it to repeat?
+<!-- pandoc-only ### Parameters -->
 
-### For the Rational Resampler:
+- Rational Resampler:
+    - Type: `Float -> Float (Real Taps)`
+    - Interpolation: `int(samp_rate)`
+    - Decimation: This should match the sample rate that you'll find in the properties of the wav file. If you can't find the sample rate, put `int(60e3)` (which is 60000 Hz, or 60 kHz). The song will probably play too fast; adjust to make the song sound normal. 
 
-- Type: `Float -> Float (Real Taps)`
-- Interpolation: `int(samp_rate)`
-- Decimation: This should match the sample rate that you'll find in the properties of the wav file. If you can't find the sample rate, put `int(60e3)` (which is 60000 Hz, or 60 kHz). The song will probably play too fast; adjust to make the song sound normal. 
+- Waterfall Sink:
+    - Leave all as defaults.
 
-### For the WBFM Transmit:
+<!-- pandoc-only ### Parameters -->
 
-- Audio Rate: `int(samp_rate)`
-- Quadrature Rate: `int(samp_rate)`
+- WBFM Transmit:
+    - Audio Rate: `int(samp_rate)`
+    - Quadrature Rate: `int(samp_rate)`
 
-### For the Osmocom Sink:
+- Osmocom Sink:
+    - Device Arguments: `"hackrf=0"`
+    - Ch0: Frequency (Hz): `center_freq_slider`
+    - Ch0: RF Gain (dB): `0`
+    - Ch0: IF Gain (dB): `32`
+    - Ch0: BB Gain (dB): `0`
 
-- Device Arguments: `"hackrf=0"`
-- Ch0: Frequency (Hz): `center_freq_slider`
-- Ch0: RF Gain (dB): `0`
-- Ch0: IF Gain (dB): `32`
-- Ch0: BB Gain (dB): `0`
-
-### For the Waterfall Sink:
-
-- Leave all as defaults.
 
 ### Discussion
 
@@ -76,10 +97,12 @@ Wav File Source  ⟶  Rational Resampler  ⟶  WBFM Transmit  ⟶  Osmocom sink
 
 ### Using an Audio Source
 
-You have two options:
-1. Simply using an `Audio Source` block allows you to use a microphone as your source. You'll leave the "Device Name" empty, and set the "Sample Rate" to 48 kHz. You'll also set the `Rational Resampler`'s Decimation to 48000.
-2. You can also use an `Audio Source` block with a special configuration to broadcast whatever is currently playing on your computer:
-    1. Do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
-    2. In your `Audio Source` block, for the Device Name, put "pulse_monitor".
-    3. Set the `Audio Source`'s sample rate to 48000.
-    4. Set the `Rational Resampler`'s Decimation to 48000.
+- Using an `Audio Source` block allows you to use a microphone.  
+    - `Audio Source -> Device Name -> empty`
+    - `Audio Source -> Sample Rate -> 48000`
+    - `Rational Resampler's -> Decimation -> 48000`
+- You can also use an `Audio Source` block to broadcast whatever is currently playing on your computer.
+    - Do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
+    - `Audio Source -> Device Name -> "pulse_monitor"`
+    - `Audio Source -> sample rate -> 48000`
+    - `Rational Resampler's -> Decimation -> 48000`
