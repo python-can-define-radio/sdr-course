@@ -1,8 +1,31 @@
 <!-- pandoc-only % SDR: Modulation -->
 
+<!--
+Note regarding what goes in the quad chart:
+
+Action: Discuss Modulation in the context of Software Defined Radios.
+Standard: Students will be able to explain modulation.
+
+
+Evaluation: Check on Learning
+-->
+
 <!-- pandoc-only ### Purpose -->
 
 <!-- pandoc-only The purpose of this lesson is to practice modulating and demodulating signals using a Software Defined Radio (SDR). -->
+
+<!-- pandoc-only ### Outcome -->
+
+<!-- pandoc-only Students will be able to explain modulation. -->
+
+<!-- pandoc-only ### Learning Step Activities -->
+
+<!-- pandoc-only - LSA 1: Install Universal Radio Hacker (URH) -->
+<!-- pandoc-only - LSA 2: Fill -->
+<!-- pandoc-only - LSA 3: Fill -->
+<!-- pandoc-only - LSA 4: Fill -->
+<!-- pandoc-only - LSA 5: Fill -->
+<!-- pandoc-only - LSA 6: Fill -->
 
 
 # <!-- pandoc-only LSA 1: --> Install Universal Radio Hacker (URH) 📻
