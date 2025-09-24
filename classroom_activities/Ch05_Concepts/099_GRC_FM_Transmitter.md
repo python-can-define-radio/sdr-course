@@ -101,6 +101,9 @@ WS = Waterfall sink
     - `Audio Source -> Device Name -> empty`
     - `Audio Source -> Sample Rate -> 48000`
     - `Rational Resampler -> Decimation -> 48000`
+
+<!-- pandoc-only ### Using an Audio Source -->
+
 - You can also use an `Audio Source` block to broadcast whatever is currently playing on your computer.
     - Do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
     - `Audio Source -> Device Name -> "pulse_monitor"`
