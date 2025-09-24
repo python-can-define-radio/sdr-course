@@ -14,15 +14,14 @@
 
 - The first thing we need to do is separate and save each signal.
 
-### Interpret the signal
-
 - Before adding a filter to each signal right-click and select `Configure filter bandwidth` and select `Narrow` at 0.01Hz then click ok.
     - The closer your signals are to each other the narrower your filter bandwidth should be.
+
+### Interpret the signal
+
 - Now clean up each [`noisy`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md) signal by adding a filter.
 
 - Go back to Signal View `Analog` and determine signals [`modulation`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md).
-
-<!-- pandoc-only ### Interpret the signal -->
 
 - The next thing we need to do is set the [`Center`](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/050_Interpret_unknown_noisy_signal.md).
 

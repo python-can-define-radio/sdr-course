@@ -109,7 +109,7 @@ File Source  -->  osmocom sink
 - File Source:
   - Pick your `.iqdata` file (must make the recording first).
   
-Optionally, you can add a selector in the middle on to allow choosing from multiple recordings.
+Optionally, you can add a selector in the middle to allow choosing from multiple recordings.
 
 ### To edit the data file prior to replay
 
