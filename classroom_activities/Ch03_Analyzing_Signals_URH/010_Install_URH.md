@@ -21,12 +21,13 @@ Evaluation: Check on Learning
 <!-- pandoc-only ### Learning Step Activities -->
 
 <!-- pandoc-only - LSA 1: Install Universal Radio Hacker (URH) -->
-<!-- pandoc-only - LSA 2: Fill -->
-<!-- pandoc-only - LSA 3: Fill -->
-<!-- pandoc-only - LSA 4: Fill -->
-<!-- pandoc-only - LSA 5: Fill -->
-<!-- pandoc-only - LSA 6: Fill -->
-
+<!-- pandoc-only - LSA 2: Demonstrate Modulation using URH -->
+<!-- pandoc-only - LSA 3: Generate a signal using URH -->
+<!-- pandoc-only - LSA 4: Interpret a signal using URH -->
+<!-- pandoc-only - LSA 5: Interpret a noisy signal using URH -->
+<!-- pandoc-only - LSA 6: Cropping a noisy signal using URH -->
+<!-- pandoc-only - LSA 7: Interpret multiple noisy signals using URH -->
+<!-- pandoc-only - LSA 8: Record a signal using URH -->
 
 # <!-- pandoc-only LSA 1: --> Install Universal Radio Hacker (URH) 📻
 
@@ -70,5 +71,3 @@ Evaluation: Check on Learning
 - https://github.com/jopohl/urh  <!-- pandoc-exclude-line --> 
 
 ## <p align="center">[Next Lesson &rarr;](https://github.com/python-can-define-radio/sdr-course/blob/main/classroom_activities/Ch03_Analyzing_Signals_URH/020_Modulation.md)</p> <!-- pandoc-exclude-line --> 
-  
-
