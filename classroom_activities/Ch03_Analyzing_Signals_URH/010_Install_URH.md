@@ -44,7 +44,9 @@ Evaluation: Check on Learning
 
 - In terminal type `urh` to launch the program.
 
-- If you get an error when launching urh type `source ~/.profile` then relaunch by typing `urh` again.
+- If you get an error when launching urh:
+    - Type `source ~/.profile` and hit Enter.
+    - Relaunch by typing `urh` again.
 
 ### Launch screen
 
@@ -52,7 +54,7 @@ Evaluation: Check on Learning
 <div class="column">
 
 - At the top left of urh 
-    - Select `File > Open folder` or use the keyboard shortcut `Ctrl + Shift + O`.
+    - Select `File > Open folder` or use the shortcut `Ctrl + Shift + O`.
     - Navigate to the Desktop.
     - Select/Create a folder to store your files.
     - Select Open at the top right of the Open folder popup.

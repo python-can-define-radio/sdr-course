@@ -10,8 +10,8 @@
 - If you do not see the HackRF device option, do the following:
     - Go to the main URH window, and click Edit > Options.
     - Check the checkbox for HackRF.
-    - If the checkbox is unavailable, downgrade your urh version to 2.9.4.
-        - Run this command in a terminal: `pip install "urh==2.9.4"`
+    - Downgrade your urh version to 2.9.4 if HackRF is unavailable.
+        - Run this command in a terminal: `pip install "urh==2.9.4"`.
 
 <!-- pandoc-only ### Record a signal -->
 

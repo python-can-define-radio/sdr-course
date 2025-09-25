@@ -33,8 +33,7 @@
 <div class="columns">
 <div class="column">
 
-- It should look something like this:
-- ASK should be pretty easy determining the difference between a 1 and a 0.
+- What is the difference between a 1 and a 0?
 
 </div>
 <div class="column">
@@ -155,7 +154,7 @@
 <!-- pandoc-only ### PSK Modulation -->
 
 - This simple example is known as Binary Phase Shift Keying or BPSK.
-    - Other examples of PSK
+    - Other examples of PSK:
         - QPSK (2 bits per symbol)
         - 8PSK (3 bits per symbol)
         - 16QAM (4 bits per symbol)

@@ -7,7 +7,7 @@
 
 - Click on the Generator tab at the top of the urh window.
 
-- Verify your defaults are set by clicking the `Edit` button and using the table information 
+- Verify your defaults are set by clicking the `Edit` button and using the table information.
 
 - Close the `Edit` window.
 
@@ -33,7 +33,7 @@
 <div class="columns">
 <div class="column">
 
-- In the white space under "Generated Data"
+- In the white space under "Generated Data":
   - right-click and select `add empty message`.
   - Type in 32 and hit `ok`.
   - At the bottom right select `ASCII` from the `viewtype` dropdown menu.
@@ -66,10 +66,10 @@
 
 - Now, add the « character which will serve as a preamble of 10101011 in the first slot, so we will know when our useful data begins.  
     - The Ubuntu keyboard shortcut:
-      - Ctl + Shift + u, then release
-      - Type `ab` and press enter
+      - Press `Ctl + Shift + u`, then release.
+      - Type `ab` and press enter.
     - The Windows keyboard shortcut:
-      - Alt + 0171 then release
+      - Press `Alt + 0171` then release.
     - Alternatively, you can just copy and paste the « character.
  
 ### Add the message
@@ -116,7 +116,7 @@
 - Select the Interpretation tab.
     - Click and drag the file to the grey space on the right.
     - Ensure your settings match the picture.
-    - Change the  `Show data as` dropdown menu to `ASCII`
+    - Change the  `Show data as` dropdown menu to `ASCII`.
 
 </div>
 <div class="column">
