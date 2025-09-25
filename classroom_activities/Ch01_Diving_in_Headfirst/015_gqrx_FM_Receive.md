@@ -23,35 +23,32 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 
 ### Launch Gqrx
 
-- Attach an SDR device, e.g. a HackRF One, to your computer
-- Open a terminal (command line interface or CLI) window on your 🖥️ computer.  
-- The first time you launch gqrx, you may want to reset to its default settings using the terminal command below.  
-  `$ gqrx -r`  (Note: "$" represents your command prompt.  Do not type it.)
-
-<!-- pandoc-only ### Launch Gqrx -->
-
+- Attach an SDR device, e.g. a HackRF One, to your computer.
+- Open a terminal window on your 🖥️ computer.
+- The first time you launch gqrx, reset it to its default settings.
+  - Use the terminal command `$ gqrx -r`.
+  - Note: "$" represents your command prompt.  Do not type it.
 - On the "Configure I/O devices" window, in the "Device" dropdown menu, choose the first HackRF entry.  
-  It should look something like this:  
-  `HackRF HackRF One 123456f` (The numbers identify the device.) 
-  <!-- - Change the input rate to `20000000` Hz (20 MHz). -->
+  - It should look something like this:  
+    - `HackRF HackRF One 123456f` 
   - Press the "OK" button at the bottom.
-- Maximize or make your gqrx window as large as is practical.
+
 
 # <!-- pandoc-only LSA 2: --> Configure basic settings in Gqrx
 
 <!-- pandoc-only ### Configure Gqrx settings -->
 
-- Check the audio volume level on your computer.  Set it to low or moderate as a starting point.
-- ⚠️ **Remember to respect your fellow classmates (audio level) they may be trying to work as well.**
-- Set gain levels (amplification) for SDR system -- Go to right side of window.  Select "Input controls".  Set these parameters:
-  - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️ 
-  - IF gain: 32 (intermediate freqency gain)  -- may be varied
-  - BB gain: 50 (baseband gain)  -- may be varied
+- Set the computer's volume to low or moderate as a starting point.
+- ⚠️ **Remember to respect your fellow classmates (audio level)**.
+- Click the ▶️ Play button in the top left under "File".
+- Select "Input controls" on the right and set these parameters:
+  - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️
+  - IF gain: 32 (intermediate freqency gain)
+  - BB gain: 50 (baseband gain)
 
 <!-- pandoc-only ### Configure Gqrx settings -->
 
-- Click the ▶️ Play button in the top left under "File".
-- Adjust sound as necessary.
+- Adjust these settings **other than RF** to improve your sound quality.
 - You should see some static (noise) and spikes in the spectrum display.
 - If you do not hear any static ensure your 🖥️ computer audio settings are enabled.
 - If you still do not hear any static you may need to adjust your audio gain slider within the Audio pane.  
@@ -59,16 +56,17 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 <!-- pandoc-only ### Configure Gqrx settings -->
 
 - **Frequency**  
-  - Tune your frequency to `98.000.000`, which means 98 Million Hz, or 98 MHz. (This should allow you to see everything from 88.1 to 107.9 MHz "The FM band".) (Note: periods are used in place of commas to separate place values for one thousand, one million, etc.)
-  - HOW: gqrx can be tuned either in the spectrum view window or in the Receiver Options pane (a tab on the right side).
+  - Tune your frequency to 98 Million Hz, or 98 MHz.
+  - Gqrx can be tuned either in the spectrum view window or in the Receiver Options pane.
   - In the spectrum view, clicking on the top of the numbers increases, and clicking on the bottom of the numbers decreases the frequency.
+    - Alternatively, you can you the mouse center wheel when the cursor is on that digit.
   - In the Frequency box of the Receiver Options pane, it would be typed: `98000.000 kHz`.
 
 <!-- pandoc-only ### Configure Gqrx settings -->
 
 - **Squelch**  
-  - With your mouse, click anywhere on the spectrum where there is no spike present.
-  - In the receiver options pane (on the right), click the <kbd>A</kbd> button (short for automatic) next to "Squelch".
+  - Click anywhere on the spectrum where there is no spike present.
+  - In the receiver options pane, click the <kbd>A</kbd> button next to "Squelch".
   - This will readjust the noise floor dB level from `-150` dB to somewhere between `-60` dB and `-80` dB depending on the amount of "noise" present, and the speakers should go silent.
 - **Mode**
   - Using the dropdown menu next to "Mode", select Wideband Frequency Modulation (WFM), either mono or stereo.
@@ -82,9 +80,6 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
   - Other than the RF gain, feel free to play around with the settings. You can always reset to default configuration with the `$ gqrx -r` terminal command.
 
 <!-- pandoc-only ### Configure Gqrx settings -->
-
-- **Optional**
-  - You can increase the decimation in the Configure I/O devices window to get better view of the tuned frequency. Ask for a demonstration if this is unclear.  
 
 - **Warnings**
   - ⚠️ **Keep the RF gain at zero.** ⚠️  
