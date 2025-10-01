@@ -36,7 +36,28 @@ GNU Radio Companion (GRC) is an SDR program that can transmit, receive, view, an
 
 Broadcasting without a license is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
 
-### Flowgraph Diagram
+### What is GNU Radio?
+
+"GNU Radio is a free & open-source software development toolkit that provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in research, industry, academia, government, and hobbyist environments to support both wireless communications research and real-world radio systems. _(Source: gnuradio.org/about)_
+
+### What is GNU Radio Companion?
+
+GNU Radio Companion (GRC) is the Graphical User Interface (GUI) that we'll be using to build GNU Radio programs, which are called Flowgraphs.
+- GRC generates Python code that is executed to control the radio hardware.
+- It's possible to use GNU Radio by writing Python code directly, but the GRC GUI is used more often in the SDR community.
+
+### How to use GRC
+
+When using GRC, this is the usual workflow:
+1. Find blocks using Ctrl + F
+2. Connect blocks by clicking on the in and out ports
+3. Adjust parameters by double-clicking blocks
+
+For practice, you may try the "Your First Flowgraph" tutorial found here: https://wiki.gnuradio.org/index.php/Tutorials
+
+### GRC Flowgraph for an FM Transmitter
+
+Build this in GRC:
 
 ```
 GUI Range
@@ -56,7 +77,7 @@ WS = Waterfall sink
 
 <!-- pandoc-only ::: notes -->
 
-<!-- pandoc-only sample rate variable is already in the flowgraph -->
+Note: the samp_rate variable is already in the flowgraph.
 
 <!-- pandoc-only ::: -->
 
@@ -73,8 +94,8 @@ WS = Waterfall sink
 <!-- pandoc-only ### Parameters -->
 
 - Wav File Source:
-    - _NOTE: You can use a Audio Source instead if you'd like. See notes at the bottom of this page._
-    - File: Pick a file by pressing the "..." button. It must be a wav file, not an mp3, etc. You can find wav files [here](https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi).
+    - _NOTE: You can use a Audio Source instead if you'd like. See endnotes._
+    - File: Pick a file by pressing the "..." button. It must be a wav file (not an mp3, etc). You can find wav files [here](https://github.com/adafruit/Adafruit-Sound-Samples/tree/master/sonic-pi).
     - Repeat: Up to you; do you want it to repeat?
 
 <!-- pandoc-only ### Parameters -->
@@ -107,18 +128,28 @@ WS = Waterfall sink
 
 ### Using an Audio Source
 
-- Using an `Audio Source` block allows you to use a microphone.  
-    - `Audio Source -> Device Name -> empty`
-    - `Audio Source -> Sample Rate -> 48000`
-    - `Rational Resampler -> Decimation -> 48000`
+You can replace the Wav File Source with an Audio Source in order to...
 
-<!-- pandoc-only ### Using an Audio Source -->
+- Transmit from a microphone
+- Transmit the audio that your computer is playing
 
-- You can also use an `Audio Source` block to broadcast whatever is currently playing on your computer.
-    - Do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
-    - `Audio Source -> Device Name -> "pulse_monitor"`
-    - `Audio Source -> Sample Rate -> 48000`
-    - `Rational Resampler -> Decimation -> 48000`
+### Transmitting from the microphone
+
+- Audio Source:
+    - Device Name: ""
+    - Sample Rate: 48000
+- Rational Resampler:
+    - Decimation: 48000
+
+### Transmitting what the computer is playing
+
+- First, do the setup described on the [GNU Radio Wiki](https://wiki.gnuradio.org/index.php?title=ALSAPulseAudio#Monitoring_the_audio_input_of_your_system_with_PulseAudio).
+- Then, set these parameters:
+    - Audio Source:
+        - Device Name: "pulse_monitor"
+        - Sample Rate: 48000
+    - Rational Resampler:
+        - Decimation: 48000
 
 <!-- pandoc-only ### Summary -->
 
