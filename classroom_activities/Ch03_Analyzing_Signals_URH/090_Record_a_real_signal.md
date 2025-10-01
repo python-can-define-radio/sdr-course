@@ -2,11 +2,9 @@
 
 ### Record a signal 
 
-- You need to know what frequency you want to record.
-
 - Open File>Record signal.
 
-- On the Device dropdown menu select HackRF.
+- On the Device dropdown menu, select HackRF.
 - If you do not see the HackRF device option, do the following:
     - Go to the main URH window, and click Edit > Options.
     - Check the checkbox for HackRF.
@@ -15,8 +13,8 @@
 
 <!-- pandoc-only ### Record a signal -->
 
-- On the Device Identifier click the green refresh button.
-    - 🔄 It is green, I couldn't find a more accurate emoji.
+- On the Device Identifier, click the green refresh button.
+    - It resembles this, but is green. 🔄
 
 - Set your Frequency (Hz) to 2.45G (GigaHertz).
 
@@ -24,7 +22,7 @@
 
 - Set your Bandwidth (Hz) to 2.0 Million.
 
-- ⚠️ Do not adjust your RF Gain leave it at 0.
+- ⚠️ Do not adjust your RF Gain; leave it at 0.
 
 - Set your IF Gain to 24.
 
@@ -38,8 +36,8 @@
 - It should now look like this:
 
 - Press start when you are ready to begin recording.
-    - Hint: Make sure that whoever is transmitting has their message on repeat.
-    - You will only need to record for 3-5 seconds or the file will be large.
+    - Hint: Make sure that whoever is transmitting has their message set to repeat so that you can capture it more easily.
+    - The file grows quite quickly, so don't record for longer than about 3-5 seconds.
 
 </div>
 <div class="column">
@@ -53,7 +51,7 @@
 
 - Now you can go to the Interpretation tab and use what you learned previously to Demodulate the message.
 
-- Once you have been successful feel free to partner up with a classmate and try to generate and send your own messages that your partner can Demodulate.
+- Once you have been successful, feel free to partner up with a classmate and try to generate and send your own messages that your partner can Demodulate.
 
 ### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
 
