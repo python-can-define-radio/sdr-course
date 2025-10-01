@@ -2,6 +2,16 @@
 
 # GRC FM Transmitter  <!-- pandoc-exclude-line -->
 
+<!--
+Note regarding what goes in the quad chart:
+
+Action: Discuss the fundamentals of Software Defined Radios (SDRs).
+Standard: Students will be able to explain fundamentals of SDRs.
+
+
+Evaluation: Check on Learning
+-->
+
 <!-- pandoc-only ### Purpose -->
 ### Summary  <!-- pandoc-exclude-line -->
 
