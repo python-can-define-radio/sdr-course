@@ -13,6 +13,7 @@ This excercise assumes the data is exchanged between the remote control and the 
 ### Determining the frequency
 
 For most RC devices, you can find the frequency...
+
 - written on your device
 - in the documentation for your device
 - online by searching the name and model
