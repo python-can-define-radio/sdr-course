@@ -33,20 +33,10 @@ Evaluation: Check on Learning
 
 ### Initial setup   
 
-- Click on the 9 dots in the taskbar of your linux machine and type `terminal` in the search window.
-
-- In terminal type `pip install cython`. 
-  
-- In terminal type `pip install "urh==2.9.4"`.
-<!-- ensure pyqt5 version 5.14.1 is installed. The newest version is failing on the build wheel -->
-
-- In terminal type `pip install --upgrade numpy`.
-
-- In terminal type `urh` to launch the program.
-
-- If you get an error when launching urh:
-    - Type `source ~/.profile` and hit Enter.
-    - Relaunch by typing `urh` again.
+- You need Universal Radio Hacker installed.
+- On DragonOS:
+  - Select the bluebird in the bottom left of your screen.
+  - Type `urh`; select the software and hit enter or click it.
 
 ### Launch screen
 
