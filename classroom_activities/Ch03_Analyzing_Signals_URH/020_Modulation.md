@@ -9,8 +9,7 @@
 
 ### Instructions
 
-- Open a terminal window.
-- Type `urh` to launch the program.
+- Launch `urh`.
 - Select the Generator tab at the top of urh window.
 - Then select `Edit` at the bottom of the urh window.
 - This opens a popup showing a carrier signal, some raw data, and what the signal would look like combined with the data.
