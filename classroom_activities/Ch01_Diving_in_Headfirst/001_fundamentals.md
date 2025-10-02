@@ -72,7 +72,8 @@ _Recommendation: use vertical dotted lines to help with aligning in time._
 Using time as your x-axis, draw the following:  
 
 - On the first graph, draw the carrier wave.
-- On the second graph, draw the message using a square wave.
+- On the second graph, draw the message using a square wave whose amplitude is either 50% or 100%.
+  - Use 100% amplitude for ones, and 50% amplitude for zeros.
 - On the third graph, modulate your message onto the carrier wave using ASK.
 - On the fourth graph, draw the message on a waterfall/spectrogram.
 
@@ -80,42 +81,30 @@ Using time as your x-axis, draw the following:
 
 1. - Carrier wave's frequency: 2 cycles per second (Hz)
    - Message: 10110
-   - High amplitude: 100%
-   - Low amplitude: 50%
    - Time per bit: 1 second
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
 2. - Carrier wave's frequency: 3 Hz
    - Message: 110100
-   - High amplitude: 100%
-   - Low amplitude: 20%
    - Time per bit: 1 second
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
 3. - Carrier wave's frequency: 4 Hz
    - Message: 01011
-   - High amplitude: 100%
-   - Low amplitude: 33%
    - Time per bit: 0.5 seconds
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
 4. - Carrier wave's frequency: 0.5 Hz
    - Message: 10010001
-   - For this one, use the low amplitude to represent ones.
-   - High amplitude: 100%
-   - Low amplitude: 80%
    - Time per bit: 2 seconds
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
 5. - Carrier wave's frequency: 4 Hz
    - Message: 0011010
-   - Use the high amplitude to represent ones.
-   - High amplitude: 100%
-   - Low amplitude: 0%
    - Time per bit: 1 second
    - Question: what is the special name for this type of ASK when the low amplitude is the same as not transmitting (0% of the carrier)? (Answer in teacher notes)
 
