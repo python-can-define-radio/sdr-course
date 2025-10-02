@@ -36,8 +36,10 @@
 - In the white space under "Generated Data":
   - right-click and select `add empty message`.
   - Type in 32 and hit `ok`.
+  - Type `10101011` in the first 8 boxes as your preamble.
+    - The preamble serves as a special character that is used to identify when the message begins.
   - At the bottom right select `ASCII` from the `viewtype` dropdown menu.
-  - This is what your generated data window should now look like.
+  - This is what your generated data window should now look like with this character `«` as our preamble.
 
 </div>
 <div class="column">
@@ -61,16 +63,6 @@
 
 </div>
 </div>
-
-### Add the preamble
-
-- Now, add the « character which will serve as a preamble of 10101011 in the first slot, so we will know when our useful data begins.  
-    - The Ubuntu keyboard shortcut:
-      - Press `Ctl + Shift + u`, then release.
-      - Type `ab` and press enter.
-    - The Windows keyboard shortcut:
-      - Press `Alt + 0171` then release.
-    - Alternatively, you can just copy and paste the « character.
  
 ### Add the message
 
