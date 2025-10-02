@@ -49,7 +49,9 @@ In the case of a QR code, the process looks like this:
 
 <!-- pandoc-only ### Binary -->
 
-Exercise: Ask a randomly-chosen student to identify the zeros and ones in a row of a QR code.
+Exercise: Can you identify the zeros and ones in this QR code?
+
+![QR Code](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/qrcode.png?raw=true)
 
 <!-- pandoc-only # LSA 2: Modulation -->
 
