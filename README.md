@@ -17,3 +17,7 @@ This is an in-progress collection of tutorials about the foundations of Software
  - [PlutoSDR](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html#eb-overview)  -- Second recommendation due to full-duplex ability
  - [HackRF One](https://hackrf.readthedocs.io/en/latest/faq.html) -- half-duplex
  - Nooelec NESDR SMArt: receive only
+
+## Related hardware:
+
+- [Flipper Zero](https://flipperzero.one/) -- Very beginner friendly. Has its own software ecosystem, so the lessons in this repository may not be applicable.
