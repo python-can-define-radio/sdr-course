@@ -47,7 +47,7 @@ In the case of a QR code, the process looks like this:
 - Modulation: the binary data (zeros and ones) are turned into an image using a QR code generator, and possibly printed on paper.
 - Demodulation: a camera captures the light and dark spots, converting them back into bits (zeros and ones).
 
-<!-- pandoc-only ### Binary -->
+<!-- pandoc-only # Binary -->
 
 Exercise: Can you identify the zeros and ones in this QR code?
 
@@ -108,13 +108,30 @@ Using time as your x-axis, draw the following:
    - Time per bit: 1 second
    - Question: what is the special name for this type of ASK when the low amplitude is the same as not transmitting (0% of the carrier)? (Answer in teacher notes)
 
+#### Note regarding the term ASK:
+
+- Since the exercises in this lesson use one bit per symbol, it would be more precise to say "BASK" or "2ASK" rather than simply "ASK". The "B" ("Binary") refers to the use of only two amplitudes. It is possible to do 4-ASK, as shown on the table that follows.
+
+<!-- pandoc-only ### 4-ASK Table -->
+
+| Strength | Bit sequence |
+|----------|--------------|
+| 25%      | 00           |
+| 50%      | 01           |
+| 75%      | 10           |
+| 100%     | 11           |
+
+<!-- pandoc-only ### Note regarding the term ASK: -->
+
+- Using four different transmission strengths doubles the amount of data sent per second, but makes it more difficult for the receiver to demodulate in the presence of noise. In practice, "ASK" usually refers to "2ASK"; we believe that this is because 2ASK is far more common than other ASK variants.
+
 ### Purpose?
 
-Before we move on, let's review: **Why are we doing this?**
+Before we move on, let's review:  
+**Why are we doing this?**
 
-<!--- pandoc-only ### Purpose! -->
-
-Answer: tomorrow, we're going to record a signal from an RC Car and manipulate it. These exercises provide a framework for understanding the signal.
+Answer:  
+we're going to record a signal from an RC Car and manipulate it. These exercises provide a framework for understanding the signal.
 
 ### Exercise: Modulate using FSK
 
@@ -160,6 +177,12 @@ Answer: tomorrow, we're going to record a signal from an RC Car and manipulate i
     - High frequency: 20 Hz
     - Low frequency: 10 Hz
     - Time per bit: 0.1 seconds
+
+### Notes regarding FSK:
+
+**Terminology**: For the FSK exercises in this lesson, it would be more precise to say "BFSK" or "2FSK", but just as 2ASK is almost always abbreviated to simply ASK, 2FSK is usually called just FSK.  
+
+**Regarding the FSK carrier wave frequency:** FSK uses multiple frequencies.it's not obvious which one should be called the "carrier". We chose to refer to the median. Be aware of this ambiguity when using software to work with FSK.
 
 ### Exercise: Modulate using PSK
 
@@ -269,31 +292,6 @@ When a Software Defined Radio (SDR) measures signals, it takes a certain number 
 4. Draw 1 millisecond of a 2 kHz wave.
 5. Draw 1 microsecond of a 4 MHz wave.
 6. Draw 1 nanosecond of a 2 GHz wave.
-
-### Endnotes
-
-#### Regarding the term ASK:
-
-- Since the exercises in this lesson use one bit per symbol, it would be more precise to say "BASK" or "2ASK" rather than simply "ASK". The "B" ("Binary") refers to the use of only two amplitudes. It is possible to do 4-ASK, as shown on the table that follows.
-
-<!-- pandoc-only ### Endnotes: 4-ASK Table -->
-
-| Strength | Bit sequence |
-|----------|--------------|
-| 25%      | 00           |
-| 50%      | 01           |
-| 75%      | 10           |
-| 100%     | 11           |
-
-<!-- pandoc-only ### Endnotes: Regarding the term ASK -->
-
-- Using four different transmission strengths doubles the amount of data sent per second, but makes it more difficult for the receiver to demodulate in the presence of noise. In practice, "ASK" usually refers to "2ASK"; we believe that this is because 2ASK is far more common than other ASK variants.
-
-### Regarding FSK:
-
-**Terminology**: For the FSK exercises in this lesson, it would be more precise to say "BFSK" or "2FSK", but just as 2ASK is almost always abbreviated to simply ASK, 2FSK is usually called just FSK.  
-
-**Regarding the FSK carrier wave frequency:** FSK uses multiple frequencies.it's not obvious which one should be called the "carrier". We chose to refer to the median. Be aware of this ambiguity when using software to work with FSK.
 
 <!-- pandoc-only ### Summary -->
 
