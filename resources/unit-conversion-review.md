@@ -10,7 +10,7 @@ Many of us have heard frequency units mentioned, for example, when buying a rout
 | Converted to GHz   |   0.000 000 001 GHz  |     0.000 001 GHz     |       0.001 GHz       |         1 GHz    |
 | Scientific notation| 1 Hz | 1e3 Hz   | 1e6 Hz       | 1e9 Hz           |
 
-![Image showing MHz, kHz, and Hz place values](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/ghz.jpg?raw=true)  
+![Image showing MHz, kHz, and Hz place values](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/ghz.jpg?raw=true)  
 
 _Image source: https://www.trendytechbuzz.com/2016/11/what-is-gigahertz-ghz-or-megahertz-mhz.html_
 

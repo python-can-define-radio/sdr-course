@@ -51,7 +51,7 @@ In the case of a QR code, the process looks like this:
 
 Exercise: Can you identify the zeros and ones in this QR code?
 
-![QR Code](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/qrcode.png?raw=true)
+![QR Code](https://github.com/python-can-define-radio/sdr-course/blob/main/resources/assets/qrcode.png?raw=true)
 
 <!-- pandoc-only # LSA 2: Modulation -->
 
