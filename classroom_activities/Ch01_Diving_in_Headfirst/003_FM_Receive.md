@@ -1,6 +1,4 @@
-<!-- pandoc-only % SDR: Receiving -->
-
-# Introduction to Gqrx  <!-- pandoc-exclude-line -->
+# SDR: Receiving 
 
 <!--
 Note regarding what goes in the quad chart:

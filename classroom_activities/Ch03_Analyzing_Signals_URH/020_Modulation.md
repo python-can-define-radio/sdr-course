@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 2: --> Demonstrate Modulation using URH 📻
+# <!-- pandoc-only LSA 2: --> Demonstrate Modulation 📻
 
 ### Types of Modulation
 

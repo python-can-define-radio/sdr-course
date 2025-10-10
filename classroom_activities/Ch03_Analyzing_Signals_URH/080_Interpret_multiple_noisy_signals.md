@@ -1,4 +1,4 @@
-# Interpret multiple noisy signals using URH 📻 <!-- pandoc-exclude-line -->
+# Interpret multiple noisy signals 📻 <!-- pandoc-exclude-line -->
 
 ### Download the file
 
@@ -41,7 +41,7 @@
 |  6 |  Crop the signal to eliminate the portion without data.|
 |  7 |  Verify all settings.|
 
-### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 

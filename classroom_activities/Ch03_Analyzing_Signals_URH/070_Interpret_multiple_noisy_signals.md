@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 7: --> Interpret multiple noisy signals using URH 📻
+# <!-- pandoc-only LSA 7: --> Interpret multiple noisy signals 📻
 
 ### Download the file
 
@@ -26,7 +26,7 @@
 
 - Set `Show data as` to `ASCII` and verify all settings to reveal your message.
 
-### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 

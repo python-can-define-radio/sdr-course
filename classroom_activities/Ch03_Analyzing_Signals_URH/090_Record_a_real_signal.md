@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 8: --> Record a signal using URH 📻
+# <!-- pandoc-only LSA 8: --> Record a signal 📻
 
 ### Record a signal 
 
@@ -53,7 +53,7 @@
 
 - Once you have been successful, feel free to partner up with a classmate and try to generate and send your own messages that your partner can Demodulate.
 
-### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 

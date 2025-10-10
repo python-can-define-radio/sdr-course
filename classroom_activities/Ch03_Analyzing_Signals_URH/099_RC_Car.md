@@ -28,20 +28,20 @@ Record the signal using the skills you learned in the section "Record a signal".
 
 Once you've recorded the signal, you can replay it without any further effort by pressing the "play" button in URH. However, you will often have better results if you filter the signal before replaying it, so use the skills you've learned to apply a band pass filter before replaying.
 
-### ℹ️ Some useful resources for urh  <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 <!-- pandoc-only ### Summary -->
 
 <!-- pandoc-only In summary, you learned: -->
 
-<!-- pandoc-only - How to install Universal Radio Hacker (URH) -->
-<!-- pandoc-only - How to demonstrate Modulation using URH -->
-<!-- pandoc-only - How to generate a signal using URH -->
-<!-- pandoc-only - How to interpret a signal using URH -->
-<!-- pandoc-only - How to interpret a noisy signal using URH -->
-<!-- pandoc-only - How to cropp a noisy signal using URH -->
-<!-- pandoc-only - How to interpret multiple noisy signals using URH -->
-<!-- pandoc-only - How to record a signal using URH -->
+<!-- pandoc-only - How to install software -->
+<!-- pandoc-only - How to demonstrate modulation -->
+<!-- pandoc-only - How to generate a signal -->
+<!-- pandoc-only - How to interpret a signal -->
+<!-- pandoc-only - How to interpret a noisy signal -->
+<!-- pandoc-only - How to crop a noisy signal -->
+<!-- pandoc-only - How to interpret multiple noisy signals -->
+<!-- pandoc-only - How to record a signal -->
 
 <!-- pandoc-only ### References -->
 

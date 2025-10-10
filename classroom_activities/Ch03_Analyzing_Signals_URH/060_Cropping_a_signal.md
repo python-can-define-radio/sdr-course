@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 6: --> Cropping a noisy signal using URH 📻
+# <!-- pandoc-only LSA 6: --> Cropping a noisy signal 📻
 
 ### Download file
 
@@ -66,7 +66,7 @@ from pcdr.v0_compat import generate_ook_modulated_example_file
 generate_ook_modulated_example_file("my_example_ook_file.complex", noise=True, message_delay=True)
 ``` -->
 
-### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 

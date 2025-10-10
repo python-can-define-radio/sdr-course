@@ -20,16 +20,16 @@ Evaluation: Check on Learning
 
 <!-- pandoc-only ### Learning Step Activities -->
 
-<!-- pandoc-only - LSA 1: Launch Universal Radio Hacker (URH) -->
-<!-- pandoc-only - LSA 2: Demonstrate Modulation using URH -->
-<!-- pandoc-only - LSA 3: Generate a signal using URH -->
-<!-- pandoc-only - LSA 4: Interpret a signal using URH -->
-<!-- pandoc-only - LSA 5: Interpret a noisy signal using URH -->
-<!-- pandoc-only - LSA 6: Cropping a noisy signal using URH -->
-<!-- pandoc-only - LSA 7: Interpret multiple noisy signals using URH -->
-<!-- pandoc-only - LSA 8: Record a signal using URH -->
+<!-- pandoc-only - LSA 1: Launch Software -->
+<!-- pandoc-only - LSA 2: Demonstrate Modulation -->
+<!-- pandoc-only - LSA 3: Generate a signal -->
+<!-- pandoc-only - LSA 4: Interpret a signal -->
+<!-- pandoc-only - LSA 5: Interpret a noisy signal -->
+<!-- pandoc-only - LSA 6: Cropping a noisy signal -->
+<!-- pandoc-only - LSA 7: Interpret multiple noisy signals -->
+<!-- pandoc-only - LSA 8: Record a signal -->
 
-# <!-- pandoc-only LSA 1: --> Launch Universal Radio Hacker (URH) 📻
+# <!-- pandoc-only LSA 1: --> Launch Software 📻
 
 ### Initial setup   
 

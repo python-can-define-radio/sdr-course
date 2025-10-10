@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 3: --> Generate a signal using URH 📻
+# <!-- pandoc-only LSA 3: --> Generate a signal 📻
 
 ### Modulation settings
 
@@ -119,7 +119,7 @@
 </div>
 
 
-### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 

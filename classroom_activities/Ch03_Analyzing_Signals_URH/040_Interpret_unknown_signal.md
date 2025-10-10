@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 4: --> Interpret a signal using URH 📻
+# <!-- pandoc-only LSA 4: --> Interpret a signal 📻
 
 ### Download signal
 
@@ -111,7 +111,7 @@ from pcdr.v0_compat import generate_ook_modulated_example_file
 print(generate_ook_modulated_example_file.__doc__)
 ``` -->
 
-### ℹ️ Some useful resources for urh <!-- pandoc-exclude-line --> 
+### ℹ️ Some useful resources <!-- pandoc-exclude-line --> 
 
 - https://github.com/jopohl/urh <!-- pandoc-exclude-line --> 
 
