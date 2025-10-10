@@ -1,4 +1,4 @@
-# <!-- pandoc-only LSA 8: --> RC Car
+# <!-- pandoc-only LSA 9: --> RC Car
 
 ### Disclaimer
 
@@ -32,8 +32,6 @@ Once you've recorded the signal, you can replay it without any further effort by
 
 <!-- pandoc-only ### Summary -->
 
-<!-- pandoc-only In summary, you learned: -->
-
 <!-- pandoc-only - How to install software -->
 <!-- pandoc-only - How to demonstrate modulation -->
 <!-- pandoc-only - How to generate a signal -->
@@ -42,6 +40,7 @@ Once you've recorded the signal, you can replay it without any further effort by
 <!-- pandoc-only - How to crop a noisy signal -->
 <!-- pandoc-only - How to interpret multiple noisy signals -->
 <!-- pandoc-only - How to record a signal -->
+<!-- pandoc-only - How to replay a signal -->
 
 <!-- pandoc-only ### References -->
 

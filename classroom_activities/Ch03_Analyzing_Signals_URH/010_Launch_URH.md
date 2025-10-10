@@ -27,7 +27,8 @@ Evaluation: Check on Learning
 <!-- pandoc-only - LSA 5: Interpret a noisy signal -->
 <!-- pandoc-only - LSA 6: Cropping a noisy signal -->
 <!-- pandoc-only - LSA 7: Interpret multiple noisy signals -->
-<!-- pandoc-only - LSA 8: Record a signal -->
+<!-- pandoc-only - LSA 8: Record/Replay a signal -->
+<!-- pandoc-only - LSA 9: RC Car -->
 
 # <!-- pandoc-only LSA 1: --> Launch Software 📻
 
