@@ -1,6 +1,4 @@
-<!-- pandoc-only % SDR: Transmitting -->
-
-# GRC FM Transmitter  <!-- pandoc-exclude-line -->
+# SDR: Transmitting
 
 <!--
 Note regarding what goes in the quad chart:
@@ -20,35 +18,38 @@ GNU Radio Companion (GRC) is an SDR program that can transmit, receive, view, an
 <!-- pandoc-only ### Outcome -->
 
 <!-- pandoc-only By the end of this lesson, students will be able to: -->  
-<!-- pandoc-only - Launch GRC -->  
-<!-- pandoc-only - Configure flowgraph parameters in GRC -->  
-<!-- pandoc-only - Transmit FM Radio using GRC -->
+<!-- pandoc-only - Launch the software -->  
+<!-- pandoc-only - Configure flowgraph parameters for transmission -->  
 
 <!-- pandoc-only ### Learning Step Activities -->
 
-<!-- pandoc-only - LSA 1: Launch GRC -->  
-<!-- pandoc-only - LSA 2: Configure flowgraph parameters in GRC -->  
-<!-- pandoc-only - LSA 3: Transmit FM Radio using GRC -->
+<!-- pandoc-only - LSA 1: Launch the software -->  
+<!-- pandoc-only - LSA 2: Configure flowgraph parameters for transmission -->  
 
-# <!-- pandoc-only LSA 1: --> Launch GRC
+# <!-- pandoc-only LSA 1: --> Launch the software
 
 ### Disclaimer
 
 Broadcasting without a license is illegal in most countries. This should only be used for research purposes in an environment that is sufficiently radio-shielded from other electronics.
 
+The hardware which we use is sufficiently low power to not interfere with transmissions outside the classroom.
+
 ### What is GNU Radio?
 
-"GNU Radio is a free & open-source software development toolkit that provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in research, industry, academia, government, and hobbyist environments to support both wireless communications research and real-world radio systems. _(Source: gnuradio.org/about)_
+"GNU Radio is a free & open-source software development toolkit ... to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in research, industry, academia, government, and hobbyist environments to support both wireless communications research and real-world radio systems."  
+_(Source: gnuradio.org/about)_
 
 ### What is GNU Radio Companion?
 
 GNU Radio Companion (GRC) is the Graphical User Interface (GUI) that we'll be using to build GNU Radio programs, which are called Flowgraphs.
+
 - GRC generates Python code that is executed to control the radio hardware.
 - It's possible to use GNU Radio by writing Python code directly, but the GRC GUI is used more often in the SDR community.
 
 ### How to use GRC
 
 When using GRC, this is the usual workflow:
+
 1. Find blocks using Ctrl + F
 2. Connect blocks by clicking on the in and out ports
 3. Adjust parameters by double-clicking blocks
@@ -71,7 +72,7 @@ WBFM T = WBFM Transmit
 Os S = Osmocom sink  
 WS = Waterfall sink
 
-# <!-- pandoc-only LSA 2: --> Configure flowgraph parameters in GRC
+# <!-- pandoc-only LSA 2: --> Configure flowgraph parameters
 
 ### Parameters
 
@@ -155,9 +156,8 @@ You can replace the Wav File Source with an Audio Source in order to...
 
 <!-- pandoc-only In summary, you learned: -->
 
-<!-- pandoc-only - How to launch GRC -->  
-<!-- pandoc-only - How to configure flowgraph parameters in GRC -->  
-<!-- pandoc-only - How to transmit FM Radio using GRC -->
+<!-- pandoc-only - How to launch the software -->  
+<!-- pandoc-only - How to configure flowgraph parameters for transmission -->  
 
 <!-- pandoc-only ### References -->
 

@@ -18,16 +18,15 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 <!-- pandoc-only ### Outcome -->
 
 <!-- pandoc-only By the end of this lesson, students will be able to: -->  
-<!-- pandoc-only - Launch Gqrx -->  
-<!-- pandoc-only - Configure basic settings in Gqrx -->  
-<!-- pandoc-only - Listen to FM Radio using Gqrx -->
+<!-- pandoc-only - Launch the software -->  
+<!-- pandoc-only - Configure basic settings for reception -->  
 
 <!-- pandoc-only ### Learning Step Activities -->
 
-<!-- pandoc-only - LSA 1: Launch Gqrx -->  
-<!-- pandoc-only - LSA 2: Configure basic settings in Gqrx -->
+<!-- pandoc-only - LSA 1: Launch the software -->  
+<!-- pandoc-only - LSA 2: Configure basic settings for reception -->
 
-# <!-- pandoc-only LSA 1: --> Launch Gqrx
+# <!-- pandoc-only LSA 1: --> Launch the software
 
 ### Launch Gqrx
 
@@ -42,7 +41,7 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
   - Press the "OK" button at the bottom.
 
 
-# <!-- pandoc-only LSA 2: --> Configure basic settings in Gqrx
+# <!-- pandoc-only LSA 2: --> Configure basic settings
 
 <!-- pandoc-only ### Configure Gqrx settings -->
 
@@ -50,7 +49,8 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 - ⚠️ **Remember to respect your fellow classmates (audio level)**.
 - Click the ▶️ Play button in the top left under "File".
 - Select "Input controls" on the right and set these parameters:
-  - RF gain:  0 (radio frequency gain)  ⚠️ **Always keep the RF gain at zero.** ⚠️
+  - RF gain:  0 (radio frequency gain)  
+    ⚠️ **Always keep the RF gain at zero.** ⚠️
   - IF gain: 32 (intermediate freqency gain)
   - BB gain: 50 (baseband gain)
 
@@ -100,9 +100,8 @@ Gqrx is an SDR program that can receive, view, and demodulate signals. This less
 
 <!-- pandoc-only In summary, you learned: -->
 
-<!-- pandoc-only - How to launch Gqrx -->  
-<!-- pandoc-only - How to configure basic settings in Gqrx -->  
-<!-- pandoc-only - How to listen to FM Radio using Gqrx -->
+<!-- pandoc-only - How to launch the software -->  
+<!-- pandoc-only - How to configure basic settings for reception -->  
 
 <!-- pandoc-only ### References -->
 

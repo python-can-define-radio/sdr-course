@@ -33,13 +33,13 @@
 <div class="columns">
 <div class="column">
 
-- In the white space under "Generated Data":
+- Under "Generated Data":
   - right-click and select `add empty message`.
   - Type in 32 and hit `ok`.
   - Type `10101011` in the first 8 boxes as your preamble.
-    - The preamble serves as a special character that is used to identify when the message begins.
-  - At the bottom right select `ASCII` from the `viewtype` dropdown menu.
-  - This is what your generated data window should now look like with this character `«` as our preamble.
+    - The preamble identifies when the message begins.
+  - Select `ASCII` from the `viewtype` dropdown menu.
+  - Generated data should now look like this with the character `«` as our preamble.
 
 </div>
 <div class="column">

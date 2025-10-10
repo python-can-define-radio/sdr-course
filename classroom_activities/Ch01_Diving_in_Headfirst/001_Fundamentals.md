@@ -47,7 +47,7 @@ In the case of a QR code, the process looks like this:
 - Modulation: the binary data (zeros and ones) are turned into an image using a QR code generator, and possibly printed on paper.
 - Demodulation: a camera captures the light and dark spots, converting them back into bits (zeros and ones).
 
-<!-- pandoc-only # Binary -->
+<!-- pandoc-only --- -->
 
 Exercise: Can you identify the zeros and ones in this QR code?
 
@@ -108,7 +108,7 @@ Using time as your x-axis, draw the following:
    - Time per bit: 1 second
    - Question: what is the special name for this type of ASK when the low amplitude is the same as not transmitting (0% of the carrier)? (Answer in teacher notes)
 
-#### Note regarding the term ASK:
+### Note regarding the term ASK:
 
 - Since the exercises in this lesson use one bit per symbol, it would be more precise to say "BASK" or "2ASK" rather than simply "ASK". The "B" ("Binary") refers to the use of only two amplitudes. It is possible to do 4-ASK, as shown on the table that follows.
 
