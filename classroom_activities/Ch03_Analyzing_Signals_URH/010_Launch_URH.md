@@ -38,6 +38,13 @@ Evaluation: Check on Learning
 - On DragonOS:
   - Select the bluebird in the bottom left of your screen.
   - Type `urh`; select the software and hit enter or click it.
+- If you need to pip-install URH, the following appears to work:
+    ```
+    pip install 'numpy==1.24.4'
+    pip install 'cython==3.2.4'
+    pip install 'pyqt5==5.14.2'
+    pip install 'urh==2.9.8'
+    ```
 
 ### Launch screen
 
