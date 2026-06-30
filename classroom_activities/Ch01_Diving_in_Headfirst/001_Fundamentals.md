@@ -81,7 +81,7 @@ Using time as your x-axis, draw the following:
 
 1. - Carrier wave's frequency: 2 cycles per second (Hz)
    - Message: 10110
-   - Time per bit: 1 second
+   - Time per bit: 0.5 second
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
@@ -97,15 +97,15 @@ Using time as your x-axis, draw the following:
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
-4. - Carrier wave's frequency: 0.5 Hz
+4. - Carrier wave's frequency: 20 Hz
    - Message: 10010001
-   - Time per bit: 2 seconds
+   - Time per bit: 0.2 seconds
 
 <!-- pandoc-only ### Exercise: Modulate using ASK -->
 
-5. - Carrier wave's frequency: 4 Hz
+5. - Carrier wave's frequency: 300 Hz
    - Message: 0011010
-   - Time per bit: 1 second
+   - Time per bit: 0.01 second
    - Question: what is the special name for this type of ASK when the low amplitude is the same as not transmitting (0% of the carrier)? (Answer in teacher notes)
 
 ### Note regarding the term ASK:
@@ -135,21 +135,21 @@ we're going to record a signal from an RC Car and manipulate it. These exercises
 
 ### Exercise: Modulate using FSK
 
-6. - Carrier wave's frequency: 1.5 Hz
+6. - Carrier wave's frequency: 5 Hz
    - Message: 10110
    - Use the high frequency to represent ones.
-   - High frequency: 2 Hz
-   - Low frequency: 1 Hz
-   - Time per bit: 1 second
+   - High frequency: 6 Hz
+   - Low frequency: 4 Hz
+   - Time per bit: 0.5 second
    
 <!-- pandoc-only ### Exercise: Modulate using FSK -->
 
-7. - Carrier wave's frequency: 2 Hz
+7. - Carrier wave's frequency: 200 Hz
    - Message: 0100110
    - Use the high frequency to represent ones.
-   - High frequency: 3 Hz
-   - Low frequency: 1 Hz
-   - Time per bit: 1 second
+   - High frequency: 300 Hz
+   - Low frequency: 100 Hz
+   - Time per bit: 0.01 second
 
 <!-- pandoc-only ### Exercise: Modulate using FSK -->
 
